@@ -1,0 +1,90 @@
+.search-main {
+    background-color: rgba($color: #fff, $alpha: .5);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .03);
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    overflow: inherit;
+    & .ant-tabs-bar {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .03);
+        background-color: rgba($color: #fff, $alpha: .9);
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+        position: relative;
+        border: none;
+        margin: 0;
+        & .ant-tabs-nav-container-scrolling {
+            @include align-items(center);
+            @include flexbox();
+            overflow: inherit;
+            padding-left: 0;
+            padding-right: 0;
+            height: auto !important;
+            & .ant-tabs-tab-prev.ant-tabs-tab-arrow-show {
+                box-shadow: 0 3px 6px rgba(0, 0, 0, .1);
+                @include border-radius(50px);
+                background: #fff;
+                left: -16px;
+                width: 30px;
+                height: 30px;
+                & i {
+                    color: $color-main;
+                }
+            }
+            & .ant-tabs-tab-next.ant-tabs-tab-arrow-show {
+                box-shadow: 0 3px 6px rgba(0, 0, 0, .1);
+                @include border-radius(50px);
+                background: #fff;
+                right: -16px;
+                width: 30px;
+                height: 30px;
+                & i {
+                    color: $color-main;
+                }
+            }
+            & .ant-tabs-tab-btn-disabled {
+                background: #f5f5f5 !important;
+                & i {
+                    color: $color-font-gray !important;
+                }
+            }
+        }
+        & .ant-tabs-nav-wrap {
+            width: 100%;
+            & .ant-tabs-nav {
+                width: 100%;
+                & .ant-tabs-tab {
+                    @include border-radius(0);
+                    background: transparent !important;
+                    color: $color-font-gray;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 20px;
+                    text-align: center;
+                    border: none;
+                    padding: 16px;
+                    width: 20%;
+                    margin: 0;
+                    & .icon {
+                        display: block;
+                        & i {
+                            color: $color-font-gray;
+                            font-size: 32px;
+                        }
+                    }
+                    &.ant-tabs-tab-active {
+                        color: $color-font;
+                        font-weight: normal;
+                        & .icon {
+                            & i {
+                                color: $color-main;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    & .ant-tabs-content {
+        padding: 22px;
+    }
+}

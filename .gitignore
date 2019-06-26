@@ -1,0 +1,10 @@
+
+.DS_Store
+layouts/README.md
+middleware/README.md
+store/README.md
+static/README.md
+
+.nuxt
+node_modules
+package-lock.json

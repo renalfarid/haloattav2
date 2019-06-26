@@ -1,0 +1,35 @@
+.ant-tag--large {
+    @include border-radius(20px);
+    font-size: 16px;
+    text-align: center;
+    line-height: 26px;
+    min-width: 120px;
+    margin-right: 16px;
+    height: 30px;
+}
+
+.ant-tag--small {
+    @include border-radius(20px);
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    min-width: 80px;
+    padding: 0 16px;
+    margin-right: 16px;
+    height: 22px;
+}
+
+.ant-tag--kajian {
+    background-color: $color-orange !important;
+    color: #ffffff !important;
+}
+
+.ant-tag--travel {
+    background-color: $color-main !important;
+    color: #ffffff !important;
+}
+
+.ant-tag--umrah {
+    background-color: $color-yellow !important;
+    color: #ffffff !important;
+}

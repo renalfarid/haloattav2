@@ -1,0 +1,34 @@
+// attribute display
+.d-none {
+    display: none !important;
+}
+
+.d-flex {
+    @include flexbox();
+}
+
+.align-items-center {
+    @include align-items(center);
+}
+
+.align-space-between {
+    @include justify-content(space-between);
+}
+
+// attribute height & width
+.h-100 {
+    height: 100% !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+// attribute margin
+.ml-auto {
+    margin-left: auto;
+}
+
+.ml-12 {
+    margin-left: 12px;
+}

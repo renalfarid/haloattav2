@@ -1,0 +1,53 @@
+.form-search--costume {
+    & .ant-form-item {
+        & .ant-form-item-label {
+            padding-bottom: 0;
+            & label {
+                color: $color-font-gray;
+            }
+        }
+        & .ant-form-item-control {
+            & .icon-search {
+                position: absolute;
+                font-size: 20px;
+                padding: 5px 0;
+                z-index: 2;
+            }
+            & .ant-select-selection {
+                @include border-radius(0);
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid $color-font-light-gray;
+                &:focus {
+                    border-color: $color-main;
+                }
+                & .ant-select-selection__rendered {
+                    margin-left: 30px;
+                    & .ant-select-selection-selected-value {
+                        color: $color-font;
+                    }
+                }
+            }
+            & .ant-select-open {
+                & .ant-select-selection {
+                    border-color: $color-main !important;
+                }
+            }
+        }
+    }
+    & .btn-search {
+        @include border-radius(6px);
+        background: $color-main;
+        margin-bottom: 10px;
+        box-shadow: none;
+        margin-top: -5px;
+        color: #ffffff;
+        border: 1px solid $color-main;
+    }
+}
+
+.ant-select-focused .ant-select-selection,
+.ant-select-selection:focus,
+.ant-select-selection:active {
+    box-shadow: none !important;
+}

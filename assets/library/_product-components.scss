@@ -1,0 +1,45 @@
+.card-product--components {
+    @include border-radius(0);
+    border: none;
+    & .ant-card-cover {
+        & img {
+            @include border-radius(0);
+            max-width: 100%;
+        }
+    }
+    & .ant-card-body {
+        position: absolute;
+        padding: 40px 20px;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        & .ant-card-meta {
+            position: relative;
+            z-index: 2;
+            & .ant-card-meta-title {
+                text-align: center;
+                font-weight: bold;
+                margin-bottom: 0;
+                font-size: 20px;
+                color: #ffffff;
+            }
+            & .ant-card-meta-description {
+                text-align: center;
+                line-height: 16px;
+                font-size: 14px;
+                color: #ffffff;
+            }
+        }
+    }
+    & .gradient-bottom {
+        background-image: -webkit-linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
+        background-image: -moz-linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
+        background-image: linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
+        position: absolute !important;
+        bottom: 0 !important;
+        height: 30% !important;
+        width: 100% !important;
+        min-height: 120px !important;
+        left: 0;
+    }
+}

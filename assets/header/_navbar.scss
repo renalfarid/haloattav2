@@ -1,0 +1,85 @@
+.navbar {
+    background-color: transparent;
+    position: absolute;
+    z-index: 9999;
+    width: 100%;
+    padding: 0;
+    left: 0;
+    & .navbar-nav {
+        margin: 0 auto;
+        padding: 0 30px;
+        max-width: 1400px;
+        min-width: 980px;
+        & .navbar-brand {
+            display: inline;
+            & img {
+                max-width: 100%;
+                max-height: 38px;
+            }
+        }
+        & .navbar-right {
+            @include align-items(center);
+            @include flexbox();
+            float: right;
+            & .nav-item {
+                background: transparent;
+                border: none;
+                & .nav-link {
+                    padding: 0 14px;
+                    border: none;
+                    & a {
+                        font-size: 15px;
+                        color: rgba($color: #fff, $alpha: .9);
+                    }
+                    &.ant-menu-item-selected {
+                        & a {
+                            color: rgba($color: #fff, $alpha: 1);
+                        }
+                    }
+                }
+            }
+            & .navbar-button {
+                margin-left: 20px;
+                & .btn-login {
+                    font-size: 15px;
+                    border: none;
+                }
+                & .btn-register {
+                    background: $color-main;
+                    font-size: 15px;
+                    color: #ffffff;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+.ant-affix {
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 9999;
+    & .navbar {
+        background: #ffffff;
+        & .navbar-nav {
+            & .navbar-right {
+                & .nav-item {
+                    background: transparent;
+                    border: none;
+                    float: right;
+                    & .nav-link {
+                        border: none;
+                        & a {
+                            color: rgba($color: #333333, $alpha: .6);
+                        }
+                        &.ant-menu-item-selected {
+                            & a {
+                                color: rgba($color: #333333, $alpha: 1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
