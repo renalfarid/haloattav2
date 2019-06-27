@@ -4,30 +4,27 @@
     & .ant-card-cover {
         & img {
             @include border-radius(0);
-            max-width: 100%;
+            width: 100%;
         }
-    }
-    & .ant-card-body {
-        position: absolute;
-        padding: 40px 20px;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        & .ant-card-meta {
-            position: relative;
+        & .ant-card-cover--overlay {
+            position: absolute;
             z-index: 2;
-            & .ant-card-meta-title {
-                text-align: center;
-                font-weight: bold;
-                margin-bottom: 0;
-                font-size: 20px;
-                color: #ffffff;
-            }
-            & .ant-card-meta-description {
-                text-align: center;
-                line-height: 16px;
-                font-size: 14px;
-                color: #ffffff;
+            bottom: 0;
+            & .ant-card-meta {
+                padding: 40px 20px;
+                & .ant-card-meta-title {
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 0;
+                    font-size: 20px;
+                    color: #ffffff;
+                }
+                & .ant-card-meta-description {
+                    text-align: center;
+                    line-height: 16px;
+                    font-size: 14px;
+                    color: #ffffff;
+                }
             }
         }
     }

@@ -12,56 +12,62 @@
     </div>
 
     <div class="container-slick">
-      <slick ref="slick" :options="slickRecomended">
-        <div>
-          <a-card class="card-product--components">
-            <img alt="haloatta" src="~/static/components/C1.png" slot="cover">
-            <a-card-meta title="Tiket Group">
-              <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
-            </a-card-meta>
-            <div class="gradient-bottom"></div>
-          </a-card>
-        </div>
+      <slick ref="slick" :options="slickComponentsUmrah">
+        <a-card class="card-product--components">
+          <div slot="cover">
+            <img alt="haloatta" src="/components/C1.png">
+            <div class="ant-card-cover--overlay">
+                <a-card-meta title="Tiket Group">
+                  <template
+                    slot="description"
+                  >Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
+                </a-card-meta>
+              </div>
+              <div class="gradient-bottom"></div>
+          </div>
+        </a-card>
 
-        <div>
-          <a-card class="card-product--components">
-            <img alt="haloatta" src="~/static/components/C2.png" slot="cover">
-            <a-card-meta title="LA Akomodasi">
-              <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
-            </a-card-meta>
-            <div class="gradient-bottom"></div>
-          </a-card>
-        </div>
+        <a-card class="card-product--components">
+          <div slot="cover">
+            <img alt="haloatta" src="/components/C2.png">
+            <div class="ant-card-cover--overlay">
+                <a-card-meta title="LA Akomodasi">
+                  <template
+                    slot="description"
+                  >Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
+                </a-card-meta>
+              </div>
+              <div class="gradient-bottom"></div>
+          </div>
+        </a-card>
 
-        <div>
-          <a-card class="card-product--components">
-            <img alt="haloatta" src="~/static/components/C3.png" slot="cover">
-            <a-card-meta title="Visa Umrah">
-              <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
-            </a-card-meta>
-            <div class="gradient-bottom"></div>
-          </a-card>
-        </div>
+        <a-card class="card-product--components">
+          <div slot="cover">
+            <img alt="haloatta" src="/components/C3.png">
+            <div class="ant-card-cover--overlay">
+                <a-card-meta title="Visa Umrah">
+                  <template
+                    slot="description"
+                  >Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
+                </a-card-meta>
+              </div>
+              <div class="gradient-bottom"></div>
+          </div>
+        </a-card>
 
-        <div>
-          <a-card class="card-product--components">
-            <img alt="haloatta" src="~/static/components/C4.png" slot="cover">
-            <a-card-meta title="Asuransi">
-              <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
-            </a-card-meta>
-            <div class="gradient-bottom"></div>
-          </a-card>
-        </div>
-
-        <div>
-          <a-card class="card-product--components">
-            <img alt="haloatta" src="~/static/components/C2.png" slot="cover">
-            <a-card-meta title="Handling">
-              <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
-            </a-card-meta>
-            <div class="gradient-bottom"></div>
-          </a-card>
-        </div>
+        <a-card class="card-product--components">
+          <div slot="cover">
+            <img alt="haloatta" src="/components/C4.png">
+            <div class="ant-card-cover--overlay">
+                <a-card-meta title="Asuransi">
+                  <template
+                    slot="description"
+                  >Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
+                </a-card-meta>
+              </div>
+              <div class="gradient-bottom"></div>
+          </div>
+        </a-card>
       </slick>
 
       <div class="action-slick">
@@ -75,7 +81,7 @@
 export default {
   data() {
     return {
-      slickRecomended: {
+      slickComponentsUmrah: {
         slidesToShow: 4,
         infinite: false,
         arrows: false,

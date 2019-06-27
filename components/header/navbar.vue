@@ -2,41 +2,66 @@
   <a-layout-header class="navbar">
     <div class="navbar-nav">
       <div class="navbar-brand">
-        <img src="~/static/haloatta.png">
+        <img src="~/static/haloatta_white.png">
       </div>
       <div class="navbar-right">
         <a-menu
-        class="nav-item"
-        mode="horizontal"
-        :defaultSelectedKeys="['1']"
-        :style="{ lineHeight: '64px' }"
-      >
-        <a-menu-item key="1" class="nav-link">
-          <nuxt-link to>Beranda</nuxt-link>
-        </a-menu-item>
-        <a-menu-item key="2" class="nav-link">
-          <nuxt-link to>Tentang</nuxt-link>
-        </a-menu-item>
-        <a-menu-item key="3" class="nav-link">
-          <nuxt-link to>Blog</nuxt-link>
-        </a-menu-item>
-        <a-menu-item key="4" class="nav-link">
-          <nuxt-link to>Visa Progresif</nuxt-link>
-        </a-menu-item>
-        <a-menu-item key="5" class="nav-link">
-          <nuxt-link to>Status Keberangkatan</nuxt-link>
-        </a-menu-item>
-      </a-menu>
+          class="nav-item"
+          mode="horizontal"
+          :defaultSelectedKeys="['1']"
+          :style="{ lineHeight: '64px' }"
+        >
+          <a-menu-item key="1" class="nav-link">
+            <nuxt-link to>Beranda</nuxt-link>
+          </a-menu-item>
+          <a-menu-item key="2" class="nav-link">
+            <nuxt-link to>Tentang</nuxt-link>
+          </a-menu-item>
+          <a-menu-item key="3" class="nav-link">
+            <nuxt-link to>Blog</nuxt-link>
+          </a-menu-item>
+          <a-menu-item key="4" class="nav-link">
+            <nuxt-link to>Visa Progresif</nuxt-link>
+          </a-menu-item>
+          <a-menu-item key="5" class="nav-link">
+            <nuxt-link to>Status Keberangkatan</nuxt-link>
+          </a-menu-item>
+        </a-menu>
 
-      <!-- before login -->
-      <div class="navbar-button">
-        <a-button class="btn-login">Login</a-button>
-        <a-button class="btn-register">Register</a-button>
-      </div>
+        <!-- before login -->
+        <div class="navbar-button d-none">
+          <a-button class="btn-login" @click="showLogin">Login</a-button>
+          <a-button class="btn-register">Register</a-button>
+        </div>
+
+        <!-- after login -->
+        <div class="navbar-accounts">
+          <a-button class="btn-accounts" shape="circle">G</a-button>
+        </div>
       </div>
     </div>
+
+    <!-- modal login -->
+    <a-modal wrapClassName="ant-modal-login" v-model="visibleLogin">
+      <sectionLogin />
+    </a-modal>
   </a-layout-header>
 </template>
 <script>
-export default {};
+import sectionLogin from "~/components/login/modal-login.vue";
+export default {
+  data() {
+    return {
+      visibleLogin: false
+    };
+  },
+  methods: {
+    showLogin() {
+      this.visibleLogin = true;
+    }
+  },
+  components: {
+    sectionLogin
+  }
+};
 </script>

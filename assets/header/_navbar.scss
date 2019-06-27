@@ -14,7 +14,7 @@
             display: inline;
             & img {
                 max-width: 100%;
-                max-height: 38px;
+                max-height: 34px;
             }
         }
         & .navbar-right {
@@ -51,6 +51,15 @@
                     border: none;
                 }
             }
+            & .navbar-accounts {
+                margin-left: 20px;
+                & .btn-accounts {
+                    border-color: #ffffff;
+                    background: #ffffff;
+                    color: $color-main;
+                    font-size: 15px;
+                }
+            }
         }
     }
 }
@@ -60,7 +69,7 @@
     width: 100% !important;
     z-index: 9999;
     & .navbar {
-        background: #ffffff;
+        background: $color-main;
         & .navbar-nav {
             & .navbar-right {
                 & .nav-item {
@@ -70,15 +79,59 @@
                     & .nav-link {
                         border: none;
                         & a {
-                            color: rgba($color: #333333, $alpha: .6);
+                            color: rgba($color: #ffffff, $alpha: .6);
                         }
                         &.ant-menu-item-selected {
                             & a {
-                                color: rgba($color: #333333, $alpha: 1);
+                                color: rgba($color: #ffffff, $alpha: 1);
                             }
                         }
                     }
                 }
+                & .navbar-accounts {
+                    margin-left: 20px;
+                    & .btn-accounts {
+                        border-color: #ffffff;
+                        background: #ffffff;
+                        color: $color-main;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ant-modal-login {
+    & .ant-modal {
+        width: 420px !important;
+        & .ant-modal-content {
+            & .ant-modal-close {
+                box-shadow: 0 3px 6px rgba(0, 0, 0, .1);
+                @include border-radius(50px);
+                position: relative;
+                margin-left: 24px;
+                margin-top: 24px;
+                & .ant-modal-close-x {
+                    line-height: 40px;
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+            & .ant-form-modal--login-top {
+                & .ant-form-item--facebook {
+                    background: #4468B2;
+                    margin-bottom: 5px;
+                    color: #ffffff;
+                    border-color: #4468B2;
+                }
+                & .ant-form-item--google {
+                    margin-top: 5px;
+                }
+            }
+            // & .ant-form-modal--login {
+            // }
+            & .ant-modal-footer {
+                display: none;
             }
         }
     }

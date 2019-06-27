@@ -25,9 +25,10 @@
             height: 100%;
             margin: 0 auto;
             & .title {
+                text-shadow: 0 1px 0px rgba(0, 0, 0, .1);
                 color: #ffffff;
-                line-height: 55px;
-                font-size: 55px;
+                line-height: 45px;
+                font-size: 45px;
             }
             & .btn-join--us {
                 @include border-radius(6px);
@@ -35,6 +36,40 @@
                 background: #ffffff;
                 color: $color-main;
                 min-width: 200px;
+            }
+            & .ant-comment--accounts {
+                margin-top: 20px;
+                & .ant-comment-content-author {
+                    & span {
+                        font-size: 18px;
+                        & * {
+                            color: #ffffff;
+                        }
+                    }
+                }
+                & .ant-comment-content-detail {
+                    font-size: 14px;
+                    color: #ffffff;
+                }
+                & .ant-comment-actions {
+                    & .ant-tag {
+                        background: rgba(255, 255, 255, .6);
+                        line-height: 24px;
+                        font-size: 14px;
+                        padding: 0 16px;
+                        border: none;
+                        height: 26px;
+                    }
+                }
+                & .ant-avatar {
+                    background: #ffffff;
+                    width: 88px;
+                    height: 88px;
+                }
+                & .ant-comment-avatar img {
+                    height: 88px;
+                    width: 88px;
+                }
             }
         }
     }
@@ -61,7 +96,7 @@
     }
 }
 
-.content-components {
+.content-components-umrah {
     padding: 2.5rem 0;
     & .header-title {
         margin-bottom: 32px;
@@ -82,12 +117,12 @@
     }
     & .container-slick {
         position: relative;
-        & .slick-track {
-            min-width: 1220px !important;
-            & .slick-slide {
-                width: 305px !important;
-            }
-        }
+        // & .slick-track {
+        //     min-width: 1220px !important;
+        //     & .slick-slide {
+        //         width: 305px !important;
+        //     }
+        // }
         & .action-slick {
             @include justify-content(space-between);
             @include flexbox();
@@ -192,12 +227,12 @@
     }
     & .container-slick {
         position: relative;
-        & .slick-track {
-            min-width: 1220px !important;
-            & .slick-slide {
-                width: 305px !important;
-            }
-        }
+        // & .slick-track {
+        //     min-width: 1220px !important;
+        //     & .slick-slide {
+        //         width: 305px !important;
+        //     }
+        // }
         & .action-slick {
             @include justify-content(space-between);
             @include flexbox();
@@ -247,12 +282,12 @@
     }
     & .container-slick {
         position: relative;
-        & .slick-track {
-            min-width: 1220px !important;
-            & .slick-slide {
-                width: 305px !important;
-            }
-        }
+        // & .slick-track {
+        //     min-width: 1220px !important;
+        //     & .slick-slide {
+        //         width: 305px !important;
+        //     }
+        // }
         & .action-slick {
             @include justify-content(space-between);
             @include flexbox();

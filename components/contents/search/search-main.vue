@@ -200,7 +200,7 @@
 
           <a-row :gutter="16">
             <a-col :span="12">
-              <a-button class="btn-search" size="large" block>Cari Umrah</a-button>
+              <a-button @click="searchUmrah" class="btn-search" size="large" block>Cari Umrah</a-button>
             </a-col>
           </a-row>
         </a-form>
@@ -278,6 +278,9 @@ export default {
           .toLowerCase()
           .indexOf(input.toLowerCase()) >= 0
       );
+    },
+    searchUmrah() {
+      this.$router.push({ path: '/umrah/results' })
     }
   }
 };

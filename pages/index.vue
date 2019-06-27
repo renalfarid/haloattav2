@@ -3,14 +3,28 @@
     <div class="content-head">
       <div class="content-head--cover" :style="{ backgroundImage: `url(${coverUrl})` }">
         <div class="content-head--body">
-        <div class="gradient-top"></div>
+          <div class="gradient-top"></div>
           <a-row :gutter="30" class="w-100" type="flex" justify="space-around" align="middle">
             <a-col :span="13">
-              <searchMain />
+              <searchMain/>
             </a-col>
             <a-col :span="11">
               <h2 class="title">Kembangkan Bisnis Umrah Anda</h2>
-              <a-button class="btn-join--us" size="large">Gabung Sekarang</a-button>
+              <a-button class="btn-join--us d-none" size="large">Gabung Sekarang</a-button>
+              
+              <a-comment class="ant-comment--accounts">
+                <template slot="actions">
+                  <a-tag><a-icon type="gold" /> <span>101</span> POIN</a-tag>
+                  <a-tag><a-icon type="wallet" /> Rp <span>69.000.000</span></a-tag>
+                </template>
+                <a slot="author">Awaluddin Muhammad Arifatullah</a>
+                <a-avatar
+                  src="/user/maha_user.jpg"
+                  alt="haloatta"
+                  slot="avatar"
+                />
+                <p slot="content">Jl Kebahagiaan Utara - BTP Blok A, No 537</p>
+              </a-comment>
             </a-col>
           </a-row>
         </div>
@@ -21,8 +35,8 @@
       <sectionFavorite/>
     </div>
 
-    <div class="content-components">
-      <sectionComponents/>
+    <div class="content-components-umrah">
+      <sectionComponentsUmrah/>
     </div>
 
     <div class="content-banner-full">
@@ -31,7 +45,9 @@
         <div class="container h-100">
           <a-row :gutter="16" type="flex" justify="start" align="middle" class="h-100">
             <a-col :span="12">
-              <a-card-meta title="Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda">
+              <a-card-meta
+                title="Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
+              >
                 <template slot="description">
                   <a-button size="large">Buat Paket</a-button>
                 </template>
@@ -44,15 +60,15 @@
     </div>
 
     <div class="content-recomended">
-      <sectionRecomended />
+      <sectionRecomended/>
     </div>
 
     <div class="content-trend">
-      <sectionTrend />
+      <sectionTrend/>
     </div>
 
     <div class="content-news">
-      <sectionNews />
+      <sectionNews/>
     </div>
   </div>
 </template>
@@ -61,7 +77,7 @@
 import coverUrl from "~/static/cover/C1.png";
 import searchMain from "~/components/contents/search/search-main.vue";
 import sectionFavorite from "~/components/contents/home/section-favorite.vue";
-import sectionComponents from "~/components/contents/home/section-components.vue";
+import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 import sectionRecomended from "~/components/contents/home/section-recomended.vue";
 import sectionTrend from "~/components/contents/home/section-trend.vue";
 import sectionNews from "~/components/contents/home/section-news.vue";
@@ -80,7 +96,7 @@ export default {
   components: {
     searchMain,
     sectionFavorite,
-    sectionComponents,
+    sectionComponentsUmrah,
     sectionRecomended,
     sectionTrend,
     sectionNews

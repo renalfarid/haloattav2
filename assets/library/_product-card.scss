@@ -9,7 +9,7 @@
             @include align-items(center);
             @include flexbox();
             overflow: hidden;
-            height: 336px;
+            height: 335px;
             width: 100%;
             width: 100%;
             & .box-overlay {
@@ -147,6 +147,7 @@
                 }
                 & .ant-card-meta-description {
                     & .ant-card-meta-description--bottom {
+                        white-space: nowrap;
                         & .ant-card-meta-description--bottom-left {
                             font-weight: bold;
                             color: $color-font;
