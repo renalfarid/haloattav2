@@ -1,0 +1,33 @@
+.ant-layout--results-search {
+    margin-bottom: 30px;
+    & .ant-card--results-info {
+        @include border-radius(6px);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .05);
+        margin-top: -50px;
+        & .ant-card--results-info-left {
+            & .ant-avatar {
+                background-color: $color-main;
+                margin-right: 16px;
+            }
+            & .ant-card--results-info-title {
+                color: $color-font;
+                font-weight: 500;
+                font-size: 20px;
+            }
+            & .ant-card--results-info-subtitle {
+                color: $color-font-gray;
+                font-size: 16px;
+            }
+        }
+        & .ant-card--results-info-right {
+            & .ant-btn {
+                background-color: $color-main;
+                border-color: $color-main;
+                color: #ffffff;
+            }
+        }
+        & .ant-form--search {
+            transition: all .3s ease-in-out;
+        }
+    }
+}

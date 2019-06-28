@@ -75,7 +75,7 @@
 
 <script>
 import coverUrl from "~/static/cover/C1.png";
-import searchMain from "~/components/contents/search/search-main.vue";
+import searchMain from "~/components/contents/lib/search/search-main.vue";
 import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 import sectionRecomended from "~/components/contents/home/section-recomended.vue";

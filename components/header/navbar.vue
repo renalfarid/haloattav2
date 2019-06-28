@@ -1,9 +1,9 @@
 <template>
   <a-layout-header class="navbar">
     <div class="navbar-nav">
-      <div class="navbar-brand">
+      <nuxt-link to="/" class="navbar-brand">
         <img src="~/static/haloatta_white.png">
-      </div>
+      </nuxt-link>
       <div class="navbar-right">
         <a-menu
           class="nav-item"

@@ -1,16 +1,13 @@
 <template>
   <div class="ant-layout--results">
-    <div class="ant-layout--results-space"></div>
+    <div class="ant-layout--results-space-small"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <sectionSearchUmrah/>
-          
-          <sectionFilterUmrah/>
-        </div>
-
         <div class="ant-layout--results-list">
-          <div class="ant-layout--results-list-label">Hasil Pencarian Paket Umrah</div>
+          <div
+            class="ant-layout--results-list-label"
+            :style="{marginTop: '16px'}"
+          >Rekomendasi Paket Umrah Sejenis</div>
           <a-list :grid="{ gutter: 16, column: 3 }" :pagination="pagination" :dataSource="listData">
             <a-list-item slot="renderItem" slot-scope="item, index" key="item.title">
               <a-card class="ant-card-package">
@@ -69,22 +66,14 @@
       </div>
     </div>
 
-    <!-- recomended umrah -->
-    <div class="ant-layout--recomendation-same">
-      <sectionRecomendedSame/>
-    </div>
-
-    <!-- components umrah -->
-    <div class="content-components-umrah">
-      <sectionComponentsUmrah/>
+    <!-- Umrah Trend -->
+    <div class="content-trend">
+      <sectionTrend/>
     </div>
   </div>
 </template>
 <script>
-import sectionSearchUmrah from "~/components/contents/lib/search/search-umrah.vue";
-import sectionFilterUmrah from "~/components/contents/lib/filter/filter-umrah.vue";
-import sectionRecomendedSame from "~/components/contents/results/umrah/recomended-same.vue";
-import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
+import sectionTrend from "~/components/contents/home/section-trend.vue";
 import vaforite1 from "~/static/products/V1.png";
 const listData = [];
 for (let i = 0; i < 23; i++) {
@@ -94,10 +83,10 @@ for (let i = 0; i < 23; i++) {
   });
 }
 export default {
-  name: "umrahResults",
+  name: "umrahRecomendedSame",
   head() {
     return {
-      title: "Haloatta - Booking Paket Umrah"
+      title: "Rekomendasi Paket Umrah Sejenis"
     };
   },
   data() {
@@ -108,16 +97,13 @@ export default {
         onChange: page => {
           console.log(page);
         },
-        showTotal: total => `Total ${total} Paket Umrah`,
-        pageSize: 9
+        showTotal: total => `Total ${total} Paket Umrah Sejenis`,
+        pageSize: 12
       }
     };
   },
   components: {
-    sectionSearchUmrah,
-    sectionFilterUmrah,
-    sectionRecomendedSame,
-    sectionComponentsUmrah
+    sectionTrend
   }
 };
 </script>

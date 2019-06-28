@@ -16,7 +16,7 @@
                 max-width: 400px;
                 margin: 0 auto;
                 & .txt {
-                    font-weight: bold;
+                    font-weight: 600;
                     text-align: center;
                     font-size: 40px;
                     color: #ffffff;
@@ -139,7 +139,7 @@
                     & .ant-card-meta-title--package {
                         margin-bottom: 8px;
                         color: $color-font;
-                        font-weight: bold;
+                        font-weight: 600;
                         line-height: 22px;
                         font-size: 18px;
                         height: 44px;
@@ -149,7 +149,7 @@
                     & .ant-card-meta-description--bottom {
                         white-space: nowrap;
                         & .ant-card-meta-description--bottom-left {
-                            font-weight: bold;
+                            font-weight: 600;
                             color: $color-font;
                             font-size: 16px;
                         }

@@ -13,6 +13,7 @@
         <a-layout-footer :style="{ background: '#f5f5f5' }">
           <Footer/>
         </a-layout-footer>
+        <a-back-top />
       </a-layout>
     </no-ssr>
   </div>
