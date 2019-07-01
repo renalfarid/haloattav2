@@ -4,11 +4,11 @@
       <div class="content-head--cover" :style="{ backgroundImage: `url(${coverUrl})` }">
         <div class="content-head--body">
           <div class="gradient-top"></div>
-          <a-row :gutter="30" class="w-100" type="flex" justify="space-around" align="middle">
-            <a-col :span="13">
+          <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
+            <a-col :span="14">
               <searchMain/>
             </a-col>
-            <a-col :span="11">
+            <a-col :span="10">
               <h2 class="title">Kembangkan Bisnis Umrah Anda</h2>
               <a-button class="btn-join--us d-none" size="large">Gabung Sekarang</a-button>
               

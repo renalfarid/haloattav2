@@ -4,16 +4,17 @@
     <div class="container">
       <div class="ant-layout--results-body">
         <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <sectionSearchUmrah/>
-          
-          <sectionFilterUmrah/>
+          <sectionSearchUmrah />
+
+          <sectionFilterUmrah />
         </div>
 
         <div class="ant-layout--results-list">
           <div class="ant-layout--results-list-label">Hasil Pencarian Paket Umrah</div>
           <a-list :grid="{ gutter: 16, column: 3 }" :pagination="pagination" :dataSource="listData">
-            <a-list-item slot="renderItem" slot-scope="item, index" key="item.title">
+            <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
               <a-card class="ant-card-package">
+                <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
                 <div slot="cover">
                   <div
                     class="ant-card-cover--images"
@@ -34,9 +35,9 @@
                   <div slot="title">
                     <div class="ant-card-meta-title--top d-flex align-items-center">
                       <div class="ant-card-meta-title--top-left">
-                        <a-icon type="star" theme="filled"/>
-                        <a-icon type="star" theme="filled"/>
-                        <a-icon type="star" theme="filled"/>
+                        <a-icon type="star" theme="filled" />
+                        <a-icon type="star" theme="filled" />
+                        <a-icon type="star" theme="filled" />
                       </div>
                       <div class="ant-card-meta-title--top-right ml-auto">
                         <a-tag>
@@ -53,10 +54,10 @@
                       <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                       <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                         <div class="icon icon-star">
-                          <a-icon type="star" theme="filled"/>5.8
+                          <a-icon type="star" theme="filled" />5.8
                         </div>
                         <div class="icon icon-comment">
-                          <a-icon type="message"/>10 Komentar
+                          <a-icon type="message" />10 Komentar
                         </div>
                       </div>
                     </div>
@@ -71,12 +72,12 @@
 
     <!-- recomended umrah -->
     <div class="ant-layout--recomendation-same">
-      <sectionRecomendedSame/>
+      <sectionRecomendedSame />
     </div>
 
     <!-- components umrah -->
     <div class="content-components-umrah">
-      <sectionComponentsUmrah/>
+      <sectionComponentsUmrah />
     </div>
   </div>
 </template>
@@ -97,7 +98,8 @@ export default {
   name: "umrahResults",
   head() {
     return {
-      title: "Haloatta - Booking Paket Umrah"
+      title:
+        "Hasil Pencarian Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
     };
   },
   data() {

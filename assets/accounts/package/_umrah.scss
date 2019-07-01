@@ -1,0 +1,42 @@
+.ant-layout-accounts--list-package {
+    & .ant-header--title {
+        color: $color-font;
+        font-weight: 500;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+    & .ant-card--search {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .04);
+    }
+    & .ant-card-accounts--filter {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .04);
+        margin: 16px 0;
+        & .ant-card-accounts--filter-label {
+            color: $color-font-gray;
+            text-transform: uppercase;
+            margin-right: 16px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        & .ant-card-body {
+            @include align-items(center);
+            @include flexbox;
+            width: 100%;
+            & .ant-dropdown-link {
+                text-transform: capitalize;
+                color: $color-font;
+                font-size: 14px;
+                font-weight: normal;
+                margin-right: 16px;
+                & i {
+                    color: $color-main;
+                }
+            }
+        }
+    }
+    & .ant-layout-accounts--list-package-body {
+        & .ant-list-item {
+            margin-bottom: 0;
+        }
+    }
+}

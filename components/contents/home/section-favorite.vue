@@ -39,6 +39,7 @@
 
       <a-col :span="8">
         <a-card class="ant-card-package">
+          <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
             <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite1})` }">
               <div class="ant-card-cover--overlay">
@@ -86,6 +87,7 @@
 
       <a-col :span="8">
         <a-card class="ant-card-package">
+          <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
             <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite2})` }">
               <div class="ant-card-cover--overlay">
@@ -133,6 +135,7 @@
 
       <a-col :span="8">
         <a-card class="ant-card-package">
+          <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
             <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite3})` }">
               <div class="ant-card-cover--overlay">
@@ -180,6 +183,7 @@
 
       <a-col :span="8">
         <a-card class="ant-card-package">
+          <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
             <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite4})` }">
               <div class="ant-card-cover--overlay">

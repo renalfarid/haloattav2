@@ -1,13 +1,5 @@
 .ant-layout--results {
     position: relative;
-    & .ant-layout--results-space {
-        background: $color-main;
-        height: 180px;
-    }
-    & .ant-layout--results-space-small {
-        background: $color-main;
-        height: 67px;
-    }
     & .ant-layout--results-body {
         min-height: 50vh;
         & .ant-layout--results-list {
@@ -18,6 +10,7 @@
                 font-weight: 600;
             }
             & .ant-list-grid .ant-list-item {
+                position: relative;
                 margin-bottom: 0;
             }
         }

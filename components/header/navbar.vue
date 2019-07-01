@@ -36,7 +36,7 @@
 
         <!-- after login -->
         <div class="navbar-accounts">
-          <a-button class="btn-accounts" shape="circle">G</a-button>
+          <a-button class="btn-accounts" shape="circle" @click="nextAccounts">G</a-button>
         </div>
       </div>
     </div>
@@ -58,6 +58,9 @@ export default {
   methods: {
     showLogin() {
       this.visibleLogin = true;
+    },
+    nextAccounts() {
+      this.$router.push({ path: '/' });
     }
   },
   components: {

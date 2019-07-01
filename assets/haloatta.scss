@@ -1,7 +1,11 @@
 @import "utility/utility";
 @import "components/components";
 @import "header/navbar";
+@import "header/navbar-accounts";
+@import "sidebar/sidebar";
 @import "contents/contents";
 @import "library/library";
 @import "plugins/plugins";
 @import "footer/footer";
+// accounts pages
+@import "accounts/package/umrah";

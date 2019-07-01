@@ -36,7 +36,7 @@
         }
     }
     & .btn-search {
-        @include border-radius(6px);
+        @include border-radius(4px);
         background: $color-main;
         margin-bottom: 10px;
         box-shadow: none;

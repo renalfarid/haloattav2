@@ -1,0 +1,148 @@
+.ant-layout--package-details {
+    position: relative;
+    & .ant-layout--package-tabs {
+        background: #ffffff;
+        & .ant-tabs--item {
+            @include flexbox();
+            & .ant-tabs--item-link {
+                color: $color-font-gray;
+                position: relative;
+                margin-right: 6px;
+                line-height: 55px;
+                padding: 0 16px;
+                font-size: 16px;
+                height: 55px;
+                &.active {
+                    color: $color-main;
+                    &::after {
+                        background: $color-main;
+                        position: absolute;
+                        content: '';
+                        width: 100%;
+                        height: 1px;
+                        bottom: 0;
+                        left: 0;
+                    }
+                }
+            }
+        }
+    }
+    & .ant-tabs--content {
+        position: relative;
+        padding: 16px 0;
+        & .ant-tabs--content-body {
+            & .ant-package--images {
+                max-height: 356px;
+                overflow: hidden;
+                & .ant-package--images-large {
+                    height: 356px;
+                    & .ant-package--images-cover {
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                & .ant-package--images-small {
+                    height: 170px;
+                    & .ant-package--images-cover {
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: 100%;
+                        width: 100%;
+                    }
+                    &.right-top {
+                        margin-bottom: 8px;
+                    }
+                    &.right-bottom {
+                        margin-top: 8px;
+                    }
+                }
+            }
+            & .ant-list--package-information {
+                & .ant-list-item--package-information {
+                    & .ant-timeline {
+                        & .ant-timeline-item {
+                            & .ant-timeline-item-tail {
+                                border-left: 2px dashed $color-border;
+                            }
+                            & .ant-timeline-item-head {
+                                background-color: $color-main;
+                                &.ant-timeline-item-head-blue {
+                                    border-color: $color-main;
+                                }
+                            }
+                        }
+                    }
+                    & .ant-avatar {
+                        @include align-items(center);
+                        @include flexbox;
+                        margin-right: 16px;
+                        & img {
+                            max-width: 100% !important;
+                            height: auto !important;
+                        }
+                    }
+                    & .ant-card {
+                        margin: 16px 0 0 0;
+                        & .ant-card-body {
+                            padding: 16px 0;
+                            & .ant-card-meta-title {
+                                color: $color-font-gray;
+                                font-size: 14px;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                    & .ant-btn {
+                        background: $color-main;
+                        border-color: $color-main;
+                        text-shadow: none;
+                        box-shadow: none;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+    & .ant-affix {
+        & .ant-layout--package-tabs {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
+        }
+    }
+    & .ant-card--package-information-right {
+        padding-left: 12px;
+        position: absolute;
+        display: block;
+        right: 0;
+        top: 16px;
+    }
+    & .ant-layout--right {
+        position: absolute;
+        right: 0;
+        top: 16px;
+        width: 33%;
+        & .ant-affix--fixed-right {
+            & .ant-affix {
+                z-index: inherit;
+                & .ant-affix--container {
+                    padding: 0 30px;
+                    margin: 0 auto;
+                    width: 1280px;
+                    & .ant-affix--card {
+                        padding-left: 15px;
+                        margin-left: auto;
+                        width: 33%;
+                        // & .ant-card--package-information {}
+                    }
+                }
+            }
+        }
+    }
+    & .ant-card--package-information {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
+        border: 1px solid $color-border;
+    }
+}
