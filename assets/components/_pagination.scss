@@ -1,0 +1,23 @@
+.ant-list-pagination {
+    margin: 24px 0;
+    & .ant-pagination-item-active {
+        background-color: $color-main;
+        border-color: $color-main;
+        & a {
+            color: #ffffff;
+        }
+    }
+    & .ant-pagination-item:focus,
+    & .ant-pagination-item:hover {
+        border-color: $color-main;
+        & a {
+            color: $color-main;
+        }
+    }
+    & .ant-pagination-item-active:focus,
+    & .ant-pagination-item-active:hover {
+        & a {
+            color: #ffffff;
+        }
+    }
+}

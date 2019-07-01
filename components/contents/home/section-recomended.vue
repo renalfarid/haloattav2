@@ -15,6 +15,7 @@
       <slick ref="slick" :options="slickRecomended">
         <div>
           <a-card class="ant-card-package-small">
+            <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
             <div slot="cover">
               <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite1})` }">
                 <div class="ant-card-cover--overlay">
@@ -32,9 +33,9 @@
               <div slot="title">
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left">
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
                   </div>
                   <div class="ant-card-meta-title--top-right ml-auto">
                     <a-tag>
@@ -51,10 +52,10 @@
                   <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                   <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                     <div class="icon icon-star">
-                      <a-icon type="star" theme="filled"/>5.8
+                      <a-icon type="star" theme="filled" />5.8
                     </div>
                     <div class="icon icon-comment">
-                      <a-icon type="message"/>10 Komentar
+                      <a-icon type="message" />10 Komentar
                     </div>
                   </div>
                 </div>
@@ -65,6 +66,7 @@
 
         <div>
           <a-card class="ant-card-package-small">
+            <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
             <div slot="cover">
               <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite2})` }">
                 <div class="ant-card-cover--overlay">
@@ -82,9 +84,9 @@
               <div slot="title">
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left">
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
                   </div>
                   <div class="ant-card-meta-title--top-right ml-auto">
                     <a-tag>
@@ -101,10 +103,10 @@
                   <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                   <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                     <div class="icon icon-star">
-                      <a-icon type="star" theme="filled"/>5.8
+                      <a-icon type="star" theme="filled" />5.8
                     </div>
                     <div class="icon icon-comment">
-                      <a-icon type="message"/>10 Komentar
+                      <a-icon type="message" />10 Komentar
                     </div>
                   </div>
                 </div>
@@ -115,6 +117,7 @@
 
         <div>
           <a-card class="ant-card-package-small">
+            <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
             <div slot="cover">
               <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite3})` }">
                 <div class="ant-card-cover--overlay">
@@ -132,9 +135,9 @@
               <div slot="title">
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left">
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
                   </div>
                   <div class="ant-card-meta-title--top-right ml-auto">
                     <a-tag>
@@ -151,10 +154,10 @@
                   <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                   <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                     <div class="icon icon-star">
-                      <a-icon type="star" theme="filled"/>5.8
+                      <a-icon type="star" theme="filled" />5.8
                     </div>
                     <div class="icon icon-comment">
-                      <a-icon type="message"/>10 Komentar
+                      <a-icon type="message" />10 Komentar
                     </div>
                   </div>
                 </div>
@@ -165,6 +168,7 @@
 
         <div>
           <a-card class="ant-card-package-small">
+            <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
             <div slot="cover">
               <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite4})` }">
                 <div class="ant-card-cover--overlay">
@@ -182,9 +186,9 @@
               <div slot="title">
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left">
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
                   </div>
                   <div class="ant-card-meta-title--top-right ml-auto">
                     <a-tag>
@@ -201,10 +205,10 @@
                   <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                   <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                     <div class="icon icon-star">
-                      <a-icon type="star" theme="filled"/>5.8
+                      <a-icon type="star" theme="filled" />5.8
                     </div>
                     <div class="icon icon-comment">
-                      <a-icon type="message"/>10 Komentar
+                      <a-icon type="message" />10 Komentar
                     </div>
                   </div>
                 </div>
@@ -215,6 +219,7 @@
 
         <div>
           <a-card class="ant-card-package-small">
+            <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
             <div slot="cover">
               <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite3})` }">
                 <div class="ant-card-cover--overlay">
@@ -232,9 +237,9 @@
               <div slot="title">
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left">
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
-                    <a-icon type="star" theme="filled"/>
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
+                    <a-icon type="star" theme="filled" />
                   </div>
                   <div class="ant-card-meta-title--top-right ml-auto">
                     <a-tag>
@@ -251,10 +256,10 @@
                   <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                   <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                     <div class="icon icon-star">
-                      <a-icon type="star" theme="filled"/>5.8
+                      <a-icon type="star" theme="filled" />5.8
                     </div>
                     <div class="icon icon-comment">
-                      <a-icon type="message"/>10 Komentar
+                      <a-icon type="message" />10 Komentar
                     </div>
                   </div>
                 </div>
@@ -265,8 +270,8 @@
       </slick>
 
       <div class="action-slick">
-        <a-button class="btn-left" @click="prev" size="large" shape="circle" icon="left"/>
-        <a-button class="btn-right" @click="next" size="large" shape="circle" icon="right"/>
+        <a-button class="btn-left" @click="prev" size="large" shape="circle" icon="left" />
+        <a-button class="btn-right" @click="next" size="large" shape="circle" icon="right" />
       </div>
     </div>
   </div>

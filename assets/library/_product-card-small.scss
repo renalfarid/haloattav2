@@ -1,7 +1,16 @@
 .ant-card-package-small {
     box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
     margin-bottom: 16px;
+    position: relative;
     border: none;
+    & .ant-list-item--link {
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        bottom: 0;
+        left: 0;
+        top: 0;
+    }
     & .ant-card-cover {
         & .ant-card-cover--images {
             background-position: center center;
@@ -74,7 +83,7 @@
                     & .ant-card-meta-title--package {
                         margin-bottom: 8px;
                         color: $color-font;
-                        font-weight: bold;
+                        font-weight: 600;
                         line-height: 20px;
                         font-size: 16px;
                         height: 44px;
@@ -83,7 +92,7 @@
                 & .ant-card-meta-description {
                     & .ant-card-meta-description--bottom {
                         & .ant-card-meta-description--bottom-left {
-                            font-weight: bold;
+                            font-weight: 600;
                             color: $color-font;
                             font-size: 14px;
                         }

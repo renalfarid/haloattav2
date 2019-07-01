@@ -1,9 +1,9 @@
 <template>
   <a-layout-header class="navbar">
     <div class="navbar-nav">
-      <div class="navbar-brand">
+      <nuxt-link to="/" class="navbar-brand">
         <img src="~/static/haloatta_white.png">
-      </div>
+      </nuxt-link>
       <div class="navbar-right">
         <a-menu
           class="nav-item"
@@ -36,7 +36,7 @@
 
         <!-- after login -->
         <div class="navbar-accounts">
-          <a-button class="btn-accounts" shape="circle">G</a-button>
+          <a-button class="btn-accounts" shape="circle" @click="nextAccounts">G</a-button>
         </div>
       </div>
     </div>
@@ -58,6 +58,9 @@ export default {
   methods: {
     showLogin() {
       this.visibleLogin = true;
+    },
+    nextAccounts() {
+      this.$router.push({ path: '/' });
     }
   },
   components: {

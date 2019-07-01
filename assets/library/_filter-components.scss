@@ -1,0 +1,33 @@
+.ant-layout--results-filter {
+    & .ant-card--results-filter {
+        border-bottom: 1px solid $color-border;
+        border-top: 1px solid $color-border;
+        & .ant-card--results-filter-label {
+            color: $color-font-gray;
+            text-transform: uppercase;
+            margin-right: 16px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        & .ant-card-body {
+            @include align-items(center);
+            @include flexbox;
+            padding: 14px 0;
+            width: 100%;
+            & .ant-dropdown-link {
+                text-transform: capitalize;
+                color: $color-font;
+                font-size: 14px;
+                font-weight: normal;
+                margin-right: 16px;
+                & i {
+                    color: $color-main;
+                }
+            }
+        }
+    }
+}
+
+.ant-filter-dropdown--overlay {
+    padding: 4px 14px;
+}

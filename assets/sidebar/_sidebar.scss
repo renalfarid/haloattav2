@@ -1,0 +1,71 @@
+.ant-layout-sider--accounts {
+    border-right: 1px solid $color-border;
+    background: #fff;
+    flex: 0 0 220px !important;
+    max-width: 220px !important;
+    min-width: 220px !important;
+    width: 220px !important;
+    & .ant-layout-sider--accounts-logo {
+        margin: 16px;
+        & img {
+            max-height: 38px;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+    }
+    & .ant-menu--sider {
+        background: transparent;
+        border: none;
+        & .ant-menu--sider-item {
+            color: rgba($color: #484848, $alpha: 1);
+            padding-left: 20px !important;
+            margin: 0;
+            &.ant-menu-item-selected {
+                background: transparent;
+                color: rgba($color: #484848, $alpha: 1);
+                &::after {
+                    display: none;
+                }
+            }
+            & a {
+                color: rgba($color: #484848, $alpha: 1);
+                &.nuxt-link-active {
+                    color: $color-main;
+                }
+            }
+        }
+        & .ant-menu--sider-sub {
+            & .ant-menu-submenu-title {
+                color: rgba($color: #484848, $alpha: 1);
+                padding-left: 20px !important;
+                margin: 0;
+            }
+            & .ant-menu {
+                background: transparent;
+                & .ant-menu--sider-sub-item {
+                    color: rgba($color: #484848, $alpha: 1);
+                    padding-left: 26px !important;
+                    margin: 0;
+                    &.ant-menu-item-selected {
+                        background: transparent;
+                        color: rgba($color: #484848, $alpha: 1);
+                        &::after {
+                            display: none;
+                        }
+                    }
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+        }
+        & .ant-menu-item-group--sider {
+            & .ant-menu-item-group-title {
+                color: rgba($color: #484848, $alpha: .6);
+                text-transform: uppercase;
+                padding: 8px 20px;
+            }
+        }
+    }
+}
