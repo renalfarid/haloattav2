@@ -3,7 +3,9 @@
         & .ant-form-item-label {
             padding-bottom: 0;
             & label {
-                color: $color-font-gray;
+                color: $color-font;
+                font-weight: 400;
+                font-size: 14px;
             }
         }
         & .ant-form-item-control {
@@ -12,6 +14,27 @@
                 font-size: 20px;
                 padding: 5px 0;
                 z-index: 2;
+            }
+            & .ant-input {
+                @include border-radius(0);
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid $color-font-light-gray;
+                font-size: 16px;
+                padding-right: 0;
+                padding-left: 0;
+                &.ant-input-disabled {
+                    color: $color-font;
+                    background: transparent;
+                }
+                &:focus,
+                &:hover {
+                    box-shadow: none;
+                    outline: none;
+                }
+                &:focus {
+                    border-color: $color-main;
+                }
             }
             & .ant-select-selection {
                 @include border-radius(0);

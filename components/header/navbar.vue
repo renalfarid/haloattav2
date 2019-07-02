@@ -15,16 +15,16 @@
             <nuxt-link to>Beranda</nuxt-link>
           </a-menu-item>
           <a-menu-item key="2" class="nav-link">
-            <nuxt-link to>Tentang</nuxt-link>
+            <nuxt-link to="/about">Tentang</nuxt-link>
           </a-menu-item>
           <a-menu-item key="3" class="nav-link">
             <nuxt-link to>Blog</nuxt-link>
           </a-menu-item>
           <a-menu-item key="4" class="nav-link">
-            <nuxt-link to>Visa Progresif</nuxt-link>
+            <a href="https://eservices.haj.gov.sa/eservices3/pages/VisaPaymentInquiry/VisaInquiry.xhtml?dswid=-7084" target="_blank">Visa Progresif</a>
           </a-menu-item>
           <a-menu-item key="5" class="nav-link">
-            <nuxt-link to>Status Keberangkatan</nuxt-link>
+            <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank">Status Keberangkatan</a>
           </a-menu-item>
         </a-menu>
 

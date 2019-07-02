@@ -1,0 +1,21 @@
+.ant-layout-content--payment-order {
+    & .ant-btn--action {
+        background-color: $color-main;
+        min-width: 260px;
+        font-weight: 500;
+        font-size: 15px;
+        color: #ffffff;
+        border: none;
+    }
+    & .ant-btn--action-overlay {
+        background-color: $color-main;
+        position: absolute;
+        min-width: 260px;
+        font-weight: 500;
+        font-size: 15px;
+        color: #ffffff;
+        border: none;
+        right: 0;
+        bottom: -60px;
+    }
+}

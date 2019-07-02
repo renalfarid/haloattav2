@@ -1,0 +1,156 @@
+.ant-layout--about {
+    position: relative;
+    & .ant-layout--about-body {
+        padding: 30px 0 0 0;
+        & .ant-layout--about-head {
+            & .ant-layout--about-head-title {
+                overflow-wrap: break-word !important;
+                letter-spacing: normal !important;
+                line-height: normal;
+                padding: 16px 0;
+            }
+        }
+        & .ant-layout--about-description {
+            padding: 40px 0 80px 0;
+            & .ant-layout--about-description-title {
+                overflow-wrap: break-word !important;
+                letter-spacing: normal !important;
+                margin-bottom: 16px;
+                line-height: normal;
+                position: relative;
+                margin-top: -8px;
+            }
+            & .ant-layout--about-description-text {
+                & p {
+                    overflow-wrap: break-word !important;
+                    line-height: 26px;
+                }
+            }
+            & .ant-layout--about-description-images {
+                overflow: hidden;
+                height: 416px;
+                & .ant-layout--about-description-images-cover {
+                    height: 200px;
+                    & .ant-cover--item {
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        & .ant-layout--about-featured {
+            background: #f5f5f5;
+            padding: 40px 0;
+            & .ant-card {
+                background: transparent;
+                margin-top: 16px;
+                & .ant-card-cover {
+                    & img {
+                        max-width: 100%;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+        & .ant-layout--about-services {
+            padding: 80px 0;
+            // overlay left
+            & .ant-layout--about-services-images-left {
+                @include border-radius(4px);
+                overflow: hidden;
+                height: 360px;
+                width: 50%;
+                & .ant-layout--about-services-images-cover-left {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    @include border-radius(4px);
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            & .ant-layout--about-services-images-overlay-right {
+                position: absolute;
+                width: 54.16666667%;
+                top: 3rem;
+                right: 0;
+                & .ant-layout--about-services-images-overlay-card {
+                    box-shadow: 0 0 6px rgba(0, 0, 0, .1);
+                    @include border-radius(4px);
+                    height: 360px;
+                    & .ant-card-body {
+                        @include align-items(center);
+                        @include flexbox();
+                        padding: 60px 80px;
+                        height: 360px;
+                        & .ant-layout--about-services-images-overlay-title {
+                            position: relative;
+                            margin-top: -8px;
+                        }
+                        & .ant-layout--about-services-images-overlay-text {
+                            margin: 16px 0 20px 0;
+                        }
+                    }
+                }
+            }
+            // overlay right
+            & .ant-layout--about-services-images-right {
+                @include border-radius(4px);
+                position: absolute;
+                width: 54.16666667%;
+                right: 0;
+                overflow: hidden;
+                height: 360px;
+                & .ant-layout--about-services-images-cover-right {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    @include border-radius(4px);
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            & .ant-layout--about-services-images-overlay-left {
+                position: relative;
+                width: 50%;
+                top: 3rem;
+                & .ant-layout--about-services-images-overlay-card {
+                    box-shadow: 0 0 6px rgba(0, 0, 0, .1);
+                    @include border-radius(4px);
+                    height: 360px;
+                    & .ant-card-body {
+                        @include align-items(center);
+                        @include flexbox();
+                        padding: 60px 80px;
+                        height: 360px;
+                        & .ant-layout--about-services-images-overlay-title {
+                            position: relative;
+                            margin-top: -8px;
+                        }
+                        & .ant-layout--about-services-images-overlay-text {
+                            margin: 16px 0 20px 0;
+                        }
+                    }
+                }
+            }
+        }
+        & .ant-layout--about-partner {
+            padding: 80px 0;
+            & .ant-card {
+                background: transparent;
+            }
+        }
+        & .ant-layout--about--bottom {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 80px 0;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
