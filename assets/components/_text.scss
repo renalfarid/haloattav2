@@ -10,6 +10,10 @@
     font-size: 14px !important;
 }
 
+.fs-15 {
+    font-size: 15px !important;
+}
+
 .fs-16 {
     font-size: 16px !important;
 }
@@ -24,6 +28,26 @@
 
 .fs-22 {
     font-size: 22px !important;
+}
+
+.fs-24 {
+    font-size: 24px !important;
+}
+
+.fs-26 {
+    font-size: 26px !important;
+}
+
+.fs-28 {
+    font-size: 28px !important;
+}
+
+.fs-30 {
+    font-size: 30px !important;
+}
+
+.fs-40 {
+    font-size: 40px !important;
 }
 
 .fw-300 {
@@ -42,12 +66,22 @@
     font-weight: 600 !important;
 }
 
+.f-default {
+    overflow-wrap: break-word !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+}
+
 .cr-black {
     color: $color-font !important;
 }
 
 .cr-gray {
     color: $color-font-gray !important;
+}
+
+.cr-primary {
+    color: $color-main !important;
 }
 
 .text-uppercase {

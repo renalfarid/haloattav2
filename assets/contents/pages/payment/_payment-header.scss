@@ -1,0 +1,76 @@
+.ant-layout--payment {
+    & .ant-layout-header--payment {
+        background-color: $color-main;
+        @include align-items(center);
+        @include flexbox();
+        padding: 0 30px;
+        & .ant-logo {
+            & img {
+                max-height: 36px;
+                max-width: 100%;
+            }
+        }
+        & .ant-steps {
+            margin-left: auto;
+            max-width: 520px;
+            & .ant-steps-item-wait {
+                & .ant-steps-item-icon {
+                    border: 1px solid #ffffff;
+                    background: transparent;
+                    color: #ffffff;
+                    & .ant-steps-icon {
+                        color: #ffffff;
+                    }
+                }
+                & .ant-steps-item-content {
+                    & .ant-steps-item-title {
+                        color: rgba($color: #ffffff, $alpha: .6);
+                        font-weight: normal;
+                    }
+                }
+            }
+            & .ant-steps-item-process {
+                & .ant-steps-item-icon {
+                    border: 1px solid #ffffff;
+                    background: #ffffff;
+                    & .ant-steps-icon {
+                        color: $color-main;
+                    }
+                }
+                & .ant-steps-item-content {
+                    & .ant-steps-item-title {
+                        font-weight: normal;
+                        color: #ffffff;
+                    }
+                }
+            }
+            & .ant-steps-item-finish {
+                & .ant-steps-item-icon {
+                    border: 1px solid #ffffff;
+                    background: #ffffff;
+                    & .ant-steps-icon {
+                        color: $color-main;
+                    }
+                }
+                & .ant-steps-item-content {
+                    & .ant-steps-item-title {
+                        font-weight: normal;
+                        color: #ffffff;
+                        &::after {
+                            background-color: #ffffff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    & .ant-layout-content--payment-order {
+        padding: 30px 0 80px 0;
+    }
+    & .ant-layout-footer--payment-order {
+        border-top: 1px solid $color-border;
+        background: #ffffff;
+        padding: 20px 30px;
+        color: $color-font-gray;
+    }
+}

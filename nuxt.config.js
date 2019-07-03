@@ -31,7 +31,9 @@ module.exports = {
      */
     plugins: [
         { src: '@/plugins/antd-ui' },
-        { src: '@/plugins/vue-slick', ssr: false }
+        { src: '@/plugins/vue-slick', ssr: false },
+        { src: '@/plugins/vInput-number', ssr: false },
+        { src: '@/plugins/vCountdown', ssr: false },
     ],
     /*
      ** Nuxt.js modules

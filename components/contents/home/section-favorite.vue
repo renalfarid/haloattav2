@@ -14,25 +14,15 @@
     <a-row :gutter="16">
       <a-col :span="16">
         <a-card class="card-product-overlay">
-          <div slot="cover">
-            <div class="box-content" :style="{ backgroundImage: `url(${vaforite5})` }">
-              <div :style="{ width: '100%', zIndex: '2' }">
-                <div class="box-overlay">
-                  <div class="txt">Bisa share profit loh!</div>
-                </div>
-
-                <div class="box-overlay-text">
-                  <div
-                    class="txt"
-                  >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam amet pariatur asperiores necessitatibus error architecto et</div>
-                </div>
-
-                <div class="box-bottom">
-                  <a-button size="large">Explore Paket</a-button>
-                </div>
+          <div class="box-content" :style="{ backgroundImage: `url(${vaforite5})` }">
+            <div class="box-content--overlay text-center">
+              <div class="txt-title fs-40 fw-500 f-default mb-8">Bisa Share Profit Loh!</div>
+              <div class="txt fs-16 fw-400 f-default">
+                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam amet pariatur asperiores necessitatibus error architecto et</span>
               </div>
-              <div class="gradient-bottom"></div>
+              <a-button size="large">Explore Paket</a-button>
             </div>
+            <div class="gradient-bottom"></div>
           </div>
         </a-card>
       </a-col>
@@ -57,26 +47,29 @@
             <div slot="title">
               <div class="ant-card-meta-title--top d-flex align-items-center">
                 <div class="ant-card-meta-title--top-left">
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
+                  <a-icon type="star" theme="filled" />
+                  <a-icon type="star" theme="filled" />
+                  <a-icon type="star" theme="filled" />
                 </div>
-                <div class="ant-card-meta-title--top-right ml-auto"><a-tag>Terbooking <strong>30</strong> seat</a-tag></div>
+                <div class="ant-card-meta-title--top-right ml-auto">
+                  <a-tag>
+                    Terbooking
+                    <strong>30</strong> seat
+                  </a-tag>
+                </div>
               </div>
               <div class="ant-card-meta-title--package">Umrah Exclusive 2020 Keberangkatan Jakarta</div>
             </div>
 
             <div slot="description">
-              <div
-                class="ant-card-meta-description--bottom d-flex align-items-center"
-              >
+              <div class="ant-card-meta-description--bottom d-flex align-items-center">
                 <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                 <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                   <div class="icon icon-star">
-                    <a-icon type="star" theme="filled"/>5.8
+                    <a-icon type="star" theme="filled" />5.8
                   </div>
                   <div class="icon icon-comment">
-                    <a-icon type="message"/>10 Komentar
+                    <a-icon type="message" />10 Komentar
                   </div>
                 </div>
               </div>
@@ -105,26 +98,29 @@
             <div slot="title">
               <div class="ant-card-meta-title--top d-flex align-items-center">
                 <div class="ant-card-meta-title--top-left">
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
+                  <a-icon type="star" theme="filled" />
+                  <a-icon type="star" theme="filled" />
+                  <a-icon type="star" theme="filled" />
                 </div>
-                <div class="ant-card-meta-title--top-right ml-auto"><a-tag>Terbooking <strong>30</strong> seat</a-tag></div>
+                <div class="ant-card-meta-title--top-right ml-auto">
+                  <a-tag>
+                    Terbooking
+                    <strong>30</strong> seat
+                  </a-tag>
+                </div>
               </div>
               <div class="ant-card-meta-title--package">Umrah Exclusive 2020 Keberangkatan Jakarta</div>
             </div>
 
             <div slot="description">
-              <div
-                class="ant-card-meta-description--bottom d-flex align-items-center"
-              >
+              <div class="ant-card-meta-description--bottom d-flex align-items-center">
                 <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                 <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                   <div class="icon icon-star">
-                    <a-icon type="star" theme="filled"/>5.8
+                    <a-icon type="star" theme="filled" />5.8
                   </div>
                   <div class="icon icon-comment">
-                    <a-icon type="message"/>10 Komentar
+                    <a-icon type="message" />10 Komentar
                   </div>
                 </div>
               </div>
@@ -153,26 +149,29 @@
             <div slot="title">
               <div class="ant-card-meta-title--top d-flex align-items-center">
                 <div class="ant-card-meta-title--top-left">
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
+                  <a-icon type="star" theme="filled" />
+                  <a-icon type="star" theme="filled" />
+                  <a-icon type="star" theme="filled" />
                 </div>
-                <div class="ant-card-meta-title--top-right ml-auto"><a-tag>Terbooking <strong>30</strong> seat</a-tag></div>
+                <div class="ant-card-meta-title--top-right ml-auto">
+                  <a-tag>
+                    Terbooking
+                    <strong>30</strong> seat
+                  </a-tag>
+                </div>
               </div>
               <div class="ant-card-meta-title--package">Umrah Exclusive 2020 Keberangkatan Jakarta</div>
             </div>
 
             <div slot="description">
-              <div
-                class="ant-card-meta-description--bottom d-flex align-items-center"
-              >
+              <div class="ant-card-meta-description--bottom d-flex align-items-center">
                 <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                 <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                   <div class="icon icon-star">
-                    <a-icon type="star" theme="filled"/>5.8
+                    <a-icon type="star" theme="filled" />5.8
                   </div>
                   <div class="icon icon-comment">
-                    <a-icon type="message"/>10 Komentar
+                    <a-icon type="message" />10 Komentar
                   </div>
                 </div>
               </div>
@@ -201,26 +200,29 @@
             <div slot="title">
               <div class="ant-card-meta-title--top d-flex align-items-center">
                 <div class="ant-card-meta-title--top-left">
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
+                  <a-icon type="star" theme="filled" />
+                  <a-icon type="star" theme="filled" />
+                  <a-icon type="star" theme="filled" />
                 </div>
-                <div class="ant-card-meta-title--top-right ml-auto"><a-tag>Terbooking <strong>30</strong> seat</a-tag></div>
+                <div class="ant-card-meta-title--top-right ml-auto">
+                  <a-tag>
+                    Terbooking
+                    <strong>30</strong> seat
+                  </a-tag>
+                </div>
               </div>
               <div class="ant-card-meta-title--package">Umrah Exclusive 2020 Keberangkatan Jakarta</div>
             </div>
 
             <div slot="description">
-              <div
-                class="ant-card-meta-description--bottom d-flex align-items-center"
-              >
+              <div class="ant-card-meta-description--bottom d-flex align-items-center">
                 <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
                 <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                   <div class="icon icon-star">
-                    <a-icon type="star" theme="filled"/>5.8
+                    <a-icon type="star" theme="filled" />5.8
                   </div>
                   <div class="icon icon-comment">
-                    <a-icon type="message"/>10 Komentar
+                    <a-icon type="message" />10 Komentar
                   </div>
                 </div>
               </div>
