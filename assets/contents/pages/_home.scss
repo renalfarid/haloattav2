@@ -117,12 +117,6 @@
     }
     & .container-slick {
         position: relative;
-        // & .slick-track {
-        //     min-width: 1220px !important;
-        //     & .slick-slide {
-        //         width: 305px !important;
-        //     }
-        // }
         & .action-slick {
             @include justify-content(space-between);
             @include flexbox();
@@ -175,10 +169,10 @@
                 & .ant-card-meta-title {
                     text-align: left;
                     font-weight: bold;
-                    font-size: 40px;
+                    font-size: 55px;
                     color: #ffffff;
                     white-space: normal;
-                    line-height: 45px;
+                    line-height: 60px;
                     margin-bottom: 20px;
                 }
                 & .ant-card-meta-description {

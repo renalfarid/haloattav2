@@ -1,41 +1,8 @@
 <template>
   <div>
-    <div class="ant-package--images">
-      <a-row :gutter="16">
-        <a-col :span="16">
-          <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/akomodasi/c1.png)' }"
-            ></div>
-          </div>
-        </a-col>
-        <a-col :span="8">
-          <a-row>
-            <a-col :span="24">
-              <div class="ant-package--images-small right-top">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/akomodasi/c2.png)' }"
-                ></div>
-              </div>
-            </a-col>
-            <a-col :span="24">
-              <div class="ant-package--images-small right-bottom">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/akomodasi/c3.png)' }"
-                ></div>
-              </div>
-            </a-col>
-          </a-row>
-        </a-col>
-      </a-row>
-    </div>
-
     <div :style="{ position: 'relative' }">
-      <a-row :gutter="16">
-        <a-col :span="16">
+      <a-row :gutter="32">
+        <a-col :span="17">
           <a-list itemLayout="horizontal" class="ant-list--package-information">
             <a-list-item class="ant-list-item--package-information">
               <div>
@@ -49,13 +16,44 @@
             </a-list-item>
 
             <a-list-item class="ant-list-item--package-information">
-              <div class="d-flex align-items-center w-100">
-                <div>
-                  <a-avatar
-                    src="https://communicateonline.me/lvt/wp-content/uploads/2016/10/Logo-Mo%CC%88venpick.png"
-                  />
+              <div class="w-100">
+                <div class="d-flex align-items-center w-100">
+                  <div>
+                    <a-avatar
+                      src="https://communicateonline.me/lvt/wp-content/uploads/2016/10/Logo-Mo%CC%88venpick.png"
+                    />
+                  </div>
+                  <div class="fs-16 fw-500 cr-black">Movenpick Hotels & Resorts</div>
                 </div>
-                <div class="fs-16 fw-500 cr-black">Movenpick Hotels & Resorts</div>
+
+                <div class="ant-package--images mt-16">
+                  <a-row :gutter="10">
+                    <a-col :span="8">
+                      <div class="ant-package--images-large">
+                        <div
+                          class="ant-package--images-cover"
+                          :style="{ backgroundImage: 'url(/akomodasi/c1.png)' }"
+                        ></div>
+                      </div>
+                    </a-col>
+                    <a-col :span="8">
+                      <div class="ant-package--images-large">
+                        <div
+                          class="ant-package--images-cover"
+                          :style="{ backgroundImage: 'url(/akomodasi/c2.png)' }"
+                        ></div>
+                      </div>
+                    </a-col>
+                    <a-col :span="8">
+                      <div class="ant-package--images-large">
+                        <div
+                          class="ant-package--images-cover"
+                          :style="{ backgroundImage: 'url(/akomodasi/c3.png)' }"
+                        ></div>
+                      </div>
+                    </a-col>
+                  </a-row>
+                </div>
               </div>
             </a-list-item>
 
@@ -194,7 +192,7 @@
           </a-list>
         </a-col>
 
-        <a-col :span="8" :style="{margin : '16px 0'}">
+        <a-col :span="7" :style="{margin : '16px 0'}">
           <div class="ant-layout--right">
             <div class="ant-affix--container">
               <informationSideRight />

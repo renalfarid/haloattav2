@@ -6,6 +6,10 @@
     font-size: 12px !important;
 }
 
+.fs-13 {
+    font-size: 13px !important;
+}
+
 .fs-14 {
     font-size: 14px !important;
 }
@@ -84,6 +88,14 @@
     color: $color-main !important;
 }
 
+.cr-gold {
+    color: $color-yellow !important;
+}
+
+.cr-red {
+    color: $color-red !important;
+}
+
 .text-uppercase {
     text-transform: uppercase !important;
 }
@@ -102,4 +114,12 @@
 
 .text-right {
     text-align: right !important;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    white-space: nowrap;
 }

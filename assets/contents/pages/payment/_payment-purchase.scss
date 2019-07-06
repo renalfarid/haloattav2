@@ -1,0 +1,37 @@
+.ant-layout-content--payment-purchase {
+    & .ant-list--package-information {
+        & .ant-list-item--package-information {
+            & .ant-package--information-bill {
+                & .ant-radio-group {
+                    @include align-items(center);
+                    @include flexbox();
+                    margin: 0 -8px;
+                    & .ant-radio-button-wrapper {
+                        @include border-radius(4px);
+                        border: 1px solid #fafafa;
+                        background-color: #fafafa;
+                        text-align: center;
+                        line-height: normal;
+                        color: $color-font-gray;
+                        margin: 0 8px;
+                        padding: 20px 16px;
+                        height: auto;
+                        width: 50%;
+                        &.ant-radio-button-wrapper-checked {
+                            background-color: #ffffff;
+                            border-color: $color-main;
+                            box-shadow: none;
+                            color: $color-main;
+                        }
+                        &:hover {
+                            color: $color-main;
+                        }
+                    }
+                    & .ant-radio-button-wrapper:not(:first-child)::before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

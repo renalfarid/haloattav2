@@ -1,58 +1,46 @@
 <template>
   <div>
-    <div class="ant-package--images">
-      <a-row :gutter="16">
-        <a-col :span="8">
-          <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/perlengkapan/c1.png)' }"
-            ></div>
-          </div>
-        </a-col>
-        <a-col :span="8">
-          <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/perlengkapan/c2.png)' }"
-            ></div>
-          </div>
-        </a-col>
-        <a-col :span="8">
-          <a-row>
-            <a-col :span="24">
-              <div class="ant-package--images-small right-top">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/perlengkapan/c3.png)' }"
-                ></div>
-              </div>
-            </a-col>
-            <a-col :span="24">
-              <div class="ant-package--images-small right-bottom">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/perlengkapan/c4.png)' }"
-                ></div>
-              </div>
-            </a-col>
-          </a-row>
-        </a-col>
-      </a-row>
-    </div>
-
     <div :style="{ position: 'relative' }">
-      <a-row :gutter="16">
-        <a-col :span="16">
+      <a-row :gutter="32">
+        <a-col :span="17">
           <a-list itemLayout="horizontal" class="ant-list--package-information">
             <a-list-item class="ant-list-item--package-information">
-              <div>
-                <h2
-                  class="ant-package--information-title fs-20 cr-black fw-500"
-                >Informasi Kelengkapan</h2>
-                <div
-                  class="ant-package--information-text fs-15 cr-black fw-400"
-                >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio iste quibusdam consectetur amet consequatur numquam natus a repellendus! Quasi, dolores corporis doloribus velit voluptas quae neque unde aperiam sapiente commodi?</div>
+              <div class="w-100">
+                <h2 class="ant-package--information-title fs-20 cr-black fw-500">
+                  <span>Informasi Kelengkapan</span>
+                </h2>
+                <div class="ant-package--information-text fs-15 cr-black fw-400">
+                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio iste quibusdam consectetur amet consequatur numquam natus a repellendus! Quasi, dolores corporis doloribus velit voluptas quae neque unde aperiam sapiente commodi?</span>
+                </div>
+
+                <div class="ant-package--images mt-16">
+                  <a-row :gutter="10">
+                    <a-col :span="8">
+                      <div class="ant-package--images-large">
+                        <div
+                          class="ant-package--images-cover"
+                          :style="{ backgroundImage: 'url(/perlengkapan/c1.png)' }"
+                        ></div>
+                      </div>
+                    </a-col>
+                    <a-col :span="8">
+                      <div class="ant-package--images-large">
+                        <div
+                          class="ant-package--images-cover"
+                          :style="{ backgroundImage: 'url(/perlengkapan/c2.png)' }"
+                        ></div>
+                      </div>
+                    </a-col>
+                    <a-col :span="8">
+                      <div class="ant-package--images-large">
+                            <div
+                              class="ant-package--images-cover"
+                              :style="{ backgroundImage: 'url(/perlengkapan/c3.png)' }"
+                            ></div>
+                          </div>
+                    </a-col>
+                  </a-row>
+                </div>
               </div>
             </a-list-item>
 
@@ -185,7 +173,7 @@
           </a-list>
         </a-col>
 
-        <a-col :span="8" :style="{margin : '16px 0'}">
+        <a-col :span="7" :style="{margin : '16px 0'}">
           <div class="ant-layout--right">
             <div class="ant-affix--container">
               <informationSideRight />

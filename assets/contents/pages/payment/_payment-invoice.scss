@@ -1,0 +1,74 @@
+.ant-layout-content--payment-purchase {
+    & .ant-list-item--package-invoice {
+        & .ant-form-item {
+            margin-bottom: 8px;
+            & .ant-form-item-label {
+                margin-bottom: 0;
+                padding: 0;
+                & label {
+                    color: $color-font-gray;
+                }
+            }
+            & .ant-input-group-addon {
+                @include border-radius(0);
+                background: transparent;
+                color: $color-font;
+                font-weight: 500;
+                font-size: 18px;
+                border: none;
+                padding: 0 6px 0 0;
+                border-bottom: 1px solid $color-border;
+            }
+            & .ant-form-item-control {
+                & .ant-input {
+                    @include border-radius(0);
+                    border: none;
+                    color: $color-font;
+                    font-weight: 500;
+                    font-size: 18px;
+                    padding: 0;
+                    border-bottom: 1px solid $color-border;
+                    &.ant-input-disabled {
+                        background: transparent;
+                    }
+                    &:focus,
+                    &:hover {
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+        & .ant-price--info {
+            position: relative;
+            background: #ffc412;
+            margin: -17px 0 0 0;
+            padding: 4px 16px;
+            & .ant-price--info-overlay {
+                position: absolute;
+                display: inline-block;
+                top: -4px;
+                left: 110px;
+                content: "";
+                width: 16px;
+                height: 16px;
+                border-radius: 4px;
+                background-color: #ffc412;
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+        }
+        & .ant-btn--action {
+            background-color: $color-main;
+            border-color: $color-main;
+            box-shadow: none;
+            color: #ffffff;
+            min-width: 260px;
+        }
+        & .ant-btn--action-outline {
+            background-color: #ffffff;
+            border-color: $color-main;
+            box-shadow: none;
+            color: $color-main;
+        }
+    }
+}
