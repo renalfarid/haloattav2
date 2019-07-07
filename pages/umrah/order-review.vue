@@ -3,7 +3,7 @@
     <div class="ant-layout--results-space-small"></div>
     <div class="ant-layout--order-review-package-body">
       <div class="container">
-        <a-row :gutter="30">
+        <a-row :gutter="32">
           <a-col :span="17">
             <informationOrder />
           </a-col>

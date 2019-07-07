@@ -4,7 +4,7 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: 'Haloatta - Booking Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya',
+        title: 'Booking Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta',
         meta: [
             { charset: 'utf-8' },
             // { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -34,11 +34,14 @@ module.exports = {
         { src: '@/plugins/vue-slick', ssr: false },
         { src: '@/plugins/vInput-number', ssr: false },
         { src: '@/plugins/vCountdown', ssr: false },
+        { src: '@/plugins/vInfinite-scroll', ssr: false },
     ],
     /*
      ** Nuxt.js modules
      */
-    modules: [],
+    modules: [
+        '@nuxtjs/axios'
+    ],
     /*
      ** Build configuration
      */

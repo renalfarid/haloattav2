@@ -1,4 +1,9 @@
 .ant-layout-content--payment-order {
+    & .ant-list--package-information {
+        & .ant-list-item--package-information {
+            padding: 24px 0;
+        }
+    }
     & .ant-btn--action {
         background-color: $color-main;
         min-width: 260px;

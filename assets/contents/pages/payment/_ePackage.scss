@@ -1,0 +1,34 @@
+.ant-layout-content--payment-ePackage {
+    padding: 80px 0;
+    & .ant-card {
+        & .ant-card-body {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    & .ant-btn--action {
+        background-color: $color-main;
+        border-color: $color-main;
+        box-shadow: none;
+        color: #ffffff;
+        min-width: 220px;
+    }
+    &.ant-layout-content--payment-ePackage-Dp {
+        & .ant-btn--action {
+            background-color: $color-yellow;
+            border-color: $color-yellow;
+            box-shadow: none;
+            color: #ffffff;
+            min-width: 220px;
+        }
+    }
+    &.ant-layout-content--payment-ePackage-failed {
+        & .ant-btn--action {
+            background-color: $color-red;
+            border-color: $color-red;
+            box-shadow: none;
+            color: #ffffff;
+            min-width: 220px;
+        }
+    }
+}

@@ -64,13 +64,13 @@
             }
         }
     }
-    & .ant-layout-content--payment-order {
+    & .ant-layout-content {
         padding: 30px 0 80px 0;
     }
     & .ant-layout-footer--payment-order {
-        border-top: 1px solid $color-border;
         background: #ffffff;
         padding: 20px 30px;
         color: $color-font-gray;
+        border: none;
     }
 }

@@ -1,13 +1,8 @@
 <template>
   <a-card class="ant-card--package-review" :style="{marginTop: '16px'}">
-    <div slot="cover">
-      <img src="/products/V1.png" />
-    </div>
     <div class="p-16">
-      <div class="ant-package--rate fs-18">
-        <a-icon type="star" theme="filled" />
-        <a-icon type="star" theme="filled" />
-        <a-icon type="star" theme="filled" />
+      <div class="ant-package--rate fs-18 mb-8">
+        <a-rate :defaultValue="3" disabled />
       </div>
       <div
         class="ant-package--name fs-22 fw-500 cr-black f-default"

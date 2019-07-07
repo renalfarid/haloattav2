@@ -1,8 +1,8 @@
 <template>
   <div>
     <div :style="{ position: 'relative' }">
-      <a-row :gutter="16">
-        <a-col :span="16">
+      <a-row :gutter="32">
+        <a-col :span="17">
           <a-list itemLayout="horizontal" class="ant-list--package-information">
             <a-list-item class="ant-list-item--package-information">
               <div>
@@ -121,7 +121,7 @@
           </a-list>
         </a-col>
 
-        <a-col :span="8" :style="{margin : '16px 0'}">
+        <a-col :span="7" :style="{margin : '16px 0'}">
           <div class="ant-layout--right">
             <div class="ant-affix--container">
               <informationSideRight />
