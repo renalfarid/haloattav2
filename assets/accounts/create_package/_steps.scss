@@ -1,0 +1,19 @@
+.ant-create--package {
+    & .ant-card {
+        & .ant-card-body {
+            padding: 32px 120px;
+            & img {
+                max-width: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+            & .ant-btn--action {
+                background-color: $color-main;
+                border-color: $color-main;
+                font-weight: 500;
+                color: #ffffff;
+                min-width: 200px;
+            }
+        }
+    }
+}

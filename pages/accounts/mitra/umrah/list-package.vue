@@ -1,14 +1,5 @@
 <template>
   <div class="ant-layout-accounts--list-package">
-    <a-breadcrumb separator=">">
-      <a-breadcrumb-item>
-        <a-icon type="home" />
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>Akun</a-breadcrumb-item>
-      <a-breadcrumb-item>Paket umrah</a-breadcrumb-item>
-    </a-breadcrumb>
-
-    <div class="ant-header--title">Semua Paket Umrah</div>
     <div>
       <searchUmrah />
     </div>
