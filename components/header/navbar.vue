@@ -60,7 +60,7 @@ export default {
       this.visibleLogin = true;
     },
     nextAccounts() {
-      this.$router.push({ path: '/' });
+      this.$router.push({ path: '/accounts/mitra' });
     }
   },
   components: {

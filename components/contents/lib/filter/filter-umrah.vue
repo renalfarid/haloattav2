@@ -22,6 +22,23 @@
 
         <a-dropdown :trigger="['click']">
           <a class="ant-dropdown-link" href="#">
+            Maskapai
+            <a-icon type="down"/>
+          </a>
+          <a-card slot="overlay">
+            <div class="ant-filter-dropdown--overlay">
+              <a-radio-group name="kota_asal">
+                <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
+                <a-radio :style="radioStyle" :value="2">Lion Air</a-radio>
+                <a-radio :style="radioStyle" :value="3">Garuda Indonesia</a-radio>
+                <a-radio :style="radioStyle" :value="4">Saudi Airline</a-radio>
+              </a-radio-group>
+            </div>
+          </a-card>
+        </a-dropdown>
+
+        <a-dropdown :trigger="['click']">
+          <a class="ant-dropdown-link" href="#">
             Rating Hotel
             <a-icon type="down"/>
           </a>
@@ -30,26 +47,16 @@
               <a-radio-group name="rating_hotel">
                 <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
                 <a-radio :style="radioStyle" :value="2">
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
+                  <a-rate class="fs-16" defaultValue="5" disabled />
                 </a-radio>
                 <a-radio :style="radioStyle" :value="3">
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
+                  <a-rate class="fs-16" defaultValue="4" disabled />
                 </a-radio>
                 <a-radio :style="radioStyle" :value="4">
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
+                  <a-rate class="fs-16" defaultValue="3" disabled />
                 </a-radio>
                 <a-radio :style="radioStyle" :value="5">
-                  <a-icon type="star" theme="filled"/>
-                  <a-icon type="star" theme="filled"/>
+                  <a-rate class="fs-16" defaultValue="2" disabled />
                 </a-radio>
               </a-radio-group>
             </div>

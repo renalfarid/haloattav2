@@ -1,0 +1,23 @@
+.ant-transaction--purchase {
+    & .ant-card--filter {
+        & .ant-card-body {
+            padding: 16px;
+        }
+    }
+    & .ant-list {
+        & .ant-row {
+            margin: 0 !important;
+            & .ant-list-item {
+                margin: 0;
+                & .ant-avatar {
+                    padding: 8px;
+                }
+                & .ant-btn--action {
+                    background-color: $color-red;
+                    border-color: $color-red;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}

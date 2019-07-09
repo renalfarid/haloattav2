@@ -1,5 +1,6 @@
 <template>
   <a-card class="ant-card--search" :bordered="false">
+    <div class="ant-header--title">Semua Paket Umrah</div>
     <a-form layout="vertical" class="form-search--costume" :style="{marginBottom: '-10px'}">
       <a-row :gutter="16">
         <a-col :span="8">

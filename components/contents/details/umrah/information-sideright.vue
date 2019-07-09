@@ -12,37 +12,6 @@
       </div>
       <a-divider :style="{margin: '0'}" />
       <div class="p-16">
-        <div class="ant-package--title fs-16 fw-500 cr-black f-default">Harga</div>
-        <div class="ant-package--subtitle fs-14 fw-400 cr-gray f-default">Informasi Harga Pesanan</div>
-      </div>
-      <a-divider :style="{margin: '0'}" />
-      <div class="p-16">
-        <div class="d-flex align-items-center">
-          <div class="ant-package--title-room fs-16 fw-400 cr-black f-default">Quad Room</div>
-          <div class="ant-package--price-room fs-16 fw-400 cr-primary f-default ml-auto">
-            Rp23.000.000
-            <span class="fs-14 fw-400 cr-gray">pax</span>
-          </div>
-        </div>
-        <a-divider :style="{margin: '14px 0'}" />
-        <div class="d-flex align-items-center">
-          <div class="ant-package--title-room fs-16 fw-400 cr-black f-default">Triple Room</div>
-          <div class="ant-package--price-room fs-16 fw-400 cr-primary f-default ml-auto">
-            Rp24.000.000
-            <span class="fs-14 fw-400 cr-gray">pax</span>
-          </div>
-        </div>
-        <a-divider :style="{margin: '14px 0'}" />
-        <div class="d-flex align-items-center">
-          <div class="ant-package--title-room fs-16 fw-400 cr-black f-default">Double Room</div>
-          <div class="ant-package--price-room fs-16 fw-400 cr-primary f-default ml-auto">
-            Rp25.000.000
-            <span class="fs-14 fw-400 cr-gray">pax</span>
-          </div>
-        </div>
-      </div>
-      <a-divider :style="{margin: '0'}" />
-      <div class="p-16">
         <div class="ant-package--title fs-16 fw-500 cr-black f-default">Atur Jenis Room</div>
         <div class="ant-package--subtitle fs-14 fw-400 cr-gray f-default">Quad 30 pax, Triple 10 pax</div>
       </div>
@@ -51,7 +20,7 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-16 fw-500 cr-black f-default">Quad</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Sekamar Berempat</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp. 22.000.000 /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -70,7 +39,7 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-16 fw-500 cr-black f-default">Triple</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Sekamar Bertiga</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp. 23.000.000 /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -89,7 +58,7 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-16 fw-500 cr-black f-default">Double</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Sekamar Berdua</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp. 24.000.000 /pax</div>
           </div>
           <div class="ml-auto">
             <number-input

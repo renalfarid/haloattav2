@@ -9,3 +9,7 @@
 @import "footer/footer";
 // accounts pages
 @import "accounts/package/umrah";
+@import "accounts/transaction/purchase";
+@import "accounts/transaction/order";
+@import "accounts/transaction/sales";
+@import "accounts/create_package/steps";
