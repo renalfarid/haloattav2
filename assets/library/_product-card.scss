@@ -80,6 +80,12 @@
                     width: 150px;
                     left: -75px;
                     top: -85px;
+                    &.ant-pax--visa {
+                        background: $color-orange-overlay !important;
+                    }
+                    &.ant-pax--choice {
+                        background: $color-main-overlay !important;
+                    }
                 }
                 & .ant-card-cover--overlay-text {
                     text-transform: uppercase;
@@ -105,6 +111,18 @@
     }
     & .ant-card-body {
         padding: 18px;
+        & .ant-avatar {
+            @include align-items(center);
+            background-color: #fafafa;
+            @include flexbox();
+            & img {
+                width: auto !important;
+                height: auto !important;
+                max-width: 100%;
+                max-height: 100%;
+                margin: 0 auto;
+            }
+        }
         & .ant-card-meta {
             & .ant-card-meta-detail {
                 & .ant-card-meta-title {
@@ -169,6 +187,73 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+.ant-card--package-ticket {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
+    @include border-radius(0);
+    margin-bottom: 16px;
+    position: relative;
+    border: none;
+    & .ant-card-cover {
+        & .ant-card-cover--images {
+            background-position: center center;
+            background-repeat: no-repeat;
+            @include border-radius(0);
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+            width: 100%;
+            & .ant-card-cover--overlay {
+                & .ant-card-cover--overlay-box-radius {
+                    background: $color-red-overlay;
+                    @include border-radius(100px);
+                    position: absolute;
+                    height: 150px;
+                    width: 150px;
+                    left: -75px;
+                    top: -85px;
+                }
+                & .ant-card-cover--overlay-text {
+                    text-transform: uppercase;
+                    position: absolute;
+                    text-align: center;
+                    color: #ffffff;
+                    padding: 8px;
+                    left: 0;
+                    top: 0;
+                    & .ant-card-cover--overlay-text-title {
+                        line-height: normal;
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
+                    & .ant-card-cover--overlay-text-subtitle {
+                        text-transform: lowercase;
+                        line-height: normal;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+    & .ant-card-body {
+        padding: 18px;
+        & .ant-avatar {
+            @include align-items(center);
+            background-color: #fafafa;
+            @include flexbox();
+            & img {
+                width: auto !important;
+                height: auto !important;
+                max-width: 100%;
+                max-height: 100%;
+                margin: 0 auto;
             }
         }
     }

@@ -1,0 +1,70 @@
+.ant-layout-content--steps-schedule {
+    @include align-items(center);
+    @include flexbox();
+    overflow: hidden;
+    height: 100vh;
+    & .ant-card {
+        & .ant-card-cover {
+            & img {
+                max-width: 100%;
+            }
+        }
+        & .ant-card-body {
+            padding: 0;
+            & .ant-form {
+                & .ant-form-item {
+                    & .ant-form-item-label {
+                        padding-bottom: 4px;
+                        & label {
+                            color: $color-font;
+                            font-weight: 400;
+                            font-size: 15px;
+                        }
+                    }
+                    & .ant-select-lg,
+                    & .ant-input-lg {
+                        font-size: 15px !important;
+                    }
+                    & .number-input {
+                        @include align-items(center);
+                        @include flexbox();
+                        margin-right: 0;
+                        & .number-input__button {
+                            background-color: #ffffff;
+                            @include border-radius(50%);
+                            border: 1px solid $color-main;
+                            margin: 5px 10px;
+                            width: 28px;
+                            height: 28px;
+                            &::before {
+                                background-color: $color-main;
+                                width: 34%;
+                            }
+                            &::after {
+                                background-color: $color-main;
+                                height: 34%;
+                            }
+                        }
+                        & .number-input__input {
+                            background-color: transparent !important;
+                            border: 1px solid #d9d9d9;
+                            width: 100% !important;
+                            color: $color-font;
+                            line-height: 38px;
+                            font-size: 15px;
+                            height: 40px;
+                        }
+                    }
+                    & .ant-btn--action {
+                        background-color: $color-main;
+                        border-color: $color-main;
+                        font-weight: 500;
+                        font-size: 15px;
+                        text-shadow: none;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+}

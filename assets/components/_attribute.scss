@@ -32,6 +32,10 @@
     width: 100% !important;
 }
 
+.max-width {
+    max-width: 100% !important;
+}
+
 // attribute margin
 .ml-auto {
     margin-left: auto;
@@ -39,6 +43,10 @@
 
 .ml-12 {
     margin-left: 12px;
+}
+
+.m-auto {
+    margin: 0 auto !important;
 }
 
 .m-0 {
@@ -101,8 +109,28 @@
     padding: 8px !important;
 }
 
+.p-4 {
+    padding: 4px !important;
+}
+
 .p-16 {
     padding: 16px !important;
+}
+
+.pt-8 {
+    padding-top: 8px !important;
+}
+
+.pt-16 {
+    padding-top: 16px !important;
+}
+
+.pb-16 {
+    padding-bottom: 16px !important;
+}
+
+.pt-24 {
+    padding-top: 24px !important;
 }
 
 .pl-16 {
@@ -121,8 +149,16 @@
     @include border-radius(6px);
 }
 
+.b-dashed {
+    border-bottom-style: dashed !important;
+}
+
+.b-dotted {
+    border-bottom-style: dotted !important;
+}
+
 .b-shadow {
-    box-shadow: 0 0 6px rgba($color: #000000, $alpha: .06) !important;
-    -webkit-box-shadow: 0 0 6px rgba($color: #000000, $alpha: .06) !important;
-    -moz-box-shadow: 0 0 6px rgba($color: #000000, $alpha: .06) !important;
+    box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
+    -webkit-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
+    -moz-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
 }

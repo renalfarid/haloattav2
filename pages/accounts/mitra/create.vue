@@ -9,7 +9,7 @@
             keuntungan, jadwal keberangkatan dan dapatkan
             berbagai benefit lainnya
           </div>
-          <a-button class="ant-btn--action">Buat Paket</a-button>
+          <a-button class="ant-btn--action" size="large" @click="createPackage">Buat Paket</a-button>
         </a-col>
         <a-col :span="14">
           <img src="/icons/steps_1.png" />
@@ -77,7 +77,7 @@
           </div>
         </a-col>
         <a-col :span="14" class="text-right">
-          <a-button class="ant-btn--action" size="large">Buat Paket</a-button>
+          <a-button class="ant-btn--action" size="large" @click="createPackage">Buat Paket</a-button>
         </a-col>
       </a-row>
     </a-card>
@@ -91,6 +91,11 @@ export default {
     return {
       title: "Buat Paket Umrah - Haloatta"
     };
+  },
+  methods: {
+    createPackage(){
+      this.$router.push('/create/steps/schedule');
+    }
   }
 };
 </script>
