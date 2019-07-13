@@ -1,6 +1,6 @@
 <template>
   <div class="ant-create--package">
-    <a-card :bordered="false" class="b-shadow b-radius">
+    <a-card :bordered="false" class="b-solid b-radius b-shadow">
       <a-row :gutter="32" type="flex" justify="space-around" align="middle">
         <a-col :span="10">
           <div class="fs-30 fw-500 cr-black f-default mb-16">Memperkenalkan Buat Paket Umrah</div>
@@ -9,7 +9,7 @@
             keuntungan, jadwal keberangkatan dan dapatkan
             berbagai benefit lainnya
           </div>
-          <a-button class="ant-btn--action" size="large" @click="createPackage">Buat Paket</a-button>
+          <a-button class="b-solid b-radius b-shadow ant-btn--action" size="large" @click="createPackage">Buat Paket</a-button>
         </a-col>
         <a-col :span="14">
           <img src="/icons/steps_1.png" />
@@ -77,7 +77,7 @@
           </div>
         </a-col>
         <a-col :span="14" class="text-right">
-          <a-button class="ant-btn--action" size="large" @click="createPackage">Buat Paket</a-button>
+          <a-button class="b-solid b-radius b-shadow ant-btn--action" size="large" @click="createPackage">Buat Paket</a-button>
         </a-col>
       </a-row>
     </a-card>

@@ -1,15 +1,27 @@
 <template>
-  <div class="ant-layout-header--accounts">
-    <div class="navbar-right">
+  <div class="ant-layout-header--accounts d-flex align-items-center b-solid">
+    <div class="header-left">
+      <span style="margin-right: 24px">
+        <a-badge :count="1">
+          <a-avatar style="backgroundColor: #05CBB0" icon="mail" />
+        </a-badge>
+      </span>
+      <span>
+        <a-badge :count="1">
+          <a-avatar style="backgroundColor: #FF7C0A" icon="bell" />
+        </a-badge>
+      </span>
+    </div>
+    <div class="header-right ml-auto">
       <!-- before login -->
-      <div class="navbar-button d-none">
+      <div class="header-button d-none">
         <a-button class="btn-login" @click="showLogin">Login</a-button>
         <a-button class="btn-register">Register</a-button>
       </div>
 
       <!-- after login -->
-      <div class="navbar-accounts">
-        <a-button class="btn-accounts" shape="circle" @click="nextAccounts">G</a-button>
+      <div class="header-accounts">
+        <a-avatar style="backgroundColor: #0FACF3" icon="user" @click="nextAccounts" />
       </div>
     </div>
 
@@ -32,7 +44,7 @@ export default {
       this.visibleLogin = true;
     },
     nextAccounts() {
-      this.$router.push({ path: '/accounts/mitra' });
+      this.$router.push({ path: "/accounts/mitra" });
     }
   },
   components: {

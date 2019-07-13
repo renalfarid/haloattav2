@@ -1,6 +1,6 @@
 <template>
   <div class="ant-transaction--purchase">
-    <a-card :bordered="false" class="ant-card--filter b-radius b-shadow mb-16">
+    <a-card :bordered="false" class="ant-card--filter b-solid b-radius b-shadow mb-16">
       <div class="fs-18 fw-500 cr-black">Transaksi Pembelian</div>
       <a-row :gutter="16" class="mt-8 mb-8">
         <a-col :span="8">
@@ -32,14 +32,14 @@
     <a-list
       itemLayout="horizontal"
       :pagination="pagination"
-      :grid="{ gutter: 16, xs: 1, sm: 1, md: 1, lg: 1, xl: 1, xxl: 2 }"
+      :grid="{ gutter: 16, xs: 1, sm: 1, md: 1, lg: 1, xl: 1, xxl: 1 }"
       :dataSource="dataPembelian"
     >
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
         :key="index"
-        class="b-radius b-shadow mt-16 mb-8 p-0"
+        class="b-solid b-radius b-shadow mt-16 mb-8 p-0"
         style="backgroundColor: #ffffff"
       >
         <div class="w-100">
@@ -119,7 +119,7 @@
             </a-col>
             <a-col :span="8" class="text-right">
               <a-button
-                class="ant-btn--action"
+                class="b-shadow b-radius ant-btn--action"
                 v-if="item.status === 'Menunggu Pembayaran'"
               >Konfirmasi Pembayaran</a-button>
             </a-col>

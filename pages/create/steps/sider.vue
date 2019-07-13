@@ -15,11 +15,6 @@
 </template>
 <script>
 export default {
-  props: ["active"],
-  data() {
-    return {
-      selectedpages: ["setting"]
-    };
-  }
+  props: ["active"]
 };
 </script>
