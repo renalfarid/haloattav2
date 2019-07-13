@@ -11,7 +11,7 @@
       <div class="fs-14 f-default cr-black mb-4">Umaroh Personal</div>
       <div class="fs-15 fw-500 f-default cr-black mb-8">Alba Husain Mustafa</div>
       <div>
-        <a-button class="b-shadow b-radius d-flex align-items-center">
+        <a-button class="b-shadow b-radius d-flex align-items-center d-none">
           <img src="/icons/upgrade.png" /> Upgrade ke Bisnis
         </a-button>
       </div>

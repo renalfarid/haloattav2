@@ -19,27 +19,6 @@
             <span class="text-uppercase cr-gray fs-14 mr-16">Filter pencarian</span>
             <a-dropdown :trigger="['click']">
               <a class="ant-dropdown-link fs-14 cr-black f-default" href="#">
-                Durasi
-                <a-icon type="down" />
-              </a>
-              <a-card slot="overlay">
-                <div class="ant-filter-dropdown--overlay">
-                  <a-radio-group name="kota_asal">
-                    <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
-                    <a-radio :style="radioStyle" :value="2">9 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="3">10 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="4">11 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="5">12 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="6">13 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="7">14 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="8">15 Hari</a-radio>
-                  </a-radio-group>
-                </div>
-              </a-card>
-            </a-dropdown>
-            <a-divider type="vertical" />
-            <a-dropdown :trigger="['click']">
-              <a class="ant-dropdown-link fs-14 cr-black f-default" href="#">
                 Negara Tujuan
                 <a-icon type="down" />
               </a>

@@ -22,27 +22,6 @@
             <span class="text-uppercase cr-gray fs-14 mr-16">Filter pencarian</span>
             <a-dropdown :trigger="['click']">
               <a class="ant-dropdown-link fs-14 cr-black f-default" href="#">
-                Program Hari
-                <a-icon type="down" />
-              </a>
-              <a-card slot="overlay">
-                <div class="ant-filter-dropdown--overlay">
-                  <a-radio-group name="kota_asal">
-                    <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
-                    <a-radio :style="radioStyle" :value="2">9 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="3">10 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="4">11 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="5">12 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="6">13 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="7">14 Hari</a-radio>
-                    <a-radio :style="radioStyle" :value="8">15 Hari</a-radio>
-                  </a-radio-group>
-                </div>
-              </a-card>
-            </a-dropdown>
-            <a-divider type="vertical" />
-            <a-dropdown :trigger="['click']">
-              <a class="ant-dropdown-link fs-14 cr-black f-default" href="#">
                 Rating Hotel
                 <a-icon type="down" />
               </a>
@@ -51,36 +30,17 @@
                   <a-radio-group name="rating_hotel">
                     <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
                     <a-radio :style="radioStyle" :value="2">
-                      <a-rate class="fs-16" defaultValue="5" disabled />
+                      <a-rate class="fs-16" :defaultValue="5" disabled />
                     </a-radio>
                     <a-radio :style="radioStyle" :value="3">
-                      <a-rate class="fs-16" defaultValue="4" disabled />
+                      <a-rate class="fs-16" :defaultValue="4" disabled />
                     </a-radio>
                     <a-radio :style="radioStyle" :value="4">
-                      <a-rate class="fs-16" defaultValue="3" disabled />
+                      <a-rate class="fs-16" :defaultValue="3" disabled />
                     </a-radio>
                     <a-radio :style="radioStyle" :value="5">
-                      <a-rate class="fs-16" defaultValue="2" disabled />
+                      <a-rate class="fs-16" :defaultValue="2" disabled />
                     </a-radio>
-                  </a-radio-group>
-                </div>
-              </a-card>
-            </a-dropdown>
-            <a-divider type="vertical" />
-            <a-dropdown :trigger="['click']">
-              <a class="ant-dropdown-link fs-14 cr-black f-default" href="#">
-                Room
-                <a-icon type="down" />
-              </a>
-              <a-card slot="overlay">
-                <div class="ant-filter-dropdown--overlay">
-                  <a-radio-group name="harga">
-                    <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
-                    <a-radio :style="radioStyle" :value="2">0 - 20</a-radio>
-                    <a-radio :style="radioStyle" :value="3">20 - 40</a-radio>
-                    <a-radio :style="radioStyle" :value="4">40 - 60</a-radio>
-                    <a-radio :style="radioStyle" :value="5">60 - 80</a-radio>
-                    <a-radio :style="radioStyle" :value="6">80 - 100</a-radio>
                   </a-radio-group>
                 </div>
               </a-card>
@@ -159,7 +119,7 @@
                     </div>
                     <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.provider}}</div>
                     <div class="ml-auto fs-13 fw-400 cr-gray f-default text-ellipsis">
-                      <a-rate class="fs-14" defaultValue="4" disabled />
+                      <a-rate class="fs-14" :defaultValue="4" disabled />
                     </div>
                   </div>
 
