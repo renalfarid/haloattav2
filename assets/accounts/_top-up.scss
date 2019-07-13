@@ -1,0 +1,27 @@
+.ant-layout--top-up {
+    & .ant-card {
+        & .ant-card-body {
+            padding: 32px;
+            & img {
+                max-height: 340px;
+                margin: 0 auto;
+                display: block;
+            }
+            & .ant-select-lg {
+                font-weight: 400;
+                font-size: 15px;
+            }
+            & .ant-form-explain {
+                font-size: 12px;
+            }
+            & .ant-btn {
+                background-color: $color-main;
+                border: 1px solid $color-main;
+                text-shadow: none !important;
+                min-width: 220px;
+                font-weight: 500;
+                font-size: 15px;
+            }
+        }
+    }
+}

@@ -42,7 +42,7 @@
               </a-upload-dragger>
             </div>
             <div class="mb-16">
-              <a-button class="ant-btn--action mb-16">Kirim Bukti Transfer</a-button>
+              <a-button class="ant-btn--action mb-16">Kirim Bukti Pembayaran</a-button>
               <div class="fs-14 fw-400 f-default cr-gray">
                 Customer service kami akan menanyakan nomer pesanan
                 <br />saat menghubungi anda.

@@ -1,7 +1,9 @@
 <template>
   <div class="ant-layout-sider--accounts-item">
     <div class="ant-layout-sider--accounts-logo">
-      <nuxt-link to="/"><img src="/haloatta.png" /></nuxt-link>
+      <nuxt-link to="/">
+        <img src="/haloatta.png" />
+      </nuxt-link>
     </div>
 
     <div class="ant-avatar--user">
@@ -21,7 +23,7 @@
       <div class="fs-14 f-default cr-black mb-4">Saldo Halopay</div>
       <div class="fs-15 fw-500 f-default cr-black mb-8">Rp. 100.000.000</div>
       <div>
-        <a-button class="b-shadow b-radius d-flex align-items-center">
+        <a-button class="b-shadow b-radius d-flex align-items-center" @click="toTopUp">
           <img src="/icons/deposit.png" /> Tambah Saldo
         </a-button>
       </div>
@@ -58,6 +60,11 @@
 </template>
 <script>
 export default {
-  props: ["current"]
+  props: ["current"],
+  methods: {
+    toTopUp() {
+      this.$router.push('/accounts/top-up');
+    }
+  }
 };
 </script>
