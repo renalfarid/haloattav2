@@ -117,11 +117,16 @@
                 <div class="cr-black fs-14 fw-500 f-default">{{item.tgl_purchase}}</div>
               </div>
             </a-col>
-            <a-col :span="8" class="text-right">
-              <a-button
-                class="b-shadow b-radius ant-btn--action"
-                v-if="item.status === 'Menunggu Pembayaran'"
-              >Konfirmasi Pembayaran</a-button>
+            <a-col :span="8">
+              <div class="d-flex align-items-center align-end">
+                <div v-if="item.status === 'Menunggu Pembayaran'">
+                  <a-button class="b-shadow b-radius ant-btn--action">Konfirmasi Pembayaran</a-button>
+
+                  <a-divider type="vertical" />
+                </div>
+
+                <nuxt-link to="/" class="cr-primary fs-14">Lihat detail</nuxt-link>
+              </div>
             </a-col>
           </a-row>
         </div>

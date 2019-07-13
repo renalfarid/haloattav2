@@ -1,14 +1,17 @@
 <template>
   <div class="ant-layout-header--accounts d-flex align-items-center b-solid">
     <div class="header-left">
-      <span style="margin-right: 24px">
-        <a-badge :count="1">
-          <a-avatar style="backgroundColor: #05CBB0" icon="mail" />
+      <nuxt-link to="/accounts/mitra/create" style="margin-right: 16px">
+        <a-avatar style="backgroundColor: #F84ECA" icon="plus" />  
+      </nuxt-link>
+      <span style="margin-right: 16px">
+        <a-badge dot>
+          <a-avatar  size="small" style="backgroundColor: #05CBB0" icon="mail" />
         </a-badge>
       </span>
-      <span>
-        <a-badge :count="1">
-          <a-avatar style="backgroundColor: #FF7C0A" icon="bell" />
+      <span style="margin-right: 16px">
+        <a-badge dot>
+          <a-avatar size="small" style="backgroundColor: #FF7C0A" icon="bell" />
         </a-badge>
       </span>
     </div>
