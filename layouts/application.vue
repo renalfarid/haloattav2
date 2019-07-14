@@ -1,5 +1,7 @@
 <template>
-    <div>
-        <nuxt />
-    </div>
+  <div>
+    <no-ssr>
+      <nuxt />
+    </no-ssr>
+  </div>
 </template>

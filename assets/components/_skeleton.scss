@@ -1,0 +1,20 @@
+.ant-skeleton {
+    padding: 0 15px;
+    &.ant-skeleton-active {
+        padding: 64px 16px;
+    }
+    & .ant-skeleton-content {
+        & .ant-skeleton-title {
+            width: 80% !important;
+            margin-top: 0 !important;
+            height: 12px !important;
+        }
+        & .ant-skeleton-paragraph {
+            margin: 16px 0 0 0 !important;
+            padding: 0;
+            & li {
+                height: 12px;
+            }
+        }
+    }
+}

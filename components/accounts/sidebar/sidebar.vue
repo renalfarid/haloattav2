@@ -1,31 +1,37 @@
 <template>
   <div class="ant-layout-sider--accounts-item">
     <div class="ant-layout-sider--accounts-logo">
-      <img @click="backHome" src="/haloatta.png" />
+      <nuxt-link to="/">
+        <img src="/haloatta.png" />
+      </nuxt-link>
     </div>
 
-    <div class="ant-avatar--user mb-16">
-      <a-avatar class="mb-8" :size="64" src="/user/maha_user.jpg" />
+    <div class="ant-avatar--user">
+      <a-avatar class="mb-8" size="large" src="/user/maha_user.jpg" />
       <div class="fs-14 f-default cr-black mb-4">Umaroh Personal</div>
-      <div class="fs-16 fw-500 f-default cr-black mb-8">Alba Husain Mustafa</div>
+      <div class="fs-15 fw-500 f-default cr-black mb-8">Alba Husain Mustafa</div>
       <div>
-        <a-button class="d-flex align-items-center">
+        <a-button class="b-shadow b-radius d-flex align-items-center d-none">
           <img src="/icons/upgrade.png" /> Upgrade ke Bisnis
         </a-button>
       </div>
     </div>
 
-    <div class="ant-avatar--user mb-16">
+    <a-divider />
+
+    <div class="ant-avatar--user">
       <div class="fs-14 f-default cr-black mb-4">Saldo Halopay</div>
-      <div class="fs-16 fw-500 f-default cr-black mb-8">Rp. 100.000.000</div>
+      <div class="fs-15 fw-500 f-default cr-black mb-8">Rp. 100.000.000</div>
       <div>
-        <a-button class="d-flex align-items-center">
+        <a-button class="b-shadow b-radius d-flex align-items-center" @click="toTopUp">
           <img src="/icons/deposit.png" /> Tambah Saldo
         </a-button>
       </div>
     </div>
 
-    <a-menu class="ant-menu--sider" mode="inline">
+    <a-divider />
+
+    <a-menu class="ant-menu--sider" mode="inline" :defaultSelectedKeys="['1']">
       <a-menu-item class="ant-menu--sider-item" key="1">
         <nuxt-link to="/accounts/mitra" class="nav-text">Ringkasan Akun</nuxt-link>
       </a-menu-item>
@@ -54,9 +60,10 @@
 </template>
 <script>
 export default {
+  props: ["current"],
   methods: {
-    backHome() {
-      this.$router.push({ path: "/" });
+    toTopUp() {
+      this.$router.push('/accounts/top-up');
     }
   }
 };

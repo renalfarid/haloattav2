@@ -1,0 +1,11 @@
+.ant-layout--accounts-summary {
+    & .ant-card {
+        margin-bottom: 24px;
+        & .ant-card-body {
+            & .ant-card-grid {
+                box-shadow: none;
+                padding: 16px 0;
+            }
+        }
+    }
+}

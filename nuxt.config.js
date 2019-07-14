@@ -34,6 +34,7 @@ module.exports = {
         { src: '@/plugins/vue-slick', ssr: false },
         { src: '@/plugins/vInput-number', ssr: false },
         { src: '@/plugins/vCountdown', ssr: false },
+        { src: '@/plugins/vCharts', ssr: false },
         { src: '@/plugins/vInfinite-scroll', ssr: false },
     ],
     /*

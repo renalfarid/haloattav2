@@ -1,0 +1,71 @@
+.ant-card--steps-proggress {
+    @include border-radius(0);
+    border-right: 1px solid $color-border;
+    height: 100vh;
+    & .ant-card-body {
+        padding: 24px 0 80px 0;
+        overflow: auto;
+        height: 100vh;
+        & .ant-steps {
+            border: none;
+            height: 100%;
+            margin: 0;
+            & .ant-steps-item {
+                padding-right: 8px;
+                padding-bottom: 4px;
+                line-height: normal;
+                & .ant-steps-item-title {
+                    line-height: 20px;
+                }
+                & .ant-steps-item-description {
+                    text-transform: capitalize;
+                    font-weight: 400;
+                    line-height: 16px;
+                    font-size: 12px;
+                }
+            }
+            & .ant-steps-item-process {
+                & .ant-steps-item-icon {
+                    background-color: $color-main;
+                    border-color: $color-main;
+                }
+            }
+            & .ant-steps-item-finish {
+                & .ant-steps-item-icon {
+                    border-color: $color-main;
+                    & .ant-steps-icon {
+                        color: $color-main;
+                    }
+                }
+            }
+            & .ant-steps-item-finish {
+                & .ant-steps-item-tail {
+                    &::after {
+                        background-color: $color-main;
+                    }
+                }
+            }
+        }
+    }
+    & .ant-card--footer {
+        background-color: #ffffff;
+        position: absolute;
+        padding: 16px 16px;
+        border: none;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        & .ant-btn {
+            transition: all ease-in-out .3s;
+            background-color: $color-red;
+            border-color: $color-red;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 15px;
+            &:hover,
+            &:focus {
+                background: $color-red-overlay;
+            }
+        }
+    }
+}
