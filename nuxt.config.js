@@ -4,7 +4,7 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: 'Booking Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta',
+        title: 'Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta',
         meta: [
             { charset: 'utf-8' },
             // { name: 'viewport', content: 'width=device-width, initial-scale=1' },

@@ -4,13 +4,12 @@
       <a-row :gutter="32" type="flex" justify="space-around" align="middle">
         <a-col :span="12">
           <div class="fs-30 fw-500 cr-black f-default mb-8">
-            Upload Bukti Transfer Saldo
-            <br />Halo Pay Anda
+            Upload Bukti Transfer Anda
           </div>
 
           <div class="fs-15 fw-400 cr-black mb-16">
             Upload bukti pembayaran bank transfer anda untuk
-            mempercepat proses verifikasi top up saldo Halo Pay anda
+            mempercepat proses verifikasi.
           </div>
 
           <div class="fs-15 fw-400 cr-black">No. Transaksi</div>
@@ -67,7 +66,7 @@ export default {
   name: "eConfirmation",
   head() {
     return {
-      title: "Konfirmasi TopUp Saldo - Haloatta"
+      title: "Konfirmasi Pembayaran - Haloatta"
     };
   },
   data() {
