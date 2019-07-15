@@ -4,10 +4,10 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: 'Booking Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta',
+        title: 'Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta',
         meta: [
             { charset: 'utf-8' },
-            // { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
         ],
         link: [
@@ -18,7 +18,7 @@ module.exports = {
     /*
      ** Customize the progress-bar color
      */
-    loading: false,
+    loading: { color: '#0FACF3' },
     /*
      ** Global CSS
      */

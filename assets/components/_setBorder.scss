@@ -1,0 +1,19 @@
+.b-radius {
+    @include border-radius(6px);
+}
+
+.b-dashed {
+    border: 1px dashed #f5f5f5;
+}
+
+.b-dotted {
+    border: 1px dotted #f5f5f5;
+}
+
+.b-solid {
+    border: 1px solid #f5f5f5;
+}
+
+.b-solid-primary {
+    border: 1px solid $color-main;
+}

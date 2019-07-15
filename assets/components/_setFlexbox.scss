@@ -1,0 +1,27 @@
+.d-none {
+    display: none !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-flex {
+    @include flexbox();
+}
+
+.align-items-center {
+    @include align-items(center);
+}
+
+.align-items-start {
+    @include align-items(flex-start);
+}
+
+.align-space-between {
+    @include justify-content(space-between);
+}
+
+.align-end {
+    @include justify-content(flex-end);
+}

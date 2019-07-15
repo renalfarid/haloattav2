@@ -1,0 +1,29 @@
+.ant-transaction--purchase-detail {
+    & .ant-card {
+        & .ant-card-actions {
+            padding: 0 24px;
+            & li {
+                text-align: left;
+                & .ant-btn {
+                    border: 1px solid $color-main;
+                    background-color: $color-main;
+                    text-shadow: none;
+                    font-weight: 400;
+                    color: #ffffff;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    & .ant-card--padding {
+        & .ant-card-body {
+            padding: 0;
+            & .ant-list {
+                & .ant-list-item {
+                    padding-left: 40px;
+                    padding-right: 40px;
+                }
+            }
+        }
+    }
+}

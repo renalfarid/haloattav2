@@ -120,12 +120,12 @@
             <a-col :span="8">
               <div class="d-flex align-items-center align-end">
                 <div v-if="item.status === 'Menunggu Pembayaran'">
-                  <a-button class="b-shadow b-radius ant-btn--action">Konfirmasi Pembayaran</a-button>
+                  <a-button class="b-shadow b-radius ant-btn--action" @click="nextConf">Konfirmasi Pembayaran</a-button>
 
                   <a-divider type="vertical" />
                 </div>
 
-                <nuxt-link to="/" class="cr-primary fs-14">Lihat detail</nuxt-link>
+                <nuxt-link to="/accounts/mitra/transaction/detail" class="cr-primary fs-14">Lihat detail</nuxt-link>
               </div>
             </a-col>
           </a-row>
@@ -199,6 +199,9 @@ export default {
     onChange(dates, dateStrings) {
       console.log("From: ", dates[0], ", to: ", dates[1]);
       console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
+    },
+    nextConf() {
+      this.$router.push({ path: "/accounts/e-confirm" });
     }
   }
 };

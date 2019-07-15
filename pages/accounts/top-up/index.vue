@@ -203,7 +203,7 @@ export default {
       console.log("changed", value);
     },
     nextConf() {
-      this.$router.push({ path: "/accounts/top-up/e-confirmation" });
+      this.$router.push({ path: "/accounts/e-confirm" });
     }
   }
 };

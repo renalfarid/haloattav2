@@ -1,6 +1,6 @@
 {
     "name": "haloatta",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "description": "Haloatta - Technology Travel Online",
     "author": "indonesiamicrosystem",
     "private": true,
@@ -27,6 +27,12 @@
         "vue-slick": "^1.1.15"
     },
     "devDependencies": {
+        "babel-preset-env": "^1.7.0",
+        "eslint": "^6.0.1",
+        "eslint-plugin-import": "^2.18.0",
+        "eslint-plugin-node": "^9.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.0",
         "nodemon": "^1.18.9"
     }
 }
