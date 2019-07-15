@@ -31,3 +31,38 @@
         }
     }
 }
+
+.ant-menu--passenger {
+    & .ant-dropdown-menu {
+        padding: 8px 16px;
+        & .ant-dropdown-menu-item-disabled {
+            cursor: auto !important;
+            padding: 16px 0;
+            & .number-input {
+                margin-right: 0;
+                min-width: 100px;
+                & .number-input__button {
+                    background-color: #ffffff;
+                    @include border-radius(50%);
+                    border: 1px solid $color-main;
+                    width: 28px;
+                    height: 28px;
+                    &::before {
+                        background-color: $color-main;
+                        width: 30%;
+                    }
+                    &::after {
+                        background-color: $color-main;
+                        height: 30%;
+                    }
+                }
+                & .number-input__input {
+                    background-color: transparent !important;
+                    width: auto !important;
+                    color: $color-font;
+                    border: none;
+                }
+            }
+        }
+    }
+}

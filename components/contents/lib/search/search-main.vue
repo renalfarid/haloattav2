@@ -280,7 +280,7 @@ export default {
       );
     },
     searchUmrah() {
-      this.$router.push({ path: '/umrah/results' })
+      this.$router.push({ path: '/umrah/result' })
     }
   }
 };

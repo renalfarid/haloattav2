@@ -1,6 +1,6 @@
 <template>
   <div class="ant-layout--results-search">
-    <a-card class="ant-card--results-info" :bordered="false">
+    <a-card class="ant-card--results-info b-shadow b-solid b-radius" :bordered="false">
       <div class="d-flex align-items-center">
         <div class="ant-card--results-info-left d-flex align-items-center">
           <div>
@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="ant-card--results-info-right ml-auto">
-          <a-button @click="showSearch">Ganti Pencarian</a-button>
+          <a-button @click="showSearch" class="b-shadow b-radius">Ganti Pencarian</a-button>
         </div>
       </div>
 
@@ -205,7 +205,7 @@
 
           <a-row :gutter="16" type="flex" justify="end">
             <a-col :span="8">
-              <a-button class="btn-search" block>Cari Umrah</a-button>
+              <a-button class="btn-search b-shadow b-radius" size="large" block>Cari Umrah</a-button>
             </a-col>
           </a-row>
         </a-form>

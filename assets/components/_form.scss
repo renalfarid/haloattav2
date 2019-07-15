@@ -58,6 +58,23 @@
             }
         }
     }
+    & .ant-btn--add-passenger {
+        @include border-radius(0);
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid $color-font-light-gray;
+        color: $color-font;
+        text-shadow: none;
+        box-shadow: none;
+        padding-left: 30px;
+        &:hover,
+        &:focus {
+            color: $color-font;
+            text-shadow: none;
+            box-shadow: none;
+            outline: none;
+        }
+    }
     & .btn-search {
         @include border-radius(4px);
         background: $color-main;
