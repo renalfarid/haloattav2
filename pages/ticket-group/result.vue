@@ -9,76 +9,108 @@
           <filter-ticket-result />
         </div>
 
-        <div class="ant-layout--results-list">
-          <div class="ant-layout--results-list-label">Hasil Pencarian Tiket Group</div>
-          <a-list :grid="{ gutter: 16, column: 3 }" :pagination="pagination" :dataSource="listData">
-            <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-              <a-skeleton :loading="loading" active>
-                <nuxt-link to="/ticket-group/detail-ticket" class="d-block">
-                  <a-card class="ant-card--package-ticket">
-                    <div slot="cover">
-                      <div
-                        class="ant-card-cover--images"
-                        :style="{ backgroundImage: `url(${item.images_package})` }"
-                      >
-                        <div class="ant-card-cover--overlay">
-                          <div class="ant-card-cover--overlay-box-radius"></div>
-                          <div class="ant-card-cover--overlay-text">
-                            <div class="ant-card-cover--overlay-text-title">sisa</div>
-                            <div class="ant-card-cover--overlay-text-subtitle">
-                              <span>40</span> pax
+        <div class="ant-layout--results-list pb-16">
+          <div class="ant-layout--results-list-label fw-400">Hasil Pencarian Tiket Group</div>
+          <div
+            v-infinite-scroll="loadMore"
+            :infinite-scroll-disabled="busy"
+            :infinite-scroll-distance="limit"
+          >
+            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
+              <a-list-item slot="renderItem" slot-scope="item, index" :key="index" data-aos="fade-up" data-aos-duration="1200">
+                <a-skeleton :loading="loading" active>
+                  <nuxt-link to="/ticket-group/detail-ticket" class="d-block">
+                    <a-card class="ant-card--package-ticket">
+                      <div slot="cover">
+                        <div
+                          class="ant-card-cover--images"
+                          :style="{ backgroundImage: `url(${item.images_package})` }"
+                        >
+                          <div class="ant-card-cover--overlay">
+                            <div class="ant-card-cover--overlay-box-radius"></div>
+                            <div class="ant-card-cover--overlay-text">
+                              <div class="ant-card-cover--overlay-text-title">sisa</div>
+                              <div class="ant-card-cover--overlay-text-subtitle">
+                                <span>40</span> pax
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div class="d-flex align-items-center">
-                      <div class="mr-8">
-                        <a-avatar
-                          :src="item.logo_maskapai"
-                          :value="item.logo_maskapai"
-                          size="small"
-                        />
+                      <div class="d-flex align-items-center">
+                        <div class="mr-8">
+                          <a-avatar
+                            :src="item.logo_maskapai"
+                            :value="item.logo_maskapai"
+                            size="small"
+                          />
+                        </div>
+                        <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.maskapai}}</div>
+                        <div
+                          class="ml-auto fs-13 fw-400 cr-gray f-default text-ellipsis"
+                        >{{item.class_cabin}}</div>
                       </div>
-                      <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.maskapai}}</div>
-                      <div
-                        class="ml-auto fs-13 fw-400 cr-gray f-default text-ellipsis"
-                      >{{item.class_cabin}}</div>
-                    </div>
 
-                    <a-row
-                      :gutter="8"
-                      type="flex"
-                      justify="space-between"
-                      align="middle"
-                      class="mt-8 mb-8"
-                    >
-                      <a-col :span="8" class="text-left">
-                        <div class="fs-30 fw-500 cr-black text-uppercase f-default">upg</div>
-                        <div class="fs-14 fw-400 cr-black text-uppercase f-default">09:00 am</div>
-                      </a-col>
-                      <a-col :span="8" class="text-center">
-                        <div class="fs-13 fw-400 cr-gray text-capitalize f-default mb-8">Nonstop</div>
-                        <div class="fs-13 fw-400 cr-gray text-capitalize f-default">6h45m</div>
-                      </a-col>
-                      <a-col :span="8" class="text-right">
-                        <div class="fs-30 fw-500 cr-black text-uppercase f-default">jed</div>
-                        <div class="fs-14 fw-400 cr-black text-uppercase f-default">15:00 pm</div>
-                      </a-col>
-                    </a-row>
+                      <a-row
+                        :gutter="8"
+                        type="flex"
+                        justify="space-between"
+                        align="middle"
+                        class="mt-8 mb-8"
+                      >
+                        <a-col :span="8" class="text-left">
+                          <div class="fs-30 fw-500 cr-black text-uppercase f-default">upg</div>
+                          <div class="fs-14 fw-400 cr-black text-uppercase f-default">09:00 am</div>
+                        </a-col>
+                        <a-col :span="8" class="text-center">
+                          <div class="fs-13 fw-400 cr-gray text-capitalize f-default mb-8">Nonstop</div>
+                          <div class="fs-13 fw-400 cr-gray text-capitalize f-default">6h45m</div>
+                        </a-col>
+                        <a-col :span="8" class="text-right">
+                          <div class="fs-30 fw-500 cr-black text-uppercase f-default">jed</div>
+                          <div class="fs-14 fw-400 cr-black text-uppercase f-default">15:00 pm</div>
+                        </a-col>
+                      </a-row>
 
-                    <div class="d-flex align-items-center">
-                      <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">Round Trip</div>
-                      <div class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis">
-                        Rp{{item.price}}
+                      <div class="d-flex align-items-end align-items-center">
+                        <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">Program 9 Hari</div>
+                        <div
+                          class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis"
+                        >Rp{{item.price}}</div>
                       </div>
-                    </div>
-                  </a-card>
-                </nuxt-link>
-              </a-skeleton>
-            </a-list-item>
-          </a-list>
+
+                      <div class="package-description--more p-16">
+                        <div class="d-flex align-items-center mb-8">
+                          <div
+                            class="fs-15 fw-400 cr-black f-default text-ellipsis"
+                          >Kota Keberangkatan Makassar</div>
+                          <div
+                            class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto"
+                          >Round Trip</div>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-16">
+                          <div class="fs-13 fw-400 text-ellipsis">
+                            <div class="cr-gray">Keberangkatan</div>
+                            <div class="cr-black">10 September 2019</div>
+                          </div>
+                          <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
+                            <div class="cr-gray">Kedatangan</div>
+                            <div class="cr-black">19 September 2019</div>
+                          </div>
+                        </div>
+
+                        <a-button block>
+                          <nuxt-link to="/payment/order-data">Pesan</nuxt-link>
+                        </a-button>
+                      </div>
+                    </a-card>
+                  </nuxt-link>
+                </a-skeleton>
+              </a-list-item>
+            </a-list>
+          </div>
         </div>
       </div>
     </div>
@@ -87,88 +119,7 @@
 <script>
 import searchTicketResult from "~/components/contents/lib/search/ticket-result.vue";
 import filterTicketResult from "~/components/contents/lib/filter/ticket.vue";
-const listData = [
-  {
-    key: 1,
-    images_package:
-      "https://reliji.com/wp-content/uploads/2018/06/banner-fleet-4-new.jpg",
-    maskapai: "Garuda Indonesia",
-    logo_maskapai:
-      "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
-    price: "12.000.000",
-    class_cabin: "Economy Class"
-  },
-  {
-    key: 2,
-    images_package:
-      "http://www.damniloveindonesia.com/image/catalog/explore_indonesia/Artikel/News_Event/maskapai_murah/cnn_travel.jpg",
-    maskapai: "Lion Air",
-    logo_maskapai:
-      "https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png",
-    price: "12.000.000",
-    class_cabin: "Economy Class"
-  },
-  {
-    key: 3,
-    images_package:
-      "https://www.simasakti.id/wp-content/uploads/2018/12/saudia-arilines.jpg",
-    maskapai: "Saudi Airlines",
-    logo_maskapai:
-      "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E1B39FDCA3-seeklogo.com.png",
-    price: "12.000.000",
-    class_cabin: "Economy Class"
-  },
-  {
-    key: 4,
-    images_package:
-      "https://www.simasakti.id/wp-content/uploads/2018/12/saudia-arilines.jpg",
-    maskapai: "Saudi Airlines",
-    logo_maskapai:
-      "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E1B39FDCA3-seeklogo.com.png",
-    price: "12.000.000",
-    class_cabin: "Economy Class"
-  },
-  {
-    key: 5,
-    images_package:
-      "https://www.simasakti.id/wp-content/uploads/2018/12/saudia-arilines.jpg",
-    maskapai: "Saudi Airlines",
-    logo_maskapai:
-      "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E1B39FDCA3-seeklogo.com.png",
-    price: "12.000.000",
-    class_cabin: "Economy Class"
-  },
-  {
-    key: 6,
-    images_package:
-      "https://www.simasakti.id/wp-content/uploads/2018/12/saudia-arilines.jpg",
-    maskapai: "Saudi Airlines",
-    logo_maskapai:
-      "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E1B39FDCA3-seeklogo.com.png",
-    price: "12.000.000",
-    class_cabin: "Economy Class"
-  },
-  {
-    key: 7,
-    images_package:
-      "https://www.simasakti.id/wp-content/uploads/2018/12/saudia-arilines.jpg",
-    maskapai: "Saudi Airlines",
-    logo_maskapai:
-      "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E1B39FDCA3-seeklogo.com.png",
-    price: "12.000.000",
-    class_cabin: "Economy Class"
-  },
-  {
-    key: 8,
-    images_package:
-      "https://www.simasakti.id/wp-content/uploads/2018/12/saudia-arilines.jpg",
-    maskapai: "Saudi Airlines",
-    logo_maskapai:
-      "https://seeklogo.com/images/S/Saudi_Arabian_Airlines-logo-E1B39FDCA3-seeklogo.com.png",
-    price: "12.000.000",
-    class_cabin: "Economy Class"
-  }
-];
+import axios from "axios";
 export default {
   name: "ticketResult",
   head() {
@@ -180,14 +131,9 @@ export default {
   data() {
     return {
       loading: true,
-      listData,
-      pagination: {
-        onChange: page => {
-          console.log(page);
-        },
-        showTotal: total => `Total ${total} Tiket Group`,
-        pageSize: 9
-      }
+      busy: false,
+      limit: 6,
+      data: []
     };
   },
   mounted() {
@@ -195,9 +141,27 @@ export default {
       this.loading = false;
     }, 1500);
   },
+  created() {
+    this.loadMore();
+  },
+  methods: {
+    loadMore() {
+      console.log("Adding 6 more data results");
+      this.busy = true;
+      axios.get("/dataTicket.json").then(response => {
+        const append = response.data.slice(
+          this.data.length,
+          this.data.length + this.limit
+        );
+        this.data = this.data.concat(append);
+        this.busy = false;
+      });
+    }
+  },
   components: {
     searchTicketResult,
     filterTicketResult
   }
 };
+// AOS.init();
 </script>

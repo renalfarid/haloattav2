@@ -1,0 +1,121 @@
+[{
+        "id": 1,
+        "images_package": "/maskapai/garuda/t6.jpg",
+        "maskapai": "Garuda Indonesia",
+        "logo_maskapai": "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+        "price": "12.000.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 2,
+        "images_package": "/maskapai/garuda/t7.jpg",
+        "maskapai": "Garuda Indonesia",
+        "logo_maskapai": "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+        "price": "12.400.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 3,
+        "images_package": "/maskapai/garuda/t8.jpg",
+        "maskapai": "Garuda Indonesia",
+        "logo_maskapai": "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+        "price": "11.000.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 4,
+        "images_package": "/maskapai/garuda/t9.jpg",
+        "maskapai": "Garuda Indonesia",
+        "logo_maskapai": "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+        "price": "13.000.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 4,
+        "images_package": "/maskapai/garuda/t10.jpg",
+        "maskapai": "Garuda Indonesia",
+        "logo_maskapai": "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+        "price": "13.300.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 5,
+        "images_package": "/maskapai/lion_air/t1.jpg",
+        "maskapai": "Lion Air",
+        "logo_maskapai": "https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png",
+        "price": "9.000.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 6,
+        "images_package": "/maskapai/lion_air/t2.jpg",
+        "maskapai": "Lion Air",
+        "logo_maskapai": "https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png",
+        "price": "9.900.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 7,
+        "images_package": "/maskapai/lion_air/t3.jpg",
+        "maskapai": "Lion Air",
+        "logo_maskapai": "https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png",
+        "price": "9.000.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 8,
+        "images_package": "/maskapai/lion_air/t4.jpg",
+        "maskapai": "Lion Air",
+        "logo_maskapai": "https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png",
+        "price": "9.600.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 9,
+        "images_package": "/maskapai/lion_air/t5.jpg",
+        "maskapai": "Lion Air",
+        "logo_maskapai": "https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png",
+        "price": "11.600.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 10,
+        "images_package": "/maskapai/saudi/t11.jpg",
+        "maskapai": "Saudi Airlines",
+        "logo_maskapai": "/maskapai/saudi/Scoot_logo.svg",
+        "price": "12.000.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 11,
+        "images_package": "/maskapai/saudi/t12.jpg",
+        "maskapai": "Saudi Airlines",
+        "logo_maskapai": "/maskapai/saudi/Scoot_logo.svg",
+        "price": "12.500.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 13,
+        "images_package": "/maskapai/saudi/t13.jpg",
+        "maskapai": "Saudi Airlines",
+        "logo_maskapai": "/maskapai/saudi/Scoot_logo.svg",
+        "price": "12.200.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 14,
+        "images_package": "/maskapai/saudi/t14.jpg",
+        "maskapai": "Saudi Airlines",
+        "logo_maskapai": "/maskapai/saudi/Scoot_logo.svg",
+        "price": "10.200.000",
+        "class_cabin": "Economy Class"
+    },
+    {
+        "id": 15,
+        "images_package": "/maskapai/saudi/t15.jpg",
+        "maskapai": "Saudi Airlines",
+        "logo_maskapai": "/maskapai/saudi/Scoot_logo.svg",
+        "price": "10.900.000",
+        "class_cabin": "Economy Class"
+    }
+]
