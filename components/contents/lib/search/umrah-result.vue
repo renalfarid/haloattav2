@@ -9,9 +9,13 @@
           <div>
             <div class="ant-card--results-info-title">Umrah September 2019</div>
             <div class="ant-card--results-info-subtitle">
-              Program 9 Hari
+              <span>Program 9 Hari</span>
               <a-divider type="vertical"/>
               <span>40 Pax</span>
+              <a-divider type="vertical" />
+              <span>{{dewasa}} Dewasa</span>
+              <a-divider type="vertical" />
+              <span>{{anak}} Anak</span>
             </div>
           </div>
         </div>
