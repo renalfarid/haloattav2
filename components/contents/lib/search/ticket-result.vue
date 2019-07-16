@@ -17,7 +17,7 @@
             </div>
           </div>
         </div>
-        <div class="ant-card--results-info-right ml-auto">
+        <div class="ant-card--results-info-right ml-auto" v-bind:class="visibleSearch ? 'd-none' : ''">
           <a-button @click="showSearch" class="b-shadow b-radius">Ganti Pencarian</a-button>
         </div>
       </div>
@@ -275,9 +275,8 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);
-        } else {
-          this.$router.push("/ticket-group/result");
         }
+        return this.$router.push("/ticket-group/result");
       });
     }
   }

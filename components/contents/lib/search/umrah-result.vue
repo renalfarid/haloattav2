@@ -15,7 +15,7 @@
             </div>
           </div>
         </div>
-        <div class="ant-card--results-info-right ml-auto">
+        <div class="ant-card--results-info-right ml-auto" v-bind:class="visibleSearch ? 'd-none' : ''">
           <a-button @click="showSearch" class="b-shadow b-radius">Ganti Pencarian</a-button>
         </div>
       </div>
@@ -82,31 +82,70 @@
 
             <a-col :span="8">
               <a-form-item
-                label="Jumalah Order"
+                label="Jumlah Pax"
                 :label-col="{ span: 24 }"
                 :wrapper-col="{ span: 24 }"
               >
                 <div class="icon-search">
-                  <a-icon type="user"/>
+                  <img class="max-width" src="/icons/ticket/seat.png" />
                 </div>
-                <a-select
-                  showSearch
-                  defaultValue="40 Pax"
-                  placeholder="Pilih Jumlah Order"
-                  optionFilterProp="children"
-                  style="width: 100%"
-                  :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
-                  size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="40 Pax">40 Pax</a-select-option>
-                  <a-select-option value="20 Pax">20 Pax</a-select-option>
-                  <a-select-option value="10 Pax">10 Pax</a-select-option>
-                </a-select>
+                <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
+                  <a-menu slot="overlay">
+                    <a-menu-item key="0" disabled>
+                      <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <div class="mr-8">
+                            <a-avatar icon="user" />
+                          </div>
+                          <div>
+                            <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
+                            <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
+                          </div>
+                        </div>
+                        <div class="ml-auto">
+                          <number-input
+                            v-model="dewasa"
+                            :min="0"
+                            :max="10"
+                            :inputtable="false"
+                            size="small"
+                            center
+                            controls
+                          />
+                        </div>
+                      </div>
+                    </a-menu-item>
+                    <a-menu-item key="1" disabled>
+                      <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <div class="mr-8">
+                            <a-avatar icon="user" />
+                          </div>
+                          <div>
+                            <div class="fs-14 fw-400 cr-black f-default">Anak</div>
+                            <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
+                          </div>
+                        </div>
+                        <div class="ml-auto">
+                          <number-input
+                            v-model="anak"
+                            :min="0"
+                            :max="10"
+                            :inputtable="false"
+                            size="small"
+                            center
+                            controls
+                          />
+                        </div>
+                      </div>
+                    </a-menu-item>
+                  </a-menu>
+                  <a-button
+                    class="ant-btn--add-passenger text-left"
+                    size="large"
+                    block
+                  >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
+                </a-dropdown>
               </a-form-item>
             </a-col>
           </a-row>
@@ -218,6 +257,8 @@ export default {
   data() {
     return {
       visibleSearch: false,
+      dewasa: 1,
+      anak: 0
     };
   },
 

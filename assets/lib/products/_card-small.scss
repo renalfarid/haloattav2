@@ -61,18 +61,19 @@
                     margin-bottom: 0;
                     & .ant-card-meta-title--top {
                         margin-bottom: 8px;
-                        & .ant-card-meta-title--top-left {
-                            & i {
-                                color: $color-yellow-light;
-                                font-size: 14px;
-                            }
-                        }
+                        // & .ant-card-meta-title--top-left {
+                        //     & i {
+                        //         color: $color-yellow-light;
+                        //         font-size: 14px;
+                        //     }
+                        // }
                         & .ant-card-meta-title--top-right {
                             line-height: normal;
                             & .ant-tag {
                                 background-color: $color-green;
                                 @include border-radius(2px);
                                 font-weight: normal;
+                                line-height: 22px;
                                 font-size: 12px;
                                 color: #ffffff;
                                 margin-right: 0;

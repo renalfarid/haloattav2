@@ -1,26 +1,28 @@
 .navbar {
     background-color: transparent;
     position: absolute;
-    z-index: 9999;
+    padding: 0 32px;
+    z-index: 10;
     width: 100%;
-    padding: 0;
     left: 0;
     & .navbar-nav {
-        margin: 0 auto;
-        padding: 0 30px;
-        max-width: 1400px;
-        min-width: 980px;
+        @include align-items(center);
+        @include flexbox();
         & .navbar-brand {
-            display: inline;
-            & img {
-                max-width: 100%;
-                max-height: 34px;
+            display: block;
+            width: 123px;
+            & .logo {
+                background: url('/haloatta_white.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 100%;
+                height: 36px;
             }
         }
         & .navbar-right {
             @include align-items(center);
             @include flexbox();
-            float: right;
+            margin-left: auto;
             & .nav-item {
                 background: transparent;
                 border: none;
@@ -29,11 +31,11 @@
                     border: none;
                     & a {
                         font-size: 15px;
-                        color: rgba($color: #fff, $alpha: .9);
+                        color: rgba($color: #ffffff, $alpha: .9);
                     }
                     &.ant-menu-item-selected {
                         & a {
-                            color: rgba($color: #fff, $alpha: 1);
+                            color: rgba($color: #ffffff, $alpha: 1);
                         }
                     }
                 }
@@ -64,13 +66,29 @@
     }
 }
 
-.ant-affix {
-    left: 0 !important;
-    width: 100% !important;
-    z-index: 9999;
+.vue-fixed-header--isFixed {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    left: 0;
+    top: 0;
     & .navbar {
-        background: $color-main;
+        box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
+        -webkit-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
+        -moz-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
+        border-bottom: 1px solid #f5f5f5;
+        background: #ffffff !important;
         & .navbar-nav {
+            & .navbar-brand {
+                display: block;
+                width: 123px;
+                & .logo {
+                    background: url('/haloatta.png');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 100%;
+                }
+            }
             & .navbar-right {
                 & .nav-item {
                     background: transparent;
@@ -79,11 +97,11 @@
                     & .nav-link {
                         border: none;
                         & a {
-                            color: rgba($color: #ffffff, $alpha: .6);
+                            color: rgba($color: #000, $alpha: .6);
                         }
                         &.ant-menu-item-selected {
                             & a {
-                                color: rgba($color: #ffffff, $alpha: 1);
+                                color: rgba($color: #000, $alpha: 1);
                             }
                         }
                     }

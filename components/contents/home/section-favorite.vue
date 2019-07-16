@@ -4,9 +4,10 @@
       <a-row :gutter="16">
         <a-col :span="16">
           <h2 class="title">Umrah Favorit</h2>
-          <h6
-            class="subtitle"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione</h6>
+          <h6 class="subtitle">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+          </h6>
         </a-col>
       </a-row>
     </div>
@@ -14,7 +15,7 @@
     <a-row :gutter="16">
       <a-col :span="16">
         <a-card class="card-product-overlay">
-          <div class="box-content" :style="{ backgroundImage: `url(${vaforite5})` }">
+          <div class="box-content" :style="{ backgroundImage: `url(${coverFavorit})` }">
             <div class="box-content--overlay text-center">
               <div class="txt-title fs-40 fw-500 f-default mb-8">Bisa Share Profit Loh!</div>
               <div class="txt fs-16 fw-400 f-default">
@@ -27,17 +28,17 @@
         </a-card>
       </a-col>
 
-      <a-col :span="8">
+      <a-col :span="8" v-for="(item, index) in lisData" :key="index">
         <a-card class="ant-card-package">
           <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
-            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite1})` }">
+            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${item.images_product})` }">
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
                   <div class="ant-card-cover--overlay-text-title">sisa</div>
                   <div class="ant-card-cover--overlay-text-subtitle">
-                    <span>8</span> pax
+                    <span>{{item.pax_available}}</span> pax
                   </div>
                 </div>
               </div>
@@ -46,183 +47,28 @@
           <a-card-meta>
             <div slot="title">
               <div class="ant-card-meta-title--top d-flex align-items-center">
-                <div class="ant-card-meta-title--top-left">
-                  <a-icon type="star" theme="filled" />
-                  <a-icon type="star" theme="filled" />
-                  <a-icon type="star" theme="filled" />
+                <div class="ant-card-meta-title--top-left f-default">
+                  <a-rate class="fs-16" :defaultValue="3" disabled />
                 </div>
                 <div class="ant-card-meta-title--top-right ml-auto">
                   <a-tag>
                     Terbooking
-                    <strong>30</strong> seat
+                    <strong>{{item.pax_booked}}</strong> seat
                   </a-tag>
                 </div>
               </div>
-              <div class="ant-card-meta-title--package">Umrah Exclusive 2020 Keberangkatan Jakarta</div>
+              <div class="ant-card-meta-title--package">{{item.name_product}}</div>
             </div>
 
             <div slot="description">
               <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
+                <div class="ant-card-meta-description--bottom-left">Rp{{item.price_product}}</div>
                 <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                   <div class="icon icon-star">
-                    <a-icon type="star" theme="filled" />5.8
+                    <a-icon type="star" theme="filled" class="mr-4" />5.8
                   </div>
                   <div class="icon icon-comment">
-                    <a-icon type="message" />10 Komentar
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a-card-meta>
-        </a-card>
-      </a-col>
-
-      <a-col :span="8">
-        <a-card class="ant-card-package">
-          <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
-          <div slot="cover">
-            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite2})` }">
-              <div class="ant-card-cover--overlay">
-                <div class="ant-card-cover--overlay-box-radius"></div>
-                <div class="ant-card-cover--overlay-text">
-                  <div class="ant-card-cover--overlay-text-title">sisa</div>
-                  <div class="ant-card-cover--overlay-text-subtitle">
-                    <span>8</span> pax
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a-card-meta>
-            <div slot="title">
-              <div class="ant-card-meta-title--top d-flex align-items-center">
-                <div class="ant-card-meta-title--top-left">
-                  <a-icon type="star" theme="filled" />
-                  <a-icon type="star" theme="filled" />
-                  <a-icon type="star" theme="filled" />
-                </div>
-                <div class="ant-card-meta-title--top-right ml-auto">
-                  <a-tag>
-                    Terbooking
-                    <strong>30</strong> seat
-                  </a-tag>
-                </div>
-              </div>
-              <div class="ant-card-meta-title--package">Umrah Exclusive 2020 Keberangkatan Jakarta</div>
-            </div>
-
-            <div slot="description">
-              <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
-                <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
-                  <div class="icon icon-star">
-                    <a-icon type="star" theme="filled" />5.8
-                  </div>
-                  <div class="icon icon-comment">
-                    <a-icon type="message" />10 Komentar
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a-card-meta>
-        </a-card>
-      </a-col>
-
-      <a-col :span="8">
-        <a-card class="ant-card-package">
-          <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
-          <div slot="cover">
-            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite3})` }">
-              <div class="ant-card-cover--overlay">
-                <div class="ant-card-cover--overlay-box-radius"></div>
-                <div class="ant-card-cover--overlay-text">
-                  <div class="ant-card-cover--overlay-text-title">sisa</div>
-                  <div class="ant-card-cover--overlay-text-subtitle">
-                    <span>8</span> pax
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a-card-meta>
-            <div slot="title">
-              <div class="ant-card-meta-title--top d-flex align-items-center">
-                <div class="ant-card-meta-title--top-left">
-                  <a-icon type="star" theme="filled" />
-                  <a-icon type="star" theme="filled" />
-                  <a-icon type="star" theme="filled" />
-                </div>
-                <div class="ant-card-meta-title--top-right ml-auto">
-                  <a-tag>
-                    Terbooking
-                    <strong>30</strong> seat
-                  </a-tag>
-                </div>
-              </div>
-              <div class="ant-card-meta-title--package">Umrah Exclusive 2020 Keberangkatan Jakarta</div>
-            </div>
-
-            <div slot="description">
-              <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
-                <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
-                  <div class="icon icon-star">
-                    <a-icon type="star" theme="filled" />5.8
-                  </div>
-                  <div class="icon icon-comment">
-                    <a-icon type="message" />10 Komentar
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a-card-meta>
-        </a-card>
-      </a-col>
-
-      <a-col :span="8">
-        <a-card class="ant-card-package">
-          <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
-          <div slot="cover">
-            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${vaforite4})` }">
-              <div class="ant-card-cover--overlay">
-                <div class="ant-card-cover--overlay-box-radius"></div>
-                <div class="ant-card-cover--overlay-text">
-                  <div class="ant-card-cover--overlay-text-title">sisa</div>
-                  <div class="ant-card-cover--overlay-text-subtitle">
-                    <span>8</span> pax
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a-card-meta>
-            <div slot="title">
-              <div class="ant-card-meta-title--top d-flex align-items-center">
-                <div class="ant-card-meta-title--top-left">
-                  <a-icon type="star" theme="filled" />
-                  <a-icon type="star" theme="filled" />
-                  <a-icon type="star" theme="filled" />
-                </div>
-                <div class="ant-card-meta-title--top-right ml-auto">
-                  <a-tag>
-                    Terbooking
-                    <strong>30</strong> seat
-                  </a-tag>
-                </div>
-              </div>
-              <div class="ant-card-meta-title--package">Umrah Exclusive 2020 Keberangkatan Jakarta</div>
-            </div>
-
-            <div slot="description">
-              <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                <div class="ant-card-meta-description--bottom-left">Rp 20.000.000</div>
-                <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
-                  <div class="icon icon-star">
-                    <a-icon type="star" theme="filled" />5.8
-                  </div>
-                  <div class="icon icon-comment">
-                    <a-icon type="message" />10 Komentar
+                    <a-icon type="message" class="mr-4" />10 Komentar
                   </div>
                 </div>
               </div>
@@ -234,19 +80,45 @@
   </div>
 </template>
 <script>
-import vaforite1 from "~/static/products/V1.png";
-import vaforite2 from "~/static/products/V2.png";
-import vaforite3 from "~/static/products/V3.png";
-import vaforite4 from "~/static/products/V4.png";
-import vaforite5 from "~/static/products/V5.png";
+import coverFavorit from "~/static/products/V5.png";
 export default {
   data() {
     return {
-      vaforite1,
-      vaforite2,
-      vaforite3,
-      vaforite4,
-      vaforite5
+      coverFavorit,
+      lisData: [
+        {
+          id: 1,
+          name_product: "Umrah Hemat November 2019 Keberangkatan Jakarta",
+          images_product: "/products/V2.png",
+          price_product: "19.400.000",
+          pax_available: 38,
+          pax_booked: 7
+        },
+        {
+          id: 2,
+          name_product: "Umrah Hemat Desember 2019 Keberangkatan Makassar",
+          images_product: "/products/V2.png",
+          price_product: "17.900.000",
+          pax_available: 41,
+          pax_booked: 13
+        },
+        {
+          id: 3,
+          name_product: "Umrah Hemat Januari 2020 Keberangkatan Makassar",
+          images_product: "/products/V3.png",
+          price_product: "17.300.000",
+          pax_available: 41,
+          pax_booked: 20
+        },
+        {
+          id: 4,
+          name_product: "Umrah Hemat Februari 2020 Keberangkatan Makassar",
+          images_product: "/products/V4.png",
+          price_product: "16.900.000",
+          pax_available: 40,
+          pax_booked: 3
+        }
+      ]
     };
   }
 };

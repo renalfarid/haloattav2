@@ -71,8 +71,7 @@
                     <div class="d-flex align-items-center">
                       <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">Round Trip</div>
                       <div class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis">
-                        RP {{item.price}}
-                        <span class="fs-13 fw-400 cr-gray">/pax</span>
+                        Rp{{item.price}}
                       </div>
                     </div>
                   </a-card>

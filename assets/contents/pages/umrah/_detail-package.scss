@@ -3,7 +3,10 @@
     padding-bottom: 80px;
     & .ant-affix {
         & .ant-layout--package-tabs {
-            box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
+            border-bottom: 1px solid #f5f5f5;
+            border-top: 1px solid $color-border;
+            background: #ffffff;
+            z-index: 99;
         }
     }
     & .ant-layout--package-tabs {
