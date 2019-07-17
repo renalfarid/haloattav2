@@ -57,6 +57,7 @@
                   :grid="grid"
                   :settings="chartSettingSales"
                   :legend-visible="false"
+                  height="295px"
                 ></ve-line>
               </no-ssr>
             </a-card>
@@ -71,6 +72,7 @@
                   :grid="grid"
                   :settings="chartSettingPurchase"
                   :legend-visible="false"
+                  height="295px"
                 ></ve-line>
               </no-ssr>
             </a-card>
