@@ -3,7 +3,10 @@
     padding-bottom: 80px;
     & .ant-affix {
         & .ant-layout--package-tabs {
-            box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
+            border-bottom: 1px solid #f5f5f5;
+            border-top: 1px solid $color-border;
+            background: #ffffff;
+            z-index: 99;
         }
     }
     & .ant-layout--package-tabs {
@@ -93,56 +96,6 @@
                         box-shadow: none;
                         color: #ffffff;
                     }
-                }
-            }
-        }
-    }
-    & .ant-layout--right {
-        & .ant-card--package-information {
-            box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
-            border: 1px solid $color-border;
-            & .ant-card-cover {
-                @include border-radius(0);
-                & img {
-                    @include border-radius(0);
-                    width: 100%;
-                    max-width: 100%;
-                }
-            }
-            & .ant-card-body {
-                padding: 0;
-                & .ant-package--rate {
-                    color: $color-yellow;
-                }
-                & .number-input {
-                    margin-right: 0;
-                    min-width: 100px;
-                    & .number-input__button {
-                        background-color: #ffffff;
-                        @include border-radius(50%);
-                        border: 1px solid $color-main;
-                        width: 28px;
-                        height: 28px;
-                        &::before {
-                            background-color: $color-main;
-                            width: 30%;
-                        }
-                        &::after {
-                            background-color: $color-main;
-                            height: 30%;
-                        }
-                    }
-                    & .number-input__input {
-                        background-color: transparent !important;
-                        width: auto !important;
-                        color: $color-font;
-                        border: none;
-                    }
-                }
-                & .ant-btn--action {
-                    background-color: $color-main;
-                    color: #ffffff;
-                    border: none;
                 }
             }
         }

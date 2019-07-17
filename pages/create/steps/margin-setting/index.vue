@@ -12,7 +12,7 @@
     <a-layout :style="{ marginLeft: '280px', padding: '24px' }">
       <a-layout-content class="ant-layout-content--steps">
         <a-row type="flex" justify="space-between" align="middle" :gutter="24">
-          <a-col :span="14">
+          <a-col :span="24">
             <div class="fs-20 fw-500 cr-black f-default mb-16">
               Bagaimana Mengatur Margin
               <br />Penjualan Paket Umrah Saya ?
@@ -27,16 +27,11 @@
               margin yang anda inginkan, sehingga
               anda dapat bersaing harga dengan
               para umaroh diarea anda.
-            </div>
-            <div class="fs-14 fw-400 cr-black mb-8">
               Dengan menentukan besaran harga
               margin untuk quad room maka secara
               otomatis harga triple dan double room
               akan dikalkulasi dengan otomatis
             </div>
-          </a-col>
-          <a-col :span="10">
-            <img class="max-width m-auto d-block" style="maxHeight: 135px" src="/icons/set_margin.png" />
           </a-col>
         </a-row>
         <div class="fs-20 fw-500 cr-black mb-16 mt-16">Pengaturan Margin</div>

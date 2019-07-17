@@ -3,7 +3,7 @@
     <a-row :gutter="30">
       <a-col :span="9">
         <a-card>
-          <a-button size="large" class="btn-ask">
+          <a-button size="large" class="btn-ask b-radius b-shadow b-solid">
             <a-icon type="customer-service"/>Tanya Atta
           </a-button>
           <div class="title">Bank Pembayaran</div>
@@ -49,5 +49,12 @@
         </a-card>
       </a-col>
     </a-row>
+
+    <a-divider />
+
+    <div class="d-flex align-items-center">
+      <div class="fs-14 fw-400 cr-gray"> 2016 - 2019 &copy; PT Haloatta</div>
+      <div class="ml-auto"></div>
+    </div>
   </div>
 </template>

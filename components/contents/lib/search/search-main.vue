@@ -10,7 +10,7 @@
     <a-tab-pane key="1">
       <span slot="tab">
         <div class="icon">
-          <a-icon type="code-sandbox"/>
+          <a-icon type="code-sandbox" />
         </div>Paket Umrah
       </span>
 
@@ -20,7 +20,7 @@
             <a-col :span="12">
               <a-form-item label="Kota Asal" :label-col="{ span: 24 }" :wrapper-col="{ span: 24 }">
                 <div class="icon-search">
-                  <a-icon type="environment"/>
+                  <img class="max-width" src="/icons/ticket/airplane.png" />
                 </div>
                 <a-select
                   showSearch
@@ -50,7 +50,7 @@
                 :wrapper-col="{ span: 24 }"
               >
                 <div class="icon-search">
-                  <a-icon type="calendar"/>
+                  <a-icon type="calendar" />
                 </div>
                 <a-select
                   showSearch
@@ -82,26 +82,65 @@
                 :wrapper-col="{ span: 24 }"
               >
                 <div class="icon-search">
-                  <a-icon type="user"/>
+                  <img class="max-width" src="/icons/ticket/seat.png" />
                 </div>
-                <a-select
-                  showSearch
-                  defaultValue="40 Pax"
-                  placeholder="Pilih Jumlah Order"
-                  optionFilterProp="children"
-                  style="width: 100%"
-                  :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
-                  size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="40 Pax">40 Pax</a-select-option>
-                  <a-select-option value="20 Pax">20 Pax</a-select-option>
-                  <a-select-option value="10 Pax">10 Pax</a-select-option>
-                </a-select>
+                <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
+                  <a-menu slot="overlay">
+                    <a-menu-item key="0" disabled>
+                      <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <div class="mr-8">
+                            <a-avatar icon="user" />
+                          </div>
+                          <div>
+                            <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
+                            <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
+                          </div>
+                        </div>
+                        <div class="ml-auto">
+                          <number-input
+                            v-model="dewasa"
+                            :min="0"
+                            :max="10"
+                            :inputtable="false"
+                            size="small"
+                            center
+                            controls
+                          />
+                        </div>
+                      </div>
+                    </a-menu-item>
+                    <a-menu-item key="1" disabled>
+                      <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <div class="mr-8">
+                            <a-avatar icon="user" />
+                          </div>
+                          <div>
+                            <div class="fs-14 fw-400 cr-black f-default">Anak</div>
+                            <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
+                          </div>
+                        </div>
+                        <div class="ml-auto">
+                          <number-input
+                            v-model="anak"
+                            :min="0"
+                            :max="10"
+                            :inputtable="false"
+                            size="small"
+                            center
+                            controls
+                          />
+                        </div>
+                      </div>
+                    </a-menu-item>
+                  </a-menu>
+                  <a-button
+                    class="ant-btn--add-passenger text-left"
+                    size="large"
+                    block
+                  >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
+                </a-dropdown>
               </a-form-item>
             </a-col>
 
@@ -112,7 +151,7 @@
                 :wrapper-col="{ span: 24 }"
               >
                 <div class="icon-search">
-                  <a-icon type="calendar"/>
+                  <a-icon type="calendar" />
                 </div>
                 <a-select
                   showSearch
@@ -144,7 +183,7 @@
                 :wrapper-col="{ span: 24 }"
               >
                 <div class="icon-search">
-                  <a-icon type="crown"/>
+                  <a-icon type="crown" />
                 </div>
                 <a-select
                   showSearch
@@ -174,7 +213,7 @@
                 :wrapper-col="{ span: 24 }"
               >
                 <div class="icon-search">
-                  <a-icon type="wallet"/>
+                  <a-icon type="wallet" />
                 </div>
                 <a-select
                   showSearch
@@ -210,7 +249,7 @@
     <a-tab-pane disabled key="2">
       <span slot="tab">
         <div class="icon">
-          <a-icon type="code-sandbox"/>
+          <a-icon type="code-sandbox" />
         </div>Tiket Group
       </span>
       Content of tab 2
@@ -219,7 +258,7 @@
     <a-tab-pane disabled key="3">
       <span slot="tab">
         <div class="icon">
-          <a-icon type="code-sandbox"/>
+          <a-icon type="code-sandbox" />
         </div>LA Akomodasi
       </span>
       Content of tab 3
@@ -228,7 +267,7 @@
     <a-tab-pane disabled key="4">
       <span slot="tab">
         <div class="icon">
-          <a-icon type="code-sandbox"/>
+          <a-icon type="code-sandbox" />
         </div>Visa Umrah
       </span>
       Content of tab 4
@@ -237,7 +276,7 @@
     <a-tab-pane disabled key="5">
       <span slot="tab">
         <div class="icon">
-          <a-icon type="code-sandbox"/>
+          <a-icon type="code-sandbox" />
         </div>Asuransi
       </span>
       Content of tab 5
@@ -246,7 +285,7 @@
     <a-tab-pane disabled key="6">
       <span slot="tab">
         <div class="icon">
-          <a-icon type="code-sandbox"/>
+          <a-icon type="code-sandbox" />
         </div>Handling
       </span>
       Content of tab 6
@@ -256,7 +295,10 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      dewasa: 1,
+      anak: 0
+    };
   },
 
   methods: {
@@ -280,7 +322,7 @@ export default {
       );
     },
     searchUmrah() {
-      this.$router.push({ path: '/umrah/results' })
+      this.$router.push({ path: "/umrah/result" });
     }
   }
 };

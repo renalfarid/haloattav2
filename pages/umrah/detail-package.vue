@@ -1,7 +1,7 @@
 <template>
   <div class="ant-layout--package-details">
     <div class="ant-layout--results-space-small"></div>
-    <a-affix :offsetTop="64" @change="change">
+    <a-affix :offsetTop="60" @change="change">
       <div class="ant-layout--package-tabs">
         <div class="container">
           <div class="ant-tabs--item">

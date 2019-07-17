@@ -12,7 +12,7 @@
     <a-layout :style="{ marginLeft: '280px', padding: '24px' }">
       <a-layout-content class="ant-layout-content--steps">
         <a-row type="flex" justify="space-between" align="middle" :gutter="24">
-          <a-col :span="14">
+          <a-col :span="24">
             <div class="fs-20 fw-500 cr-black f-default mb-16">
               Bagaimana Mengatur Tampilan
               <br />Paket Umrah Saya ?
@@ -23,13 +23,6 @@
               selanjutnya pilih gambar tampilan paket.
               Tentukan tanggal Publish dan tanggal closing paket umrah anda.
             </div>
-          </a-col>
-          <a-col :span="10">
-            <img
-              class="max-width m-auto d-block"
-              style="maxHeight: 135px"
-              src="/icons/set_package.png"
-            />
           </a-col>
         </a-row>
 

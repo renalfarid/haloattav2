@@ -12,3 +12,17 @@ body,
         margin: 0 auto !important;
     }
 }
+
+.spin-loading-container {
+    @include align-items(center);
+    @include flexbox();
+    position: relative;
+    text-align: center;
+    height: 200px;
+    padding: 24px;
+    width: 100%;
+    & .ant-spin {
+        margin: 0 auto;
+        color: $color-main;
+    }
+}

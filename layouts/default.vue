@@ -2,15 +2,13 @@
   <div>
     <no-ssr>
       <a-layout>
-        <a-affix :offsetTop="0" @change="change">
-          <Navbar/>
-        </a-affix>
+        <navbar />
 
         <a-layout-content>
           <nuxt/>
         </a-layout-content>
 
-        <a-layout-footer :style="{ background: '#f5f5f5' }">
+        <a-layout-footer :style="{ background: '#fff' }">
           <Footer/>
         </a-layout-footer>
         <a-back-top />
@@ -25,11 +23,6 @@ export default {
   components: {
     Navbar,
     Footer
-  },
-  methods: {
-    change(affixed) {
-      console.log(affixed);
-    }
   }
 };
 </script>

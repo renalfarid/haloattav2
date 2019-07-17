@@ -1,0 +1,231 @@
+.card-product-overlay {
+    position: relative;
+    border: none;
+    & .ant-card-body {
+        overflow: hidden;
+        height: 336px;
+        padding: 0;
+        & .box-content {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            & .box-content--overlay {
+                position: absolute;
+                color: #ffffff;
+                overflow: hidden;
+                padding: 40px;
+                width: 100%;
+                z-index: 2;
+                bottom: 0;
+                left: 0;
+                & .ant-btn {
+                    border: 1px solid #ffffff;
+                    background: transparent;
+                    margin-top: 30px;
+                    min-width: 200px;
+                    color: #ffffff;
+                    &:hover,
+                    &:focus {
+                        background: #ffffff;
+                        color: $color-main;
+                    }
+                }
+            }
+            & .gradient-bottom {
+                background-image: -webkit-linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
+                background-image: -moz-linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
+                background-image: linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
+                position: absolute !important;
+                bottom: 0 !important;
+                height: 100% !important;
+                width: 100% !important;
+                min-height: 80px !important;
+                left: 0;
+            }
+        }
+    }
+}
+
+.ant-card-package {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
+    margin-bottom: 16px;
+    position: relative;
+    border: none;
+    & .ant-list-item--link {
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        bottom: 0;
+        left: 0;
+        top: 0;
+    }
+    & .ant-card-cover {
+        & .ant-card-cover--images {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+            width: 100%;
+            & .ant-card-cover--overlay {
+                & .ant-card-cover--overlay-box-radius {
+                    background: $color-green-overlay;
+                    @include border-radius(100px);
+                    position: absolute;
+                    height: 150px;
+                    width: 150px;
+                    left: -75px;
+                    top: -85px;
+                    &.ant-pax--visa {
+                        background: $color-orange-overlay !important;
+                    }
+                    &.ant-pax--choice {
+                        background: $color-main-overlay !important;
+                    }
+                }
+                & .ant-card-cover--overlay-text {
+                    text-transform: uppercase;
+                    position: absolute;
+                    text-align: center;
+                    color: #ffffff;
+                    padding: 8px;
+                    left: 0;
+                    top: 0;
+                    & .ant-card-cover--overlay-text-title {
+                        line-height: normal;
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
+                    & .ant-card-cover--overlay-text-subtitle {
+                        text-transform: lowercase;
+                        line-height: normal;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+    & .ant-card-body {
+        padding: 16px;
+        & .ant-avatar {
+            @include align-items(center);
+            background-color: #fafafa;
+            @include flexbox();
+            & img {
+                width: auto !important;
+                height: auto !important;
+                max-width: 100%;
+                max-height: 100%;
+                margin: 0 auto;
+            }
+        }
+        & .ant-card-meta {
+            & .ant-card-meta-detail {
+                & .ant-card-meta-title {
+                    white-space: normal;
+                    margin-bottom: 0;
+                    & .ant-card-meta-title--top {
+                        margin-bottom: 8px;
+                        // & .ant-card-meta-title--top-left {
+                        //     & i {
+                        //         color: $color-yellow-light;
+                        //         font-size: 16px;
+                        //     }
+                        // }
+                        & .ant-card-meta-title--top-right {
+                            line-height: normal;
+                            & .ant-tag {
+                                background-color: $color-green;
+                                @include border-radius(2px);
+                                font-weight: normal;
+                                line-height: 22px;
+                                font-size: 14px;
+                                color: #ffffff;
+                                margin-right: 0;
+                                border: none;
+                            }
+                        }
+                    }
+                    & .ant-card-meta-title--package {
+                        margin-bottom: 8px;
+                        color: $color-font;
+                        font-weight: 600;
+                        line-height: 22px;
+                        font-size: 18px;
+                        height: 44px;
+                    }
+                }
+                & .ant-card-meta-description {
+                    & .ant-card-meta-description--bottom {
+                        white-space: nowrap;
+                        & .ant-card-meta-description--bottom-left {
+                            font-weight: 600;
+                            color: $color-font;
+                            font-size: 16px;
+                        }
+                        & .ant-card-meta-description--bottom-right {
+                            color: $color-font-gray;
+                            font-size: 14px;
+                            & .icon {
+                                &.icon-star {
+                                    & i {
+                                        color: $color-yellow-light;
+                                        margin-right: 3px;
+                                    }
+                                }
+                                &.icon-comment {
+                                    margin-left: 8px;
+                                    & i {
+                                        color: $color-green;
+                                        margin-right: 3px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & .package-description--more {
+            -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: -webkit-calc(100% + 2px);
+            width: calc(100% + 2px);
+            border-radius: 0 0 4px 4px;
+            background: #f5f5f5;
+            position: absolute;
+            top: 100%;
+            left: -1px;
+            display: block;
+            visibility: hidden;
+            opacity: 0;
+            & .ant-btn {
+                background-color: $color-main;
+                border: 1px solid $color-main;
+                color: #ffffff;
+            }
+        }
+    }
+    &:hover {
+        & .ant-card-body {
+            & .package-description--more {
+                -webkit-transition: all .1s ease-out;
+                -o-transition: all .1s ease-out;
+                transition: all .1s ease-out;
+                -webkit-transition-delay: .2s;
+                -o-transition-delay: .2s;
+                transition-delay: .2s;
+                visibility: visible;
+                z-index: 10;
+                opacity: 1;
+            }
+        }
+    }
+}

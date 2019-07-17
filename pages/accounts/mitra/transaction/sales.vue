@@ -44,22 +44,22 @@
       >
         
         <a-row type="flex" class="w-100">
-          <a-col :span="6">
+          <a-col :span="5">
             <div class="ant-images">
               <div class="ant-images--product" :style="{backgroundImage: `url(${item.images})`}"></div>
             </div>
           </a-col>
-          <a-col :span="18">
+          <a-col :span="19">
             <a-row class="m-0 p-16">
             <a-col :span="10">
               <div class="fs-12 fw-400 cr-gray text-uppercase">No. Pesanan</div>
               <div class="cr-black fs-14 fw-500 f-default">{{item.no_pesanan}}</div>
             </a-col>
-            <a-col :span="7">
+            <a-col :span="5">
               <div class="cr-gray fs-12 fw-400 text-uppercase">Pax Order</div>
               <div class="cr-black fs-14 fw-500 f-default">{{item.pax_order}} pax</div>
             </a-col>
-            <a-col :span="7" class="text-right text-uppercase">
+            <a-col :span="9" class="text-right text-uppercase">
               <div class="fs-12 fw-400 cr-gray">Total Bayar</div>
               <div class="cr-black fs-14 fw-500 f-default">Rp. {{item.total_bayar}}</div>
             </a-col>
@@ -75,11 +75,11 @@
             <a-col :span="10">
               <div class="fs-14 fw-500 cr-black f-default mr-8">{{item.name_package}}</div>
             </a-col>
-            <a-col :span="7">
+            <a-col :span="5">
               <div class="cr-gray fs-12 fw-400 text-uppercase">Tanggal Order</div>
               <div class="cr-black fs-14 fw-500 f-default">{{item.tgl_order}}</div>
             </a-col>
-            <a-col :span="7" class="text-right">
+            <a-col :span="9" class="text-right">
               <div class="cr-gray fs-12 fw-400 text-uppercase">Status Pesanan</div>
               <div
                 class="fs-14 fw-500 f-default cr-red"
@@ -104,7 +104,7 @@
               <div class="cr-gray fs-12 fw-400 text-uppercase">Metode Pembayaran</div>
               <div class="cr-black fs-14 fw-500 f-default">{{item.metode_pembayaran}}</div>
             </a-col>
-            <a-col :span="7">
+            <a-col :span="5">
               <div v-if="item.status === 'Menunggu Pembayaran'">
                 <div class="cr-gray fs-12 fw-400 text-uppercase">Batas Pembayaran</div>
                 <div class="cr-black fs-14 fw-500 f-default">{{item.batas_pembayaran}}</div>
@@ -118,11 +118,19 @@
                 <div class="cr-black fs-14 fw-500 f-default">{{item.tgl_purchase}}</div>
               </div>
             </a-col>
-            <a-col :span="7" class="text-right">
-              <a-button
-                class="b-solid b-radius b-shadow ant-btn--action"
-                v-if="item.status === 'Menunggu Pembayaran'"
-              >Konfirmasi Pembayaran</a-button>
+            <a-col :span="9">
+              <div class="d-flex align-items-center align-end">
+                <div v-if="item.status === 'Menunggu Pembayaran'">
+                  <a-button class="b-shadow b-radius ant-btn--action" @click="nextConf">Konfirmasi Pembayaran</a-button>
+
+                  <a-divider type="vertical" />
+                </div>
+
+                <nuxt-link
+                  to="/accounts/mitra/transaction/detail"
+                  class="cr-primary fs-14"
+                >Lihat detail</nuxt-link>
+              </div>
             </a-col>
           </a-row>
           </a-col>
@@ -199,6 +207,9 @@ export default {
     onChange(dates, dateStrings) {
       console.log("From: ", dates[0], ", to: ", dates[1]);
       console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
+    },
+    nextConf() {
+      this.$router.push({ path: "/accounts/e-confirm" });
     }
   }
 };

@@ -1,17 +1,36 @@
-@import "utility/utility";
-@import "components/components";
-@import "header/navbar";
-@import "header/navbar-accounts";
-@import "sidebar/sidebar";
+// utility
+@import "utility/colors";
+@import "utility/mixins";
+@import "utility/base";
+// components
+@import "components/apps";
+// lib partials
+@import "lib/partials/navbar-main";
+@import "lib/partials/navbar-account";
+@import "lib/partials/sider-account";
+@import "lib/partials/footer-main";
+// lib plugins
+@import "lib/plugins/vue-slick";
+// lib search
+@import "lib/search/home";
+@import "lib/search/results";
+// lib filter
+@import "lib/filter/results";
+// lib product card
+@import "lib/products/card-large";
+@import "lib/products/card-small";
+@import "lib/products/card-mitra";
+@import "lib/products/card-ticket";
+@import "lib/products/card-trend";
+@import "lib/products/card-blog";
+// pages main
 @import "contents/apps";
-@import "library/library";
-@import "plugins/plugins";
-@import "footer/footer";
 // accounts pages
-@import "accounts/accounts-summary";
-@import "accounts/top-up";
-@import "accounts/package/umrah";
-@import "accounts/transaction/purchase";
-@import "accounts/transaction/order";
-@import "accounts/transaction/sales";
-@import "accounts/create_package/steps";
+@import "contents/accounts/accounts-summary";
+@import "contents/accounts/top-up";
+@import "contents/accounts/package/umrah";
+@import "contents/accounts/transaction/purchase";
+@import "contents/accounts/transaction/order";
+@import "contents/accounts/transaction/sales";
+@import "contents/accounts/transaction/detail";
+@import "contents/accounts/create_package/steps";
