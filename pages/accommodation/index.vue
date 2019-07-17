@@ -17,7 +17,7 @@
               </p>
             </a-col>
             <a-col :span="14">
-              <searchTicket />
+              <search-accommodation />
             </a-col>
           </a-row>
         </div>
@@ -140,7 +140,7 @@
   </div>
 </template>
 <script>
-import searchTicket from "~/components/contents/lib/search/search-ticket.vue";
+import searchAccommodation from "~/components/contents/lib/search/search-accommodation.vue";
 import Recommended from "~/components/contents/accommodation/recommended.vue";
 const partner = [
   {
@@ -195,7 +195,7 @@ export default {
     }
   },
   components: {
-    searchTicket,
+    searchAccommodation,
     Recommended
   }
 };

@@ -10,58 +10,6 @@
       >
         <a-row :gutter="16">
           <a-col :span="12">
-            <a-form-item label="Kota Asal" hasFeedback>
-              <div class="icon-search">
-                <img class="max-width" src="/icons/search/airplane.svg" />
-              </div>
-              <a-select
-                showSearch
-                defaultValue="Makassar"
-                placeholder="Pilih Kota Asal"
-                optionFilterProp="children"
-                :showArrow="false"
-                style="width: 100%"
-                @focus="handleFocus"
-                @blur="handleBlur"
-                @change="handleChange"
-                :filterOption="filterOption"
-                size="large"
-              >
-                <a-select-option value="All">Tampilkan Semua</a-select-option>
-                <a-select-option value="Makassar">Makassar (UPG)</a-select-option>
-                <a-select-option value="Jakarta">Jakarta (CGK)</a-select-option>
-              </a-select>
-            </a-form-item>
-          </a-col>
-
-          <a-col :span="12">
-            <a-form-item label="Kota Tujuan" hasFeedback>
-              <div class="icon-search">
-                <a-icon type="environment" />
-              </div>
-              <a-select
-                showSearch
-                defaultValue="Jeddah"
-                placeholder="Pilih Kota Tujuan"
-                optionFilterProp="children"
-                style="width: 100%"
-                :showArrow="false"
-                @focus="handleFocus"
-                @blur="handleBlur"
-                @change="handleChange"
-                :filterOption="filterOption"
-                size="large"
-              >
-                <a-select-option value="All">Tampilkan Semua</a-select-option>
-                <a-select-option value="Jeddah">Jeddah (JED)</a-select-option>
-                <a-select-option value="Medinah">Medinah (MED)</a-select-option>
-              </a-select>
-            </a-form-item>
-          </a-col>
-        </a-row>
-
-        <a-row :gutter="16">
-          <a-col :span="12">
             <a-form-item label="Program Hari" hasFeedback>
               <div class="icon-search">
                 <a-icon type="calendar" />
@@ -88,9 +36,9 @@
           </a-col>
 
           <a-col :span="12">
-            <a-form-item label="Jumalah Seat" hasFeedback>
+            <a-form-item label="Jumlah Tamu" hasFeedback>
               <div class="icon-search">
-                <img class="max-width" src="/icons/search/seat.svg" />
+                <img class="max-width" src="/icons/search/boysmiling.svg" />
               </div>
               <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
                 <a-menu slot="overlay">
@@ -155,19 +103,71 @@
 
         <a-row :gutter="16">
           <a-col :span="12">
-            <a-form-item label="Keberangkatan" hasFeedback>
+            <a-form-item label="Dari Kota" hasFeedback>
+              <div class="icon-search">
+                <img class="max-width" src="/icons/search/bedtime.svg" />
+              </div>
+              <a-select
+                showSearch
+                defaultValue="3 Hari Mekkah"
+                placeholder="Pilih Kota"
+                optionFilterProp="children"
+                :showArrow="false"
+                style="width: 100%"
+                @focus="handleFocus"
+                @blur="handleBlur"
+                @change="handleChange"
+                :filterOption="filterOption"
+                size="large"
+              >
+                <a-select-option value="All">Tampilkan Semua</a-select-option>
+                <a-select-option value="3 Hari Mekkah">3 Hari Mekkah</a-select-option>
+                <a-select-option value="4 Hari Mekkah">4 Hari Mekkah</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+
+          <a-col :span="12">
+            <a-form-item label="Ke Kota" hasFeedback>
+              <div class="icon-search">
+                <img class="max-width" src="/icons/search/bedtime.svg" />
+              </div>
+              <a-select
+                showSearch
+                defaultValue="3 Hari Madinah"
+                placeholder="Pilih Kota"
+                optionFilterProp="children"
+                style="width: 100%"
+                :showArrow="false"
+                @focus="handleFocus"
+                @blur="handleBlur"
+                @change="handleChange"
+                :filterOption="filterOption"
+                size="large"
+              >
+                <a-select-option value="All">Tampilkan Semua</a-select-option>
+                <a-select-option value="3 Hari Madinah">3 Hari Madinah</a-select-option>
+                <a-select-option value="4 Hari Madinah">4 Hari Madinah</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+        </a-row>
+
+        <a-row :gutter="16">
+          <a-col :span="12">
+            <a-form-item label="Check In" hasFeedback>
               <a-date-picker
                 size="large"
                 style="width: 100%"
-                v-decorator="['tanggal_keberangkatan',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+                v-decorator="['tanggal_checkIn',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
                 :disabledDate="disabledDate"
-                placeholder="Pilih Tanggal Keberangkatan"
+                placeholder="Pilih Tanggal Check In"
               />
             </a-form-item>
           </a-col>
 
           <a-col :span="12">
-            <a-form-item label="Kedatangan">
+            <a-form-item label="Check Out">
               <a-date-picker
                 size="large"
                 style="width: 100%"
@@ -185,7 +185,7 @@
               class="btn-search b-shadow b-radius"
               size="large"
               block
-            >Cari Tiket Group</a-button>
+            >Cari LA Akomodasi</a-button>
           </a-col>
         </a-row>
       </a-form>
@@ -195,7 +195,7 @@
 <script>
 import moment from "moment";
 export default {
-  name: "searchTicket",
+  name: "searchAccommodation",
   data() {
     this.dateFormat = "YYYY-MM-DD";
     return {
@@ -229,11 +229,10 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
+      this.$router.push("/accommodation/result");
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);
-        } else {
-          this.$router.push("/ticket-group/result");
         }
       });
     }

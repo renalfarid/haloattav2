@@ -8,16 +8,21 @@
           </div>
           <div>
             <div class="ant-card--results-info-title">
-              Makassar (UPG) <a-icon type="retweet" class="cr-gray ml-8 mr-8" /> Jeddah (JED)
+              Makassar (UPG)
+              <a-icon type="retweet" class="cr-gray ml-8 mr-8" />Jeddah (JED)
             </div>
             <div class="ant-card--results-info-subtitle">
               Program 9 Hari
               <a-divider type="vertical" />
-              <span>40 Dewasa</span>, <span>0 Anak</span>
+              <span>40 Dewasa</span>,
+              <span>0 Anak</span>
             </div>
           </div>
         </div>
-        <div class="ant-card--results-info-right ml-auto" v-bind:class="visibleSearch ? 'd-none' : ''">
+        <div
+          class="ant-card--results-info-right ml-auto"
+          v-bind:class="visibleSearch ? 'd-none' : ''"
+        >
           <a-button @click="showSearch" class="b-shadow b-radius">Ganti Pencarian</a-button>
         </div>
       </div>
@@ -33,9 +38,9 @@
         >
           <a-row :gutter="16">
             <a-col :span="8">
-              <a-form-item label="Kota Asal" :label-col="{ span: 24 }" :wrapper-col="{ span: 24 }">
+              <a-form-item label="Kota Asal">
                 <div class="icon-search">
-                  <img class="max-width" src="/icons/ticket/airplane.png" />
+                  <img class="max-width" src="/icons/search/airplane.svg" />
                 </div>
                 <a-select
                   showSearch
@@ -58,11 +63,7 @@
             </a-col>
 
             <a-col :span="8">
-              <a-form-item
-                label="Kota Tujuan"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Kota Tujuan">
                 <div class="icon-search">
                   <a-icon type="environment" />
                 </div>
@@ -87,13 +88,9 @@
             </a-col>
 
             <a-col :span="8">
-              <a-form-item
-                label="Jumlah Seat"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Jumlah Seat">
                 <div class="icon-search">
-                  <img class="max-width" src="/icons/ticket/seat.png" />
+                  <img class="max-width" src="/icons/search/seat.svg" />
                 </div>
                 <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
                   <a-menu slot="overlay">
@@ -158,11 +155,7 @@
 
           <a-row :gutter="16">
             <a-col :span="8">
-              <a-form-item
-                label="Program Hari"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Program Hari">
                 <div class="icon-search">
                   <a-icon type="calendar" />
                 </div>
@@ -188,11 +181,7 @@
             </a-col>
 
             <a-col :span="8">
-              <a-form-item
-                label="Keberangkatan"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Keberangkatan">
                 <a-date-picker
                   size="large"
                   style="width: 100%"
@@ -204,24 +193,25 @@
             </a-col>
 
             <a-col :span="8">
-              <a-form-item
-                label="Kedatangan"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Kedatangan">
                 <a-date-picker
-                size="large"
-                style="width: 100%"
-                :defaultValue="moment('2019-06-10', dateFormat)"
-                disabled
-              />
+                  size="large"
+                  style="width: 100%"
+                  :defaultValue="moment('2019-06-10', dateFormat)"
+                  disabled
+                />
               </a-form-item>
             </a-col>
           </a-row>
 
           <a-row :gutter="16" type="flex" justify="end">
             <a-col :span="8">
-              <a-button html-type="submit" class="btn-search b-shadow b-radius" size="large" block>Cari Tiket Group</a-button>
+              <a-button
+                html-type="submit"
+                class="btn-search b-shadow b-radius"
+                size="large"
+                block
+              >Cari Tiket Group</a-button>
             </a-col>
           </a-row>
         </a-form>

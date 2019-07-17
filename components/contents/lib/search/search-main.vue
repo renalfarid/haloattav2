@@ -18,9 +18,9 @@
         <a-form layout="vertical" class="form-search--costume">
           <a-row :gutter="16">
             <a-col :span="12">
-              <a-form-item label="Kota Asal" :label-col="{ span: 24 }" :wrapper-col="{ span: 24 }">
+              <a-form-item label="Kota Asal">
                 <div class="icon-search">
-                  <img class="max-width" src="/icons/ticket/airplane.png" />
+                  <img class="max-width" src="/icons/search/airplane.svg" />
                 </div>
                 <a-select
                   showSearch
@@ -44,11 +44,7 @@
             </a-col>
 
             <a-col :span="12">
-              <a-form-item
-                label="Bulan Keberangkatan"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Bulan Keberangkatan">
                 <div class="icon-search">
                   <a-icon type="calendar" />
                 </div>
@@ -76,13 +72,9 @@
 
           <a-row :gutter="16">
             <a-col :span="12">
-              <a-form-item
-                label="Jumalah Order"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Jamaah">
                 <div class="icon-search">
-                  <img class="max-width" src="/icons/ticket/seat.png" />
+                  <img class="max-width" src="/icons/search/boysmiling.svg" />
                 </div>
                 <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
                   <a-menu slot="overlay">
@@ -145,11 +137,7 @@
             </a-col>
 
             <a-col :span="12">
-              <a-form-item
-                label="Program Hari"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Program Hari">
                 <div class="icon-search">
                   <a-icon type="calendar" />
                 </div>
@@ -177,11 +165,7 @@
 
           <a-row :gutter="16">
             <a-col :span="12">
-              <a-form-item
-                label="Rating Bintang Hotel"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Rating Bintang Hotel">
                 <div class="icon-search">
                   <a-icon type="crown" />
                 </div>
@@ -207,11 +191,7 @@
             </a-col>
 
             <a-col :span="12">
-              <a-form-item
-                label="Kisaran Harga"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Kisaran Harga">
                 <div class="icon-search">
                   <a-icon type="wallet" />
                 </div>
@@ -239,7 +219,7 @@
 
           <a-row :gutter="16">
             <a-col :span="12">
-              <a-button @click="searchUmrah" class="btn-search" size="large" block>Cari Umrah</a-button>
+              <a-button @click="searchUmrah" class="btn-search b-shadow b-radius" size="large" block>Cari Umrah</a-button>
             </a-col>
           </a-row>
         </a-form>

@@ -49,7 +49,7 @@
                 title="Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
               >
                 <template slot="description">
-                  <a-button size="large">Buat Paket</a-button>
+                  <a-button size="large" class="b-shadow b-radius"><nuxt-link to="/accounts/mitra/create">Buat Paket</nuxt-link></a-button>
                 </template>
               </a-card-meta>
             </a-col>
