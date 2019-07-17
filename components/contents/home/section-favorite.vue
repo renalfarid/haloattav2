@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="header-title">
+      <a-divider orientation="left" class="ant-divider-title-left">Umrah Favorit</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
-          <h2 class="title">Umrah Favorit</h2>
           <h6 class="subtitle">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
@@ -32,7 +32,10 @@
         <a-card class="ant-card-package">
           <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
-            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${item.images_product})` }">
+            <div
+              class="ant-card-cover--images"
+              :style="{ backgroundImage: `url(${item.images_product})` }"
+            >
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
@@ -74,6 +77,34 @@
               </div>
             </div>
           </a-card-meta>
+          <div class="package-description--more p-24">
+            <div class="d-flex align-items-center mb-8">
+              <div class="fs-15 fw-400 cr-black f-default text-ellipsis">
+                Kota
+                Keberangkatan Makassar
+              </div>
+              <div class="text-ellipsis ml-auto">
+                <a-avatar
+                  src="https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png"
+                />
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-16">
+              <div class="fs-13 fw-400 text-ellipsis">
+                <div class="cr-gray">Keberangkatan</div>
+                <div class="cr-black">10 September 2019</div>
+              </div>
+              <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
+                <div class="cr-gray">Kedatangan</div>
+                <div class="cr-black">19 September 2019</div>
+              </div>
+            </div>
+
+            <a-button block>
+              <nuxt-link to="/payment/order-data">Pesan</nuxt-link>
+            </a-button>
+          </div>
         </a-card>
       </a-col>
     </a-row>

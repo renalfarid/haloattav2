@@ -8,7 +8,7 @@
           <nuxt/>
         </a-layout-content>
 
-        <a-layout-footer :style="{ background: '#fff' }">
+        <a-layout-footer :style="{ background: '#fff', padding: '24px 0' }">
           <Footer/>
         </a-layout-footer>
         <a-back-top />

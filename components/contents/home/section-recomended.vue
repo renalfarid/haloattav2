@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="header-title">
+      <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi Untuk Kamu</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
-          <h2 class="title">Rekomendasi Program Umrah</h2>
           <h6 class="subtitle">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione

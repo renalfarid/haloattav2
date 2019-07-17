@@ -16,7 +16,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
+            <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -75,7 +75,7 @@
                         </div>
                       </div>
                     </a-card-meta>
-                    <div class="package-description--more p-16">
+                    <div class="package-description--more p-24">
                       <div class="d-flex align-items-center mb-8">
                         <div class="fs-15 fw-400 cr-black f-default text-ellipsis">
                           Kota

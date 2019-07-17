@@ -156,6 +156,14 @@
             min-height: 120px !important;
             left: 0;
         }
+        & a {
+            position: absolute;
+            width: 100%;
+            z-index: 2;
+            bottom: 0;
+            right: 0;
+            top: 0;
+        }
     }
     & .container-slick {
         position: relative;
