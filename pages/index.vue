@@ -1,28 +1,92 @@
 <template>
   <div>
     <div class="content-head">
-      <div class="content-head--cover" :style="{ backgroundImage: `url(${coverUrl})` }">
+      <div class="content-head--cover" :style="{ backgroundImage: 'url(/cover/C1.png)' }">
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
             <a-col :span="14">
-              <searchMain/>
+              <a-tabs
+                class="search-main"
+                type="card"
+                defaultActiveKey="1"
+                tabPosition="top"
+                @prevClick="callback"
+                @nextClick="callback"
+              >
+                <a-tab-pane key="1">
+                  <span slot="tab">
+                    <div class="icon">
+                      <a-icon type="code-sandbox" />
+                    </div>Paket Umrah
+                  </span>
+                  <search-umrah />
+                </a-tab-pane>
+
+                <a-tab-pane key="2">
+                  <span slot="tab">
+                    <div class="icon">
+                      <a-icon type="code-sandbox" />
+                    </div>Tiket Group
+                  </span>
+                  <search-ticket />
+                </a-tab-pane>
+
+                <a-tab-pane key="3">
+                  <span slot="tab">
+                    <div class="icon">
+                      <a-icon type="code-sandbox" />
+                    </div>LA Akomodasi
+                  </span>
+                  <search-accommodation />
+                </a-tab-pane>
+
+                <a-tab-pane disabled key="4">
+                  <span slot="tab">
+                    <div class="icon">
+                      <a-icon type="code-sandbox" />
+                    </div>Visa Umrah
+                  </span>
+                  Content of tab 4
+                </a-tab-pane>
+
+                <a-tab-pane disabled key="5">
+                  <span slot="tab">
+                    <div class="icon">
+                      <a-icon type="code-sandbox" />
+                    </div>Asuransi
+                  </span>
+                  Content of tab 5
+                </a-tab-pane>
+
+                <a-tab-pane disabled key="6">
+                  <span slot="tab">
+                    <div class="icon">
+                      <a-icon type="code-sandbox" />
+                    </div>Handling
+                  </span>
+                  Content of tab 6
+                </a-tab-pane>
+              </a-tabs>
             </a-col>
+
             <a-col :span="10">
               <h2 class="title">Kembangkan Bisnis Umrah Anda</h2>
               <a-button class="btn-join--us d-none" size="large">Gabung Sekarang</a-button>
-              
+
               <a-comment class="ant-comment--accounts">
                 <template slot="actions">
-                  <a-tag><a-icon type="gold" /> <span>101</span> POIN</a-tag>
-                  <a-tag><a-icon type="wallet" /> Rp <span>69.000.000</span></a-tag>
+                  <a-tag>
+                    <a-icon type="gold" />
+                    <span>101</span> POIN
+                  </a-tag>
+                  <a-tag>
+                    <a-icon type="wallet" />Rp
+                    <span>69.000.000</span>
+                  </a-tag>
                 </template>
                 <a slot="author">Awaluddin Muhammad Arifatullah</a>
-                <a-avatar
-                  src="/user/maha_user.jpg"
-                  alt="haloatta"
-                  slot="avatar"
-                />
+                <a-avatar src="/user/maha_user.jpg" alt="haloatta" slot="avatar" />
                 <p slot="content">Jl Kebahagiaan Utara - BTP Blok A, No 537</p>
               </a-comment>
             </a-col>
@@ -32,16 +96,16 @@
     </div>
 
     <div class="content-favorites">
-      <sectionFavorite/>
+      <sectionFavorite />
     </div>
 
     <div class="content-components-umrah">
-      <sectionComponentsUmrah/>
+      <sectionComponentsUmrah />
     </div>
 
     <div class="content-banner-full">
       <a-card class="cover-banner">
-        <img alt="haloatta" src="~/static/cover/cover-create.png" slot="cover">
+        <img alt="haloatta" src="~/static/cover/cover-create.png" slot="cover" />
         <div class="container h-100">
           <a-row :gutter="16" type="flex" justify="start" align="middle" class="h-100">
             <a-col :span="12">
@@ -49,7 +113,9 @@
                 title="Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
               >
                 <template slot="description">
-                  <a-button size="large" class="b-shadow b-radius"><nuxt-link to="/accounts/mitra/create">Buat Paket</nuxt-link></a-button>
+                  <a-button size="large" class="b-shadow b-radius">
+                    <nuxt-link to="/accounts/mitra/create">Buat Paket</nuxt-link>
+                  </a-button>
                 </template>
               </a-card-meta>
             </a-col>
@@ -60,22 +126,23 @@
     </div>
 
     <div class="content-recomended">
-      <sectionRecomended/>
+      <sectionRecomended />
     </div>
 
     <div class="content-trend">
-      <sectionTrend/>
+      <sectionTrend />
     </div>
 
     <div class="content-news">
-      <sectionNews/>
+      <sectionNews />
     </div>
   </div>
 </template>
 
 <script>
-import coverUrl from "~/static/cover/C1.png";
-import searchMain from "~/components/contents/lib/search/search-main.vue";
+import searchUmrah from "~/components/contents/lib/search/umrah.vue";
+import searchTicket from "~/components/contents/lib/search/ticket.vue";
+import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
 import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 import sectionRecomended from "~/components/contents/home/section-recomended.vue";
@@ -90,11 +157,18 @@ export default {
   },
   data() {
     return {
-      coverUrl
+      
     };
   },
+  methods: {
+    callback(val) {
+      console.log(val);
+    }
+  },
   components: {
-    searchMain,
+    searchUmrah,
+    searchTicket,
+    searchAccommodation,
     sectionFavorite,
     sectionComponentsUmrah,
     sectionRecomended,

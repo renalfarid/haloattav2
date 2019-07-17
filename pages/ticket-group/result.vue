@@ -4,9 +4,9 @@
     <div class="container">
       <div class="ant-layout--results-body">
         <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <search-ticket-result />
+          <search-result-ticket />
 
-          <filter-ticket-result />
+          <filter-result-ticket />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -117,8 +117,8 @@
   </div>
 </template>
 <script>
-import searchTicketResult from "~/components/contents/lib/search/ticket-result.vue";
-import filterTicketResult from "~/components/contents/lib/filter/ticket.vue";
+import searchResultTicket from "~/components/contents/lib/search/result/ticket.vue";
+import filterResultTicket from "~/components/contents/lib/filter/result/ticket.vue";
 import axios from "axios";
 export default {
   name: "ticketResult",
@@ -159,8 +159,8 @@ export default {
     }
   },
   components: {
-    searchTicketResult,
-    filterTicketResult
+    searchResultTicket,
+    filterResultTicket
   }
 };
 // AOS.init();

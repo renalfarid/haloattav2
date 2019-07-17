@@ -4,9 +4,9 @@
     <div class="container">
       <div class="ant-layout--results-body">
         <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <search-umrah-result />
+          <search-result-umrah />
 
-          <filter-umrah />
+          <filter-result-umrah />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -112,8 +112,8 @@
   </div>
 </template>
 <script>
-import searchUmrahResult from "~/components/contents/lib/search/umrah-result.vue";
-import filterUmrah from "~/components/contents/lib/filter/umrah.vue";
+import searchResultUmrah from "~/components/contents/lib/search/result/umrah.vue";
+import filterResultUmrah from "~/components/contents/lib/filter/result/umrah.vue";
 import axios from "axios";
 export default {
   name: "umrahResults",
@@ -154,8 +154,8 @@ export default {
     }
   },
   components: {
-    searchUmrahResult,
-    filterUmrah
+    searchResultUmrah,
+    filterResultUmrah
   }
 };
 </script>

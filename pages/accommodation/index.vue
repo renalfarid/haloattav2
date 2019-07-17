@@ -17,7 +17,9 @@
               </p>
             </a-col>
             <a-col :span="14">
-              <search-accommodation />
+              <a-card :bordered="false" class="b-shadow b-radius b-opacity">
+                <search-accommodation />
+              </a-card>
             </a-col>
           </a-row>
         </div>
@@ -140,7 +142,7 @@
   </div>
 </template>
 <script>
-import searchAccommodation from "~/components/contents/lib/search/search-accommodation.vue";
+import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
 import Recommended from "~/components/contents/accommodation/recommended.vue";
 const partner = [
   {

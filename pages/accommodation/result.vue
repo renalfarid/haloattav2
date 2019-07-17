@@ -4,9 +4,9 @@
     <div class="container">
       <div class="ant-layout--results-body">
         <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <search-accommodation-result />
+          <search-result-accommodation />
 
-          <filter-accommodation-result />
+          <filter-result-accommodation />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -128,8 +128,8 @@
   </div>
 </template>
 <script>
-import searchAccommodationResult from "~/components/contents/lib/search/accommodation-result.vue";
-import filterAccommodationResult from "~/components/contents/lib/filter/accommodation.vue";
+import searchResultAccommodation from "~/components/contents/lib/search/result/accommodation.vue";
+import filterResultAccommodation from "~/components/contents/lib/filter/result/accommodation.vue";
 import axios from "axios";
 export default {
   name: "accommodationResult",
@@ -170,8 +170,8 @@ export default {
     }
   },
   components: {
-    searchAccommodationResult,
-    filterAccommodationResult
+    searchResultAccommodation,
+    filterResultAccommodation
   }
 };
 </script>

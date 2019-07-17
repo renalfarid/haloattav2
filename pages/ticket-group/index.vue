@@ -14,7 +14,9 @@
               </p>
             </a-col>
             <a-col :span="14">
-              <searchTicket />
+              <a-card :bordered="false" class="b-shadow b-radius b-opacity">
+                <searchTicket />
+              </a-card>
             </a-col>
           </a-row>
         </div>
@@ -137,7 +139,7 @@
   </div>
 </template>
 <script>
-import searchTicket from "~/components/contents/lib/search/search-ticket.vue";
+import searchTicket from "~/components/contents/lib/search/ticket.vue";
 import Recommended from "~/components/contents/ticket/recommended.vue";
 const partner = [
   {
