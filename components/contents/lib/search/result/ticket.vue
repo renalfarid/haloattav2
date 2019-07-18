@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center">
         <div class="ant-card--results-info-left d-flex align-items-center">
           <div>
-            <a-avatar style="backgroundColor: #F43662" :size="64" icon="schedule" />
+            <a-avatar class="d-flex align-items-center" style="backgroundColor: #F43662" :size="64"><i class="icon-ticket-white"></i></a-avatar>
           </div>
           <div>
             <div class="ant-card--results-info-title">

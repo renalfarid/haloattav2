@@ -16,54 +16,42 @@
               >
                 <a-tab-pane key="1">
                   <span slot="tab">
-                    <div class="icon">
-                      <a-icon type="code-sandbox" />
-                    </div>Paket Umrah
+                    <div class="icon-umrah"></div>Paket Umrah
                   </span>
                   <search-umrah />
                 </a-tab-pane>
 
                 <a-tab-pane key="2">
                   <span slot="tab">
-                    <div class="icon">
-                      <a-icon type="code-sandbox" />
-                    </div>Tiket Group
+                    <div class="icon-ticket"></div>Tiket Group
                   </span>
                   <search-ticket />
                 </a-tab-pane>
 
                 <a-tab-pane key="3">
                   <span slot="tab">
-                    <div class="icon">
-                      <a-icon type="code-sandbox" />
-                    </div>LA Akomodasi
+                    <div class="icon-accommodation"></div>LA Akomodasi
                   </span>
                   <search-accommodation />
                 </a-tab-pane>
 
                 <a-tab-pane disabled key="4">
                   <span slot="tab">
-                    <div class="icon">
-                      <a-icon type="code-sandbox" />
-                    </div>Visa Umrah
+                    <div class="icon-visa"></div>Visa Umrah
                   </span>
                   Content of tab 4
                 </a-tab-pane>
 
                 <a-tab-pane disabled key="5">
                   <span slot="tab">
-                    <div class="icon">
-                      <a-icon type="code-sandbox" />
-                    </div>Asuransi
+                    <div class="icon-insurance"></div>Asuransi
                   </span>
                   Content of tab 5
                 </a-tab-pane>
 
                 <a-tab-pane disabled key="6">
                   <span slot="tab">
-                    <div class="icon">
-                      <a-icon type="code-sandbox" />
-                    </div>Handling
+                    <div class="icon-handling"></div>Handling
                   </span>
                   Content of tab 6
                 </a-tab-pane>

@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center">
         <div class="ant-card--results-info-left d-flex align-items-center">
           <div>
-            <a-avatar :size="64" icon="user" />
+            <a-avatar style="backgroundColor: #05CBB0" class="d-flex align-items-center" :size="64"><i class="icon-umrah-white"></i></a-avatar>
           </div>
           <div>
             <div class="ant-card--results-info-title">Umrah September 2019</div>
