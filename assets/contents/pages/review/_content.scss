@@ -25,6 +25,19 @@
                     height: auto !important;
                 }
             }
+            & .ant-package--images {
+                overflow: hidden;
+                & .ant-package--images-large {
+                    height: 200px;
+                    & .ant-package--images-cover {
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
         }
         // side right review
         & .ant-card--package-review {

@@ -69,6 +69,7 @@
               </a-card-meta>
             </div>
             <div class="gradient-bottom"></div>
+            <nuxt-link to="/catalog/insurance"></nuxt-link>
           </div>
         </a-card>
       </slick>

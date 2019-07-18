@@ -189,7 +189,12 @@
         <a-col :span="8">
           <div class="d-flex align-items-center w-100 mb-8 mt-8">
             <div>
-              <a-avatar size="small" shape="square" class="mr-16" src="/icons/package/insurance.png" />
+              <a-avatar
+                size="small"
+                shape="square"
+                class="mr-16"
+                src="/icons/package/insurance.png"
+              />
             </div>
             <div>
               <div class="fs-14 fw-500 cr-black">Asuransi Perjalanan</div>
@@ -221,7 +226,12 @@
         <a-col :span="8">
           <div class="d-flex align-items-center w-100 mb-8 mt-8">
             <div>
-              <a-avatar size="small" shape="square" class="mr-16" src="/icons/package/suitcase.png" />
+              <a-avatar
+                size="small"
+                shape="square"
+                class="mr-16"
+                src="/icons/package/suitcase.png"
+              />
             </div>
             <div>
               <div class="fs-14 fw-500 cr-black">Perlengkapan Exclusif</div>
@@ -232,7 +242,12 @@
         <a-col :span="8">
           <div class="d-flex align-items-center w-100 mb-8 mt-8">
             <div>
-              <a-avatar size="small" shape="square" class="mr-16" src="/icons/package/tour_guide.png" />
+              <a-avatar
+                size="small"
+                shape="square"
+                class="mr-16"
+                src="/icons/package/tour_guide.png"
+              />
             </div>
             <div>
               <div class="fs-14 fw-500 cr-black">Tour Leader</div>

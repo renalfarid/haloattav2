@@ -35,18 +35,18 @@
                   <search-accommodation />
                 </a-tab-pane>
 
-                <a-tab-pane disabled key="4">
+                <a-tab-pane key="4">
                   <span slot="tab">
                     <div class="icon-visa"></div>Visa Umrah
                   </span>
-                  Content of tab 4
+                  <search-visa />
                 </a-tab-pane>
 
-                <a-tab-pane disabled key="5">
+                <a-tab-pane key="5">
                   <span slot="tab">
                     <div class="icon-insurance"></div>Asuransi
                   </span>
-                  Content of tab 5
+                  <search-insurance />
                 </a-tab-pane>
 
                 <a-tab-pane disabled key="6">
@@ -131,6 +131,8 @@
 import searchUmrah from "~/components/contents/lib/search/umrah.vue";
 import searchTicket from "~/components/contents/lib/search/ticket.vue";
 import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
+import searchVisa from "~/components/contents/lib/search/visa.vue";
+import searchInsurance from "~/components/contents/lib/search/insurance.vue";
 import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 import sectionRecomended from "~/components/contents/home/section-recommended.vue";
@@ -157,6 +159,8 @@ export default {
     searchUmrah,
     searchTicket,
     searchAccommodation,
+    searchVisa,
+    searchInsurance,
     sectionFavorite,
     sectionComponentsUmrah,
     sectionRecomended,

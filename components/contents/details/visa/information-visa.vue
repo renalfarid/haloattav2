@@ -83,7 +83,7 @@
           <div class="fs-15 fw-400 cr-gray">Berikut syarat dan Ketentuan Visa</div>
         </div>
         <div class="ml-auto">
-          <a-button>Baca Aturan</a-button>
+          <a-button class="b-shadow b-radius b-solid cr-primary" size="large">Baca Aturan</a-button>
         </div>
       </div>
     </a-list-item>
