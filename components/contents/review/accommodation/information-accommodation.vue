@@ -2,7 +2,7 @@
   <a-list itemLayout="horizontal" class="ant-list--package-information">
     <a-list-item class="ant-list-item--package-information">
       <div>
-        <h2 class="ant-package--information-title fs-20 cr-black fw-500">Ulasan LA Akomodasi</h2>
+        <h2 class="ant-package--information-title fs-20 cr-black fw-500">Ulasan Pesanan</h2>
         <div class="ant-package--information-text fs-15 cr-black fw-400">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           Odio iste quibusdam consectetur amet consequatur numquam natus a repellendus! Quasi,

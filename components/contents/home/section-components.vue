@@ -56,6 +56,7 @@
               </a-card-meta>
             </div>
             <div class="gradient-bottom"></div>
+            <nuxt-link to="/catalog/visa"></nuxt-link>
           </div>
         </a-card>
 

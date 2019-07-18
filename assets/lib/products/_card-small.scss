@@ -29,6 +29,12 @@
                     width: 150px;
                     left: -80px;
                     top: -90px;
+                    &.ant-pax--visa {
+                        background: $color-orange-overlay !important;
+                    }
+                    &.ant-pax--choice {
+                        background: $color-main-overlay !important;
+                    }
                 }
                 & .ant-card-cover--overlay-text {
                     text-transform: uppercase;

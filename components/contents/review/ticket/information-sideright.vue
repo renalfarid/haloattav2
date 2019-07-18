@@ -1,6 +1,6 @@
 <template>
-  <div class="ant-affix--card">
-    <a-card class="ant-card--package-information">
+  <div class="ant-affix--card mt-24">
+    <a-card class="ant-card--package-review">
       <div class="p-16">
         <div class="d-flex align-items-center">
           <div class="mr-8">

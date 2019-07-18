@@ -2,7 +2,7 @@
   <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
-        <nuxt-link to="/ticket-group/detail-ticket" class="d-block">
+        <nuxt-link to="/catalog/ticket-group/detail-ticket" class="d-block">
           <a-card class="ant-card--package-ticket">
             <div slot="cover">
               <div
