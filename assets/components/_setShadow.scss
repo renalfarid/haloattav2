@@ -7,3 +7,8 @@
 .b-opacity {
     background-color: rgba($color: #ffffff, $alpha: .9) !important;
 }
+
+.zIndex {
+    position: relative;
+    z-index: 99;
+}

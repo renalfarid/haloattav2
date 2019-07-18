@@ -18,14 +18,30 @@
                     </div>
                   </div>
                 </div>
+                <div class="ant-card--overlay-block">
+                  <div class="d-flex align-items-center h-100">
+                    <a-button>
+                      <nuxt-link to="/catalog/ticket-group/detail-ticket">Lihat detail</nuxt-link>
+                    </a-button>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="d-flex align-items-center">
-              <div class="mr-8">
-                <a-avatar :src="item.logo_maskapai" :value="item.logo_maskapai" size="small" />
-              </div>
-              <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.maskapai}}</div>
+              <a-popover trigger="hover">
+                <template slot="content">
+                  <div class="fs-15 fw-500 cr-black">Haloatta</div>
+                  <div class="fs-13 fw-400 cr-gray f-default">Umaroh Bisnis</div>
+                </template>
+                <a-avatar class="zIndex mr-8 p-4" src="/favicon.png" />
+              </a-popover>
+              <a-popover trigger="hover">
+                <template slot="content">
+                  <div class="fs-13 fw-400 cr-gray f-default">Maskapai {{item.maskapai}}</div>
+                </template>
+                <a-avatar class="zIndex mr-8 p-4" :src="item.logo_maskapai" />
+              </a-popover>
               <div class="ml-auto fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.class_cabin}}</div>
             </div>
 
@@ -51,9 +67,7 @@
 
             <div class="package-description--more p-16">
               <div class="d-flex align-items-center mb-8">
-                <div
-                  class="fs-15 fw-400 cr-black f-default text-ellipsis"
-                >Makassar</div>
+                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Makassar</div>
                 <div class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto">Round Trip</div>
               </div>
 
@@ -69,7 +83,7 @@
               </div>
 
               <a-button block>
-                <nuxt-link to="/payment/order-data">Pesan</nuxt-link>
+                <nuxt-link to="/catalog/ticket-group/order-review">Pesan</nuxt-link>
               </a-button>
             </div>
           </a-card>
@@ -88,8 +102,7 @@ export default {
           id: 1,
           images_package: "/maskapai/garuda/t6.jpg",
           maskapai: "Garuda Indonesia",
-          logo_maskapai:
-            "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+          logo_maskapai: "/maskapai/logo/garuda.svg",
           price: "12.000.000",
           class_cabin: "Economy Class"
         },
@@ -97,8 +110,7 @@ export default {
           id: 2,
           images_package: "/maskapai/garuda/t7.jpg",
           maskapai: "Garuda Indonesia",
-          logo_maskapai:
-            "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+          logo_maskapai: "/maskapai/logo/garuda.svg",
           price: "12.400.000",
           class_cabin: "Economy Class"
         },
@@ -106,8 +118,7 @@ export default {
           id: 3,
           images_package: "/maskapai/garuda/t8.jpg",
           maskapai: "Garuda Indonesia",
-          logo_maskapai:
-            "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+          logo_maskapai: "/maskapai/logo/garuda.svg",
           price: "11.000.000",
           class_cabin: "Economy Class"
         },
@@ -115,8 +126,7 @@ export default {
           id: 4,
           images_package: "/maskapai/garuda/t9.jpg",
           maskapai: "Garuda Indonesia",
-          logo_maskapai:
-            "https://3.bp.blogspot.com/-ORvEVdtnqsc/WebEppFoJlI/AAAAAAAAELQ/OzXH9meIbXIOSlJCtdYNhb2SDUhYEd8AgCLcBGAs/s400/garuda%2Bindonesia%2Bpng.png",
+          logo_maskapai: "/maskapai/logo/garuda.svg",
           price: "13.000.000",
           class_cabin: "Economy Class"
         }

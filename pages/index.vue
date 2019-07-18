@@ -133,7 +133,7 @@ import searchTicket from "~/components/contents/lib/search/ticket.vue";
 import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
 import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
-import sectionRecomended from "~/components/contents/home/section-recomended.vue";
+import sectionRecomended from "~/components/contents/home/section-recommended.vue";
 import sectionTrend from "~/components/contents/home/section-trend.vue";
 import sectionNews from "~/components/contents/home/section-news.vue";
 export default {

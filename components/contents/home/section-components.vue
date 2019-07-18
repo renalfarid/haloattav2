@@ -27,7 +27,7 @@
               </a-card-meta>
             </div>
             <div class="gradient-bottom"></div>
-            <nuxt-link to="/ticket-group"></nuxt-link>
+            <nuxt-link to="/catalog/ticket-group"></nuxt-link>
           </div>
         </a-card>
 
@@ -43,7 +43,7 @@
               </a-card-meta>
             </div>
             <div class="gradient-bottom"></div>
-            <nuxt-link to="/accommodation"></nuxt-link>
+            <nuxt-link to="/catalog/accommodation"></nuxt-link>
           </div>
         </a-card>
 

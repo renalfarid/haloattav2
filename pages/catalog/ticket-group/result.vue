@@ -16,8 +16,17 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }" :dataSource="data">
-              <a-list-item slot="renderItem" slot-scope="item, index" :key="index" data-aos="fade-up" data-aos-duration="1200">
+            <a-list
+              :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }"
+              :dataSource="data"
+            >
+              <a-list-item
+                slot="renderItem"
+                slot-scope="item, index"
+                :key="index"
+                data-aos="fade-up"
+                data-aos-duration="1200"
+              >
                 <a-skeleton :loading="loading" active>
                   <nuxt-link to="/ticket-group/detail-ticket" class="d-block">
                     <a-card class="ant-card--package-ticket">
@@ -35,18 +44,31 @@
                               </div>
                             </div>
                           </div>
+
+                          <div class="ant-card--overlay-block">
+                            <div class="d-flex align-items-center h-100">
+                              <a-button>
+                                <nuxt-link to="/catalog/ticket-group/detail-ticket">Lihat detail</nuxt-link>
+                              </a-button>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
                       <div class="d-flex align-items-center">
-                        <div class="mr-8">
-                          <a-avatar
-                            :src="item.logo_maskapai"
-                            :value="item.logo_maskapai"
-                            size="small"
-                          />
-                        </div>
-                        <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.maskapai}}</div>
+                        <a-popover trigger="hover">
+                          <template slot="content">
+                            <div class="fs-15 fw-500 cr-black">Haloatta</div>
+                            <div class="fs-13 fw-400 cr-gray f-default">Umaroh Bisnis</div>
+                          </template>
+                          <a-avatar class="zIndex mr-8 p-4" src="/favicon.png" />
+                        </a-popover>
+                        <a-popover trigger="hover">
+                          <template slot="content">
+                            <div class="fs-13 fw-400 cr-gray f-default">Maskapai {{item.maskapai}}</div>
+                          </template>
+                          <a-avatar class="zIndex mr-8 p-4" :src="item.logo_maskapai" />
+                        </a-popover>
                         <div
                           class="ml-auto fs-13 fw-400 cr-gray f-default text-ellipsis"
                         >{{item.class_cabin}}</div>
@@ -82,9 +104,7 @@
 
                       <div class="package-description--more p-16">
                         <div class="d-flex align-items-center mb-8">
-                          <div
-                            class="fs-15 fw-400 cr-black f-default text-ellipsis"
-                          >Makassar</div>
+                          <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Makassar</div>
                           <div
                             class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto"
                           >Round Trip</div>
@@ -102,7 +122,7 @@
                         </div>
 
                         <a-button block>
-                          <nuxt-link to="/payment/order-data">Pesan</nuxt-link>
+                          <nuxt-link to="/catalog/ticket-group/order-review">Pesan</nuxt-link>
                         </a-button>
                       </div>
                     </a-card>

@@ -88,7 +88,7 @@
             </a-col>
 
             <a-col :span="8">
-              <a-form-item label="Jumlah Seat">
+              <a-form-item label="Jumlah Penumpang">
                 <div class="icon-search">
                   <img class="max-width" src="/icons/search/seat.svg" />
                 </div>

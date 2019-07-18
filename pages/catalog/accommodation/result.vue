@@ -44,6 +44,14 @@
                               </div>
                             </div>
                           </div>
+
+                          <div class="ant-card--overlay-block">
+                            <div class="d-flex align-items-center h-100">
+                              <a-button>
+                                <nuxt-link to="/catalog/accommodation/detail">Lihat detail</nuxt-link>
+                              </a-button>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
@@ -113,7 +121,7 @@
                         </div>
 
                         <a-button block>
-                          <nuxt-link to="/payment/order-data">Pesan</nuxt-link>
+                          <nuxt-link to="/catalog/accommodation/order-review">Pesan</nuxt-link>
                         </a-button>
                       </div>
                     </a-card>

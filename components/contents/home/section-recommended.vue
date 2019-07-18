@@ -16,7 +16,7 @@
       <slick ref="slick" :options="slickRecomended">
         <div v-for="(item, index) in lisData" :key="index">
           <a-card class="ant-card-package-small">
-            <nuxt-link to="/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
+            <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
             <div slot="cover">
               <div
                 class="ant-card-cover--images"
@@ -31,28 +31,47 @@
                     </div>
                   </div>
                 </div>
+                <div class="ant-card--overlay-block">
+                  <div class="d-flex align-items-center h-100">
+                    <a-button>
+                      <nuxt-link to="/catalog/umrah/detail-package">Lihat detail</nuxt-link>
+                    </a-button>
+                  </div>
+                </div>
               </div>
             </div>
             <a-card-meta>
-              <div slot="title">
+              <div slot="title" class="mb-0">
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left">
-                    <a-rate class="fs-14" :defaultValue="3" disabled />
+                    <a-popover trigger="hover">
+                      <template slot="content">
+                        <div class="fs-15 fw-500 cr-black">Haloatta</div>
+                        <div class="fs-13 fw-400 cr-gray f-default">Umaroh Bisnis</div>
+                      </template>
+                      <a-avatar class="zIndex mr-8 p-4" src="/favicon.png" />
+                    </a-popover>
+                    <a-popover trigger="hover">
+                      <template slot="content">
+                        <div class="fs-13 fw-400 cr-gray f-default">Maskapai Garuda Indonesia</div>
+                      </template>
+                      <a-avatar class="zIndex mr-8 p-4" src="/maskapai/logo/garuda.svg" />
+                    </a-popover>
                   </div>
-                  <div class="ant-card-meta-title--top-right ml-auto">
-                    <a-tag>
-                      Terbooking
-                      <strong>{{item.pax_booked}}</strong> seat
-                    </a-tag>
-                  </div>
+                  <div
+                    class="ant-card-meta-title--top-right ml-auto fs-13 fw-400 cr-gray"
+                  >Program 9 Hari</div>
                 </div>
+                <a-rate class="fs-14 mb-8" :defaultValue="3" disabled />
                 <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
               </div>
 
               <div slot="description">
-                <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                  <div class="ant-card-meta-description--bottom-left fw-500 cr-primary">Rp{{item.price_product}}</div>
-                  <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
+                <div class="ant-card-meta-description--bottom d-flex align-items-center mt-8">
+                  <div
+                    class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis"
+                  >Rp{{item.price_product}}</div>
+                  <div class="ant-card-meta-description--bottom-right ml-auto d-flex text-ellipsis">
                     <div class="icon icon-star">
                       <a-icon type="star" theme="filled" class="mr-4" />5.8
                     </div>

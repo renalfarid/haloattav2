@@ -140,29 +140,25 @@
 </template>
 <script>
 import searchTicket from "~/components/contents/lib/search/ticket.vue";
-import Recommended from "~/components/contents/ticket/recommended.vue";
+import Recommended from "~/components/contents/catalog/ticket/recommended.vue";
 const partner = [
   {
-    logo_partner: "http://pressrelease.id/uploads/release/Logo_Garuda_Indo.png"
+    logo_partner: "/maskapai/logo/garuda.svg"
   },
   {
-    logo_partner:
-      "https://upload.wikimedia.org/wikipedia/id/thumb/5/59/Lion_Air.svg/1280px-Lion_Air.svg.png"
+    logo_partner: "/maskapai/logo/emirates.svg"
   },
   {
-    logo_partner:
-      "http://pluspng.com/img-png/saudia-airlines-logo-png-the-saudia-also-known-as-saudi-arabian-airlines-logo-photo-taken-from-wikipedia-640.png"
+    logo_partner: "/maskapai/logo/citylink.svg"
   },
   {
-    logo_partner: "http://pluspng.com/img-png/emirates-png-download-1600.png"
+    logo_partner: "/maskapai/logo/liong.svg"
   },
   {
-    logo_partner:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Scoot_logo.svg/1170px-Scoot_logo.svg.png"
+    logo_partner: "/maskapai/logo/saudi.svg"
   },
   {
-    logo_partner:
-      "https://ecs7.tokopedia.net/img/cache/700/product-1/2016/11/4/6517874/6517874_eafe7f6d-87e3-44ac-9eb8-df3a094367b8.png"
+    logo_partner: "/maskapai/logo/scoot.svg"
   }
 ];
 export default {

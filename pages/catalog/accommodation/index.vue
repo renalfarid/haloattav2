@@ -143,7 +143,7 @@
 </template>
 <script>
 import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
-import Recommended from "~/components/contents/accommodation/recommended.vue";
+import Recommended from "~/components/contents/catalog/accommodation/recommended.vue";
 const partner = [
   {
     logo_partner: "/akomodasi/logo/ll1.svg"

@@ -18,6 +18,14 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="ant-card--overlay-block">
+                  <div class="d-flex align-items-center h-100">
+                    <a-button>
+                      <nuxt-link to="/catalog/accommodation/detail">Lihat detail</nuxt-link>
+                    </a-button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -25,10 +33,10 @@
               <div class="mr-8">
                 <a-avatar :src="item.logo_vendor" size="small" />
               </div>
-              <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">
-                {{item.vendor}}
+              <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.vendor}}</div>
+              <div class="ml-auto">
+                <a-rate class="fs-12 f-default" :defaultValue="4" disabled />
               </div>
-              <div class="ml-auto"><a-rate class="fs-12 f-default" :defaultValue="4" disabled /></div>
             </div>
 
             <a-row :gutter="8" type="flex" justify="space-between" align="middle" class="mt-8 mb-8">
@@ -56,7 +64,9 @@
             <div class="package-description--more p-16">
               <div class="d-flex align-items-center mb-8">
                 <div class="fs-15 fw-400 cr-black f-default text-ellipsis">High Session</div>
-                <div class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto">{{item.class_room}}</div>
+                <div
+                  class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto"
+                >{{item.class_room}}</div>
               </div>
 
               <div class="d-flex align-items-center mb-16">
@@ -71,7 +81,7 @@
               </div>
 
               <a-button block>
-                <nuxt-link to="/payment/order-data">Pesan</nuxt-link>
+                <nuxt-link to="/catalog/accommodation/order-review">Pesan</nuxt-link>
               </a-button>
             </div>
           </a-card>

@@ -34,7 +34,7 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Jumlah Tamu" hasFeedback>
+        <a-form-item label="Jumlah Room" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/boysmiling.svg" />
           </div>
@@ -47,13 +47,13 @@
                       <a-avatar icon="user" />
                     </div>
                     <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
+                      <div class="fs-14 fw-400 cr-black f-default">Quad Room</div>
+                      <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 4 orang)</div>
                     </div>
                   </div>
                   <div class="ml-auto">
                     <number-input
-                      v-model="dewasa"
+                      v-model="quad"
                       :min="0"
                       :max="10"
                       :inputtable="false"
@@ -71,13 +71,37 @@
                       <a-avatar icon="user" />
                     </div>
                     <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Anak</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
+                      <div class="fs-14 fw-400 cr-black f-default">Triple Room</div>
+                      <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 3 orang)</div>
                     </div>
                   </div>
                   <div class="ml-auto">
                     <number-input
-                      v-model="anak"
+                      v-model="triple"
+                      :min="0"
+                      :max="10"
+                      :inputtable="false"
+                      size="small"
+                      center
+                      controls
+                    />
+                  </div>
+                </div>
+              </a-menu-item>
+              <a-menu-item key="2" disabled>
+                <div class="d-flex align-items-center">
+                  <div class="d-flex align-items-center">
+                    <div class="mr-8">
+                      <a-avatar icon="user" />
+                    </div>
+                    <div>
+                      <div class="fs-14 fw-400 cr-black f-default">Double Room</div>
+                      <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 2 orang)</div>
+                    </div>
+                  </div>
+                  <div class="ml-auto">
+                    <number-input
+                      v-model="double"
                       :min="0"
                       :max="10"
                       :inputtable="false"
@@ -93,7 +117,7 @@
               class="ant-btn--add-passenger text-left"
               size="large"
               block
-            >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
+            >{{quad}} Quad, {{triple}} Triple, {{double}} Double</a-button>
           </a-dropdown>
         </a-form-item>
       </a-col>
@@ -195,8 +219,9 @@ export default {
   data() {
     this.dateFormat = "YYYY-MM-DD";
     return {
-      dewasa: 1,
-      anak: 0
+      quad: 4,
+      triple: 0,
+      double: 0
     };
   },
   beforeCreate() {
@@ -225,7 +250,7 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      this.$router.push("/accommodation/result");
+      this.$router.push("/catalog/accommodation/result");
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);

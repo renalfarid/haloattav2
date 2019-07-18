@@ -82,17 +82,17 @@
                     margin-right: 0;
                     min-width: 100px;
                     & .number-input__button {
-                        background-color: #ffffff;
+                        background-color: $color-main;
                         @include border-radius(50%);
                         border: 1px solid $color-main;
                         width: 28px;
                         height: 28px;
                         &::before {
-                            background-color: $color-main;
+                            background-color: #ffffff;
                             width: 30%;
                         }
                         &::after {
-                            background-color: $color-main;
+                            background-color: #ffffff;
                             height: 30%;
                         }
                     }
