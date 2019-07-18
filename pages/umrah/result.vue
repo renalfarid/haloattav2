@@ -4,9 +4,9 @@
     <div class="container">
       <div class="ant-layout--results-body">
         <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <search-umrah-result />
+          <search-result-umrah />
 
-          <filter-umrah />
+          <filter-result-umrah />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -16,7 +16,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
+            <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -56,13 +56,13 @@
                             </a-tag>
                           </div>
                         </div>
-                        <div class="ant-card-meta-title--package">{{item.name_product}}</div>
+                        <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
                       </div>
 
                       <div slot="description">
                         <div class="ant-card-meta-description--bottom d-flex align-items-center">
                           <div
-                            class="ant-card-meta-description--bottom-left"
+                            class="ant-card-meta-description--bottom-left fw-500 cr-primary"
                           >Rp{{item.price_product}}</div>
                           <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                             <div class="icon icon-star">
@@ -75,7 +75,7 @@
                         </div>
                       </div>
                     </a-card-meta>
-                    <div class="package-description--more p-16">
+                    <div class="package-description--more p-24">
                       <div class="d-flex align-items-center mb-8">
                         <div class="fs-15 fw-400 cr-black f-default text-ellipsis">
                           Kota
@@ -112,8 +112,8 @@
   </div>
 </template>
 <script>
-import searchUmrahResult from "~/components/contents/lib/search/umrah-result.vue";
-import filterUmrah from "~/components/contents/lib/filter/umrah.vue";
+import searchResultUmrah from "~/components/contents/lib/search/result/umrah.vue";
+import filterResultUmrah from "~/components/contents/lib/filter/result/umrah.vue";
 import axios from "axios";
 export default {
   name: "umrahResults",
@@ -154,8 +154,8 @@ export default {
     }
   },
   components: {
-    searchUmrahResult,
-    filterUmrah
+    searchResultUmrah,
+    filterResultUmrah
   }
 };
 </script>

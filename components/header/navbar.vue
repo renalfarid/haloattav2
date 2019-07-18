@@ -18,7 +18,7 @@
                 :style="{ lineHeight: '64px' }"
               >
                 <a-menu-item key="1" class="nav-link">
-                  <nuxt-link to>Beranda</nuxt-link>
+                  <nuxt-link to="/">Beranda</nuxt-link>
                 </a-menu-item>
                 <a-menu-item key="2" class="nav-link">
                   <nuxt-link to="/about">Tentang</nuxt-link>

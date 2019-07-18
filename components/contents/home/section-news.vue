@@ -1,12 +1,13 @@
 <template>
   <div class="container">
     <div class="header-title">
+      <a-divider orientation="left" class="ant-divider-title-left">Informasi Tentang Umrah</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
-          <h2 class="title">Berita Umrah</h2>
-          <h6
-            class="subtitle"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione</h6>
+          <h6 class="subtitle">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+          </h6>
         </a-col>
       </a-row>
     </div>
@@ -24,7 +25,7 @@
                       <div class="item">
                         <a-tag color="#f50" class="ant-tag--kajian ant-tag--large">Kajian</a-tag>
                         <span class="time">
-                          <a-icon type="clock-circle"/>5 jam lalu
+                          <a-icon type="clock-circle" />5 jam lalu
                         </span>
                       </div>
                     </div>
@@ -45,7 +46,7 @@
                       <div class="item">
                         <a-tag color="#f50" class="ant-tag--travel ant-tag--large">travel</a-tag>
                         <span class="time">
-                          <a-icon type="clock-circle"/>5 jam lalu
+                          <a-icon type="clock-circle" />5 jam lalu
                         </span>
                       </div>
                     </div>
@@ -66,7 +67,7 @@
                       <div class="item">
                         <a-tag color="#f50" class="ant-tag--travel ant-tag--large">travel</a-tag>
                         <span class="time">
-                          <a-icon type="clock-circle"/>5 jam lalu
+                          <a-icon type="clock-circle" />5 jam lalu
                         </span>
                       </div>
                     </div>
@@ -89,7 +90,7 @@
                   <div class="item">
                     <a-tag color="#f50" class="ant-tag--umrah ant-tag--small">Umrah</a-tag>
                     <span class="time">
-                      <a-icon type="clock-circle"/>5 jam lalu
+                      <a-icon type="clock-circle" />5 jam lalu
                     </span>
                   </div>
                 </div>
@@ -110,7 +111,7 @@
                   <div class="item">
                     <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
                     <span class="time">
-                      <a-icon type="clock-circle"/>5 jam lalu
+                      <a-icon type="clock-circle" />5 jam lalu
                     </span>
                   </div>
                 </div>
@@ -131,7 +132,7 @@
                   <div class="item">
                     <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
                     <span class="time">
-                      <a-icon type="clock-circle"/>5 jam lalu
+                      <a-icon type="clock-circle" />5 jam lalu
                     </span>
                   </div>
                 </div>
@@ -152,7 +153,7 @@
                   <div class="item">
                     <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
                     <span class="time">
-                      <a-icon type="clock-circle"/>5 jam lalu
+                      <a-icon type="clock-circle" />5 jam lalu
                     </span>
                   </div>
                 </div>

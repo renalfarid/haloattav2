@@ -4,9 +4,9 @@
     <div class="container">
       <div class="ant-layout--results-body">
         <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <search-ticket-result />
+          <search-result-ticket />
 
-          <filter-ticket-result />
+          <filter-result-ticket />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -16,7 +16,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
+            <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }" :dataSource="data">
               <a-list-item slot="renderItem" slot-scope="item, index" :key="index" data-aos="fade-up" data-aos-duration="1200">
                 <a-skeleton :loading="loading" active>
                   <nuxt-link to="/ticket-group/detail-ticket" class="d-block">
@@ -84,7 +84,7 @@
                         <div class="d-flex align-items-center mb-8">
                           <div
                             class="fs-15 fw-400 cr-black f-default text-ellipsis"
-                          >Kota Keberangkatan Makassar</div>
+                          >Makassar</div>
                           <div
                             class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto"
                           >Round Trip</div>
@@ -117,8 +117,8 @@
   </div>
 </template>
 <script>
-import searchTicketResult from "~/components/contents/lib/search/ticket-result.vue";
-import filterTicketResult from "~/components/contents/lib/filter/ticket.vue";
+import searchResultTicket from "~/components/contents/lib/search/result/ticket.vue";
+import filterResultTicket from "~/components/contents/lib/filter/result/ticket.vue";
 import axios from "axios";
 export default {
   name: "ticketResult",
@@ -132,7 +132,7 @@ export default {
     return {
       loading: true,
       busy: false,
-      limit: 6,
+      limit: 8,
       data: []
     };
   },
@@ -159,8 +159,8 @@ export default {
     }
   },
   components: {
-    searchTicketResult,
-    filterTicketResult
+    searchResultTicket,
+    filterResultTicket
   }
 };
 // AOS.init();

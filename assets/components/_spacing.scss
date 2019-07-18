@@ -7,3 +7,19 @@
     background: $color-main;
     height: 67px;
 }
+
+.ant-divider-title-left {
+    & .ant-divider-inner-text {
+        padding-left: 0 !important;
+        text-transform: uppercase;
+        color: $color-font;
+        font-weight: 500;
+        font-size: 22px;
+    }
+    &::before {
+        width: 0 !important;
+    }
+    &::after {
+        border-top: 3px solid $color-border !important;
+    }
+}

@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="header-title">
+      <a-divider orientation="left" class="ant-divider-title-left">Komponen Umrah</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
-          <h2 class="title">Komponen Umrah</h2>
           <h6 class="subtitle">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Distinctio hic in sint reiciendis libero necessitatibus
@@ -16,7 +16,7 @@
     <div class="container-slick">
       <slick ref="slick" :options="slickComponentsUmrah">
         <a-card class="card-product--components">
-          <nuxt-link to="/ticket-group" slot="cover">
+          <div slot="cover">
             <img alt="haloatta" src="/components/C1.png" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Tiket Group">
@@ -27,7 +27,8 @@
               </a-card-meta>
             </div>
             <div class="gradient-bottom"></div>
-          </nuxt-link>
+            <nuxt-link to="/ticket-group"></nuxt-link>
+          </div>
         </a-card>
 
         <a-card class="card-product--components">
@@ -42,6 +43,7 @@
               </a-card-meta>
             </div>
             <div class="gradient-bottom"></div>
+            <nuxt-link to="/accommodation"></nuxt-link>
           </div>
         </a-card>
 

@@ -4,34 +4,43 @@
       <div class="d-flex align-items-center">
         <div class="ant-card--results-info-left d-flex align-items-center">
           <div>
-            <a-avatar :size="64" icon="user"/>
+            <a-avatar style="backgroundColor: #F43662" :size="64" icon="schedule" />
           </div>
           <div>
-            <div class="ant-card--results-info-title">Umrah September 2019</div>
+            <div class="ant-card--results-info-title">
+              Makassar (UPG)
+              <a-icon type="retweet" class="cr-gray ml-8 mr-8" />Jeddah (JED)
+            </div>
             <div class="ant-card--results-info-subtitle">
-              <span>Program 9 Hari</span>
-              <a-divider type="vertical"/>
-              <span>40 Pax</span>
+              Program 9 Hari
               <a-divider type="vertical" />
-              <span>{{dewasa}} Dewasa</span>
-              <a-divider type="vertical" />
-              <span>{{anak}} Anak</span>
+              <span>40 Dewasa</span>,
+              <span>0 Anak</span>
             </div>
           </div>
         </div>
-        <div class="ant-card--results-info-right ml-auto" v-bind:class="visibleSearch ? 'd-none' : ''">
+        <div
+          class="ant-card--results-info-right ml-auto"
+          v-bind:class="visibleSearch ? 'd-none' : ''"
+        >
           <a-button @click="showSearch" class="b-shadow b-radius">Ganti Pencarian</a-button>
         </div>
       </div>
 
       <div class="ant-form--search" v-show="visibleSearch">
-        <a-divider/>
-        <a-form layout="vertical" class="form-search--costume">
+        <a-divider />
+        <a-form
+          layout="vertical"
+          :form="form"
+          @submit="handleSubmit"
+          hideRequiredMark
+          class="form-search--costume"
+        >
           <a-row :gutter="16">
             <a-col :span="8">
-              <a-form-item label="Kota Asal" :label-col="{ span: 24 }" :wrapper-col="{ span: 24 }">
+              <a-form-item label="Kota Asal">
                 <div class="icon-search">
-                  <a-icon type="environment"/>
+                  <img class="max-width" src="/icons/search/airplane.svg" />
                 </div>
                 <a-select
                   showSearch
@@ -47,25 +56,20 @@
                   size="large"
                 >
                   <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Makassar">Makassar</a-select-option>
-                  <a-select-option value="Jakarta">Jakarta</a-select-option>
-                  <a-select-option value="Bandung">Bandung</a-select-option>
+                  <a-select-option value="Makassar">Makassar (UPG)</a-select-option>
+                  <a-select-option value="Jakarta">Jakarta (CGK)</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
 
             <a-col :span="8">
-              <a-form-item
-                label="Bulan Keberangkatan"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Kota Tujuan">
                 <div class="icon-search">
-                  <a-icon type="calendar"/>
+                  <a-icon type="environment" />
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="September 2019"
+                  defaultValue="Jeddah"
                   placeholder="Pilih Bulan Keberangkatan"
                   optionFilterProp="children"
                   style="width: 100%"
@@ -77,21 +81,16 @@
                   size="large"
                 >
                   <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="September 2019">September 2019</a-select-option>
-                  <a-select-option value="November 2019">November 2019</a-select-option>
-                  <a-select-option value="Desember 2019">Desember 2019</a-select-option>
+                  <a-select-option value="Jeddah">Jeddah (JED)</a-select-option>
+                  <a-select-option value="Medinah">Medinah (MED)</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
 
             <a-col :span="8">
-              <a-form-item
-                label="Jumlah Pax"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Jumlah Seat">
                 <div class="icon-search">
-                  <img class="max-width" src="/icons/ticket/seat.png" />
+                  <img class="max-width" src="/icons/search/seat.svg" />
                 </div>
                 <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
                   <a-menu slot="overlay">
@@ -156,13 +155,9 @@
 
           <a-row :gutter="16">
             <a-col :span="8">
-              <a-form-item
-                label="Program Hari"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+              <a-form-item label="Program Hari">
                 <div class="icon-search">
-                  <a-icon type="calendar"/>
+                  <a-icon type="calendar" />
                 </div>
                 <a-select
                   showSearch
@@ -186,69 +181,37 @@
             </a-col>
 
             <a-col :span="8">
-              <a-form-item
-                label="Rating Bintang Hotel"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
-                <div class="icon-search">
-                  <a-icon type="crown"/>
-                </div>
-                <a-select
-                  showSearch
-                  defaultValue="Bintang 3"
-                  placeholder="Pilih Rating Bintang Hotel"
-                  optionFilterProp="children"
-                  style="width: 100%"
-                  :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
+              <a-form-item label="Keberangkatan">
+                <a-date-picker
                   size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Bintang 3">Bintang 3</a-select-option>
-                  <a-select-option value="Bintang 4">Bintang 4</a-select-option>
-                  <a-select-option value="Bintang 5">Bintang 5</a-select-option>
-                </a-select>
+                  style="width: 100%"
+                  v-decorator="['tanggal_keberangkatan',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+                  :disabledDate="disabledDate"
+                  placeholder="Pilih Tanggal Keberangkatan"
+                />
               </a-form-item>
             </a-col>
 
             <a-col :span="8">
-              <a-form-item
-                label="Kisaran Harga"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
-                <div class="icon-search">
-                  <a-icon type="wallet"/>
-                </div>
-                <a-select
-                  showSearch
-                  defaultValue="Rp.0 - Rp.20.000.000"
-                  placeholder="Pilih Kisaran Harga"
-                  optionFilterProp="children"
-                  style="width: 100%"
-                  :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
+              <a-form-item label="Kedatangan">
+                <a-date-picker
                   size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Rp.0 - Rp.20.000.000">Rp.0 - Rp.20.000.000</a-select-option>
-                  <a-select-option value="Rp.20.000.000 - Rp.30.000.000">Rp.0 - Rp.20.000.000</a-select-option>
-                  <a-select-option value="Rp.30.000.000 - Rp.40.000.000">Rp.0 - Rp.20.000.000</a-select-option>
-                </a-select>
+                  style="width: 100%"
+                  :defaultValue="moment('2019-06-10', dateFormat)"
+                  disabled
+                />
               </a-form-item>
             </a-col>
           </a-row>
 
           <a-row :gutter="16" type="flex" justify="end">
             <a-col :span="8">
-              <a-button class="btn-search b-shadow b-radius" size="large" block>Cari Umrah</a-button>
+              <a-button
+                html-type="submit"
+                class="btn-search b-shadow b-radius"
+                size="large"
+                block
+              >Cari Tiket Group</a-button>
             </a-col>
           </a-row>
         </a-form>
@@ -257,16 +220,21 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
   data() {
+    this.dateFormat = "YYYY-MM-DD";
     return {
       visibleSearch: false,
       dewasa: 1,
       anak: 0
     };
   },
-
+  beforeCreate() {
+    this.form = this.$form.createForm(this);
+  },
   methods: {
+    moment,
     callback(val) {
       console.log(val);
     },
@@ -287,7 +255,19 @@ export default {
       );
     },
     showSearch() {
-     this.visibleSearch = !this.visibleSearch
+      this.visibleSearch = !this.visibleSearch;
+    },
+    disabledDate(current) {
+      return current && current < moment().endOf("day");
+    },
+    handleSubmit(e) {
+      e.preventDefault();
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log("Received values of form: ", values);
+        }
+        return this.$router.push("/ticket-group/result");
+      });
     }
   }
 };

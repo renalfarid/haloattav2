@@ -1,0 +1,64 @@
+[{
+        "images_package": "/akomodasi/hotel/l1.jpg",
+        "logo_vendor": "/akomodasi/logo/ll1.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.200.000",
+        "class_room": "Quad Room"
+    },
+    {
+        "images_package": "/akomodasi/hotel/l2.jpg",
+        "logo_vendor": "/akomodasi/logo/ll2.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.700.000",
+        "class_room": "Quad Room"
+    },
+    {
+        "images_package": "/akomodasi/hotel/l3.jpg",
+        "logo_vendor": "/akomodasi/logo/ll3.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.300.000",
+        "class_room": "Quad Room"
+    },
+    {
+        "images_package": "/akomodasi/hotel/l4.jpg",
+        "logo_vendor": "/akomodasi/logo/ll4.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.900.000",
+        "class_room": "Quad Room"
+    },
+    {
+        "images_package": "/akomodasi/hotel/l5.jpg",
+        "logo_vendor": "/akomodasi/logo/ll5.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.400.000",
+        "class_room": "Quad Room"
+    },
+    {
+        "images_package": "/akomodasi/hotel/l6.jpg",
+        "logo_vendor": "/akomodasi/logo/ll6.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.600.000",
+        "class_room": "Quad Room"
+    },
+    {
+        "images_package": "/akomodasi/hotel/l7.jpg",
+        "logo_vendor": "/akomodasi/logo/ll4.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.000.000",
+        "class_room": "Quad Room"
+    },
+    {
+        "images_package": "/akomodasi/hotel/l8.jpg",
+        "logo_vendor": "/akomodasi/logo/ll1.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.100.000",
+        "class_room": "Quad Room"
+    },
+    {
+        "images_package": "/akomodasi/hotel/l9.jpg",
+        "logo_vendor": "/akomodasi/logo/ll4.svg",
+        "vendor": "Al Jumrah",
+        "price": "6.990.000",
+        "class_room": "Quad Room"
+    }
+]

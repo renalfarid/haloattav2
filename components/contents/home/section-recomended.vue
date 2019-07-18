@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="header-title">
+      <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi Untuk Kamu</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
-          <h2 class="title">Rekomendasi Program Umrah</h2>
           <h6 class="subtitle">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
@@ -46,12 +46,12 @@
                     </a-tag>
                   </div>
                 </div>
-                <div class="ant-card-meta-title--package">{{item.name_product}}</div>
+                <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
               </div>
 
               <div slot="description">
                 <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                  <div class="ant-card-meta-description--bottom-left">Rp{{item.price_product}}</div>
+                  <div class="ant-card-meta-description--bottom-left fw-500 cr-primary">Rp{{item.price_product}}</div>
                   <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
                     <div class="icon icon-star">
                       <a-icon type="star" theme="filled" class="mr-4" />5.8

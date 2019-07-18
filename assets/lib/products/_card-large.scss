@@ -3,7 +3,7 @@
     border: none;
     & .ant-card-body {
         overflow: hidden;
-        height: 336px;
+        height: 346px;
         padding: 0;
         & .box-content {
             background-position: center center;
@@ -110,7 +110,7 @@
         }
     }
     & .ant-card-body {
-        padding: 16px;
+        padding: 24px;
         & .ant-avatar {
             @include align-items(center);
             background-color: #fafafa;

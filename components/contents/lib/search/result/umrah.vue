@@ -1,26 +1,40 @@
 <template>
-  <a-tabs
-    class="search-main"
-    type="card"
-    defaultActiveKey="1"
-    tabPosition="top"
-    @prevClick="callback"
-    @nextClick="callback"
-  >
-    <a-tab-pane key="1">
-      <span slot="tab">
-        <div class="icon">
-          <a-icon type="code-sandbox" />
-        </div>Paket Umrah
-      </span>
+  <div class="ant-layout--results-search">
+    <a-card class="ant-card--results-info b-shadow b-solid b-radius" :bordered="false">
+      <div class="d-flex align-items-center">
+        <div class="ant-card--results-info-left d-flex align-items-center">
+          <div>
+            <a-avatar :size="64" icon="user" />
+          </div>
+          <div>
+            <div class="ant-card--results-info-title">Umrah September 2019</div>
+            <div class="ant-card--results-info-subtitle">
+              <span>Program 9 Hari</span>
+              <a-divider type="vertical" />
+              <span>40 Pax</span>
+              <a-divider type="vertical" />
+              <span>{{dewasa}} Dewasa</span>
+              <a-divider type="vertical" />
+              <span>{{anak}} Anak</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-card--results-info-right ml-auto"
+          v-bind:class="visibleSearch ? 'd-none' : ''"
+        >
+          <a-button @click="showSearch" class="b-shadow b-radius">Ganti Pencarian</a-button>
+        </div>
+      </div>
 
-      <div>
+      <div class="ant-form--search" v-show="visibleSearch">
+        <a-divider />
         <a-form layout="vertical" class="form-search--costume">
           <a-row :gutter="16">
-            <a-col :span="12">
-              <a-form-item label="Kota Asal" :label-col="{ span: 24 }" :wrapper-col="{ span: 24 }">
+            <a-col :span="8">
+              <a-form-item label="Kota Asal">
                 <div class="icon-search">
-                  <img class="max-width" src="/icons/ticket/airplane.png" />
+                  <img class="max-width" src="/icons/search/airplane.svg" />
                 </div>
                 <a-select
                   showSearch
@@ -43,12 +57,8 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="12">
-              <a-form-item
-                label="Bulan Keberangkatan"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+            <a-col :span="8">
+              <a-form-item label="Bulan Keberangkatan">
                 <div class="icon-search">
                   <a-icon type="calendar" />
                 </div>
@@ -72,17 +82,11 @@
                 </a-select>
               </a-form-item>
             </a-col>
-          </a-row>
 
-          <a-row :gutter="16">
-            <a-col :span="12">
-              <a-form-item
-                label="Jumalah Order"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+            <a-col :span="8">
+              <a-form-item label="Jamaah">
                 <div class="icon-search">
-                  <img class="max-width" src="/icons/ticket/seat.png" />
+                  <img class="max-width" src="/icons/search/boysmiling.svg" />
                 </div>
                 <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
                   <a-menu slot="overlay">
@@ -143,13 +147,11 @@
                 </a-dropdown>
               </a-form-item>
             </a-col>
+          </a-row>
 
-            <a-col :span="12">
-              <a-form-item
-                label="Program Hari"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+          <a-row :gutter="16">
+            <a-col :span="8">
+              <a-form-item label="Program Hari">
                 <div class="icon-search">
                   <a-icon type="calendar" />
                 </div>
@@ -173,15 +175,9 @@
                 </a-select>
               </a-form-item>
             </a-col>
-          </a-row>
 
-          <a-row :gutter="16">
-            <a-col :span="12">
-              <a-form-item
-                label="Rating Bintang Hotel"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+            <a-col :span="8">
+              <a-form-item label="Rating Bintang Hotel">
                 <div class="icon-search">
                   <a-icon type="crown" />
                 </div>
@@ -206,12 +202,8 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="12">
-              <a-form-item
-                label="Kisaran Harga"
-                :label-col="{ span: 24 }"
-                :wrapper-col="{ span: 24 }"
-              >
+            <a-col :span="8">
+              <a-form-item label="Kisaran Harga">
                 <div class="icon-search">
                   <a-icon type="wallet" />
                 </div>
@@ -237,65 +229,21 @@
             </a-col>
           </a-row>
 
-          <a-row :gutter="16">
-            <a-col :span="12">
-              <a-button @click="searchUmrah" class="btn-search" size="large" block>Cari Umrah</a-button>
+          <a-row :gutter="16" type="flex" justify="end">
+            <a-col :span="8">
+              <a-button class="btn-search b-shadow b-radius" size="large" block>Cari Umrah</a-button>
             </a-col>
           </a-row>
         </a-form>
       </div>
-    </a-tab-pane>
-
-    <a-tab-pane disabled key="2">
-      <span slot="tab">
-        <div class="icon">
-          <a-icon type="code-sandbox" />
-        </div>Tiket Group
-      </span>
-      Content of tab 2
-    </a-tab-pane>
-
-    <a-tab-pane disabled key="3">
-      <span slot="tab">
-        <div class="icon">
-          <a-icon type="code-sandbox" />
-        </div>LA Akomodasi
-      </span>
-      Content of tab 3
-    </a-tab-pane>
-
-    <a-tab-pane disabled key="4">
-      <span slot="tab">
-        <div class="icon">
-          <a-icon type="code-sandbox" />
-        </div>Visa Umrah
-      </span>
-      Content of tab 4
-    </a-tab-pane>
-
-    <a-tab-pane disabled key="5">
-      <span slot="tab">
-        <div class="icon">
-          <a-icon type="code-sandbox" />
-        </div>Asuransi
-      </span>
-      Content of tab 5
-    </a-tab-pane>
-
-    <a-tab-pane disabled key="6">
-      <span slot="tab">
-        <div class="icon">
-          <a-icon type="code-sandbox" />
-        </div>Handling
-      </span>
-      Content of tab 6
-    </a-tab-pane>
-  </a-tabs>
+    </a-card>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      visibleSearch: false,
       dewasa: 1,
       anak: 0
     };
@@ -321,8 +269,8 @@ export default {
           .indexOf(input.toLowerCase()) >= 0
       );
     },
-    searchUmrah() {
-      this.$router.push({ path: "/umrah/result" });
+    showSearch() {
+      this.visibleSearch = !this.visibleSearch;
     }
   }
 };

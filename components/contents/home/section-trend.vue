@@ -1,12 +1,13 @@
 <template>
   <div class="container">
     <div class="header-title">
+      <a-divider orientation="left" class="ant-divider-title-left">Sedang Trending</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
-          <h2 class="title">Sedang Trending di Halo Atta</h2>
-          <h6
-            class="subtitle"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione</h6>
+          <h6 class="subtitle">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+          </h6>
         </a-col>
       </a-row>
     </div>
@@ -17,9 +18,7 @@
           <div slot="cover" :style="{ backgroundImage: `url(${trend1})` }"></div>
           <a-card-meta>
             <div slot="title">Umrah Bareng Artis</div>
-            <div slot="description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit
-            </div>
+            <div slot="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit</div>
           </a-card-meta>
         </a-card>
 
@@ -27,9 +26,7 @@
           <div slot="cover" :style="{ backgroundImage: `url(${trend2})` }"></div>
           <a-card-meta>
             <div slot="title">Liburan Umaroh</div>
-            <div slot="description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit
-            </div>
+            <div slot="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit</div>
           </a-card-meta>
         </a-card>
 
@@ -37,9 +34,7 @@
           <div slot="cover" :style="{ backgroundImage: `url(${trend3})` }"></div>
           <a-card-meta>
             <div slot="title">Umrah Plus Hemat</div>
-            <div slot="description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit
-            </div>
+            <div slot="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit</div>
           </a-card-meta>
         </a-card>
 
@@ -47,16 +42,14 @@
           <div slot="cover" :style="{ backgroundImage: `url(${trend4})` }"></div>
           <a-card-meta>
             <div slot="title">Outbond Alumni</div>
-            <div slot="description">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit
-            </div>
+            <div slot="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit</div>
           </a-card-meta>
         </a-card>
       </slick>
 
       <div class="action-slick">
-        <a-button class="btn-left" @click="prev" size="large" shape="circle" icon="left"/>
-        <a-button class="btn-right" @click="next" size="large" shape="circle" icon="right"/>
+        <a-button class="btn-left" @click="prev" size="large" shape="circle" icon="left" />
+        <a-button class="btn-right" @click="next" size="large" shape="circle" icon="right" />
       </div>
     </div>
   </div>
