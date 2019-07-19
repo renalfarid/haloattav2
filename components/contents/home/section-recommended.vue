@@ -109,7 +109,7 @@ export default {
         {
           id: 1,
           name_product: "Umrah Exclusive November 2019 Keberangkatan Jakarta",
-          images_product: "/products/V2.png",
+          images_product: "/umrah/package/u5.png",
           price_product: "20.400.000",
           pax_available: 21,
           pax_booked: 65
@@ -117,7 +117,7 @@ export default {
         {
           id: 2,
           name_product: "Umrah Exclusive Desember 2019 Keberangkatan Makassar",
-          images_product: "/products/V2.png",
+          images_product: "/umrah/package/u6.png",
           price_product: "27.900.000",
           pax_available: 18,
           pax_booked: 75
@@ -125,7 +125,7 @@ export default {
         {
           id: 3,
           name_product: "Umrah Exclusive Januari 2020 Keberangkatan Makassar",
-          images_product: "/products/V3.png",
+          images_product: "/umrah/package/u7.png",
           price_product: "23.300.000",
           pax_available: 32,
           pax_booked: 5
@@ -133,7 +133,7 @@ export default {
         {
           id: 4,
           name_product: "Umrah Exclusive Februari 2020 Keberangkatan Makassar",
-          images_product: "/products/V4.png",
+          images_product: "/umrah/package/u8.png",
           price_product: "26.900.000",
           pax_available: 29,
           pax_booked: 14
@@ -141,7 +141,7 @@ export default {
         {
           id: 5,
           name_product: "Umrah Exclusive Maret 2020 Keberangkatan Jakarta",
-          images_product: "/products/V5.png",
+          images_product: "/umrah/package/u9.png",
           price_product: "27.000.000",
           pax_available: 47,
           pax_booked: 14

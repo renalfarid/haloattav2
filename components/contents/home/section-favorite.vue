@@ -15,7 +15,7 @@
     <a-row :gutter="16">
       <a-col :span="16">
         <a-card class="card-product-overlay">
-          <div class="box-content" :style="{ backgroundImage: `url(${coverFavorit})` }">
+          <div class="box-content" :style="{ backgroundImage: 'url(/umrah/cover/cu40.jpg)' }">
             <div class="box-content--overlay text-center">
               <div class="txt-title fs-40 fw-500 f-default mb-8">Bisa Share Profit Loh!</div>
               <div class="txt fs-16 fw-400 f-default">
@@ -130,16 +130,14 @@
   </div>
 </template>
 <script>
-import coverFavorit from "~/static/products/V5.png";
 export default {
   data() {
     return {
-      coverFavorit,
       lisData: [
         {
           id: 1,
           name_product: "Umrah Hemat November 2019 Keberangkatan Jakarta",
-          images_product: "/products/V2.png",
+          images_product: "/umrah/package/u1.png",
           price_product: "19.400.000",
           pax_available: 38,
           pax_booked: 7
@@ -147,7 +145,7 @@ export default {
         {
           id: 2,
           name_product: "Umrah Hemat Desember 2019 Keberangkatan Makassar",
-          images_product: "/products/V2.png",
+          images_product: "/umrah/package/u2.png",
           price_product: "17.900.000",
           pax_available: 41,
           pax_booked: 13
@@ -155,7 +153,7 @@ export default {
         {
           id: 3,
           name_product: "Umrah Hemat Januari 2020 Keberangkatan Makassar",
-          images_product: "/products/V3.png",
+          images_product: "/umrah/package/u3.png",
           price_product: "17.300.000",
           pax_available: 41,
           pax_booked: 20
@@ -163,7 +161,7 @@ export default {
         {
           id: 4,
           name_product: "Umrah Hemat Februari 2020 Keberangkatan Makassar",
-          images_product: "/products/V4.png",
+          images_product: "/umrah/package/u4.png",
           price_product: "16.900.000",
           pax_available: 40,
           pax_booked: 3

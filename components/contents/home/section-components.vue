@@ -17,7 +17,7 @@
       <slick ref="slick" :options="slickComponentsUmrah">
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/C1.png" />
+            <img alt="haloatta" src="/components/ticket.png" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Tiket Group">
                 <template slot="description">
@@ -33,7 +33,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/C2.png" />
+            <img alt="haloatta" src="/components/accommodation.png" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="LA Akomodasi">
                 <template slot="description">
@@ -49,7 +49,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/C3.png" />
+            <img alt="haloatta" src="/components/visa.png" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Visa Umrah">
                 <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
@@ -62,7 +62,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/C4.png" />
+            <img alt="haloatta" src="/components/insurance.png" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Asuransi">
                 <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
@@ -70,6 +70,58 @@
             </div>
             <div class="gradient-bottom"></div>
             <nuxt-link to="/catalog/insurance"></nuxt-link>
+          </div>
+        </a-card>
+
+        <a-card class="card-product--components">
+          <div slot="cover">
+            <img alt="haloatta" src="/components/handling.png" />
+            <div class="ant-card-cover--overlay">
+              <a-card-meta title="Handling">
+                <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
+              </a-card-meta>
+            </div>
+            <div class="gradient-bottom"></div>
+            <nuxt-link to="/catalog/handling"></nuxt-link>
+          </div>
+        </a-card>
+
+        <a-card class="card-product--components">
+          <div slot="cover">
+            <img alt="haloatta" src="/components/manasik.png" />
+            <div class="ant-card-cover--overlay">
+              <a-card-meta title="Manasik">
+                <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
+              </a-card-meta>
+            </div>
+            <div class="gradient-bottom"></div>
+            <nuxt-link to="/catalog/manasik"></nuxt-link>
+          </div>
+        </a-card>
+
+        <a-card class="card-product--components">
+          <div slot="cover">
+            <img alt="haloatta" src="/components/equipment.png" />
+            <div class="ant-card-cover--overlay">
+              <a-card-meta title="Perlengkapan">
+                <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
+              </a-card-meta>
+            </div>
+            <div class="gradient-bottom"></div>
+            <nuxt-link to="/catalog/equipment"></nuxt-link>
+          </div>
+        </a-card>
+
+        <a-card class="card-product--components">
+          <div slot="cover">
+            <img alt="haloatta" src="/components/tourleader.png" />
+            <div class="ant-card-cover--overlay">
+              <a-card-meta title="Tour Leader">
+                <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
+              </a-card-meta>
+            </div>
+            <div class="gradient-bottom"></div>
+            <nuxt-link to="/catalog/tourleader"></nuxt-link>
           </div>
         </a-card>
       </slick>

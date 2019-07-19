@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content-head">
-      <div class="content-head--cover" :style="{ backgroundImage: 'url(/cover/C1.png)' }">
+      <div class="content-head--cover" :style="{ backgroundImage: 'url(/umrah/cover/cu22.png)' }">
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
@@ -49,11 +49,32 @@
                   <search-insurance />
                 </a-tab-pane>
 
-                <a-tab-pane disabled key="6">
+                <a-tab-pane key="6">
                   <span slot="tab">
                     <div class="icon-handling"></div>Handling
                   </span>
-                  Content of tab 6
+                  <search-handling />
+                </a-tab-pane>
+
+                <a-tab-pane key="7">
+                  <span slot="tab">
+                    <div class="icon-manasik"></div>Manasik
+                  </span>
+                  <search-manasik />
+                </a-tab-pane>
+
+                <a-tab-pane key="8">
+                  <span slot="tab">
+                    <div class="icon-equipment"></div>Perlengkapan
+                  </span>
+                  <search-equipment />
+                </a-tab-pane>
+
+                <a-tab-pane key="9">
+                  <span slot="tab">
+                    <div class="icon-tourleader"></div>Tour Leader
+                  </span>
+                  <search-tourleader />
                 </a-tab-pane>
               </a-tabs>
             </a-col>
@@ -93,7 +114,7 @@
 
     <div class="content-banner-full">
       <a-card class="cover-banner">
-        <img alt="haloatta" src="~/static/cover/cover-create.png" slot="cover" />
+        <img alt="haloatta" src="/umrah/cover/cu17.png" slot="cover" />
         <div class="container h-100">
           <a-row :gutter="16" type="flex" justify="start" align="middle" class="h-100">
             <a-col :span="12">
@@ -133,6 +154,11 @@ import searchTicket from "~/components/contents/lib/search/ticket.vue";
 import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
 import searchVisa from "~/components/contents/lib/search/visa.vue";
 import searchInsurance from "~/components/contents/lib/search/insurance.vue";
+import searchHandling from "~/components/contents/lib/search/handling.vue";
+import searchManasik from "~/components/contents/lib/search/manasik.vue";
+import searchEquipment from "~/components/contents/lib/search/equipment.vue";
+import searchTourleader from "~/components/contents/lib/search/tourleader.vue";
+
 import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 import sectionRecomended from "~/components/contents/home/section-recommended.vue";
@@ -161,6 +187,10 @@ export default {
     searchAccommodation,
     searchVisa,
     searchInsurance,
+    searchHandling,
+    searchManasik,
+    searchEquipment,
+    searchTourleader,
     sectionFavorite,
     sectionComponentsUmrah,
     sectionRecomended,
