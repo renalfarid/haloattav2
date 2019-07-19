@@ -119,7 +119,13 @@
         @include border-radius(0);
         border: none;
         & .ant-card-cover {
+            overflow: hidden;
             & img {
+                opacity: 0.8;
+                -webkit-transform: translate3d(0, 10%, 0) scale3d(1.2, 1.2, 1);
+                transform: translate3d(0, 10%, 0) scale3d(1.2, 1.2, 1);
+                -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+                transition: transform 0.5s, opacity 0.5s;
                 @include border-radius(0);
                 width: 100%;
             }
@@ -142,6 +148,13 @@
                         font-size: 14px;
                         color: #ffffff;
                     }
+                }
+            }
+            &:hover {
+                & img {
+                    opacity: 1;
+                    -webkit-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
                 }
             }
         }
