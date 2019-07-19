@@ -11,7 +11,7 @@
       <div class="fs-14 f-default cr-black mb-4">Umaroh Personal</div>
       <div class="fs-15 fw-500 f-default cr-black mb-8">Alba Husain Mustafa</div>
       <div>
-        <a-button class="b-shadow b-radius d-flex align-items-center d-none">
+        <a-button class="b-shadow b-radius d-flex align-items-center">
           <img src="/icons/upgrade.png" /> Upgrade ke Bisnis
         </a-button>
       </div>
@@ -49,11 +49,18 @@
       </a-sub-menu>
 
       <a-menu-item class="ant-menu--sider-item" key="3">
-        <nuxt-link to="/accounts/mitra/transaction/order" class="nav-text">Pesanan Saya</nuxt-link>
+        <div class="d-flex align-items-center">
+          <nuxt-link to="/accounts/mitra/transaction/order" class="nav-text">Pesanan Saya</nuxt-link>
+          <a-badge class="ml-auto" count="2" />
+        </div>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="4">
         <nuxt-link to="/accounts/mitra/create" class="nav-text">Buat Paket</nuxt-link>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="5">
+        <nuxt-link to="/accounts/mitra/setting" class="nav-text">Pengaturan</nuxt-link>
       </a-menu-item>
     </a-menu>
   </div>
@@ -63,7 +70,7 @@ export default {
   props: ["current"],
   methods: {
     toTopUp() {
-      this.$router.push('/accounts/top-up');
+      this.$router.push("/accounts/top-up");
     }
   }
 };
