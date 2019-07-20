@@ -31,7 +31,7 @@
           <div class="fs-14 fw-400 cr-black f-default ml-auto"><span class="cr-gray mr-8">x</span> Rp 12.500.000</div>
         </div>
         <div class="d-flex align-items-center">
-          <div class="fs-14 fw-400 cr-gray f-default">Dewasa (5) </div>
+          <div class="fs-14 fw-400 cr-gray f-default">Anak (5) </div>
           <div class="fs-14 fw-400 cr-black f-default ml-auto"><span class="cr-gray mr-8">x</span> Rp 12.500.000</div>
         </div>
       </div>
