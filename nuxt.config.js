@@ -12,7 +12,7 @@ module.exports = {
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
-            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&display=swap' }
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700&display=swap&subset=latin-ext,vietnamese' }
         ]
     },
     /*
