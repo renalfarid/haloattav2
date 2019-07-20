@@ -15,9 +15,7 @@
       <div class="w-100">
         <div class="d-flex align-items-center w-100">
           <div>
-            <a-avatar
-              src="https://communicateonline.me/lvt/wp-content/uploads/2016/10/Logo-Mo%CC%88venpick.png"
-            />
+            <a-avatar src="/akomodasi/logo/ll3.svg" />
           </div>
           <div class="fs-16 fw-500 cr-black">Movenpick Hotels & Resorts</div>
           <div class="ml-auto">
@@ -184,7 +182,7 @@
           <div class="fs-15 fw-400 cr-gray">Berikut syarat dan Ketentuan LA Akomodasi</div>
         </div>
         <div class="ml-auto">
-          <a-button>Baca Aturan</a-button>
+          <a-button class="b-shadow b-radius b-solid cr-primary" size="large">Baca Aturan</a-button>
         </div>
       </div>
     </a-list-item>

@@ -1,0 +1,121 @@
+[{
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m1.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "9",
+        "price": "190.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Jakarta",
+        "images_package": "/manasik/package/m2.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll2.svg",
+        "pax": "13",
+        "price": "110.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Batulicin",
+        "images_package": "/manasik/package/m3.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll3.svg",
+        "pax": "16",
+        "price": "200.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Banjarmasin",
+        "images_package": "/manasik/package/m4.jpeg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll3.svg",
+        "pax": "20",
+        "price": "210.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m5.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "20",
+        "price": "190.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m6.jpeg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "30",
+        "price": "200.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m7.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "35",
+        "price": "210.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m8.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "40",
+        "price": "220.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m9.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "45",
+        "price": "221.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m10.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "50",
+        "price": "210.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m11.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "55",
+        "price": "200.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m12.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "60",
+        "price": "209.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m13.JPEG",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "65",
+        "price": "203.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m14.JPEG",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "70",
+        "price": "205.000"
+    },
+    {
+        "name_manasik": "Manasik Pemantapan Umrah Makassar",
+        "images_package": "/manasik/package/m15.jpg",
+        "provider": "Go Bro Event",
+        "logo_provider": "/akomodasi/logo/ll1.svg",
+        "pax": "80",
+        "price": "300.000"
+    }
+]

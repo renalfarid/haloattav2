@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center">
         <div class="ant-card--results-info-left d-flex align-items-center">
           <div>
-            <a-avatar style="backgroundColor: #05CBB0" :size="64" icon="schedule" />
+            <a-avatar class="d-flex align-items-center" style="backgroundColor: #05CBB0" :size="64"><i class="icon-accommodation-white"></i></a-avatar>
           </div>
           <div>
             <div class="ant-card--results-info-title">
@@ -14,8 +14,9 @@
             <div class="ant-card--results-info-subtitle">
               Program 7 Hari
               <a-divider type="vertical" />
-              <span>1 Dewasa</span>,
-              <span>0 Anak</span>
+              <span>4 Quad</span>,
+              <span>0 Triple</span>,
+              <span>0 Double</span>
             </div>
           </div>
         </div>
@@ -116,7 +117,7 @@
 
           <a-row :gutter="16">
             <a-col :span="8">
-              <a-form-item label="Jumlah Tamu" hasFeedback>
+              <a-form-item label="Jumlah Room" hasFeedback>
                 <div class="icon-search">
                   <img class="max-width" src="/icons/search/boysmiling.svg" />
                 </div>
@@ -129,13 +130,13 @@
                             <a-avatar icon="user" />
                           </div>
                           <div>
-                            <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
-                            <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
+                            <div class="fs-14 fw-400 cr-black f-default">Quad Room</div>
+                            <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 4 orang)</div>
                           </div>
                         </div>
                         <div class="ml-auto">
                           <number-input
-                            v-model="dewasa"
+                            v-model="quad"
                             :min="0"
                             :max="10"
                             :inputtable="false"
@@ -153,13 +154,37 @@
                             <a-avatar icon="user" />
                           </div>
                           <div>
-                            <div class="fs-14 fw-400 cr-black f-default">Anak</div>
-                            <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
+                            <div class="fs-14 fw-400 cr-black f-default">Triple</div>
+                            <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 3 orang)</div>
                           </div>
                         </div>
                         <div class="ml-auto">
                           <number-input
-                            v-model="anak"
+                            v-model="triple"
+                            :min="0"
+                            :max="10"
+                            :inputtable="false"
+                            size="small"
+                            center
+                            controls
+                          />
+                        </div>
+                      </div>
+                    </a-menu-item>
+                    <a-menu-item key="2" disabled>
+                      <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <div class="mr-8">
+                            <a-avatar icon="user" />
+                          </div>
+                          <div>
+                            <div class="fs-14 fw-400 cr-black f-default">Double</div>
+                            <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 2 orang)</div>
+                          </div>
+                        </div>
+                        <div class="ml-auto">
+                          <number-input
+                            v-model="double"
                             :min="0"
                             :max="10"
                             :inputtable="false"
@@ -175,7 +200,7 @@
                     class="ant-btn--add-passenger text-left"
                     size="large"
                     block
-                  >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
+                  >{{quad}} Quad, {{triple}} Triple, {{double}} Double</a-button>
                 </a-dropdown>
               </a-form-item>
             </a-col>
@@ -226,8 +251,9 @@ export default {
     this.dateFormat = "YYYY-MM-DD";
     return {
       visibleSearch: false,
-      dewasa: 1,
-      anak: 0
+      quad: 4,
+      triple: 0,
+      double: 0
     };
   },
   beforeCreate() {

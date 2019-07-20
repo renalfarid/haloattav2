@@ -3,7 +3,7 @@
     border: none;
     & .ant-card-body {
         overflow: hidden;
-        height: 346px;
+        height: 358px;
         padding: 0;
         & .box-content {
             background-position: center center;
@@ -97,13 +97,34 @@
                     top: 0;
                     & .ant-card-cover--overlay-text-title {
                         line-height: normal;
-                        font-weight: 600;
+                        font-weight: 500;
                         font-size: 14px;
                     }
                     & .ant-card-cover--overlay-text-subtitle {
                         text-transform: lowercase;
                         line-height: normal;
-                        font-size: 12px;
+                        font-size: 13px;
+                    }
+                }
+            }
+            & .ant-card--overlay-block {
+                background: rgba(255, 255, 255, .6);
+                position: absolute;
+                display: block;
+                visibility: hidden;
+                opacity: 0;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                top: 0;
+                & .ant-btn {
+                    text-shadow: none;
+                    box-shadow: none;
+                    border: none;
+                    margin: 0 auto;
+                    & a {
+                        text-decoration: none;
+                        color: $color-font-gray;
                     }
                 }
             }
@@ -138,16 +159,6 @@
                         // }
                         & .ant-card-meta-title--top-right {
                             line-height: normal;
-                            & .ant-tag {
-                                background-color: $color-green;
-                                @include border-radius(2px);
-                                font-weight: normal;
-                                line-height: 22px;
-                                font-size: 14px;
-                                color: #ffffff;
-                                margin-right: 0;
-                                border: none;
-                            }
                         }
                     }
                     & .ant-card-meta-title--package {
@@ -156,7 +167,7 @@
                         font-weight: 600;
                         line-height: 22px;
                         font-size: 18px;
-                        height: 44px;
+                        height: 38px;
                     }
                 }
                 & .ant-card-meta-description {
@@ -206,6 +217,16 @@
             display: block;
             visibility: hidden;
             opacity: 0;
+            & .ant-tag {
+                background-color: $color-green;
+                @include border-radius(2px);
+                font-weight: normal;
+                line-height: 22px;
+                font-size: 14px;
+                color: #ffffff;
+                margin-right: 0;
+                border: none;
+            }
             & .ant-btn {
                 background-color: $color-main;
                 border: 1px solid $color-main;
@@ -214,6 +235,19 @@
         }
     }
     &:hover {
+        & .ant-card-cover {
+            & .ant-card--overlay-block {
+                -webkit-transition: all .1s ease-out;
+                -o-transition: all .1s ease-out;
+                transition: all .1s ease-out;
+                -webkit-transition-delay: .2s;
+                -o-transition-delay: .2s;
+                transition-delay: .2s;
+                visibility: visible;
+                z-index: 10;
+                opacity: 1;
+            }
+        }
         & .ant-card-body {
             & .package-description--more {
                 -webkit-transition: all .1s ease-out;

@@ -86,7 +86,7 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Jumalah Seat" hasFeedback>
+        <a-form-item label="Jumalah Penumpang" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/seat.svg" />
           </div>
@@ -229,7 +229,7 @@ export default {
         if (!err) {
           console.log("Received values of form: ", values);
         } else {
-          this.$router.push("/ticket-group/result");
+          this.$router.push("/catalog/ticket-group/result");
         }
       });
     }
