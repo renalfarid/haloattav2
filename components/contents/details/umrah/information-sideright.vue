@@ -104,7 +104,7 @@
 export default {
   methods: {
     nextOrderReview() {
-      this.$router.push({ path: "/umrah/order-review" });
+      this.$router.push({ path: "/catalog/umrah/order-review" });
     }
   }
 };
