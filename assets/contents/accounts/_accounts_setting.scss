@@ -1,0 +1,9 @@
+.ant-setting--account {
+    & .ant-card {
+        & .ant-card-head {
+            & .ant-card-extra {
+                padding-bottom: 16px !important;
+            }
+        }
+    }
+}
