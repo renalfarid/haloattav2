@@ -1,0 +1,153 @@
+.ant-steps-create-package {
+    & .ant-layout-header {
+        background-color: #ffffff;
+        position: relative;
+        z-index: 9999;
+        & .ant-header-item {
+            line-height: 64px;
+            height: 64px;
+            & .ant-header-brand {
+                display: block;
+                width: 126px;
+                & .logo {
+                    background: url('/haloatta.png');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    width: 100%;
+                    height: 38px;
+                }
+            }
+        }
+    }
+    & .ant-progress {
+        line-height: 0 !important;
+        & .ant-progress-bg {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+            background-color: $color-orange;
+        }
+    }
+    & .ant-form {
+        & .ant-form-item {
+            margin-bottom: 16px;
+            & .ant-form-item-label {
+                padding-bottom: 4px;
+                & label {
+                    text-transform: capitalize;
+                    font-weight: 500;
+                    font-size: 16px;
+                    color: $color-font !important;
+                }
+            }
+            & .ant-select-selection,
+            & .ant-input {
+                @include border-radius(2px);
+            }
+        }
+        & .ant-radio-group {
+            width: 100%;
+            & .ant-radio-button-wrapper {
+                white-space: normal !important;
+                text-align: center;
+                margin: 8px 0 4px 0;
+                padding: 16px 8px;
+                line-height: normal;
+                height: auto;
+                width: 100%;
+                & .anticon {
+                    visibility: hidden;
+                    position: absolute;
+                    font-size: 14px;
+                    right: 4px;
+                    opacity: 0;
+                    top: 4px;
+                }
+            }
+            & .ant-radio-wrapper {
+                white-space: normal !important;
+                & .anticon {
+                    visibility: hidden;
+                    position: absolute;
+                    font-size: 14px;
+                    opacity: 0;
+                }
+            }
+            & .ant-radio-wrapper-checked {
+                box-shadow: none !important;
+                & .anticon {
+                    color: $color-main;
+                    position: absolute;
+                    visibility: visible;
+                    font-size: 14px;
+                    right: 8px;
+                    opacity: 1;
+                    top: 8px;
+                }
+            }
+            & .ant-radio-button-wrapper-checked {
+                border-color: $color-main;
+                & .anticon {
+                    color: $color-main;
+                    position: absolute;
+                    visibility: visible;
+                    font-size: 14px;
+                    right: 4px;
+                    opacity: 1;
+                    top: 4px;
+                }
+            }
+            & span.ant-radio+* {
+                width: 100%;
+            }
+        }
+        & .ant-passenger {
+            @include border-radius(2px);
+            text-shadow: none !important;
+            box-shadow: none !important;
+        }
+        & .ant-btn--action {
+            @include border-radius(2px);
+            text-shadow: none !important;
+            background-color: $color-main;
+            border-color: $color-main;
+            font-weight: 500;
+        }
+    }
+    & .ant-list {
+        & .ant-list-item {
+            padding-bottom: 16px;
+            padding-top: 16px;
+        }
+    }
+    & .ant-card--action {
+        border: none;
+        border-top: 1px solid $color-border;
+        & .ant-card-body {
+            padding-right: 0;
+            padding-left: 0;
+            & .ant-btn {
+                text-shadow: none !important;
+                & span {
+                    text-shadow: none !important;
+                }
+            }
+        }
+    }
+    & .ant-layout-content--steps {
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        top: 0;
+    }
+    & .ant-btn--next {
+        background-color: $color-orange;
+        text-shadow: none !important;
+        color: #ffffff;
+        &:hover,
+        &:focus {
+            border-color: $color-orange;
+        }
+    }
+}

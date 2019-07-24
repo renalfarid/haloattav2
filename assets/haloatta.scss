@@ -27,11 +27,11 @@
 // pages main
 @import "contents/apps";
 // accounts pages
-@import "contents/accounts/accounts-summary";
 @import "contents/accounts/top-up";
-@import "contents/accounts/package/umrah";
+@import "contents/accounts/accounts-summary";
 @import "contents/accounts/transaction/purchase";
 @import "contents/accounts/transaction/order";
 @import "contents/accounts/transaction/sales";
 @import "contents/accounts/transaction/detail";
 @import "contents/accounts/create_package/steps";
+@import "contents/accounts/accounts_setting";

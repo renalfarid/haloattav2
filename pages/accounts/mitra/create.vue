@@ -9,7 +9,8 @@
             keuntungan, jadwal keberangkatan dan dapatkan
             berbagai benefit lainnya
           </div>
-          <a-button class="b-solid b-radius b-shadow ant-btn--action" size="large" @click="createPackage">Buat Paket</a-button>
+          <a-button class="b-solid b-radius b-shadow ant-btn--action mb-8 mr-8" size="large" @click="createPackage">Buat Paket v1</a-button>
+          <a-button class="b-solid b-radius b-shadow ant-btn--action" size="large" @click="createPackage2">Buat Paket v2</a-button>
         </a-col>
         <a-col :span="14">
           <img src="/icons/steps_1.png" />
@@ -95,6 +96,9 @@ export default {
   methods: {
     createPackage(){
       this.$router.push('/create/steps/schedule');
+    },
+    createPackage2() {
+      this.$router.push('/create/v2/steps/1');
     }
   }
 };

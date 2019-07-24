@@ -28,7 +28,7 @@
                 data-aos-duration="1200"
               >
                 <a-skeleton :loading="loading" active>
-                  <nuxt-link to="/accommodation/detail" class="d-block">
+                  <nuxt-link to="/catalog/accommodation/detail" class="d-block">
                     <a-card class="ant-card-package">
                       <div slot="cover">
                         <div
