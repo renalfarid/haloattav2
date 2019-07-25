@@ -51,7 +51,7 @@
       <a-menu-item class="ant-menu--sider-item" key="3">
         <div class="d-flex align-items-center">
           <nuxt-link to="/accounts/mitra/transaction/order" class="nav-text">Pesanan Saya</nuxt-link>
-          <a-badge class="ml-auto" count="2" />
+          <a-badge class="ml-auto" count="3" />
         </div>
       </a-menu-item>
 
