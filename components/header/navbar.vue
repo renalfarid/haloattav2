@@ -44,15 +44,14 @@
 
               <!-- after login -->
               <div class="navbar-accounts">
-                <a-avatar icon="user" @click="nextAccounts" />
-                <!-- <a-button class="btn-accounts" shape="circle" @click="nextAccounts">G</a-button> -->
+                <nuxt-link to="/accounts/mitra"><a-avatar icon="user" /></nuxt-link>
               </div>
             </div>
           </div>
 
           <!-- modal login -->
           <a-modal wrapClassName="ant-modal-authentication" v-model="authentication">
-            <login-modal />
+            <modal-authentication />
           </a-modal>
         </a-layout-header>
       </div>
@@ -60,7 +59,7 @@
   </div>
 </template>
 <script>
-import loginModal from "~/components/authentication/index.vue";
+import modalAuthentication from "~/components/authentication/index.vue";
 import FixedHeader from "vue-fixed-header";
 export default {
   data() {
@@ -73,15 +72,12 @@ export default {
     showAuthentication() {
       this.authentication = true;
     },
-    nextAccounts() {
-      this.$router.push({ path: "/accounts/mitra" });
-    },
     change(affixed) {
       console.log(affixed);
     }
   },
   components: {
-    loginModal,
+    modalAuthentication,
     FixedHeader
   }
 };
