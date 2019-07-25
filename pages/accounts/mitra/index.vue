@@ -3,7 +3,7 @@
     <div class="fs-18 fw-500 cr-black">Ringkasan Akun</div>
     <div class="fs-14 fw-400 cr-gray">Informasi singkat tentang saya</div>
     <a-row :gutter="24" class="mt-16">
-      <a-col :span="6">
+      <a-col :span="8">
         <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
           <a-avatar class="mb-16" :size="64" src="/user/maha_user.jpg" />
           <div class="fs-14 fw-400 cr-black f-default">Umroh Personal</div>
@@ -46,9 +46,9 @@
         </a-card>
       </a-col>
 
-      <a-col :span="18">
+      <a-col :span="16">
         <a-row :gutter="24">
-          <a-col :span="12">
+          <a-col :span="24">
             <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
               <div class="fs-16 fw-500 cr-black">Data Penjualan</div>
               <no-ssr>
@@ -63,7 +63,7 @@
             </a-card>
           </a-col>
 
-          <a-col :span="12">
+          <a-col :span="24">
             <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
               <div class="fs-16 fw-500 cr-black">Data Pembelian</div>
               <no-ssr>
@@ -75,40 +75,6 @@
                   height="295px"
                 ></ve-line>
               </no-ssr>
-            </a-card>
-          </a-col>
-
-          <a-col :span="12">
-            <a-card :bordered="false" title="Transaksi" class="b-solid b-shadow b-radius">
-              <nuxt-link to="/accounts/mitra/transaction/order" slot="extra">Lihat semua</nuxt-link>
-              <a-list>
-                <a-list-item class="d-flex align-items-center">
-                  <div>Pembelian</div>
-                  <div class="ml-auto">10</div>
-                </a-list-item>
-                <a-list-item class="d-flex align-items-center">
-                  <div>Penjualan</div>
-                  <div class="ml-auto">20</div>
-                </a-list-item>
-              </a-list>
-            </a-card>
-          </a-col>
-
-          <a-col :span="12">
-            <a-card :bordered="false" title="Umroh Yang di Ikuti" class="b-solid b-shadow b-radius">
-              <nuxt-link to="/accounts/mitra/transaction/order" slot="extra">Lihat semua</nuxt-link>
-              <a-card-grid style="width:25%;">
-                <a-avatar class="d-block m-auto" :size="64" src="/user/maha_user.jpg" />
-              </a-card-grid>
-              <a-card-grid style="width:25%;">
-                <a-avatar class="d-block m-auto" :size="64" src="/user/maha_user.jpg" />
-              </a-card-grid>
-              <a-card-grid style="width:25%;">
-                <a-avatar class="d-block m-auto" :size="64" src="/user/maha_user.jpg" />
-              </a-card-grid>
-              <a-card-grid style="width:25%;">
-                <a-avatar class="d-block m-auto" :size="64" src="/user/maha_user.jpg" />
-              </a-card-grid>
             </a-card>
           </a-col>
         </a-row>

@@ -39,8 +39,7 @@
 
               <!-- before login -->
               <div class="navbar-button">
-                <a-button class="btn-login" @click="showLogin">Login</a-button>
-                <a-button class="btn-register">Register</a-button>
+                <a-button class="btn-authentication b-shadow b-radius fw-500" @click="showAuthentication">Login atau Daftar</a-button>
               </div>
 
               <!-- after login -->
@@ -52,8 +51,8 @@
           </div>
 
           <!-- modal login -->
-          <a-modal wrapClassName="ant-modal-login" v-model="visibleLogin">
-            <sectionLogin />
+          <a-modal wrapClassName="ant-modal-authentication" v-model="authentication">
+            <login-modal />
           </a-modal>
         </a-layout-header>
       </div>
@@ -61,18 +60,18 @@
   </div>
 </template>
 <script>
-import sectionLogin from "~/components/login/modal-login.vue";
+import loginModal from "~/components/authentication/index.vue";
 import FixedHeader from "vue-fixed-header";
 export default {
   data() {
     return {
-      visibleLogin: false,
+      authentication: false,
       isFixed: false
     };
   },
   methods: {
-    showLogin() {
-      this.visibleLogin = true;
+    showAuthentication() {
+      this.authentication = true;
     },
     nextAccounts() {
       this.$router.push({ path: "/accounts/mitra" });
@@ -82,7 +81,7 @@ export default {
     }
   },
   components: {
-    sectionLogin,
+    loginModal,
     FixedHeader
   }
 };

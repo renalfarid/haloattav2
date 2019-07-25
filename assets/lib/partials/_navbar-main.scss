@@ -41,16 +41,10 @@
                 }
             }
             & .navbar-button {
-                margin-left: 20px;
-                & .btn-login {
-                    font-size: 15px;
-                    border: none;
-                }
-                & .btn-register {
-                    background: $color-main;
-                    font-size: 15px;
-                    color: #ffffff;
-                    border: none;
+                & .btn-authentication {
+                    text-shadow: none !important;
+                    border: 1px solid #ffffff;
+                    color: $color-main;
                 }
             }
             & .navbar-accounts {
@@ -106,6 +100,13 @@
                         }
                     }
                 }
+                & .navbar-button {
+                    & .btn-authentication {
+                        text-shadow: none !important;
+                        border: 1px solid $color-main !important;
+                        color: $color-main;
+                    }
+                }
                 & .navbar-accounts {
                     margin-left: 20px;
                     & .btn-accounts {
@@ -119,9 +120,9 @@
     }
 }
 
-.ant-modal-login {
+.ant-modal-authentication {
     & .ant-modal {
-        width: 420px !important;
+        width: 380px !important;
         & .ant-modal-content {
             & .ant-modal-close {
                 box-shadow: 0 3px 6px rgba(0, 0, 0, .1);
@@ -137,17 +138,27 @@
             }
             & .ant-form-modal--login-top {
                 & .ant-form-item--facebook {
-                    background: #4468B2;
-                    margin-bottom: 5px;
-                    color: #ffffff;
                     border-color: #4468B2;
+                    background: #4468B2;
+                    margin-bottom: 8px;
+                    color: #ffffff;
+                    font-weight: 500;
+                    font-size: 14px;
+                    & img {
+                        max-height: 20px;
+                        max-width: 100%;
+                    }
                 }
                 & .ant-form-item--google {
-                    margin-top: 5px;
+                    font-weight: 500;
+                    font-size: 14px;
+                    margin-top: 8px;
+                    & img {
+                        max-height: 20px;
+                        max-width: 100%;
+                    }
                 }
             }
-            // & .ant-form-modal--login {
-            // }
             & .ant-modal-footer {
                 display: none;
             }
