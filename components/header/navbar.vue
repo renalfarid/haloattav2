@@ -38,7 +38,7 @@
               </a-menu>
 
               <!-- before login -->
-              <div class="navbar-button d-none">
+              <div class="navbar-button">
                 <a-button class="btn-login" @click="showLogin">Login</a-button>
                 <a-button class="btn-register">Register</a-button>
               </div>

@@ -198,7 +198,7 @@ export default {
         onChange: page => {
           console.log(page);
         },
-        pageSize: 3
+        pageSize: 10
       }
     };
   },
