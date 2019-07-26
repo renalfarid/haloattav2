@@ -17,6 +17,8 @@
 @import "lib/search/results";
 // lib filter
 @import "lib/filter/results";
+// lib authentication
+@import "lib/authentication/content";
 // lib product card
 @import "lib/products/card-large";
 @import "lib/products/card-small";
@@ -29,9 +31,10 @@
 // accounts pages
 @import "contents/accounts/top-up";
 @import "contents/accounts/accounts-summary";
+@import "contents/accounts/accounts-management";
 @import "contents/accounts/transaction/purchase";
 @import "contents/accounts/transaction/order";
 @import "contents/accounts/transaction/sales";
 @import "contents/accounts/transaction/detail";
 @import "contents/accounts/create_package/steps";
-@import "contents/accounts/accounts_setting";
+@import "contents/accounts/accounts-setting";

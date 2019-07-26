@@ -1,0 +1,38 @@
+.ant-layout--accounts-management {
+    & .ant-list {
+        & .ant-row {
+            margin: 0 !important;
+            & .ant-list-item {
+                margin: 0;
+                & .ant-images {
+                    @include border-radius(6px);
+                    padding: 16px 0 16px 16px;
+                    overflow: hidden;
+                    height: 100%;
+                    width: 100%;
+                    & .ant-images--product {
+                        background-position: center center;
+                        @include border-radius(6px);
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    & .ant-btn {
+        text-shadow: none !important;
+    }
+    & .ant-btn--publish {
+        background-color: $color-green;
+        border-color: $color-green;
+        color: #ffffff;
+    }
+    & .ant-btn--action {
+        background-color: $color-red;
+        border-color: $color-red;
+        color: #ffffff;
+    }
+}

@@ -1,0 +1,115 @@
+<template>
+  <div class="ant-layout--authentication">
+    <a-row>
+      <a-col
+        :span="7"
+        :style="{ backgroundColor: '#0FACF3' }"
+        class="d-flex align-items-center p-16 vh-100"
+      >
+        <a-card class="m-auto">
+          <div class="fs-30 fw-500 cr-white f-default mb-24">Selamat datang di Haloatta</div>
+
+          <a-button class="ant-btn--facebook" size="large" block>
+            <img src="/icons/facebook.png" /> Masuk dengan Facebook
+          </a-button>
+
+          <a-button class="ant-btn--google" size="large" block>
+            <img src="/icons/google.png" /> Masuk dengan Google
+          </a-button>
+
+          <a-divider></a-divider>
+
+          <a-form :form="form" @submit="handleSubmit">
+            <a-form-item>
+              <a-input
+                v-decorator="['userName',{ rules: [{ required: true, message: 'Harus di isi!' }] }]"
+                placeholder="Email atau No. Telp"
+                size="large"
+              />
+            </a-form-item>
+            <a-form-item>
+              <a-input
+                v-decorator="['password',{ valuePropName: 'password', initialValue: true, rules: [{ required: true, message: 'Harus di isi' }] }]"
+                :type="passwordFieldType"
+                placeholder="Kata Sandi"
+                size="large"
+              >
+              <a slot="suffix" class="cr-gray" @click="showPassword" >
+                <a-icon v-if="passwordFieldType === 'password'" type="eye"/>
+                <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible"/>
+              </a>
+              </a-input>
+            </a-form-item>
+            <a-form-item>
+              <a-button
+                class="ant-btn--authentication mb-8"
+                html-type="submit"
+                size="large"
+                block
+              >Masuk</a-button>
+              <div class="d-flex align-items-center">
+                <div>
+                  <nuxt-link class="fs-14 cr-white fw-500" to="/register">atau Daftar disini</nuxt-link>
+                </div>
+                <div class="ml-auto">
+                  <a class="fs-14 cr-white fw-500" href>Lupa password</a>
+                </div>
+              </div>
+            </a-form-item>
+          </a-form>
+        </a-card>
+      </a-col>
+      <a-col :span="17" class="d-flex align-items-center p-16 vh-100">
+        <a-card class="m-auto">
+          <img class="logo mb-32" src="/haloatta.png" />
+          <div class="fs-30 fw-500 cr-black f-default mb-8">
+            Bergabunglah untuk menjadi
+            <br />Mitra kami
+          </div>
+          <div class="fs-18 fw-400 cr-black mb-24">Tingkatkan penjualan produk anda bersama kami</div>
+          <div>
+            <a-button
+              size="large"
+              class="ant-btn--register b-radius b-shadow b-solid cr-primary fw-500"
+            >Daftar Mitra</a-button>
+          </div>
+        </a-card>
+        <img class="img-cover--bottom" src="/icons/authentication.png" />
+      </a-col>
+    </a-row>
+  </div>
+</template>
+<script>
+export default {
+  layout: "application",
+  name: "login",
+  head() {
+    return {
+      title:
+        "Login Akun Haloatta - Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya"
+    };
+  },
+  data() {
+    return {
+      password: "",
+      passwordFieldType: "password"
+    };
+  },
+  beforeCreate() {
+    this.form = this.$form.createForm(this);
+  },
+  methods: {
+    showPassword() {
+      this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+    },
+    handleSubmit(e) {
+      e.preventDefault();
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log(values);
+        }
+      });
+    }
+  }
+};
+</script>

@@ -48,6 +48,10 @@
                 &.nuxt-link-active {
                     color: $color-font;
                 }
+                &:hover,
+                &:focus {
+                    text-decoration: none;
+                }
             }
         }
         & .ant-menu--sider-sub {

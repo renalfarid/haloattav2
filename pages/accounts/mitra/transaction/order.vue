@@ -43,16 +43,16 @@
         <div class="w-100">
           <a-row :gutter="16" class="m-0 p-16">
             <a-col :span="8">
-              <div class="fs-13 fw-400 cr-gray">No. Pesanan</div>
-              <div class="cr-black fs-14 fw-500 f-default">{{item.no_pesanan}}</div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">No. Pesanan</div>
+              <div class="cr-black fs-15 fw-500 f-default">{{item.no_pesanan}}</div>
             </a-col>
             <a-col :span="8">
-              <div class="cr-gray fs-13 fw-400">Pax Order</div>
-              <div class="cr-black fs-14 fw-500 f-default">{{item.pax_order}} pax</div>
+              <div class="cr-gray fs-12 fw-400 text-uppercase">Jumlah Pesanan</div>
+              <div class="cr-black fs-15 fw-500 f-default">{{item.pax_order}} pax</div>
             </a-col>
             <a-col :span="8" class="text-right">
-              <div class="fs-13 fw-400 cr-gray">Total Bayar</div>
-              <div class="cr-black fs-14 fw-500 f-default">Rp. {{item.total_bayar}}</div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">Total Bayar</div>
+              <div class="cr-black fs-15 fw-500 f-default">Rp. {{item.total_bayar}}</div>
             </a-col>
           </a-row>
 
@@ -69,23 +69,23 @@
                 <div class="mr-8">
                   <a-avatar style="backgroundColor: #0FACF3" src="/icons/kaabah.png" />
                 </div>
-                <div class="fs-14 fw-500 cr-black f-default">{{item.name_package}}</div>
+                <div class="fs-15 fw-500 cr-black f-default">{{item.name_package}}</div>
               </div>
             </a-col>
             <a-col :span="8">
-              <div class="fs-13 fw-400 cr-gray">Tanggal Order</div>
-              <div class="cr-black fs-14 fw-500 f-default">{{item.tgl_order}}</div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">Tanggal Pemesanan</div>
+              <div class="cr-black fs-15 fw-500 f-default">{{item.tgl_order}}</div>
             </a-col>
             <a-col :span="8" class="text-right">
-              <div class="fs-13 fw-400 cr-gray">Status Pesanan</div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">Status Pemesanan</div>
               <div
-                class="fs-14 fw-500 f-default cr-red"
+                class="fs-15 fw-500 f-default cr-red"
                 v-if="item.status === 'Menunggu Pembayaran'"
               >
                 <span>{{item.status}}</span>
               </div>
               <div
-                class="fs-14 fw-500 f-default cr-orange"
+                class="fs-15 fw-500 f-default cr-orange"
                 v-if="item.status === 'Menunggu Verifikasi'"
               >
                 <span>{{item.status}}</span>
@@ -95,21 +95,21 @@
 
           <a-row :gutter="16" type="flex" justify="space-between" align="middle" class="m-0 p-16">
             <a-col :span="8">
-              <div class="fs-13 fw-400 cr-gray">Metode Pembayaran</div>
-              <div class="cr-black fs-14 fw-500 f-default">{{item.metode_pembayaran}}</div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">Metode Pembayaran</div>
+              <div class="cr-black fs-15 fw-500 f-default">{{item.metode_pembayaran}}</div>
             </a-col>
             <a-col :span="8">
               <div v-if="item.status === 'Menunggu Pembayaran'">
-                <div class="fs-13 fw-400 cr-gray">Batas Pembayaran</div>
-                <div class="cr-black fs-14 fw-500 f-default">{{item.batas_pembayaran}}</div>
+                <div class="fs-12 fw-400 cr-gray text-uppercase">Batas Pembayaran</div>
+                <div class="cr-black fs-15 fw-500 f-default">{{item.batas_pembayaran}}</div>
               </div>
               <div v-if="item.status === 'Menunggu Verifikasi'">
-                <div class="fs-13 fw-400 cr-gray">Batas Pembayaran</div>
-                <div class="cr-black fs-14 fw-500 f-default">{{item.batas_pembayaran}}</div>
+                <div class="fs-12 fw-400 cr-gray text-uppercase">Batas Pembayaran</div>
+                <div class="cr-black fs-15 fw-500 f-default">{{item.batas_pembayaran}}</div>
               </div>
               <div v-if="item.status === 'Lunas'">
-                <div class="fs-13 fw-400 cr-gray">Tanggal Pembayaran</div>
-                <div class="cr-black fs-14 fw-500 f-default">{{item.tgl_purchase}}</div>
+                <div class="fs-12 fw-400 cr-gray text-uppercase">Tanggal Pembayaran</div>
+                <div class="cr-black fs-15 fw-500 f-default">{{item.tgl_purchase}}</div>
               </div>
             </a-col>
             <a-col :span="8">
@@ -122,7 +122,7 @@
 
                 <nuxt-link
                   to="/accounts/mitra/transaction/detail"
-                  class="cr-primary fs-14"
+                  class="cr-primary fs-15"
                 >Lihat detail</nuxt-link>
               </div>
             </a-col>

@@ -38,22 +38,20 @@
               </a-menu>
 
               <!-- before login -->
-              <div class="navbar-button d-none">
-                <a-button class="btn-login" @click="showLogin">Login</a-button>
-                <a-button class="btn-register">Register</a-button>
+              <div class="navbar-button">
+                <a-button class="btn-authentication b-shadow b-radius fw-500" @click="showAuthentication">Login atau Daftar</a-button>
               </div>
 
               <!-- after login -->
               <div class="navbar-accounts">
-                <a-avatar icon="user" @click="nextAccounts" />
-                <!-- <a-button class="btn-accounts" shape="circle" @click="nextAccounts">G</a-button> -->
+                <nuxt-link to="/accounts/mitra"><a-avatar icon="user" /></nuxt-link>
               </div>
             </div>
           </div>
 
           <!-- modal login -->
-          <a-modal wrapClassName="ant-modal-login" v-model="visibleLogin">
-            <sectionLogin />
+          <a-modal wrapClassName="ant-modal-authentication" v-model="authentication">
+            <modal-authentication />
           </a-modal>
         </a-layout-header>
       </div>
@@ -61,28 +59,25 @@
   </div>
 </template>
 <script>
-import sectionLogin from "~/components/login/modal-login.vue";
+import modalAuthentication from "~/components/authentication/index.vue";
 import FixedHeader from "vue-fixed-header";
 export default {
   data() {
     return {
-      visibleLogin: false,
+      authentication: false,
       isFixed: false
     };
   },
   methods: {
-    showLogin() {
-      this.visibleLogin = true;
-    },
-    nextAccounts() {
-      this.$router.push({ path: "/accounts/mitra" });
+    showAuthentication() {
+      this.authentication = true;
     },
     change(affixed) {
       console.log(affixed);
     }
   },
   components: {
-    sectionLogin,
+    modalAuthentication,
     FixedHeader
   }
 };
