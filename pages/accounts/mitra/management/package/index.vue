@@ -94,8 +94,8 @@ const dataPenjualan = [
     images: "/umrah/package/u1.png",
     name_package:
       "Umrah Hemat September 2019 Program 9 Hari, Keberangkatan Makassar",
-    tanggal_publish: "10 September 2019",
-    tanggal_closing: "12 Januari 2020",
+    tanggal_publish: "-",
+    tanggal_closing: "-",
     harga_jual: "22.000.000",
     jumlah_pax: "40",
     status: "Belum Diterbitkan",
