@@ -33,7 +33,14 @@
                 <div class="cr-black fs-15 fw-500 f-default">{{item.jumlah_pax}} pax</div>
               </a-col>
               <a-col :span="9" class="text-right">
-                <div class="fs-12 fw-400 cr-gray text-uppercase">Harga Jual</div>
+                <div
+                  class="fs-12 fw-400 cr-gray text-uppercase"
+                  v-if="item.status === 'Belum Diterbitkan'"
+                >Harga Dasar</div>
+                <div
+                  class="fs-12 fw-400 cr-gray text-uppercase"
+                  v-if="item.status === 'Diterbitkan'"
+                >Harga Jual</div>
                 <div class="cr-black fs-15 fw-500 f-default">Rp. {{item.harga_jual}} /pax</div>
               </a-col>
             </a-row>
@@ -65,19 +72,25 @@
               </a-col>
               <a-col :span="5">
                 <div class="cr-gray fs-12 fw-400 text-uppercase">Status Penjualan</div>
-                <div class="fs-15 fw-500 f-default cr-red">
+                <div
+                  class="fs-15 fw-500 f-default cr-red"
+                  v-if="item.status === 'Belum Diterbitkan'"
+                >
+                  <span>{{item.status}}</span>
+                </div>
+                <div class="fs-15 fw-500 f-default cr-green" v-if="item.status === 'Diterbitkan'">
                   <span>{{item.status}}</span>
                 </div>
               </a-col>
               <a-col :span="9">
                 <div class="d-flex align-items-center align-end">
-                  <div v-if="item.status === 'Belum Diterbitkan'">
-                    <a-button class="ant-btn--publish b-shadow b-radius fs-15 fw-500">
-                      <nuxt-link to="/accounts/mitra/management/package/setting">Pengaturan</nuxt-link>
-                    </a-button>
+                  <a-button class="ant-btn--publish b-shadow b-radius fs-15 fw-500">
+                    <nuxt-link to="/accounts/mitra/management/package/setting">Pengaturan</nuxt-link>
+                  </a-button>
+                  <div v-if="item.status === 'Diterbitkan'">
                     <a-divider type="vertical" />
+                    <nuxt-link to class="cr-primary fs-15">Lihat detail</nuxt-link>
                   </div>
-                  <nuxt-link to class="cr-primary fs-15">Lihat detail</nuxt-link>
                 </div>
               </a-col>
             </a-row>
@@ -94,11 +107,23 @@ const dataPenjualan = [
     images: "/umrah/package/u1.png",
     name_package:
       "Umrah Hemat September 2019 Program 9 Hari, Keberangkatan Makassar",
-    tanggal_publish: "10 September 2019",
-    tanggal_closing: "12 Januari 2020",
-    harga_jual: "22.000.000",
+    tanggal_publish: "-",
+    tanggal_closing: "-",
+    harga_jual: "20.000.000",
     jumlah_pax: "40",
     status: "Belum Diterbitkan",
+    program: "Program 9 Hari"
+  },
+  {
+    no_product: "MT12345678HA",
+    images: "/umrah/package/u2.png",
+    name_package:
+      "Umrah Hemat September 2019 Program 9 Hari, Keberangkatan Makassar",
+    tanggal_publish: "30 Agustus 2019",
+    tanggal_closing: "1 November 2019",
+    harga_jual: "22.000.000",
+    jumlah_pax: "40",
+    status: "Diterbitkan",
     program: "Program 9 Hari"
   }
 ];

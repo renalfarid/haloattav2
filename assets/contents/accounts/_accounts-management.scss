@@ -19,8 +19,71 @@
                         width: 100%;
                     }
                 }
+                & .ant-radio-button-images {
+                    border: none;
+                    height: auto;
+                    width: 100%;
+                    padding: 0;
+                    & .ant-card {
+                        & .ant-card-cover {
+                            & .ant-card-cover-item {
+                                height: 180px;
+                                width: 100%;
+                                & .ant-card-cover-images {
+                                    background-position: center center;
+                                    background-repeat: no-repeat;
+                                    background-size: cover;
+                                    height: 100%;
+                                    width: 100%;
+                                }
+                            }
+                            & .hover-checked {
+                                background-color: rgba($color: #fff, $alpha: .6);
+                                @include align-items(center);
+                                @include flexbox();
+                                position: absolute;
+                                visibility: hidden;
+                                opacity: 0;
+                                width: 100%;
+                                bottom: 0;
+                                left: 0;
+                                top: 0;
+                                & .anticon {
+                                    color: $color-main;
+                                    font-size: 24px;
+                                    margin: 0 auto;
+                                }
+                            }
+                        }
+                    }
+                    &.ant-radio-button-wrapper-checked {
+                        & .ant-card {
+                            & .ant-card-cover {
+                                & .hover-checked {
+                                    -webkit-transition: all .15s ease-out;
+                                    -o-transition: all .15s ease-out;
+                                    transition: all .15s ease-out;
+                                    -webkit-transition-delay: .15s;
+                                    -o-transition-delay: .15s;
+                                    transition-delay: .15s;
+                                    visibility: visible;
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
+    }
+    & .ant-input-number-disabled {
+        background-color: #fafafa;
+        color: $color-font;
+    }
+    & .ant-form-explain {
+        margin-bottom: 8px;
+        font-size: 13px;
+        padding: 4px 0;
     }
     & .ant-btn {
         text-shadow: none !important;
