@@ -11,7 +11,7 @@
 </template>
 <script>
 const columns = [
-  { title: "Kode Mutasi", width: 120, dataIndex: "code", key: "code", fixed: 'left' },
+  { title: "Kode Mutasi", dataIndex: "code", key: "code" },
   { title: "Kode Transaksi", dataIndex: "transaction", key: "transaction" },
   { title: "Debit", dataIndex: "debit", key: "debit" },
   { title: "Kredit", dataIndex: "kredit", key: "kredit" },
