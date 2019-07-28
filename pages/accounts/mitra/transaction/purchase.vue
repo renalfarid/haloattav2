@@ -66,7 +66,7 @@
           </a-row>
 
           <a-row
-            :gutter="24"
+            :gutter="16"
             type="flex"
             justify="space-between"
             align="middle"
@@ -111,7 +111,7 @@
             </a-col>
           </a-row>
 
-          <a-row :gutter="24" type="flex" justify="space-between" align="middle" class="m-0 p-16">
+          <a-row :gutter="16" type="flex" justify="space-between" align="middle" class="m-0 p-16">
             <a-col :span="8">
               <div class="fs-12 fw-400 cr-gray text-uppercase">Metode Pembayaran</div>
               <div class="cr-black fs-15 fw-500 f-default">{{item.metode_pembayaran}}</div>
