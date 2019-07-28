@@ -75,6 +75,18 @@
         </a-menu-item>
       </a-sub-menu>
 
+      <a-sub-menu class="ant-menu--sider-sub" key="8">
+        <span slot="title">
+          <span>Fee Penjualan</span>
+        </span>
+        <a-menu-item class="ant-menu--sider-sub-item" key="8-1">
+          <nuxt-link to="/accounts/mitra/fee" class="nav-text">Pengajuan</nuxt-link>
+        </a-menu-item>
+        <a-menu-item class="ant-menu--sider-sub-item" key="8-2">
+          <nuxt-link to="/accounts/mitra/fee/withdraw-list" class="nav-text">Daftar Pengajuan</nuxt-link>
+        </a-menu-item>
+      </a-sub-menu>
+
       <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>
         <a-divider></a-divider>
       </a-menu-item>
