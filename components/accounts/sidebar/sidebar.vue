@@ -70,7 +70,7 @@
         <a-menu-item class="ant-menu--sider-sub-item" key="3-1">
           <nuxt-link to="/accounts/mitra/management/package" class="nav-text">Paket Saya</nuxt-link>
         </a-menu-item>
-        <a-menu-item class="d-none ant-menu--sider-sub-item" key="3-2">
+        <a-menu-item class="ant-menu--sider-sub-item" key="3-2">
           <nuxt-link to="/accounts/mitra/management/seat" class="nav-text">Seat</nuxt-link>
         </a-menu-item>
       </a-sub-menu>

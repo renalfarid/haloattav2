@@ -2,7 +2,7 @@
   <div class="ant-fee--withdraw">
     <div class="fs-18 fw-500 cr-black">Daftar Pengajuan Fee</div>
 
-    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataTopup">
+    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataWithdraw">
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -61,7 +61,7 @@
   </div>
 </template>
 <script>
-const dataTopup = [
+const dataWithdraw = [
   {
     no_transaction: "PUHA12345678",
     nominal: "300.000",
@@ -101,7 +101,7 @@ export default {
   },
   data() {
     return {
-      dataTopup,
+      dataWithdraw,
       pagination: {
         onChange: page => {
           console.log(page);
