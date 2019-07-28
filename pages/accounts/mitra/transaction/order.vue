@@ -4,10 +4,17 @@
       <div class="fs-18 fw-500 cr-black">Pesanan Saya</div>
       <a-row :gutter="16" class="mt-8 mb-8">
         <a-col :span="8">
-          <a-select defaultValue="Semua Metode Pembayaran" style="width: 100%">
-            <a-select-option value="Semua Metode Pembayaran">Semua Metode Pembayaran</a-select-option>
-            <a-select-option value="Saldo">Saldo</a-select-option>
-            <a-select-option value="ATM/Bank Transfer">ATM/Bank Transfer</a-select-option>
+          <a-select showSearch defaultValue="Semua Produk" style="width: 100%">
+            <a-select-option value="Semua Produk">Semua Produk</a-select-option>
+            <a-select-option value="Umrah">Umrah</a-select-option>
+            <a-select-option value="Tiket Group">Tiket Group</a-select-option>
+            <a-select-option value="LA Akomodasi">LA Akomodasi</a-select-option>
+            <a-select-option value="Visa">Visa</a-select-option>
+            <a-select-option value="Asuransi">Asuransi</a-select-option>
+            <a-select-option value="Handling">Handling</a-select-option>
+            <a-select-option value="Manasik">Manasik</a-select-option>
+            <a-select-option value="Perlengkapan">Perlengkapan</a-select-option>
+            <a-select-option value="Tour Leader">Tour Leader</a-select-option>
           </a-select>
         </a-col>
         <a-col :span="8">
@@ -114,16 +121,15 @@
             </a-col>
             <a-col :span="8">
               <div class="d-flex align-items-center align-end">
-                <div v-if="item.status === 'Menunggu Pembayaran'">
-                  <a-button class="b-shadow b-radius ant-btn--action" @click="nextConf">Konfirmasi Pembayaran</a-button>
-
-                  <a-divider type="vertical" />
-                </div>
-
                 <nuxt-link
                   to="/accounts/mitra/transaction/detail"
                   class="cr-primary fs-15"
                 >Lihat detail</nuxt-link>
+
+                <div v-if="item.status === 'Menunggu Pembayaran'">
+                  <a-divider type="vertical" />
+                  <a-button class="b-shadow b-radius ant-btn--action" @click="nextConf">Konfirmasi Pembayaran</a-button>
+                </div>
               </div>
             </a-col>
           </a-row>

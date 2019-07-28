@@ -35,13 +35,32 @@
 
     <a-divider />
 
-    <a-menu class="ant-menu--sider" mode="inline" :defaultSelectedKeys="['1']">
+    <a-menu class="ant-menu--sider" mode="vertical" :defaultSelectedKeys="['1']">
       <a-menu-item class="ant-menu--sider-item" key="1">
         <nuxt-link to="/accounts/mitra" class="nav-text">Ringkasan Akun</nuxt-link>
       </a-menu-item>
 
-      <a-menu-item class="ant-menu--sider-item" key="2">
-        <nuxt-link to="/accounts/top-up" class="nav-text">Top Up Halopay</nuxt-link>
+      <a-sub-menu class="ant-menu--sider-sub" key="2">
+        <span slot="title">
+          <span>Saldo Halopay</span>
+        </span>
+        <a-menu-item class="ant-menu--sider-sub-item" key="2-1">
+          <nuxt-link to="/accounts/top-up" class="nav-text">Tambah Saldo</nuxt-link>
+        </a-menu-item>
+        <a-menu-item class="ant-menu--sider-sub-item" key="2-2">
+          <nuxt-link to="/accounts/top-up/transaction" class="nav-text">Transaksi</nuxt-link>
+        </a-menu-item>
+        <a-menu-item class="ant-menu--sider-sub-item" key="2-3">
+          <nuxt-link to="/accounts/top-up/mutation" class="nav-text">Mutasi</nuxt-link>
+        </a-menu-item>
+      </a-sub-menu>
+
+      <a-menu-item class="ant-menu--sider-item" key="disabled-1" disabled>
+        <a-divider></a-divider>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="6">
+        <nuxt-link to="/accounts/mitra/create" class="nav-text">Buat Paket Umrah</nuxt-link>
       </a-menu-item>
 
       <a-sub-menu class="ant-menu--sider-sub" key="3">
@@ -51,20 +70,24 @@
         <a-menu-item class="ant-menu--sider-sub-item" key="3-1">
           <nuxt-link to="/accounts/mitra/management/package" class="nav-text">Paket Saya</nuxt-link>
         </a-menu-item>
-        <a-menu-item class="ant-menu--sider-sub-item" key="3-2">
+        <a-menu-item class="d-none ant-menu--sider-sub-item" key="3-2">
           <nuxt-link to="/accounts/mitra/management/seat" class="nav-text">Seat</nuxt-link>
         </a-menu-item>
       </a-sub-menu>
 
+      <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>
+        <a-divider></a-divider>
+      </a-menu-item>
+
       <a-sub-menu class="ant-menu--sider-sub" key="4">
         <span slot="title">
-          <span>Riwayat Transaksi</span>
+          <span>Informasi Transaksi</span>
         </span>
         <a-menu-item class="ant-menu--sider-sub-item" key="4-1">
-          <nuxt-link to="/accounts/mitra/transaction/purchase" class="nav-text">Pembelian</nuxt-link>
+          <nuxt-link to="/accounts/mitra/transaction/purchase" class="nav-text">Semua Pembelian</nuxt-link>
         </a-menu-item>
         <a-menu-item class="ant-menu--sider-sub-item" key="4-2">
-          <nuxt-link to="/accounts/mitra/transaction/sales" class="nav-text">Penjualan</nuxt-link>
+          <nuxt-link to="/accounts/mitra/transaction/sales" class="nav-text">Semua Penjualan</nuxt-link>
         </a-menu-item>
       </a-sub-menu>
 
@@ -75,10 +98,6 @@
             <a-badge class="ml-auto" count="3" />
           </div>
         </nuxt-link>
-      </a-menu-item>
-
-      <a-menu-item class="ant-menu--sider-item" key="6">
-        <nuxt-link to="/accounts/mitra/create" class="nav-text">Buat Paket</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="7">

@@ -173,7 +173,7 @@ export default {
   name: "topUp",
   head() {
     return {
-      title: "TopUp Saldo - Haloatta"
+      title: "Top Up Saldo Halopay- Haloatta"
     };
   },
   data() {

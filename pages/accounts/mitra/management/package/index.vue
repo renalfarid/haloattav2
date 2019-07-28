@@ -84,13 +84,13 @@
               </a-col>
               <a-col :span="9">
                 <div class="d-flex align-items-center align-end">
+                  <div v-if="item.status === 'Diterbitkan'">
+                    <nuxt-link to class="cr-primary fs-15">Lihat detail</nuxt-link>
+                    <a-divider type="vertical" />
+                  </div>
                   <a-button class="ant-btn--publish b-shadow b-radius fs-15 fw-500">
                     <nuxt-link to="/accounts/mitra/management/package/setting">Pengaturan</nuxt-link>
                   </a-button>
-                  <div v-if="item.status === 'Diterbitkan'">
-                    <a-divider type="vertical" />
-                    <nuxt-link to class="cr-primary fs-15">Lihat detail</nuxt-link>
-                  </div>
                 </div>
               </a-col>
             </a-row>

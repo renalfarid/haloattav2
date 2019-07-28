@@ -45,6 +45,7 @@
             }
             & a {
                 color: rgba($color: #484848, $alpha: 1);
+                font-weight: 500;
                 &.nuxt-link-active {
                     color: $color-font;
                 }
@@ -58,6 +59,7 @@
             & .ant-menu-submenu-title {
                 color: rgba($color: #484848, $alpha: 1);
                 padding-left: 16px !important;
+                font-weight: 500;
                 margin: 0;
             }
             & .ant-menu {
@@ -76,6 +78,7 @@
                     }
                     & a {
                         color: rgba($color: #484848, $alpha: 1);
+                        font-weight: 500;
                         &.nuxt-link-active {
                             color: $color-font;
                         }

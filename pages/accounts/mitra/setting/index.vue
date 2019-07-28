@@ -21,7 +21,11 @@
       </div>
 
       <div v-else-if="noTitleKey === 'alamat'">
-        <edit-address />
+        <add-address />
+      </div>
+
+      <div v-else-if="noTitleKey === 'bank'">
+        <add-bank />
       </div>
     </a-card>
   </div>
@@ -30,7 +34,8 @@
 import editProfile from "~/pages/accounts/mitra/setting/edit/profile.vue";
 import editEmailPhone from "~/pages/accounts/mitra/setting/edit/emailphone.vue";
 import editPassword from "~/pages/accounts/mitra/setting/edit/password.vue";
-import editAddress from "~/pages/accounts/mitra/setting/edit/address.vue";
+import addAddress from "~/pages/accounts/mitra/setting/add/address.vue";
+import addBank from "~/pages/accounts/mitra/setting/add/bank.vue";
 export default {
   layout: "accounts",
   name: "setting",
@@ -50,6 +55,10 @@ export default {
         {
           key: "alamat",
           tab: "Alamat"
+        },
+        {
+          key: "bank",
+          tab: "Bank"
         }
       ]
     };
@@ -60,6 +69,6 @@ export default {
       this[type] = key;
     }
   },
-  components: { editProfile, editEmailPhone, editPassword, editAddress }
+  components: { editProfile, editEmailPhone, editPassword, addAddress, addBank }
 };
 </script>
