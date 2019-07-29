@@ -105,7 +105,10 @@
       </div>
 
       <div class="content-favorites">
+        <!-- if before login -->
         <sectionFavorite />
+        <!-- if after login -->
+        <section-myumrah />
       </div>
 
       <div class="content-components-umrah">
@@ -159,7 +162,10 @@ import searchManasik from "~/components/contents/lib/search/manasik.vue";
 import searchEquipment from "~/components/contents/lib/search/equipment.vue";
 import searchTourleader from "~/components/contents/lib/search/tourleader.vue";
 
-import sectionFavorite from "~/components/contents/home/section-favorite.vue";
+// if before login
+// import sectionFavorite from "~/components/contents/home/section-favorite.vue";
+// if after login
+import sectionMyumrah from "~/components/contents/home/section-myumrah.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 import sectionRecomended from "~/components/contents/home/section-recommended.vue";
 import sectionTrend from "~/components/contents/home/section-trend.vue";
@@ -186,7 +192,8 @@ export default {
     searchManasik,
     searchEquipment,
     searchTourleader,
-    sectionFavorite,
+    // sectionFavorite,
+    sectionMyumrah,
     sectionComponentsUmrah,
     sectionRecomended,
     sectionTrend,

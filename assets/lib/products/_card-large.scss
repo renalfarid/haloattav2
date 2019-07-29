@@ -80,6 +80,9 @@
                     width: 150px;
                     left: -75px;
                     top: -85px;
+                    &.ant-pax--myUmrah {
+                        background: $color-orange-overlay !important;
+                    }
                     &.ant-pax--visa {
                         background: $color-orange-overlay !important;
                     }
