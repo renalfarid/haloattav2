@@ -1,10 +1,11 @@
 <template>
   <div class="ant-setting--account">
     <div class="fs-18 fw-500 cr-black">Pengaturan</div>
-    <div class="fs-14 fw-400 cr-gray">
+    <div class="fs-16 fw-400 cr-gray">
       Informasi profil anda tidak
       akan kami beritahukan kepada pihak mana pun.
     </div>
+    
     <a-card
       :tabList="tabListNoTitle"
       :activeTabKey="noTitleKey"
