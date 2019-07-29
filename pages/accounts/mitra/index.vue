@@ -2,46 +2,69 @@
   <div class="ant-layout--accounts-summary">
     <div class="fs-18 fw-500 cr-black">Ringkasan Akun</div>
     <div class="fs-14 fw-400 cr-gray">Informasi singkat tentang saya</div>
+
     <a-row :gutter="24" class="mt-16">
       <a-col :span="8">
-        <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
-          <a-avatar class="mb-16" :size="64" src="/user/maha_user.jpg" />
-          <div class="fs-14 fw-400 cr-black f-default">Umroh Personal</div>
-          <div class="fs-16 fw-500 cr-black mb-8">Alba Husain Mustafa</div>
-          <a-button class="b-shadow b-solid-primary b-radius" block>
-            <div class="d-flex align-items-center">
-              <img src="/icons/upgrade.png" class="mr-8" /> Upgrade ke Bisnis
+        <a-card :bordered="false" class="b-solid b-shadow b-radius">
+          <div class="d-flex align-items-center">
+            <div class="mr-16">
+              <a-avatar :size="64" src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png" />
             </div>
-          </a-button>
-
-          <a-divider />
-
-          <div class="fs-14 fw-400 cr-black f-default">Saldo Halopay</div>
-          <div class="fs-16 fw-500 cr-black mb-8">Rp 100.000.000</div>
-          <a-button class="b-shadow b-solid-primary b-radius" block>
-            <div class="d-flex align-items-center">
-              <img src="/icons/deposit.png" class="mr-8" /> Tambah Saldo
-            </div>
-          </a-button>
-
-          <a-divider />
-
-          <div class="text-left mb-16">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Informasi Alamat</div>
-            <div class="fs-13 fw-400 cr-black">
-              Jl. Maccini Raya No.40, Kel.Maccini, Kec Maccini Sombala,
-              Kota Makassar, Sulawesi Selatan, 90421
+            <div>
+              <div class="fs-15 fw-400 cr-black f-default mb-4">Umroh Personal</div>
+              <div class="fs-18 fw-500 cr-black f-default">Alba Husain Mustafa</div>
             </div>
           </div>
 
-          <div class="text-left mb-16">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Nomor Telepon</div>
-            <div class="fs-13 fw-400 cr-black">085213247455</div>
+          <a-divider />
+
+          <div class="d-flex align-items-center">
+            <div class="mr-16">
+              <a-avatar style="backgroundColor: #0FACF3" size="large" icon="wallet" />
+            </div>
+            <div>
+              <div class="fs-15 fw-400 cr-black f-default mb-4">Saldo Halopay</div>
+              <div class="fs-18 fw-500 cr-black f-default">Rp100.000.000</div>
+            </div>
           </div>
 
-          <div class="text-left">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Alamat E-mail</div>
-            <div class="fs-13 fw-400 cr-black">albahusainmustafa@gmail.com</div>
+          <a-divider />
+
+          <div class="d-flex align-items-start mb-24">
+            <div class="mr-16">
+              <a-avatar style="backgroundColor: #f5f5f5;color: #767676" icon="environment" />
+            </div>
+            <div>
+              <div class="fs-14 fw-400 cr-gray f-default mb-4">Alamat</div>
+              <div class="fs-15 fw-400 cr-black f-default">
+                Jl. Maccini Raya No.40, Kel.Maccini, Kec Maccini Sombala,
+                Kota Makassar, Sulawesi Selatan, 90421
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start mb-24">
+            <div class="mr-16">
+              <a-avatar style="backgroundColor: #f5f5f5;color: #767676" icon="phone" />
+            </div>
+            <div>
+              <div class="fs-14 fw-400 cr-gray f-default mb-4">Nomor telepon</div>
+              <div class="fs-15 fw-400 cr-black f-default">
+                085213908799
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-start mb-24">
+            <div class="mr-16">
+              <a-avatar style="backgroundColor: #f5f5f5;color: #767676" icon="mail" />
+            </div>
+            <div>
+              <div class="fs-14 fw-400 cr-gray f-default mb-4">Email Kontak</div>
+              <div class="fs-15 fw-400 cr-black f-default">
+                jordialba@gmail.com
+              </div>
+            </div>
           </div>
         </a-card>
       </a-col>

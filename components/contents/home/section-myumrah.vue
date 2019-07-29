@@ -63,7 +63,7 @@
                       <div class="fs-15 fw-500 cr-black">Awaluddin Muhammad Arifatullah</div>
                       <div class="fs-13 fw-400 cr-gray f-default">Umaroh Bisnis</div>
                     </template>
-                    <a-avatar class="zIndex mr-8" src="/user/maha_user.jpg" />
+                    <a-avatar class="zIndex mr-8" src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png" />
                   </a-popover>
 
                   <a-popover trigger="hover">

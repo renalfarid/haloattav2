@@ -21,7 +21,7 @@
                     </a-tag>
                   </template>
                   <a slot="author">Awaluddin Muhammad Arifatullah</a>
-                  <a-avatar src="/user/maha_user.jpg" alt="haloatta" slot="avatar" />
+                  <a-avatar src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png" alt="haloatta" slot="avatar" />
                   <p slot="content">Jl Kebahagiaan Utara - BTP Blok A, No 537</p>
                 </a-comment>
               </a-col>

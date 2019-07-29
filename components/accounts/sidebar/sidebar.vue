@@ -8,7 +8,7 @@
 
     <div class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
-        <a-avatar size="large" src="/user/maha_user.jpg" />
+        <a-avatar size="large" src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png" />
       </div>
       <div class="text-ellipsis pr-16">
         <div class="fs-14 f-default cr-black mb-4">Umaroh Personal</div>
