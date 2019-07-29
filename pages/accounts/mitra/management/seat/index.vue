@@ -50,7 +50,7 @@
               <div class="fs-14 fw-500 cr-black f-default">{{item.available}}</div>
             </a-col>
             <a-col :span="12" class="text-right">
-              <a-button class="b-shadow b-radius" type="primary" ghost><nuxt-link to="/accounts/mitra/management/seat/pax-list">Lihat Detail Pax</nuxt-link></a-button>
+              <a-button class="b-shadow b-radius" type="primary"><nuxt-link to="/accounts/mitra/management/seat/pax-list">Lihat Detail Pax</nuxt-link></a-button>
             </a-col>
           </a-row>
         </div>
@@ -67,6 +67,14 @@ const dataSeat = [
     program: "Program 9 Hari",
     available: "1",
     booked: "3"
+  },
+  {
+    no_transaction: "PUHA12345678",
+    pax: "4",
+    date: "10 Januari 2019",
+    program: "Program 9 Hari",
+    available: "2",
+    booked: "2"
   }
 ];
 export default {
