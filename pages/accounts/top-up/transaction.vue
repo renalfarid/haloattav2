@@ -10,78 +10,77 @@
         class="b-solid b-radius b-shadow mt-16 mb-16 p-0"
         style="backgroundColor: #ffffff"
       >
-        <div class="w-100">
-          <a-row :gutter="16" class="m-0 p-16">
-            <a-col :span="8">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">No. Transaksi</div>
-              <div class="cr-black fs-14 fw-500 f-default">{{item.no_transaction}}</div>
-            </a-col>
-            <a-col :span="8">
-              <div class="cr-gray fs-12 fw-400 text-uppercase">Nominal Top Up</div>
-              <div class="cr-black fs-15 fw-500 f-default">Rp {{item.nominal}}</div>
-            </a-col>
-            <a-col :span="8" class="text-right">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Bank Tujuan</div>
-              <div class="cr-black fs-15 fw-500 f-default">{{item.bank}}</div>
-            </a-col>
-          </a-row>
+        <a-skeleton :loading="loading" active avatar>
+          <div class="w-100">
+            <a-row :gutter="16" class="m-0 p-16">
+              <a-col :span="8">
+                <div class="fs-14 fw-400 cr-gray">No. Transaksi</div>
+                <div class="fs-15 fw-500 cr-black">{{item.no_transaction}}</div>
+              </a-col>
+              <a-col :span="8">
+                <div class="fs-14 fw-400 cr-gray">Nominal Top Up</div>
+                <div class="fs-15 fw-500 cr-black">Rp {{item.nominal}}</div>
+              </a-col>
+              <a-col :span="8" class="text-right">
+                <div class="fs-14 fw-400 cr-gray">Bank Tujuan</div>
+                <div class="fs-15 fw-500 cr-black">{{item.bank}}</div>
+              </a-col>
+            </a-row>
 
-          <a-row
-            :gutter="16"
-            type="flex"
-            justify="space-between"
-            align="middle"
-            class="m-0 p-16"
-            style="backgroundColor: #f5f5f5"
-          >
-            <a-col :span="8">
-              <div class="d-flex align-items-start">
-                <div class="mr-8">
-                  <a-avatar style="backgroundColor: #0FACF3" icon="wallet" />
+            <a-row
+              :gutter="16"
+              type="flex"
+              justify="space-around"
+              align="middle"
+              class="m-0 p-16"
+              style="borderTop: 1px solid #f5f5f5"
+            >
+              <a-col :span="8">
+                <div class="d-flex align-items-center">
+                  <div class="mr-8">
+                    <a-avatar
+                      style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3"
+                      icon="wallet"
+                    />
+                  </div>
+                  <div>
+                    <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
+                    <div class="fs-15 fw-500 cr-black">{{item.batas_pembayaran}}</div>
+                  </div>
                 </div>
-                <div>
-                  <div class="fs-12 fw-400 cr-gray text-uppercase">Batas Pembayaran</div>
-                  <div class="fs-15 fw-500 cr-black f-default">{{item.batas_pembayaran}}</div>
+              </a-col>
+              <a-col :span="8">
+                <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
+                <div class="fs-15 fw-500 cr-red" v-if="item.status === 'Menunggu Pembayaran'">
+                  <span>{{item.status}}</span>
                 </div>
-              </div>
-            </a-col>
-            <a-col :span="8">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Status Pemesanan</div>
-              <div
-                class="fs-15 fw-500 f-default cr-red"
-                v-if="item.status === 'Menunggu Pembayaran'"
-              >
-                <span>{{item.status}}</span>
-              </div>
-              <div class="fs-15 fw-500 f-default cr-red" v-if="item.status === 'Kedaluwarsa'">
-                <span>{{item.status}}</span>
-              </div>
-              <div
-                class="fs-15 fw-500 f-default cr-orange"
-                v-if="item.status === 'Menunggu Verifikasi'"
-              >
-                <span>{{item.status}}</span>
-              </div>
-              <div class="fs-15 fw-500 f-default cr-green" v-if="item.status === 'Lunas'">
-                <span>{{item.status}}</span>
-              </div>
-            </a-col>
-            <a-col :span="8" class="text-right">
-              <div class="d-flex align-items-center align-end">
-                <div v-if="item.status === 'Menunggu Pembayaran'">
-                  <a-button
-                    class="b-shadow b-radius ant-btn--action"
-                    @click="nextConf"
-                  >Konfirmasi Pembayaran</a-button>
+                <div class="fs-15 fw-500 cr-red" v-if="item.status === 'Kedaluwarsa'">
+                  <span>{{item.status}}</span>
                 </div>
+                <div class="fs-15 fw-500 cr-orange" v-if="item.status === 'Menunggu Verifikasi'">
+                  <span>{{item.status}}</span>
+                </div>
+                <div class="fs-15 fw-500 cr-green" v-if="item.status === 'Lunas'">
+                  <span>{{item.status}}</span>
+                </div>
+              </a-col>
+              <a-col :span="8" class="text-right">
+                <div class="d-flex align-items-center align-end">
+                  <div v-if="item.status === 'Menunggu Pembayaran'">
+                    <a-button
+                      class="b-shadow b-radius ant-btn--action"
+                      @click="nextConf"
+                    >Konfirmasi Pembayaran</a-button>
+                  </div>
 
-                <div v-if="item.status === 'Kedaluwarsa'">
-                  <a-button class="b-shadow b-radius" type="danger" @click="remove(index)" ghost>Hapus</a-button>
+                  <div v-if="item.status === 'Kedaluwarsa'">
+                    <a class="fs-15 fw-500 cr-red" @click="remove(index)">Hapus</a>
+                  </div>
                 </div>
-              </div>
-            </a-col>
-          </a-row>
-        </div>
+              </a-col>
+            </a-row>
+          </div>
+        </a-skeleton>
       </a-list-item>
     </a-list>
   </div>
@@ -128,6 +127,7 @@ export default {
   },
   data() {
     return {
+      loading: true,
       dataTopup,
       pagination: {
         onChange: page => {
@@ -136,6 +136,11 @@ export default {
         pageSize: 10
       }
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
   },
   methods: {
     remove(index) {

@@ -12,24 +12,28 @@
         <a-col :span="12">
           <div class="d-flex align-items-center">
             <div class="mr-8">
-              <a-avatar class="p-8" style="backgroundColor: #0FACF3" src="/icons/kaabah.png" />
+              <a-avatar
+                style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
+                src="/icons/search/tabs/color/umrah.svg"
+              />
             </div>
-            <div
-              class="fs-15 fw-500 cr-black f-default"
-            >Paket Umrah September 2019, Keberangkatan Makassar</div>
+            <div class="fs-15 fw-500 cr-black f-default">
+              Paket Umrah September 2019,
+              Keberangkatan Makassar
+            </div>
           </div>
         </a-col>
         <a-col :span="4">
-          <div class="fs-12 fw-400 cr-gray text-uppercase">Tanggal Keberangkatan</div>
-          <div class="cr-black fs-14 fw-500 f-default">20 September 2019</div>
+          <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
+          <div class="fs-15 fw-500 cr-black">20 September 2019</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-12 fw-400 cr-gray text-uppercase">Program Hari</div>
-          <div class="cr-black fs-14 fw-500 f-default">Program 9 Hari</div>
+          <div class="fs-14 fw-400 cr-gray">Program Hari</div>
+          <div class="fs-15 fw-500 cr-black">Program 9 Hari</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-12 fw-400 cr-gray text-uppercase">Jumlah Pax</div>
-          <div class="cr-black fs-14 fw-500 f-default">4 Pax</div>
+          <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
+          <div class="fs-15 fw-500 cr-black">4 Pax</div>
         </a-col>
       </a-row>
     </a-card>
@@ -47,25 +51,42 @@
           <a-row :gutter="16" type="flex" justify="space-around" align="middle" class="m-0 p-24">
             <a-col :span="12">
               <div class="d-flex align-items-center">
-                <div class="mr-8">
-                  <a-avatar>{{item.key}}</a-avatar>
+                <div class="mr-16">
+                  <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3">{{item.key}}</a-avatar>
                 </div>
                 <div>
-                  <div class="fs-12 fw-400 cr-gray text-uppercase">Kode Booking</div>
-                  <div class="cr-black fs-14 fw-500 f-default">{{item.code_book}}</div>
+                  <div class="fs-14 fw-400 cr-gray">Kode Booking</div>
+                  <div class="fs-15 fw-500 cr-black">{{item.code_book}}</div>
                 </div>
               </div>
             </a-col>
             <a-col :span="8">
-              <div class="cr-gray fs-12 fw-400 text-uppercase">Status</div>
-              <div class="cr-green fs-15 fw-500 f-default" v-if="item.status === 'Tersedia'">{{item.status}} ({{item.desc}})</div>
-              <div class="cr-red fs-15 fw-500 f-default" v-if="item.status === 'Sudah Dipesan'">{{item.status}} ({{item.desc}})</div>
+              <div class="fs-14 fw-400 cr-gray">Status Pax</div>
+              <div
+                class="fs-15 fw-500 cr-green"
+                v-if="item.status === 'Tersedia'"
+              >{{item.status}} ({{item.desc}})</div>
+              <div
+                class="fs-15 fw-500 cr-red"
+                v-if="item.status === 'Sudah Dipesan'"
+              >{{item.status}} ({{item.desc}})</div>
             </a-col>
             <a-col :span="4" class="text-right">
-              <a-button class="b-shadow b-radius" type="primary" block v-if="item.status === 'Tersedia'">
+              <a-button
+                class="b-shadow b-radius"
+                type="primary"
+                block
+                v-if="item.status === 'Tersedia'"
+              >
                 <nuxt-link to="/accounts/mitra/jamaah/formulir">Isi Formulir Jamaah</nuxt-link>
               </a-button>
-              <a-button class="b-shadow b-radius" type="primary" block ghost v-if="item.status === 'Sudah Dipesan'">
+              <a-button
+                class="b-shadow b-radius"
+                type="primary"
+                block
+                ghost
+                v-if="item.status === 'Sudah Dipesan'"
+              >
                 <nuxt-link to="/accounts/mitra/jamaah/berkas">Lihat Berkas Jamaah</nuxt-link>
               </a-button>
             </a-col>

@@ -10,52 +10,51 @@
         class="b-solid b-radius b-shadow mt-16 mb-16 p-0"
         style="backgroundColor: #ffffff"
       >
-        <div class="w-100">
-          <a-row :gutter="16" class="m-0 p-16">
-            <a-col :span="6">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">No. Transaksi</div>
-              <div class="cr-black fs-14 fw-500 f-default">{{item.no_transaction}}</div>
-            </a-col>
-            <a-col :span="6">
-              <div class="cr-gray fs-12 fw-400 text-uppercase">Nominal Pengajuan</div>
-              <div class="cr-black fs-15 fw-500 f-default">Rp {{item.nominal}}</div>
-            </a-col>
-            <a-col :span="6">
-              <div class="cr-gray fs-12 fw-400 text-uppercase">Tanggal Pengajuan</div>
-              <div class="cr-black fs-15 fw-500 f-default">12 Juli 2019</div>
-            </a-col>
-            <a-col :span="6" class="text-right">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Status Pengajuan</div>
-              <div
-                class="fs-15 fw-500 f-default cr-orange"
-                v-if="item.status === 'Menunggu Verifikasi'"
-              >
-                <span>{{item.status}}</span>
-              </div>
-              <div class="fs-15 fw-500 f-default cr-green" v-if="item.status === 'Berhasil'">
-                <span>{{item.status}}</span>
-              </div>
-            </a-col>
-          </a-row>
+        <a-skeleton :loading="loading" active>
+          <div class="w-100">
+            <a-row :gutter="16" class="m-0 p-16">
+              <a-col :span="6">
+                <div class="fs-14 fw-400 cr-gray">No. Transaksi</div>
+                <div class="fs-15 fw-500 cr-black">{{item.no_transaction}}</div>
+              </a-col>
+              <a-col :span="6">
+                <div class="fs-14 fw-400 cr-gray">Nominal Pengajuan</div>
+                <div class="fs-15 fw-500 cr-black">Rp {{item.nominal}}</div>
+              </a-col>
+              <a-col :span="6">
+                <div class="fs-14 fw-400 cr-gray">Tanggal Pengajuan</div>
+                <div class="fs-15 fw-500 cr-black">12 Juli 2019</div>
+              </a-col>
+              <a-col :span="6" class="text-right">
+                <div class="fs-14 fw-400 cr-gray">Status Pengajuan</div>
+                <div class="fs-15 fw-500 cr-orange" v-if="item.status === 'Menunggu Verifikasi'">
+                  <span>{{item.status}}</span>
+                </div>
+                <div class="fs-15 fw-500 cr-green" v-if="item.status === 'Berhasil'">
+                  <span>{{item.status}}</span>
+                </div>
+              </a-col>
+            </a-row>
 
-          <a-row
-            :gutter="16"
-            type="flex"
-            justify="space-between"
-            align="middle"
-            class="m-0 p-16"
-            style="backgroundColor: #f5f5f5"
-          >
-            <a-col :span="12">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Keterangan</div>
-              <div class="fs-14 fw-500 cr-black f-default">{{item.desc}}</div>
-            </a-col>
-            <a-col :span="12" class="text-right">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Rekening Tujuan</div>
-              <div class="cr-black fs-14 fw-500 f-default">{{item.bank}}</div>
-            </a-col>
-          </a-row>
-        </div>
+            <a-row
+              :gutter="16"
+              type="flex"
+              justify="space-between"
+              align="middle"
+              class="m-0 p-16"
+              style="backgroundColor: #f5f5f5"
+            >
+              <a-col :span="12">
+                <div class="fs-14 fw-400 cr-gray">Keterangan</div>
+                <div class="fs-15 fw-500 cr-black">{{item.desc}}</div>
+              </a-col>
+              <a-col :span="12" class="text-right">
+                <div class="fs-14 fw-400 cr-gray">Rekening Tujuan</div>
+                <div class="fs-15 fw-500 cr-black">{{item.bank}}</div>
+              </a-col>
+            </a-row>
+          </div>
+        </a-skeleton>
       </a-list-item>
     </a-list>
   </div>
@@ -101,6 +100,7 @@ export default {
   },
   data() {
     return {
+      loading: true,
       dataWithdraw,
       pagination: {
         onChange: page => {
@@ -109,6 +109,11 @@ export default {
         pageSize: 10
       }
     };
+  },
+  mounted(){
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
   },
   methods: {}
 };

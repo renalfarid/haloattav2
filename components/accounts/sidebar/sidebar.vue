@@ -8,7 +8,10 @@
 
     <div class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
-        <a-avatar size="large" src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png" />
+        <a-avatar
+          size="large"
+          src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png"
+        />
       </div>
       <div class="text-ellipsis pr-16">
         <div class="fs-14 f-default cr-black mb-4">Umaroh Personal</div>
@@ -18,14 +21,14 @@
         <a-button class="b-shadow b-radius d-flex align-items-center">
           <img src="/icons/upgrade.png" /> Upgrade ke Bisnis
         </a-button>
-      </div> -->
+      </div>-->
     </div>
 
     <a-divider />
 
     <div class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
-        <a-avatar style="backgroundColor: #0FACF3" icon="wallet" />
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3" icon="wallet" />
       </div>
       <div>
         <div class="fs-14 f-default cr-black mb-4">Saldo Halopay</div>
