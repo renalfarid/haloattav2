@@ -30,3 +30,9 @@
 .ant-spin-blur {
     opacity: 0;
 }
+
+.ant-card--padding {
+    & .ant-card-loading-content {
+        margin: 32px !important;
+    }
+}

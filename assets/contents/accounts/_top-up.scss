@@ -25,3 +25,28 @@
         }
     }
 }
+
+.ant-transaction--halopay {
+    & .ant-list {
+        & .ant-list-item {
+            border-bottom: 1px solid #f5f5f5 !important;
+            margin: 0;
+            & .ant-btn--action {
+                background-color: $color-red;
+                border-color: $color-red;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+.ant-transaction--mutation {
+    & .ant-card {
+        & .ant-card-body {
+            padding: 0;
+            & .ant-table-pagination.ant-pagination {
+                margin: 16px !important;
+            }
+        }
+    }
+}

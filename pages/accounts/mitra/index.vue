@@ -1,83 +1,75 @@
 <template>
   <div class="ant-layout--accounts-summary">
     <div class="fs-18 fw-500 cr-black">Ringkasan Akun</div>
-    <div class="fs-14 fw-400 cr-gray">Informasi singkat tentang saya</div>
-    <a-row :gutter="24" class="mt-16">
-      <a-col :span="8">
-        <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
-          <a-avatar class="mb-16" :size="64" src="/user/maha_user.jpg" />
-          <div class="fs-14 fw-400 cr-black f-default">Umroh Personal</div>
-          <div class="fs-16 fw-500 cr-black mb-8">Alba Husain Mustafa</div>
-          <a-button class="b-shadow b-solid-primary b-radius" block>
-            <div class="d-flex align-items-center">
-              <img src="/icons/upgrade.png" class="mr-8" /> Upgrade ke Bisnis
+    <div class="fs-16 fw-400 cr-gray">Informasi singkat tentang saya</div>
+
+    <a-card :bordered="false" class="b-solid b-shadow b-radius mt-16 mb-16">
+      <a-row :gutter="16" type="flex" justify="space-around" align="middle">
+        <a-col :span="7">
+          <div class="d-flex align-items-center">
+            <div class="mr-16">
+              <a-avatar
+                size="large"
+                src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png"
+              />
             </div>
-          </a-button>
-
-          <a-divider />
-
-          <div class="fs-14 fw-400 cr-black f-default">Saldo Halopay</div>
-          <div class="fs-16 fw-500 cr-black mb-8">Rp 100.000.000</div>
-          <a-button class="b-shadow b-solid-primary b-radius" block>
-            <div class="d-flex align-items-center">
-              <img src="/icons/deposit.png" class="mr-8" /> Tambah Saldo
-            </div>
-          </a-button>
-
-          <a-divider />
-
-          <div class="text-left mb-16">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Informasi Alamat</div>
-            <div class="fs-13 fw-400 cr-black">
+            <div class="fs-18 fw-500 cr-black f-default text-ellipsis">Alba Husain Mustafa</div>
+          </div>
+        </a-col>
+        <a-col :span="7">
+          <dl class="ant-deflist">
+            <dt class="ant-deflist__label">Status Akun</dt>
+            <dd class="ant-deflist__value text-ellipsis">Umaroh Personal</dd>
+            <dt class="ant-deflist__label">E-mail</dt>
+            <dd class="ant-deflist__value text-ellipsis">jordialba@gmail.com</dd>
+          </dl>
+        </a-col>
+        <a-col :span="8">
+          <dl class="ant-deflist">
+            <dt class="ant-deflist__label">No. Telp</dt>
+            <dd class="ant-deflist__value text-ellipsis">08123456789</dd>
+            <dt class="ant-deflist__label">Alamat</dt>
+            <dd class="ant-deflist__value text-ellipsis">
               Jl. Maccini Raya No.40, Kel.Maccini, Kec Maccini Sombala,
               Kota Makassar, Sulawesi Selatan, 90421
-            </div>
-          </div>
+            </dd>
+          </dl>
+        </a-col>
+        <a-col :span="2">
+          <a-button type="danger" ghost block><nuxt-link to="/accounts/mitra/setting">edit</nuxt-link></a-button>
+        </a-col>
+      </a-row>
+    </a-card>
 
-          <div class="text-left mb-16">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Nomor Telepon</div>
-            <div class="fs-13 fw-400 cr-black">085213247455</div>
-          </div>
-
-          <div class="text-left">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Alamat E-mail</div>
-            <div class="fs-13 fw-400 cr-black">albahusainmustafa@gmail.com</div>
-          </div>
+    <a-row :gutter="16">
+      <a-col :span="12">
+        <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
+          <div class="fs-16 fw-500 cr-black">Data Penjualan</div>
+          <no-ssr>
+            <ve-line
+              :data="chartDataSales"
+              :grid="grid"
+              :settings="chartSettingSales"
+              :legend-visible="false"
+              height="260px"
+            ></ve-line>
+          </no-ssr>
         </a-card>
       </a-col>
 
-      <a-col :span="16">
-        <a-row :gutter="24">
-          <a-col :span="24">
-            <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
-              <div class="fs-16 fw-500 cr-black">Data Penjualan</div>
-              <no-ssr>
-                <ve-line
-                  :data="chartDataSales"
-                  :grid="grid"
-                  :settings="chartSettingSales"
-                  :legend-visible="false"
-                  height="295px"
-                ></ve-line>
-              </no-ssr>
-            </a-card>
-          </a-col>
-
-          <a-col :span="24">
-            <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
-              <div class="fs-16 fw-500 cr-black">Data Pembelian</div>
-              <no-ssr>
-                <ve-line
-                  :data="chartDataPurchase"
-                  :grid="grid"
-                  :settings="chartSettingPurchase"
-                  :legend-visible="false"
-                  height="295px"
-                ></ve-line>
-              </no-ssr>
-            </a-card>
-          </a-col>
-        </a-row>
+      <a-col :span="12">
+        <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
+          <div class="fs-16 fw-500 cr-black">Data Pembelian</div>
+          <no-ssr>
+            <ve-line
+              :data="chartDataPurchase"
+              :grid="grid"
+              :settings="chartSettingPurchase"
+              :legend-visible="false"
+              height="260px"
+            ></ve-line>
+          </no-ssr>
+        </a-card>
       </a-col>
     </a-row>
   </div>
@@ -95,10 +87,16 @@ export default {
   data() {
     this.chartSettingSales = {
       yAxisType: ["KMB"],
+      labelMap: {
+        sales: "Jumlah Penjualan"
+      },
       area: true
     };
     this.chartSettingPurchase = {
-      yAxisType: ["KMB"]
+      yAxisType: ["KMB"],
+      labelMap: {
+        order: "Jumlah Pembelian"
+      }
     };
     this.grid = {
       bottom: 0,
@@ -108,89 +106,84 @@ export default {
     };
     return {
       chartDataSales: {
-        columns: ["date", "sales"],
+        columns: ["name", "sales"],
         rows: [
           {
-            date: "01/01",
-            sales: 1523
+            name: "Umrah",
+            sales: 10
           },
           {
-            date: "01/02",
-            sales: 1223
+            name: "Tiket Group",
+            sales: 8
           },
           {
-            date: "01/03",
-            sales: 2123
+            name: "LA Akomodasi",
+            sales: 6
           },
           {
-            date: "01/04",
-            sales: 4123
+            name: "Visa",
+            sales: 5
           },
           {
-            date: "01/05",
-            sales: 3123
+            name: "Asuransi",
+            sales: 2
           },
           {
-            date: "01/06",
-            sales: 7123
+            name: "handling",
+            sales: 5
+          },
+          {
+            name: "Manasik",
+            sales: 0
+          },
+          {
+            name: "Perlengkapan",
+            sales: 1
+          },
+          {
+            name: "Tour Leader",
+            sales: 0
           }
         ]
       },
       chartDataPurchase: {
-        columns: [
-          "date",
-          "umrah",
-          "ticket",
-          "accommodation",
-          "visa",
-          "insurance",
-          "optional"
-        ],
+        columns: ["name", "order"],
         rows: [
           {
-            date: "01/01",
-            accommodation: 1125,
-            insurance: 4910,
-            optional: 815,
-            ticket: 2720,
-            umrah: 625,
-            visa: 1530
+            name: "Umrah",
+            order: 30
           },
           {
-            date: "01/02",
-            accommodation: 1015,
-            insurance: 2840,
-            optional: 2745,
-            ticket: 1650,
-            umrah: 3555,
-            visa: 460
+            name: "Tiket Group",
+            order: 1
           },
           {
-            date: "01/03",
-            accommodation: 2055,
-            insurance: 4570,
-            optional: 583,
-            ticket: 3591,
-            umrah: 2505,
-            visa: 1510
+            name: "LA Akomodasi",
+            order: 15
           },
           {
-            date: "01/04",
-            accommodation: 4055,
-            insurance: 570,
-            optional: 1583,
-            ticket: 2591,
-            umrah: 6505,
-            visa: 1510
+            name: "Visa",
+            order: 8
           },
           {
-            date: "01/05",
-            accommodation: 2055,
-            insurance: 4570,
-            optional: 2583,
-            ticket: 1591,
-            umrah: 3505,
-            visa: 510
+            name: "Asuransi",
+            order: 26
+          },
+          {
+            name: "Handling",
+            order: 15
+          },
+          {
+            name: "Manasik",
+            order: 5
+          },
+          {
+            name: "Perlengkapan",
+            order: 30
+          },
+          {
+            name: "Tour Leader",
+            order: 3
           }
         ]
       }

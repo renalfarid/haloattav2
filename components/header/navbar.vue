@@ -39,7 +39,7 @@
 
               <!-- before login -->
               <div class="navbar-button">
-                <a-button class="btn-authentication b-shadow b-radius fw-500" @click="showAuthentication">Login atau Daftar</a-button>
+                <a-button class="btn-authentication b-shadow b-radius fw-500" @click="showAuthentication">Login/Daftar</a-button>
               </div>
 
               <!-- after login -->

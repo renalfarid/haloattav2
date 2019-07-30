@@ -1,7 +1,8 @@
 <template>
   <div class="ant-layout--accounts-management">
-    <div class="fs-18 fw-500 cr-black">Manajemen Penjualan Paket Umrah</div>
-    <div class="fs-14 fw-400 cr-gray">Kembangkan bisnis umrah anda</div>
+    <div class="fs-18 fw-500 cr-black">Pengaturan Produk</div>
+    <div class="fs-16 fw-400 cr-gray">Atur penjualan produk anda dan mulai kembangkan bisnis umrah anda</div>
+    
     <a-steps :current="current" class="mt-24 mb-24">
       <a-step v-for="item in steps" :key="item.title" :title="item.title" />
     </a-steps>

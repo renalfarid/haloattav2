@@ -1,34 +1,27 @@
 .ant-transaction--sales {
-    & .ant-card--filter {
-        & .ant-card-body {
-            padding: 16px;
-        }
-    }
     & .ant-list {
-        & .ant-row {
-            margin: 0 !important;
-            & .ant-list-item {
-                margin: 0;
-                & .ant-images {
+        & .ant-list-item {
+            border-bottom: 1px solid #f5f5f5 !important;
+            margin: 0;
+            & .ant-images {
+                @include border-radius(6px);
+                padding: 16px 0 16px 16px;
+                overflow: hidden;
+                height: 100%;
+                width: 100%;
+                & .ant-images--product {
+                    background-position: center center;
                     @include border-radius(6px);
-                    padding: 16px 0 16px 16px;
-                    overflow: hidden;
+                    background-repeat: no-repeat;
+                    background-size: cover;
                     height: 100%;
                     width: 100%;
-                    & .ant-images--product {
-                        background-position: center center;
-                        @include border-radius(6px);
-                        background-repeat: no-repeat;
-                        background-size: cover;
-                        height: 100%;
-                        width: 100%;
-                    }
                 }
-                & .ant-btn--action {
-                    background-color: $color-red;
-                    border-color: $color-red;
-                    color: #ffffff;
-                }
+            }
+            & .ant-btn--action {
+                background-color: $color-red;
+                border-color: $color-red;
+                color: #ffffff;
             }
         }
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="ant-transaction--purchase-detail">
-    <a-card :bordered="false" class="b-radius b-shadow b-solid">
+    <a-card :loading="loading" :bordered="false" class="b-radius b-shadow b-solid mb-16">
       <nuxt-link
         to="/accounts/mitra/transaction/purchase"
         slot="title"
@@ -8,7 +8,7 @@
       >
         <a-icon type="arrow-left" class="mr-8" />Kembali
       </nuxt-link>
-      <div slot="extra" class="fw-500 fs-16 cr-black">No. Transaksi: HT1234567890</div>
+      <div v-if="!loading" slot="extra" class="fw-500 fs-16 cr-black">No. Transaksi: HT1234567890</div>
       <a-steps :current="1">
         <a-step>
           <template slot="title">Pesanan</template>
@@ -30,7 +30,7 @@
           <span slot="description" class="fs-13 d-none">30-08-2019 11:50</span>
         </a-step>
       </a-steps>
-      <div slot="actions" class="d-flex align-items-center">
+      <div v-if="!loading" slot="actions" class="d-flex align-items-center">
         <div class="fs-13 f-default">
           Mohon melakukan pembayaran sebelum
           <span>08-07-2019 &nbsp; 21:29</span>
@@ -42,9 +42,7 @@
       </div>
     </a-card>
 
-    <a-divider></a-divider>
-
-    <a-card :bordered="false" class="ant-card--padding b-shadow b-radius b-solid">
+    <a-card :loading="loading" :bordered="false" class="ant-card--padding b-shadow b-radius b-solid mb-16">
       <span slot="title" class="fs-16 fw-500 cr-black">
         <!-- if status tagihan 'menunggu pembayaran' -->
         <a-avatar size="small" style="backgroundColor: #FF7C0A" class="mr-8" icon="clock-circle" />Menunggu Pembayaran
@@ -57,7 +55,7 @@
       <span slot="title" class="fs-16 fw-500 cr-black d-none">
         <a-avatar size="small" style="backgroundColor: #0FACF3" class="mr-8" icon="check" />Pembelian Berhasil
       </span>
-      <a slot="extra" class="fs-18 fw-500 cr-black" @click="toggleCollapsed">
+      <a v-if="!loading" slot="extra" class="fs-18 fw-500 cr-black" @click="toggleCollapsed">
         Rp 807.999.657
         <a-icon class="fs-13 cr-primary ml-8" :type="collapsed ? 'up' : 'down'" />
       </a>
@@ -164,56 +162,49 @@
       <div class="p-32">
         <a-row :gutter="16">
           <a-col :span="6">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Dibeli</div>
-            <div class="fs-14 fw-400 cr-black">Sab, 15 Juli 2019, 21:09</div>
+            <div class="fs-14 fw-400 cr-gray">Tanggal Pesanan</div>
+            <div class="fs-15 fw-500 cr-black">Sab, 15 Juli 2019, 21:09</div>
           </a-col>
           <a-col :span="6">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Metode Pembayaran</div>
-            <div class="fs-14 fw-400 cr-black">ATM/Bank Transfer</div>
-            <div class="fs-14 fw-400 cr-black d-none">Saldo Halopay</div>
+            <div class="fs-14 fw-400 cr-gray">Metode Pembayaran</div>
+            <div class="fs-15 fw-500 cr-black">ATM/Bank Transfer</div>
+            <div class="fs-15 fw-500 cr-black d-none">Saldo Halopay</div>
+          </a-col>
+          <a-col :span="6">
+            <div class="fs-14 fw-400 cr-gray">Tipe Pembayaran</div>
+            <div class="fs-15 fw-500 cr-black">Lunas</div>
+            <div class="fs-15 fw-500 cr-black d-none">DP (Down Payment)</div>
           </a-col>
         </a-row>
       </div>
     </a-card>
 
-    <a-divider></a-divider>
-
-    <div class="fs-16 fw-500 cr-gray mb-8">Detail Produk</div>
-    <a-card :bordered="false" class="ant-card--padding b-shadow b-radius b-solid mb-16">
-      <div class="d-flex align-items-center p-32">
-        <div class="mr-8">
-          <a-avatar style="backgroundColor: #0FACF3" class="p-8" src="/icons/kaabah.png" />
-        </div>
-        <div class="fs-15 fw-400 cr-black f-default">
-          Umrah Hemat September 2019 Program 9 Hari,
-          <br />keberangkatan Makassar
-        </div>
-      </div>
-
-      <div class="d-none p-32" style="backgroundColor: #f8f8f8">
-        <a-row :gutter="16">
-          <a-col :span="4">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Keberangkatan</div>
-            <div class="fs-14 fw-400 cr-black">September 2019</div>
-          </a-col>
-          <a-col :span="4">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Program Hari</div>
-            <div class="fs-14 fw-400 cr-black">9 Hari</div>
-          </a-col>
-          <a-col :span="4">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Maskapai</div>
-            <div class="fs-14 fw-400 cr-black">Lion Air</div>
-          </a-col>
-          <a-col :span="4">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Hotel Makkah</div>
-            <div class="fs-14 fw-400 cr-black">Rayyana Ajyad</div>
-          </a-col>
-          <a-col :span="4">
-            <div class="fs-12 fw-400 cr-gray text-uppercase">Hotel Medinah</div>
-            <div class="fs-14 fw-400 cr-black">Pinewood Hotel</div>
-          </a-col>
-        </a-row>
-      </div>
+    <div class="fs-16 fw-500 cr-black mb-8">Detail Produk</div>
+    <a-card :loading="loading" :bordered="false" class="b-shadow b-radius b-solid mb-16">
+      <a-row :gutter="8" type="flex" justify="space-around" align="middle">
+        <a-col :span="12">
+          <div class="d-flex align-items-center">
+            <div class="mr-8">
+              <a-avatar
+                style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
+                src="/icons/search/tabs/color/umrah.svg"
+              />
+            </div>
+            <div class="fs-15 fw-500 cr-black f-default">
+              Umrah Hemat September 2019,
+              <br />keberangkatan Makassar
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6">
+          <div class="cr-gray fs-14 fw-400">Tanggal Keberangkatan</div>
+          <div class="cr-black fs-15 fw-500">10 September 2019</div>
+        </a-col>
+        <a-col :span="6">
+          <div class="cr-gray fs-14 fw-400">Program Hari</div>
+          <div class="cr-black fs-15 fw-500">Program 9 Hari</div>
+        </a-col>
+      </a-row>
     </a-card>
   </div>
 </template>
@@ -228,8 +219,14 @@ export default {
   },
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      loading: true
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
   },
   methods: {
     toggleCollapsed() {
