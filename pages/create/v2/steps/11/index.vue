@@ -30,7 +30,7 @@
                           Program Hari, tanggal keberangkatan
                           serta jumlah pax yang anda rencanakan
                         </div>
-                        <a class="fs-16 cr-primary mt-16">Lihat Komponen Wajib</a>
+                        <!-- <a class="fs-16 cr-primary mt-16">Lihat Komponen Wajib</a> -->
                       </div>
                     </a-list-item>
                     <a-list-item>
@@ -44,7 +44,7 @@
                           bandara domestik, Manasik pemantapan, Perlengkapan
                           Umrah, dan Tour Leader
                         </div>
-                        <a class="fs-16 cr-primary mt-16">Lihat Komponen Pendukung</a>
+                        <!-- <a class="fs-16 cr-primary mt-16">Lihat Komponen Pendukung</a> -->
                       </div>
                     </a-list-item>
                     <a-list-item>
