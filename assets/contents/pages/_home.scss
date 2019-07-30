@@ -215,27 +215,24 @@
         position: relative;
         border: none;
         & .ant-card-cover {
-            & img {
-                @include border-radius(0);
-                max-width: 100%;
+            & .cover-images {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 100px 0;
+                height: 100%;
+                width: 100%;
             }
-        }
-        & .ant-card-body {
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            top: 0;
             & .ant-card-meta {
                 position: relative;
                 z-index: 2;
                 & .ant-card-meta-title {
                     text-align: left;
                     font-weight: 500;
-                    font-size: 54px;
+                    font-size: 46px;
                     color: #ffffff;
                     white-space: normal;
-                    line-height: 60px;
+                    line-height: 48px;
                     margin-bottom: 20px;
                 }
                 & .ant-card-meta-description {
