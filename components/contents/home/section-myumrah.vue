@@ -70,10 +70,21 @@
                     <template slot="content">
                       <div class="fs-13 fw-400 cr-gray f-default">Maskapai Garuda Indonesia</div>
                     </template>
-                    <a-avatar class="zIndex mr-8 p-4" src="/maskapai/logo/garuda.svg" />
+                    <a-avatar class="zIndex mr-8" src="/maskapai/logo/garuda.svg" />
                   </a-popover>
-                  
-                  <a-rate class="fs-15" :defaultValue="3" disabled />
+
+                  <a-popover trigger="hover">
+                    <template slot="content">
+                      <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                      <div class="fs-13 fw-400 cr-gray f-default mb-4">
+                        Mekkah : Hotel Daruttauhid International Mekkah
+                      </div>
+                      <div class="fs-13 fw-400 cr-gray f-default">
+                        Madinah : Hotel Dar Al Eiman International Madinah
+                      </div>
+                    </template>
+                    <a-avatar class="zIndex mr-8" size="small" style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px" src="/icons/search/tabs/color/accommodation.svg" />
+                  </a-popover>
                 </div>
                 <div
                   class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-gray"
