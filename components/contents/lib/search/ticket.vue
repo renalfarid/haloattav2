@@ -86,7 +86,7 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Jumalah Penumpang" hasFeedback>
+        <a-form-item label="Jumlah Penumpang" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/seat.svg" />
           </div>
@@ -94,20 +94,14 @@
             <a-menu slot="overlay">
               <a-menu-item key="0" disabled>
                 <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
-                    </div>
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
                   </div>
                   <div class="ml-auto">
                     <number-input
                       v-model="dewasa"
-                      :min="0"
-                      :max="10"
+                      :min="1"
                       :inputtable="false"
                       size="small"
                       center
@@ -118,20 +112,32 @@
               </a-menu-item>
               <a-menu-item key="1" disabled>
                 <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Anak</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
-                    </div>
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Anak</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
                   </div>
                   <div class="ml-auto">
                     <number-input
                       v-model="anak"
                       :min="0"
-                      :max="10"
+                      :inputtable="false"
+                      size="small"
+                      center
+                      controls
+                    />
+                  </div>
+                </div>
+              </a-menu-item>
+              <a-menu-item key="2" disabled>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Bayi</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(dibawah 2 thn)</div>
+                  </div>
+                  <div class="ml-auto">
+                    <number-input
+                      v-model="bayi"
+                      :min="0"
                       :inputtable="false"
                       size="small"
                       center
@@ -145,7 +151,7 @@
               class="ant-btn--add-passenger text-left"
               size="large"
               block
-            >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
+            >{{dewasa}} Dewasa, {{anak}} Anak, {{bayi}} Bayi</a-button>
           </a-dropdown>
         </a-form-item>
       </a-col>
@@ -196,7 +202,8 @@ export default {
     this.dateFormat = "YYYY-MM-DD";
     return {
       dewasa: 1,
-      anak: 0
+      anak: 0,
+      bayi: 0
     };
   },
   beforeCreate() {
@@ -228,8 +235,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);
-        } else {
-          this.$router.push("/catalog/ticket-group/result");
+          return this.$router.push("/catalog/ticket-group/result");
         }
       });
     }

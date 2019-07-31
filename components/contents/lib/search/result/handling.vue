@@ -9,9 +9,7 @@
             </a-avatar>
           </div>
           <div>
-            <div
-              class="ant-card--results-info-title"
-            >Handling Domestik Umrah Keberangkatan Makassar</div>
+            <div class="ant-card--results-info-title">Handling Domestik Umrah Keberangkatan Makassar</div>
             <div class="ant-card--results-info-subtitle">
               <span>30 Desember 2019</span>
               <a-divider type="vertical" />
@@ -19,9 +17,7 @@
               <a-divider type="vertical" />
               <span>Standar</span>
               <a-divider type="vertical" />
-              <span>{{dewasa}} Dewasa</span>
-              <a-divider type="vertical" />
-              <span>{{anak}} Anak</span>
+              <span>40 Pax</span>
             </div>
           </div>
         </div>
@@ -95,45 +91,12 @@
                   <a-menu slot="overlay">
                     <a-menu-item key="0" disabled>
                       <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center">
-                          <div class="mr-8">
-                            <a-avatar icon="user" />
-                          </div>
-                          <div>
-                            <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
-                            <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
-                          </div>
-                        </div>
+                        <div class="fs-14 fw-400 cr-black f-default">Jumlah Pax</div>
                         <div class="ml-auto">
                           <number-input
-                            v-model="dewasa"
-                            :min="0"
-                            :max="10"
                             :inputtable="false"
-                            size="small"
-                            center
-                            controls
-                          />
-                        </div>
-                      </div>
-                    </a-menu-item>
-                    <a-menu-item key="1" disabled>
-                      <div class="d-flex align-items-center">
-                        <div class="d-flex align-items-center">
-                          <div class="mr-8">
-                            <a-avatar icon="user" />
-                          </div>
-                          <div>
-                            <div class="fs-14 fw-400 cr-black f-default">Anak</div>
-                            <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
-                          </div>
-                        </div>
-                        <div class="ml-auto">
-                          <number-input
-                            v-model="anak"
-                            :min="0"
-                            :max="10"
-                            :inputtable="false"
+                            v-model="pax"
+                            :min="1"
                             size="small"
                             center
                             controls
@@ -142,11 +105,7 @@
                       </div>
                     </a-menu-item>
                   </a-menu>
-                  <a-button
-                    class="ant-btn--add-passenger text-left"
-                    size="large"
-                    block
-                  >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
+                  <a-button class="ant-btn--add-passenger text-left" size="large" block>{{pax}} Pax</a-button>
                 </a-dropdown>
               </a-form-item>
             </a-col>
@@ -226,8 +185,7 @@ export default {
     this.dateFormat = "YYYY-MM-DD";
     return {
       visibleSearch: false,
-      dewasa: 1,
-      anak: 0
+      pax: 1
     };
   },
   beforeCreate() {
@@ -259,8 +217,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);
-        } else {
-          this.$router.push("/catalog/handling/result");
+          return this.$router.push("/catalog/handling/result");
         }
       });
     },

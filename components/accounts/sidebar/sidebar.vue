@@ -118,6 +118,10 @@
       <a-menu-item class="ant-menu--sider-item" key="7">
         <nuxt-link to="/accounts/mitra/setting" class="nav-text">Pengaturan</nuxt-link>
       </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="logout">
+        <nuxt-link to="/" class="nav-text">keluar</nuxt-link>
+      </a-menu-item>
     </a-menu>
   </div>
 </template>

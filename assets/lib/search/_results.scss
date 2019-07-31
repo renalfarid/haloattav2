@@ -40,6 +40,7 @@
             padding: 16px 0;
             & .number-input {
                 margin-right: 0;
+                margin-left: 16px;
                 min-width: 100px;
                 & .number-input__button {
                     background-color: $color-main;
@@ -58,7 +59,7 @@
                 }
                 & .number-input__input {
                     background-color: transparent !important;
-                    width: auto !important;
+                    width: 120px !important;
                     color: $color-font;
                     border: none;
                 }

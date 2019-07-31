@@ -35,20 +35,6 @@
                           class="ant-card-cover--images"
                           :style="{ backgroundImage: `url(${item.images_package})` }"
                         >
-                          <div class="ant-card-cover--overlay">
-                            <div class="ant-card-cover--overlay-box-radius ant-pax--insurance"></div>
-                            <div class="ant-card-cover--overlay-text">
-                              <div
-                                class="ant-card-cover--overlay-text-title fs-18 fw-500"
-                              >{{item.pax}}</div>
-                              <div
-                                class="ant-card-cover--overlay-text-subtitle fs-10 text-uppercase"
-                              >
-                                <span>pax</span>
-                              </div>
-                            </div>
-                          </div>
-
                           <div class="ant-card--overlay-block">
                             <div class="d-flex align-items-center h-100">
                               <a-button>
