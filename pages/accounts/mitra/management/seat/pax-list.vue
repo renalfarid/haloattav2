@@ -17,23 +17,23 @@
                 src="/icons/search/tabs/color/umrah.svg"
               />
             </div>
-            <div class="fs-15 fw-500 cr-black f-default">
-              Paket Umrah September 2019,
-              Keberangkatan Makassar
+            <div class="fs-14 fw-500 cr-black f-default">
+              <span>Paket Umrah Exclusive September 2019</span>,<br />
+              <span>Keberangkatan Makassar</span>
             </div>
           </div>
         </a-col>
         <a-col :span="4">
           <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
-          <div class="fs-15 fw-500 cr-black">20 September 2019</div>
+          <div class="fs-14 fw-500 cr-black">20 September 2019</div>
         </a-col>
         <a-col :span="4" class="text-right">
           <div class="fs-14 fw-400 cr-gray">Program Hari</div>
-          <div class="fs-15 fw-500 cr-black">Program 9 Hari</div>
+          <div class="fs-14 fw-500 cr-black">Program 9 Hari</div>
         </a-col>
         <a-col :span="4" class="text-right">
           <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
-          <div class="fs-15 fw-500 cr-black">4 Pax</div>
+          <div class="fs-14 fw-500 cr-black">4 Pax</div>
         </a-col>
       </a-row>
     </a-card>
@@ -52,43 +52,34 @@
             <a-col :span="12">
               <div class="d-flex align-items-center">
                 <div class="mr-16">
-                  <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3">{{item.key}}</a-avatar>
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3"
+                  >{{item.key}}</a-avatar>
                 </div>
                 <div>
                   <div class="fs-14 fw-400 cr-gray">Kode Booking</div>
-                  <div class="fs-15 fw-500 cr-black">{{item.code_book}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.code_book}}</div>
                 </div>
               </div>
             </a-col>
             <a-col :span="8">
               <div class="fs-14 fw-400 cr-gray">Status Pax</div>
               <div
-                class="fs-15 fw-500 cr-green"
+                class="fs-14 fw-500 cr-green"
                 v-if="item.status === 'Tersedia'"
               >{{item.status}} ({{item.desc}})</div>
               <div
-                class="fs-15 fw-500 cr-red"
+                class="fs-14 fw-500 cr-red"
                 v-if="item.status === 'Sudah Dipesan'"
               >{{item.status}} ({{item.desc}})</div>
             </a-col>
             <a-col :span="4" class="text-right">
-              <a-button
-                class="b-shadow b-radius"
-                type="primary"
-                block
-                v-if="item.status === 'Tersedia'"
-              >
-                <nuxt-link to="/accounts/mitra/jamaah/formulir">Isi Formulir Jamaah</nuxt-link>
-              </a-button>
-              <a-button
-                class="b-shadow b-radius"
-                type="primary"
-                block
-                ghost
-                v-if="item.status === 'Sudah Dipesan'"
-              >
-                <nuxt-link to="/accounts/mitra/jamaah/berkas">Lihat Berkas Jamaah</nuxt-link>
-              </a-button>
+              <nuxt-link v-if="item.status === 'Tersedia'" to="/accounts/mitra/jamaah/formulir">
+                <span class="fs-14 fw-500 cr-primary">Isi Formulir<a-icon type="right" class="ml-8" /></span>
+              </nuxt-link>
+              <nuxt-link v-if="item.status === 'Sudah Dipesan'" to="/accounts/mitra/jamaah/berkas">
+                <span class="fs-14 fw-500 cr-green">Lihat Berkas<a-icon type="right" class="ml-8" /></span>
+              </nuxt-link>
             </a-col>
           </a-row>
         </div>
@@ -100,25 +91,25 @@
 const dataSeat = [
   {
     key: 1,
-    code_book: "PUHA12345678",
+    code_book: "ATT-UMR-68559347219072952",
     status: "Tersedia",
     desc: "Available"
   },
   {
     key: 2,
-    code_book: "PUHA77345678",
+    code_book: "ATT-UMR-68559347219072952",
     status: "Sudah Dipesan",
     desc: "Booked"
   },
   {
     key: 3,
-    code_book: "PUHA77345777",
+    code_book: "ATT-UMR-68559347219072952",
     status: "Sudah Dipesan",
     desc: "Booked"
   },
   {
     key: 4,
-    code_book: "PUHA77345555",
+    code_book: "ATT-UMR-68559347219072952",
     status: "Sudah Dipesan",
     desc: "Booked"
   }
