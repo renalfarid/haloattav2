@@ -74,23 +74,20 @@
                             >Program 9 Hari</div>
                           </div>
                           <div
-                            class="ant-card-meta-title--package fs-15 f-default fw-500 mb-0"
+                            class="ant-card-meta-title--package fs-15 fw-500"
                           >{{item.name_tourleader}}</div>
                         </div>
 
                         <div slot="description">
                           <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                            <div
-                              class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis"
-                            >Rp{{item.price}}</div>
-                            <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
-                              <div class="icon icon-star text-ellipsis">
-                                <a-icon type="star" theme="filled" class="mr-4" />5.8
-                              </div>
-                              <div class="icon icon-comment text-ellipsis">
-                                <a-icon type="message" class="mr-4" />10 Komentar
-                              </div>
+                            <div class="ant-card-meta-description--bottom-right d-flex">
+                              <div
+                                class="fs-14 fw-400 cr-black f-default text-ellipsis"
+                              >Program 9 Hari</div>
                             </div>
+                            <div
+                              class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
+                            >Rp{{item.price}}</div>
                           </div>
                         </div>
                       </a-card-meta>

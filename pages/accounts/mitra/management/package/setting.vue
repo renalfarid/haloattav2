@@ -1,14 +1,21 @@
 <template>
   <div class="ant-layout--accounts-management">
     <div class="fs-18 fw-500 cr-black">Pengaturan Produk</div>
-    <div class="fs-16 fw-400 cr-gray">Atur penjualan produk anda dan mulai kembangkan bisnis umrah anda</div>
-    
+    <div
+      class="fs-16 fw-400 cr-gray"
+    >Atur penjualan produk anda dan mulai kembangkan bisnis umrah anda</div>
+
     <a-steps :current="current" class="mt-24 mb-24">
-      <a-step v-for="item in steps" :key="item.title" :title="item.title" />
+      <a-step
+        v-for="item in steps"
+        :key="item.title"
+        :title="item.title"
+        :description="item.description"
+      />
     </a-steps>
     <a-form :form="form">
-      <a-row :gutter="24" v-if="current == 0">
-        <a-col :span="12">
+      <a-row :gutter="16" v-if="current == 0">
+        <a-col :span="14">
           <a-card class="b-shadow b-radius b-solid">
             <a-form-item>
               <div class="fs-15 fw-500 cr-black f-default mb-8">Harga Dasar (Rp)</div>
@@ -36,7 +43,7 @@
               <a-input-number
                 :defaultValue="10"
                 :min="5"
-                :max="20"
+                :max="40"
                 :formatter="value => `${value}%`"
                 :parser="value => value.replace('%', '')"
                 @change="onChange"
@@ -118,7 +125,7 @@
           </a-card>
         </a-col>
 
-        <a-col :span="12">
+        <a-col :span="10">
           <div class="fs-15 fw-500 cr-gray mt-8 mb-24">Keterangan :</div>
           <div class="d-flex align-items-start mb-24 mt-8">
             <div class="mr-8">
@@ -164,7 +171,7 @@
 
       <a-row :gutter="16" v-if="current == 1">
         <a-col :span="16">
-          <a-card class="b-shadow b-radius b-solid">
+          <a-card class="b-shadow b-radius b-solid mb-16">
             <a-form-item>
               <div class="fs-15 fw-500 cr-black f-default mb-8">Pilih Nama Paket Umrah Anda</div>
               <a-select
@@ -203,7 +210,7 @@
             </a-form-item>
 
             <a-form-item>
-              <div class="fs-15 fw-500 cr-black f-default mb-8">Pilih Tanggal Publish dan Closing</div>
+              <div class="fs-15 fw-500 cr-black f-default mb-8">Tentukan Tanggal Publish dan Closing</div>
               <a-row :gutter="8">
                 <a-col :span="12">
                   <a-date-picker
@@ -232,6 +239,133 @@
               </a-row>
             </a-form-item>
           </a-card>
+
+          <a-card class="b-shadow b-radius b-solid">
+            <div class="d-flex align-items-center">
+              <div class="mr-16">
+                Lihat itinerary atau jadwal perjalanan anda,
+                Seperti tujuan yang akan dikunjungi selama program umrah.
+              </div>
+              <div class="ml-auto">
+                <a-button
+                  class="b-shadow b-radius b-solid cr-primary fw-500 fs-14"
+                  size="large"
+                  @click="showItinerary"
+                >Lihat Itinerary/Jadwal Perjalanan</a-button>
+              </div>
+            </div>
+          </a-card>
+          <!-- show itinerary -->
+          <a-drawer
+            title="Itinerary/Jadwal Perjalanan Umrah"
+            width="520"
+            placement="right"
+            :closable="false"
+            @close="onClose"
+            :visible="visibleItinerary"
+          >
+            <a-timeline :style="{marginTop: '16px'}">
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 1</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Jakarta</span> -
+                  <span>Jeddah</span>
+                </div>
+                <div
+                  class="fs-15 fw-400 cr-gray"
+                >Jamaah berkumpul empat (4) jam sebelum berangkat, di terminal Internasional Bandara Soekarno Hatta, proses check in tiket dan bagasi oleh team handling, pembagian buku panduan, id’ card, paspor dan boarding pass, proses Imigrasi, masuk Pesawat, take off menuju Jeddah, tiba di Bandara King Abdul Aziz Jeddah proses Imigrasi dan bagasi, dilanjutkan menuju Madinah.</div>
+              </a-timeline-item>
+
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 2</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Madinah</span>
+                </div>
+                <div class="fs-15 fw-400 cr-gray">
+                  Sarapan Pagi, Makan Siang, Makan Malam
+                  <br />Tiba di Madinah, check in hotel dan beristirahat. Sholat Subuh berjamaah di Masjid Nabawi, Ba’da sholat subuh ziarah ke Makam Rasulullah SAW serta kedua sahabatnya, Abu Bakar Siddiq dan Umar Bin Khattab, di akhiri ziarah Makam Baqi dan Memperbanyak Ibadah di masjid Nabawi.
+                </div>
+              </a-timeline-item>
+
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 3</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Madinah</span>
+                </div>
+                <div class="fs-15 fw-400 cr-gray">
+                  Sarapan Pagi, Makan Siang, Makan Malam
+                  <br />Sholat Subuh berjamaah di Masjid Nabawi, Ba’da sholat subuh Ziarah kota Madinah mengunjungi: Masjid Quba, Jabal Uhud, Masjid Qiblatain, Masjid Khandaq di akhiri Pasar Kurma, Memperbanyak Ibadah di masjid Nabawi. Malam hari Jamaah siap berkemas untuk melanjutkan program menuju Makkah.
+                </div>
+              </a-timeline-item>
+
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 4</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Madinah</span> -
+                  <span>Makkah</span>
+                </div>
+                <div class="fs-15 fw-400 cr-gray">
+                  Sarapan Pagi, Makan Siang, Makan Malam
+                  <br />Sholat Subuh berjamaah di Masjid Nabawi, Ba’da sholat subuh Ziarah kota Madinah mengunjungi: Masjid Quba, Jabal Uhud, Masjid Qiblatain, Masjid Khandaq di akhiri Pasar Kurma, Memperbanyak Ibadah di masjid Nabawi. Malam hari Jamaah siap berkemas untuk melanjutkan program menuju Makkah.
+                </div>
+              </a-timeline-item>
+
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 5</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Makkah</span>
+                </div>
+                <div class="fs-15 fw-400 cr-gray">
+                  Sarapan Pagi, Makan Siang, Makan Malam
+                  <br />Sholat Subuh berjamaah di Masjidil Haram, Memperbanyak Ibadah di Masjidil Haram, (acara bebas).
+                </div>
+              </a-timeline-item>
+
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 6</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Makkah</span>
+                </div>
+                <div class="fs-15 fw-400 cr-gray">
+                  Sarapan Pagi, Makan Siang, Makan Malam
+                  <br />Sholat Subuh berjamaah di Masjidil Haram, Ba'da Sholat Subuh, Para jamaah berkumpul di lobby hotel untuk mengikuti Ziarah Kota Makkah: Mengunjungi Jabal Tsur, Padang Arafah (Jabal Rahmah) Muzdalifah, Mina, (Jumroh) Jabal Nur dan berakhir di Ja’ronah untuk mengambil Miqot Umroh dilanjutkan Thawaf Sai Umroh (Selesai Umroh II) dan Memperbanyak Ibadah di Masjidil Haram
+                </div>
+              </a-timeline-item>
+
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 7</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Makkah</span>
+                </div>
+                <div class="fs-15 fw-400 cr-gray">
+                  Sarapan Pagi, Makan Siang, Makan Malam
+                  <br />Sholat Subuh berjamaah di Masjidil Haram, Memperbanyak Ibadah di Masjidil Haram dan (acara bebas), Malam hari Jamaah siap berkemas untuk melanjutkan program menuju Jeddah.
+                </div>
+              </a-timeline-item>
+
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 8</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Makkah</span> -
+                  <span>Jeddah</span>
+                </div>
+                <div class="fs-15 fw-400 cr-gray">
+                  Sarapan Pagi, Makan Siang
+                  <br />Sholat Subuh berjamaah di Masjidil Haram, Ba’da sholat subuh, Thawaf Wada’ (Perpisahan) check out hotel, dilanjutkan menuju Jeddah, tiba di Jeddah, city tour kota Jeddah ke Balad / Chorniche, Toko ali murah, Masjid Qisas, Makam Siti Hawa dan Laut Merah, selesai city tour Jeddah, melanjutkan perjalanan ke Bandara King Abdul Aziz Jeddah, tiba di Bandara, proses check in tiket dan bagasi oleh team handling, pembagian paspor dan boarding pass, proses Imigrasi, masuk Pesawat melanjutkan perjalanan menuju Jakarta, take off menuju Jakarta.
+                </div>
+              </a-timeline-item>
+
+              <a-timeline-item>
+                <div class="fs-15 fw-500 cr-black">Hari ke 9</div>
+                <div class="fs-15 fw-500 cr-black text-uppercase">
+                  <span>Jakarta</span>
+                </div>
+                <div
+                  class="fs-15 fw-400 cr-gray"
+                >Tiba di Jakarta terminal Internasional Bandara Soekarno Hatta keluar Pesawat, proses Imigrasi dan bagasi oleh team handling, pembagian Air zam - zam. Selesai sudah perjalanan Umroh bersama kami Semoga menjadi Umroh yang mabrur.</div>
+              </a-timeline-item>
+            </a-timeline>
+          </a-drawer>
         </a-col>
 
         <a-col :span="8">
@@ -258,38 +392,53 @@
                   <div class="ant-card-meta-title--top-left f-default d-flex align-items-center">
                     <a-popover trigger="hover">
                       <template slot="content">
-                        <div class="fs-15 fw-500 cr-black">Haloatta</div>
-                        <div class="fs-13 fw-400 cr-gray f-default">Umaroh Bisnis</div>
+                        <div class="fs-15 fw-500 cr-black">Awaluddin Muhammad Arifatullah</div>
+                        <div class="fs-14 fw-400 cr-gray f-default">
+                          <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                        </div>
                       </template>
-                      <a-avatar class="zIndex mr-8 p-4" src="/favicon.png" />
+                      <a-avatar
+                        class="zIndex mr-8"
+                        src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png"
+                      />
                     </a-popover>
 
                     <a-popover trigger="hover">
                       <template slot="content">
-                        <div class="fs-13 fw-400 cr-gray f-default">Maskapai Garuda Indonesia</div>
+                        <div class="fs-13 fw-400 cr-black f-default">Maskapai Garuda Indonesia</div>
                       </template>
-                      <a-avatar class="zIndex mr-8 p-4" src="/maskapai/logo/garuda.svg" />
+                      <a-avatar class="zIndex mr-8" src="/maskapai/logo/garuda.svg" />
                     </a-popover>
 
-                    <a-rate class="fs-15" :defaultValue="3" disabled />
+                    <a-popover trigger="hover">
+                      <template slot="content">
+                        <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                        <div
+                          class="fs-13 fw-400 cr-black f-default mb-4"
+                        >Mekkah : Hotel Daruttauhid International Mekkah</div>
+                        <div
+                          class="fs-13 fw-400 cr-black f-default"
+                        >Madinah : Hotel Dar Al Eiman International Madinah</div>
+                      </template>
+                      <a-avatar
+                        class="zIndex mr-8"
+                        size="small"
+                        style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
+                        src="/icons/search/tabs/color/accommodation.svg"
+                      />
+                    </a-popover>
                   </div>
                   <div
                     class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-gray"
                   >Program 9 Hari</div>
                 </div>
-                <div class="ant-card-meta-title--package fw-500 mb-16">{{name_package}}</div>
+                <div class="ant-card-meta-title--package fw-500">{{name_package}}</div>
               </div>
 
               <div slot="description">
                 <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                  <div class="ant-card-meta-description--bottom-left fw-500 cr-primary">Rp22.000.000</div>
-                  <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
-                    <div class="icon icon-star fs-13">
-                      <a-icon type="star" theme="filled" class="mr-4" />0
-                    </div>
-                    <div class="icon icon-comment fs-13">
-                      <a-icon type="message" class="mr-4" />0 Komentar
-                    </div>
+                  <div class="ant-card-meta-description--bottom-left cr-primary ml-auto">
+                    <span>Rp22.000.000</span>
                   </div>
                 </div>
               </div>
@@ -322,41 +471,50 @@
 
       <a-row :gutter="16" v-if="current == 2">
         <a-col :span="24">
-          <a-card class="b-shadow b-radius b-solid mb-0">
-            <a-timeline class="mt-16">
-              <a-timeline-item v-for="(item, index) in dataItinerary" :key="index">
-                <div class="fs-15 fw-500 cr-black">{{item.title}}</div>
-                <a-row :gutter="16">
-                  <a-col :span="6">
-                    <a-form-item>
-                      <a-input
-                        placeholder="Dari Mana?"
-                        v-decorator="['from', {rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                      />
-                    </a-form-item>
-                  </a-col>
-                  <a-col :span="1" class="text-center">
-                    <a-icon :style="{ marginTop: '14px' }" type="minus" />
-                  </a-col>
-                  <a-col :span="6">
-                    <a-form-item>
-                      <a-input
-                        placeholder="Mau ke Mana?"
-                        v-decorator="['to', {rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                      />
-                    </a-form-item>
-                  </a-col>
-                </a-row>
+          <a-card class="b-shadow b-radius b-solid mb-16">
+            <a-form-item class="mt-16">
+              <div class="fs-15 fw-500 cr-black f-default mb-8">Berapa Jumlah Promo atau Diskon yang Anda mau Terapkan?</div>
+              <a-input-number
+                :defaultValue="0"
+                :min="0"
+                :max="50"
+                :formatter="value => `${value}%`"
+                :parser="value => value.replace('%', '')"
+                @change="onChange"
+                style="width: 100%"
+                size="large"
+              />
+            </a-form-item>
 
-                <a-form-item>
-                  <a-textarea
-                    placeholder="Ringkasan Perjalanan"
-                    v-decorator="['desc', {rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                    :rows="4"
+            <a-form-item>
+              <div class="fs-15 fw-500 cr-black f-default mb-8">Tentukan Tanggal Aktif dan Berakhir Promo atau Diskon Anda</div>
+              <a-row :gutter="8">
+                <a-col :span="12">
+                  <a-date-picker
+                    :disabledDate="disabledStartDate"
+                    :format="dateFormat"
+                    v-model="startValue"
+                    placeholder="Pilih tanggal aktif promo"
+                    @openChange="handleStartOpenChange"
+                    size="large"
+                    style="width: 100%"
                   />
-                </a-form-item>
-              </a-timeline-item>
-            </a-timeline>
+                </a-col>
+
+                <a-col :span="12">
+                  <a-date-picker
+                    :disabledDate="disabledEndDate"
+                    :format="dateFormat"
+                    placeholder="Pilih tangal berakhir promo"
+                    v-model="endValue"
+                    :open="endOpen"
+                    @openChange="handleEndOpenChange"
+                    size="large"
+                    style="width: 100%"
+                  />
+                </a-col>
+              </a-row>
+            </a-form-item>
           </a-card>
         </a-col>
       </a-row>
@@ -407,12 +565,6 @@ const dataCover = [
     cover: "/umrah/package/u4.png"
   }
 ];
-const dataItinerary = [];
-for (let i = 1; i < 10; i++) {
-  dataItinerary.push({
-    title: `Hari ke ${i} Anda Mulai :`
-  });
-}
 export default {
   layout: "accounts",
   name: "mitraManajemenPaketSetting",
@@ -425,21 +577,25 @@ export default {
   data() {
     return {
       dateFormat: "YYYY/MM/DD",
+      visibleItinerary: false,
       namesData,
       dataCover,
-      dataItinerary,
       name_package: namesData[1],
       cover_package: [],
-      current: 0,
+      current: 1,
       steps: [
         {
-          title: "Pengaturan Margin Produk"
+          title: "Margin",
+          description: "Atur Margin Paket Umrah Anda"
         },
         {
-          title: "Pengaturan Tampilan Produk"
+          title: "Tampilan Paket",
+          description:
+            "Atur Tampilan Paket, Tanggal Publish serta Tanggal Closing"
         },
         {
-          title: "Pengaturan Itinerary"
+          title: "Promo atau Diskon",
+          description: "Atur Promo atau Diskon Paket Umrah Anda"
         }
       ],
       startValue: null,
@@ -464,11 +620,6 @@ export default {
       console.log(value);
     },
     disabledStartDate(startValue) {
-      // const endValue = this.endValue;
-      // if (!startValue || !endValue) {
-      //   return false;
-      // }
-      // return startValue.valueOf() > endValue.valueOf();
       return startValue && startValue < moment().endOf("day");
     },
     disabledEndDate(endValue) {
@@ -495,9 +646,15 @@ export default {
     publish() {
       this.form.validateFields(err => {
         if (!err) {
-          return this.$router.push('/accounts/mitra/management/package');
+          return this.$router.push("/accounts/mitra/management/package");
         }
       });
+    },
+    showItinerary() {
+      this.visibleItinerary = true;
+    },
+    onClose() {
+      this.visibleItinerary = false;
     }
   }
 };
