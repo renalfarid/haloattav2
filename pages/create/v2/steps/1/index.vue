@@ -143,10 +143,10 @@ export default {
     };
   },
   data() {
-    this.dateFormat = "YYYY-MM-DD";
     return {
       hasErrors,
       spinning: true,
+      dateFormat: "YYYY/MM/DD",
       form: this.$form.createForm(this)
     };
   },
@@ -181,10 +181,9 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      this.$router.push("/create/v2/steps/2");
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          return this.$router.push("/create/v2/steps/2");
         }
       });
     }

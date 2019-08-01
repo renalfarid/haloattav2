@@ -34,6 +34,7 @@
                         <br />Anda inginkan ?
                       </div>
                       <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
+                        n dev
                         <a-col :span="24">
                           <a-form-item
                             label="Bintang Hotel"
@@ -41,7 +42,7 @@
                             :help="itemError() || ''"
                           >
                             <a-select
-                              v-decorator="['bintangHotel',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                              v-decorator="['bintangHotel',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                               placeholder="Pilih Bintang Hotel"
                               size="large"
                             >
@@ -109,7 +110,7 @@
                             :help="itemError() || ''"
                           >
                             <a-radio-group
-                              v-decorator="['jarakHotel',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                              v-decorator="['jarakHotel',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                             >
                               <a-radio :value="1" class="cr-black">Kurang dari 500m</a-radio>
                               <a-radio :value="2" class="cr-black">Lebih dari 500m</a-radio>
@@ -124,7 +125,7 @@
                             :help="itemError() || ''"
                           >
                             <a-radio-group
-                              v-decorator="['harga',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                              v-decorator="['harga',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                             >
                               <a-row>
                                 <a-col :span="24">
@@ -227,13 +228,13 @@ function hasErrors(fieldsError) {
 }
 const cityStart = ["Dari Madinah", "Dari Mekkah"];
 const cityEnd = {
-  "Dari Madinah" : ["Menuju Mekkah"],
-  "Dari Mekkah" : ["Menuju Madinah"]
+  "Dari Madinah": ["Menuju Mekkah"],
+  "Dari Mekkah": ["Menuju Madinah"]
 };
 const timeStart = ["3 Hari Madinah", "3 Hari Mekkah"];
 const timeEnd = {
-  "3 Hari Madinah" : ["4 Hari Mekkah"],
-  "3 Hari Mekkah" : ["4 Hari Madinah"]
+  "3 Hari Madinah": ["4 Hari Mekkah"],
+  "3 Hari Mekkah": ["4 Hari Madinah"]
 };
 export default {
   layout: "application",
@@ -287,10 +288,9 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      this.$router.push("/create/v2/steps/4");
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          return this.$router.push("/create/v2/steps/4");
         }
       });
     },

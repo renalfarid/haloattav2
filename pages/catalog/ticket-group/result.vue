@@ -58,16 +58,22 @@
                       <div class="d-flex align-items-center">
                         <a-popover trigger="hover">
                           <template slot="content">
-                            <div class="fs-15 fw-500 cr-black">Haloatta</div>
-                            <div class="fs-13 fw-400 cr-gray f-default">Umaroh Bisnis</div>
+                            <div class="fs-15 fw-500 cr-black">Nuh Travel</div>
+                            <div class="fs-14 fw-400 cr-gray f-default">
+                              <a-icon
+                                type="safety-certificate"
+                                theme="filled"
+                                class="cr-green mr-4"
+                              />Terverifikasi
+                            </div>
                           </template>
-                          <a-avatar class="zIndex mr-8 p-4" src="/favicon.png" />
+                          <a-avatar class="zIndex mr-8" src="/user/av1.svg" />
                         </a-popover>
                         <a-popover trigger="hover">
                           <template slot="content">
                             <div class="fs-13 fw-400 cr-gray f-default">Maskapai {{item.maskapai}}</div>
                           </template>
-                          <a-avatar class="zIndex mr-8 p-4" :src="item.logo_maskapai" />
+                          <a-avatar class="zIndex mr-8" :src="item.logo_maskapai" />
                         </a-popover>
                         <div
                           class="ml-auto fs-13 fw-400 cr-gray f-default text-ellipsis"

@@ -39,7 +39,10 @@
                             :validate-status="itemError() ? 'error' : ''"
                             :help="itemError() || ''"
                           >
-                            <a-radio-group v-decorator="['harga',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]" size="large">
+                            <a-radio-group
+                              v-decorator="['harga',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                              size="large"
+                            >
                               <a-row :gutter="8">
                                 <a-col :xs="24" :sm="24" :md="12" :lg="12">
                                   <a-radio-button :value="1" class="b-shadow">
@@ -156,10 +159,9 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      this.$router.push("/create/v2/steps/5");
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          return this.$router.push("/create/v2/steps/5");
         }
       });
     },

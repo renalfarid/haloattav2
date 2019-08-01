@@ -12,120 +12,126 @@
       </a-row>
     </div>
 
-    <div class="container-slick">
-      <slick ref="slick" :options="slickRecomended">
-        <div v-for="(item, index) in lisData" :key="index">
-          <a-card class="ant-card-package-small">
-            <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
-            <div slot="cover">
-              <div
-                class="ant-card-cover--images"
-                :style="{ backgroundImage: `url(${item.images_product})` }"
-              >
-                <div class="ant-card-cover--overlay">
-                  <div class="ant-card-cover--overlay-box-radius"></div>
-                  <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title">sisa</div>
-                    <div class="ant-card-cover--overlay-text-subtitle">
-                      <span>{{item.pax_available}}</span> pax
-                    </div>
+    <a-row :gutter="16">
+      <a-col :span="6" v-for="(item, index) in lisData" :key="index">
+        <a-card class="ant-card-package-small">
+          <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
+          <div slot="cover">
+            <div
+              class="ant-card-cover--images"
+              :style="{ backgroundImage: `url(${item.images_product})` }"
+            >
+              <div class="ant-card-cover--overlay">
+                <div class="ant-card-cover--overlay-box-radius"></div>
+                <div class="ant-card-cover--overlay-text">
+                  <div class="ant-card-cover--overlay-text-title">sisa</div>
+                  <div class="ant-card-cover--overlay-text-subtitle">
+                    <span>{{item.pax_available}}</span> pax
                   </div>
                 </div>
-                <div class="ant-card--overlay-block">
-                  <div class="d-flex align-items-center h-100">
-                    <a-button>
-                      <nuxt-link to="/catalog/umrah/detail-package">Lihat detail</nuxt-link>
-                    </a-button>
-                  </div>
+              </div>
+              <div class="ant-card--overlay-block">
+                <div class="d-flex align-items-center h-100">
+                  <a-button>
+                    <nuxt-link to="/catalog/umrah/detail-package">Lihat detail</nuxt-link>
+                  </a-button>
                 </div>
               </div>
             </div>
-            <a-card-meta>
-              <div slot="title" class="mb-0">
-                <div class="ant-card-meta-title--top d-flex align-items-center">
-                  <div class="ant-card-meta-title--top-left">
-                    <a-popover trigger="hover">
-                      <template slot="content">
-                        <div class="fs-15 fw-500 cr-black">Haloatta</div>
-                        <div class="fs-13 fw-400 cr-gray f-default">Umaroh Bisnis</div>
-                      </template>
-                      <a-avatar class="zIndex mr-8 p-4" src="/favicon.png" />
-                    </a-popover>
-                    <a-popover trigger="hover">
-                      <template slot="content">
-                        <div class="fs-13 fw-400 cr-gray f-default">Maskapai Garuda Indonesia</div>
-                      </template>
-                      <a-avatar class="zIndex mr-8 p-4" src="/maskapai/logo/garuda.svg" />
-                    </a-popover>
-                    <a-popover trigger="hover">
-                      <template slot="content">
-                        <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
-                        <div
-                          class="fs-13 fw-400 cr-gray f-default mb-4"
-                        >Mekkah : Hotel Daruttauhid International Mekkah</div>
-                        <div
-                          class="fs-13 fw-400 cr-gray f-default"
-                        >Madinah : Hotel Dar Al Eiman International Madinah</div>
-                      </template>
-                      <a-avatar
-                        class="zIndex mr-8"
-                        size="small"
-                        style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
-                        src="/icons/search/tabs/color/accommodation.svg"
-                      />
-                    </a-popover>
-                  </div>
-                  <div
-                    class="ant-card-meta-title--top-right ml-auto fs-13 fw-400 cr-gray"
-                  >Program 9 Hari</div>
+          </div>
+          <a-card-meta>
+            <div slot="title" class="mb-0">
+              <div class="ant-card-meta-title--top d-flex align-items-center">
+                <div class="ant-card-meta-title--top-left">
+                  <a-popover trigger="hover">
+                    <template slot="content">
+                      <div class="fs-15 fw-500 cr-black">{{item.name_umaroh}}</div>
+                      <div class="fs-14 fw-400 cr-gray f-default"><a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi</div>
+                    </template>
+                    <a-avatar class="zIndex mr-8" :src="item.avatar_umaroh" />
+                  </a-popover>
+                  <a-popover trigger="hover">
+                    <template slot="content">
+                      <div class="fs-14 fw-400 cr-gray f-default">Maskapai Garuda Indonesia</div>
+                    </template>
+                    <a-avatar class="zIndex mr-8" size="small" src="/maskapai/logo/garuda.svg" />
+                  </a-popover>
+                  <a-popover trigger="hover">
+                    <template slot="content">
+                      <a-rate class="fs-15 mb-4" :defaultValue="3" disabled />
+                      <div
+                        class="fs-14 fw-400 cr-gray f-default mb-4"
+                      >Mekkah : Hotel Daruttauhid International Mekkah</div>
+                      <div
+                        class="fs-14 fw-400 cr-gray f-default"
+                      >Madinah : Hotel Dar Al Eiman International Madinah</div>
+                    </template>
+                    <a-avatar
+                      class="zIndex mr-8"
+                      size="small"
+                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
+                      src="/icons/search/tabs/color/accommodation.svg"
+                    />
+                  </a-popover>
                 </div>
-                <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
-              </div>
-
-              <div slot="description">
-                <div class="ant-card-meta-description--bottom d-flex align-items-center mt-8">
-                  <div
-                    class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis"
-                  >Rp{{item.price_product}}</div>
-                  <div class="ant-card-meta-description--bottom-right ml-auto d-flex text-ellipsis">
-                    <div class="icon icon-star">
-                      <a-icon type="star" theme="filled" class="mr-4" />5.8
-                    </div>
-                    <div class="icon icon-comment">
-                      <a-icon type="message" class="mr-4" />10 Komentar
-                    </div>
-                  </div>
+                <div class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black">
+                  <span>Program 9 Hari</span>
                 </div>
               </div>
-            </a-card-meta>
-          </a-card>
-        </div>
-      </slick>
+              <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
+            </div>
 
-      <div class="action-slick">
-        <a-button class="btn-left" @click="prev" size="large" shape="circle" icon="left" />
-        <a-button class="btn-right" @click="next" size="large" shape="circle" icon="right" />
-      </div>
-    </div>
+            <div slot="description">
+              <div class="ant-card-meta-description--bottom d-flex align-items-center">
+                <div class="ant-card-meta-description--bottom-right d-flex text-ellipsis">
+                  <div class="fs-14 fw-400 cr-gray">
+                    Terjual
+                    <strong>{{item.pax_booked}}</strong> Pax
+                  </div>
+                </div>
+                <div class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto">
+                  <span>Rp{{item.price_product}}</span>
+                </div>
+              </div>
+            </div>
+          </a-card-meta>
+          <div class="package-description--more p-16">
+            <div class="fs-15 fw-400 cr-black f-default text-ellipsis mb-8">
+              <span>Keberangkatan Makassar</span>
+            </div>
+
+            <div class="d-flex align-items-center mb-16">
+              <div class="fs-14 fw-400 text-ellipsis">
+                <div class="cr-gray">Keberangkatan</div>
+                <div class="cr-black">10 September 2019</div>
+              </div>
+              <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
+                <div class="cr-gray">Kedatangan</div>
+                <div class="cr-black">19 September 2019</div>
+              </div>
+            </div>
+
+            <a-button block>
+              <nuxt-link to="/catalog/umrah/order-review">Pesan</nuxt-link>
+            </a-button>
+          </div>
+        </a-card>
+      </a-col>
+    </a-row>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      slickRecomended: {
-        slidesToShow: 4,
-        infinite: false,
-        arrows: false,
-        draggable: true,
-        prevArrow: ".prev",
-        nextArrow: ".next"
-      },
       lisData: [
         {
           id: 1,
-          name_product: "Umrah Exclusive November 2019 Keberangkatan Jakarta",
+          name_product:
+            "Umrah Exclusive November 2019 Keberangkatan Jakarta  Keberangkatan Jakarta  Keberangkatan Jakarta",
           images_product: "/umrah/package/u5.png",
+          name_umaroh: "Al Mubalah Travel",
+          avatar_umaroh: "/user/av1.svg",
           price_product: "20.400.000",
           pax_available: 21,
           pax_booked: 65
@@ -134,6 +140,8 @@ export default {
           id: 2,
           name_product: "Umrah Exclusive Desember 2019 Keberangkatan Makassar",
           images_product: "/umrah/package/u6.png",
+          name_umaroh: "Nuh Travel",
+          avatar_umaroh: "/user/av2.svg",
           price_product: "27.900.000",
           pax_available: 18,
           pax_booked: 75
@@ -142,6 +150,8 @@ export default {
           id: 3,
           name_product: "Umrah Exclusive Januari 2020 Keberangkatan Makassar",
           images_product: "/umrah/package/u7.png",
+          name_umaroh: "AT Travel",
+          avatar_umaroh: "/user/av3.svg",
           price_product: "23.300.000",
           pax_available: 32,
           pax_booked: 5
@@ -150,29 +160,14 @@ export default {
           id: 4,
           name_product: "Umrah Exclusive Februari 2020 Keberangkatan Makassar",
           images_product: "/umrah/package/u8.png",
+          name_umaroh: "AL Travel",
+          avatar_umaroh: "/user/av4.svg",
           price_product: "26.900.000",
           pax_available: 29,
-          pax_booked: 14
-        },
-        {
-          id: 5,
-          name_product: "Umrah Exclusive Maret 2020 Keberangkatan Jakarta",
-          images_product: "/umrah/package/u9.png",
-          price_product: "27.000.000",
-          pax_available: 47,
           pax_booked: 14
         }
       ]
     };
-  },
-
-  methods: {
-    next() {
-      this.$refs.slick.next();
-    },
-    prev() {
-      this.$refs.slick.prev();
-    }
   }
 };
 </script>

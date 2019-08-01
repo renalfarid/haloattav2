@@ -9,16 +9,6 @@
                 class="ant-card-cover--images"
                 :style="{ backgroundImage: `url(${item.images_package})` }"
               >
-                <div class="ant-card-cover--overlay">
-                  <div class="ant-card-cover--overlay-box-radius ant-pax--insurance"></div>
-                  <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title fs-18 fw-500">{{item.pax}}</div>
-                    <div class="ant-card-cover--overlay-text-subtitle fs-10 text-uppercase">
-                      <span>pax</span>
-                    </div>
-                  </div>
-                </div>
-
                 <div class="ant-card--overlay-block">
                   <div class="d-flex align-items-center h-100">
                     <a-button>
@@ -38,7 +28,12 @@
                         <template slot="content">
                           <div class="fs-13 fw-400 cr-gray f-default">Berpengalaman</div>
                         </template>
-                        <a-avatar style="backgroundColor: #FF7C0A" class="zIndex" icon="safety" size="small" />
+                        <a-avatar
+                          style="backgroundColor: #FF7C0A"
+                          class="zIndex"
+                          icon="safety"
+                          size="small"
+                        />
                       </a-popover>
                     </div>
                     <div class="mr-8">
@@ -46,26 +41,18 @@
                     </div>
                     <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.provider}}</div>
                   </div>
-                  <div class="fs-13 fw-400 cr-gray f-default text-ellipsis ml-auto">Program 9 Hari</div>
                 </div>
-                <div
-                  class="ant-card-meta-title--package fs-15 f-default fw-500 mb-0"
-                >{{item.name_tourleader}}</div>
+                <div class="ant-card-meta-title--package fs-15 fw-500">{{item.name_tourleader}}</div>
               </div>
 
               <div slot="description">
                 <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                  <div
-                    class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis"
-                  >Rp{{item.price}}</div>
-                  <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
-                    <div class="icon icon-star text-ellipsis">
-                      <a-icon type="star" theme="filled" class="mr-4" />5.8
-                    </div>
-                    <div class="icon icon-comment text-ellipsis">
-                      <a-icon type="message" class="mr-4" />10 Komentar
-                    </div>
+                  <div class="ant-card-meta-description--bottom-right d-flex">
+                    <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Program 9 Hari</div>
                   </div>
+                  <div
+                    class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
+                  >Rp{{item.price}}</div>
                 </div>
               </div>
             </a-card-meta>
@@ -78,9 +65,7 @@
 
               <div class="mb-16">
                 <div class="fs-14 fw-400 cr-gray text-ellipsis">Keterangan</div>
-                <div class="fs-14 fw-400 cr-black">
-                  Mampu berbahasa arab dan indonesia
-                </div>
+                <div class="fs-14 fw-400 cr-black">Mampu berbahasa arab dan indonesia</div>
               </div>
 
               <a-button block>

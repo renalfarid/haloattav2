@@ -154,50 +154,38 @@
                     margin-bottom: 0;
                     & .ant-card-meta-title--top {
                         margin-bottom: 8px;
-                        // & .ant-card-meta-title--top-left {
-                        //     & i {
-                        //         color: $color-yellow-light;
-                        //         font-size: 16px;
-                        //     }
-                        // }
                         & .ant-card-meta-title--top-right {
                             line-height: normal;
                         }
                     }
                     & .ant-card-meta-title--package {
-                        margin-bottom: 8px;
+                        word-wrap: break-word;
                         color: $color-font;
-                        font-weight: 600;
-                        line-height: 22px;
+                        line-height: 21px;
                         font-size: 18px;
-                        height: 38px;
+                        height: 42px;
                     }
                 }
                 & .ant-card-meta-description {
                     & .ant-card-meta-description--bottom {
                         white-space: nowrap;
+                        margin-top: 6px;
                         & .ant-card-meta-description--bottom-left {
-                            font-weight: 600;
-                            color: $color-font;
-                            font-size: 16px;
+                            font-weight: 500;
+                            font-size: 18px;
                         }
                         & .ant-card-meta-description--bottom-right {
                             color: $color-font-gray;
                             font-size: 14px;
-                            & .icon {
-                                &.icon-star {
-                                    & i {
-                                        color: $color-yellow-light;
-                                        margin-right: 3px;
-                                    }
-                                }
-                                &.icon-comment {
-                                    margin-left: 8px;
-                                    & i {
-                                        color: $color-green;
-                                        margin-right: 3px;
-                                    }
-                                }
+                            & .ant-tag {
+                                background-color: $color-green;
+                                @include border-radius(2px);
+                                font-weight: normal;
+                                line-height: 22px;
+                                font-size: 14px;
+                                color: #ffffff;
+                                margin-right: 0;
+                                border: none;
                             }
                         }
                     }
