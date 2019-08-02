@@ -33,6 +33,7 @@
                         :help="itemError() || ''"
                       >
                         <a-select
+                          showSearch
                           v-decorator="['kotaKeberangkatan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                           placeholder="Kota Asal"
                           size="large"
@@ -49,6 +50,7 @@
                         :help="itemError() || ''"
                       >
                         <a-select
+                          showSearch
                           v-decorator="['programHari',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                           placeholder="Program Hari"
                           size="large"
@@ -85,6 +87,7 @@
                         :help="itemError() || ''"
                       >
                         <a-select
+                          showSearch
                           v-decorator="['jumlahPax',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                           placeholder="Jumlah Pax"
                           size="large"
@@ -140,10 +143,10 @@ export default {
     };
   },
   data() {
-    this.dateFormat = "YYYY-MM-DD";
     return {
       hasErrors,
       spinning: true,
+      dateFormat: "YYYY/MM/DD",
       form: this.$form.createForm(this)
     };
   },
@@ -165,17 +168,22 @@ export default {
     },
     itemError() {
       const { getFieldError, isFieldTouched } = this.form;
-      return isFieldTouched("kotaKeberangkatan") && getFieldError("kotaKeberangkatan");
+      return (
+        isFieldTouched("kotaKeberangkatan") &&
+        getFieldError("kotaKeberangkatan")
+      );
       return isFieldTouched("programHari") && getFieldError("programHari");
-      return isFieldTouched("tanggalKeberangkatan") && getFieldError("tanggalKeberangkatan");
+      return (
+        isFieldTouched("tanggalKeberangkatan") &&
+        getFieldError("tanggalKeberangkatan")
+      );
       return isFieldTouched("jumlahPax") && getFieldError("jumlahPax");
     },
     handleSubmit(e) {
       e.preventDefault();
-      this.$router.push("/create/v2/steps/2");
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          return this.$router.push("/create/v2/steps/2");
         }
       });
     }

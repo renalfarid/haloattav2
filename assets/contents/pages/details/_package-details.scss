@@ -73,8 +73,12 @@
                 }
                 & .number-input {
                     margin-right: 0;
+                    margin-left: 16px;
                     min-width: 100px;
                     & .number-input__button {
+                        box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
+                        -webkit-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
+                        -moz-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
                         background-color: $color-main;
                         @include border-radius(50%);
                         border: 1px solid $color-main;
@@ -91,7 +95,7 @@
                     }
                     & .number-input__input {
                         background-color: transparent !important;
-                        width: auto !important;
+                        width: 120px !important;
                         color: $color-font;
                         border: none;
                     }

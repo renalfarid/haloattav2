@@ -58,6 +58,18 @@
         </a-menu-item>
       </a-sub-menu>
 
+      <a-sub-menu class="ant-menu--sider-sub" key="8">
+        <span slot="title">
+          <span>Fee Penjualan</span>
+        </span>
+        <a-menu-item class="ant-menu--sider-sub-item" key="8-1">
+          <nuxt-link to="/accounts/mitra/fee" class="nav-text">Pengajuan</nuxt-link>
+        </a-menu-item>
+        <a-menu-item class="ant-menu--sider-sub-item" key="8-2">
+          <nuxt-link to="/accounts/mitra/fee/withdraw-list" class="nav-text">Daftar Pengajuan</nuxt-link>
+        </a-menu-item>
+      </a-sub-menu>
+
       <a-menu-item class="ant-menu--sider-item" key="disabled-1" disabled>
         <a-divider></a-divider>
       </a-menu-item>
@@ -71,24 +83,16 @@
           <span>Manajemen Paket</span>
         </span>
         <a-menu-item class="ant-menu--sider-sub-item" key="3-1">
-          <nuxt-link to="/accounts/mitra/management/package" class="nav-text">Paket Saya</nuxt-link>
+          <nuxt-link to="/accounts/mitra/management/package" class="nav-text">Paket Umrah Saya</nuxt-link>
         </a-menu-item>
         <a-menu-item class="ant-menu--sider-sub-item" key="3-2">
-          <nuxt-link to="/accounts/mitra/management/seat" class="nav-text">Seat</nuxt-link>
+          <nuxt-link to="/accounts/mitra/management/seat" class="nav-text">Daftar Seat</nuxt-link>
         </a-menu-item>
       </a-sub-menu>
 
-      <a-sub-menu class="ant-menu--sider-sub" key="8">
-        <span slot="title">
-          <span>Fee Penjualan</span>
-        </span>
-        <a-menu-item class="ant-menu--sider-sub-item" key="8-1">
-          <nuxt-link to="/accounts/mitra/fee" class="nav-text">Pengajuan</nuxt-link>
-        </a-menu-item>
-        <a-menu-item class="ant-menu--sider-sub-item" key="8-2">
-          <nuxt-link to="/accounts/mitra/fee/withdraw-list" class="nav-text">Daftar Pengajuan</nuxt-link>
-        </a-menu-item>
-      </a-sub-menu>
+      <a-menu-item class="ant-menu--sider-item" key="9">
+        <nuxt-link to="/accounts/mitra/departure" class="nav-text">Daftar Pemberangkatan</nuxt-link>
+      </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>
         <a-divider></a-divider>
@@ -117,6 +121,10 @@
 
       <a-menu-item class="ant-menu--sider-item" key="7">
         <nuxt-link to="/accounts/mitra/setting" class="nav-text">Pengaturan</nuxt-link>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="logout">
+        <nuxt-link to="/" class="nav-text">keluar</nuxt-link>
       </a-menu-item>
     </a-menu>
   </div>

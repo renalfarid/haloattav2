@@ -1,13 +1,21 @@
 <template>
   <div class="ant-layout--accounts-management-seat">
-    <div class="fs-18 fw-500 cr-black">Manajemen Seat</div>
-    <div class="fs-16 fw-400 cr-gray">Lengkapi berkas Formulir Keberangkatan Anda</div>
+    <div class="fs-18 fw-500 cr-black">Daftar Pemberangkatan</div>
+    <div
+      class="fs-16 fw-400 cr-gray"
+    >Lengkapi berkas Formulir Keberangkatan Anda, 45 hari sebelum tanggal pemberangkatan</div>
 
     <a-card :bordered="false" class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16">
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
-        <a-col :span="4" class="text-uppercase cr-gray fs-14">Filter Seat</a-col>
+        <a-col :span="2" class="text-uppercase cr-gray fs-14">Filter</a-col>
         <a-col :span="7">
-          <a-select showSearch defaultValue="Tampilkan Semua" size="large" style="width: 100%">
+          <a-select
+            showSearch
+            placeholder="Pilih Produk"
+            defaultValue="Tampilkan Semua"
+            size="large"
+            style="width: 100%"
+          >
             <a-select-option value="Tampilkan Semua">Tampilkan Semua</a-select-option>
             <a-select-option value="Umrah">Umrah</a-select-option>
             <a-select-option value="Tiket Group">Tiket Group</a-select-option>
@@ -20,8 +28,33 @@
             <a-select-option value="Tour Leader">Tour Leader</a-select-option>
           </a-select>
         </a-col>
-        <a-col :span="6"></a-col>
-        <a-col :span="7"></a-col>
+        <a-col :span="8">
+          <a-select
+            showSearch
+            placeholder="Pilih Status Pemberangkatan"
+            defaultValue="Semua Status Pemberangkatan"
+            size="large"
+            style="width: 100%"
+          >
+            <a-select-option value="Semua Status Pemberangkatan">Semua Status Pemberangkatan</a-select-option>
+            <a-select-option value="Menunggu">Menunggu</a-select-option>
+            <a-select-option value="Pemberangkatan">Pemberangkatan</a-select-option>
+            <a-select-option value="Selesai">Selesai</a-select-option>
+          </a-select>
+        </a-col>
+        <a-col :span="7">
+          <a-select
+            showSearch
+            placeholder="Pilih Status Berkas"
+            defaultValue="Semua Status Berkas"
+            size="large"
+            style="width: 100%"
+          >
+            <a-select-option value="Semua Status Berkas">Semua Status Berkas</a-select-option>
+            <a-select-option value="Pengumpulan Berkas">Pengumpulan Berkas</a-select-option>
+            <a-select-option value="Berkas Lengkap">Berkas Lengkap</a-select-option>
+          </a-select>
+        </a-col>
       </a-row>
     </a-card>
 
@@ -42,15 +75,15 @@
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Program Hari</div>
-                <div class="fs-15 fw-500">{{item.program}}</div>
+                <div class="fs-14 fw-500">{{item.program}}</div>
               </a-col>
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
-                <div class="fs-15 fw-500 cr-black">{{item.date}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.date}}</div>
               </a-col>
               <a-col :span="5" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
-                <div class="fs-15 fw-500 cr-black">{{item.pax}} Pax</div>
+                <div class="fs-14 fw-500 cr-black">{{item.pax}} Pax</div>
               </a-col>
             </a-row>
 
@@ -91,21 +124,31 @@
                       src="/icons/search/tabs/color/insurance.svg"
                     />
                   </div>
-                  <div class="fs-14 fw-500 cr-black f-default text-capitalize">Seat {{item.products_categorie}}</div>
+                  <div
+                    class="fs-14 fw-500 cr-black f-default text-capitalize"
+                  >Pemberangkatan {{item.products_categorie}}</div>
                 </div>
               </a-col>
               <a-col :span="6">
-                <div class="fs-14 fw-400 cr-gray">Sudah Dipesan (Booked)</div>
-                <div class="fs-15 fw-500 cr-black">{{item.booked}} Pax</div>
+                <div class="fs-14 fw-400 cr-gray">Status Pemberangkatan</div>
+                <div class="fs-14 fw-500 cr-black">
+                    <a-badge status="default" :text="item.status_departure" v-if="item.status_departure === 'Menunggu'" />
+                    <a-badge status="processing" :text="item.status_departure" v-if="item.status_departure === 'Pemberangkatan'" />
+                    <a-badge status="success" :text="item.status_departure" v-if="item.status_departure === 'Selesai'" />
+                </div>
               </a-col>
               <a-col :span="5">
-                <div class="fs-14 fw-400 cr-gray">Tersedia (Available)</div>
-                <div class="fs-15 fw-500 cr-green">{{item.available}} Pax</div>
+                <div class="fs-14 fw-400 cr-gray">Status Berkas</div>
+                <div class="fs-14 fw-500 cr-orange" v-if="item.status_file === 'Pengumpulan Berkas'">{{item.status_file}}</div>
+                <div class="fs-14 fw-500 cr-success" v-if="item.status_file === 'Berkas Lengkap'">{{item.status_file}}</div>
               </a-col>
               <a-col :span="5" class="text-right">
-                <a-button class="b-shadow b-radius" type="primary">
-                  <nuxt-link to="/accounts/mitra/management/seat/pax-list">Lihat Detail</nuxt-link>
-                </a-button>
+                <nuxt-link to="/accounts/mitra/jamaah/berkas">
+                  <span class="fs-14 fw-500 cr-green">
+                    Lihat Berkas
+                    <a-icon type="right" class="fs-12 ml-8" />
+                  </span>
+                </nuxt-link>
               </a-col>
             </a-row>
           </div>
@@ -122,8 +165,8 @@ const dataSeat = [
     pax: "4",
     date: "05 Januari 2019",
     program: "Program 9 Hari",
-    available: "1",
-    booked: "3"
+    status_departure: "Menunggu",
+    status_file: "Berkas Lengkap"
   },
   {
     no_transaction: "ATT-TKT-14674422219080148",
@@ -131,8 +174,8 @@ const dataSeat = [
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",
-    available: "1",
-    booked: "1"
+    status_departure: "Pemberangkatan",
+    status_file: "Berkas Lengkap"
   },
   {
     no_transaction: "ATT-AKM-14674422219080148",
@@ -140,8 +183,8 @@ const dataSeat = [
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",
-    available: "1",
-    booked: "1"
+    status_departure: "Selesai",
+    status_file: "Berkas Lengkap"
   },
   {
     no_transaction: "ATT-VSI-14674422219080148",
@@ -149,8 +192,8 @@ const dataSeat = [
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",
-    available: "1",
-    booked: "1"
+    status_departure: "Menunggu",
+    status_file: "Pengumpulan Berkas"
   },
   {
     no_transaction: "ATT-INS-14674422219080148",
@@ -158,16 +201,16 @@ const dataSeat = [
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",
-    available: "1",
-    booked: "1"
+    status_departure: "Selesai",
+    status_file: "Berkas Lengkap"
   }
 ];
 export default {
   layout: "accounts",
-  name: "mitraManajemenSeat",
+  name: "mitraDeparture",
   head() {
     return {
-      title: "Manajemen Seat - Kembangkan Bisnis Umrah Anda | Haloatta"
+      title: "Daftar Pemberangkatan - Kembangkan Bisnis Umrah Anda | Haloatta"
     };
   },
 

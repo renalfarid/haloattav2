@@ -9,9 +9,7 @@
             </nuxt-link>
           </a-col>
           <a-col :span="8">
-            <div
-              class="fs-16 fw-500 cr-gray text-ellipsis"
-            >Langkah 1 Komponen Wajib : Tiket Group</div>
+            <div class="fs-16 fw-500 cr-gray text-ellipsis">Langkah 1 Komponen Wajib : Tiket Group</div>
           </a-col>
           <a-col :span="8"></a-col>
         </a-row>
@@ -41,6 +39,7 @@
                             :help="itemError() || ''"
                           >
                             <a-select
+                              showSearch
                               v-decorator="['maskapai',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]"
                               placeholder="Pilih Maskapai"
                               size="large"
@@ -209,10 +208,9 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      this.$router.push("/create/v2/steps/3");
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          return this.$router.push("/create/v2/steps/3");
         }
       });
     },

@@ -1,23 +1,18 @@
 <template>
-  <a-form layout="vertical" class="form-search--costume">
+  <a-form layout="vertical" :form="form" class="form-search--costume" hideRequiredMark>
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Kota Asal">
+        <a-form-item label="Kota Asal" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/airplane.svg" />
           </div>
           <a-select
             showSearch
-            defaultValue="Makassar"
             placeholder="Pilih Kota Asal"
-            optionFilterProp="children"
             :showArrow="false"
             style="width: 100%"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
+            v-decorator="['cityStart',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
           >
             <a-select-option value="All">Tampilkan Semua</a-select-option>
             <a-select-option value="Makassar">Makassar</a-select-option>
@@ -28,7 +23,7 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Bulan Keberangkatan">
+        <a-form-item label="Bulan Keberangkatan" hasFeedback>
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -56,7 +51,7 @@
 
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Jamaah">
+        <a-form-item label="Jumlah Jamaah" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/boysmiling.svg" />
           </div>
@@ -64,20 +59,14 @@
             <a-menu slot="overlay">
               <a-menu-item key="0" disabled>
                 <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
-                    </div>
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
                   </div>
                   <div class="ml-auto">
                     <number-input
                       v-model="dewasa"
-                      :min="0"
-                      :max="10"
+                      :min="1"
                       :inputtable="false"
                       size="small"
                       center
@@ -88,20 +77,14 @@
               </a-menu-item>
               <a-menu-item key="1" disabled>
                 <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Anak</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
-                    </div>
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Anak</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
                   </div>
                   <div class="ml-auto">
                     <number-input
                       v-model="anak"
                       :min="0"
-                      :max="10"
                       :inputtable="false"
                       size="small"
                       center
@@ -121,7 +104,7 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Program Hari">
+        <a-form-item label="Program Hari" hasFeedback>
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -149,7 +132,7 @@
 
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Rating Bintang Hotel">
+        <a-form-item label="Rating Bintang Hotel" hasFeedback>
           <div class="icon-search">
             <a-icon type="crown" />
           </div>
@@ -175,7 +158,7 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Kisaran Harga">
+        <a-form-item label="Kisaran Harga" hasFeedback>
           <div class="icon-search">
             <a-icon type="wallet" />
           </div>
@@ -217,11 +200,11 @@
 export default {
   data() {
     return {
+      form: this.$form.createForm(this),
       dewasa: 1,
       anak: 0
     };
   },
-
   methods: {
     handleChange(value) {
       console.log(`selected ${value}`);
@@ -240,7 +223,11 @@ export default {
       );
     },
     searchUmrah() {
-      this.$router.push({ path: "/catalog/umrah/result" });
+      this.form.validateFields(err => {
+        if (!err) {
+          return this.$router.push({ path: "/catalog/umrah/result" });
+        }
+      });
     }
   }
 };

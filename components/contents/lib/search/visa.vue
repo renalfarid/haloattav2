@@ -50,7 +50,9 @@
             size="large"
           >
             <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Visa Kunjungan Wisata/ Visa Turis">Visa Kunjungan Wisata/ Visa Turis</a-select-option>
+            <a-select-option
+              value="Visa Kunjungan Wisata/ Visa Turis"
+            >Visa Kunjungan Wisata/ Visa Turis</a-select-option>
             <a-select-option value="Visa on Arrival">Visa on Arrival</a-select-option>
             <a-select-option value="Visa Kunjungan Bisnis">Visa Kunjungan Bisnis</a-select-option>
           </a-select>
@@ -86,7 +88,7 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Jumlah Tamu" hasFeedback>
+        <a-form-item label="Jumlah Pax" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/boysmiling.svg" />
           </div>
@@ -94,45 +96,13 @@
             <a-menu slot="overlay">
               <a-menu-item key="0" disabled>
                 <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
-                    </div>
-                  </div>
+                  <div class="fs-14 fw-400 cr-black f-default">Jumlah Pax</div>
                   <div class="ml-auto">
                     <number-input
-                      v-model="dewasa"
+                      :inputtable="false"
+                      v-model="pax"
                       :min="0"
                       :max="10"
-                      :inputtable="false"
-                      size="small"
-                      center
-                      controls
-                    />
-                  </div>
-                </div>
-              </a-menu-item>
-              <a-menu-item key="1" disabled>
-                <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Anak</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
-                    </div>
-                  </div>
-                  <div class="ml-auto">
-                    <number-input
-                      v-model="anak"
-                      :min="0"
-                      :max="10"
-                      :inputtable="false"
                       size="small"
                       center
                       controls
@@ -141,11 +111,7 @@
                 </div>
               </a-menu-item>
             </a-menu>
-            <a-button
-              class="ant-btn--add-passenger text-left"
-              size="large"
-              block
-            >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
+            <a-button class="ant-btn--add-passenger text-left" size="large" block>{{pax}} Pax</a-button>
           </a-dropdown>
         </a-form-item>
       </a-col>
@@ -195,8 +161,7 @@ export default {
   data() {
     this.dateFormat = "YYYY-MM-DD";
     return {
-      dewasa: 1,
-      anak: 0
+      pax: 1
     };
   },
   beforeCreate() {
@@ -228,8 +193,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);
-        } else {
-          this.$router.push("/catalog/visa/result");
+          return this.$router.push("/catalog/visa/result");
         }
       });
     }

@@ -12,7 +12,7 @@
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius"></div>
                   <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title fs-20 fw-500">75</div>
+                    <div class="ant-card-cover--overlay-text-title fs-16 fw-500">75</div>
                     <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
                       <span>ROOM</span>
                     </div>

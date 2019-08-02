@@ -42,20 +42,14 @@
             <a-menu slot="overlay">
               <a-menu-item key="0" disabled>
                 <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Quad Room</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 4 orang)</div>
-                    </div>
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Quad Room</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 4 orang)</div>
                   </div>
                   <div class="ml-auto">
                     <number-input
                       v-model="quad"
-                      :min="0"
-                      :max="10"
+                      :min="1"
                       :inputtable="false"
                       size="small"
                       center
@@ -66,20 +60,14 @@
               </a-menu-item>
               <a-menu-item key="1" disabled>
                 <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Triple Room</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 3 orang)</div>
-                    </div>
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Triple Room</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 3 orang)</div>
                   </div>
                   <div class="ml-auto">
                     <number-input
                       v-model="triple"
                       :min="0"
-                      :max="10"
                       :inputtable="false"
                       size="small"
                       center
@@ -90,20 +78,14 @@
               </a-menu-item>
               <a-menu-item key="2" disabled>
                 <div class="d-flex align-items-center">
-                  <div class="d-flex align-items-center">
-                    <div class="mr-8">
-                      <a-avatar icon="user" />
-                    </div>
-                    <div>
-                      <div class="fs-14 fw-400 cr-black f-default">Double Room</div>
-                      <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 2 orang)</div>
-                    </div>
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Double Room</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 2 orang)</div>
                   </div>
                   <div class="ml-auto">
                     <number-input
                       v-model="double"
                       :min="0"
-                      :max="10"
                       :inputtable="false"
                       size="small"
                       center
@@ -250,10 +232,10 @@ export default {
     },
     handleSubmit(e) {
       e.preventDefault();
-      this.$router.push("/catalog/accommodation/result");
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log("Received values of form: ", values);
+          return this.$router.push("/catalog/accommodation/result");
         }
       });
     }

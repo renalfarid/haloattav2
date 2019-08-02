@@ -34,6 +34,25 @@
                         <br />Anda inginkan ?
                       </div>
                       <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
+                        n dev
+                        <a-col :span="24">
+                          <a-form-item
+                            label="Bintang Hotel"
+                            :validate-status="itemError() ? 'error' : ''"
+                            :help="itemError() || ''"
+                          >
+                            <a-select
+                              v-decorator="['bintangHotel',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                              placeholder="Pilih Bintang Hotel"
+                              size="large"
+                            >
+                              <a-select-option value="Bintang 3 Setaraf">Bintang 3 Setaraf</a-select-option>
+                              <a-select-option value="Bintang 4 Setaraf">Bintang 4 Setaraf</a-select-option>
+                              <a-select-option value="Bintang 5 Setaraf">Bintang 5 Setaraf</a-select-option>
+                            </a-select>
+                          </a-form-item>
+                        </a-col>
+
                         <a-col :span="24">
                           <a-form-item
                             label="Ingin mulai dari kota mana?"
@@ -61,19 +80,26 @@
 
                         <a-col :span="24">
                           <a-form-item
-                            label="Bintang Hotel"
+                            label="Durasi menginap?"
                             :validate-status="itemError() ? 'error' : ''"
                             :help="itemError() || ''"
                           >
-                            <a-select
-                              v-decorator="['bintangHotel',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                              placeholder="Pilih Bintang Hotel"
-                              size="large"
-                            >
-                              <a-select-option value="Bintang 3 Setaraf">Bintang 3 Setaraf</a-select-option>
-                              <a-select-option value="Bintang 4 Setaraf">Bintang 4 Setaraf</a-select-option>
-                              <a-select-option value="Bintang 5 Setaraf">Bintang 5 Setaraf</a-select-option>
-                            </a-select>
+                            <a-row :gutter="8">
+                              <a-col :span="12">
+                                <a-select
+                                  v-decorator="['timeStart',{initialValue: timeStart[0], rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                                  @change="handleItemChangeNight"
+                                  size="large"
+                                >
+                                  <a-select-option v-for="item in timeStart" :key="item">{{item}}</a-select-option>
+                                </a-select>
+                              </a-col>
+                              <a-col :span="12">
+                                <a-select v-model="nightStart" size="large">
+                                  <a-select-option v-for="time in times" :key="time">{{time}}</a-select-option>
+                                </a-select>
+                              </a-col>
+                            </a-row>
                           </a-form-item>
                         </a-col>
 
@@ -84,7 +110,7 @@
                             :help="itemError() || ''"
                           >
                             <a-radio-group
-                              v-decorator="['jarakHotel',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                              v-decorator="['jarakHotel',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                             >
                               <a-radio :value="1" class="cr-black">Kurang dari 500m</a-radio>
                               <a-radio :value="2" class="cr-black">Lebih dari 500m</a-radio>
@@ -99,7 +125,7 @@
                             :help="itemError() || ''"
                           >
                             <a-radio-group
-                              v-decorator="['harga',{initialValue: [], rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                              v-decorator="['harga',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                             >
                               <a-row>
                                 <a-col :span="24">
@@ -200,10 +226,15 @@
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
-const cityStart = ["Madinah", "Makkah"];
+const cityStart = ["Dari Madinah", "Dari Mekkah"];
 const cityEnd = {
-  Madinah: ["Menuju Makkah"],
-  Makkah: ["Menuju Madinah"]
+  "Dari Madinah": ["Menuju Mekkah"],
+  "Dari Mekkah": ["Menuju Madinah"]
+};
+const timeStart = ["3 Hari Madinah", "3 Hari Mekkah"];
+const timeEnd = {
+  "3 Hari Madinah": ["4 Hari Mekkah"],
+  "3 Hari Mekkah": ["4 Hari Madinah"]
 };
 export default {
   layout: "application",
@@ -220,6 +251,10 @@ export default {
       cityEnd,
       cities: cityEnd[cityStart[0]],
       itemStart: cityEnd[cityStart[0]][0],
+      timeStart,
+      timeEnd,
+      times: timeEnd[timeStart[0]],
+      nightStart: timeEnd[timeStart[0]][0],
       hasErrors
     };
   },
@@ -238,6 +273,7 @@ export default {
     itemError() {
       const { getFieldError, isFieldTouched } = this.form;
       return isFieldTouched("cityStart") && getFieldError("cityStart");
+      return isFieldTouched("timeStart") && getFieldError("timeStart");
       return isFieldTouched("bintangHotel") && getFieldError("bintangHotel");
       return isFieldTouched("jarakHotel") && getFieldError("jarakHotel");
       return isFieldTouched("harga") && getFieldError("harga");
@@ -246,12 +282,15 @@ export default {
       this.cities = cityEnd[value];
       this.itemStart = cityEnd[value][0];
     },
+    handleItemChangeNight(value) {
+      this.times = timeEnd[value];
+      this.nightStart = timeEnd[value][0];
+    },
     handleSubmit(e) {
       e.preventDefault();
-      this.$router.push("/create/v2/steps/4");
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          return this.$router.push("/create/v2/steps/4");
         }
       });
     },
