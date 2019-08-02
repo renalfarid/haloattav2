@@ -26,15 +26,42 @@
 
     <a-divider />
 
-    <div class="ant-avatar--user d-flex align-items-center">
+    <nuxt-link to="/accounts/top-up" class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
         <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3" icon="wallet" />
       </div>
       <div>
-        <div class="fs-14 f-default cr-black mb-4">Saldo Halopay</div>
-        <div class="fs-16 fw-500 f-default cr-black">Rp. 100.000.000</div>
+        <div class="fs-14 cr-gray">Saldo Halopay</div>
+        <div class="fs-15 fw-500 f-default cr-black">Rp{{100000000 | numFormat}}</div>
       </div>
-    </div>
+      <div class="ml-auto"><a-icon type="right" class="cr-primary fs-12" /></div>
+    </nuxt-link>
+
+    <a-divider :style="{margin: '14px 0'}" />
+
+    <nuxt-link to="/accounts/mitra/fee" class="ant-avatar--user d-flex align-items-center">
+      <div class="mr-8">
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3" icon="dollar" />
+      </div>
+      <div>
+        <div class="fs-14 cr-gray">Fee Penjualan</div>
+        <div class="fs-15 fw-500 f-default cr-black">Rp{{10000000 | numFormat}}</div>
+      </div>
+      <div class="ml-auto"><a-icon type="right" class="cr-primary fs-12" /></div>
+    </nuxt-link>
+
+    <a-divider :style="{margin: '14px 0'}" />
+
+    <nuxt-link to="/accounts/mitra/voucher" class="ant-avatar--user d-flex align-items-center">
+      <div class="mr-8">
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3;" icon="crown" />
+      </div>
+      <div>
+        <div class="fs-14 cr-gray">Halo Poin</div>
+        <div class="fs-15 fw-500 f-default cr-black">10 poin</div>
+      </div>
+      <div class="ml-auto"><a-icon type="right" class="cr-primary fs-12" /></div>
+    </nuxt-link>
 
     <a-divider />
 

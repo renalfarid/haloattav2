@@ -8,7 +8,7 @@
         <a class="d-flex align-items-center align-end" @click="showFee">
           <div class="mr-16">
             <div class="fs-12 fw-400 text-uppercase f-default cr-gray">Total Fee Penjualan</div>
-            <div class="fs-18 fw-500 cr-black f-default">Rp {{jumlahFee}}</div>
+            <div class="fs-18 fw-500 cr-black f-default">Rp{{ jumlahFee | numFormat }}</div>
           </div>
           <div class="mr-16">
             <a-icon :type="seeFee ? 'up' : 'down'" />
@@ -28,7 +28,7 @@
           </div>
           <div>
             <div class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default">umrah</div>
-            <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 10.300.000</div>
+            <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp{{ 10300000 | numFormat }}</div>
           </div>
         </div>
       </a-card-grid>

@@ -1,0 +1,14 @@
+.ant-product--promo {
+    & .ant-list {
+        margin: 16px 0;
+        & .ant-list-item {
+            border: none;
+            & .ant-btn {
+                background-color: $color-main;
+                text-transform: uppercase;
+                font-weight: 500;
+                border: none;
+            }
+        }
+    }
+}
