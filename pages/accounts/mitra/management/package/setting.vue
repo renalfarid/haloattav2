@@ -582,7 +582,7 @@ export default {
       dataCover,
       name_package: namesData[1],
       cover_package: [],
-      current: 1,
+      current: 0,
       steps: [
         {
           title: "Margin",
