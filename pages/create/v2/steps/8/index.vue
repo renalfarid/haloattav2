@@ -162,7 +162,7 @@
                                     <a-col :xs="24" :sm="24" :md="12" :lg="12">
                                       <a-radio-button :value="1" class="b-shadow">
                                         <a-icon type="check-circle" theme="filled" />
-                                        <div class="fs-14 fw-400 cr-gray mb-4">Go Bro Event Organizer</div>
+                                        <div class="fs-14 fw-400 cr-gray f-default text-ellipsis mb-4">Go Bro Event Organizer</div>
                                         <div class="fs-16 fw-500 cr-black">
                                           Rp200.000
                                           <span class="fw-400 cr-gray">/pax</span>
@@ -172,7 +172,7 @@
                                     <a-col :xs="24" :sm="24" :md="12" :lg="12">
                                       <a-radio-button :value="2" class="b-shadow">
                                         <a-icon type="check-circle" theme="filled" />
-                                        <div class="fs-14 fw-400 cr-gray mb-4">Fastcreative Event Organizer</div>
+                                        <div class="fs-14 fw-400 cr-gray f-default text-ellipsis mb-4">Fastcreative Event Organizer</div>
                                         <div class="fs-16 fw-500 cr-black">
                                           Rp180.000
                                           <span class="fw-400 cr-gray">/pax</span>

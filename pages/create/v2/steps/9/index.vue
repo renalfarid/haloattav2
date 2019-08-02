@@ -147,7 +147,7 @@
                                       <a-radio-button :value="1" class="b-shadow">
                                         <a-icon type="check-circle" theme="filled" />
                                         <div
-                                          class="fs-14 fw-400 cr-gray mb-4"
+                                          class="fs-14 fw-400 cr-gray f-default text-ellipsis mb-4"
                                         >PT. Subur Jaya</div>
                                         <div class="fs-16 fw-500 cr-black">
                                           Rp800.000
@@ -159,7 +159,7 @@
                                       <a-radio-button :value="2" class="b-shadow">
                                         <a-icon type="check-circle" theme="filled" />
                                         <div
-                                          class="fs-14 fw-400 cr-gray mb-4"
+                                          class="fs-14 fw-400 cr-gray f-default text-ellipsis mb-4"
                                         >CV. Umrah Equipment</div>
                                         <div class="fs-16 fw-500 cr-black">
                                           Rp880.000
