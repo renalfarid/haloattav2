@@ -62,28 +62,28 @@
 <script>
 const dataWithdraw = [
   {
-    no_transaction: "PUHA12345678",
+    no_transaction: "ATT-FEE-54021040019072938",
     nominal: "300.000",
     bank: "BCA (1234567890) - Dedi Abdullah, KCP Makassar",
     desc: "Permohonan Pengajuan Fee Saya",
     status: "Menunggu Verifikasi"
   },
   {
-    no_transaction: "PUHA12345678",
+    no_transaction: "ATT-FEE-54021040019072938",
     nominal: "9.000.000",
     bank: "BNI (66677789099) - Dedi Abdullah, KCP Makassar",
     desc: "Permohonan Pengajuan Fee Saya",
     status: "Menunggu Verifikasi"
   },
   {
-    no_transaction: "PUHA12345678",
+    no_transaction: "ATT-FEE-54021040019072938",
     nominal: "80.000.000",
     bank: "BRI (999977878655) - Dedi Abdullah, KCP Makassar",
     desc: "Permohonan Pengajuan Fee Saya",
     status: "Menunggu Verifikasi"
   },
   {
-    no_transaction: "PUHA12345678",
+    no_transaction: "ATT-FEE-54021040019072938",
     nominal: "30.000.000",
     bank: "Mandiri (152667778889) - Dedi Abdullah, KCP Makassar",
     desc: "Permohonan Pengajuan Fee Saya",
@@ -114,7 +114,6 @@ export default {
     setTimeout(() => {
       this.loading = false;
     }, 1500);
-  },
-  methods: {}
+  }
 };
 </script>

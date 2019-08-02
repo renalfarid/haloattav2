@@ -90,7 +90,7 @@
           <span>Fee Penjualan</span>
         </span>
         <a-menu-item class="ant-menu--sider-sub-item" key="8-1">
-          <nuxt-link to="/accounts/mitra/fee" class="nav-text">Pengajuan</nuxt-link>
+          <nuxt-link to="/accounts/mitra/fee" class="nav-text">Daftar Penjualan</nuxt-link>
         </a-menu-item>
         <a-menu-item class="ant-menu--sider-sub-item" key="8-2">
           <nuxt-link to="/accounts/mitra/fee/withdraw-list" class="nav-text">Daftar Pengajuan</nuxt-link>
