@@ -33,7 +33,7 @@
                   <div class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default">umrah</div>
                   <div
                     class="text-ellipsis fs-18 fw-500 cr-black f-default"
-                  >Rp{{ 10300000 | numFormat }}</div>
+                  >Rp{{ 10000000 | numFormat }}</div>
                 </div>
               </div>
             </a-card-grid>
@@ -129,7 +129,7 @@
           </a-col>
         </a-row>
 
-        <a-row :gutter="16">
+        <a-row :gutter="16" class="mb-16">
           <a-col :span="8">
             <a-card-grid class="b-radius" style="width: 100%">
               <div class="d-flex align-items-center">
@@ -183,6 +183,19 @@
                 </div>
               </div>
             </a-card-grid>
+          </a-col>
+        </a-row>
+
+        <a-row :gutter="16" type="flex" justify="end">
+          <a-col :span="8">
+            <a-button
+              class="fs-15 fw-500 b-shadow b-radius text-uppercase"
+              type="primary"
+              size="large"
+              icon="reconciliation"
+              @click="showWithdraw"
+              block
+            >Form Pengajuan Fee</a-button>
           </a-col>
         </a-row>
       </a-card>
@@ -262,35 +275,37 @@
       </a-list-item>
     </a-list>
 
-    <a-card class="d-none b-shadow b-radius b-solid mt-16">
+    <!-- form pengajuan fee -->
+    <a-drawer
+      title="Form Pengajuan Penarikan Fee"
+      :width="520"
+      @close="onClose"
+      :visible="visibleWithdraw"
+      :wrapStyle="{height: 'calc(100% - 108px)',overflow: 'auto',paddingBottom: '108px'}"
+    >
       <a-form layout="vertical" :form="form" @submit="handleSubmit" hideRequiredMark>
-        <a-row :gutter="16">
-          <a-col :span="12">
-            <a-form-item label="Rekening Bank Anda">
-              <a-select
-                v-decorator="['bank',{ rules: [{ required: true, message: 'Harus di isi!' }] }]"
-                placeholder="Pilih Rekening Bank Anda"
-                size="large"
-              >
-                <a-select-option value="BCA - 1234567890">BCA - 1234567890</a-select-option>
-              </a-select>
-            </a-form-item>
-          </a-col>
-          <a-col :span="12">
-            <a-form-item label="Nominal Pengajuan">
-              <a-input-number
-                v-decorator="['nominal',{ initialValue: jumlahFee, rules: [{ required: true, message: 'Harus di isi!' }] }]"
-                :formatter="value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
-                :parser="value => value.replace(/\$\s?|(,*)/g, '')"
-                :max="jumlahFee"
-                :min="100000"
-                @change="onChange"
-                size="large"
-                style="width: 100%"
-              />
-            </a-form-item>
-          </a-col>
-        </a-row>
+        <a-form-item label="Rekening Bank Anda">
+          <a-select
+            v-decorator="['bank',{ rules: [{ required: true, message: 'Harus di isi!' }] }]"
+            placeholder="Pilih Rekening Bank Anda"
+            size="large"
+          >
+            <a-select-option value="BCA - 1234567890">BCA - 1234567890</a-select-option>
+          </a-select>
+        </a-form-item>
+
+        <a-form-item label="Nominal Pengajuan">
+          <a-input-number
+            v-decorator="['nominal',{ initialValue: jumlahFee, rules: [{ required: true, message: 'Harus di isi!' }] }]"
+            :formatter="value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
+            :parser="value => value.replace(/\$\s?|(,*)/g, '')"
+            :max="jumlahFee"
+            :min="100000"
+            @change="onChange"
+            size="large"
+            style="width: 100%"
+          />
+        </a-form-item>
 
         <a-form-item label="Keterangan">
           <a-textarea
@@ -298,14 +313,28 @@
             :rows="4"
           />
         </a-form-item>
-        <a-button
-          type="primary"
-          html-type="submit"
-          size="large"
-          class="b-radius b-shadow"
-        >Kirim Pengajuan</a-button>
+        <div
+          :style="{
+          position: 'absolute',
+          left: 0,
+          bottom: 0,
+          width: '100%',
+          borderTop: '1px solid #e9e9e9',
+          padding: '10px 16px',
+          background: '#fff',
+          textAlign: 'right',
+        }"
+        >
+          <a-button :style="{marginRight: '8px'}" size="large" @click="onClose">Batalkan</a-button>
+          <a-button
+            type="primary"
+            html-type="submit"
+            size="large"
+            class="b-radius b-shadow"
+          >Kirim Pengajuan</a-button>
+        </div>
       </a-form>
-    </a-card>
+    </a-drawer>
   </div>
 </template>
 <script>
@@ -333,7 +362,8 @@ export default {
   data() {
     return {
       seeFee: true,
-      jumlahFee: 10300000,
+      visibleWithdraw: false,
+      jumlahFee: 10000000,
       loading: true,
       dataSales,
       moment
@@ -350,6 +380,12 @@ export default {
   methods: {
     showFee() {
       this.seeFee = !this.seeFee;
+    },
+    showWithdraw() {
+      this.visibleWithdraw = true;
+    },
+    onClose() {
+      this.visibleWithdraw = false;
     },
     onChange(value) {
       console.log(value);
