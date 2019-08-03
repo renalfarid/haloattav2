@@ -216,15 +216,15 @@
             <a-row :gutter="16" class="m-0 p-16">
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">No. Transaksi</div>
-                <div class="fs-15 fw-500 cr-black">{{item.no_transaction}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.no_transaction}}</div>
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Harga Dasar Umrah (HPP)</div>
-                <div class="fs-15 fw-500 cr-black">{{ item.harga_dasar | currency }}</div>
+                <div class="fs-14 fw-500 cr-black">{{ item.harga_dasar | currency }}</div>
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Margin Fee</div>
-                <div class="fs-15 fw-500 cr-black">
+                <div class="fs-14 fw-500 cr-black">
                   {{ item.margin_fee_rupiah | currency }}
                   <a-divider type="vertical"></a-divider>
                   ({{item.margin_fee_persen}}%)
@@ -232,7 +232,7 @@
               </a-col>
               <a-col :span="6" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Penjualan</div>
-                <div class="fs-15 fw-500 cr-black">
+                <div class="fs-14 fw-500 cr-black">
                   <span>{{item.datetime.format('llll')}}</span>
                 </div>
               </a-col>
@@ -244,9 +244,9 @@
               justify="space-between"
               align="middle"
               class="m-0 p-16"
-              style="backgroundColor: #f5f5f5"
+              style="borderTop: 1px solid #f5f5f5"
             >
-              <a-col :span="12">
+              <a-col :span="18">
                 <div class="d-flex align-items-center">
                   <div class="mr-8">
                     <a-avatar
@@ -256,16 +256,16 @@
                   </div>
                   <div>
                     <div class="fs-14 fw-400 cr-gray">Penjualan</div>
-                    <div class="fs-15 fw-500 cr-black">{{item.name_package}}</div>
+                    <div class="fs-14 fw-500 cr-black">{{item.name_package}}</div>
                   </div>
                 </div>
               </a-col>
-              <a-col :span="12" class="text-right">
+              <a-col :span="6" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Tipe Pembayaran</div>
-                <div class="fs-15 fw-500 cr-orange" v-if="item.payment === 'DP'">
+                <div class="fs-14 fw-500 cr-orange" v-if="item.payment === 'DP'">
                   <span>{{item.payment}}</span>
                 </div>
-                <div class="fs-15 fw-500 cr-green" v-if="item.payment === 'Lunas'">
+                <div class="fs-14 fw-500 cr-green" v-if="item.payment === 'Lunas'">
                   <span>{{item.payment}}</span>
                 </div>
               </a-col>

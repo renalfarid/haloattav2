@@ -1,13 +1,18 @@
 <template>
   <div class="ant-invoice">
     <a-card :loading="loading" :bordered="false" class="b-radius b-shadow b-solid mb-16">
-      <nuxt-link
-        to="/accounts/mitra/transaction/purchase"
-        slot="title"
-        class="fs-15 fw-400 cr-gray"
-      >
-        <a-icon type="arrow-left" class="mr-8" />Kembali
-      </nuxt-link>
+      <span slot="title" class="fs-16 fw-500 cr-black">
+        <!-- if status tagihan 'menunggu pembayaran' -->
+        <a-avatar size="small" style="backgroundColor: #FF7C0A" class="mr-8" icon="clock-circle" />Menunggu Pembayaran
+      </span>
+      <span slot="title" class="fs-16 fw-500 cr-black d-none">
+        <!-- if status tagihan 'kedaluwarsa' -->
+        <a-avatar size="small" style="backgroundColor: #F43662" class="mr-8" icon="close" />Batas Waktu Habis
+      </span>
+      <!-- if status tagihan 'berhasil' -->
+      <span slot="title" class="fs-16 fw-500 cr-black d-none">
+        <a-avatar size="small" style="backgroundColor: #0FACF3" class="mr-8" icon="check" />Pembelian Berhasil
+      </span>
       <div v-if="!loading" slot="extra" class="fw-500 fs-16 cr-black">No. Transaksi: HT1234567890</div>
       <a-steps :current="1">
         <a-step>
@@ -32,7 +37,7 @@
       </a-steps>
     </a-card>
 
-    <a-card :bordered="false" class="ant-invoice--card b-radius b-solid mb-16">
+    <a-card :bordered="false" class="ant-invoice--card b-shadow b-radius b-solid mb-16">
       <div class="ant-card-body-item">
         <a-row :gutter="16" type="flex" justify="space-around" align="middle">
           <a-col :span="12">

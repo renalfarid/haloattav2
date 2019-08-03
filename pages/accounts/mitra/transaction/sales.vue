@@ -34,24 +34,24 @@
       >
         <a-skeleton :loading="loading" active avatar>
           <a-row type="flex" class="w-100">
-            <a-col :span="5">
+            <a-col :span="4">
               <div class="ant-images">
                 <div class="ant-images--product" :style="{backgroundImage: `url(${item.images})`}"></div>
               </div>
             </a-col>
-            <a-col :span="19">
+            <a-col :span="20">
               <a-row class="m-0 p-16">
                 <a-col :span="10">
                   <div class="fs-14 fw-400 cr-gray">No. Pesanan</div>
-                  <div class="cr-black fs-15 fw-500">{{item.no_pesanan}}</div>
+                  <div class="cr-black fs-14 fw-500">{{item.no_pesanan}}</div>
                 </a-col>
-                <a-col :span="5">
+                <a-col :span="8">
                   <div class="cr-gray fs-14 fw-400">Jumlah Pesanan</div>
-                  <div class="cr-black fs-15 fw-500">{{item.pax_order}} pax</div>
+                  <div class="cr-black fs-14 fw-500">{{item.pax_order}} pax</div>
                 </a-col>
-                <a-col :span="9" class="text-right">
+                <a-col :span="6" class="text-right">
                   <div class="fs-14 fw-400 cr-gray">Total Bayar</div>
-                  <div class="cr-black fs-15 fw-500">Rp. {{item.total_bayar}}</div>
+                  <div class="cr-black fs-14 fw-500">{{ item.total_bayar | currency }}</div>
                 </a-col>
               </a-row>
 
@@ -63,21 +63,27 @@
                 style="backgroundColor: #f5f5f5"
               >
                 <a-col :span="10">
-                  <div class="fs-15 fw-500 cr-black mr-8">{{item.name_package}}</div>
+                  <div class="fs-14 fw-500 cr-black mr-8">{{item.name_package}}</div>
                 </a-col>
-                <a-col :span="5">
-                  <div class="cr-gray fs-14 fw-400">Tanggal Pesanan</div>
-                  <div class="cr-black fs-15 fw-500">{{item.tgl_order}}</div>
+                <a-col :span="8">
+                  <div v-if="item.status === 'Dibayar'">
+                    <div class="cr-gray fs-14 fw-400">Tanggal Pembayaran</div>
+                    <div class="cr-black fs-14 fw-500">{{item.tgl_purchase.format('llll')}}</div>
+                  </div>
+                  <div v-else>
+                    <div class="cr-gray fs-14 fw-400">Tanggal Pesanan</div>
+                    <div class="cr-black fs-14 fw-500">{{item.tgl_order.format('llll')}}</div>
+                  </div>
                 </a-col>
-                <a-col :span="9" class="text-right">
+                <a-col :span="6" class="text-right">
                   <div class="cr-gray fs-14 fw-400">Status Pembayaran</div>
-                  <div class="fs-15 fw-500 cr-orange" v-if="item.status === 'Belum Dibayar'">
+                  <div class="fs-14 fw-500 cr-orange" v-if="item.status === 'Belum Dibayar'">
                     <span>{{item.status}}</span>
                   </div>
-                  <div class="fs-15 fw-500 cr-red" v-if="item.status === 'Kedaluwarsa'">
+                  <div class="fs-14 fw-500 cr-red" v-if="item.status === 'Kedaluwarsa'">
                     <span>{{item.status}}</span>
                   </div>
-                  <div class="fs-15 fw-500 cr-green" v-if="item.status === 'Dibayar'">
+                  <div class="fs-14 fw-500 cr-green" v-if="item.status === 'Dibayar'">
                     <span>{{item.status}}</span>
                   </div>
                 </a-col>
@@ -86,17 +92,17 @@
               <a-row type="flex" justify="space-between" align="middle" class="m-0 p-16">
                 <a-col :span="10">
                   <div class="cr-gray fs-14 fw-400">Metode Pembayaran</div>
-                  <div class="cr-black fs-15 fw-500 f-default">{{item.metode_pembayaran}}</div>
+                  <div class="cr-black fs-14 fw-500 f-default">{{item.metode_pembayaran}}</div>
                 </a-col>
-                <a-col :span="5">
+                <a-col :span="8">
                   <div class="cr-gray fs-14 fw-400">Tipe Pembayaran</div>
-                  <div class="cr-black fs-15 fw-500 f-default">{{item.tipe_pembayaran}}</div>
+                  <div class="cr-black fs-14 fw-500 f-default">{{item.tipe_pembayaran}}</div>
                 </a-col>
-                <a-col :span="9">
+                <a-col :span="6">
                   <div class="d-flex align-items-center align-end">
                     <nuxt-link
                       to="/accounts/mitra/transaction/detail/sales"
-                      class="cr-primary fs-15"
+                      class="cr-primary fs-14"
                     >Lihat detail</nuxt-link>
                   </div>
                 </a-col>
@@ -111,40 +117,42 @@
 <script>
 const dataPenjualan = [
   {
-    no_pesanan: "PUHA12345678",
+    no_pesanan: "ATT-UMR-54021040019072938",
     images: "/products/V1.png",
     name_package:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Makassar",
-    total_bayar: "930.000.731",
+    total_bayar: 500000731,
     pax_order: "40",
-    tgl_order: "10 September 2019",
-    tipe_pembayaran: "Dp (Down Payment)",
+    tgl_order: moment("2019-07-10", "YYYY-MM-DD"),
+    tgl_purchase: moment("2019-07-10", "YYYY-MM-DD"),
     status: "Belum Dibayar",
-    metode_pembayaran: "ATAM/Bank Transfer"
+    tipe_pembayaran: "Dp",
+    metode_pembayaran: "ATM/Bank Transfer"
   },
   {
-    no_pesanan: "PUHA12345678",
+    no_pesanan: "ATT-UMR-54021040019072938",
     images: "/products/V2.png",
     name_package:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Jakarta",
-    total_bayar: "930.000.731",
+    total_bayar: 930000731,
     pax_order: "20",
-    tgl_order: "14 September 2019",
-    tipe_pembayaran: "Lunas",
+    tgl_order: moment("2019-07-10", "YYYY-MM-DD"),
+    tgl_purchase: moment("2019-07-10", "YYYY-MM-DD"),
     status: "Kedaluwarsa",
-    metode_pembayaran: "ATAM/Bank Transfer"
+    tipe_pembayaran: "Lunas",
+    metode_pembayaran: "ATM/Bank Transfer"
   },
   {
-    no_pesanan: "PUHA12345678",
+    no_pesanan: "ATT-UMR-54021040019072938",
     images: "/products/V3.png",
     name_package:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Bandung",
-    total_bayar: "500.000.731",
+    total_bayar: 500000731,
     pax_order: "20",
-    tgl_order: "14 September 2019",
-    tgl_purchase: "10 September 2019",
-    tipe_pembayaran: "Lunas",
+    tgl_order: moment("2019-07-10", "YYYY-MM-DD"),
+    tgl_purchase: moment("2019-07-10", "YYYY-MM-DD"),
     status: "Dibayar",
+    tipe_pembayaran: "Lunas",
     metode_pembayaran: "Saldo Halopay"
   }
 ];

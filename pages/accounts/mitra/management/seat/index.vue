@@ -42,15 +42,15 @@
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Program Hari</div>
-                <div class="fs-15 fw-500">{{item.program}}</div>
+                <div class="fs-14 fw-500">{{item.program}}</div>
               </a-col>
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
-                <div class="fs-15 fw-500 cr-black">{{item.date}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.date}}</div>
               </a-col>
               <a-col :span="5" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
-                <div class="fs-15 fw-500 cr-black">{{item.pax}} Pax</div>
+                <div class="fs-14 fw-500 cr-black">{{item.pax}} Pax</div>
               </a-col>
             </a-row>
 
@@ -96,11 +96,11 @@
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Sudah Dipesan (Booked)</div>
-                <div class="fs-15 fw-500 cr-black">{{item.booked}} Pax</div>
+                <div class="fs-14 fw-500 cr-black">{{item.booked}} Pax</div>
               </a-col>
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Tersedia (Available)</div>
-                <div class="fs-15 fw-500 cr-green">{{item.available}} Pax</div>
+                <div class="fs-14 fw-500 cr-green">{{item.available}} Pax</div>
               </a-col>
               <a-col :span="5" class="text-right">
                 <a-button class="b-shadow b-radius" type="primary">
