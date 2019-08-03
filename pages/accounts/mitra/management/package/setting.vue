@@ -242,6 +242,15 @@
                   </a-col>
                 </a-row>
               </a-form-item>
+
+              <div class="m-0">
+                <a-alert
+                  message="Informasi"
+                  description="Untuk tanggal closing kami menyarankan 45 hari kerja sebelum tanggal keberangkatan!"
+                  type="warning"
+                  showIcon
+                />
+              </div>
             </a-card>
 
             <a-card class="b-shadow b-radius b-solid">
