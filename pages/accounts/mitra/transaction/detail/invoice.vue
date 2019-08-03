@@ -11,7 +11,7 @@
       </span>
       <!-- if status tagihan 'berhasil' -->
       <span slot="title" class="fs-16 fw-500 cr-black d-none">
-        <a-avatar size="small" style="backgroundColor: #0FACF3" class="mr-8" icon="check" />Pembelian Berhasil
+        <a-avatar size="small" style="backgroundColor: #52c41a" class="mr-8" icon="check" />Pembelian Berhasil
       </span>
       <div v-if="!loading" slot="extra" class="fw-500 fs-16 cr-black">No. Transaksi: HT1234567890</div>
       <a-steps :current="1">
@@ -27,12 +27,11 @@
           </span>
         </a-step>
         <a-step>
-          <template slot="title">Proses</template>
+          <template slot="title">Verifikasi</template>
           <span slot="description" class="fs-13 d-none">30-08-2019 11:50</span>
         </a-step>
         <a-step>
-          <template slot="title">E-paket Terbit</template>
-          <span slot="description" class="fs-13 d-none">30-08-2019 11:50</span>
+          <template slot="title">Berhasil</template>
         </a-step>
       </a-steps>
     </a-card>

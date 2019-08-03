@@ -152,6 +152,12 @@
               <a-col :span="9">
                 <div class="d-flex align-items-center align-end">
                   <nuxt-link
+                    v-if="item.purchase_status === 'Dibayar'"
+                    to="/accounts/mitra/transaction/detail/receipt"
+                    class="cr-primary fs-14"
+                  >Lihat Detail</nuxt-link>
+                  <nuxt-link
+                    v-else
                     to="/accounts/mitra/transaction/detail/invoice"
                     class="cr-primary fs-14"
                   >Lihat Detail</nuxt-link>
