@@ -32,7 +32,7 @@
       </div>
       <div>
         <div class="fs-14 cr-gray">Saldo Halopay</div>
-        <div class="fs-15 fw-500 f-default cr-black">Rp{{100000000 | numFormat}}</div>
+        <div class="fs-15 fw-500 f-default cr-black">{{100000000 | currency}}</div>
       </div>
       <div class="ml-auto"><a-icon type="right" class="cr-primary fs-12" /></div>
     </nuxt-link>
@@ -45,7 +45,7 @@
       </div>
       <div>
         <div class="fs-14 cr-gray">Fee Penjualan</div>
-        <div class="fs-15 fw-500 f-default cr-black">Rp{{10000000 | numFormat}}</div>
+        <div class="fs-15 fw-500 f-default cr-black">{{10000000 | currency}}</div>
       </div>
       <div class="ml-auto"><a-icon type="right" class="cr-primary fs-12" /></div>
     </nuxt-link>

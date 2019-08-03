@@ -50,7 +50,7 @@
               </a-col>
               <a-col :span="8" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Jumlah Pembayaran</div>
-                <div class="fs-14 fw-500 cr-black">Rp. {{item.total_amount}}</div>
+                <div class="fs-14 fw-500 cr-black">{{ item.total_amount | currency }}</div>
               </a-col>
             </a-row>
 
@@ -91,7 +91,7 @@
               </a-col>
               <a-col :span="8">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Pemesanan</div>
-                <div class="fs-14 fw-500 cr-black">{{item.order_date}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.order_date.format('llll')}}</div>
               </a-col>
               <a-col :span="8" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
@@ -118,11 +118,11 @@
               <a-col :span="8">
                 <div v-if="item.purchase_status === 'Menunggu Pembayaran'">
                   <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('llll')}}</div>
                 </div>
                 <div v-if="item.purchase_status === 'Menunggu Verifikasi'">
                   <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('llll')}}</div>
                 </div>
               </a-col>
               <a-col :span="8">
@@ -151,64 +151,59 @@
 <script>
 const dataPembelian = [
   {
-    order_number: "PUHA12345678",
+    order_number: "ATT-UMR-54021040019072938",
     products_categorie: "umrah",
     products_name:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Makassar",
-    total_amount: "930.000.731",
+    total_amount: 930000731,
     number_purchase: "40",
-    order_date: "10 September 2019",
-    payment_date: "",
-    payment_limit: "12 September 2019",
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Menunggu Pembayaran",
     payment_method: "ATAM/Bank Transfer"
   },
   {
-    order_number: "PUHA12345678",
+    order_number: "ATT-AKM-54021040019072938",
     products_categorie: "akomodasi",
     products_name: "3 Hari Makkah dan 4 Hari Madinah",
-    total_amount: "20.000.731",
+    total_amount: 20000731,
     number_purchase: "10",
-    order_date: "14 September 2019",
-    payment_date: "",
-    payment_limit: "16 September 2019",
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Menunggu Verifikasi",
     payment_method: "ATAM/Bank Transfer"
   },
   {
-    order_number: "PUHA12345678",
+    order_number: "ATT-VSI-54021040019072938",
     products_categorie: "visa",
     products_name: "Visa Umrah September 2019",
-    total_amount: "500.731",
+    total_amount: 500731,
     number_purchase: "8",
-    order_date: "14 September 2019",
-    payment_date: "",
-    payment_limit: "16 September 2019",
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Menunggu Pembayaran",
     payment_method: "ATAM/Bank Transfer"
   },
   {
-    order_number: "PUHA12345678",
+    order_number: "ATT-UMR-54021040019072938",
     products_categorie: "umrah",
     products_name:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Bandung",
-    total_amount: "930.000.731",
+    total_amount: 930000731,
     number_purchase: "20",
-    order_date: "14 September 2019",
-    payment_date: "",
-    payment_limit: "16 September 2019",
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Menunggu Pembayaran",
     payment_method: "ATAM/Bank Transfer"
   },
   {
-    order_number: "PUHA12999678",
+    order_number: "ATT-TKT-54021040019072938",
     products_categorie: "tiket group",
     products_name: "Makassar (UPG) ke Jeddah (JED)",
-    total_amount: "30.000.333",
+    total_amount: 30000333,
     number_purchase: "4",
-    order_date: "14 September 2019",
-    payment_date: "",
-    payment_limit: "16 September 2019",
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Menunggu Pembayaran",
     payment_method: "ATAM/Bank Transfer"
   }

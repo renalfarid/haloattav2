@@ -33,7 +33,7 @@ module.exports = {
         { src: '@/plugins/antd-ui' },
         { src: '@/plugins/vue-slick', ssr: false },
         { src: '@/plugins/vInput-number', ssr: false },
-        { src: '@/plugins/vFormat-number', ssr: false },
+        { src: '@/plugins/vCurrency-filter', ssr: false },
         { src: '@/plugins/vCountdown', ssr: false },
         { src: '@/plugins/vCharts', ssr: false },
         { src: '@/plugins/vInfinite-scroll', ssr: false },
@@ -43,7 +43,8 @@ module.exports = {
      ** Nuxt.js modules
      */
     modules: [
-        '@nuxtjs/axios'
+        ['@nuxtjs/moment', { locales: ['id'], defaultLocale: 'id' }],
+        ['@nuxtjs/axios']
     ],
     /*
      ** Build configuration

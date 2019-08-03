@@ -8,7 +8,7 @@
         <a class="d-flex align-items-center align-end" @click="showFee">
           <div class="mr-16">
             <div class="fs-12 fw-400 text-uppercase f-default cr-gray">Total Fee Penjualan</div>
-            <div class="fs-18 fw-500 cr-black f-default">Rp{{ jumlahFee | numFormat }}</div>
+            <div class="fs-18 fw-500 cr-black f-default">{{ jumlahFee | currency }}</div>
           </div>
           <div class="mr-16">
             <a-icon :type="seeFee ? 'up' : 'down'" />
@@ -33,7 +33,7 @@
                   <div class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default">umrah</div>
                   <div
                     class="text-ellipsis fs-18 fw-500 cr-black f-default"
-                  >Rp{{ 10000000 | numFormat }}</div>
+                  >{{ 10000000 | currency }}</div>
                 </div>
               </div>
             </a-card-grid>
@@ -220,12 +220,12 @@
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Harga Dasar Umrah (HPP)</div>
-                <div class="fs-15 fw-500 cr-black">Rp{{ item.harga_dasar | numFormat }}</div>
+                <div class="fs-15 fw-500 cr-black">{{ item.harga_dasar | currency }}</div>
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Margin Fee</div>
                 <div class="fs-15 fw-500 cr-black">
-                  Rp{{ item.margin_fee_rupiah | numFormat }}
+                  {{ item.margin_fee_rupiah | currency }}
                   <a-divider type="vertical"></a-divider>
                   ({{item.margin_fee_persen}}%)
                 </div>
