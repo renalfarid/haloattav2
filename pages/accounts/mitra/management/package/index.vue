@@ -25,11 +25,11 @@
               <a-row class="m-0 p-16">
                 <a-col :span="10">
                   <div class="fs-14 fw-400 cr-gray">No. Produk</div>
-                  <div class="fs-14 fw-500 cr-black ">{{item.no_product}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.no_product}}</div>
                 </a-col>
                 <a-col :span="5">
-                  <div class="fs-14 fw-400 cr-gray ">Jumlah Pax</div>
-                  <div class="fs-14 fw-500 cr-black ">{{item.jumlah_pax}} pax</div>
+                  <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.jumlah_pax}} pax</div>
                 </a-col>
                 <a-col :span="9" class="text-right">
                   <div
@@ -68,10 +68,7 @@
                 </a-col>
                 <a-col :span="5">
                   <div class="fs-14 fw-400 cr-gray">Status Penjualan</div>
-                  <div
-                    class="fs-14 fw-500 cr-red"
-                    v-if="item.status === 'Belum Diterbitkan'"
-                  >
+                  <div class="fs-14 fw-500 cr-red" v-if="item.status === 'Belum Diterbitkan'">
                     <span>{{item.status}}</span>
                   </div>
                   <div class="fs-14 fw-500 cr-green" v-if="item.status === 'Diterbitkan'">
@@ -116,8 +113,7 @@ const dataPenjualan = [
   {
     no_product: "MT12345678HA",
     images: "/umrah/package/u1.png",
-    name_package:
-      "Umrah Hemat September 2019 Program 9 Hari, Keberangkatan Makassar",
+    name_package: "-",
     tanggal_publish: "-",
     tanggal_closing: "-",
     harga_jual: "20.000.000",
