@@ -37,7 +37,7 @@
             style="width: 100%"
           >
             <a-select-option value="Semua Status Pemberangkatan">Semua Status Pemberangkatan</a-select-option>
-            <a-select-option value="Menunggu">Menunggu</a-select-option>
+            <a-select-option value="Menunggu Pemberangkatan">Menunggu Pemberangkatan</a-select-option>
             <a-select-option value="Pemberangkatan">Pemberangkatan</a-select-option>
             <a-select-option value="Selesai">Selesai</a-select-option>
           </a-select>
@@ -132,7 +132,7 @@
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Status Pemberangkatan</div>
                 <div class="fs-14 fw-500 cr-black">
-                    <a-badge status="default" :text="item.status_departure" v-if="item.status_departure === 'Menunggu'" />
+                    <a-badge status="default" :text="item.status_departure" v-if="item.status_departure === 'Menunggu Pemberangkatan'" />
                     <a-badge status="processing" :text="item.status_departure" v-if="item.status_departure === 'Pemberangkatan'" />
                     <a-badge status="success" :text="item.status_departure" v-if="item.status_departure === 'Selesai'" />
                 </div>
@@ -165,7 +165,7 @@ const dataSeat = [
     pax: "4",
     date: "05 Januari 2019",
     program: "Program 9 Hari",
-    status_departure: "Menunggu",
+    status_departure: "Menunggu Pemberangkatan",
     status_file: "Berkas Lengkap"
   },
   {
@@ -192,7 +192,7 @@ const dataSeat = [
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",
-    status_departure: "Menunggu",
+    status_departure: "Menunggu Pemberangkatan",
     status_file: "Pengumpulan Berkas"
   },
   {
