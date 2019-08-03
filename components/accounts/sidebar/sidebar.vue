@@ -130,10 +130,10 @@
           <span>Informasi Transaksi</span>
         </span>
         <a-menu-item class="ant-menu--sider-sub-item" key="4-1">
-          <nuxt-link to="/accounts/mitra/transaction/purchase" class="nav-text">Semua Pembelian</nuxt-link>
+          <nuxt-link to="/accounts/mitra/transaction/purchase" class="nav-text">Daftar Pembelian</nuxt-link>
         </a-menu-item>
         <a-menu-item class="ant-menu--sider-sub-item" key="4-2">
-          <nuxt-link to="/accounts/mitra/transaction/sales" class="nav-text">Semua Penjualan</nuxt-link>
+          <nuxt-link to="/accounts/mitra/transaction/sales" class="nav-text">Daftar Penjualan</nuxt-link>
         </a-menu-item>
       </a-sub-menu>
 
