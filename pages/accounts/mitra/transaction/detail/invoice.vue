@@ -1,0 +1,342 @@
+<template>
+  <div class="ant-invoice">
+    <a-card :loading="loading" :bordered="false" class="b-radius b-shadow b-solid mb-16">
+      <nuxt-link
+        to="/accounts/mitra/transaction/purchase"
+        slot="title"
+        class="fs-15 fw-400 cr-gray"
+      >
+        <a-icon type="arrow-left" class="mr-8" />Kembali
+      </nuxt-link>
+      <div v-if="!loading" slot="extra" class="fw-500 fs-16 cr-black">No. Transaksi: HT1234567890</div>
+      <a-steps :current="1">
+        <a-step>
+          <template slot="title">Pesanan</template>
+          <span slot="description" class="fs-13">29-08-2019 11:50</span>
+        </a-step>
+        <a-step>
+          <template slot="title">Pembayaran</template>
+          <span slot="description" class="fs-13 d-none">
+            <div>(Rp500.000.000)</div>
+            <div>29-08-2019 11:50</div>
+          </span>
+        </a-step>
+        <a-step>
+          <template slot="title">Proses</template>
+          <span slot="description" class="fs-13 d-none">30-08-2019 11:50</span>
+        </a-step>
+        <a-step>
+          <template slot="title">E-paket Terbit</template>
+          <span slot="description" class="fs-13 d-none">30-08-2019 11:50</span>
+        </a-step>
+      </a-steps>
+    </a-card>
+
+    <a-card :bordered="false" class="ant-invoice--card b-radius b-solid mb-16">
+      <div class="ant-card-body-item">
+        <a-row :gutter="16" type="flex" justify="space-around" align="middle">
+          <a-col :span="12">
+            <img class="logo" src="/haloatta.png" />
+          </a-col>
+          <a-col :span="12">
+            <div class="text-right mb-16">
+              <div class="fs-15 fw-500 cr-gray text-uppercase">PT. Nuh Digital Technology</div>
+              <div class="fs-14 fw-400 cr-gray">Jl. Pengayoman, Masale, Kec. Panakkukang</div>
+              <div class="fs-14 fw-400 cr-gray">Kota Makassar, Sulawesi Selatan</div>
+              <div class="fs-14 fw-400 cr-gray">Kode Pos 90231</div>
+            </div>
+            <div class="text-right">
+              <div class="fs-14 fw-400 cr-gray">Email : haloinfo@gmail.com</div>
+              <div class="fs-14 fw-400 cr-gray">Telp: 022 456 789</div>
+            </div>
+          </a-col>
+        </a-row>
+
+        <div style="display:block;margin: 48px 0"></div>
+
+        <div class="d-flex align-items-center mb-16">
+          <div>
+            <div class="fs-18 fw-500 cr-black">Ditagihkan Kepada:</div>
+          </div>
+          <div class="ml-auto">
+            <div class="fs-40 fw-500 cr-black">Invoice</div>
+          </div>
+        </div>
+
+        <a-row :gutter="16">
+          <a-col :span="12">
+            <div class="text-left mb-16">
+              <div class="fs-15 fw-500 cr-black">Jordi Alba Mustafa</div>
+              <div class="fs-14 fw-400 cr-gray">Jl. Pengayoman, Masale, Kec. Panakkukang</div>
+              <div class="fs-14 fw-400 cr-gray">Kota Makassar, Sulawesi Selatan</div>
+              <div class="fs-14 fw-400 cr-gray">Kode Pos 90231</div>
+            </div>
+            <div class="text-left">
+              <div class="fs-14 fw-400 cr-gray">Email : haloinfo@gmail.com</div>
+              <div class="fs-14 fw-400 cr-gray">Telp: 022 456 789</div>
+            </div>
+          </a-col>
+          <a-col :span="12">
+            <div class="text-right">
+              <div class="mb-16">
+                <div class="fs-14 fw-500 cr-black">Nomor Invoice</div>
+                <div class="fs-14 fw-400 cr-gray">ATT-UMR-54021040019072938</div>
+              </div>
+              <div class="mb-16">
+                <div class="fs-14 fw-500 cr-black">Metode Pembayaran</div>
+                <div class="fs-14 fw-400 cr-gray">ATM/Bank Transfer</div>
+              </div>
+              <div class="mb-16">
+                <div class="fs-14 fw-500 cr-black">Tipe Pembayaran</div>
+                <div class="fs-14 fw-400 cr-gray">Lunas</div>
+              </div>
+              <div class="mb-16">
+                <div class="fs-14 fw-500 cr-black">Tanggal Pembelian</div>
+                <div class="fs-14 fw-400 cr-gray">Senin, 20 Mei 2019</div>
+              </div>
+            </div>
+          </a-col>
+        </a-row>
+      </div>
+
+      <!-- if method payment ATM/Bank Transfer -->
+      <div class="ant-card-body-item" style="backgroundColor: #fafafa">
+        <div class="fs-18 fw-500 cr-black">Bank Tujuan Transfer :</div>
+        <div class="fs-14 fw-400 cr-gray mb-16">
+          <span>Anda dapat melakukan transfer dari layanan perbankan apapun (m-banking, SMS banking dan ATM)</span>
+        </div>
+        <a-row :gutter="16" type="flex" justify="space-around" align="middle">
+          <a-col :span="12">
+            <a-card class="b-radius b-solid p-24">
+              <div class="d-flex align-items-center mb-8">
+                <div class="fs-15 fw-500">Bank Central Asia (BCA)</div>
+                <div class="ml-auto">
+                  <img
+                    :style="{maxWidth: '100%', height: '18px'}"
+                    src="https://upload.wikimedia.org/wikipedia/id/thumb/e/e0/BCA_logo.svg/1280px-BCA_logo.svg.png"
+                  />
+                </div>
+              </div>
+
+              <a-row type="flex" justify="space-around" align="bottom">
+                <a-col :span="24">
+                  <dl class="ant-deflist ant-deflist--small">
+                    <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
+                    <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
+                      <span>085213247455</span>
+                    </dd>
+                    <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
+                    <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                      <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
+                    </dd>
+                  </dl>
+                </a-col>
+              </a-row>
+            </a-card>
+          </a-col>
+
+          <a-col :span="12">
+            <a-card class="b-radius b-solid p-24">
+              <div class="d-flex align-items-center mb-8">
+                <div class="fs-15 fw-500">Bank Mandiri</div>
+                <div class="ml-auto">
+                  <img
+                    :style="{maxWidth: '100%', height: '18px'}"
+                    src="https://upload.wikimedia.org/wikipedia/id/thumb/f/fa/Bank_Mandiri_logo.svg/1280px-Bank_Mandiri_logo.svg.png"
+                  />
+                </div>
+              </div>
+
+              <a-row type="flex" justify="space-around" align="bottom">
+                <a-col :span="24">
+                  <dl class="ant-deflist ant-deflist--small">
+                    <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
+                    <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
+                      <span>085213247455</span>
+                    </dd>
+                    <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
+                    <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                      <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
+                    </dd>
+                  </dl>
+                </a-col>
+              </a-row>
+            </a-card>
+          </a-col>
+        </a-row>
+
+        <div class="d-block mt-16"></div>
+
+        <a-row :gutter="16" type="flex" justify="space-around" align="middle">
+          <a-col :span="12">
+            <a-card class="b-radius b-solid p-24">
+              <div class="d-flex align-items-center mb-8">
+                <div class="fs-15 fw-500">Bank Negara Indonesia (BNI)</div>
+                <div class="ml-auto">
+                  <img
+                    :style="{maxWidth: '100%', height: '18px'}"
+                    src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1280px-BNI_logo.svg.png"
+                  />
+                </div>
+              </div>
+
+              <a-row type="flex" justify="space-around" align="bottom">
+                <a-col :span="24">
+                  <dl class="ant-deflist ant-deflist--small">
+                    <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
+                    <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
+                      <span>085213247455</span>
+                    </dd>
+                    <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
+                    <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                      <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
+                    </dd>
+                  </dl>
+                </a-col>
+              </a-row>
+            </a-card>
+          </a-col>
+
+          <a-col :span="12">
+            <a-card class="b-radius b-solid p-24">
+              <div class="d-flex align-items-center mb-8">
+                <div class="fs-15 fw-500">Bank Rakyat Indonesia (BRI)</div>
+                <div class="ml-auto">
+                  <img
+                    :style="{maxWidth: '100%', height: '18px'}"
+                    src="https://upload.wikimedia.org/wikipedia/commons/9/97/Logo_BRI.png"
+                  />
+                </div>
+              </div>
+
+              <a-row type="flex" justify="space-around" align="bottom">
+                <a-col :span="24">
+                  <dl class="ant-deflist ant-deflist--small">
+                    <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
+                    <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
+                      <span>085213247455</span>
+                    </dd>
+                    <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
+                    <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                      <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
+                    </dd>
+                  </dl>
+                </a-col>
+              </a-row>
+            </a-card>
+          </a-col>
+        </a-row>
+      </div>
+      <!-- end -->
+
+      <div class="ant-card-body-item">
+        <div class="fs-18 fw-500 cr-black mb-16">Daftar Pembelian :</div>
+
+        <a-row :gutter="16">
+          <a-col :span="9">
+            <div class="fs-14 fw-500 cr-gray text-uppercase">Detail Pembelian</div>
+          </a-col>
+          <a-col :span="6">
+            <div class="fs-14 fw-500 cr-gray text-uppercase">Tanggal Keberangkatan</div>
+          </a-col>
+          <a-col :span="3">
+            <div class="fs-14 fw-500 cr-gray text-uppercase">Jumlah Pax</div>
+          </a-col>
+          <a-col :span="6" class="text-right">
+            <div class="fs-14 fw-500 cr-gray text-uppercase">Jumlah Pembayaran</div>
+          </a-col>
+        </a-row>
+
+        <a-divider></a-divider>
+
+        <a-row :gutter="16">
+          <a-col :span="9">
+            <div
+              class="fs-14 fw-500 cr-black f-default text-ellipsis"
+            >Umrah Exclusive Desember 2019, Keberangkatan Makassar</div>
+            <div class="fs-14 fw-400 cr-black">Program 9 Hari</div>
+          </a-col>
+          <a-col :span="6">
+            <div class="fs-14 fw-500 cr-black">10 Desember 2019</div>
+          </a-col>
+          <a-col :span="3">
+            <div class="fs-14 fw-500 cr-black">40</div>
+          </a-col>
+          <a-col :span="6" class="text-right">
+            <div class="fs-14 fw-500 cr-black">Rp900.000.000</div>
+          </a-col>
+        </a-row>
+
+        <a-divider></a-divider>
+
+        <a-row :gutter="16" type="flex" justify="end">
+          <a-col :span="9">
+            <a-row :gutter="16">
+              <a-col :span="12">
+                <div class="fs-14 fw-500 cr-gray text-uppercase">Subtotal</div>
+              </a-col>
+              <a-col :span="12" class="text-right">
+                <div class="fs-14 fw-500 cr-black">Rp900.000.000</div>
+              </a-col>
+            </a-row>
+            <a-divider></a-divider>
+            <a-row :gutter="16">
+              <a-col :span="12">
+                <div class="fs-14 fw-500 cr-gray text-uppercase">PPN 1%</div>
+              </a-col>
+              <a-col :span="12" class="text-right">
+                <div class="fs-14 fw-500 cr-black">Rp9.000.000</div>
+              </a-col>
+            </a-row>
+            <a-divider></a-divider>
+            <a-row :gutter="16">
+              <a-col :span="12">
+                <div class="fs-14 fw-500 cr-black text-uppercase">Total Pembayaran</div>
+              </a-col>
+              <a-col :span="12" class="text-right">
+                <div class="fs-18 fw-500 cr-primary">Rp909.000.000</div>
+              </a-col>
+            </a-row>
+          </a-col>
+        </a-row>
+      </div>
+
+      <div class="ant-card-body-item">
+        <div class="fs-16 fw-500 cr-black">Apakah Anda Sudah Melakukan Pembayaran?</div>
+        <div class="fs-14 fw-400 cr-gray mb-16">
+          Setelah melakukan pembayaran, mohon konfirmasi pembayaran Anda untuk mempercepat
+          proses Verifikasi.
+        </div>
+        <div>
+          <a-button size="large" class="fs-15 fw-500 b-shadow b-radius f-default mr-8">
+            <nuxt-link to="/accounts/mitra/transaction/purchase" class="f-default">Kembali</nuxt-link>
+          </a-button>
+          <a-button type="primary" size="large" class="fs-15 fw-500 b-shadow b-radius f-default">
+            <nuxt-link to="/accounts/e-confirm" class="f-default">Ya, Saya Sudah Bayar</nuxt-link>
+          </a-button>
+        </div>
+      </div>
+    </a-card>
+  </div>
+</template>
+<script>
+export default {
+  layout: "accounts",
+  name: "invoice",
+  head() {
+    return {
+      title: "Faktur Pembelian - Haloatta"
+    };
+  },
+  data() {
+    return {
+      loading: true
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
+  }
+};
+</script>

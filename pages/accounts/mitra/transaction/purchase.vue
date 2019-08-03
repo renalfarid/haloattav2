@@ -148,7 +148,7 @@
               <a-col :span="8">
                 <div class="d-flex align-items-center align-end">
                   <nuxt-link
-                    to="/accounts/mitra/transaction/detail"
+                    to="/accounts/mitra/transaction/detail/invoice"
                     class="cr-primary fs-14"
                   >Lihat Detail</nuxt-link>
                   <div v-if="item.purchase_status === 'Menunggu Pembayaran'">

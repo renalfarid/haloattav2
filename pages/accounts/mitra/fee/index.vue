@@ -349,6 +349,26 @@ const dataSales = [
     margin_fee_persen: 20,
     margin_fee_rupiah: 4000000,
     payment: "Lunas"
+  },
+  {
+    no_transaction: "ATT-FEE-54021040019072938",
+    datetime: moment("2019-06-28", "YYYY-MM-DD"),
+    name_package:
+      "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Makassar",
+    harga_dasar: 20000000,
+    margin_fee_persen: 20,
+    margin_fee_rupiah: 4000000,
+    payment: "Lunas"
+  },
+  {
+    no_transaction: "ATT-FEE-54021040019072938",
+    datetime: moment("2019-06-28", "YYYY-MM-DD"),
+    name_package:
+      "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Makassar",
+    harga_dasar: 20000000,
+    margin_fee_persen: 10,
+    margin_fee_rupiah: 2000000,
+    payment: "Lunas"
   }
 ];
 export default {

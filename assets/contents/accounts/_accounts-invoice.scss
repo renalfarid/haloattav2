@@ -1,0 +1,14 @@
+.ant-invoice {
+    & .ant-invoice--card {
+        & .ant-card-body {
+            padding: 0;
+            & .ant-card-body-item {
+                padding: 48px;
+                & .logo {
+                    max-width: 100%;
+                    height: 40px;
+                }
+            }
+        }
+    }
+}
