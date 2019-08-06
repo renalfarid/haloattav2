@@ -32,7 +32,7 @@
           <div class="title">Tentang Haloatta</div>
           <div class="item">
             <nuxt-link to class="item-link">Tentang Kami</nuxt-link>
-            <nuxt-link to class="item-link">Halo Blog</nuxt-link>
+            <nuxt-link to="/blog" class="item-link">Halo Blog</nuxt-link>
             <nuxt-link to class="item-link">LA Akomodasi</nuxt-link>
             <nuxt-link to class="item-link">Bermitra dengan Kami</nuxt-link>
             <nuxt-link to class="item-link">Umaroh Login</nuxt-link>
