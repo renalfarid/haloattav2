@@ -85,7 +85,7 @@
           <a-card-meta :title="item.title">
             <template slot="description">
               <a-icon type="clock-circle" class="mr-4" />
-              {{moment().fromNow()}}
+              {{item.datetime.fromNow()}}
             </template>
           </a-card-meta>
         </a-card>
@@ -106,7 +106,7 @@
           <a-card-meta :title="item.title">
             <template slot="description">
               <a-icon type="clock-circle" class="mr-4" />
-              {{moment().fromNow()}}
+              {{item.datetime.fromNow()}}
             </template>
           </a-card-meta>
         </a-card>
@@ -121,49 +121,57 @@ const data = [
     id: 1,
     images: "/umrah/cover/cu5.jpg",
     title: "Haram Hukumnya Merubah Aturan Yang Sudah Disepakati",
-    categories: "ragam"
+    categories: "ragam",
+    datetime: moment().subtract(1, 'days')
   },
   {
     id: 2,
     images: "/umrah/cover/cu6.jpg",
     title: "Haram Hukumnya Merubah Aturan Yang Sudah Disepakati",
-    categories: "tips & trik"
+    categories: "tips & trik",
+    datetime: moment().subtract(1, 'days')
   },
   {
     id: 3,
     images: "/umrah/cover/cu7.jpg",
     title: "Haram Hukumnya Merubah Aturan Yang Sudah Disepakati",
-    categories: "kajian"
+    categories: "kajian",
+    datetime: moment().subtract(2, 'days')
   },
   {
     id: 3,
     images: "/umrah/cover/cu8.png",
     title: "Haram Hukumnya Merubah Aturan Yang Sudah Disepakati",
-    categories: "informasi"
+    categories: "informasi",
+    datetime: moment().subtract(2, 'days')
   },
   {
     id: 4,
     images: "/umrah/cover/cu9.png",
     title: "Haram Hukumnya Merubah Aturan Yang Sudah Disepakati",
-    categories: "tips & trik"
+    categories: "tips & trik",
+    datetime: moment().subtract(3, 'days')
   },
   {
     id: 5,
     images: "/umrah/cover/cu10.png",
     title: "Haram Hukumnya Merubah Aturan Yang Sudah Disepakati",
-    categories: "tips & trik"
+    categories: "tips & trik",
+    datetime: moment().subtract(4, 'days')
   },
   {
     id: 6,
     images: "/umrah/cover/cu11.png",
     title: "Haram Hukumnya Merubah Aturan Yang Sudah Disepakati",
-    categories: "tips & trik"
+    categories: "tips & trik",
+    datetime: moment().subtract(5, 'days')
   },
   {
     id: 7,
     images: "/umrah/cover/cu12.png",
     title: "Haram Hukumnya Merubah Aturan Yang Sudah Disepakati",
-    categories: "tips & trik"
+    categories: "tips & trik",
+    datetime: moment().subtract(6, 'days')
   }
 ];
 export default {
