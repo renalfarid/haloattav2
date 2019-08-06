@@ -17,6 +17,7 @@
     }
     & .ant-avatar--user {
         padding-left: 16px;
+        padding-right: 16px;
         & .ant-btn {
             border-color: $color-main;
             text-align: center;
@@ -27,6 +28,10 @@
                 margin-right: 4px;
             }
         }
+        &:hover,
+        &:focus {
+            text-decoration: none !important;
+        }
     }
     & .ant-menu--sider {
         background: transparent;
@@ -35,6 +40,9 @@
             color: rgba($color: #484848, $alpha: 1);
             padding-left: 16px !important;
             margin: 0;
+            &.ant-menu-item-disabled {
+                cursor: auto;
+            }
             &.ant-menu-item-selected {
                 background: #f5f5f5;
                 color: rgba($color: #484848, $alpha: 1);

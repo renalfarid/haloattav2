@@ -7,7 +7,7 @@ module.exports = {
         title: 'Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta',
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+            // { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
         ],
         link: [
@@ -33,6 +33,7 @@ module.exports = {
         { src: '@/plugins/antd-ui' },
         { src: '@/plugins/vue-slick', ssr: false },
         { src: '@/plugins/vInput-number', ssr: false },
+        { src: '@/plugins/vCurrency-filter', ssr: false },
         { src: '@/plugins/vCountdown', ssr: false },
         { src: '@/plugins/vCharts', ssr: false },
         { src: '@/plugins/vInfinite-scroll', ssr: false },
@@ -42,7 +43,8 @@ module.exports = {
      ** Nuxt.js modules
      */
     modules: [
-        '@nuxtjs/axios'
+        ['@nuxtjs/moment', { locales: ['id'], defaultLocale: 'id' }],
+        ['@nuxtjs/axios']
     ],
     /*
      ** Build configuration

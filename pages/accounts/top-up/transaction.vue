@@ -13,17 +13,17 @@
         <a-skeleton :loading="loading" active avatar>
           <div class="w-100">
             <a-row :gutter="16" class="m-0 p-16">
-              <a-col :span="8">
+              <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">No. Transaksi</div>
-                <div class="fs-15 fw-500 cr-black">{{item.no_transaction}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.no_transaction}}</div>
               </a-col>
-              <a-col :span="8">
+              <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Nominal Top Up</div>
-                <div class="fs-15 fw-500 cr-black">Rp {{item.nominal}}</div>
+                <div class="fs-14 fw-500 cr-black">Rp {{item.nominal}}</div>
               </a-col>
-              <a-col :span="8" class="text-right">
+              <a-col :span="12" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Bank Tujuan</div>
-                <div class="fs-15 fw-500 cr-black">{{item.bank}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.bank}}</div>
               </a-col>
             </a-row>
 
@@ -35,7 +35,7 @@
               class="m-0 p-16"
               style="borderTop: 1px solid #f5f5f5"
             >
-              <a-col :span="8">
+              <a-col :span="6">
                 <div class="d-flex align-items-center">
                   <div class="mr-8">
                     <a-avatar
@@ -45,36 +45,36 @@
                   </div>
                   <div>
                     <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                    <div class="fs-15 fw-500 cr-black">{{item.batas_pembayaran}}</div>
+                    <div class="fs-14 fw-500 cr-black">{{item.batas_pembayaran}}</div>
                   </div>
                 </div>
               </a-col>
-              <a-col :span="8">
+              <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
-                <div class="fs-15 fw-500 cr-red" v-if="item.status === 'Menunggu Pembayaran'">
+                <div class="fs-14 fw-500 cr-red" v-if="item.status === 'Belum Dibayar'">
                   <span>{{item.status}}</span>
                 </div>
-                <div class="fs-15 fw-500 cr-red" v-if="item.status === 'Kedaluwarsa'">
+                <div class="fs-14 fw-500 cr-red" v-if="item.status === 'Kedaluwarsa'">
                   <span>{{item.status}}</span>
                 </div>
-                <div class="fs-15 fw-500 cr-orange" v-if="item.status === 'Menunggu Verifikasi'">
+                <div class="fs-14 fw-500 cr-orange" v-if="item.status === 'Menunggu Verifikasi'">
                   <span>{{item.status}}</span>
                 </div>
-                <div class="fs-15 fw-500 cr-green" v-if="item.status === 'Lunas'">
+                <div class="fs-14 fw-500 cr-green" v-if="item.status === 'Dibayar'">
                   <span>{{item.status}}</span>
                 </div>
               </a-col>
-              <a-col :span="8" class="text-right">
+              <a-col :span="12" class="text-right">
                 <div class="d-flex align-items-center align-end">
-                  <div v-if="item.status === 'Menunggu Pembayaran'">
+                  <div v-if="item.status === 'Belum Dibayar'">
                     <a-button
                       class="b-shadow b-radius ant-btn--action"
                       @click="nextConf"
-                    >Konfirmasi Pembayaran</a-button>
+                    >Bayar Sekarang</a-button>
                   </div>
 
                   <div v-if="item.status === 'Kedaluwarsa'">
-                    <a class="fs-15 fw-500 cr-red" @click="remove(index)">Hapus</a>
+                    <a class="fs-14 fw-500 cr-red" @click="remove(index)">Hapus</a>
                   </div>
                 </div>
               </a-col>
@@ -93,7 +93,7 @@ const dataTopup = [
     nominal: "300.000",
     bank: "BCA (1234567890) - PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi",
     batas_pembayaran: "12 September 2019",
-    status: "Menunggu Pembayaran"
+    status: "Belum Dibayar"
   },
   {
     no_transaction: "PUHA12345678",
@@ -114,7 +114,7 @@ const dataTopup = [
     nominal: "30.000.000",
     bank: "Mandiri (152667778889) - PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi",
     batas_pembayaran: "16 September 2019",
-    status: "Lunas"
+    status: "Dibayar"
   }
 ];
 export default {
@@ -146,7 +146,7 @@ export default {
     remove(index) {
       this.$delete(this.dataTopup, index);
       this.$notification.open({
-        message: "Berhasil Menghapus!",
+        message: "Berhasil Dihapus!",
         icon: (
           <a-icon type="check-circle" theme="filled" style="color: #43B02A" />
         )

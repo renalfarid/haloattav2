@@ -34,7 +34,6 @@
                         <br />Anda inginkan ?
                       </div>
                       <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                        n dev
                         <a-col :span="24">
                           <a-form-item
                             label="Bintang Hotel"

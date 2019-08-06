@@ -40,17 +40,17 @@
         <a-skeleton :loading="loading" active avatar>
           <div class="w-100">
             <a-row :gutter="16" class="m-0 p-16">
-              <a-col :span="8">
+              <a-col :span="10">
                 <div class="fs-14 fw-400 cr-gray">No. Pesanan</div>
                 <div class="fs-14 fw-500 cr-black">{{item.order_number}}</div>
               </a-col>
-              <a-col :span="8">
+              <a-col :span="7">
                 <div class="cr-gray fs-14 fw-400">Jumlah Pesanan</div>
                 <div class="fs-14 fw-500 cr-black">{{item.number_purchase}} pax</div>
               </a-col>
-              <a-col :span="8" class="text-right">
+              <a-col :span="7" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Jumlah Pembayaran</div>
-                <div class="fs-14 fw-500 cr-black">Rp. {{item.total_amount}}</div>
+                <div class="fs-14 fw-500 cr-black">{{ item.total_amount | currency }}</div>
               </a-col>
             </a-row>
 
@@ -62,7 +62,7 @@
               class="m-0 p-16"
               style="backgroundColor: #f5f5f5"
             >
-              <a-col :span="8">
+              <a-col :span="10">
                 <div class="d-flex align-items-center">
                   <div class="mr-8">
                     <a-avatar
@@ -89,15 +89,15 @@
                   <div class="fs-14 fw-500 cr-black f-default">{{item.products_name}}</div>
                 </div>
               </a-col>
-              <a-col :span="8">
+              <a-col :span="7">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Pemesanan</div>
-                <div class="fs-14 fw-500 cr-black">{{item.order_date}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.order_date.format('llll')}}</div>
               </a-col>
-              <a-col :span="8" class="text-right">
+              <a-col :span="7" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
                 <div
                   class="fs-14 fw-500 cr-red"
-                  v-if="item.purchase_status === 'Menunggu Pembayaran'"
+                  v-if="item.purchase_status === 'Belum Dibayar'"
                 >
                   <span>{{item.purchase_status}}</span>
                 </div>
@@ -111,32 +111,36 @@
             </a-row>
 
             <a-row :gutter="16" type="flex" justify="space-between" align="middle" class="m-0 p-16">
-              <a-col :span="8">
+              <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Metode Pembayaran</div>
                 <div class="fs-14 fw-500 cr-black">{{item.payment_method}}</div>
               </a-col>
-              <a-col :span="8">
-                <div v-if="item.purchase_status === 'Menunggu Pembayaran'">
+              <a-col :span="5">
+                <div class="fs-14 fw-400 cr-gray">Tipe Pembayaran</div>
+                <div class="fs-14 fw-500 cr-black">{{item.payment_type}}</div>
+              </a-col>
+              <a-col :span="5">
+                <div v-if="item.purchase_status === 'Belum Dibayar'">
                   <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('llll')}}</div>
                 </div>
                 <div v-if="item.purchase_status === 'Menunggu Verifikasi'">
                   <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('llll')}}</div>
                 </div>
               </a-col>
-              <a-col :span="8">
+              <a-col :span="9">
                 <div class="d-flex align-items-center align-end">
                   <nuxt-link
-                    to="/accounts/mitra/transaction/detail"
+                    to="/accounts/mitra/transaction/detail/invoice"
                     class="cr-primary fs-14"
                   >Lihat Detail</nuxt-link>
-                  <div v-if="item.purchase_status === 'Menunggu Pembayaran'">
+                  <div v-if="item.purchase_status === 'Belum Dibayar'">
                     <a-divider type="vertical" />
                     <a-button
                       class="b-shadow b-radius ant-btn--action"
                       @click="nextConf"
-                    >Konfirmasi Pembayaran</a-button>
+                    >Bayar Sekarang</a-button>
                   </div>
                 </div>
               </a-col>
@@ -151,66 +155,66 @@
 <script>
 const dataPembelian = [
   {
-    order_number: "PUHA12345678",
+    order_number: "ATT-UMR-54021040019072938",
     products_categorie: "umrah",
     products_name:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Makassar",
-    total_amount: "930.000.731",
+    total_amount: 500000731,
     number_purchase: "40",
-    order_date: "10 September 2019",
-    payment_date: "",
-    payment_limit: "12 September 2019",
-    purchase_status: "Menunggu Pembayaran",
-    payment_method: "ATAM/Bank Transfer"
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
+    purchase_status: "Belum Dibayar",
+    payment_type: "DP",
+    payment_method: "ATM/Bank Transfer"
   },
   {
-    order_number: "PUHA12345678",
+    order_number: "ATT-AKM-54021040019072938",
     products_categorie: "akomodasi",
     products_name: "3 Hari Makkah dan 4 Hari Madinah",
-    total_amount: "20.000.731",
+    total_amount: 20000731,
     number_purchase: "10",
-    order_date: "14 September 2019",
-    payment_date: "",
-    payment_limit: "16 September 2019",
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Menunggu Verifikasi",
-    payment_method: "ATAM/Bank Transfer"
+    payment_type: "Lunas",
+    payment_method: "ATM/Bank Transfer"
   },
   {
-    order_number: "PUHA12345678",
+    order_number: "ATT-VSI-54021040019072938",
     products_categorie: "visa",
     products_name: "Visa Umrah September 2019",
-    total_amount: "500.731",
+    total_amount: 500731,
     number_purchase: "8",
-    order_date: "14 September 2019",
-    payment_date: "",
-    payment_limit: "16 September 2019",
-    purchase_status: "Menunggu Pembayaran",
-    payment_method: "ATAM/Bank Transfer"
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
+    purchase_status: "Belum Dibayar",
+    payment_type: "Lunas",
+    payment_method: "ATM/Bank Transfer"
   },
   {
-    order_number: "PUHA12345678",
+    order_number: "ATT-UMR-54021040019072938",
     products_categorie: "umrah",
     products_name:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Bandung",
-    total_amount: "930.000.731",
+    total_amount: 930000731,
     number_purchase: "20",
-    order_date: "14 September 2019",
-    payment_date: "",
-    payment_limit: "16 September 2019",
-    purchase_status: "Menunggu Pembayaran",
-    payment_method: "ATAM/Bank Transfer"
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
+    purchase_status: "Belum Dibayar",
+    payment_type: "Lunas",
+    payment_method: "ATM/Bank Transfer"
   },
   {
-    order_number: "PUHA12999678",
+    order_number: "ATT-TKT-54021040019072938",
     products_categorie: "tiket group",
     products_name: "Makassar (UPG) ke Jeddah (JED)",
-    total_amount: "30.000.333",
+    total_amount: 30000333,
     number_purchase: "4",
-    order_date: "14 September 2019",
-    payment_date: "",
-    payment_limit: "16 September 2019",
-    purchase_status: "Menunggu Pembayaran",
-    payment_method: "ATAM/Bank Transfer"
+    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
+    purchase_status: "Belum Dibayar",
+    payment_type: "Lunas",
+    payment_method: "ATM/Bank Transfer"
   }
 ];
 import moment from "moment";

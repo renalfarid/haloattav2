@@ -39,12 +39,26 @@
     <div class="fs-16 fw-500 cr-black mb-16">Status Berkas Jamaah</div>
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
       <a-steps :current="0">
-        <a-step>
-          <template slot="title">Pemberkasan</template>
-          <span slot="description">Pengumpulan berkas jamaah</span>
+        <a-step title="Pemberkasan">
+          <span slot="description">
+            <p class="fs-14 f-default">Pengumpulan Kelengkapan Berkas</p>
+          </span>
         </a-step>
-        <a-step title="MOFA" description="MOFA (Ministry of Foreign Affairs)" />
-        <a-step title="Pemberangkatan" description="10 September 2019" />
+        <a-step title="Registrasi">
+          <span slot="description">
+            <p class="fs-14 f-default">Nomor Porsi Registrasi Siskopatuh</p>
+          </span>
+        </a-step>
+        <a-step title="Manifest">
+          <span slot="description">
+            <p class="fs-14 f-default">Pengaturan Room List, Tiket, Visa, Mova, Perlengkapan, dll</p>
+          </span>
+        </a-step>
+        <a-step title="Pemberangkatan">
+          <span slot="description">
+            <p class="fs-14 f-default">Tanggal Pemberangkatan 10 September 2019</p>
+          </span>
+        </a-step>
       </a-steps>
     </a-card>
 
@@ -215,7 +229,10 @@
         <a-row :gutter="16">
           <a-col :span="24">
             <a-form-item label="Alamat Lengkap (Domisili)">
-              <a-textarea v-decorator="['address', { initialValue: 'Jl. BTP Blok A No 537' }]" :rows="4" />
+              <a-textarea
+                v-decorator="['address', { initialValue: 'Jl. BTP Blok A No 537' }]"
+                :rows="4"
+              />
             </a-form-item>
           </a-col>
         </a-row>

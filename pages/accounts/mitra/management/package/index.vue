@@ -25,11 +25,11 @@
               <a-row class="m-0 p-16">
                 <a-col :span="10">
                   <div class="fs-14 fw-400 cr-gray">No. Produk</div>
-                  <div class="fs-15 fw-500 cr-black ">{{item.no_product}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.no_product}}</div>
                 </a-col>
                 <a-col :span="5">
-                  <div class="fs-14 fw-400 cr-gray ">Jumlah Pax</div>
-                  <div class="fs-15 fw-500 cr-black ">{{item.jumlah_pax}} pax</div>
+                  <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.jumlah_pax}} pax</div>
                 </a-col>
                 <a-col :span="9" class="text-right">
                   <div
@@ -37,7 +37,7 @@
                     v-if="item.status === 'Belum Diterbitkan'"
                   >Harga Dasar</div>
                   <div class="fs-14 fw-400 cr-gray" v-else>Harga Jual</div>
-                  <div class="fs-15 fw-500 cr-black">Rp. {{item.harga_jual}} /pax</div>
+                  <div class="fs-14 fw-500 cr-black">Rp. {{item.harga_jual}} /pax</div>
                 </a-col>
               </a-row>
 
@@ -49,35 +49,32 @@
                 style="backgroundColor: #f5f5f5"
               >
                 <a-col :span="10">
-                  <div class="fs-15 fw-500 cr-black f-default mr-8">{{item.name_package}}</div>
+                  <div class="fs-14 fw-500 cr-black f-default mr-8">{{item.name_package}}</div>
                 </a-col>
                 <a-col :span="5">
                   <div class="fs-14 fw-400 cr-gray">Tanggal Terbit</div>
-                  <div class="fs-15 fw-500 cr-black">{{item.tanggal_publish}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.tanggal_publish}}</div>
                 </a-col>
                 <a-col :span="9" class="text-right">
                   <div class="fs-14 fw-400 cr-gray">Tanggal Closing</div>
-                  <div class="fs-15 fw-500 cr-black">{{item.tanggal_closing}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.tanggal_closing}}</div>
                 </a-col>
               </a-row>
 
               <a-row type="flex" justify="space-between" align="middle" class="m-0 p-16">
                 <a-col :span="10">
                   <div class="fs-14 fw-400 cr-gray">Program Hari</div>
-                  <div class="fs-15 fw-500 cr-black">{{item.program}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.program}}</div>
                 </a-col>
                 <a-col :span="5">
                   <div class="fs-14 fw-400 cr-gray">Status Penjualan</div>
-                  <div
-                    class="fs-15 fw-500 cr-red"
-                    v-if="item.status === 'Belum Diterbitkan'"
-                  >
+                  <div class="fs-14 fw-500 cr-red" v-if="item.status === 'Belum Diterbitkan'">
                     <span>{{item.status}}</span>
                   </div>
-                  <div class="fs-15 fw-500 cr-green" v-if="item.status === 'Diterbitkan'">
+                  <div class="fs-14 fw-500 cr-green" v-if="item.status === 'Diterbitkan'">
                     <span>{{item.status}}</span>
                   </div>
-                  <div class="fs-15 fw-500 cr-orange" v-if="item.status === 'Ditutup'">
+                  <div class="fs-14 fw-500 cr-orange" v-if="item.status === 'Ditutup'">
                     <span>{{item.status}}</span>
                   </div>
                 </a-col>
@@ -86,18 +83,18 @@
                     <div v-if="item.status === 'Diterbitkan'">
                       <nuxt-link
                         to="/accounts/mitra/management/package/detail"
-                        class="fs-15 cr-primary"
+                        class="fs-14 cr-primary"
                       >Lihat detail</nuxt-link>
                     </div>
                     <div v-if="item.status === 'Ditutup'">
                       <nuxt-link
                         to="/accounts/mitra/management/package/detail"
-                        class="fs-15 cr-primary"
+                        class="fs-14 cr-primary"
                       >Lihat detail</nuxt-link>
                     </div>
                     <div v-bind:class="[ item.status === 'Ditutup' ? 'd-none' : '' ]">
                       <a-divider type="vertical" />
-                      <a-button class="ant-btn--publish b-shadow b-radius fs-15 fw-500">
+                      <a-button class="ant-btn--publish b-shadow b-radius fs-14 fw-500">
                         <nuxt-link to="/accounts/mitra/management/package/setting">Pengaturan</nuxt-link>
                       </a-button>
                     </div>
@@ -116,8 +113,7 @@ const dataPenjualan = [
   {
     no_product: "MT12345678HA",
     images: "/umrah/package/u1.png",
-    name_package:
-      "Umrah Hemat September 2019 Program 9 Hari, Keberangkatan Makassar",
+    name_package: "-",
     tanggal_publish: "-",
     tanggal_closing: "-",
     harga_jual: "20.000.000",

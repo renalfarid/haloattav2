@@ -4,12 +4,12 @@
       <nuxt-link to="/accounts/mitra/create" style="margin-right: 16px">
         <a-avatar style="backgroundColor: #F84ECA" icon="plus" />  
       </nuxt-link>
-      <span style="margin-right: 16px">
+      <span style="margin-right: 16px" class="d-none">
         <a-badge dot>
           <a-avatar  size="small" style="backgroundColor: #05CBB0" icon="mail" />
         </a-badge>
       </span>
-      <span style="margin-right: 16px">
+      <span style="margin-right: 16px" class="d-none">
         <a-badge dot>
           <a-avatar size="small" style="backgroundColor: #FF7C0A" icon="bell" />
         </a-badge>
