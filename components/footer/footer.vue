@@ -35,9 +35,9 @@
         <a-card>
           <div class="title">Tentang Haloatta</div>
           <div class="item">
-            <nuxt-link to class="item-link">Tentang Kami</nuxt-link>
+            <nuxt-link to="/about" class="item-link">Tentang Kami</nuxt-link>
             <nuxt-link to="/blog" class="item-link">Halo Blog</nuxt-link>
-            <nuxt-link to class="item-link">Bermitra dengan Kami</nuxt-link>
+            <nuxt-link to="/" class="item-link">Bermitra dengan Kami</nuxt-link>
           </div>
         </a-card>
       </a-col>
@@ -45,8 +45,8 @@
         <a-card>
           <div class="title">Ketentuan Penggunaan</div>
           <div class="item">
-            <nuxt-link to class="item-link">Syarat dan Ketentuan</nuxt-link>
-            <nuxt-link to class="item-link">Kebijakan Privasi</nuxt-link>
+            <nuxt-link to="/" class="item-link">Syarat dan Ketentuan</nuxt-link>
+            <nuxt-link to="/" class="item-link">Kebijakan Privasi</nuxt-link>
           </div>
         </a-card>
       </a-col>
