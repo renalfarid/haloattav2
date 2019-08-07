@@ -170,7 +170,7 @@
           <vue-goodshare-twitter
             style="width: 100%;display: block;text-align: center"
             class="b-shadow"
-            page_url="https://beta.haloatta.com/"
+            page_url="https://beta.haloatta.com/blog/detail"
             title_social="Twitter"
             has_icon
           ></vue-goodshare-twitter>
