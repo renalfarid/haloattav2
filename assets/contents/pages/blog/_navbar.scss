@@ -1,0 +1,28 @@
+.ant-layout-blog {
+    & .ant-layout-header {
+        border-bottom: 1px solid #ebedf0;
+        & .logo {
+            & img {
+                max-height: 36px;
+                max-width: 100%;
+            }
+        }
+        & .ant-menu {
+            border: none;
+            & .ant-menu-item {
+                border: none;
+                &.ant-menu-item-selected {
+                    border: none;
+                    & a {
+                        color: $color-main !important;
+                    }
+                }
+                & a {
+                    color: $color-font;
+                    font-weight: 500;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

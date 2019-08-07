@@ -24,7 +24,7 @@
                   <nuxt-link to="/about">Tentang</nuxt-link>
                 </a-menu-item>
                 <a-menu-item key="3" class="nav-link">
-                  <nuxt-link to>Blog</nuxt-link>
+                  <nuxt-link to="/blog">Blog</nuxt-link>
                 </a-menu-item>
                 <a-menu-item key="4" class="nav-link">
                   <a

@@ -15,7 +15,7 @@
     <a-row :gutter="16">
       <a-col :span="24">
         <a-carousel>
-          <div>
+          <nuxt-link to="/blog/detail">
             <a-card class="card-news--large-overlay">
               <div slot="cover">
                 <div class="box-content" :style="{ backgroundImage: `url(${blog1})` }">
@@ -34,9 +34,9 @@
                 </div>
               </div>
             </a-card>
-          </div>
+          </nuxt-link>
 
-          <div>
+          <nuxt-link to="/blog/detail">
             <a-card class="card-news--large-overlay">
               <div slot="cover">
                 <div class="box-content" :style="{ backgroundImage: `url(${blog4})` }">
@@ -55,9 +55,9 @@
                 </div>
               </div>
             </a-card>
-          </div>
+          </nuxt-link>
 
-          <div>
+          <nuxt-link to="/blog/detail">
             <a-card class="card-news--large-overlay">
               <div slot="cover">
                 <div class="box-content" :style="{ backgroundImage: `url(${blog4})` }">
@@ -76,92 +76,100 @@
                 </div>
               </div>
             </a-card>
-          </div>
+          </nuxt-link>
         </a-carousel>
       </a-col>
 
       <a-col :span="6">
-        <a-card class="card-news--small-overlay">
-          <div slot="cover">
-            <div class="box-content" :style="{ backgroundImage: `url(${blog2})` }">
-              <div :style="{ width: '100%', zIndex: '2' }">
-                <div class="box-overlay">
-                  <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
-                  <div class="item">
-                    <a-tag color="#f50" class="ant-tag--umrah ant-tag--small">Umrah</a-tag>
-                    <span class="time">
-                      <a-icon type="clock-circle" />5 jam lalu
-                    </span>
+        <nuxt-link to="/blog/detail">
+          <a-card class="card-news--small-overlay">
+            <div slot="cover">
+              <div class="box-content" :style="{ backgroundImage: `url(${blog2})` }">
+                <div :style="{ width: '100%', zIndex: '2' }">
+                  <div class="box-overlay">
+                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
+                    <div class="item">
+                      <a-tag color="#f50" class="ant-tag--umrah ant-tag--small">Umrah</a-tag>
+                      <span class="time">
+                        <a-icon type="clock-circle" />5 jam lalu
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <div class="gradient-bottom"></div>
               </div>
-              <div class="gradient-bottom"></div>
             </div>
-          </div>
-        </a-card>
+          </a-card>
+        </nuxt-link>
       </a-col>
 
       <a-col :span="6">
-        <a-card class="card-news--small-overlay">
-          <div slot="cover">
-            <div class="box-content" :style="{ backgroundImage: `url(${blog3})` }">
-              <div :style="{ width: '100%', zIndex: '2' }">
-                <div class="box-overlay">
-                  <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
-                  <div class="item">
-                    <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
-                    <span class="time">
-                      <a-icon type="clock-circle" />5 jam lalu
-                    </span>
+        <nuxt-link to="/blog/detail">
+          <a-card class="card-news--small-overlay">
+            <div slot="cover">
+              <div class="box-content" :style="{ backgroundImage: `url(${blog3})` }">
+                <div :style="{ width: '100%', zIndex: '2' }">
+                  <div class="box-overlay">
+                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
+                    <div class="item">
+                      <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
+                      <span class="time">
+                        <a-icon type="clock-circle" />5 jam lalu
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <div class="gradient-bottom"></div>
               </div>
-              <div class="gradient-bottom"></div>
             </div>
-          </div>
-        </a-card>
+          </a-card>
+        </nuxt-link>
       </a-col>
 
       <a-col :span="6">
-        <a-card class="card-news--small-overlay">
-          <div slot="cover">
-            <div class="box-content" :style="{ backgroundImage: `url(${blog4})` }">
-              <div :style="{ width: '100%', zIndex: '2' }">
-                <div class="box-overlay">
-                  <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
-                  <div class="item">
-                    <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
-                    <span class="time">
-                      <a-icon type="clock-circle" />5 jam lalu
-                    </span>
+        <nuxt-link to="/blog/detail">
+          <a-card class="card-news--small-overlay">
+            <div slot="cover">
+              <div class="box-content" :style="{ backgroundImage: `url(${blog4})` }">
+                <div :style="{ width: '100%', zIndex: '2' }">
+                  <div class="box-overlay">
+                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
+                    <div class="item">
+                      <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
+                      <span class="time">
+                        <a-icon type="clock-circle" />5 jam lalu
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <div class="gradient-bottom"></div>
               </div>
-              <div class="gradient-bottom"></div>
             </div>
-          </div>
-        </a-card>
+          </a-card>
+        </nuxt-link>
       </a-col>
 
       <a-col :span="6">
-        <a-card class="card-news--small-overlay">
-          <div slot="cover">
-            <div class="box-content" :style="{ backgroundImage: `url(${blog5})` }">
-              <div :style="{ width: '100%', zIndex: '2' }">
-                <div class="box-overlay">
-                  <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
-                  <div class="item">
-                    <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
-                    <span class="time">
-                      <a-icon type="clock-circle" />5 jam lalu
-                    </span>
+        <nuxt-link to="/blog/detail">
+          <a-card class="card-news--small-overlay">
+            <div slot="cover">
+              <div class="box-content" :style="{ backgroundImage: `url(${blog5})` }">
+                <div :style="{ width: '100%', zIndex: '2' }">
+                  <div class="box-overlay">
+                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
+                    <div class="item">
+                      <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
+                      <span class="time">
+                        <a-icon type="clock-circle" />5 jam lalu
+                      </span>
+                    </div>
                   </div>
                 </div>
+                <div class="gradient-bottom"></div>
               </div>
-              <div class="gradient-bottom"></div>
             </div>
-          </div>
-        </a-card>
+          </a-card>
+        </nuxt-link>
       </a-col>
     </a-row>
   </div>

@@ -1,0 +1,209 @@
+.ant-layout-blog {
+    & .ant-layout-content {
+        position: relative;
+        min-height: 100%;
+        padding: 0 0 16px 0;
+        & .ant-grid {
+            padding: 16px 0;
+            & .ant-grid-cover {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                height: 100%;
+                width: 100%;
+                & .ant-grid-body {
+                    position: absolute;
+                    bottom: 24px;
+                    right: 24px;
+                    z-index: 10;
+                    left: 24px;
+                    & .ant-tag {
+                        @include border-radius(20px);
+                        color: #ffffff;
+                        line-height: 26px;
+                        padding: 0 24px;
+                        font-size: 14px;
+                        height: 28px;
+                        border: none;
+                        & a {
+                            text-transform: capitalize;
+                            color: #ffffff;
+                        }
+                        &.ant-tag-umrah {
+                            background-color: $color-main;
+                        }
+                        &.ant-tag-kajian {
+                            background-color: $color-orange;
+                        }
+                        &.ant-tag-tips {
+                            background-color: $color-green;
+                        }
+                    }
+                }
+            }
+            & .ant-grid-box {
+                position: relative;
+                display: block;
+                height: 460px;
+                & .ant-grid-large {
+                    padding-bottom: 8px;
+                    padding-right: 8px;
+                    padding-top: 8px;
+                    height: 100%;
+                    & h2 {
+                        line-height: normal;
+                        margin-bottom: 24px;
+                        font-size: 22px;
+                        font-weight: 500;
+                        color: #ffffff;
+                    }
+                }
+                & .ant-grid-small {
+                    padding-bottom: 8px;
+                    padding-left: 8px;
+                    padding-top: 8px;
+                    height: 50%;
+                    & h2 {
+                        line-height: normal;
+                        margin-bottom: 16px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #ffffff;
+                    }
+                }
+                & .gradient {
+                    background-image: -webkit-linear-gradient(to top, rgba(5, 13, 40, .2), rgba(0, 0, 0, 0)) !important;
+                    background-image: -moz-linear-gradient(to top, rgba(5, 13, 40, .2), rgba(0, 0, 0, 0)) !important;
+                    background-image: linear-gradient(to top, rgba(5, 13, 40, .2), rgba(0, 0, 0, 0)) !important;
+                    position: absolute !important;
+                    bottom: 0 !important;
+                    height: 100% !important;
+                    width: 100% !important;
+                    min-height: 80px !important;
+                    left: 0;
+                }
+            }
+        }
+        & .ant-list-blog {
+            & .ant-list-item {
+                & .ant-card {
+                    & .ant-card-cover {
+                        & .ant-card-cover-images {
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            height: 220px;
+                            width: 100%;
+                            & .ant-tag {
+                                @include border-radius(20px);
+                                position: absolute;
+                                color: #ffffff;
+                                line-height: 26px;
+                                padding: 0 24px;
+                                font-size: 14px;
+                                height: 28px;
+                                border: none;
+                                left: 16px;
+                                top: 16px;
+                                & a {
+                                    text-transform: capitalize;
+                                    color: #ffffff;
+                                }
+                                &.ragam {
+                                    background-color: $color-main-overlay;
+                                }
+                                &.kajian {
+                                    background-color: $color-orange-overlay;
+                                }
+                                &.tips {
+                                    background-color: $color-green-overlay;
+                                }
+                                &.informasi {
+                                    background-color: $color-red-overlay;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & .ant-card-detail {
+            & .ant-card-detail-images {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 460px;
+                width: 100%;
+            }
+            & .ant-card-detail-body {
+                padding: 24px 32px;
+                & .ant-card-detail-body-text {
+                    line-height: 24px;
+                    & li {
+                        margin-bottom: 16px;
+                    }
+                }
+                & .ant-tag {
+                    @include border-radius(20px);
+                    color: #ffffff;
+                    line-height: 26px;
+                    padding: 0 24px;
+                    font-size: 14px;
+                    height: 28px;
+                    border: none;
+                    & a {
+                        text-transform: capitalize;
+                        color: #ffffff;
+                    }
+                    &.ragam {
+                        background-color: $color-main-overlay;
+                    }
+                    &.kajian {
+                        background-color: $color-orange-overlay;
+                    }
+                    &.tips {
+                        background-color: $color-green-overlay;
+                    }
+                    &.informasi {
+                        background-color: $color-red-overlay;
+                    }
+                }
+            }
+        }
+        & .ant-card-detail-side {
+            & .ant-list {
+                & .ant-list-item {
+                    border: none;
+                    & .ant-list-item-images {
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: 80px;
+                        width: 100%;
+                    }
+                    & .ant-list-title {
+                        line-height: normal;
+                        color: $color-font;
+                        font-weight: 500;
+                        overflow: hidden;
+                        height: 36px;
+                    }
+                    & .ant-list-author {
+                        text-transform: uppercase;
+                        line-height: normal;
+                        font-size: 12px;
+                        color: #999999;
+                        font-weight: 500;
+                    }
+                    & .ant-list-see {
+                        line-height: normal;
+                        font-size: 12px;
+                        color: #999999;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}

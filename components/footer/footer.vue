@@ -19,11 +19,15 @@
         <a-card>
           <div class="title">Layanan Pelanggan</div>
           <div class="item">
-            <nuxt-link to class="item-link">Paket Umrah</nuxt-link>
-            <nuxt-link to class="item-link">Tiket Umrah</nuxt-link>
-            <nuxt-link to class="item-link">LA Akomodasi</nuxt-link>
-            <nuxt-link to class="item-link">Visa Umrah</nuxt-link>
-            <nuxt-link to class="item-link">Komponen Optional</nuxt-link>
+            <nuxt-link to="/" class="item-link">Paket Umrah</nuxt-link>
+            <nuxt-link to="/catalog/ticket-group" class="item-link">Tiket Group</nuxt-link>
+            <nuxt-link to="/catalog/accommodation" class="item-link">LA Akomodasi</nuxt-link>
+            <nuxt-link to="/catalog/visa" class="item-link">Provider Visa Perjalanan</nuxt-link>
+            <nuxt-link to="/catalog/insurance" class="item-link">Provider Asuransi</nuxt-link>
+            <nuxt-link to="/catalog/handling" class="item-link">Provider Handling</nuxt-link>
+            <nuxt-link to="/catalog/manasik" class="item-link">Provider Manasik</nuxt-link>
+            <nuxt-link to="/catalog/equipment" class="item-link">Provider Perlengkapan</nuxt-link>
+            <nuxt-link to="/catalog/tourleader" class="item-link">Provider Tour Leader</nuxt-link>
           </div>
         </a-card>
       </a-col>
@@ -31,11 +35,9 @@
         <a-card>
           <div class="title">Tentang Haloatta</div>
           <div class="item">
-            <nuxt-link to class="item-link">Tentang Kami</nuxt-link>
-            <nuxt-link to class="item-link">Halo Blog</nuxt-link>
-            <nuxt-link to class="item-link">LA Akomodasi</nuxt-link>
-            <nuxt-link to class="item-link">Bermitra dengan Kami</nuxt-link>
-            <nuxt-link to class="item-link">Umaroh Login</nuxt-link>
+            <nuxt-link to="/about" class="item-link">Tentang Kami</nuxt-link>
+            <nuxt-link to="/blog" class="item-link">Halo Blog</nuxt-link>
+            <nuxt-link to="/" class="item-link">Bermitra dengan Kami</nuxt-link>
           </div>
         </a-card>
       </a-col>
@@ -43,8 +45,8 @@
         <a-card>
           <div class="title">Ketentuan Penggunaan</div>
           <div class="item">
-            <nuxt-link to class="item-link">Syarat dan Ketentuan</nuxt-link>
-            <nuxt-link to class="item-link">Kebijakan Privasi</nuxt-link>
+            <nuxt-link to="/" class="item-link">Syarat dan Ketentuan</nuxt-link>
+            <nuxt-link to="/" class="item-link">Kebijakan Privasi</nuxt-link>
           </div>
         </a-card>
       </a-col>
