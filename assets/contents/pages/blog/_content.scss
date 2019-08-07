@@ -128,5 +128,82 @@
                 }
             }
         }
+        & .ant-card-detail {
+            & .ant-card-detail-images {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 460px;
+                width: 100%;
+            }
+            & .ant-card-detail-body {
+                padding: 24px 32px;
+                & .ant-card-detail-body-text {
+                    line-height: 24px;
+                    & li {
+                        margin-bottom: 16px;
+                    }
+                }
+                & .ant-tag {
+                    @include border-radius(20px);
+                    color: #ffffff;
+                    line-height: 26px;
+                    padding: 0 24px;
+                    font-size: 14px;
+                    height: 28px;
+                    border: none;
+                    & a {
+                        text-transform: capitalize;
+                        color: #ffffff;
+                    }
+                    &.ragam {
+                        background-color: $color-main-overlay;
+                    }
+                    &.kajian {
+                        background-color: $color-orange-overlay;
+                    }
+                    &.tips {
+                        background-color: $color-green-overlay;
+                    }
+                    &.informasi {
+                        background-color: $color-red-overlay;
+                    }
+                }
+            }
+        }
+        & .ant-card-detail-side {
+            & .ant-list {
+                & .ant-list-item {
+                    border: none;
+                    & .ant-list-item-images {
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        height: 80px;
+                        width: 100%;
+                    }
+                    & .ant-list-title {
+                        line-height: normal;
+                        color: $color-font;
+                        font-weight: 500;
+                        overflow: hidden;
+                        height: 36px;
+                    }
+                    & .ant-list-author {
+                        text-transform: uppercase;
+                        line-height: normal;
+                        font-size: 12px;
+                        color: #999999;
+                        font-weight: 500;
+                    }
+                    & .ant-list-see {
+                        line-height: normal;
+                        font-size: 12px;
+                        color: #999999;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
     }
 }

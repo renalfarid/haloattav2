@@ -37,7 +37,8 @@ module.exports = {
         { src: '@/plugins/vCountdown', ssr: false },
         { src: '@/plugins/vCharts', ssr: false },
         { src: '@/plugins/vInfinite-scroll', ssr: false },
-        { src: '@/plugins/vAos', ssr: false },
+        { src: '@/plugins/vClipboard', ssr: false },
+        { src: '@/plugins/vAos', ssr: false }
     ],
     /*
      ** Nuxt.js modules

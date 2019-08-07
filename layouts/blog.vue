@@ -1,15 +1,17 @@
 <template>
   <a-layout class="ant-layout-blog">
-    <a-layout-header class="b-shadow" :style="{ background: '#fff' }">
+    <a-layout-header :style="{ background: '#fff' }">
       <div class="container d-flex align-items-center">
         <div class="logo">
           <img src="/haloatta.png" />
         </div>
         <div class="ml-auto">
-          <a-menu mode="horizontal" :defaultSelectedKeys="['1']" :style="{ lineHeight: '64px' }">
-            <a-menu-item key="1"><nuxt-link to="#">Home</nuxt-link></a-menu-item>
-            <a-menu-item key="2"><nuxt-link to="#">Promo</nuxt-link></a-menu-item>
-            <a-menu-item key="3"><nuxt-link to="#">Tips & Trik</nuxt-link></a-menu-item>
+          <a-menu mode="horizontal" :defaultSelectedKeys="['1']" :style="{ lineHeight: '62px' }">
+            <a-menu-item key="1"><nuxt-link to="/blog">Beranda</nuxt-link></a-menu-item>
+            <a-menu-item key="2"><nuxt-link to="/blog/categorie">Kajian</nuxt-link></a-menu-item>
+            <a-menu-item key="3"><nuxt-link to="/blog/categorie">Infomasi</nuxt-link></a-menu-item>
+            <a-menu-item key="4"><nuxt-link to="/blog/categorie">Ragam</nuxt-link></a-menu-item>
+            <a-menu-item key="5"><nuxt-link to="/blog/categorie">Tips & Trik</nuxt-link></a-menu-item>
           </a-menu>
         </div>
       </div>
