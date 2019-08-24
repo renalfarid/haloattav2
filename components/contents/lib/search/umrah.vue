@@ -23,6 +23,35 @@
       </a-col>
 
       <a-col :span="12">
+        <a-form-item label="Program Hari" hasFeedback>
+          <div class="icon-search">
+            <a-icon type="calendar" />
+          </div>
+          <a-select
+            showSearch
+            defaultValue="Program 9 Hari"
+            placeholder="Pilih Program Hari"
+            optionFilterProp="children"
+            style="width: 100%"
+            :showArrow="false"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @change="handleChange"
+            :filterOption="filterOption"
+            size="large"
+          >
+            <a-select-option value="All">Tampilkan Semua</a-select-option>
+            <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
+            <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
+            <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-col>
+    </a-row>
+
+    <a-row :gutter="16">
+
+      <a-col :span="12">
         <a-form-item label="Bulan Keberangkatan" hasFeedback>
           <div class="icon-search">
             <a-icon type="calendar" />
@@ -47,9 +76,7 @@
           </a-select>
         </a-form-item>
       </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
+      
       <a-col :span="12">
         <a-form-item label="Jumlah Jamaah" hasFeedback>
           <div class="icon-search">
@@ -100,86 +127,6 @@
               block
             >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
           </a-dropdown>
-        </a-form-item>
-      </a-col>
-
-      <a-col :span="12">
-        <a-form-item label="Program Hari" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="calendar" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Program 9 Hari"
-            placeholder="Pilih Program Hari"
-            optionFilterProp="children"
-            style="width: 100%"
-            :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
-            size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-            <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-            <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Rating Bintang Hotel" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="crown" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Bintang 3"
-            placeholder="Pilih Rating Bintang Hotel"
-            optionFilterProp="children"
-            style="width: 100%"
-            :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
-            size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Bintang 3">Bintang 3</a-select-option>
-            <a-select-option value="Bintang 4">Bintang 4</a-select-option>
-            <a-select-option value="Bintang 5">Bintang 5</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-
-      <a-col :span="12">
-        <a-form-item label="Kisaran Harga" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="wallet" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Rp.0 - Rp.20.000.000"
-            placeholder="Pilih Kisaran Harga"
-            optionFilterProp="children"
-            style="width: 100%"
-            :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
-            size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Rp.0 - Rp.20.000.000">Rp.0 - Rp.20.000.000</a-select-option>
-            <a-select-option value="Rp.20.000.000 - Rp.30.000.000">Rp.0 - Rp.20.000.000</a-select-option>
-            <a-select-option value="Rp.30.000.000 - Rp.40.000.000">Rp.0 - Rp.20.000.000</a-select-option>
-          </a-select>
         </a-form-item>
       </a-col>
     </a-row>

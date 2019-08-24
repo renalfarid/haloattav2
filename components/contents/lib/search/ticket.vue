@@ -60,6 +60,52 @@
 
     <a-row :gutter="16">
       <a-col :span="12">
+        <a-form-item label="Bulan Keberangkatan" hasFeedback>
+          <div class="icon-search">
+            <a-icon type="calendar" />
+          </div>
+          <a-select
+            showSearch
+            defaultValue="September 2019"
+            placeholder="Pilih Bulan Keberangkatan"
+            style="width: 100%"
+            :showArrow="false"
+            :filterOption="filterOption"
+            size="large"
+          >
+            <a-select-option value="All">Tampilkan Semua</a-select-option>
+            <a-select-option value="September 2019">September 2019</a-select-option>
+            <a-select-option value="November 2019">November 2019</a-select-option>
+            <a-select-option value="Desember 2019">Desember 2019</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-col>
+
+      <a-col :span="12">
+        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+          <div class="icon-search">
+            <a-icon type="calendar" />
+          </div>
+          <a-select
+            showSearch
+            defaultValue="All"
+            placeholder="Pilih Tanggal"
+            style="width: 100%"
+            :showArrow="false"
+            :filterOption="filterOption"
+            size="large"
+          >
+            <a-select-option value="All">Tampilkan Semua</a-select-option>
+            <a-select-option value="01">01</a-select-option>
+            <a-select-option value="02">02</a-select-option>
+            <a-select-option value="03">03</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-col>
+    </a-row>
+
+    <a-row :gutter="16">
+      <a-col :span="12">
         <a-form-item label="Program Hari" hasFeedback>
           <div class="icon-search">
             <a-icon type="calendar" />
@@ -159,31 +205,6 @@
 
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Keberangkatan" hasFeedback>
-          <a-date-picker
-            size="large"
-            style="width: 100%"
-            v-decorator="['tanggal_keberangkatan',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-            :disabledDate="disabledDate"
-            placeholder="Pilih Tanggal Keberangkatan"
-          />
-        </a-form-item>
-      </a-col>
-
-      <a-col :span="12">
-        <a-form-item label="Kedatangan">
-          <a-date-picker
-            size="large"
-            style="width: 100%"
-            :defaultValue="moment('2019-06-10', dateFormat)"
-            disabled
-          />
-        </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
-      <a-col :span="12">
         <a-button
           html-type="submit"
           class="btn-search b-shadow b-radius"
@@ -199,8 +220,8 @@ import moment from "moment";
 export default {
   name: "searchTicket",
   data() {
-    this.dateFormat = "YYYY-MM-DD";
     return {
+      monthFormat: 'MM/YYYY',
       dewasa: 1,
       anak: 0,
       bayi: 0

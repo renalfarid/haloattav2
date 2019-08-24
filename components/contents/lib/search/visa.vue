@@ -60,33 +60,7 @@
       </a-col>
     </a-row>
 
-    <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Program Hari" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="calendar" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Program 9 Hari"
-            placeholder="Pilih Program Hari"
-            optionFilterProp="children"
-            style="width: 100%"
-            :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
-            size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-            <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-            <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-
+    <a-row :gutter="16" type="flex" justify="end">
       <a-col :span="12">
         <a-form-item label="Jumlah Pax" hasFeedback>
           <div class="icon-search">
@@ -115,41 +89,15 @@
           </a-dropdown>
         </a-form-item>
       </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Check In" hasFeedback>
-          <a-date-picker
+        <a-form-item :style="{ marginTop: '24px' }">
+          <a-button
+            html-type="submit"
+            class="btn-search b-shadow b-radius"
             size="large"
-            style="width: 100%"
-            v-decorator="['checkin',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-            :disabledDate="disabledDate"
-            placeholder="Pilih Tanggal Check In"
-          />
+            block
+          >Cari Visa</a-button>
         </a-form-item>
-      </a-col>
-
-      <a-col :span="12">
-        <a-form-item label="Check Out">
-          <a-date-picker
-            size="large"
-            style="width: 100%"
-            :defaultValue="moment('2019-06-10', dateFormat)"
-            disabled
-          />
-        </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
-      <a-col :span="12">
-        <a-button
-          html-type="submit"
-          class="btn-search b-shadow b-radius"
-          size="large"
-          block
-        >Cari Visa</a-button>
       </a-col>
     </a-row>
   </a-form>

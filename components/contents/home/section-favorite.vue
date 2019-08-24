@@ -60,27 +60,30 @@
                 <div class="ant-card-meta-title--top-left f-default d-flex align-items-center">
                   <a-popover trigger="hover">
                     <template slot="content">
-                      <div class="fs-15 fw-500 cr-black">Haloatta</div>
-                      <div class="fs-13 fw-400 cr-gray f-default">Umaroh Bisnis</div>
+                      <div class="fs-15 fw-500 cr-black">Awaluddin Muhammad Arifatullah</div>
+                      <div class="fs-14 fw-400 cr-gray f-default"><a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi</div>
                     </template>
-                    <a-avatar class="zIndex mr-8 p-4" src="/favicon.png" />
+                    <a-avatar
+                      class="zIndex mr-8"
+                      src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png"
+                    />
                   </a-popover>
 
                   <a-popover trigger="hover">
                     <template slot="content">
-                      <div class="fs-13 fw-400 cr-gray f-default">Maskapai Garuda Indonesia</div>
+                      <div class="fs-13 fw-400 cr-black f-default">Maskapai Garuda Indonesia</div>
                     </template>
-                    <a-avatar class="zIndex mr-8 p-4" src="/maskapai/logo/garuda.svg" />
+                    <a-avatar class="zIndex mr-8" src="/maskapai/logo/garuda.svg" />
                   </a-popover>
 
                   <a-popover trigger="hover">
                     <template slot="content">
                       <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
                       <div
-                        class="fs-13 fw-400 cr-gray f-default mb-4"
+                        class="fs-13 fw-400 cr-black f-default mb-4"
                       >Mekkah : Hotel Daruttauhid International Mekkah</div>
                       <div
-                        class="fs-13 fw-400 cr-gray f-default"
+                        class="fs-13 fw-400 cr-black f-default"
                       >Madinah : Hotel Dar Al Eiman International Madinah</div>
                     </template>
                     <a-avatar
@@ -92,24 +95,22 @@
                   </a-popover>
                 </div>
                 <div
-                  class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-gray"
+                  class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black"
                 >Program 9 Hari</div>
               </div>
-              <div class="ant-card-meta-title--package fw-500 mb-16">{{item.name_product}}</div>
+              <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
             </div>
 
             <div slot="description">
               <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                <div
-                  class="ant-card-meta-description--bottom-left fw-500 cr-primary"
-                >Rp{{item.price_product}}</div>
-                <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
-                  <div class="icon icon-star fs-13">
-                    <a-icon type="star" theme="filled" class="mr-4" />5.8
+                <div class="ant-card-meta-description--bottom-right">
+                  <div class="fs-14 fw-400 cr-gray">
+                    Terjual
+                    <strong>{{item.pax_booked}}</strong> Pax
                   </div>
-                  <div class="icon icon-comment fs-13">
-                    <a-icon type="message" class="mr-4" />10 Komentar
-                  </div>
+                </div>
+                <div class="ant-card-meta-description--bottom-left cr-primary ml-auto">
+                  <span>Rp{{item.price_product}}</span>
                 </div>
               </div>
             </div>
@@ -117,12 +118,6 @@
           <div class="package-description--more p-24">
             <div class="d-flex align-items-center mb-8">
               <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Keberangkatan Makassar</div>
-              <div class="text-ellipsis ml-auto">
-                <a-tag>
-                  Terbooking
-                  <strong>{{item.pax_booked}}</strong> seat
-                </a-tag>
-              </div>
             </div>
 
             <div class="d-flex align-items-center mb-16">

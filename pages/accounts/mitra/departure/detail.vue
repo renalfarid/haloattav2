@@ -63,21 +63,18 @@
               </div>
             </a-col>
             <a-col :span="8">
-              <div class="fs-14 fw-400 cr-gray">Status Pax</div>
+              <div class="fs-14 fw-400 cr-gray">Status Berkas</div>
               <div
                 class="fs-14 fw-500 cr-green"
-                v-if="item.status === 'Tersedia'"
-              >{{item.status}} ({{item.desc}})</div>
+                v-if="item.status === 'Lengkap'"
+              >{{item.status}}</div>
               <div
                 class="fs-14 fw-500 cr-red"
-                v-if="item.status === 'Sudah Dipesan'"
-              >{{item.status}} ({{item.desc}})</div>
+                v-if="item.status === 'Belum Lengkap'"
+              >{{item.status}}</div>
             </a-col>
             <a-col :span="4" class="text-right">
-              <nuxt-link v-if="item.status === 'Tersedia'" to="/catalog/umrah/order-review">
-                <span class="fs-14 fw-500 cr-primary">Pesan Sekarang<a-icon type="right" class="ml-8" /></span>
-              </nuxt-link>
-              <nuxt-link v-if="item.status === 'Sudah Dipesan'" to="/accounts/mitra/jamaah/berkas">
+              <nuxt-link to="/accounts/mitra/jamaah/berkas">
                 <span class="fs-14 fw-500 cr-green">Lihat Berkas<a-icon type="right" class="ml-8" /></span>
               </nuxt-link>
             </a-col>
@@ -92,26 +89,22 @@ const dataSeat = [
   {
     key: 1,
     code_book: "ATT-UMR-68559347219072952",
-    status: "Tersedia",
-    desc: "Available"
+    status: "Lengkap"
   },
   {
     key: 2,
     code_book: "ATT-UMR-68559347219072952",
-    status: "Sudah Dipesan",
-    desc: "Booked"
+    status: "Belum Lengkap"
   },
   {
     key: 3,
     code_book: "ATT-UMR-68559347219072952",
-    status: "Sudah Dipesan",
-    desc: "Booked"
+    status: "Belum Lengkap"
   },
   {
     key: 4,
     code_book: "ATT-UMR-68559347219072952",
-    status: "Sudah Dipesan",
-    desc: "Booked"
+    status: "Belum Lengkap"
   }
 ];
 export default {
@@ -119,7 +112,7 @@ export default {
   name: "mitraDaftarSeat",
   head() {
     return {
-      title: "Daftar Seat - Kembangkan Bisnis Umrah Anda | Haloatta"
+      title: "Daftar Pemberangkatan - Kembangkan Bisnis Umrah Anda | Haloatta"
     };
   },
 

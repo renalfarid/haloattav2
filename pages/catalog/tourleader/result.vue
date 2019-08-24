@@ -69,9 +69,6 @@
                                 class="fs-13 fw-400 cr-gray f-default text-ellipsis"
                               >{{item.provider}}</div>
                             </div>
-                            <div
-                              class="fs-13 fw-400 cr-gray f-default text-ellipsis ml-auto"
-                            >Program 9 Hari</div>
                           </div>
                           <div
                             class="ant-card-meta-title--package fs-15 fw-500"

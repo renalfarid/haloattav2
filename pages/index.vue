@@ -110,9 +110,9 @@
 
     <div class="content-favorites">
       <!-- if before login -->
-      <!-- <sectionFavorite /> -->
+      <sectionFavorite />
       <!-- if after login -->
-      <section-myumrah />
+      <!-- <section-myumrah /> -->
     </div>
 
     <div class="content-components-umrah">
@@ -144,17 +144,19 @@
       </a-card>
     </div>
 
-    <div class="content-recomended">
-      <sectionRecomended />
-    </div>
+    <no-ssr>
+      <div class="content-recomended">
+        <sectionRecomended />
+      </div>
 
-    <div class="content-trend">
-      <sectionTrend />
-    </div>
+      <div class="content-trend">
+        <sectionTrend />
+      </div>
 
-    <div class="content-news">
-      <sectionNews />
-    </div>
+      <div class="content-news">
+        <sectionNews />
+      </div>
+    </no-ssr>
   </div>
 </template>
 
@@ -170,9 +172,9 @@ import searchEquipment from "~/components/contents/lib/search/equipment.vue";
 import searchTourleader from "~/components/contents/lib/search/tourleader.vue";
 
 // if before login
-// import sectionFavorite from "~/components/contents/home/section-favorite.vue";
+import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 // if after login
-import sectionMyumrah from "~/components/contents/home/section-myumrah.vue";
+// import sectionMyumrah from "~/components/contents/home/section-myumrah.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 import sectionRecomended from "~/components/contents/home/section-recommended.vue";
 import sectionTrend from "~/components/contents/home/section-trend.vue";
@@ -199,8 +201,8 @@ export default {
     searchManasik,
     searchEquipment,
     searchTourleader,
-    // sectionFavorite,
-    sectionMyumrah,
+    sectionFavorite,
+    // sectionMyumrah,
     sectionComponentsUmrah,
     sectionRecomended,
     sectionTrend,
