@@ -72,11 +72,9 @@
                               </a-col>
                               <a-col :span="8">
                                 <a-form-item>
-                                  <a-button
-                                    class="ant-btn--action-outline"
-                                    size="large"
-                                    block
-                                  >Top Up Saldo</a-button>
+                                  <a-button class="ant-btn--action-outline" size="large" block>
+                                    <nuxt-link to="/accounts/top-up">Top Up Saldo</nuxt-link>
+                                  </a-button>
                                 </a-form-item>
                               </a-col>
                             </a-row>
