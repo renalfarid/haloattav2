@@ -145,7 +145,7 @@
         </a-card>
       </div>
 
-      <!-- package umrah -->
+      <!-- if there is data then display it package umrah -->
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
@@ -168,7 +168,7 @@
         </div>
       </div>
 
-      <!-- package ticket -->
+      <!-- if there is data then display it package ticket -->
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
@@ -191,7 +191,7 @@
         </div>
       </div>
 
-      <!-- package accommodation -->
+      <!-- if there is data then display it package accommodation -->
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
@@ -214,7 +214,7 @@
         </div>
       </div>
 
-      <!-- package visa -->
+      <!-- if there is data then display it package visa -->
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
@@ -237,7 +237,7 @@
         </div>
       </div>
 
-      <!-- package insurance -->
+      <!-- if there is data then display it package insurance -->
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
@@ -260,7 +260,7 @@
         </div>
       </div>
 
-      <!-- package handling -->
+      <!-- if there is data then display it package handling -->
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
@@ -276,6 +276,29 @@
           </div>
 
           <handling-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package manasik -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Manasik</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <manasik-recommended />
 
           <div class="all-package">
             <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
@@ -313,6 +336,7 @@ import accommodationRecommended from "~/components/contents/catalog/accommodatio
 import visaRecommended from "~/components/contents/catalog/visa/recommended.vue";
 import insuranceRecommended from "~/components/contents/catalog/insurance/recommended.vue";
 import handlingRecommended from "~/components/contents/catalog/handling/recommended.vue";
+import manasikRecommended from "~/components/contents/catalog/manasik/recommended.vue";
 
 import sectionNews from "~/components/contents/home/section-news.vue";
 export default {
@@ -346,6 +370,7 @@ export default {
     visaRecommended,
     insuranceRecommended,
     handlingRecommended,
+    manasikRecommended,
     sectionNews
   }
 };
