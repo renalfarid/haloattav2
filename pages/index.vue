@@ -260,6 +260,29 @@
         </div>
       </div>
 
+      <!-- package handling -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Handling Domestik</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <handling-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
       <div class="content-news">
         <sectionNews />
       </div>
@@ -289,6 +312,7 @@ import ticketRecommended from "~/components/contents/catalog/ticket/recommended.
 import accommodationRecommended from "~/components/contents/catalog/accommodation/recommended.vue";
 import visaRecommended from "~/components/contents/catalog/visa/recommended.vue";
 import insuranceRecommended from "~/components/contents/catalog/insurance/recommended.vue";
+import handlingRecommended from "~/components/contents/catalog/handling/recommended.vue";
 
 import sectionNews from "~/components/contents/home/section-news.vue";
 export default {
@@ -321,6 +345,7 @@ export default {
     accommodationRecommended,
     visaRecommended,
     insuranceRecommended,
+    handlingRecommended,
     sectionNews
   }
 };
