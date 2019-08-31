@@ -163,7 +163,7 @@
           <umrah-recommended />
 
           <div class="all-package">
-            <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/umrah/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
           </div>
         </div>
       </div>
@@ -186,7 +186,7 @@
           <ticket-recommended />
 
           <div class="all-package">
-            <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/ticket-group/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
           </div>
         </div>
       </div>

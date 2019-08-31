@@ -1,0 +1,124 @@
+<template>
+  <div class="ant-layout-sider--accounts-item">
+    <div class="ant-layout-sider--accounts-logo">
+      <nuxt-link to="/">
+        <img src="/haloatta.png" />
+      </nuxt-link>
+    </div>
+
+    <div class="ant-avatar--user d-flex align-items-center mb-16">
+      <div class="mr-8">
+        <a-avatar
+          size="large"
+          src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png"
+        />
+      </div>
+      <div class="text-ellipsis pr-16">
+        <div class="fs-16 fw-500 f-default d-inline cr-black">Gustang Arifatullah</div>
+      </div>
+    </div>
+
+    <div class="pl-16 pr-16 mb-16">
+      <a-button type="primary" class="b-shadow b-radius" block>
+        <nuxt-link to="/upgrade">Upgrade Akun</nuxt-link>
+      </a-button>
+    </div>
+
+    <a-divider :style="{margin: '14px 0'}" />
+
+    <nuxt-link to="/accounts/top-up" class="ant-avatar--user d-flex align-items-center">
+      <div class="mr-8">
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3" icon="wallet" />
+      </div>
+      <div>
+        <div class="fs-14 cr-gray">Saldo Halopay</div>
+        <div class="fs-15 fw-500 f-default cr-black">{{ 100000000 | currency }}</div>
+      </div>
+      <div class="ml-auto">
+        <a-icon type="right" class="cr-primary fs-12" />
+      </div>
+    </nuxt-link>
+
+    <a-divider :style="{margin: '14px 0'}" />
+
+    <nuxt-link to="/accounts/mitra/voucher" class="ant-avatar--user d-flex align-items-center">
+      <div class="mr-8">
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3;" icon="crown" />
+      </div>
+      <div>
+        <div class="fs-14 cr-gray">Halo Poin</div>
+        <div class="fs-15 fw-500 f-default cr-black">10 poin</div>
+      </div>
+      <div class="ml-auto">
+        <a-icon type="right" class="cr-primary fs-12" />
+      </div>
+    </nuxt-link>
+
+    <a-divider />
+
+    <a-menu class="ant-menu--sider" mode="vertical" :defaultSelectedKeys="['1']">
+      <a-menu-item class="ant-menu--sider-item" key="1">
+        <nuxt-link to="/accounts/mitra" class="nav-text">Ringkasan Akun</nuxt-link>
+      </a-menu-item>
+
+      <a-sub-menu class="ant-menu--sider-sub" key="2">
+        <span slot="title">
+          <span>Saldo Halopay</span>
+        </span>
+        <a-menu-item class="ant-menu--sider-sub-item" key="2-1">
+          <nuxt-link to="/accounts/top-up" class="nav-text">Tambah Saldo</nuxt-link>
+        </a-menu-item>
+        <a-menu-item class="ant-menu--sider-sub-item" key="2-2">
+          <nuxt-link to="/accounts/top-up/transaction" class="nav-text">Transaksi</nuxt-link>
+        </a-menu-item>
+        <a-menu-item class="ant-menu--sider-sub-item" key="2-3">
+          <nuxt-link to="/accounts/top-up/mutation" class="nav-text">Mutasi</nuxt-link>
+        </a-menu-item>
+      </a-sub-menu>
+
+      <a-menu-item class="ant-menu--sider-item" key="disabled-1" disabled>
+        <a-divider></a-divider>
+      </a-menu-item>
+      
+      <a-menu-item class="ant-menu--sider-item" key="3">
+        <nuxt-link to="/accounts/mitra/management/seat" class="nav-text">Manajemen Seat</nuxt-link>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="9">
+        <nuxt-link to="/accounts/mitra/departure" class="nav-text">Daftar Pemberangkatan</nuxt-link>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>
+        <a-divider></a-divider>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="4">
+        <nuxt-link to="/accounts/mitra/transaction/purchase">
+          <span class="nav-text">Transaksi</span>
+        </nuxt-link>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="5">
+        <nuxt-link to="/accounts/mitra/transaction/order">
+          <div class="d-flex align-items-center">
+            <span class="nav-text">Pesanan Saya</span>
+            <a-badge class="ml-auto" count="4" />
+          </div>
+        </nuxt-link>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="7">
+        <nuxt-link to="/accounts/mitra/setting" class="nav-text">Pengaturan</nuxt-link>
+      </a-menu-item>
+
+      <a-menu-item class="ant-menu--sider-item" key="logout">
+        <nuxt-link to="/" class="nav-text">keluar</nuxt-link>
+      </a-menu-item>
+    </a-menu>
+  </div>
+</template>
+<script>
+export default {
+  props: ["current"]
+};
+</script>
