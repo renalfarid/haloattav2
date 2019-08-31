@@ -5,9 +5,9 @@
       :style="{ overflow: 'auto', height: '100vh', position: 'fixed' }"
     >
       <!-- if group customer -->
-      <!-- <sidebar-customer /> -->
+      <sidebar-customer />
       <!-- if group umaroh personal -->
-      <sidebar-personal />
+      <!-- <sidebar-personal /> -->
     </a-layout-sider>
 
     <a-layout :style="{ marginLeft: '260px', padding: '24px',}">
@@ -22,13 +22,13 @@
   </a-layout>
 </template>
 <script>
-// import sidebarCustomer from "~/components/accounts/sidebar/customer.vue";
-import sidebarPersonal from "~/components/accounts/sidebar/personal.vue";
+import sidebarCustomer from "~/components/accounts/sidebar/customer.vue";
+// import sidebarPersonal from "~/components/accounts/sidebar/personal.vue";
 import headerBar from "~/components/accounts/header/header.vue";
 export default {
   components: {
-    // sidebarCustomer,
-    sidebarPersonal,
+    sidebarCustomer,
+    // sidebarPersonal,
     headerBar
   }
 };
