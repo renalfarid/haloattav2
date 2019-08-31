@@ -301,7 +301,7 @@
           <manasik-recommended />
 
           <div class="all-package">
-            <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/manasik/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
           </div>
         </div>
       </div>
@@ -324,7 +324,7 @@
           <equipment-recommended />
 
           <div class="all-package">
-            <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/equipment/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
           </div>
         </div>
       </div>
@@ -347,7 +347,7 @@
           <tourleader-recommended />
 
           <div class="all-package">
-            <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/tourleader/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
           </div>
         </div>
       </div>

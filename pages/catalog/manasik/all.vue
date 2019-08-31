@@ -5,7 +5,7 @@
       <div class="ant-layout--results-body">
         <div class="ant-layout--results-top mt-16 mb-24">
           <div class="d-flex align-items-center mb-16">
-            <div class="fs-24 fw-500 cr-black">Semua Vendor Handling Domestik</div>
+            <div class="fs-24 fw-500 cr-black">Semua Vendor Manasik</div>
             <div class="ml-auto">
               <nuxt-link to="/" class="fs-14 cr-gray">
                 <a-icon type="left" class="fs-12 mr-4" />Kembali
@@ -13,7 +13,7 @@
             </div>
           </div>
 
-          <filter-result-handling />
+          <filter-result-manasik />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -34,7 +34,7 @@
                 data-aos-duration="1200"
               >
                 <a-skeleton :loading="loading" active>
-                  <nuxt-link to="/catalog/handling/detail" class="d-block">
+                  <nuxt-link to="/catalog/manasik/detail" class="d-block">
                     <a-card class="ant-card-package-small">
                       <div slot="cover">
                         <div
@@ -56,7 +56,7 @@
                           <div class="ant-card--overlay-block">
                             <div class="d-flex align-items-center h-100">
                               <a-button>
-                                <nuxt-link to="/catalog/handling/detail">Lihat detail</nuxt-link>
+                                <nuxt-link to="/catalog/manasik/detail">Lihat detail</nuxt-link>
                               </a-button>
                             </div>
                           </div>
@@ -65,7 +65,7 @@
 
                       <a-card-meta>
                         <div slot="title">
-                          <div class="ant-card-meta-title--top d-flex align-items-center mb-16">
+                          <div class="ant-card-meta-title--top d-flex align-items-center">
                             <div class="ant-card-meta-title--top-left d-flex align-items-center">
                               <div class="mr-8">
                                 <a-avatar :src="item.logo_provider" size="small" />
@@ -77,7 +77,7 @@
                           </div>
                           <div
                             class="ant-card-meta-title--package fs-15 fw-500"
-                          >{{item.name_handling}}</div>
+                          >{{item.name_manasik}}</div>
                         </div>
 
                         <div slot="description">
@@ -85,7 +85,7 @@
                             <div class="ant-card-meta-description--bottom-right d-flex">
                               <div
                                 class="fs-14 fw-400 cr-black f-default text-ellipsis"
-                              >Pulang Pergi</div>
+                              >Standar Layanan</div>
                             </div>
                             <div
                               class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
@@ -107,7 +107,7 @@
                         </div>
 
                         <a-button block>
-                          <nuxt-link to="/catalog/handling/order-review">Pesan</nuxt-link>
+                          <nuxt-link to="/catalog/manasik/order-review">Pesan</nuxt-link>
                         </a-button>
                       </div>
                     </a-card>
@@ -122,14 +122,14 @@
   </div>
 </template>
 <script>
-import filterResultHandling from "~/components/contents/lib/filter/result/handling.vue";
+import filterResultManasik from "~/components/contents/lib/filter/result/manasik.vue";
 import axios from "axios";
 export default {
-  name: "handlingAll",
+  name: "manasikAll",
   head() {
     return {
       title:
-        "Semua Handling Domestik - Pesan Paket Umrah & Komponen Umrah Lainnya"
+        "Semua Manasik Pemantapan - Pesan Paket Umrah & Komponen Umrah Lainnya"
     };
   },
   data() {
@@ -152,7 +152,7 @@ export default {
     loadMore() {
       console.log("Adding 6 more data results");
       this.busy = true;
-      axios.get("/dataHandling.json").then(response => {
+      axios.get("/dataManasik.json").then(response => {
         const append = response.data.slice(
           this.data.length,
           this.data.length + this.limit
@@ -163,7 +163,7 @@ export default {
     }
   },
   components: {
-    filterResultHandling
+    filterResultManasik
   }
 };
 </script>
