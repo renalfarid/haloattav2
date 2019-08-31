@@ -1,72 +1,19 @@
 <template>
   <div class="ant-layout--results-filter">
     <a-card class="ant-card--results-filter d-flex align-items-center" :bordered="false">
-      <div class="ant-card--results-filter-label">Filter pencarian</div>
+      <div class="ant-card--results-filter-label">Filter</div>
       <div>
-        <a-dropdown :trigger="['click']">
-          <a class="ant-dropdown-link" href="#">
-            Vendor
-            <a-icon type="down"/>
-          </a>
-          <a-card slot="overlay">
-            <div class="ant-filter-dropdown--overlay">
-              <a-radio-group name="rating_hotel">
-                <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
-                <a-radio :style="radioStyle" :value="2">Go Bro Event</a-radio>
-              </a-radio-group>
-            </div>
-          </a-card>
-        </a-dropdown>
+        <a-cascader :options="vendorData" @change="onChangeVendor" :defaultValue="['semua vendor']">
+          <a-tag class="fs-14 cr-black">Vendor {{vendorLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+        </a-cascader>
 
-        <a-dropdown :trigger="['click']">
-          <a class="ant-dropdown-link" href="#">
-            Harga
-            <a-icon type="down"/>
-          </a>
-          <a-card slot="overlay">
-            <div class="ant-filter-dropdown--overlay">
-              <a-radio-group name="harga">
-                <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
-                <a-radio :style="radioStyle" :value="2">Rp. 0 - Rp. 20.000.000</a-radio>
-                <a-radio :style="radioStyle" :value="3">Rp. 20.000.000 - Rp. 30.000.000</a-radio>
-                <a-radio :style="radioStyle" :value="4">Rp. 30.000.000 - Seterusnya</a-radio>
-              </a-radio-group>
-            </div>
-          </a-card>
-        </a-dropdown>
+        <a-cascader :options="hargaData" @change="onChangeHarga" :defaultValue="['semua harga']">
+          <a-tag class="fs-14 cr-black">Harga {{hargaLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+        </a-cascader>
 
-        <a-dropdown :trigger="['click']">
-          <a class="ant-dropdown-link" href="#">
-            Program Hari
-            <a-icon type="down"/>
-          </a>
-          <a-card slot="overlay">
-            <div class="ant-filter-dropdown--overlay">
-              <a-radio-group name="program_hari">
-                <a-radio :style="radioStyle" :value="1">Tampilkan Semua</a-radio>
-                <a-radio :style="radioStyle" :value="2">Program 9 Hari</a-radio>
-                <a-radio :style="radioStyle" :value="3">Program 10 Hari</a-radio>
-                <a-radio :style="radioStyle" :value="4">Program 11 Hari</a-radio>
-              </a-radio-group>
-            </div>
-          </a-card>
-        </a-dropdown>
-      </div>
-      <div class="ml-auto">
-        <a-dropdown :trigger="['click']" placement="bottomRight">
-          <a class="ant-dropdown-link" href="#" :style="{margin: '0'}">
-            Urutkan
-            <a-icon type="down"/>
-          </a>
-          <a-card slot="overlay">
-            <div class="ant-filter-dropdown--overlay">
-              <a-radio-group name="program_hari">
-                <a-radio :style="radioStyle" :value="1">Harga Termurah</a-radio>
-                <a-radio :style="radioStyle" :value="2">Harga Termahal</a-radio>
-              </a-radio-group>
-            </div>
-          </a-card>
-        </a-dropdown>
+        <a-cascader :options="programData" @change="onChangeProgram" :defaultValue="['semua program']">
+          <a-tag class="fs-14 cr-black">Program {{programLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+        </a-cascader>
       </div>
     </a-card>
   </div>
@@ -75,13 +22,59 @@
 export default {
   data() {
     return {
-      radioStyle: {
-        display: "block",
-        height: "30px",
-        lineHeight: "30px"
-      }
+      vendorLabel: "Semua Vendor",
+      hargaLabel: "Semua Harga",
+      programLabel: "Semua Program",
+      vendorData: [
+        {
+          value: "semua vendor",
+          label: "Semua Vendor"
+        },
+        {
+          value: "io umrah",
+          label: "IO Umrah"
+        }
+      ],
+      hargaData: [
+        {
+          value: "semua harga",
+          label: "Semua Harga"
+        },
+        {
+          value: "Rp0 - Rp20,000,000",
+          label: "Rp0 - Rp20,000,000"
+        },
+        {
+          value: "Rp20,000,000 - Rp20,000,000",
+          label: "Rp20,000,000 - Rp40.000.000"
+        }
+      ],
+      programData: [
+        {
+          value: "semua program",
+          label: "Semua Program"
+        },
+        {
+          value: "9 hari",
+          label: "9 Hari"
+        },
+        {
+          value: "10 hari",
+          label: "10 Hari"
+        }
+      ]
     };
   },
-  methods: {}
+  methods: {
+    onChangeVendor(value, selectedOptions) {
+      this.vendorLabel = selectedOptions.map(o => o.label).join(", ");
+    },
+    onChangeHarga(value, selectedOptions) {
+      this.hargaLabel = selectedOptions.map(o => o.label).join(", ");
+    },
+    onChangeProgram(value, selectedOptions) {
+      this.programLabel = selectedOptions.map(o => o.label).join(", ");
+    }
+  }
 };
 </script>
