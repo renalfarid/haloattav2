@@ -255,7 +255,7 @@
           <insurance-recommended />
 
           <div class="all-package">
-            <nuxt-link to="" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/insurance/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
           </div>
         </div>
       </div>
