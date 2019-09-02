@@ -13,21 +13,6 @@
     </div>
 
     <a-row :gutter="16">
-      <a-col :span="16">
-        <a-card class="card-product-overlay">
-          <div class="box-content" :style="{ backgroundImage: 'url(/umrah/cover/cu40.jpg)' }">
-            <div class="box-content--overlay text-center">
-              <div class="txt-title fs-40 fw-500 f-default mb-8">Bisa Share Profit Loh!</div>
-              <div class="txt fs-16 fw-400 f-default">
-                <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam amet pariatur asperiores necessitatibus error architecto et</span>
-              </div>
-              <a-button size="large">Explore Paket</a-button>
-            </div>
-            <div class="gradient-bottom"></div>
-          </div>
-        </a-card>
-      </a-col>
-
       <a-col :span="8" v-for="(item, index) in lisData" :key="index">
         <a-card class="ant-card-package">
           <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
@@ -173,8 +158,24 @@ export default {
           name_product: "Umrah Hemat Februari 2020 Keberangkatan Makassar",
           images_product: "/umrah/package/u4.png",
           price_product: "16.900.000",
-          pax_available: 40,
-          pax_booked: 3
+          pax_available: 10,
+          pax_booked: 0
+        },
+        {
+          id: 5,
+          name_product: "Umrah Hemat Februari 2020 Keberangkatan Makassar",
+          images_product: "/umrah/package/u5.png",
+          price_product: "16.900.000",
+          pax_available: 20,
+          pax_booked: 0
+        },
+        {
+          id: 6,
+          name_product: "Umrah Hemat Februari 2020 Keberangkatan Makassar",
+          images_product: "/umrah/package/u6.png",
+          price_product: "16.900.000",
+          pax_available: 4,
+          pax_booked: 1
         }
       ]
     };

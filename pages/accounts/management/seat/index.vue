@@ -14,10 +14,6 @@
             <a-select-option value="LA Akomodasi">LA Akomodasi</a-select-option>
             <a-select-option value="Visa">Visa</a-select-option>
             <a-select-option value="Asuransi">Asuransi</a-select-option>
-            <a-select-option value="Handling">Handling</a-select-option>
-            <a-select-option value="Manasik">Manasik</a-select-option>
-            <a-select-option value="Perlengkapan">Perlengkapan</a-select-option>
-            <a-select-option value="Tour Leader">Tour Leader</a-select-option>
           </a-select>
         </a-col>
         <a-col :span="6"></a-col>
@@ -62,7 +58,7 @@
               class="m-0 p-16"
               style="borderTop: 1px solid #f5f5f5"
             >
-              <a-col :span="8">
+              <a-col :span="18">
                 <div class="d-flex align-items-center">
                   <div class="mr-8">
                     <a-avatar
@@ -91,20 +87,12 @@
                       src="/icons/search/tabs/color/insurance.svg"
                     />
                   </div>
-                  <div class="fs-14 fw-500 cr-black f-default text-capitalize">Seat {{item.products_categorie}}</div>
+                  <div class="fs-14 fw-500 cr-black f-default text-capitalize">{{item.products_name}}</div>
                 </div>
               </a-col>
-              <a-col :span="6">
-                <div class="fs-14 fw-400 cr-gray">Sudah Dipesan (Booked)</div>
-                <div class="fs-14 fw-500 cr-black">{{item.booked}} Pax</div>
-              </a-col>
-              <a-col :span="5">
-                <div class="fs-14 fw-400 cr-gray">Tersedia (Available)</div>
-                <div class="fs-14 fw-500 cr-green">{{item.available}} Pax</div>
-              </a-col>
-              <a-col :span="5" class="text-right">
+              <a-col :span="6" class="text-right">
                 <a-button class="b-shadow b-radius" type="primary">
-                  <nuxt-link to="/accounts/mitra/management/seat/pax-list">Lihat Detail</nuxt-link>
+                  <nuxt-link to="/accounts/management/seat/pax-list">Lihat Detail</nuxt-link>
                 </a-button>
               </a-col>
             </a-row>
@@ -119,47 +107,42 @@ const dataSeat = [
   {
     no_transaction: "ATT-UMH-14674422219080148",
     products_categorie: "umrah",
+    products_name: "Umrah Hemat November 2019 Keberangkatan Jakarta",
     pax: "4",
     date: "05 Januari 2019",
-    program: "Program 9 Hari",
-    available: "1",
-    booked: "3"
+    program: "Program 9 Hari"
   },
   {
     no_transaction: "ATT-TKT-14674422219080148",
     products_categorie: "tiket",
+    products_name: "Makassar - Jeddah",
     pax: "2",
     date: "10 Januari 2019",
-    program: "Program 9 Hari",
-    available: "1",
-    booked: "1"
+    program: "Program 9 Hari"
   },
   {
     no_transaction: "ATT-AKM-14674422219080148",
     products_categorie: "akomodasi",
+    products_name: "Paket haramain 1 Al Hajj",
     pax: "2",
     date: "10 Januari 2019",
-    program: "Program 9 Hari",
-    available: "1",
-    booked: "1"
+    program: "Program 9 Hari"
   },
   {
     no_transaction: "ATT-VSI-14674422219080148",
     products_categorie: "visa",
+    products_name: "Visa Darul Manasek",
     pax: "2",
     date: "10 Januari 2019",
-    program: "Program 9 Hari",
-    available: "1",
-    booked: "1"
+    program: "Program 9 Hari"
   },
   {
     no_transaction: "ATT-INS-14674422219080148",
     products_categorie: "insurance",
+    products_name: "Asuransi umrah aswata",
     pax: "2",
     date: "10 Januari 2019",
-    program: "Program 9 Hari",
-    available: "1",
-    booked: "1"
+    program: "Program 9 Hari"
   }
 ];
 export default {

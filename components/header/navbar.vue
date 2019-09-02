@@ -56,7 +56,7 @@
 
               <!-- after login -->
               <div class="navbar-accounts">
-                <nuxt-link to="/accounts/mitra">
+                <nuxt-link to="/accounts">
                   <a-avatar icon="user" />
                 </nuxt-link>
               </div>

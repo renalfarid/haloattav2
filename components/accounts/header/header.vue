@@ -17,7 +17,7 @@
     </div>
     <div class="header-right ml-auto">
       <div class="header-accounts">
-        <nuxt-link to="/accounts/mitra"><a-avatar style="backgroundColor: #0FACF3" icon="user" /></nuxt-link>
+        <nuxt-link to="/accounts"><a-avatar style="backgroundColor: #0FACF3" icon="user" /></nuxt-link>
       </div>
     </div>
   </div>

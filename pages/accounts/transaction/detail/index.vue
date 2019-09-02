@@ -2,7 +2,7 @@
   <div class="ant-transaction--purchase-detail">
     <a-card :loading="loading" :bordered="false" class="b-radius b-shadow b-solid mb-16">
       <nuxt-link
-        to="/accounts/mitra/transaction/purchase"
+        to="/accounts/transaction/purchase"
         slot="title"
         class="fs-15 fw-400 cr-gray"
       >

@@ -101,7 +101,7 @@
                 <a-col :span="6">
                   <div class="d-flex align-items-center align-end">
                     <nuxt-link
-                      to="/accounts/mitra/transaction/detail/sales"
+                      to="/accounts/transaction/detail/sales"
                       class="cr-primary fs-14"
                     >Lihat detail</nuxt-link>
                   </div>

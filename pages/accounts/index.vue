@@ -36,7 +36,7 @@
           </dl>
         </a-col>
         <a-col :span="2">
-          <a-button type="danger" ghost block><nuxt-link to="/accounts/mitra/setting">edit</nuxt-link></a-button>
+          <a-button type="danger" ghost block><nuxt-link to="/accounts/setting">edit</nuxt-link></a-button>
         </a-col>
       </a-row>
     </a-card>

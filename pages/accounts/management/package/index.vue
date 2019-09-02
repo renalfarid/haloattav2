@@ -82,20 +82,20 @@
                   <div class="d-flex align-items-center align-end">
                     <div v-if="item.status === 'Diterbitkan'">
                       <nuxt-link
-                        to="/accounts/mitra/management/package/detail"
+                        to="/accounts/management/package/detail"
                         class="fs-14 cr-primary"
                       >Lihat detail</nuxt-link>
                     </div>
                     <div v-if="item.status === 'Ditutup'">
                       <nuxt-link
-                        to="/accounts/mitra/management/package/detail"
+                        to="/accounts/management/package/detail"
                         class="fs-14 cr-primary"
                       >Lihat detail</nuxt-link>
                     </div>
                     <div v-bind:class="[ item.status === 'Ditutup' ? 'd-none' : '' ]">
                       <a-divider type="vertical" />
                       <a-button class="ant-btn--publish b-shadow b-radius fs-14 fw-500">
-                        <nuxt-link to="/accounts/mitra/management/package/setting">Pengaturan</nuxt-link>
+                        <nuxt-link to="/accounts/management/package/setting">Pengaturan</nuxt-link>
                       </a-button>
                     </div>
                   </div>

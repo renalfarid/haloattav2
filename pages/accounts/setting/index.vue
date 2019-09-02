@@ -32,11 +32,11 @@
   </div>
 </template>
 <script>
-import editProfile from "~/pages/accounts/mitra/setting/edit/profile.vue";
-import editEmailPhone from "~/pages/accounts/mitra/setting/edit/emailphone.vue";
-import editPassword from "~/pages/accounts/mitra/setting/edit/password.vue";
-import addAddress from "~/pages/accounts/mitra/setting/add/address.vue";
-import addBank from "~/pages/accounts/mitra/setting/add/bank.vue";
+import editProfile from "~/pages/accounts/setting/edit/profile.vue";
+import editEmailPhone from "~/pages/accounts/setting/edit/emailphone.vue";
+import editPassword from "~/pages/accounts/setting/edit/password.vue";
+import addAddress from "~/pages/accounts/setting/add/address.vue";
+import addBank from "~/pages/accounts/setting/add/bank.vue";
 export default {
   layout: "accounts",
   name: "setting",

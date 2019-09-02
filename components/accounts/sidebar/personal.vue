@@ -17,11 +17,6 @@
         <div class="fs-14 f-default cr-black mb-4">Umaroh Personal</div>
         <div class="fs-16 fw-500 f-default d-inline cr-black">Alba Husain Mustafa Alimuddin</div>
       </div>
-      <!-- <div>
-        <a-button class="b-shadow b-radius d-flex align-items-center">
-          <img src="/icons/upgrade.png" /> Upgrade ke Bisnis
-        </a-button>
-      </div>-->
     </div>
 
     <a-divider />
@@ -52,7 +47,7 @@
 
     <a-divider :style="{margin: '14px 0'}" />
 
-    <nuxt-link to="/accounts/mitra/voucher" class="ant-avatar--user d-flex align-items-center">
+    <nuxt-link to="/accounts/poin" class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
         <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3;" icon="crown" />
       </div>
@@ -67,7 +62,7 @@
 
     <a-menu class="ant-menu--sider" mode="vertical" :defaultSelectedKeys="['1']">
       <a-menu-item class="ant-menu--sider-item" key="1">
-        <nuxt-link to="/accounts/mitra" class="nav-text">Ringkasan Akun</nuxt-link>
+        <nuxt-link to="/accounts" class="nav-text">Ringkasan Akun</nuxt-link>
       </a-menu-item>
 
       <a-sub-menu class="ant-menu--sider-sub" key="2">
@@ -110,15 +105,15 @@
           <span>Manajemen Paket</span>
         </span>
         <a-menu-item class="ant-menu--sider-sub-item" key="3-1">
-          <nuxt-link to="/accounts/mitra/management/package" class="nav-text">Paket Umrah Saya</nuxt-link>
+          <nuxt-link to="/accounts/management/package" class="nav-text">Paket Umrah Saya</nuxt-link>
         </a-menu-item>
         <a-menu-item class="ant-menu--sider-sub-item" key="3-2">
-          <nuxt-link to="/accounts/mitra/management/seat" class="nav-text">Daftar Seat</nuxt-link>
+          <nuxt-link to="/accounts/management/seat" class="nav-text">Daftar Seat</nuxt-link>
         </a-menu-item>
       </a-sub-menu>
 
       <a-menu-item class="ant-menu--sider-item" key="9">
-        <nuxt-link to="/accounts/mitra/departure" class="nav-text">Daftar Pemberangkatan</nuxt-link>
+        <nuxt-link to="/accounts/departure" class="nav-text">Daftar Pemberangkatan</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>
@@ -130,15 +125,15 @@
           <span>Informasi Transaksi</span>
         </span>
         <a-menu-item class="ant-menu--sider-sub-item" key="4-1">
-          <nuxt-link to="/accounts/mitra/transaction/purchase" class="nav-text">Daftar Pembelian</nuxt-link>
+          <nuxt-link to="/accounts/transaction/purchase" class="nav-text">Daftar Pembelian</nuxt-link>
         </a-menu-item>
         <a-menu-item class="ant-menu--sider-sub-item" key="4-2">
-          <nuxt-link to="/accounts/mitra/transaction/sales" class="nav-text">Daftar Penjualan</nuxt-link>
+          <nuxt-link to="/accounts/transaction/sales" class="nav-text">Daftar Penjualan</nuxt-link>
         </a-menu-item>
       </a-sub-menu>
 
       <a-menu-item class="ant-menu--sider-item" key="5">
-        <nuxt-link to="/accounts/mitra/transaction/order">
+        <nuxt-link to="/accounts/transaction/order">
           <div class="d-flex align-items-center">
             <span class="nav-text">Pesanan Saya</span>
             <a-badge class="ml-auto" count="3" />
@@ -147,7 +142,7 @@
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="7">
-        <nuxt-link to="/accounts/mitra/setting" class="nav-text">Pengaturan</nuxt-link>
+        <nuxt-link to="/accounts/setting" class="nav-text">Pengaturan</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="logout">

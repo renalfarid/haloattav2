@@ -1,7 +1,7 @@
 <template>
   <div class="ant-layout--accounts-management">
     <div class="mb-16">
-      <nuxt-link to="/accounts/mitra/management/package" class="fs-14 fw-400 cr-gray">
+      <nuxt-link to="/accounts/management/package" class="fs-14 fw-400 cr-gray">
         <a-icon type="left" class="mr-8" />Kembali
       </nuxt-link>
     </div>

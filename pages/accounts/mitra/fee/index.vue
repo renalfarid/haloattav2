@@ -19,7 +19,7 @@
 
     <div v-show="seeFee">
       <a-card class="b-shadow b-radius b-solid mt-16 mb-16" :bordered="false">
-        <a-row :gutter="16" class="mb-16">
+        <a-row :gutter="16" type="flex" justify="space-around" align="middle">
           <a-col :span="8">
             <a-card-grid class="b-radius" style="width: 100%">
               <div class="d-flex align-items-center">
@@ -38,156 +38,8 @@
               </div>
             </a-card-grid>
           </a-col>
-          <a-col :span="8">
-            <a-card-grid class="b-radius" style="width: 100%">
-              <div class="d-flex align-items-center">
-                <div class="mr-16">
-                  <a-avatar
-                    style="backgroundColor: #0FACF3;padding: 4px"
-                    src="/icons/search/tabs/white/ticket.svg"
-                  />
-                </div>
-                <div>
-                  <div
-                    class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default"
-                  >tiket group</div>
-                  <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 0</div>
-                </div>
-              </div>
-            </a-card-grid>
-          </a-col>
-          <a-col :span="8">
-            <a-card-grid class="b-radius" style="width: 100%">
-              <div class="d-flex align-items-center">
-                <div class="mr-16">
-                  <a-avatar
-                    style="backgroundColor: #F84ECA;padding: 4px"
-                    src="/icons/search/tabs/white/accommodation.svg"
-                  />
-                </div>
-                <div>
-                  <div
-                    class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default"
-                  >LA Akomodasi</div>
-                  <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 0</div>
-                </div>
-              </div>
-            </a-card-grid>
-          </a-col>
-        </a-row>
 
-        <a-row :gutter="16" class="mb-16">
-          <a-col :span="8">
-            <a-card-grid class="b-radius" style="width: 100%">
-              <div class="d-flex align-items-center">
-                <div class="mr-16">
-                  <a-avatar
-                    style="backgroundColor: #FF7C0A;padding: 4px"
-                    src="/icons/search/tabs/white/visa.svg"
-                  />
-                </div>
-                <div>
-                  <div class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default">Visa</div>
-                  <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 0</div>
-                </div>
-              </div>
-            </a-card-grid>
-          </a-col>
-          <a-col :span="8">
-            <a-card-grid class="b-radius" style="width: 100%">
-              <div class="d-flex align-items-center">
-                <div class="mr-16">
-                  <a-avatar
-                    style="backgroundColor: #52c41a;padding: 4px"
-                    src="/icons/search/tabs/white/insurance.svg"
-                  />
-                </div>
-                <div>
-                  <div class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default">Asuransi</div>
-                  <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 0</div>
-                </div>
-              </div>
-            </a-card-grid>
-          </a-col>
-          <a-col :span="8">
-            <a-card-grid class="b-radius" style="width: 100%">
-              <div class="d-flex align-items-center">
-                <div class="mr-16">
-                  <a-avatar
-                    style="backgroundColor: #484848;padding: 4px"
-                    src="/icons/search/tabs/white/handling.svg"
-                  />
-                </div>
-                <div>
-                  <div
-                    class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default"
-                  >Handling Umrah</div>
-                  <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 0</div>
-                </div>
-              </div>
-            </a-card-grid>
-          </a-col>
-        </a-row>
-
-        <a-row :gutter="16" class="mb-16">
-          <a-col :span="8">
-            <a-card-grid class="b-radius" style="width: 100%">
-              <div class="d-flex align-items-center">
-                <div class="mr-16">
-                  <a-avatar
-                    style="backgroundColor: #CB9605;padding: 4px"
-                    src="/icons/search/tabs/white/manasik.svg"
-                  />
-                </div>
-                <div>
-                  <div
-                    class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default"
-                  >Manasik Umrah</div>
-                  <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 0</div>
-                </div>
-              </div>
-            </a-card-grid>
-          </a-col>
-          <a-col :span="8">
-            <a-card-grid class="b-radius" style="width: 100%">
-              <div class="d-flex align-items-center">
-                <div class="mr-16">
-                  <a-avatar
-                    style="backgroundColor: #F43662;padding: 4px"
-                    src="/icons/search/tabs/white/equipment.svg"
-                  />
-                </div>
-                <div>
-                  <div
-                    class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default"
-                  >Perlengkapan Umrah</div>
-                  <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 0</div>
-                </div>
-              </div>
-            </a-card-grid>
-          </a-col>
-          <a-col :span="8">
-            <a-card-grid class="b-radius" style="width: 100%">
-              <div class="d-flex align-items-center">
-                <div class="mr-16">
-                  <a-avatar
-                    style="backgroundColor: #FFD500;padding: 4px"
-                    src="/icons/search/tabs/white/tourleader.svg"
-                  />
-                </div>
-                <div>
-                  <div
-                    class="text-ellipsis text-uppercase fs-13 fw-400 cr-gray f-default"
-                  >Tour Leader Umrah</div>
-                  <div class="text-ellipsis fs-18 fw-500 cr-black f-default">Rp 0</div>
-                </div>
-              </div>
-            </a-card-grid>
-          </a-col>
-        </a-row>
-
-        <a-row :gutter="16" type="flex" justify="end">
-          <a-col :span="8">
+          <a-col :span="8" :offset="8">
             <a-button
               class="fs-15 fw-500 b-shadow b-radius text-uppercase"
               type="primary"
