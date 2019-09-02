@@ -41,6 +41,9 @@
                     border-color: $color-main;
                 }
             }
+            & .ant-calendar-picker-input {
+                padding-left: 30px !important;
+            }
             & .ant-select-selection {
                 @include border-radius(0);
                 background: transparent;

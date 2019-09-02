@@ -1,16 +1,22 @@
 <template>
   <div class="ant-layout--results">
-    <div class="ant-layout--results-space"></div>
+    <div class="ant-layout--results-space-small"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <search-result-tourleader />
+        <div class="ant-layout--results-top mt-16 mb-24">
+          <div class="d-flex align-items-center mb-16">
+            <div class="fs-24 fw-500 cr-black">Semua Vendor Tour Leader</div>
+            <div class="ml-auto">
+              <nuxt-link to="/" class="fs-14 cr-gray">
+                <a-icon type="left" class="fs-12 mr-4" />Kembali
+              </nuxt-link>
+            </div>
+          </div>
 
           <filter-result-tourleader />
         </div>
 
         <div class="ant-layout--results-list pb-16">
-          <div class="ant-layout--results-list-label fw-400">Hasil Pencarian Tour Leader</div>
           <div
             v-infinite-scroll="loadMore"
             :infinite-scroll-disabled="busy"
@@ -118,15 +124,14 @@
   </div>
 </template>
 <script>
-import searchResultTourleader from "~/components/contents/lib/search/result/tourleader.vue";
 import filterResultTourleader from "~/components/contents/lib/filter/result/tourleader.vue";
 import axios from "axios";
 export default {
-  name: "tourleaderResult",
+  name: "tourleaderAll",
   head() {
     return {
       title:
-        "Hasil Pencarian Tour Leader - Pesan Paket Umrah & Komponen Umrah Lainnya"
+        "Semua Vendor Tour Leader - Pesan Paket Umrah & Komponen Umrah Lainnya"
     };
   },
   data() {
@@ -160,7 +165,6 @@ export default {
     }
   },
   components: {
-    searchResultTourleader,
     filterResultTourleader
   }
 };

@@ -4,7 +4,10 @@
       class="ant-layout-sider--accounts"
       :style="{ overflow: 'auto', height: '100vh', position: 'fixed' }"
     >
-      <side-bar />
+      <!-- if group customer -->
+      <sidebar-customer />
+      <!-- if group umaroh personal -->
+      <!-- <sidebar-personal /> -->
     </a-layout-sider>
 
     <a-layout :style="{ marginLeft: '260px', padding: '24px',}">
@@ -19,11 +22,13 @@
   </a-layout>
 </template>
 <script>
-import sideBar from "~/components/accounts/sidebar/sidebar.vue";
+import sidebarCustomer from "~/components/accounts/sidebar/customer.vue";
+// import sidebarPersonal from "~/components/accounts/sidebar/personal.vue";
 import headerBar from "~/components/accounts/header/header.vue";
 export default {
   components: {
-    sideBar,
+    sidebarCustomer,
+    // sidebarPersonal,
     headerBar
   }
 };

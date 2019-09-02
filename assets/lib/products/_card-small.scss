@@ -112,6 +112,20 @@
                         font-size: 16px;
                         height: 44px;
                     }
+                    & .ant-avatar {
+                        &.vendor-logo {
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                        }
+                        & img {
+                            max-width: 100% !important;
+                            max-height: 100% !important;
+                            width: auto !important;
+                            height: auto !important;
+                            display: inline-block !important;
+                        }
+                    }
                 }
                 & .ant-card-meta-description {
                     & .ant-card-meta-description--bottom {

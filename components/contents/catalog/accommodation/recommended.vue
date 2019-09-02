@@ -7,7 +7,7 @@
             <div slot="cover">
               <div
                 class="ant-card-cover--images"
-                :style="{ backgroundImage: `url(${item.images_package})` }"
+                :style="{ backgroundImage: `url(${item.gambar})` }"
               >
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius"></div>
@@ -31,39 +31,42 @@
 
             <div class="d-flex align-items-center">
               <div class="mr-8">
-                <a-avatar :src="item.logo_vendor" size="small" />
+                <a-avatar
+                  :src="item.foto != '' ? item.foto : 'https://tes.umaroh.com/file/mitra/perusahaan/CMS-190731868542424-ATT-539.jpg'"
+                  size="small"
+                />
               </div>
               <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.vendor}}</div>
               <div class="ml-auto">
-                <a-rate class="fs-12 f-default" :defaultValue="4" disabled />
+                <a-rate class="fs-12 f-default" :defaultValue="4" disabled/>
               </div>
             </div>
 
             <a-row :gutter="8" type="flex" justify="space-between" align="middle" class="mt-8 mb-8">
               <a-col :span="12" class="text-left">
-                <div class="fs-15 fw-500 cr-black text-capitalize text-ellipsis f-default">
-                  Rayyana
-                  Ajyad
-                </div>
+                <div
+                  class="fs-15 fw-500 cr-black text-capitalize text-ellipsis f-default"
+                >{{item.nama_hotel_mekkah}}</div>
                 <div class="fs-13 fw-400 cr-black text-capitalize f-default">3 Hari Mekkah</div>
               </a-col>
               <a-col :span="12" class="text-right">
-                <div class="fs-15 fw-500 cr-black text-capitalize text-ellipsis f-default">
-                  Pinewood
-                  Hotel
-                </div>
+                <div
+                  class="fs-15 fw-500 cr-black text-capitalize text-ellipsis f-default"
+                >{{item.nama_hotel_madinah}}</div>
                 <div class="fs-13 fw-400 cr-black text-capitalize f-default">4 Hari Madinah</div>
               </a-col>
             </a-row>
 
             <div class="d-flex align-items-center">
-              <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">Program 9 Hari</div>
-              <div class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis">Rp{{item.price}}</div>
+              <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">Program {{item.days}} Hari</div>
+              <div
+                class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis"
+              >Rp{{item.harga_quad | currency}}</div>
             </div>
 
             <div class="package-description--more p-16">
               <div class="d-flex align-items-center mb-8">
-                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">High Session</div>
+                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">{{item.tipe}} Session</div>
                 <div
                   class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto"
                 >{{item.class_room}}</div>
@@ -72,7 +75,7 @@
               <div class="d-flex align-items-center mb-16">
                 <div class="fs-13 fw-400 text-ellipsis">
                   <div class="cr-gray">Check In</div>
-                  <div class="cr-black">10 September 2019</div>
+                  <div class="cr-black">{{item.tanggal}}</div>
                 </div>
                 <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
                   <div class="cr-gray">Check Out</div>
@@ -91,50 +94,31 @@
   </a-list>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       loading: true,
-      lisData: [
-        {
-          id: 1,
-          images_package: "/akomodasi/hotel/l1.jpg",
-          logo_vendor: "/akomodasi/logo/ll1.svg",
-          vendor: "Al Jumrah",
-          price: "6.200.000",
-          class_room: "Quad Room"
-        },
-        {
-          id: 2,
-          images_package: "/akomodasi/hotel/l2.jpg",
-          logo_vendor: "/akomodasi/logo/ll2.svg",
-          vendor: "Al Jumrah",
-          price: "6.700.000",
-          class_room: "Quad Room"
-        },
-        {
-          id: 3,
-          images_package: "/akomodasi/hotel/l3.jpg",
-          logo_vendor: "/akomodasi/logo/ll3.svg",
-          vendor: "Al Jumrah",
-          price: "6.300.000",
-          class_room: "Quad Room"
-        },
-        {
-          id: 4,
-          images_package: "/akomodasi/hotel/l4.jpg",
-          logo_vendor: "/akomodasi/logo/ll4.svg",
-          vendor: "Al Jumrah",
-          price: "6.900.000",
-          class_room: "Quad Room"
-        }
-      ]
+      lisData: []
     };
   },
-  mounted() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 1500);
+  created: function() {
+    // get todo items and start listening to events once component is created
+    this.getdata();
+  },
+  methods: {
+    getdata() {
+      axios
+        .get("https://api.haloatta.com/api/la/all", {
+          params: {
+            per_page: 4
+          }
+        })
+        .then(response => {
+          this.lisData = response.data.data.data;
+          this.loading = false;
+        });
+    }
   }
 };
 </script>

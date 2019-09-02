@@ -90,13 +90,18 @@
 
       <a-col :span="12">
         <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+          <div class="icon-search">
+            <a-icon type="calendar" />
+          </div>
           <a-date-picker
             size="large"
             style="width: 100%"
             v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
             :disabledDate="disabledDate"
             placeholder="Pilih Tanggal"
-          />
+          >
+            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+          </a-date-picker>
         </a-form-item>
       </a-col>
     </a-row>

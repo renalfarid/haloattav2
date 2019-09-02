@@ -129,7 +129,7 @@
                   >Pemberangkatan {{item.products_categorie}}</div>
                 </div>
               </a-col>
-              <a-col :span="6">
+              <a-col :span="8">
                 <div class="fs-14 fw-400 cr-gray">Status Pemberangkatan</div>
                 <div class="fs-14 fw-500 cr-black">
                     <a-badge status="default" :text="item.status_departure" v-if="item.status_departure === 'Menunggu Pemberangkatan'" />
@@ -137,15 +137,10 @@
                     <a-badge status="success" :text="item.status_departure" v-if="item.status_departure === 'Selesai'" />
                 </div>
               </a-col>
-              <a-col :span="5">
-                <div class="fs-14 fw-400 cr-gray">Status Berkas</div>
-                <div class="fs-14 fw-500 cr-orange" v-if="item.status_file === 'Pengumpulan Berkas'">{{item.status_file}}</div>
-                <div class="fs-14 fw-500 cr-success" v-if="item.status_file === 'Berkas Lengkap'">{{item.status_file}}</div>
-              </a-col>
-              <a-col :span="5" class="text-right">
-                <nuxt-link to="/accounts/mitra/jamaah/berkas">
+              <a-col :span="8" class="text-right">
+                <nuxt-link to="/accounts/mitra/departure/detail">
                   <span class="fs-14 fw-500 cr-green">
-                    Lihat Berkas
+                    Lihat Detail
                     <a-icon type="right" class="fs-12 ml-8" />
                   </span>
                 </nuxt-link>

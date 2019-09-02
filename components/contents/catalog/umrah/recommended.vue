@@ -1,139 +1,137 @@
 <template>
-  <div class="container">
-    <div class="header-title">
-      <a-row :gutter="16" type="flex" justify="center" align="middle">
-        <a-col :span="16">
-          <h2 class="title">Rekomendasi Paket Umrah Sejenis</h2>
-        </a-col>
-        <a-col :span="8" class="text-right">
-          <nuxt-link to="/umrah/recomended-same-list">
-            Telusuri
-            <a-icon type="right" />
-          </nuxt-link>
-        </a-col>
-      </a-row>
-    </div>
+  <a-list :grid="{ gutter: 16, xs: 4, sm: 4, md: 4, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
+    <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
+      <a-skeleton :loading="loading" active>
+        <a-card class="ant-card-package-small">
+          <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
+          <div slot="cover">
+            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${item.gambar})` }">
+              <div class="ant-card-cover--overlay">
+                <div class="ant-card-cover--overlay-box-radius"></div>
+                <div class="ant-card-cover--overlay-text">
+                  <div class="ant-card-cover--overlay-text-title fs-15">{{item.sisa_seat}}</div>
+                  <div class="ant-card-cover--overlay-text-subtitle text-uppercase">pax</div>
+                </div>
+              </div>
 
-    <div class="container-slick">
-      <slick ref="slick" :options="slickRecomended">
-        <div v-for="(item, index) in lisData" :key="index">
-          <a-card class="ant-card-package-small">
-            <div slot="cover">
-              <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${item.images_product})` }">
-                <div class="ant-card-cover--overlay">
-                  <div class="ant-card-cover--overlay-box-radius"></div>
-                  <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title">sisa</div>
-                    <div class="ant-card-cover--overlay-text-subtitle">
-                      <span>{{item.pax_available}}</span> pax
-                    </div>
-                  </div>
+              <div class="ant-card--overlay-block">
+                <div class="d-flex align-items-center h-100">
+                  <a-button>
+                    <nuxt-link to="/catalog/umrah/detail-package">Lihat detail</nuxt-link>
+                  </a-button>
                 </div>
               </div>
             </div>
-            <a-card-meta>
-              <div slot="title">
-                <div class="ant-card-meta-title--top d-flex align-items-center">
-                  <div class="ant-card-meta-title--top-left">
-                    <a-rate class="fs-14" :defaultValue="3" disabled />
-                  </div>
-                  <div class="ant-card-meta-title--top-right ml-auto">
-                    <a-tag>
-                      Terbooking
-                      <strong>{{item.pax_booked}}</strong> seat
-                    </a-tag>
+          </div>
+          <a-card-meta>
+            <div slot="title">
+              <div class="ant-card-meta-title--top d-flex align-items-center">
+                <div class="ant-card-meta-title--top-left f-default d-flex align-items-center">
+                  <a-popover trigger="hover">
+                    <template slot="content">
+                      <div class="fs-15 fw-500 cr-black">{{item.nama}}</div>
+                      <div class="fs-14 fw-400 cr-gray f-default">
+                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
+                      </div>
+                    </template>
+                    <a-avatar class="vendor-logo zIndex mr-8" :style="{ backgroundImage: `url(${item.foto_vendor})` }" />
+                  </a-popover>
+
+                  <a-popover trigger="hover">
+                    <template slot="content">
+                      <div class="fs-13 fw-400 cr-black f-default">Maskapai Garuda Indonesia</div>
+                    </template>
+                    <a-avatar class="zIndex mr-8" :src="item.image"/>
+                  </a-popover>
+
+                  <a-popover trigger="hover">
+                    <template slot="content">
+                      <a-rate class="fs-14 mb-4" :defaultValue="3" disabled/>
+                      <div
+                        class="fs-13 fw-400 cr-black f-default mb-4"
+                      >Mekkah : {{item.hotel_mekkah}}</div>
+                      <div class="fs-13 fw-400 cr-black f-default">Madinah : {{item.hotel_madinah}}</div>
+                    </template>
+                    <a-avatar
+                      class="zIndex mr-8"
+                      size="small"
+                      style="backgroundColor: rgba(15, 172, 243, .1);"
+                      src="/icons/search/tabs/color/accommodation.svg"
+                    />
+                  </a-popover>
+                </div>
+                <div
+                  class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black"
+                >Program {{item.jumlah_hari}} Hari</div>
+              </div>
+              <div class="ant-card-meta-title--package text-capitalize fw-500">{{item.nama}}</div>
+            </div>
+
+            <div slot="description">
+              <div class="ant-card-meta-description--bottom d-flex align-items-center">
+                <div class="ant-card-meta-description--bottom-right d-flex">
+                  <div class="fs-14 fw-400 cr-gray">
+                    Terjual
+                    <strong>{{item.seat - item.sisa_seat}}</strong> Pax
                   </div>
                 </div>
-                <div class="ant-card-meta-title--package">{{item.name_product}}</div>
+                <div
+                  class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
+                >{{item.harga_jual | currency}}</div>
               </div>
+            </div>
+          </a-card-meta>
+          <div class="package-description--more p-16">
+            <div class="fs-15 fw-400 cr-black f-default text-ellipsis mb-8">
+              <span>Keberangkatan {{item.nama_kota}}</span>
+            </div>
 
-              <div slot="description">
-                <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                  <div class="ant-card-meta-description--bottom-left">Rp{{item.price_product}}</div>
-                  <div class="ant-card-meta-description--bottom-right ml-auto d-flex">
-                    <div class="icon icon-star">
-                      <a-icon type="star" theme="filled" class="mr-4" />5.8
-                    </div>
-                    <div class="icon icon-comment">
-                      <a-icon type="message" class="mr-4" />10 Komentar
-                    </div>
-                  </div>
-                </div>
+            <div class="d-flex align-items-center mb-16">
+              <div class="fs-14 fw-400 text-ellipsis">
+                <div class="cr-gray">Keberangkatan</div>
+                <div class="cr-black">{{item.tgl_berangkat}}</div>
               </div>
-            </a-card-meta>
-          </a-card>
-        </div>
-      </slick>
+              <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
+                <div class="cr-gray">Kedatangan</div>
+                <div class="cr-black">19 September 2019</div>
+              </div>
+            </div>
 
-      <div class="action-slick">
-        <a-button class="btn-left" @click="prev" size="large" shape="circle" icon="left" />
-        <a-button class="btn-right" @click="next" size="large" shape="circle" icon="right" />
-      </div>
-    </div>
-  </div>
+            <a-button block>
+              <nuxt-link to="/catalog/umrah/order-review">Pesan</nuxt-link>
+            </a-button>
+          </div>
+        </a-card>
+      </a-skeleton>
+    </a-list-item>
+  </a-list>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      slickRecomended: {
-        slidesToShow: 4,
-        infinite: false,
-        arrows: false,
-        draggable: true,
-        prevArrow: ".prev",
-        nextArrow: ".next"
-      },
-      lisData: [
-        {
-          id: 1,
-          name_product: "Umrah Exclusive November 2019 Keberangkatan Jakarta",
-          images_product: "/products/V2.png",
-          price_product: "20.400.000",
-          pax_available: 21,
-          pax_booked: 65
-        },
-        {
-          id: 2,
-          name_product: "Umrah Exclusive Desember 2019 Keberangkatan Makassar",
-          images_product: "/products/V2.png",
-          price_product: "27.900.000",
-          pax_available: 18,
-          pax_booked: 75
-        },
-        {
-          id: 3,
-          name_product: "Umrah Exclusive Januari 2020 Keberangkatan Makassar",
-          images_product: "/products/V3.png",
-          price_product: "23.300.000",
-          pax_available: 32,
-          pax_booked: 5
-        },
-        {
-          id: 4,
-          name_product: "Umrah Exclusive Februari 2020 Keberangkatan Makassar",
-          images_product: "/products/V4.png",
-          price_product: "26.900.000",
-          pax_available: 29,
-          pax_booked: 14
-        },
-        {
-          id: 5,
-          name_product: "Umrah Exclusive Maret 2020 Keberangkatan Jakarta",
-          images_product: "/products/V5.png",
-          price_product: "27.000.000",
-          pax_available: 47,
-          pax_booked: 14
-        }
-      ]
+      loading: true,
+      lisData: []
     };
   },
+  created: function() {
+    // get todo items and start listening to events once component is created
+    this.getdata();
+  },
   methods: {
-    next() {
-      this.$refs.slick.next();
-    },
-    prev() {
-      this.$refs.slick.prev();
+    getdata() {
+      axios
+        .get("https://api.haloatta.com/api/paket/umroh/all", {
+          params: {
+            per_page: 4
+          }
+        })
+        .then(response => {
+          console.log(response.data.data.data, "ok");
+          this.lisData = response.data.data.data;
+          this.loading = false;
+        });
     }
   }
 };

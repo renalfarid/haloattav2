@@ -58,6 +58,20 @@
                         </div>
                       </a-card>
 
+                      <!-- Add code voucher -->
+                      <a-card :style="{margin: '16px 0 24px 0'}">
+                        <div class="ant-package--information-bill mt-16 mb-16">
+                          <a-row :gutter="16">
+                            <a-col :span="16">
+                              <a-input placeholder="Masukkan kode voucher anda jika ada" size="large" />
+                            </a-col>
+                            <a-col :span="8">
+                              <a-button type="primary" class="b-shadow b-radius" size="large" block>Gunakan</a-button>
+                            </a-col>
+                          </a-row>
+                        </div>
+                      </a-card>
+
                       <!-- Payment choose Transfer -->
                       <div class="ant-list-item--package-invoice">
                         <div class="w-100">
@@ -139,7 +153,7 @@
                                     </a-col>
                                     <a-col :span="2" class="text-right">
                                       <a-button
-                                        class="ant-btn--action-outline"
+                                        class="d-none ant-btn--action-outline"
                                         size="small"
                                         block
                                       >Salin</a-button>
@@ -181,7 +195,7 @@
                                     </a-col>
                                     <a-col :span="2" class="text-right">
                                       <a-button
-                                        class="ant-btn--action-outline"
+                                        class="d-none ant-btn--action-outline"
                                         size="small"
                                         block
                                       >Salin</a-button>
@@ -223,7 +237,7 @@
                                     </a-col>
                                     <a-col :span="2" class="text-right">
                                       <a-button
-                                        class="ant-btn--action-outline"
+                                        class="d-none ant-btn--action-outline"
                                         size="small"
                                         block
                                       >Salin</a-button>
@@ -265,7 +279,7 @@
                                     </a-col>
                                     <a-col :span="2" class="text-right">
                                       <a-button
-                                        class="ant-btn--action-outline"
+                                        class="d-none ant-btn--action-outline"
                                         size="small"
                                         block
                                       >Salin</a-button>
@@ -323,7 +337,7 @@
                                       >
                                         <a-button
                                           slot="addonAfter"
-                                          class="ant-btn--action-outline"
+                                          class="d-none ant-btn--action-outline"
                                           size="small"
                                           block
                                         >Salin</a-button>
@@ -395,7 +409,7 @@
                                       >
                                         <a-button
                                           slot="addonAfter"
-                                          class="ant-btn--action-outline"
+                                          class="d-none ant-btn--action-outline"
                                           size="small"
                                           block
                                         >Salin</a-button>

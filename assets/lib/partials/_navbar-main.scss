@@ -8,6 +8,11 @@
     & .navbar-nav {
         @include align-items(center);
         @include flexbox();
+        & .drawer-menu {
+            margin-right: 16px;
+            color: #ffffff;
+            font-size: 22px;
+        }
         & .navbar-brand {
             display: block;
             width: 126px;
@@ -23,7 +28,8 @@
             @include align-items(center);
             @include flexbox();
             margin-left: auto;
-            & .nav-item {
+            & .nav-item,
+            & .ant-menu-submenu {
                 background: transparent;
                 border: none;
                 & .nav-link {
@@ -38,6 +44,11 @@
                             color: rgba($color: #ffffff, $alpha: 1);
                         }
                     }
+                }
+                & .ant-menu-submenu-title {
+                    color: rgba($color: #ffffff, $alpha: .9);
+                    padding: 0 14px;
+                    font-size: 15px;
                 }
             }
             & .navbar-button {
@@ -73,6 +84,11 @@
         border-bottom: 1px solid #f5f5f5;
         background: #ffffff !important;
         & .navbar-nav {
+            & .drawer-menu {
+                margin-right: 16px;
+                color: $color-font;
+                font-size: 22px;
+            }
             & .navbar-brand {
                 display: block;
                 width: 126px;
@@ -84,7 +100,8 @@
                 }
             }
             & .navbar-right {
-                & .nav-item {
+                & .nav-item,
+                & .ant-menu-submenu {
                     background: transparent;
                     border: none;
                     float: right;
@@ -98,6 +115,11 @@
                                 color: rgba($color: #000, $alpha: 1);
                             }
                         }
+                    }
+                    & .ant-menu-submenu-title {
+                        color: rgba($color: #000, $alpha: .6);
+                        padding: 0 14px;
+                        font-size: 15px;
                     }
                 }
                 & .navbar-button {

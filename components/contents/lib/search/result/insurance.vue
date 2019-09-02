@@ -135,24 +135,34 @@
 
             <a-col :span="8">
               <a-form-item label="Dari Tanggal" hasFeedback>
+                <div class="icon-search">
+                  <a-icon type="calendar" />
+                </div>
                 <a-date-picker
                   size="large"
                   style="width: 100%"
                   v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
                   :disabledDate="disabledDate"
                   placeholder="Pilih Tanggal"
-                />
+                >
+                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+                </a-date-picker>
               </a-form-item>
             </a-col>
 
             <a-col :span="8">
               <a-form-item label="Sampai Tanggal">
+                <div class="icon-search">
+                  <a-icon type="calendar" />
+                </div>
                 <a-date-picker
                   size="large"
                   style="width: 100%"
                   :defaultValue="moment('2019-06-10', dateFormat)"
                   disabled
-                />
+                >
+                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+                </a-date-picker>
               </a-form-item>
             </a-col>
           </a-row>
@@ -180,7 +190,7 @@ export default {
     this.dateFormat = "YYYY-MM-DD";
     return {
       visibleSearch: false,
-      pax: 1,
+      pax: 1
     };
   },
   beforeCreate() {

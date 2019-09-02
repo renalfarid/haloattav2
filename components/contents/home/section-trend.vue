@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="header-title">
-      <a-divider orientation="left" class="ant-divider-title-left">Sedang Trending</a-divider>
+      <a-divider orientation="left" class="ant-divider-title-left">
+        Sedang Trending
+      </a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
           <h6 class="subtitle">

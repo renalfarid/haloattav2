@@ -1,16 +1,22 @@
 <template>
   <div class="ant-layout--results">
-    <div class="ant-layout--results-space"></div>
+    <div class="ant-layout--results-space-small"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
-          <search-result-tourleader />
+        <div class="ant-layout--results-top mt-16 mb-24">
+          <div class="d-flex align-items-center mb-16">
+            <div class="fs-24 fw-500 cr-black">Semua Visa</div>
+            <div class="ml-auto">
+              <nuxt-link to="/" class="fs-14 cr-gray">
+                <a-icon type="left" class="fs-12 mr-4" />Kembali
+              </nuxt-link>
+            </div>
+          </div>
 
-          <filter-result-tourleader />
+          <filter-result-visa />
         </div>
 
         <div class="ant-layout--results-list pb-16">
-          <div class="ant-layout--results-list-label fw-400">Hasil Pencarian Tour Leader</div>
           <div
             v-infinite-scroll="loadMore"
             :infinite-scroll-disabled="busy"
@@ -28,17 +34,29 @@
                 data-aos-duration="1200"
               >
                 <a-skeleton :loading="loading" active>
-                  <nuxt-link to="/catalog/tourleader/detail" class="d-block">
+                  <nuxt-link to="/catalog/visa/detail" class="d-block">
                     <a-card class="ant-card-package-small">
                       <div slot="cover">
                         <div
                           class="ant-card-cover--images"
                           :style="{ backgroundImage: `url(${item.images_package})` }"
                         >
+                          <div class="ant-card-cover--overlay">
+                            <div class="ant-card-cover--overlay-box-radius ant-pax--visa"></div>
+                            <div class="ant-card-cover--overlay-text">
+                              <div
+                                class="ant-card-cover--overlay-text-title fs-18 fw-500"
+                              >{{item.pax}}</div>
+                              <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
+                                <span>Pax</span>
+                              </div>
+                            </div>
+                          </div>
+
                           <div class="ant-card--overlay-block">
                             <div class="d-flex align-items-center h-100">
                               <a-button>
-                                <nuxt-link to="/catalog/tourleader/detail">Lihat detail</nuxt-link>
+                                <nuxt-link to="/catalog/visa/detail">Lihat detail</nuxt-link>
                               </a-button>
                             </div>
                           </div>
@@ -47,21 +65,8 @@
 
                       <a-card-meta>
                         <div slot="title">
-                          <div class="ant-card-meta-title--top d-flex align-items-center mb-16">
+                          <div class="ant-card-meta-title--top d-flex align-items-center">
                             <div class="ant-card-meta-title--top-left d-flex align-items-center">
-                              <div class="mr-8">
-                                <a-popover trigger="hover">
-                                  <template slot="content">
-                                    <div class="fs-13 fw-400 cr-gray f-default">Berpengalaman</div>
-                                  </template>
-                                  <a-avatar
-                                    style="backgroundColor: #FF7C0A"
-                                    class="zIndex"
-                                    icon="safety"
-                                    size="small"
-                                  />
-                                </a-popover>
-                              </div>
                               <div class="mr-8">
                                 <a-avatar :src="item.logo_provider" size="small" />
                               </div>
@@ -70,9 +75,7 @@
                               >{{item.provider}}</div>
                             </div>
                           </div>
-                          <div
-                            class="ant-card-meta-title--package fs-15 fw-500"
-                          >{{item.name_tourleader}}</div>
+                          <div class="ant-card-meta-title--package fw-500 mb-0">{{item.name_visa}}</div>
                         </div>
 
                         <div slot="description">
@@ -91,19 +94,18 @@
 
                       <div class="package-description--more p-16">
                         <div class="d-flex align-items-center mb-16">
-                          <div class="fs-14 fw-400 cr-black text-ellipsis">Asal Makassar</div>
-                          <div
-                            class="fs-14 fw-400 cr-black text-ellipsis text-right ml-auto"
-                          >Laki-Laki</div>
-                        </div>
-
-                        <div class="mb-16">
-                          <div class="fs-14 fw-400 cr-gray text-ellipsis">Keterangan</div>
-                          <div class="fs-14 fw-400 cr-black">Mampu berbahasa arab dan indonesia</div>
+                          <div class="fs-13 fw-400 text-ellipsis">
+                            <div class="cr-gray">Check In</div>
+                            <div class="cr-black">10 September 2019</div>
+                          </div>
+                          <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
+                            <div class="cr-gray">Check Out</div>
+                            <div class="cr-black">19 September 2019</div>
+                          </div>
                         </div>
 
                         <a-button block>
-                          <nuxt-link to="/catalog/tourleader/order-review">Pesan</nuxt-link>
+                          <nuxt-link to="/catalog/visa/order-review">Pesan</nuxt-link>
                         </a-button>
                       </div>
                     </a-card>
@@ -118,15 +120,13 @@
   </div>
 </template>
 <script>
-import searchResultTourleader from "~/components/contents/lib/search/result/tourleader.vue";
-import filterResultTourleader from "~/components/contents/lib/filter/result/tourleader.vue";
+import filterResultVisa from "~/components/contents/lib/filter/result/visa.vue";
 import axios from "axios";
 export default {
-  name: "tourleaderResult",
+  name: "visaAll",
   head() {
     return {
-      title:
-        "Hasil Pencarian Tour Leader - Pesan Paket Umrah & Komponen Umrah Lainnya"
+      title: "Semua Visa - Pesan Paket Umrah & Komponen Umrah Lainnya"
     };
   },
   data() {
@@ -149,7 +149,7 @@ export default {
     loadMore() {
       console.log("Adding 6 more data results");
       this.busy = true;
-      axios.get("/dataTourleader.json").then(response => {
+      axios.get("/dataVisa.json").then(response => {
         const append = response.data.slice(
           this.data.length,
           this.data.length + this.limit
@@ -160,8 +160,7 @@ export default {
     }
   },
   components: {
-    searchResultTourleader,
-    filterResultTourleader
+    filterResultVisa
   }
 };
 </script>
