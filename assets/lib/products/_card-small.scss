@@ -113,6 +113,11 @@
                         height: 44px;
                     }
                     & .ant-avatar {
+                        &.vendor-logo {
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                        }
                         & img {
                             max-width: 100% !important;
                             max-height: 100% !important;

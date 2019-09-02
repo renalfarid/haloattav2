@@ -36,7 +36,7 @@
                         <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                       </div>
                     </template>
-                    <a-avatar class="zIndex mr-8" :src="item.foto_vendor"/>
+                    <a-avatar class="vendor-logo zIndex mr-8" :style="{ backgroundImage: `url(${item.foto_vendor})` }" />
                   </a-popover>
 
                   <a-popover trigger="hover">
@@ -57,7 +57,7 @@
                     <a-avatar
                       class="zIndex mr-8"
                       size="small"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
+                      style="backgroundColor: rgba(15, 172, 243, .1);"
                       src="/icons/search/tabs/color/accommodation.svg"
                     />
                   </a-popover>
@@ -66,7 +66,7 @@
                   class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black"
                 >Program {{item.jumlah_hari}} Hari</div>
               </div>
-              <div class="ant-card-meta-title--package fw-500">{{item.nama}}</div>
+              <div class="ant-card-meta-title--package text-capitalize fw-500">{{item.nama}}</div>
             </div>
 
             <div slot="description">
@@ -79,7 +79,7 @@
                 </div>
                 <div
                   class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
-                >Rp{{item.harga_jual}}</div>
+                >{{item.harga_jual | currency}}</div>
               </div>
             </div>
           </a-card-meta>
