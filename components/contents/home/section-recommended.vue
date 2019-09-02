@@ -66,7 +66,7 @@
                     <a-avatar
                       class="zIndex mr-8"
                       size="small"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
+                      style="backgroundColor: rgba(15, 172, 243, .1)"
                       src="/icons/search/tabs/color/accommodation.svg"
                     />
                   </a-popover>
@@ -75,7 +75,7 @@
                   <span>Program {{item.jumlah_hari}} Hari</span>
                 </div>
               </div>
-              <div class="ant-card-meta-title--package fw-500">{{item.nama}}</div>
+              <div class="ant-card-meta-title--package text-capitalize fw-500">{{item.nama}}</div>
             </div>
 
             <div slot="description">
@@ -89,7 +89,7 @@
                 <div
                   class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
                 >
-                  <span>Rp {{item.harga_jual}}</span>
+                  <span>{{item.harga_jual | currency}}</span>
                 </div>
               </div>
             </div>
