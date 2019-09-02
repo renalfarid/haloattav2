@@ -147,6 +147,11 @@
 
       <!-- if there is data then display it package umrah -->
       <div class="content-recomended">
+        <section-recommended />
+      </div>
+
+      <!-- if there is data then display it package umrah -->
+      <div class="content-recomended">
         <div class="container">
           <div class="header-title">
             <a-divider orientation="left" class="ant-divider-title-left">Paket Umrah</a-divider>
@@ -376,6 +381,7 @@ import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 // import sectionMyumrah from "~/components/contents/home/section-myumrah.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 
+import sectionRecommended from "~/components/contents/home/section-recommended.vue";
 import umrahRecommended from "~/components/contents/catalog/umrah/recommended.vue";
 import ticketRecommended from "~/components/contents/catalog/ticket/recommended.vue";
 import accommodationRecommended from "~/components/contents/catalog/accommodation/recommended.vue";
@@ -410,7 +416,8 @@ export default {
     searchEquipment,
     searchTourleader,
     sectionFavorite,
-    // sectionMyumrah,
+    // sectionMyumrah
+    sectionRecommended,
     sectionComponentsUmrah,
     umrahRecommended,
     ticketRecommended,
