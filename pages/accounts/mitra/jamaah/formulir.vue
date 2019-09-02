@@ -40,62 +40,120 @@
 
     <a-form layout="vertical" :form="form" hideRequiredMark>
       <a-card :bordered="false" class="b-shadow b-solid b-radius">
-        <a-row :gutter="16">
-          <a-col :span="6">
-            <a-form-item label="Title" hasFeedback>
-              <a-select
-                v-decorator="['title',{initialValue: 'Tn.', rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                placeholder="Pilih Title"
-                size="large"
-                style="width: 100%"
-              >
-                <a-select-option value="Tn.">Tn.</a-select-option>
-                <a-select-option value="Ny.">Ny.</a-select-option>
-                <a-select-option value="Nn.">nn.</a-select-option>
-              </a-select>
-            </a-form-item>
+        <a-row :gutter="16" type="flex" justify="space-around" align="middle">
+          <a-col :span="20">
+            <a-row :gutter="16">
+              <a-col :span="6">
+                <a-form-item label="Title" hasFeedback>
+                  <a-select
+                    v-decorator="['title',{initialValue: 'Tn.', rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    placeholder="Pilih Title"
+                    size="large"
+                    style="width: 100%"
+                  >
+                    <a-select-option value="Tn.">Tn.</a-select-option>
+                    <a-select-option value="Ny.">Ny.</a-select-option>
+                    <a-select-option value="Nn.">nn.</a-select-option>
+                  </a-select>
+                </a-form-item>
+              </a-col>
+
+              <a-col :span="18">
+                <a-form-item
+                  label="Nama Depan & Tengah (jika ada)"
+                  help="(tanpa gelar dan tanda baca)"
+                  hasFeedback
+                >
+                  <a-input
+                    v-decorator="['firstName',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    size="large"
+                  />
+                </a-form-item>
+              </a-col>
+            </a-row>
+
+            <a-row :gutter="16">
+              <a-col :span="24">
+                <a-form-item
+                  label="Nama Belakang / Nama Keluarga"
+                  help="(tanpa gelar dan tanda baca)"
+                  hasFeedback
+                >
+                  <a-input
+                    v-decorator="['lastName',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    size="large"
+                  />
+                </a-form-item>
+              </a-col>
+            </a-row>
+
+            <a-row :gutter="16">
+              <a-col :span="10">
+                <a-form-item label="Tempat Lahir" hasFeedback>
+                  <a-input
+                    v-decorator="['tempatlahir',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    size="large"
+                  />
+                </a-form-item>
+              </a-col>
+              <a-col :span="14">
+                <a-form-item label="Tanggal Lahir" hasFeedback>
+                  <a-date-picker
+                    v-decorator="['date',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    placeholder="Pilih Tanggal Lahir Anda"
+                    size="large"
+                    style="width: 100%"
+                  />
+                </a-form-item>
+              </a-col>
+            </a-row>
+          </a-col>
+
+          <a-col :span="4">
+            <div class="d-flex align-items-center">
+              <a-form-item class="m-auto" label="Photo Jamaah">
+                <a-upload
+                  v-decorator="['photoJamaah',{initialValue: photoJamaah,rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                  name="photoJamaah"
+                  listType="picture-card"
+                  :showUploadList="false"
+                  action="#"
+                  :beforeUpload="beforeUpload"
+                  @change="handleChange"
+                >
+                  <img class="max-width" v-if="photoJamaah" :src="photoJamaah" alt="avatar" />
+                  <div v-else>
+                    <a-icon :type="loading ? 'loading' : 'plus'" />
+                    <div class="ant-upload-text">Upload</div>
+                  </div>
+                </a-upload>
+              </a-form-item>
+            </div>
           </a-col>
         </a-row>
 
-        <a-row :gutter="16">
-          <a-col :span="12">
-            <a-form-item
-              label="Nama Depan & Tengah (jika ada)"
-              help="(tanpa gelar dan tanda baca)"
-              hasFeedback
-            >
-              <a-input
-                v-decorator="['firstName',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                size="large"
-              />
-            </a-form-item>
-          </a-col>
-          <a-col :span="12">
-            <a-form-item
-              label="Nama Belakang / Nama Keluarga"
-              help="(tanpa gelar dan tanda baca)"
-              hasFeedback
-            >
-              <a-input
-                v-decorator="['lastName',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                size="large"
-              />
-            </a-form-item>
-          </a-col>
-        </a-row>
+        <a-divider class="ant-divider-title-left" orientation="left" :style="{ marginTop: '0' }" />
 
         <a-row :gutter="16">
-          <a-col :span="12">
-            <a-form-item label="Tanggal Lahir" hasFeedback>
-              <a-date-picker
-                v-decorator="['date',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                placeholder="Pilih Tanggal Lahir Anda"
+          <a-col :span="8">
+            <a-form-item label="Nomor Telepon" hasFeedback>
+              <a-input
+                v-decorator="['telp',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
                 size="large"
-                style="width: 100%"
               />
             </a-form-item>
           </a-col>
-          <a-col :span="12">
+
+          <a-col :span="8">
+            <a-form-item label="Nomor Handphone" hasFeedback>
+              <a-input
+                v-decorator="['hp',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                size="large"
+              />
+            </a-form-item>
+          </a-col>
+
+          <a-col :span="8">
             <a-form-item label="Kewarganegaraan" hasFeedback>
               <a-select
                 v-decorator="['country',{initialValue: 'Indonesia', rules: [{ required: true, message: 'Harus di isi!' }]}]"
@@ -103,6 +161,51 @@
                 size="large"
               >
                 <a-select-option value="Indonesia">Indonesia</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+        </a-row>
+
+        <a-row :gutter="16">
+          <a-col :span="8">
+            <a-form-item label="Status Pernikahan" hasFeedback>
+              <a-select
+                v-decorator="['status',{initialValue: 'Belum Nikah', rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                placeholder="Pilih Status"
+                size="large"
+                style="width: 100%"
+              >
+                <a-select-option value="Belum Nikah">Belum Nikah</a-select-option>
+                <a-select-option value="Nikah">Nikah</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+          <a-col :span="8">
+            <a-form-item label="Jenis Pendidikan" hasFeedback>
+              <a-select
+                v-decorator="['pendidikan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                placeholder="Pilih Pendidikan"
+                size="large"
+                style="width: 100%"
+              >
+                <a-select-option value="SD">SD</a-select-option>
+                <a-select-option value="SMP/MTS">SMP/MTS</a-select-option>
+                <a-select-option value="SMA/SMK">SMA/SMK</a-select-option>
+                <a-select-option value="S1">S1</a-select-option>
+              </a-select>
+            </a-form-item>
+          </a-col>
+          <a-col :span="8">
+            <a-form-item label="Jenis Pekerjaan" hasFeedback>
+              <a-select
+                v-decorator="['pekerjaan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                placeholder="Pilih Pekerjaan"
+                size="large"
+                style="width: 100%"
+              >
+                <a-select-option value="Tani/Tambak">Tani/Tambak</a-select-option>
+                <a-select-option value="Wiraswasta">Wiraswasta</a-select-option>
+                <a-select-option value="Wirausaha">Wirausaha</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
@@ -187,14 +290,14 @@
             </a-form-item>
           </a-col>
           <a-col :span="12">
-            <a-form-item label="Kode Pos">
+            <a-form-item label="Kelurahan">
               <a-select
                 showSearch
-                v-decorator="['code_pos', {initialValue: '9224'}]"
-                placeholder="Pilih Kode Pos"
+                v-decorator="['subdistrict', {initialValue: 'Tamalanrea'}]"
+                placeholder="Pilih Kelurahan"
                 size="large"
               >
-                <a-select-option value="9224">9224</a-select-option>
+                <a-select-option value="Tamalanrea">Tamalanrea</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
@@ -208,64 +311,12 @@
           </a-col>
         </a-row>
 
-        <a-divider class="ant-divider-title-left" orientation="left" :style="{ marginTop: '0' }">
-          <span class="fs-15 cr-gray">Dokumen Pendukung</span>
-        </a-divider>
-
-        <a-row :gutter="16">
-          <a-col :span="3">
-            <a-form-item label="Photo Jamaah">
-              <a-upload
-                v-decorator="['photoJamaah',{initialValue: photoJamaah,rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                name="photoJamaah"
-                listType="picture-card"
-                :showUploadList="false"
-                action="#"
-                :beforeUpload="beforeUpload"
-                @change="handleChange"
-              >
-                <img class="max-width" v-if="photoJamaah" :src="photoJamaah" alt="avatar" />
-                <div v-else>
-                  <a-icon :type="loading ? 'loading' : 'plus'" />
-                  <div class="ant-upload-text">Upload</div>
-                </div>
-              </a-upload>
-            </a-form-item>
-          </a-col>
-
-          <a-col :span="3">
-            <a-form-item label="Photo Paspor">
-              <a-upload
-                v-decorator="['photoJamaah',{initialValue: photoPasporJamaah,rules: [{ required: true, message: 'Harus di isi!' }]}]"
-                name="photoPasporJamaah"
-                listType="picture-card"
-                :showUploadList="false"
-                action="#"
-                :beforeUpload="beforeUpload"
-                @change="handleChange"
-              >
-                <img
-                  class="max-width"
-                  v-if="photoPasporJamaah"
-                  :src="photoPasporJamaah"
-                  alt="avatar"
-                />
-                <div v-else>
-                  <a-icon :type="loading ? 'loading' : 'plus'" />
-                  <div class="ant-upload-text">Upload</div>
-                </div>
-              </a-upload>
-            </a-form-item>
-          </a-col>
-        </a-row>
-
-        <a-divider />
+        <a-divider :style="{ marginTop: '0' }" />
 
         <a-form-item>
-          <a-button
-            size="large"
-            class="b-shadow b-radius mr-8"
-          ><nuxt-link to="/accounts/mitra/management/seat/pax-list">Kembali</nuxt-link></a-button>
+          <a-button size="large" class="b-shadow b-radius mr-8">
+            <nuxt-link to="/accounts/mitra/management/seat/pax-list">Kembali</nuxt-link>
+          </a-button>
           <a-button
             type="primary"
             @click="handleSubmit"
@@ -297,7 +348,6 @@ export default {
     return {
       loading: false,
       photoJamaah: "",
-      photoPasporJamaah: "",
       form: this.$form.createForm(this)
     };
   },
@@ -313,10 +363,6 @@ export default {
         // Get this url from response in real world.
         getBase64(info.file.originFileObj, photoJamaah => {
           this.photoJamaah = photoJamaah;
-          this.loading = false;
-        });
-        getBase64(info.file.originFileObj, photoPasporJamaah => {
-          this.photoPasporJamaah = photoPasporJamaah;
           this.loading = false;
         });
       }
