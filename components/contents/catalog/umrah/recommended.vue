@@ -9,10 +9,8 @@
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
-                  <div class="ant-card-cover--overlay-text-title">sisa</div>
-                  <div class="ant-card-cover--overlay-text-subtitle">
-                    <span>{{item.sisa_seat}}</span> pax
-                  </div>
+                  <div class="ant-card-cover--overlay-text-title fs-15">{{item.sisa_seat}}</div>
+                  <div class="ant-card-cover--overlay-text-subtitle text-uppercase">pax</div>
                 </div>
               </div>
 
