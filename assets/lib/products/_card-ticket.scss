@@ -71,6 +71,11 @@
     }
     & .ant-card-body {
         padding: 16px;
+        & .vendor-logo {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
         & .ant-avatar {
             @include align-items(center);
             background-color: #fafafa;
