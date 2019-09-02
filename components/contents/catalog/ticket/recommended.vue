@@ -12,10 +12,8 @@
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius"></div>
                   <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title">sisa</div>
-                    <div class="ant-card-cover--overlay-text-subtitle">
-                      <span>{{item.qty}}</span> pax
-                    </div>
+                    <div class="ant-card-cover--overlay-text-title fs-15">{{item.qty}}</div>
+                    <div class="ant-card-cover--overlay-text-subtitle text-uppercase">pax</div>
                   </div>
                 </div>
                 <div class="ant-card--overlay-block">
@@ -51,7 +49,7 @@
                 />
               </a-popover>
               <div
-                class="ml-auto fs-14 fw-400 cr-gray f-default text-ellipsis"
+                class="ml-auto fs-14 fw-400 cr-gray f-default text-ellipsis text-capitalize"
               >{{item.class_flight}}</div>
             </div>
 
