@@ -28,12 +28,20 @@
             </div>
 
             <div class="d-flex align-items-center">
-              <div class="mr-8">
-                <a-avatar class="vendor-logo zIndex" :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://tes.umaroh.com/file/mitra/perusahaan/CMS-190731868542424-ATT-539.jpg'})` }" />
-              </div>
-              <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.vendor}}</div>
+              <a-popover trigger="hover">
+                <template slot="content">
+                  <div class="fs-15 fw-500 cr-black">{{item.nama_vendor}}</div>
+                  <div class="fs-14 fw-400 cr-gray f-default">
+                    <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                  </div>
+                </template>
+                <a-avatar
+                  class="vendor-logo zIndex mr-8"
+                  :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
+                />
+              </a-popover>
               <div class="ml-auto">
-                <a-rate class="fs-14 f-default" :defaultValue="4" disabled/>
+                <a-rate :style="{ top: '-2px' }" class="fs-14 f-default" :defaultValue="4" disabled />
               </div>
             </div>
 
