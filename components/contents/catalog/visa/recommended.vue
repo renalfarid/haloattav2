@@ -7,12 +7,12 @@
             <div slot="cover">
               <div
                 class="ant-card-cover--images"
-                :style="{ backgroundImage: `url(${item.images_package})` }"
+                :style="{ backgroundImage: `url(${item.gambar})` }"
               >
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius ant-pax--visa"></div>
                   <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title fs-18 fw-500">75</div>
+                    <div class="ant-card-cover--overlay-text-title fs-18 fw-500">{{item.qty}}</div>
                     <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
                       <span>pax</span>
                     </div>
@@ -33,25 +33,31 @@
               <div slot="title">
                 <div class="ant-card-meta-title--top d-flex align-items-center mb-8">
                   <div class="ant-card-meta-title--top-left d-flex align-items-center">
-                    <div class="mr-8"><a-avatar :src="item.logo_provider" size="small" /></div>
-                    <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.provider}}</div>
+                    <div class="mr-8">
+                      <a-avatar :src="item.foto" size="small"/>
+                    </div>
+                    <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.nama_vendor}}</div>
                   </div>
                 </div>
-                <div class="ant-card-meta-title--package fw-500 fs-15">{{item.name_visa}}</div>
+                <div class="ant-card-meta-title--package fw-500 fs-15">{{item.nama}}</div>
               </div>
 
               <div slot="description">
                 <div class="ant-card-meta-description--bottom d-flex align-items-center">
                   <div class="ant-card-meta-description--bottom-right d-flex">
-                    <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Program 9 Hari</div>
+                    <div
+                      class="fs-14 fw-400 cr-black f-default text-ellipsis"
+                    >Program {{item.duration_stay}} Hari</div>
                   </div>
-                  <div class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto">Rp{{item.price}}</div>
+                  <div
+                    class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
+                  >{{item.harga_jual | currency}}</div>
                 </div>
               </div>
             </a-card-meta>
 
             <div class="package-description--more p-16">
-              <div class="d-flex align-items-center mb-16">
+              <!-- <div class="d-flex align-items-center mb-16">
                 <div class="fs-13 fw-400 text-ellipsis">
                   <div class="cr-gray">Check In</div>
                   <div class="cr-black">10 September 2019</div>
@@ -60,7 +66,7 @@
                   <div class="cr-gray">Check Out</div>
                   <div class="cr-black">19 September 2019</div>
                 </div>
-              </div>
+              </div>-->
 
               <a-button block>
                 <nuxt-link to="/catalog/visa/order-review">Pesan</nuxt-link>
@@ -73,46 +79,31 @@
   </a-list>
 </template>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       loading: true,
-      lisData: [
-        {
-          name_visa: "Visa Umrah Babul Kabah Agustus 2019",
-          images_package: "/visa/package/v1.jpg",
-          provider: "Babul Kabah",
-          logo_provider: "/akomodasi/logo/ll1.svg",
-          price: "890.000"
-        },
-        {
-          name_visa: "Visa Umrah September 2019",
-          images_package: "/visa/package/v2.jpg",
-          provider: "Babul Kabah",
-          logo_provider: "/akomodasi/logo/ll2.svg",
-          price: "790.000"
-        },
-        {
-          name_visa: "Visa Umrah Januari 2020",
-          images_package: "/visa/package/v3.jpg",
-          provider: "Babul Kabah",
-          logo_provider: "/akomodasi/logo/ll3.svg",
-          price: "900.000"
-        },
-        {
-          name_visa: "Visa Umrah Februari 2020",
-          images_package: "/visa/package/v4.jpg",
-          provider: "Babul Kabah",
-          logo_provider: "/akomodasi/logo/ll3.svg",
-          price: "910.000"
-        }
-      ]
+      lisData: []
     };
   },
-  mounted() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 1500);
+  created: function() {
+    // get todo items and start listening to events once component is created
+    this.getdata();
+  },
+  methods: {
+    getdata() {
+      axios
+        .get("https://api.haloatta.com/api/visa/all", {
+          params: {
+            per_page: 4
+          }
+        })
+        .then(response => {
+          this.lisData = response.data.data.data;
+          this.loading = false;
+        });
+    }
   }
 };
 </script>
