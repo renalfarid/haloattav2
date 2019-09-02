@@ -47,13 +47,13 @@
                         <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                       </div>
                     </template>
-                    <a-avatar class="zIndex mr-8" :src="item.avatar_umaroh"/>
+                    <a-avatar class="zIndex mr-8" :src="item.foto_vendor"/>
                   </a-popover>
                   <a-popover trigger="hover">
                     <template slot="content">
                       <div class="fs-14 fw-400 cr-gray f-default">Maskapai {{item.nama_maskapai}}</div>
                     </template>
-                    <a-avatar class="zIndex mr-8" size="small" :src="item.image"/>
+                    <a-avatar class="zIndex mr-8" size="small" :src="item.foto_maskapai"/>
                   </a-popover>
                   <a-popover trigger="hover">
                     <template slot="content">
@@ -136,7 +136,7 @@ export default {
       axios
         .get("https://api.haloatta.com/api/paket/umroh/all")
         .then(response => {
-          console.log(response.data.data.data);
+          console.log(response.data.data.data, "ok");
           this.lisData = response.data.data.data;
         });
     }
