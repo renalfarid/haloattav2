@@ -1,0 +1,32 @@
+.ant-upgrade {
+    min-height: 100%;
+    & .ant-close {
+        position: fixed;
+        right: 24px;
+    }
+    & img {
+        max-width: 100%;
+        max-height: 40px;
+    }
+    & h1,
+    & p {
+        line-height: normal;
+    }
+    & .ant-form {
+        & .ant-form-item {
+            margin-bottom: 16px;
+            & .ant-form-item-label {
+                padding-bottom: 4px;
+                & label {
+                    color: $color-font;
+                    font-weight: 500;
+                }
+            }
+            & .ant-form-item-control {
+                & .ant-input {
+                    @include border-radius(2px);
+                }
+            }
+        }
+    }
+}

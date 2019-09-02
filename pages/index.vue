@@ -108,49 +108,248 @@
       </div>
     </div>
 
-    <div class="content-favorites">
-      <!-- if before login -->
-      <sectionFavorite />
-      <!-- if after login -->
-      <!-- <section-myumrah /> -->
-    </div>
-
-    <div class="content-components-umrah">
-      <sectionComponentsUmrah />
-    </div>
-
-    <div class="content-banner-full">
-      <a-card class="cover-banner">
-        <div slot="cover">
-          <div class="cover-images" :style="{ backgroundImage: 'url(/umrah/cover/cu17.png)' }">
-            <div class="container">
-              <a-row :gutter="16" type="flex" justify="start" align="middle" class="h-100">
-                <a-col :span="12">
-                  <a-card-meta
-                    title="Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
-                  >
-                    <template slot="description">
-                      <a-button size="large" class="b-shadow b-radius">
-                        <nuxt-link to="/accounts/mitra/create">Buat Paket</nuxt-link>
-                      </a-button>
-                    </template>
-                  </a-card-meta>
-                </a-col>
-              </a-row>
-            </div>
-            <div class="gradient-bottom"></div>
-          </div>
-        </div>
-      </a-card>
-    </div>
-
     <no-ssr>
-      <div class="content-recomended">
-        <sectionRecomended />
+      <div class="content-favorites">
+        <!-- if before login -->
+        <sectionFavorite />
+        <!-- if after login -->
+        <!-- <section-myumrah /> -->
       </div>
 
-      <div class="content-trend">
-        <sectionTrend />
+      <div class="content-components-umrah">
+        <sectionComponentsUmrah />
+      </div>
+
+      <div class="content-banner-full">
+        <a-card class="cover-banner">
+          <div slot="cover">
+            <div class="cover-images" :style="{ backgroundImage: 'url(/umrah/cover/cu17.png)' }">
+              <div class="container">
+                <a-row :gutter="16" type="flex" justify="start" align="middle" class="h-100">
+                  <a-col :span="12">
+                    <a-card-meta
+                      title="Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
+                    >
+                      <template slot="description">
+                        <a-button size="large" class="b-shadow b-radius">
+                          <nuxt-link to="/accounts/mitra/create">Buat Paket</nuxt-link>
+                        </a-button>
+                      </template>
+                    </a-card-meta>
+                  </a-col>
+                </a-row>
+              </div>
+              <div class="gradient-bottom"></div>
+            </div>
+          </div>
+        </a-card>
+      </div>
+
+      <!-- if there is data then display it package umrah -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Paket Umrah</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <umrah-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/umrah/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package ticket -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Tiket Group</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <ticket-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/ticket-group/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package accommodation -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">LA Akomodasi</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <accommodation-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/accommodation/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package visa -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Visa Perjalanan</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <visa-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/visa/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package insurance -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Asuransi Perjalanan</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <insurance-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/insurance/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package handling -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Handling Domestik</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <handling-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/handling/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package manasik -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Manasik</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <manasik-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/manasik/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package equipment -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Perlengkapan Umrah</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <equipment-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/equipment/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
+      </div>
+
+      <!-- if there is data then display it package tour leader -->
+      <div class="content-recomended">
+        <div class="container">
+          <div class="header-title">
+            <a-divider orientation="left" class="ant-divider-title-left">Tour Leader</a-divider>
+            <a-row :gutter="16">
+              <a-col :span="16">
+                <h6 class="fs-16 fw-400 cr-gray">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+                </h6>
+              </a-col>
+            </a-row>
+          </div>
+
+          <tourleader-recommended />
+
+          <div class="all-package">
+            <nuxt-link to="/catalog/tourleader/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+          </div>
+        </div>
       </div>
 
       <div class="content-news">
@@ -176,8 +375,17 @@ import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 // if after login
 // import sectionMyumrah from "~/components/contents/home/section-myumrah.vue";
 import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
-import sectionRecomended from "~/components/contents/home/section-recommended.vue";
-import sectionTrend from "~/components/contents/home/section-trend.vue";
+
+import umrahRecommended from "~/components/contents/catalog/umrah/recommended.vue";
+import ticketRecommended from "~/components/contents/catalog/ticket/recommended.vue";
+import accommodationRecommended from "~/components/contents/catalog/accommodation/recommended.vue";
+import visaRecommended from "~/components/contents/catalog/visa/recommended.vue";
+import insuranceRecommended from "~/components/contents/catalog/insurance/recommended.vue";
+import handlingRecommended from "~/components/contents/catalog/handling/recommended.vue";
+import manasikRecommended from "~/components/contents/catalog/manasik/recommended.vue";
+import equipmentRecommended from "~/components/contents/catalog/equipment/recommended.vue";
+import tourleaderRecommended from "~/components/contents/catalog/tourleader/recommended.vue";
+
 import sectionNews from "~/components/contents/home/section-news.vue";
 export default {
   name: "homePage",
@@ -204,8 +412,15 @@ export default {
     sectionFavorite,
     // sectionMyumrah,
     sectionComponentsUmrah,
-    sectionRecomended,
-    sectionTrend,
+    umrahRecommended,
+    ticketRecommended,
+    accommodationRecommended,
+    visaRecommended,
+    insuranceRecommended,
+    handlingRecommended,
+    manasikRecommended,
+    equipmentRecommended,
+    tourleaderRecommended,
     sectionNews
   }
 };

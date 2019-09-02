@@ -72,11 +72,9 @@
                               </a-col>
                               <a-col :span="8">
                                 <a-form-item>
-                                  <a-button
-                                    class="ant-btn--action-outline"
-                                    size="large"
-                                    block
-                                  >Top Up Saldo</a-button>
+                                  <a-button class="ant-btn--action-outline b-shadow b-radius" size="large" block>
+                                    <nuxt-link to="/accounts/top-up">Top Up Saldo</nuxt-link>
+                                  </a-button>
                                 </a-form-item>
                               </a-col>
                             </a-row>
@@ -89,6 +87,20 @@
                               class="fs-13 cr-gray"
                             >Tambah saldo jika tidak mencukupi untuk melakukan transaksi pesanan anda</li>
                           </ul>
+                        </div>
+                      </a-card>
+
+                      <!-- Add code voucher -->
+                      <a-card :style="{margin: '16px 0 24px 0'}">
+                        <div class="ant-package--information-bill mt-16 mb-16">
+                          <a-row :gutter="16">
+                            <a-col :span="16">
+                              <a-input placeholder="Masukkan kode voucher anda jika ada" size="large" />
+                            </a-col>
+                            <a-col :span="8">
+                              <a-button type="primary" class="b-shadow b-radius" size="large" block>Gunakan</a-button>
+                            </a-col>
+                          </a-row>
                         </div>
                       </a-card>
 

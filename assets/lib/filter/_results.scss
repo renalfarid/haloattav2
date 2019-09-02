@@ -14,6 +14,11 @@
             @include flexbox;
             padding: 14px 0;
             width: 100%;
+            & .ant-tag {
+                line-height: 28px;
+                padding: 0 10px;
+                height: 30px;
+            }
             & .ant-dropdown-link {
                 text-transform: capitalize;
                 color: $color-font;
