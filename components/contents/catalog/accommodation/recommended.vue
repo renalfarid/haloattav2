@@ -29,9 +29,7 @@
 
             <div class="d-flex align-items-center">
               <div class="mr-8">
-                <a-avatar
-                  :src="item.foto != '' ? item.foto : 'https://tes.umaroh.com/file/mitra/perusahaan/CMS-190731868542424-ATT-539.jpg'"
-                />
+                <a-avatar class="vendor-logo zIndex" :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://tes.umaroh.com/file/mitra/perusahaan/CMS-190731868542424-ATT-539.jpg'})` }" />
               </div>
               <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.vendor}}</div>
               <div class="ml-auto">

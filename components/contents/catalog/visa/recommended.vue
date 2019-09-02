@@ -12,10 +12,8 @@
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius ant-pax--visa"></div>
                   <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title fs-18 fw-500">{{item.qty}}</div>
-                    <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
-                      <span>pax</span>
-                    </div>
+                    <div class="ant-card-cover--overlay-text-title fs-15 fw-500">{{item.qty}}</div>
+                    <div class="ant-card-cover--overlay-text-subtitle text-uppercase fs-12">pax</div>
                   </div>
                 </div>
 
@@ -34,7 +32,7 @@
                 <div class="ant-card-meta-title--top d-flex align-items-center mb-8">
                   <div class="ant-card-meta-title--top-left d-flex align-items-center">
                     <div class="mr-8">
-                      <a-avatar :src="item.foto" size="small"/>
+                      <a-avatar class="vendor-logo zIndex" :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }" />
                     </div>
                     <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.nama_vendor}}</div>
                   </div>

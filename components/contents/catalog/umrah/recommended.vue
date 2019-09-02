@@ -5,7 +5,7 @@
         <a-card class="ant-card-package-small">
           <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
-            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${item.gambar})` }">
+            <div class="ant-card-cover--images" :style="{ backgroundImage: `url(${item.gambar != '' ? item.gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }">
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
@@ -34,7 +34,7 @@
                         <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                       </div>
                     </template>
-                    <a-avatar class="vendor-logo zIndex mr-8" :style="{ backgroundImage: `url(${item.foto_vendor})` }" />
+                    <a-avatar class="vendor-logo zIndex mr-8" :style="{ backgroundImage: `url(${item.foto_vendor != '' ? item.foto_vendor : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }" />
                   </a-popover>
 
                   <a-popover trigger="hover">

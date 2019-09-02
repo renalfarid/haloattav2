@@ -84,6 +84,11 @@
     }
     & .ant-card-body {
         padding: 16px;
+        & .vendor-logo {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
         & .ant-card-meta {
             & .ant-card-meta-detail {
                 & .ant-card-meta-title {
@@ -113,11 +118,6 @@
                         height: 44px;
                     }
                     & .ant-avatar {
-                        &.vendor-logo {
-                            background-position: center center;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                        }
                         & img {
                             max-width: 100% !important;
                             max-height: 100% !important;
