@@ -43,7 +43,7 @@
                     <template slot="content">
                       <div class="fs-13 fw-400 cr-black f-default">Maskapai Garuda Indonesia</div>
                     </template>
-                    <a-avatar class="zIndex mr-8" :src="item.foto_maskapai"/>
+                    <a-avatar class="zIndex mr-8" :src="item.image"/>
                   </a-popover>
 
                   <a-popover trigger="hover">
@@ -79,7 +79,7 @@
                 </div>
                 <div
                   class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
-                >Rp{{item.harga_jual}}</div>
+                >{{item.harga_jual | currency}}</div>
               </div>
             </div>
           </a-card-meta>
@@ -124,7 +124,11 @@ export default {
   methods: {
     getdata() {
       axios
-        .get("https://api.haloatta.com/api/paket/umroh/all")
+        .get("https://api.haloatta.com/api/paket/umroh/all", {
+          params: {
+            per_page: 4
+          }
+        })
         .then(response => {
           console.log(response.data.data.data, "ok");
           this.lisData = response.data.data.data;

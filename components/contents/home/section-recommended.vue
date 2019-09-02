@@ -53,7 +53,7 @@
                     <template slot="content">
                       <div class="fs-14 fw-400 cr-gray f-default">Maskapai {{item.nama_maskapai}}</div>
                     </template>
-                    <a-avatar class="zIndex mr-8" size="small" :src="item.foto_maskapai"/>
+                    <a-avatar class="zIndex mr-8" size="small" :src="item.image"/>
                   </a-popover>
                   <a-popover trigger="hover">
                     <template slot="content">
@@ -134,7 +134,11 @@ export default {
   methods: {
     getdata() {
       axios
-        .get("https://api.haloatta.com/api/paket/umroh/all")
+        .get("https://api.haloatta.com/api/paket/umroh/recomended", {
+          params: {
+            per_page: 4
+          }
+        })
         .then(response => {
           console.log(response.data.data.data, "ok");
           this.lisData = response.data.data.data;

@@ -55,7 +55,21 @@ module.exports = {
   modules: [
     ["@nuxtjs/moment", { locales: ["id"], defaultLocale: "id" }],
     ["@nuxtjs/axios"],
-    "@nuxtjs/proxy"
+    "@nuxtjs/proxy",
+    "vue-currency-filter/nuxt",
+
+    // Or if you have custom options...
+    [
+      "vue-currency-filter/nuxt",
+      {
+        symbol: "Rp.",
+        thousandsSeparator: ",",
+        fractionCount: 3,
+        fractionSeparator: ".",
+        symbolPosition: "front",
+        symbolSpacing: true
+      }
+    ]
   ],
   modules: ["@nuxtjs/axios", "@nuxtjs/proxy"],
 
