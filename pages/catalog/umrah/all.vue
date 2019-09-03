@@ -6,14 +6,18 @@
         <div class="ant-layout--results-top mt-16 mb-24">
           <div class="d-flex align-items-center mb-16">
             <div class="fs-24 fw-500 cr-black">Semua Paket Umrah</div>
-            <div class="ml-auto"><nuxt-link to="/" class="fs-14 cr-gray"><a-icon type="left" class="fs-12 mr-4" />Kembali</nuxt-link></div>
+            <div class="ml-auto">
+              <nuxt-link to="/" class="fs-14 cr-gray">
+                <a-icon type="left" class="fs-12 mr-4"/>Kembali
+              </nuxt-link>
+            </div>
           </div>
-          <filter-result-umrah />
+          <filter-result-umrah/>
         </div>
 
         <div class="ant-layout--results-list pb-16">
           <div
-            v-infinite-scroll="loadMore"
+            v-infinite-scroll="getdata"
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
@@ -34,14 +38,14 @@
                     <div slot="cover">
                       <div
                         class="ant-card-cover--images"
-                        :style="{ backgroundImage: `url(${item.images_product})` }"
+                        :style="{ backgroundImage: `url(${item.gambar != '' ? item.gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                       >
                         <div class="ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius"></div>
                           <div class="ant-card-cover--overlay-text">
                             <div class="ant-card-cover--overlay-text-title">sisa</div>
                             <div class="ant-card-cover--overlay-text-subtitle">
-                              <span>{{item.pax_available}}</span> pax
+                              <span>{{item.sisa_seat}}</span> pax
                             </div>
                           </div>
                         </div>
@@ -63,7 +67,7 @@
                           >
                             <a-popover trigger="hover">
                               <template slot="content">
-                                <div class="fs-15 fw-500 cr-black">{{item.name_umaroh}}</div>
+                                <div class="fs-15 fw-500 cr-black">{{item.nama}}</div>
                                 <div class="fs-14 fw-400 cr-gray f-default">
                                   <a-icon
                                     type="safety-certificate"
@@ -72,27 +76,30 @@
                                   />Terverifikasi
                                 </div>
                               </template>
-                              <a-avatar class="zIndex mr-8" :src="item.avatar_umaroh" />
+                              <a-avatar
+                                class="zIndex mr-8"
+                                :src="item.foto_vendor != '' ? item.foto_vendor : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                              />
                             </a-popover>
 
                             <a-popover trigger="hover">
                               <template slot="content">
                                 <div
                                   class="fs-13 fw-400 cr-black f-default"
-                                >Maskapai Garuda Indonesia</div>
+                                >Maskapai {{item.nama_maskapai}}</div>
                               </template>
-                              <a-avatar class="zIndex mr-8" src="/maskapai/logo/garuda.svg" />
+                              <a-avatar class="zIndex mr-8" :src="item.image"/>
                             </a-popover>
 
                             <a-popover trigger="hover">
                               <template slot="content">
-                                <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                                <a-rate class="fs-14 mb-4" :defaultValue="3" disabled/>
                                 <div
                                   class="fs-13 fw-400 cr-black f-default mb-4"
-                                >Mekkah : Hotel Daruttauhid International Mekkah</div>
+                                >Mekkah : {{item.hotel_mekkah}}</div>
                                 <div
                                   class="fs-13 fw-400 cr-black f-default"
-                                >Madinah : Hotel Dar Al Eiman International Madinah</div>
+                                >Madinah : {{item.hotel_madinah}}</div>
                               </template>
                               <a-avatar
                                 class="zIndex mr-8"
@@ -104,9 +111,9 @@
                           </div>
                           <div
                             class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black"
-                          >Program 9 Hari</div>
+                          >Program {{item.jumlah_hari}} Hari</div>
                         </div>
-                        <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
+                        <div class="ant-card-meta-title--package fw-500">{{item.nama}}</div>
                       </div>
 
                       <div slot="description">
@@ -114,24 +121,24 @@
                           <div class="ant-card-meta-description--bottom-right d-flex">
                             <div class="fs-14 fw-400 cr-gray">
                               Terjual
-                              <strong>{{item.pax_booked}}</strong> Pax
+                              <strong>{{item.seat - item.sisa_seat}}</strong> Pax
                             </div>
                           </div>
                           <div
                             class="ant-card-meta-description--bottom-left cr-primary ml-auto"
-                          >Rp{{item.price_product}}</div>
+                          >{{item.harga_jual | currency}}</div>
                         </div>
                       </div>
                     </a-card-meta>
                     <div class="package-description--more p-24">
                       <div class="fs-15 fw-400 cr-black f-default text-ellipsis mb-8">
-                        <span>Keberangkatan Makassar</span>
+                        <span>Keberangkatan {{item.nama_kota}}</span>
                       </div>
 
                       <div class="d-flex align-items-center mb-16">
                         <div class="fs-14 fw-400 text-ellipsis">
                           <div class="cr-gray">Keberangkatan</div>
-                          <div class="cr-black">10 September 2019</div>
+                          <div class="cr-black">{{item.tgl_berangkat}}</div>
                         </div>
                         <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                           <div class="cr-gray">Kedatangan</div>
@@ -167,30 +174,30 @@ export default {
     return {
       loading: true,
       busy: false,
-      limit: 6,
+      limit: 8,
+      page: 0,
       data: []
     };
   },
-  mounted() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 1500);
-  },
   created() {
-    this.loadMore();
+    this.getdata();
   },
   methods: {
-    loadMore() {
-      console.log("Adding 6 more data results");
+    getdata() {
       this.busy = true;
-      axios.get("/dataUmrah.json").then(response => {
-        const append = response.data.slice(
-          this.data.length,
-          this.data.length + this.limit
-        );
-        this.data = this.data.concat(append);
-        this.busy = false;
-      });
+      axios
+        .get("https://api.haloatta.com/api/paket/umroh/all", {
+          params: {
+            per_page: 6,
+            page: ++this.page
+          }
+        })
+        .then(response => {
+          console.log(response.data.data.data);
+          this.data = this.data.concat(response.data.data.data);
+          this.loading = false;
+          this.busy = false;
+        });
     }
   },
   components: {
