@@ -12,10 +12,8 @@
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius"></div>
                   <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title fs-16 fw-500">75</div>
-                    <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
-                      <span>ROOM</span>
-                    </div>
+                    <div class="ant-card-cover--overlay-text-title fs-15 fw-500">75</div>
+                    <div class="ant-card-cover--overlay-text-subtitle text-uppercase">pax</div>
                   </div>
                 </div>
 
@@ -30,15 +28,20 @@
             </div>
 
             <div class="d-flex align-items-center">
-              <div class="mr-8">
+              <a-popover trigger="hover">
+                <template slot="content">
+                  <div class="fs-15 fw-500 cr-black">{{item.nama_vendor}}</div>
+                  <div class="fs-14 fw-400 cr-gray f-default">
+                    <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                  </div>
+                </template>
                 <a-avatar
-                  :src="item.foto != '' ? item.foto : 'https://tes.umaroh.com/file/mitra/perusahaan/CMS-190731868542424-ATT-539.jpg'"
-                  size="small"
+                  class="vendor-logo zIndex mr-8"
+                  :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                 />
-              </div>
-              <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.vendor}}</div>
+              </a-popover>
               <div class="ml-auto">
-                <a-rate class="fs-12 f-default" :defaultValue="4" disabled/>
+                <a-rate :style="{ top: '-2px' }" class="fs-14 f-default" :defaultValue="4" disabled />
               </div>
             </div>
 
@@ -61,7 +64,7 @@
               <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">Program {{item.days}} Hari</div>
               <div
                 class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis"
-              >Rp{{item.harga_quad | currency}}</div>
+              >{{item.harga_quad | currency}}</div>
             </div>
 
             <div class="package-description--more p-16">

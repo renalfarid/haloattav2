@@ -21,7 +21,7 @@
               <div class="txt fs-16 fw-400 f-default">
                 <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam amet pariatur asperiores necessitatibus error architecto et</span>
               </div>
-              <a-button size="large">Explore Paket</a-button>
+              <a-button size="large"><nuxt-link to="/catalog/umrah/all">Explore Paket</nuxt-link></a-button>
             </div>
             <div class="gradient-bottom"></div>
           </div>

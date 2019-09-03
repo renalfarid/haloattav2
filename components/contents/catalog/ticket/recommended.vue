@@ -12,10 +12,8 @@
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius"></div>
                   <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title">sisa</div>
-                    <div class="ant-card-cover--overlay-text-subtitle">
-                      <span>{{item.qty}}</span> pax
-                    </div>
+                    <div class="ant-card-cover--overlay-text-title fs-15">{{item.qty}}</div>
+                    <div class="ant-card-cover--overlay-text-subtitle text-uppercase">pax</div>
                   </div>
                 </div>
                 <div class="ant-card--overlay-block">
@@ -36,10 +34,7 @@
                     <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                   </div>
                 </template>
-                <a-avatar
-                  class="zIndex mr-8"
-                  :src="item.foto != '' ? item.foto : 'https://tes.umaroh.com/file/mitra/perusahaan/CMS-190731868542424-ATT-539.jpg'"
-                />
+                <a-avatar class="vendor-logo zIndex mr-8" :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }" />
               </a-popover>
               <a-popover trigger="hover">
                 <template slot="content">
@@ -51,7 +46,7 @@
                 />
               </a-popover>
               <div
-                class="ml-auto fs-14 fw-400 cr-gray f-default text-ellipsis"
+                class="ml-auto fs-14 fw-400 cr-gray f-default text-ellipsis text-capitalize"
               >{{item.class_flight}}</div>
             </div>
 

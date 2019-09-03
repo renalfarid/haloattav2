@@ -41,7 +41,7 @@
 
     <a-divider :style="{margin: '14px 0'}" />
 
-    <nuxt-link to="/accounts/mitra/voucher" class="ant-avatar--user d-flex align-items-center">
+    <nuxt-link to="/accounts/poin" class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
         <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3;" icon="crown" />
       </div>
@@ -58,7 +58,7 @@
 
     <a-menu class="ant-menu--sider" mode="vertical" :defaultSelectedKeys="['1']">
       <a-menu-item class="ant-menu--sider-item" key="1">
-        <nuxt-link to="/accounts/mitra" class="nav-text">Ringkasan Akun</nuxt-link>
+        <nuxt-link to="/accounts" class="nav-text">Ringkasan Akun</nuxt-link>
       </a-menu-item>
 
       <a-sub-menu class="ant-menu--sider-sub" key="2">
@@ -81,11 +81,11 @@
       </a-menu-item>
       
       <a-menu-item class="ant-menu--sider-item" key="3">
-        <nuxt-link to="/accounts/mitra/management/seat" class="nav-text">Manajemen Seat</nuxt-link>
+        <nuxt-link to="/accounts/management/seat" class="nav-text">Manajemen Seat</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="9">
-        <nuxt-link to="/accounts/mitra/departure" class="nav-text">Daftar Pemberangkatan</nuxt-link>
+        <nuxt-link to="/accounts/departure" class="nav-text">Daftar Pemberangkatan</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>
@@ -93,13 +93,13 @@
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="4">
-        <nuxt-link to="/accounts/mitra/transaction/purchase">
+        <nuxt-link to="/accounts/transaction/purchase">
           <span class="nav-text">Transaksi</span>
         </nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="5">
-        <nuxt-link to="/accounts/mitra/transaction/order">
+        <nuxt-link to="/accounts/transaction/order">
           <div class="d-flex align-items-center">
             <span class="nav-text">Pesanan Saya</span>
             <a-badge class="ml-auto" count="4" />
@@ -108,7 +108,7 @@
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="7">
-        <nuxt-link to="/accounts/mitra/setting" class="nav-text">Pengaturan</nuxt-link>
+        <nuxt-link to="/accounts/setting" class="nav-text">Pengaturan</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="logout">

@@ -1,7 +1,7 @@
 <template>
   <div class="ant-layout--accounts-jamaah">
     <div class="mb-16">
-      <nuxt-link to="/accounts/mitra/management/seat/pax-list" class="fs-14 fw-400 cr-gray">
+      <nuxt-link to="/accounts/management/seat/pax-list" class="fs-14 fw-400 cr-gray">
         <a-icon type="left" class="mr-8" />Kembali
       </nuxt-link>
     </div>
@@ -36,34 +36,8 @@
       </a-row>
     </a-card>
 
-    <div class="fs-16 fw-500 cr-black mb-16">Status Berkas Jamaah</div>
-    <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
-      <a-steps :current="0">
-        <a-step title="Pemberkasan">
-          <span slot="description">
-            <p class="fs-14 f-default">Pengumpulan Kelengkapan Berkas</p>
-          </span>
-        </a-step>
-        <a-step title="Registrasi">
-          <span slot="description">
-            <p class="fs-14 f-default">Nomor Porsi Registrasi Siskopatuh</p>
-          </span>
-        </a-step>
-        <a-step title="Manifest">
-          <span slot="description">
-            <p class="fs-14 f-default">Pengaturan Room List, Tiket, Visa, Mova, Perlengkapan, dll</p>
-          </span>
-        </a-step>
-        <a-step title="Pemberangkatan">
-          <span slot="description">
-            <p class="fs-14 f-default">Tanggal Pemberangkatan 10 September 2019</p>
-          </span>
-        </a-step>
-      </a-steps>
-    </a-card>
+    <div class="fs-16 fw-500 cr-black mb-16">Formulir Jamaah</div>
 
-    <div class="fs-16 fw-500 cr-black mb-16">Ringkasan Berkas Jamaah</div>
-    
     <a-form layout="vertical" :form="form" hideRequiredMark>
       <a-card :bordered="false" class="b-shadow b-solid b-radius">
         <a-row :gutter="16" type="flex" justify="space-around" align="middle">
@@ -341,14 +315,14 @@
 
         <a-form-item>
           <a-button size="large" class="b-shadow b-radius mr-8">
-            <nuxt-link to="/accounts/mitra/management/seat/pax-list">Kembali</nuxt-link>
+            <nuxt-link to="/accounts/management/seat/pax-list">Kembali</nuxt-link>
           </a-button>
           <a-button
             type="primary"
             @click="handleSubmit"
             size="large"
             class="b-shadow b-radius"
-          >Simpan Perubahan</a-button>
+          >Simpan Data Jamaah</a-button>
         </a-form-item>
       </a-card>
     </a-form>
@@ -363,17 +337,17 @@ function getBase64(img, callback) {
 }
 export default {
   layout: "accounts",
-  name: "mitraBerkasJamaah",
+  name: "mitraFormulirJamaah",
   head() {
     return {
-      title: "Berkas Jamaah - Kembangkan Bisnis Umrah Anda | Haloatta"
+      title: "Formulir Jamaah - Kembangkan Bisnis Umrah Anda | Haloatta"
     };
   },
 
   data() {
     return {
       loading: false,
-      photoJamaah: "/user/maha_user.jpg",
+      photoJamaah: "",
       form: this.$form.createForm(this)
     };
   },

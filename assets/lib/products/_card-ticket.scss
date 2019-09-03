@@ -36,8 +36,8 @@
                     top: 0;
                     & .ant-card-cover--overlay-text-title {
                         line-height: normal;
-                        font-weight: 600;
-                        font-size: 14px;
+                        font-weight: 500;
+                        font-size: 12px;
                     }
                     & .ant-card-cover--overlay-text-subtitle {
                         text-transform: lowercase;
@@ -71,6 +71,11 @@
     }
     & .ant-card-body {
         padding: 16px;
+        & .vendor-logo {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
         & .ant-avatar {
             @include align-items(center);
             background-color: #fafafa;

@@ -1,9 +1,9 @@
 <template>
   <div class="ant-layout--accounts-management-seat">
     <div class="mb-16">
-      <nuxt-link to="/accounts/mitra/management/seat" class="fs-14 fw-400 cr-gray">
+      <a @click="$router.go(-1)" class="fs-14 fw-400 cr-gray">
         <a-icon type="left" class="mr-8" />Kembali
-      </nuxt-link>
+      </a>
     </div>
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
       <div slot="title">Detail Produk</div>
@@ -77,7 +77,7 @@
               <nuxt-link v-if="item.status === 'Tersedia'" to="/catalog/umrah/order-review">
                 <span class="fs-14 fw-500 cr-primary">Pesan Sekarang<a-icon type="right" class="ml-8" /></span>
               </nuxt-link>
-              <nuxt-link v-if="item.status === 'Sudah Dipesan'" to="/accounts/mitra/jamaah/berkas">
+              <nuxt-link v-if="item.status === 'Sudah Dipesan'" to="/accounts/jamaah/berkas">
                 <span class="fs-14 fw-500 cr-green">Lihat Berkas<a-icon type="right" class="ml-8" /></span>
               </nuxt-link>
             </a-col>

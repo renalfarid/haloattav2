@@ -1,7 +1,7 @@
 <template>
   <div class="ant-layout--accounts-management-seat">
     <div class="mb-16">
-      <nuxt-link to="/accounts/mitra/management/seat" class="fs-14 fw-400 cr-gray">
+      <nuxt-link to="/accounts/management/seat" class="fs-14 fw-400 cr-gray">
         <a-icon type="left" class="mr-8" />Kembali
       </nuxt-link>
     </div>
@@ -72,7 +72,7 @@
               >{{item.status}}</div>
             </a-col>
             <a-col :span="4" class="text-right">
-              <nuxt-link to="/accounts/mitra/jamaah/formulir">
+              <nuxt-link to="/accounts/jamaah/formulir">
                   <span class="fs-14 fw-500 cr-green">
                     Lihat Formulir
                     <a-icon type="right" class="ml-8" />

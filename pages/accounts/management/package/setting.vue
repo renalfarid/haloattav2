@@ -663,7 +663,7 @@ export default {
     publish() {
       this.form.validateFields(err => {
         if (!err) {
-          return this.$router.push("/accounts/mitra/management/package");
+          return this.$router.push("/accounts/management/package");
         }
       });
     },

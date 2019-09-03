@@ -8,17 +8,17 @@
             <div class="fs-24 fw-500 cr-black">Semua Visa</div>
             <div class="ml-auto">
               <nuxt-link to="/" class="fs-14 cr-gray">
-                <a-icon type="left" class="fs-12 mr-4" />Kembali
+                <a-icon type="left" class="fs-12 mr-4"/>Kembali
               </nuxt-link>
             </div>
           </div>
 
-          <filter-result-visa />
+          <filter-result-visa/>
         </div>
 
         <div class="ant-layout--results-list pb-16">
           <div
-            v-infinite-scroll="loadMore"
+            v-infinite-scroll="getdata"
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
@@ -39,14 +39,14 @@
                       <div slot="cover">
                         <div
                           class="ant-card-cover--images"
-                          :style="{ backgroundImage: `url(${item.images_package})` }"
+                          :style="{ backgroundImage: `url(${item.gambar != '' ? item.gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                         >
                           <div class="ant-card-cover--overlay">
                             <div class="ant-card-cover--overlay-box-radius ant-pax--visa"></div>
                             <div class="ant-card-cover--overlay-text">
                               <div
                                 class="ant-card-cover--overlay-text-title fs-18 fw-500"
-                              >{{item.pax}}</div>
+                              >{{item.qty}}</div>
                               <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
                                 <span>Pax</span>
                               </div>
@@ -68,14 +68,17 @@
                           <div class="ant-card-meta-title--top d-flex align-items-center">
                             <div class="ant-card-meta-title--top-left d-flex align-items-center">
                               <div class="mr-8">
-                                <a-avatar :src="item.logo_provider" size="small" />
+                                <a-avatar
+                                  :src="item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                                  size="small"
+                                />
                               </div>
                               <div
                                 class="fs-13 fw-400 cr-gray f-default text-ellipsis"
-                              >{{item.provider}}</div>
+                              >{{item.nama_vendor}}</div>
                             </div>
                           </div>
-                          <div class="ant-card-meta-title--package fw-500 mb-0">{{item.name_visa}}</div>
+                          <div class="ant-card-meta-title--package fw-500 mb-0">{{item.nama}}</div>
                         </div>
 
                         <div slot="description">
@@ -83,17 +86,17 @@
                             <div class="ant-card-meta-description--bottom-right d-flex">
                               <div
                                 class="fs-14 fw-400 cr-black f-default text-ellipsis"
-                              >Program 9 Hari</div>
+                              >Program {{item.duration_stay}} Hari</div>
                             </div>
                             <div
                               class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
-                            >Rp{{item.price}}</div>
+                            >{{item.harga_jual | currency}}</div>
                           </div>
                         </div>
                       </a-card-meta>
 
                       <div class="package-description--more p-16">
-                        <div class="d-flex align-items-center mb-16">
+                        <!-- <div class="d-flex align-items-center mb-16">
                           <div class="fs-13 fw-400 text-ellipsis">
                             <div class="cr-gray">Check In</div>
                             <div class="cr-black">10 September 2019</div>
@@ -102,7 +105,7 @@
                             <div class="cr-gray">Check Out</div>
                             <div class="cr-black">19 September 2019</div>
                           </div>
-                        </div>
+                        </div>-->
 
                         <a-button block>
                           <nuxt-link to="/catalog/visa/order-review">Pesan</nuxt-link>
@@ -134,6 +137,7 @@ export default {
       loading: true,
       busy: false,
       limit: 8,
+      page: 0,
       data: []
     };
   },
@@ -143,20 +147,24 @@ export default {
     }, 1500);
   },
   created() {
-    this.loadMore();
+    this.getdata();
   },
   methods: {
-    loadMore() {
-      console.log("Adding 6 more data results");
+    getdata() {
       this.busy = true;
-      axios.get("/dataVisa.json").then(response => {
-        const append = response.data.slice(
-          this.data.length,
-          this.data.length + this.limit
-        );
-        this.data = this.data.concat(append);
-        this.busy = false;
-      });
+      axios
+        .get("https://api.haloatta.com/api/visa/all", {
+          params: {
+            per_page: 6,
+            page: ++this.page
+          }
+        })
+        .then(response => {
+          console.log(response.data.data.data);
+          this.data = this.data.concat(response.data.data.data);
+          this.loading = false;
+          this.busy = false;
+        });
     }
   },
   components: {

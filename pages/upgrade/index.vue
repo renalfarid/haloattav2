@@ -4,7 +4,7 @@
       <a-col :span="10">
         <div class="ant-upgrade">
           <img src="/haloatta.png" class="mb-16" />
-          <nuxt-link to="/"><a-button class="ant-close" shape="circle" icon="close" size="large" /></nuxt-link>
+          <a @click="$router.go(-1)"><a-button class="ant-close" shape="circle" icon="close" size="large" /></a>
           <h1 class="fs-28 fw-600 cr-black mb-8">Bergabung menjadi Mitra Haloatta</h1>
           <p class="fs-16 cr-gray">Tingkatkan penjualan produk umrah anda bersama Haloatta</p>
 

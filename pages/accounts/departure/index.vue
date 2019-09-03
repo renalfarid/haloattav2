@@ -22,10 +22,6 @@
             <a-select-option value="LA Akomodasi">LA Akomodasi</a-select-option>
             <a-select-option value="Visa">Visa</a-select-option>
             <a-select-option value="Asuransi">Asuransi</a-select-option>
-            <a-select-option value="Handling">Handling</a-select-option>
-            <a-select-option value="Manasik">Manasik</a-select-option>
-            <a-select-option value="Perlengkapan">Perlengkapan</a-select-option>
-            <a-select-option value="Tour Leader">Tour Leader</a-select-option>
           </a-select>
         </a-col>
         <a-col :span="8">
@@ -95,7 +91,7 @@
               class="m-0 p-16"
               style="borderTop: 1px solid #f5f5f5"
             >
-              <a-col :span="8">
+              <a-col :span="14">
                 <div class="d-flex align-items-center">
                   <div class="mr-8">
                     <a-avatar
@@ -126,10 +122,10 @@
                   </div>
                   <div
                     class="fs-14 fw-500 cr-black f-default text-capitalize"
-                  >Pemberangkatan {{item.products_categorie}}</div>
+                  >{{item.products_name}}</div>
                 </div>
               </a-col>
-              <a-col :span="8">
+              <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Status Pemberangkatan</div>
                 <div class="fs-14 fw-500 cr-black">
                     <a-badge status="default" :text="item.status_departure" v-if="item.status_departure === 'Menunggu Pemberangkatan'" />
@@ -137,8 +133,8 @@
                     <a-badge status="success" :text="item.status_departure" v-if="item.status_departure === 'Selesai'" />
                 </div>
               </a-col>
-              <a-col :span="8" class="text-right">
-                <nuxt-link to="/accounts/mitra/departure/detail">
+              <a-col :span="5" class="text-right">
+                <nuxt-link to="/accounts/departure/detail">
                   <span class="fs-14 fw-500 cr-green">
                     Lihat Detail
                     <a-icon type="right" class="fs-12 ml-8" />
@@ -157,6 +153,7 @@ const dataSeat = [
   {
     no_transaction: "ATT-UMH-14674422219080148",
     products_categorie: "umrah",
+    products_name: "Paket Umrah Exclusive September 2019, Keberangkatan Makassar",
     pax: "4",
     date: "05 Januari 2019",
     program: "Program 9 Hari",
@@ -166,6 +163,7 @@ const dataSeat = [
   {
     no_transaction: "ATT-TKT-14674422219080148",
     products_categorie: "tiket",
+    products_name: "Makassar - Jakarta",
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",
@@ -175,6 +173,7 @@ const dataSeat = [
   {
     no_transaction: "ATT-AKM-14674422219080148",
     products_categorie: "akomodasi",
+    products_name: "Paket haramain 1 Al Hajj",
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",
@@ -184,6 +183,7 @@ const dataSeat = [
   {
     no_transaction: "ATT-VSI-14674422219080148",
     products_categorie: "visa",
+    products_name: "Visa Darul Manasek",
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",
@@ -193,6 +193,7 @@ const dataSeat = [
   {
     no_transaction: "ATT-INS-14674422219080148",
     products_categorie: "insurance",
+    products_name: "Asuransi umrah aswata",
     pax: "2",
     date: "10 Januari 2019",
     program: "Program 9 Hari",

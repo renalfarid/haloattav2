@@ -313,7 +313,7 @@
         </div>
         <div>
           <a-button size="large" class="fs-15 fw-500 b-shadow b-radius f-default mr-8">
-            <nuxt-link to="/accounts/mitra/transaction/purchase" class="f-default">Kembali</nuxt-link>
+            <nuxt-link to="/accounts/transaction/purchase" class="f-default">Kembali</nuxt-link>
           </a-button>
           <a-button type="primary" size="large" class="fs-15 fw-500 b-shadow b-radius f-default">
             <nuxt-link to="/accounts/e-confirm" class="f-default">Ya, Saya Sudah Bayar</nuxt-link>
