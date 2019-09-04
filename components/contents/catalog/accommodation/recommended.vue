@@ -32,7 +32,7 @@
                 <template slot="content">
                   <div class="fs-15 fw-500 cr-black">{{item.nama_vendor}}</div>
                   <div class="fs-14 fw-400 cr-gray f-default">
-                    <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                    <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                   </div>
                 </template>
                 <a-avatar
@@ -41,7 +41,12 @@
                 />
               </a-popover>
               <div class="ml-auto">
-                <a-rate :style="{ top: '-2px' }" class="fs-14 f-default" :defaultValue="4" disabled />
+                <a-rate
+                  :style="{ top: '-2px' }"
+                  class="fs-14 f-default"
+                  :defaultValue="4"
+                  disabled
+                />
               </div>
             </div>
 
@@ -110,7 +115,7 @@ export default {
     this.getdata();
   },
   methods: {
-    getdata() {
+    async getdata() {
       axios
         .get("https://api.haloatta.com/api/la/all", {
           params: {

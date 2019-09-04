@@ -132,7 +132,7 @@ export default {
     this.getdata();
   },
   methods: {
-    getdata() {
+    async getdata() {
       axios
         .get("https://api.haloatta.com/api/paket/umroh/recomended", {
           params: {

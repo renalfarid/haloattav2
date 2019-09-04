@@ -34,7 +34,10 @@
                     <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                   </div>
                 </template>
-                <a-avatar class="vendor-logo zIndex mr-8" :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }" />
+                <a-avatar
+                  class="vendor-logo zIndex mr-8"
+                  :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
+                />
               </a-popover>
               <a-popover trigger="hover">
                 <template slot="content">
@@ -123,7 +126,7 @@ export default {
     this.getdata();
   },
   methods: {
-    getdata() {
+    async getdata() {
       axios
         .get("https://api.haloatta.com/api/tiket/all", {
           params: {

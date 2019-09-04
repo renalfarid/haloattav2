@@ -123,10 +123,17 @@ export default {
   },
   created: function() {
     // get todo items and start listening to events once component is created
-    this.getdata();
+    // this.getdata();
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+      this.getdata();
+      console.log("run");
+    }, 10500);
   },
   methods: {
-    getdata() {
+    async getdata() {
       axios
         .get("https://api.haloatta.com/api/paket/umroh/all", {
           params: {
