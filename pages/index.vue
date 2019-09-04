@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content-head">
-      <div class="content-head--cover" :style="{ backgroundImage: 'url(/umrah/cover/cu26.png)' }">
+      <div class="content-head--cover" :style="{ backgroundImage: 'url(/umrah/cover/cu10.png)' }">
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
@@ -149,7 +149,7 @@
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
-            <a-divider orientation="left" class="ant-divider-title-left">Paket Umrah</a-divider>
+            <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi Program Umrah</a-divider>
             <a-row :gutter="16">
               <a-col :span="16">
                 <h6 class="fs-16 fw-400 cr-gray">
@@ -172,7 +172,7 @@
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
-            <a-divider orientation="left" class="ant-divider-title-left">Tiket Group</a-divider>
+            <a-divider orientation="left" class="ant-divider-title-left">Tiket Pesawat Perjalanan Umrah Anda</a-divider>
             <a-row :gutter="16">
               <a-col :span="16">
                 <h6 class="fs-16 fw-400 cr-gray">
@@ -195,7 +195,7 @@
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
-            <a-divider orientation="left" class="ant-divider-title-left">LA Akomodasi</a-divider>
+            <a-divider orientation="left" class="ant-divider-title-left">Pilihan LA Akomodasi Umrah</a-divider>
             <a-row :gutter="16">
               <a-col :span="16">
                 <h6 class="fs-16 fw-400 cr-gray">
@@ -378,7 +378,7 @@ import sectionComponentsUmrah from "~/components/contents/home/section-component
 
 import umrahRecommended from "~/components/contents/catalog/umrah/recommended.vue";
 import ticketRecommended from "~/components/contents/catalog/ticket/recommended.vue";
-import accommodationRecommended from "~/components/contents/catalog/accommodation/recommended.vue";
+import accommodationRecommended from "~/components/contents/catalog/accommodation/umrah/recommended.vue";
 import visaRecommended from "~/components/contents/catalog/visa/recommended.vue";
 import insuranceRecommended from "~/components/contents/catalog/insurance/recommended.vue";
 import handlingRecommended from "~/components/contents/catalog/handling/recommended.vue";

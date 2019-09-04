@@ -33,83 +33,19 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Jumlah Pax" hasFeedback>
+        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
           <div class="icon-search">
-            <img class="max-width" src="/icons/search/boysmiling.svg" />
+            <a-icon type="calendar" />
           </div>
-          <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
-            <a-menu slot="overlay">
-              <a-menu-item key="0" disabled>
-                <div class="d-flex align-items-center">
-                  <div class="fs-14 fw-400 cr-black f-default">Jumlah Pax</div>
-                  <div class="ml-auto">
-                    <number-input
-                      :inputtable="false"
-                      v-model="pax"
-                      :min="1"
-                      size="small"
-                      center
-                      controls
-                    />
-                  </div>
-                </div>
-              </a-menu-item>
-            </a-menu>
-            <a-button class="ant-btn--add-passenger text-left" size="large" block>{{pax}} Pax</a-button>
-          </a-dropdown>
-        </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Gender" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="man" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Laki-Laki"
-            placeholder="Pilih Gender"
-            optionFilterProp="children"
-            style="width: 100%"
-            :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
+          <a-date-picker
             size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Laki-Laki">laki-Laki</a-select-option>
-            <a-select-option value="Perempuan">Perempuan</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-
-      <a-col :span="12">
-        <a-form-item label="Bahasa" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="flag" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Indonesia & Arab"
-            placeholder="Pilih Bahasa"
-            optionFilterProp="children"
             style="width: 100%"
-            :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
-            size="large"
+            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+            :disabledDate="disabledDate"
+            placeholder="Pilih Tanggal"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Indonesia & Arab">Indonesia & Arab</a-select-option>
-            <a-select-option value="Indonesia & Inggris ">Indonesia & Inggris</a-select-option>
-            <a-select-option value="Hanya Indonesia">Hanya Indonesia</a-select-option>
-          </a-select>
+            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+          </a-date-picker>
         </a-form-item>
       </a-col>
     </a-row>
@@ -146,31 +82,41 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+        <a-form-item label="Tipe Tourleader" hasFeedback>
           <div class="icon-search">
-            <a-icon type="calendar" />
+            <span class="icon-tourleader-sm"></span>
           </div>
-          <a-date-picker
-            size="large"
+          <a-select
+            showSearch
+            defaultValue="pemula"
+            placeholder="Pilih Tour Leader"
+            optionFilterProp="children"
             style="width: 100%"
-            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-            :disabledDate="disabledDate"
-            placeholder="Pilih Tanggal"
+            :showArrow="false"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @change="handleChange"
+            :filterOption="filterOption"
+            size="large"
           >
-            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-          </a-date-picker>
+            <a-select-option value="All">Tampilkan Semua</a-select-option>
+            <a-select-option value="pemula">Pemula</a-select-option>
+            <a-select-option value="Berpengalaman">Berpengalaman</a-select-option>
+          </a-select>
         </a-form-item>
       </a-col>
     </a-row>
 
-    <a-row :gutter="16">
+    <a-row :gutter="16" type="flex" justify="end">
       <a-col :span="12">
-        <a-button
-          html-type="submit"
-          class="btn-search b-shadow b-radius"
-          size="large"
-          block
-        >Cari Tour Leader</a-button>
+        <a-form-item>
+          <a-button
+            html-type="submit"
+            class="btn-search b-shadow b-radius"
+            size="large"
+            block
+          >Cari Tour Leader</a-button>
+        </a-form-item>
       </a-col>
     </a-row>
   </a-form>
@@ -181,9 +127,7 @@ export default {
   name: "searchTourleader",
   data() {
     this.dateFormat = "YYYY-MM-DD";
-    return {
-      pax: 1
-    };
+    return { };
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);

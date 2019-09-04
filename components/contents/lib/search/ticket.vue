@@ -132,85 +132,14 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Jumlah Penumpang" hasFeedback>
-          <div class="icon-search">
-            <img class="max-width" src="/icons/search/seat.svg" />
-          </div>
-          <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
-            <a-menu slot="overlay">
-              <a-menu-item key="0" disabled>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
-                    <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
-                  </div>
-                  <div class="ml-auto">
-                    <number-input
-                      v-model="dewasa"
-                      :min="1"
-                      :inputtable="false"
-                      size="small"
-                      center
-                      controls
-                    />
-                  </div>
-                </div>
-              </a-menu-item>
-              <a-menu-item key="1" disabled>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fs-14 fw-400 cr-black f-default">Anak</div>
-                    <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
-                  </div>
-                  <div class="ml-auto">
-                    <number-input
-                      v-model="anak"
-                      :min="0"
-                      :inputtable="false"
-                      size="small"
-                      center
-                      controls
-                    />
-                  </div>
-                </div>
-              </a-menu-item>
-              <a-menu-item key="2" disabled>
-                <div class="d-flex align-items-center">
-                  <div>
-                    <div class="fs-14 fw-400 cr-black f-default">Bayi</div>
-                    <div class="fs-12 fw-400 cr-gray f-default">(dibawah 2 thn)</div>
-                  </div>
-                  <div class="ml-auto">
-                    <number-input
-                      v-model="bayi"
-                      :min="0"
-                      :inputtable="false"
-                      size="small"
-                      center
-                      controls
-                    />
-                  </div>
-                </div>
-              </a-menu-item>
-            </a-menu>
-            <a-button
-              class="ant-btn--add-passenger text-left"
-              size="large"
-              block
-            >{{dewasa}} Dewasa, {{anak}} Anak, {{bayi}} Bayi</a-button>
-          </a-dropdown>
+        <a-form-item :style="{ marginTop: '24px' }">
+          <a-button
+            html-type="submit"
+            class="btn-search b-shadow b-radius"
+            size="large"
+            block
+          >Cari Tiket Group</a-button>
         </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
-      <a-col :span="12">
-        <a-button
-          html-type="submit"
-          class="btn-search b-shadow b-radius"
-          size="large"
-          block
-        >Cari Tiket Group</a-button>
       </a-col>
     </a-row>
   </a-form>
@@ -221,10 +150,7 @@ export default {
   name: "searchTicket",
   data() {
     return {
-      monthFormat: 'MM/YYYY',
-      dewasa: 1,
-      anak: 0,
-      bayi: 0
+      monthFormat: "MM/YYYY"
     };
   },
   beforeCreate() {

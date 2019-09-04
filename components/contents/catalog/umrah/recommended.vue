@@ -13,7 +13,7 @@
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
                   <div class="ant-card-cover--overlay-text-title fs-15">{{item.sisa_seat}}</div>
-                  <div class="ant-card-cover--overlay-text-subtitle text-uppercase">pax</div>
+                  <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
                 </div>
               </div>
 
@@ -34,10 +34,11 @@
                     <template slot="content">
                       <div class="fs-15 fw-500 cr-black">{{item.nama}}</div>
                       <div class="fs-14 fw-400 cr-gray f-default">
-                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
+                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
                       </div>
                     </template>
                     <a-avatar
+                      size="small"
                       class="vendor-logo zIndex mr-8"
                       :style="{ backgroundImage: `url(${item.foto_vendor != '' ? item.foto_vendor : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                     />
@@ -47,12 +48,12 @@
                     <template slot="content">
                       <div class="fs-13 fw-400 cr-black f-default">Maskapai {{item.nama_maskapai}}</div>
                     </template>
-                    <a-avatar class="zIndex mr-8" :src="item.image"/>
+                    <a-avatar class="zIndex mr-8" size="small" :src="item.image" />
                   </a-popover>
 
                   <a-popover trigger="hover">
                     <template slot="content">
-                      <a-rate class="fs-14 mb-4" :defaultValue="3" disabled/>
+                      <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
                       <div
                         class="fs-13 fw-400 cr-black f-default mb-4"
                       >Mekkah : {{item.hotel_mekkah}}</div>
@@ -92,7 +93,7 @@
               <span>Keberangkatan {{item.nama_kota}}</span>
             </div>
 
-            <div class="d-flex align-items-center mb-16">
+            <div class="d-flex align-items-center">
               <div class="fs-14 fw-400 text-ellipsis">
                 <div class="cr-gray">Keberangkatan</div>
                 <div class="cr-black">{{item.tgl_berangkat}}</div>
@@ -102,10 +103,6 @@
                 <div class="cr-black">19 September 2019</div>
               </div>
             </div>
-
-            <a-button block>
-              <nuxt-link to="/catalog/umrah/order-review">Pesan</nuxt-link>
-            </a-button>
           </div>
         </a-card>
       </a-skeleton>

@@ -8,55 +8,23 @@
   >
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Layanan" hasFeedback>
+        <a-form-item label="Tipe Asuransi" hasFeedback>
           <div class="icon-search">
-            <a-icon type="schedule" />
+            <span class="icon-insurance-sm"></span>
           </div>
           <a-select
             showSearch
-            defaultValue="Pulang Pergi"
-            placeholder="Pilih Layanan"
-            optionFilterProp="children"
-            :showArrow="false"
+            defaultValue="umrah"
+            placeholder="Pilih Tipe Asuransi"
             style="width: 100%"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
+            :showArrow="false"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Pulang Pergi">Pulang Pergi</a-select-option>
+            <a-select-option value="umrah">Umrah</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
-        <a-form-item label="Untuk" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="schedule" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Jamaah Umrah"
-            placeholder="Pilih"
-            optionFilterProp="children"
-            style="width: 100%"
-            :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
-            size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Jamaah Umrah">Jamaah Umrah</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
       <a-col :span="12">
         <a-form-item label="Program Hari" hasFeedback>
           <div class="icon-search">
@@ -82,39 +50,11 @@
           </a-select>
         </a-form-item>
       </a-col>
-
-      <a-col :span="12">
-        <a-form-item label="Jumlah Pax" hasFeedback>
-          <div class="icon-search">
-            <img class="max-width" src="/icons/search/boysmiling.svg" />
-          </div>
-          <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
-            <a-menu slot="overlay">
-              <a-menu-item key="0" disabled>
-                <div class="d-flex align-items-center">
-                  <div class="fs-14 fw-400 cr-black f-default">Jumlah Pax</div>
-                  <div class="ml-auto">
-                    <number-input
-                      :inputtable="false"
-                      v-model="pax"
-                      :min="1"
-                      size="small"
-                      center
-                      controls
-                    />
-                  </div>
-                </div>
-              </a-menu-item>
-            </a-menu>
-            <a-button class="ant-btn--add-passenger text-left" size="large" block>{{pax}} Pax</a-button>
-          </a-dropdown>
-        </a-form-item>
-      </a-col>
     </a-row>
 
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Dari Tanggal" hasFeedback>
+        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -131,30 +71,14 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Sampai Tanggal">
-          <div class="icon-search">
-            <a-icon type="calendar" />
-          </div>
-          <a-date-picker
+        <a-form-item :style="{ marginTop: '24px' }">
+          <a-button
+            html-type="submit"
+            class="btn-search b-shadow b-radius"
             size="large"
-            style="width: 100%"
-            :defaultValue="moment('2019-06-10', dateFormat)"
-            disabled
-          >
-            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-          </a-date-picker>
+            block
+          >Cari Asuransi</a-button>
         </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
-      <a-col :span="12">
-        <a-button
-          html-type="submit"
-          class="btn-search b-shadow b-radius"
-          size="large"
-          block
-        >Cari Asuransi</a-button>
       </a-col>
     </a-row>
   </a-form>
@@ -165,9 +89,7 @@ export default {
   name: "searchTicket",
   data() {
     this.dateFormat = "YYYY-MM-DD";
-    return {
-      pax: 1
-    };
+    return { };
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);
