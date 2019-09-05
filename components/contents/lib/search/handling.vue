@@ -85,7 +85,7 @@
           <a-date-picker
             size="large"
             style="width: 100%"
-            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+            v-decorator="['enddate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
             :disabledDate="disabledDate"
             placeholder="Pilih Tanggal Kedatangan"
           >
