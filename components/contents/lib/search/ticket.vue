@@ -132,7 +132,7 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item :style="{ marginTop: '24px' }">
+        <a-form-item :style="{ bottom: '-25px' }">
           <a-button
             html-type="submit"
             class="btn-search b-shadow b-radius"

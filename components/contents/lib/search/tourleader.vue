@@ -109,14 +109,12 @@
 
     <a-row :gutter="16" type="flex" justify="end">
       <a-col :span="12">
-        <a-form-item>
-          <a-button
-            html-type="submit"
-            class="btn-search b-shadow b-radius"
-            size="large"
-            block
-          >Cari Tour Leader</a-button>
-        </a-form-item>
+        <a-button
+          html-type="submit"
+          class="btn-search b-shadow b-radius"
+          size="large"
+          block
+        >Cari Tour Leader</a-button>
       </a-col>
     </a-row>
   </a-form>
@@ -127,7 +125,7 @@ export default {
   name: "searchTourleader",
   data() {
     this.dateFormat = "YYYY-MM-DD";
-    return { };
+    return {};
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);
