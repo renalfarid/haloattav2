@@ -15,7 +15,7 @@
           <div>
             <a-avatar :src="item.logo_maskapai" />
           </div>
-          <div class="fs-16 fw-500 cr-black">{{item.nama_maskapai}} {{item.nama_vendor}}</div>
+          <div class="fs-16 fw-500 cr-black">{{item.nama_maskapai}}</div>
           <div class="fs-16 fw-500 cr-black ml-auto">{{item.kode_maskapai}}</div>
         </div>
         <div class="ant-package--images w-100 mt-16">
