@@ -8,11 +8,11 @@
             <div class="fs-24 fw-500 cr-black">Semua Paket Umrah</div>
             <div class="ml-auto">
               <nuxt-link to="/" class="fs-14 cr-gray">
-                <a-icon type="left" class="fs-12 mr-4"/>Kembali
+                <a-icon type="left" class="fs-12 mr-4" />Kembali
               </nuxt-link>
             </div>
           </div>
-          <filter-result-umrah/>
+          <filter-result-umrah />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -43,10 +43,12 @@
                         <div class="ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius"></div>
                           <div class="ant-card-cover--overlay-text">
-                            <div class="ant-card-cover--overlay-text-title">sisa</div>
-                            <div class="ant-card-cover--overlay-text-subtitle">
-                              <span>{{item.sisa_seat}}</span> pax
-                            </div>
+                            <div
+                              class="ant-card-cover--overlay-text-title fs-15 fw-500"
+                            >{{item.sisa_seat}}</div>
+                            <div
+                              class="ant-card-cover--overlay-text-subtitlefs-12 text-uppercase"
+                            >pax</div>
                           </div>
                         </div>
 
@@ -77,8 +79,8 @@
                                 </div>
                               </template>
                               <a-avatar
-                                class="zIndex mr-8"
-                                :src="item.foto_vendor != '' ? item.foto_vendor : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                                class="vendor-logo zIndex mr-8"
+                                :style="{ backgroundImage: `url(${item.foto_vendor != '' ? item.foto_vendor : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                               />
                             </a-popover>
 
@@ -88,12 +90,12 @@
                                   class="fs-13 fw-400 cr-black f-default"
                                 >Maskapai {{item.nama_maskapai}}</div>
                               </template>
-                              <a-avatar class="zIndex mr-8" :src="item.image"/>
+                              <a-avatar size="small" class="zIndex mr-8" :src="item.image" />
                             </a-popover>
 
                             <a-popover trigger="hover">
                               <template slot="content">
-                                <a-rate class="fs-14 mb-4" :defaultValue="3" disabled/>
+                                <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
                                 <div
                                   class="fs-13 fw-400 cr-black f-default mb-4"
                                 >Mekkah : {{item.hotel_mekkah}}</div>
@@ -113,7 +115,7 @@
                             class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black"
                           >Program {{item.jumlah_hari}} Hari</div>
                         </div>
-                        <div class="ant-card-meta-title--package fw-500">{{item.nama}}</div>
+                        <div class="ant-card-meta-title--package text-capitalize fw-500">{{item.nama}}</div>
                       </div>
 
                       <div slot="description">
@@ -135,7 +137,7 @@
                         <span>Keberangkatan {{item.nama_kota}}</span>
                       </div>
 
-                      <div class="d-flex align-items-center mb-16">
+                      <div class="d-flex align-items-center">
                         <div class="fs-14 fw-400 text-ellipsis">
                           <div class="cr-gray">Keberangkatan</div>
                           <div class="cr-black">{{item.tgl_berangkat}}</div>
@@ -145,10 +147,6 @@
                           <div class="cr-black">19 September 2019</div>
                         </div>
                       </div>
-
-                      <a-button block>
-                        <nuxt-link to="/catalog/umrah/order-review">Pesan</nuxt-link>
-                      </a-button>
                     </div>
                   </a-card>
                 </a-skeleton>

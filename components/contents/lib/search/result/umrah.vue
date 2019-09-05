@@ -11,13 +11,11 @@
           <div>
             <div class="ant-card--results-info-title">Umrah September 2019</div>
             <div class="ant-card--results-info-subtitle">
+              <span>Keberangkatan Makassar</span>
+              <a-divider type="vertical" />
+              <span>September 2019</span>
+              <a-divider type="vertical" />
               <span>Program 9 Hari</span>
-              <a-divider type="vertical" />
-              <span>40 Pax</span>
-              <a-divider type="vertical" />
-              <span>{{dewasa}} Dewasa</span>
-              <a-divider type="vertical" />
-              <span>{{anak}} Anak</span>
             </div>
           </div>
         </div>
@@ -33,7 +31,7 @@
         <a-divider />
         <a-form layout="vertical" :form="form" class="form-search--costume" hideRequiredMark>
           <a-row :gutter="16">
-            <a-col :span="12">
+            <a-col :span="8">
               <a-form-item label="Kota Asal" hasFeedback>
                 <div class="icon-search">
                   <img class="max-width" src="/icons/search/airplane.svg" />
@@ -54,7 +52,7 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="12">
+            <a-col :span="8">
               <a-form-item label="Program Hari" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
@@ -79,10 +77,8 @@
                 </a-select>
               </a-form-item>
             </a-col>
-          </a-row>
 
-          <a-row :gutter="16">
-            <a-col :span="12">
+            <a-col :span="8">
               <a-form-item label="Bulan Keberangkatan" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
@@ -107,59 +103,6 @@
                 </a-select>
               </a-form-item>
             </a-col>
-
-            <a-col :span="12">
-              <a-form-item label="Jumlah Jamaah" hasFeedback>
-                <div class="icon-search">
-                  <img class="max-width" src="/icons/search/boysmiling.svg" />
-                </div>
-                <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
-                  <a-menu slot="overlay">
-                    <a-menu-item key="0" disabled>
-                      <div class="d-flex align-items-center">
-                        <div>
-                          <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
-                          <div class="fs-12 fw-400 cr-gray f-default">(12 thn atau lebih)</div>
-                        </div>
-                        <div class="ml-auto">
-                          <number-input
-                            v-model="dewasa"
-                            :min="1"
-                            :inputtable="false"
-                            size="small"
-                            center
-                            controls
-                          />
-                        </div>
-                      </div>
-                    </a-menu-item>
-                    <a-menu-item key="1" disabled>
-                      <div class="d-flex align-items-center">
-                        <div>
-                          <div class="fs-14 fw-400 cr-black f-default">Anak</div>
-                          <div class="fs-12 fw-400 cr-gray f-default">(2 - 11 thn)</div>
-                        </div>
-                        <div class="ml-auto">
-                          <number-input
-                            v-model="anak"
-                            :min="0"
-                            :inputtable="false"
-                            size="small"
-                            center
-                            controls
-                          />
-                        </div>
-                      </div>
-                    </a-menu-item>
-                  </a-menu>
-                  <a-button
-                    class="ant-btn--add-passenger text-left"
-                    size="large"
-                    block
-                  >{{dewasa}} Dewasa, {{anak}} Anak</a-button>
-                </a-dropdown>
-              </a-form-item>
-            </a-col>
           </a-row>
 
           <a-row :gutter="16" type="flex" justify="end">
@@ -182,9 +125,7 @@ export default {
   data() {
     return {
       form: this.$form.createForm(this),
-      visibleSearch: false,
-      dewasa: 1,
-      anak: 0
+      visibleSearch: false
     };
   },
 

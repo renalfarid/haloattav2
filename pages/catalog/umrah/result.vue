@@ -38,10 +38,8 @@
                         <div class="ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius"></div>
                           <div class="ant-card-cover--overlay-text">
-                            <div class="ant-card-cover--overlay-text-title">sisa</div>
-                            <div class="ant-card-cover--overlay-text-subtitle">
-                              <span>{{item.pax_available}}</span> pax
-                            </div>
+                            <div class="ant-card-cover--overlay-text-title fs-15 fw-500">{{item.pax_available}}</div>
+                            <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
                           </div>
                         </div>
 
@@ -121,7 +119,7 @@
                         <span>Keberangkatan Makassar</span>
                       </div>
 
-                      <div class="d-flex align-items-center mb-16">
+                      <div class="d-flex align-items-center">
                         <div class="fs-14 fw-400 text-ellipsis">
                           <div class="cr-gray">Keberangkatan</div>
                           <div class="cr-black">10 September 2019</div>
@@ -131,10 +129,6 @@
                           <div class="cr-black">19 September 2019</div>
                         </div>
                       </div>
-
-                      <a-button block>
-                        <nuxt-link to="/catalog/umrah/order-review">Pesan</nuxt-link>
-                      </a-button>
                     </div>
                   </a-card>
                 </a-skeleton>
