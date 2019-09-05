@@ -56,16 +56,12 @@
             </a-card-meta>
 
             <div class="package-description--more p-16">
-              <div class="mb-16">
+              <div>
                 <div class="fs-13 fw-400 text-ellipsis">
                   <div class="cr-gray">Tersedia</div>
                   <div class="cr-black">Perlengkapan umrah pria dan wanita</div>
                 </div>
               </div>
-
-              <a-button block>
-                <nuxt-link to="/catalog/equipment/order-review">Pesan</nuxt-link>
-              </a-button>
             </div>
           </a-card>
         </nuxt-link>

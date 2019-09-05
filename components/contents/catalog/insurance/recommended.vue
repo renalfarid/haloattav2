@@ -54,23 +54,6 @@
                 </div>
               </div>
             </a-card-meta>
-
-            <div class="package-description--more p-16">
-              <!-- <div class="d-flex align-items-center mb-16">
-                <div class="fs-13 fw-400 text-ellipsis">
-                  <div class="cr-gray">Keberangkatan</div>
-                  <div class="cr-black">10 September 2019</div>
-                </div>
-                <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
-                  <div class="cr-gray">Kedatangan</div>
-                  <div class="cr-black">19 September 2019</div>
-                </div>
-              </div>-->
-
-              <a-button block>
-                <nuxt-link to="/catalog/insurance/order-review">Pesan</nuxt-link>
-              </a-button>
-            </div>
           </a-card>
         </nuxt-link>
       </a-skeleton>

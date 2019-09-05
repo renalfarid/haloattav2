@@ -10,15 +10,14 @@
           </div>
           <div>
             <div class="ant-card--results-info-title">
-              3 Hari Mekkah
-              <a-icon type="arrow-right" class="cr-gray ml-8 mr-8" />4 Hari Madinah
+              LA Akomodasi Umrah 3 Hari Mekkah
+              <a-icon type="arrow-right" class="cr-gray ml-8 mr-8" />
+              4 Hari Madinah
             </div>
             <div class="ant-card--results-info-subtitle">
-              Program 7 Hari
+              Keberangkatan 10 Desember 2019
               <a-divider type="vertical" />
-              <span>4 Quad</span>,
-              <span>0 Triple</span>,
-              <span>0 Double</span>
+              Program 9 Hari
             </div>
           </div>
         </div>
@@ -40,6 +39,24 @@
           class="form-search--costume"
         >
           <a-row :gutter="16">
+            <a-col :span="8">
+              <a-form-item label="Jenis LA Akomodasi" hasFeedback>
+                <div class="icon-search">
+                  <span class="icon-accommodation-sm"></span>
+                </div>
+                <a-select
+                  showSearch
+                  defaultValue="umrah"
+                  placeholder="Pilih LA Akomodasi"
+                  style="width: 100%"
+                  :showArrow="false"
+                  size="large"
+                >
+                  <a-select-option value="umrah">Umrah</a-select-option>
+                </a-select>
+              </a-form-item>
+            </a-col>
+
             <a-col :span="8">
               <a-form-item label="Program Hari" hasFeedback>
                 <div class="icon-search">
@@ -66,6 +83,25 @@
               </a-form-item>
             </a-col>
 
+            <a-col :span="8">
+              <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+                <div class="icon-search">
+                  <a-icon type="calendar" />
+                </div>
+                <a-date-picker
+                  size="large"
+                  style="width: 100%"
+                  v-decorator="['tanggal_checkIn',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+                  :disabledDate="disabledDate"
+                  placeholder="Pilih Tanggal Keberangkatan"
+                >
+                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+                </a-date-picker>
+              </a-form-item>
+            </a-col>
+          </a-row>
+
+          <a-row :gutter="16">
             <a-col :span="8">
               <a-form-item label="Dari Kota" hasFeedback>
                 <div class="icon-search">
@@ -115,122 +151,16 @@
                 </a-select>
               </a-form-item>
             </a-col>
-          </a-row>
-
-          <a-row :gutter="16">
-            <a-col :span="8">
-              <a-form-item label="Jumlah Room" hasFeedback>
-                <div class="icon-search">
-                  <img class="max-width" src="/icons/search/boysmiling.svg" />
-                </div>
-                <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
-                  <a-menu slot="overlay">
-                    <a-menu-item key="0" disabled>
-                      <div class="d-flex align-items-center">
-                        <div>
-                          <div class="fs-14 fw-400 cr-black f-default">Quad Room</div>
-                          <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 4 orang)</div>
-                        </div>
-                        <div class="ml-auto">
-                          <number-input
-                            v-model="quad"
-                            :min="1"
-                            :inputtable="false"
-                            size="small"
-                            center
-                            controls
-                          />
-                        </div>
-                      </div>
-                    </a-menu-item>
-                    <a-menu-item key="1" disabled>
-                      <div class="d-flex align-items-center">
-                        <div>
-                          <div class="fs-14 fw-400 cr-black f-default">Triple</div>
-                          <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 3 orang)</div>
-                        </div>
-                        <div class="ml-auto">
-                          <number-input
-                            v-model="triple"
-                            :min="0"
-                            :inputtable="false"
-                            size="small"
-                            center
-                            controls
-                          />
-                        </div>
-                      </div>
-                    </a-menu-item>
-                    <a-menu-item key="2" disabled>
-                      <div class="d-flex align-items-center">
-                        <div>
-                          <div class="fs-14 fw-400 cr-black f-default">Double</div>
-                          <div class="fs-12 fw-400 cr-gray f-default">(Sekamar 2 orang)</div>
-                        </div>
-                        <div class="ml-auto">
-                          <number-input
-                            v-model="double"
-                            :min="0"
-                            :inputtable="false"
-                            size="small"
-                            center
-                            controls
-                          />
-                        </div>
-                      </div>
-                    </a-menu-item>
-                  </a-menu>
-                  <a-button
-                    class="ant-btn--add-passenger text-left"
-                    size="large"
-                    block
-                  >{{quad}} Quad, {{triple}} Triple, {{double}} Double</a-button>
-                </a-dropdown>
-              </a-form-item>
-            </a-col>
 
             <a-col :span="8">
-              <a-form-item label="Check In" hasFeedback>
-                <div class="icon-search">
-                  <a-icon type="calendar" />
-                </div>
-                <a-date-picker
+              <a-form-item :style="{ bottom: '-25px' }">
+                <a-button
+                  html-type="submit"
+                  class="btn-search b-shadow b-radius"
                   size="large"
-                  style="width: 100%"
-                  v-decorator="['tanggal_checkIn',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-                  :disabledDate="disabledDate"
-                  placeholder="Pilih Tanggal Check In"
-                >
-                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-                </a-date-picker>
+                  block
+                >Cari LA Akomodasi</a-button>
               </a-form-item>
-            </a-col>
-
-            <a-col :span="8">
-              <a-form-item label="Check Out">
-                <div class="icon-search">
-                  <a-icon type="calendar" />
-                </div>
-                <a-date-picker
-                  size="large"
-                  style="width: 100%"
-                  :defaultValue="moment('2019-06-10', dateFormat)"
-                  disabled
-                >
-                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-                </a-date-picker>
-              </a-form-item>
-            </a-col>
-          </a-row>
-
-          <a-row :gutter="16" type="flex" justify="end">
-            <a-col :span="8">
-              <a-button
-                html-type="submit"
-                class="btn-search b-shadow b-radius"
-                size="large"
-                block
-              >Cari LA Akomodasi</a-button>
             </a-col>
           </a-row>
         </a-form>
@@ -244,10 +174,7 @@ export default {
   data() {
     this.dateFormat = "YYYY-MM-DD";
     return {
-      visibleSearch: false,
-      quad: 4,
-      triple: 0,
-      double: 0
+      visibleSearch: false
     };
   },
   beforeCreate() {
