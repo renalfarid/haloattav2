@@ -50,7 +50,24 @@
       </a-col>
     </a-row>
 
-    <a-row :gutter="16" type="flex" justify="end">
+    <a-row :gutter="16">
+      <a-col :span="12">
+        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+          <div class="icon-search">
+            <a-icon type="calendar" />
+          </div>
+          <a-date-picker
+            size="large"
+            style="width: 100%"
+            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+            :disabledDate="disabledDate"
+            placeholder="Pilih Tanggal Keberangkatan"
+          >
+            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+          </a-date-picker>
+        </a-form-item>
+      </a-col>
+
       <a-col :span="12">
         <a-form-item label="Tipe Visa" hasFeedback>
           <div class="icon-search">
@@ -74,16 +91,16 @@
           </a-select>
         </a-form-item>
       </a-col>
+    </a-row>
 
+    <a-row :gutter="16" type="flex" justify="end">
       <a-col :span="12">
-        <a-form-item :style="{ marginTop: '24px' }">
-          <a-button
+        <a-button
             html-type="submit"
             class="btn-search b-shadow b-radius"
             size="large"
             block
           >Cari Visa</a-button>
-        </a-form-item>
       </a-col>
     </a-row>
   </a-form>
@@ -94,7 +111,7 @@ export default {
   name: "searchTicket",
   data() {
     this.dateFormat = "YYYY-MM-DD";
-    return { };
+    return {};
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);
