@@ -55,11 +55,13 @@
           </div>
         </div>
       </div>
+
       <a-divider :style="{margin: '0'}" />
+
       <div class="p-16">
-        <div class="ant-package--title fs-15 fw-400 d-block text-right cr-black">Harga Bayar</div>
+        <div class="ant-package--title fs-15 fw-400 d-block cr-black">Harga Bayar</div>
         <div
-          class="ant-package--subtitle fs-22 fw-500 cr-black d-block text-right f-default"
+          class="ant-package--subtitle fs-22 fw-500 cr-black d-block f-default"
         >Rp 520.000.000</div>
         <div :style="{margin: '16px 0'}">
           <a-button
