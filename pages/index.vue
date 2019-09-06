@@ -195,7 +195,7 @@
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
-            <a-divider orientation="left" class="ant-divider-title-left">Pilihan LA Akomodasi Umrah</a-divider>
+            <a-divider orientation="left" class="ant-divider-title-left">LA Akomodasi Umrah</a-divider>
             <a-row :gutter="16">
               <a-col :span="16">
                 <h6 class="fs-16 fw-400 cr-gray">
