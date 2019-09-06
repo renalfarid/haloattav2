@@ -42,9 +42,9 @@
       </div>
       <a-divider :style="{margin: '0'}" />
       <div class="p-16">
-        <div class="ant-package--title fs-15 fw-400 d-block text-right cr-black">Harga Bayar</div>
+        <div class="ant-package--title fs-15 fw-400 d-block cr-black">Harga Bayar</div>
         <div
-          class="ant-package--subtitle fs-22 fw-500 cr-black d-block text-right f-default"
+          class="ant-package--subtitle fs-22 fw-500 cr-black d-block f-default"
         >Rp 48.000.000</div>
 
         <div :style="{margin: '16px 0'}">
@@ -55,7 +55,7 @@
             @click="nextOrderReview"
           >Pesan Sekarang</a-button>
         </div>
-        <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">
+        <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8">
           Dapatkan point langsung ketika
           anda menyelesaikan aktivitas
         </div>
