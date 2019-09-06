@@ -11,6 +11,9 @@
                   class="ant-card-cover-images"
                   :style="{ backgroundImage: `url(${item.images})` }"
                 >
+                  <div class="haloummi">
+                    <img src="/haloummi.png" />
+                  </div>
                   <a-tag :class="item.categories">
                     <nuxt-link to="#">{{item.categories}}</nuxt-link>
                   </a-tag>
@@ -94,7 +97,7 @@ export default {
   name: "blogHaloatta",
   head() {
     return {
-      title: "Tips & Trik - Haloatta"
+      title: "Tips & Trik - Haloummi"
     };
   },
   data() {

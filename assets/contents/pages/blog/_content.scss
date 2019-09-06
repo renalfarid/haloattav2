@@ -12,6 +12,17 @@
                 position: relative;
                 height: 100%;
                 width: 100%;
+                & .haloummi {
+                    position: absolute;
+                    z-index: 10;
+                    left: 16px;
+                    top: 16px;
+                    & img {
+                        max-width: 100%;
+                        max-height: 24px;
+                        opacity: .8;
+                    }
+                }
                 & .ant-grid-body {
                     position: absolute;
                     bottom: 24px;
@@ -93,8 +104,20 @@
                             background-position: center center;
                             background-repeat: no-repeat;
                             background-size: cover;
+                            position: relative;
                             height: 220px;
                             width: 100%;
+                            & .haloummi {
+                                position: absolute;
+                                z-index: 10;
+                                left: 16px;
+                                top: 16px;
+                                & img {
+                                    max-width: 100%;
+                                    max-height: 24px;
+                                    opacity: .8;
+                                }
+                            }
                             & .ant-tag {
                                 @include border-radius(20px);
                                 position: absolute;
@@ -105,7 +128,7 @@
                                 height: 28px;
                                 border: none;
                                 left: 16px;
-                                top: 16px;
+                                bottom: 16px;
                                 & a {
                                     text-transform: capitalize;
                                     color: #ffffff;
