@@ -1,14 +1,27 @@
 .card-news--large-overlay {
+    position: relative;
     border: none;
     & .ant-card-cover {
         & .box-content {
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
+            position: relative;
             padding: 30px;
             height: 400px;
             width: 100%;
             width: 100%;
+            & .haloummi {
+                position: absolute;
+                right: 24px;
+                top: 24px;
+                & img {
+                    position: relative;
+                    max-width: 100%;
+                    max-height: 40px;
+                    z-index: 99;
+                }
+            }
             & .box-overlay {
                 position: absolute;
                 max-width: 500px;
@@ -40,7 +53,7 @@
             background-image: linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
             position: absolute !important;
             bottom: 0 !important;
-            height: 50% !important;
+            height: 100% !important;
             width: 100% !important;
             min-height: 100px !important;
             left: 0;

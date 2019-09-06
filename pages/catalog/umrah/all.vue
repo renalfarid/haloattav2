@@ -140,11 +140,11 @@
                       <div class="d-flex align-items-center">
                         <div class="fs-14 fw-400 text-ellipsis">
                           <div class="cr-gray">Keberangkatan</div>
-                          <div class="cr-black">{{item.tgl_berangkat}}</div>
+                          <div class="cr-black">{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
                         </div>
                         <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                           <div class="cr-gray">Kedatangan</div>
-                          <div class="cr-black">19 September 2019</div>
+                          <div class="cr-black">{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
                         </div>
                       </div>
                     </div>
@@ -160,6 +160,7 @@
 </template>
 <script>
 import filterResultUmrah from "~/components/contents/lib/filter/result/umrah.vue";
+import moment from "moment";
 import axios from "axios";
 export default {
   name: "umrahAll",
@@ -181,6 +182,7 @@ export default {
     this.getdata();
   },
   methods: {
+    moment,
     getdata() {
       this.busy = true;
       axios

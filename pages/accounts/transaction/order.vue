@@ -91,7 +91,7 @@
               </a-col>
               <a-col :span="7">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Pemesanan</div>
-                <div class="fs-14 fw-500 cr-black">{{item.order_date.format('llll')}}</div>
+                <div class="fs-14 fw-500 cr-black">{{moment(item.order_date, "YYYY-MM-DD").format('llll')}}</div>
               </a-col>
               <a-col :span="7" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
@@ -161,7 +161,7 @@ const dataPembelian = [
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Makassar",
     total_amount: 500000731,
     number_purchase: "40",
-    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    order_date: "2019-08-14",
     payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Belum Dibayar",
     payment_type: "DP",
@@ -173,7 +173,7 @@ const dataPembelian = [
     products_name: "3 Hari Makkah dan 4 Hari Madinah",
     total_amount: 20000731,
     number_purchase: "10",
-    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    order_date: "2019-08-08",
     payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Menunggu Verifikasi",
     payment_type: "Lunas",
@@ -185,7 +185,7 @@ const dataPembelian = [
     products_name: "Visa Umrah September 2019",
     total_amount: 500731,
     number_purchase: "8",
-    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    order_date: "2019-08-08",
     payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Belum Dibayar",
     payment_type: "Lunas",
@@ -198,7 +198,7 @@ const dataPembelian = [
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Bandung",
     total_amount: 930000731,
     number_purchase: "20",
-    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    order_date: "2019-08-08",
     payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Belum Dibayar",
     payment_type: "Lunas",
@@ -210,7 +210,7 @@ const dataPembelian = [
     products_name: "Makassar (UPG) ke Jeddah (JED)",
     total_amount: 30000333,
     number_purchase: "4",
-    order_date: moment("2019-08-08", "YYYY-MM-DD"),
+    order_date: "2019-08-08",
     payment_limit: moment("2019-08-14", "YYYY-MM-DD"),
     purchase_status: "Belum Dibayar",
     payment_type: "Lunas",

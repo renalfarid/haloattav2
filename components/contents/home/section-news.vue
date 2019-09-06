@@ -19,6 +19,7 @@
             <a-card class="card-news--large-overlay">
               <div slot="cover">
                 <div class="box-content" :style="{ backgroundImage: `url(${blog1})` }">
+                  <div class="haloummi"><img src="/haloummi.png" /></div>
                   <div :style="{ width: '100%', zIndex: '2' }">
                     <div class="box-overlay">
                       <div class="txt">Haram Hukumnya merubah aturan yang disepakati</div>

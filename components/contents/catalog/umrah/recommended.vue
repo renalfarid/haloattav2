@@ -96,11 +96,11 @@
             <div class="d-flex align-items-center">
               <div class="fs-14 fw-400 text-ellipsis">
                 <div class="cr-gray">Keberangkatan</div>
-                <div class="cr-black">{{item.tgl_berangkat}}</div>
+                <div class="cr-black">{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
               </div>
               <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                 <div class="cr-gray">Kedatangan</div>
-                <div class="cr-black">19 September 2019</div>
+                <div class="cr-black">{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
               </div>
             </div>
           </div>
@@ -111,6 +111,7 @@
 </template>
 <script>
 import axios from "axios";
+import moment from "moment";
 export default {
   data() {
     return {
@@ -130,6 +131,7 @@ export default {
     }, 10500);
   },
   methods: {
+    moment,
     async getdata() {
       axios
         .get("https://api.haloatta.com/api/paket/umroh/all", {

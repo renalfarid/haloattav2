@@ -81,13 +81,13 @@
               </div>
 
               <div class="d-flex align-items-center">
-                <div class="fs-13 fw-400 text-ellipsis">
+                <div class="fs-14 fw-400 text-ellipsis">
                   <div class="cr-gray">Check In</div>
-                  <div class="cr-black">{{item.tanggal}}</div>
+                  <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('ll')}}</div>
                 </div>
-                <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
+                <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                   <div class="cr-gray">Check Out</div>
-                  <div class="cr-black">19 September 2019</div>
+                  <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('ll')}}</div>
                 </div>
               </div>
             </div>
@@ -99,6 +99,7 @@
 </template>
 <script>
 import axios from "axios";
+import moment from "moment";
 export default {
   data() {
     return {
@@ -111,6 +112,7 @@ export default {
     this.getdata();
   },
   methods: {
+    moment,
     async getdata() {
       axios
         .get("https://api.haloatta.com/api/la/all", {

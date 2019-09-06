@@ -92,13 +92,13 @@
               </div>
 
               <div class="d-flex align-items-center">
-                <div class="fs-13 fw-400 text-ellipsis">
+                <div class="fs-14 fw-400 text-ellipsis">
                   <div class="cr-gray">Keberangkatan</div>
-                  <div class="cr-black">{{item.tanggal_keberangkatan}}</div>
+                  <div class="cr-black">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('ll')}}</div>
                 </div>
-                <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
+                <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                   <div class="cr-gray">Kedatangan</div>
-                  <div class="cr-black">{{item.tanggal_kepulangan}}</div>
+                  <div class="cr-black">{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('ll')}}</div>
                 </div>
               </div>
             </div>
@@ -110,6 +110,7 @@
 </template>
 <script>
 import axios from "axios";
+import moment from "moment";
 export default {
   data() {
     return {
@@ -122,6 +123,7 @@ export default {
     this.getdata();
   },
   methods: {
+    moment,
     async getdata() {
       axios
         .get("https://api.haloatta.com/api/tiket/all", {
