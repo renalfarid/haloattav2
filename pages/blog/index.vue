@@ -10,6 +10,9 @@
                   class="ant-grid-cover"
                   :style="{ backgroundImage: 'url(/umrah/cover/cu2.jpg)' }"
                 >
+                  <div class="haloummi">
+                    <img src="/haloummi.png" />
+                  </div>
                   <div class="ant-grid-body">
                     <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
                     <div class="d-flex align-items-center">
@@ -38,6 +41,9 @@
                   class="ant-grid-cover"
                   :style="{ backgroundImage: 'url(/umrah/cover/cu3.jpg)' }"
                 >
+                  <div class="haloummi">
+                    <img src="/haloummi.png" />
+                  </div>
                   <div class="ant-grid-body">
                     <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
                     <div class="d-flex align-items-center">
@@ -62,6 +68,9 @@
                   class="ant-grid-cover"
                   :style="{ backgroundImage: 'url(/umrah/cover/cu4.jpg)' }"
                 >
+                  <div class="haloummi">
+                    <img src="/haloummi.png" />
+                  </div>
                   <div class="ant-grid-body">
                     <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h2>
                     <div class="d-flex align-items-center">
@@ -96,6 +105,9 @@
                 class="ant-card-cover-images"
                 :style="{ backgroundImage: `url(${item.images})` }"
               >
+                  <div class="haloummi">
+                    <img src="/haloummi.png" />
+                  </div>
                 <a-tag :class="item.categories">
                   <nuxt-link to="#">{{item.categories}}</nuxt-link>
                 </a-tag>
@@ -122,6 +134,9 @@
                 class="ant-card-cover-images"
                 :style="{ backgroundImage: `url(${item.images})` }"
               >
+                  <div class="haloummi">
+                    <img src="/haloummi.png" />
+                  </div>
                 <a-tag :class="item.categories">
                   <nuxt-link to="#">{{item.categories}}</nuxt-link>
                 </a-tag>
@@ -204,7 +219,7 @@ export default {
   name: "blogHaloatta",
   head() {
     return {
-      title: "Arah Berita - Haloatta"
+      title: "Kumpulan Berita Menarik - Haloummi"
     };
   },
   data() {

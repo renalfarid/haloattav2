@@ -1,9 +1,9 @@
 <template>
-  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
+  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
         <nuxt-link to="/catalog/accommodation/detail" class="d-block">
-          <a-card class="ant-card-package-small">
+          <a-card class="ant-card-package">
             <div slot="cover">
               <div
                 class="ant-card-cover--images"
@@ -13,7 +13,7 @@
                   <div class="ant-card-cover--overlay-box-radius"></div>
                   <div class="ant-card-cover--overlay-text">
                     <div class="ant-card-cover--overlay-text-title fs-15 fw-500">75</div>
-                    <div class="ant-card-cover--overlay-text-subtitle text-uppercase">pax</div>
+                    <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
                   </div>
                 </div>
 
@@ -32,7 +32,7 @@
                 <template slot="content">
                   <div class="fs-15 fw-500 cr-black">{{item.nama_vendor}}</div>
                   <div class="fs-14 fw-400 cr-gray f-default">
-                    <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                    <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                   </div>
                 </template>
                 <a-avatar
@@ -41,7 +41,12 @@
                 />
               </a-popover>
               <div class="ml-auto">
-                <a-rate :style="{ top: '-2px' }" class="fs-14 f-default" :defaultValue="4" disabled />
+                <a-rate
+                  :style="{ top: '-2px' }"
+                  class="fs-14 f-default"
+                  :defaultValue="4"
+                  disabled
+                />
               </div>
             </div>
 
@@ -75,7 +80,7 @@
                 >{{item.class_room}}</div>
               </div>
 
-              <div class="d-flex align-items-center mb-16">
+              <div class="d-flex align-items-center">
                 <div class="fs-13 fw-400 text-ellipsis">
                   <div class="cr-gray">Check In</div>
                   <div class="cr-black">{{item.tanggal}}</div>
@@ -85,10 +90,6 @@
                   <div class="cr-black">19 September 2019</div>
                 </div>
               </div>
-
-              <a-button block>
-                <nuxt-link to="/catalog/accommodation/order-review">Pesan</nuxt-link>
-              </a-button>
             </div>
           </a-card>
         </nuxt-link>
@@ -110,11 +111,11 @@ export default {
     this.getdata();
   },
   methods: {
-    getdata() {
+    async getdata() {
       axios
         .get("https://api.haloatta.com/api/la/all", {
           params: {
-            per_page: 4
+            per_page: 3
           }
         })
         .then(response => {

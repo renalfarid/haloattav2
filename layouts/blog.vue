@@ -3,7 +3,7 @@
     <a-layout-header :style="{ background: '#fff' }">
       <div class="container d-flex align-items-center">
         <div class="logo">
-          <nuxt-link to="/"><img src="/haloatta.png" /></nuxt-link>
+          <nuxt-link to="/"><img src="/haloummi.svg" /></nuxt-link>
         </div>
         <div class="ml-auto">
           <a-menu mode="horizontal" :defaultSelectedKeys="['1']" :style="{ lineHeight: '62px' }">

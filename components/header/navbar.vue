@@ -27,7 +27,7 @@
                   <nuxt-link to="/about">Tentang</nuxt-link>
                 </a-menu-item>
                 <a-menu-item key="3" class="nav-link">
-                  <nuxt-link to="/blog">Blog</nuxt-link>
+                  <nuxt-link to="/blog">Haloummi</nuxt-link>
                 </a-menu-item>
                 <a-sub-menu>
                   <span slot="title" class="submenu-title-wrapper">Informasi</span>

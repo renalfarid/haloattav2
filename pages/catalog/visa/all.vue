@@ -8,12 +8,12 @@
             <div class="fs-24 fw-500 cr-black">Semua Visa</div>
             <div class="ml-auto">
               <nuxt-link to="/" class="fs-14 cr-gray">
-                <a-icon type="left" class="fs-12 mr-4"/>Kembali
+                <a-icon type="left" class="fs-12 mr-4" />Kembali
               </nuxt-link>
             </div>
           </div>
 
-          <filter-result-visa/>
+          <filter-result-visa />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -45,11 +45,11 @@
                             <div class="ant-card-cover--overlay-box-radius ant-pax--visa"></div>
                             <div class="ant-card-cover--overlay-text">
                               <div
-                                class="ant-card-cover--overlay-text-title fs-18 fw-500"
+                                class="ant-card-cover--overlay-text-title fs-15 fw-500"
                               >{{item.qty}}</div>
-                              <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
-                                <span>Pax</span>
-                              </div>
+                              <div
+                                class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
+                              >Pax</div>
                             </div>
                           </div>
 
@@ -69,8 +69,8 @@
                             <div class="ant-card-meta-title--top-left d-flex align-items-center">
                               <div class="mr-8">
                                 <a-avatar
-                                  :src="item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
-                                  size="small"
+                                  class="vendor-logo zIndex"
+                                  :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                                 />
                               </div>
                               <div
@@ -78,7 +78,7 @@
                               >{{item.nama_vendor}}</div>
                             </div>
                           </div>
-                          <div class="ant-card-meta-title--package fw-500 mb-0">{{item.nama}}</div>
+                          <div class="ant-card-meta-title--package text-capitalize fw-500 mb-0">{{item.nama}}</div>
                         </div>
 
                         <div slot="description">
@@ -94,23 +94,6 @@
                           </div>
                         </div>
                       </a-card-meta>
-
-                      <div class="package-description--more p-16">
-                        <!-- <div class="d-flex align-items-center mb-16">
-                          <div class="fs-13 fw-400 text-ellipsis">
-                            <div class="cr-gray">Check In</div>
-                            <div class="cr-black">10 September 2019</div>
-                          </div>
-                          <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
-                            <div class="cr-gray">Check Out</div>
-                            <div class="cr-black">19 September 2019</div>
-                          </div>
-                        </div>-->
-
-                        <a-button block>
-                          <nuxt-link to="/catalog/visa/order-review">Pesan</nuxt-link>
-                        </a-button>
-                      </div>
                     </a-card>
                   </nuxt-link>
                 </a-skeleton>

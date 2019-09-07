@@ -45,9 +45,9 @@
                             <div class="ant-card-cover--overlay-box-radius ant-pax--insurance"></div>
                             <div class="ant-card-cover--overlay-text">
                               <div
-                                class="ant-card-cover--overlay-text-title fs-18 fw-500"
+                                class="ant-card-cover--overlay-text-title fs-15 fw-500"
                               >{{item.pax}}</div>
-                              <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
+                              <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">
                                 <span>pax</span>
                               </div>
                             </div>
@@ -101,10 +101,6 @@
                             <div class="cr-black">Perlengkapan umrah pria dan wanita</div>
                           </div>
                         </div>
-
-                        <a-button block>
-                          <nuxt-link to="/catalog/equipment/order-review">Pesan</nuxt-link>
-                        </a-button>
                       </div>
                     </a-card>
                   </nuxt-link>

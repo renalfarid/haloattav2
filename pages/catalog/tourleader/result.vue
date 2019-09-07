@@ -97,14 +97,10 @@
                           >Laki-Laki</div>
                         </div>
 
-                        <div class="mb-16">
+                        <div>
                           <div class="fs-14 fw-400 cr-gray text-ellipsis">Keterangan</div>
                           <div class="fs-14 fw-400 cr-black">Mampu berbahasa arab dan indonesia</div>
                         </div>
-
-                        <a-button block>
-                          <nuxt-link to="/catalog/tourleader/order-review">Pesan</nuxt-link>
-                        </a-button>
                       </div>
                     </a-card>
                   </nuxt-link>

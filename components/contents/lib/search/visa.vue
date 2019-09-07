@@ -8,6 +8,24 @@
   >
     <a-row :gutter="16">
       <a-col :span="12">
+        <a-form-item label="Jenis Visa" hasFeedback>
+          <div class="icon-search">
+            <span class="icon-visa-sm"></span>
+          </div>
+          <a-select
+            showSearch
+            defaultValue="umrah"
+            placeholder="Pilih Jenis Visa"
+            :showArrow="false"
+            style="width: 100%"
+            size="large"
+          >
+            <a-select-option value="umrah">Umrah</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-col>
+
+      <a-col :span="12">
         <a-form-item label="Negara Tujuan" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/place.svg" />
@@ -30,16 +48,35 @@
           </a-select>
         </a-form-item>
       </a-col>
+    </a-row>
+
+    <a-row :gutter="16">
+      <a-col :span="12">
+        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+          <div class="icon-search">
+            <a-icon type="calendar" />
+          </div>
+          <a-date-picker
+            size="large"
+            style="width: 100%"
+            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+            :disabledDate="disabledDate"
+            placeholder="Pilih Tanggal Keberangkatan"
+          >
+            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+          </a-date-picker>
+        </a-form-item>
+      </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Jenis Visa" hasFeedback>
+        <a-form-item label="Tipe Visa" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/visa.svg" />
           </div>
           <a-select
             showSearch
-            defaultValue="Visa on Arrival"
-            placeholder="Pilih Visa"
+            defaultValue="Single Entry"
+            placeholder="Pilih Tipe Visa"
             optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
@@ -49,12 +86,8 @@
             :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option
-              value="Visa Kunjungan Wisata/ Visa Turis"
-            >Visa Kunjungan Wisata/ Visa Turis</a-select-option>
-            <a-select-option value="Visa on Arrival">Visa on Arrival</a-select-option>
-            <a-select-option value="Visa Kunjungan Bisnis">Visa Kunjungan Bisnis</a-select-option>
+            <a-select-option value="Single Entry">Single Entry</a-select-option>
+            <a-select-option value="Multiple Entry">Multiple Entry</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -62,42 +95,12 @@
 
     <a-row :gutter="16" type="flex" justify="end">
       <a-col :span="12">
-        <a-form-item label="Jumlah Pax" hasFeedback>
-          <div class="icon-search">
-            <img class="max-width" src="/icons/search/boysmiling.svg" />
-          </div>
-          <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
-            <a-menu slot="overlay">
-              <a-menu-item key="0" disabled>
-                <div class="d-flex align-items-center">
-                  <div class="fs-14 fw-400 cr-black f-default">Jumlah Pax</div>
-                  <div class="ml-auto">
-                    <number-input
-                      :inputtable="false"
-                      v-model="pax"
-                      :min="0"
-                      :max="10"
-                      size="small"
-                      center
-                      controls
-                    />
-                  </div>
-                </div>
-              </a-menu-item>
-            </a-menu>
-            <a-button class="ant-btn--add-passenger text-left" size="large" block>{{pax}} Pax</a-button>
-          </a-dropdown>
-        </a-form-item>
-      </a-col>
-      <a-col :span="12">
-        <a-form-item :style="{ marginTop: '24px' }">
-          <a-button
+        <a-button
             html-type="submit"
             class="btn-search b-shadow b-radius"
             size="large"
             block
           >Cari Visa</a-button>
-        </a-form-item>
       </a-col>
     </a-row>
   </a-form>
@@ -108,9 +111,7 @@ export default {
   name: "searchTicket",
   data() {
     this.dateFormat = "YYYY-MM-DD";
-    return {
-      pax: 1
-    };
+    return {};
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);

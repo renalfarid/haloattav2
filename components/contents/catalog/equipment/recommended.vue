@@ -1,5 +1,5 @@
 <template>
-  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
+  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
         <nuxt-link to="/catalog/equipment/detail" class="d-block">
@@ -32,7 +32,10 @@
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left d-flex align-items-center">
                     <div class="mr-8">
-                      <a-avatar class="vendor-logo zIndex" :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }" />
+                      <a-avatar
+                        class="vendor-logo zIndex"
+                        :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
+                      />
                     </div>
                     <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.nama_vendor}}</div>
                   </div>
@@ -53,16 +56,12 @@
             </a-card-meta>
 
             <div class="package-description--more p-16">
-              <div class="mb-16">
+              <div>
                 <div class="fs-13 fw-400 text-ellipsis">
                   <div class="cr-gray">Tersedia</div>
                   <div class="cr-black">Perlengkapan umrah pria dan wanita</div>
                 </div>
               </div>
-
-              <a-button block>
-                <nuxt-link to="/catalog/equipment/order-review">Pesan</nuxt-link>
-              </a-button>
             </div>
           </a-card>
         </nuxt-link>
@@ -84,11 +83,11 @@ export default {
     this.getdata();
   },
   methods: {
-    getdata() {
+    async getdata() {
       axios
         .get("https://api.haloatta.com/api/perlengkapan/all", {
           params: {
-            per_page: 4
+            per_page: 3
           }
         })
         .then(response => {

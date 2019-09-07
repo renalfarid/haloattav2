@@ -45,9 +45,9 @@
                             <div class="ant-card-cover--overlay-box-radius ant-pax--insurance"></div>
                             <div class="ant-card-cover--overlay-text">
                               <div
-                                class="ant-card-cover--overlay-text-title fs-18 fw-500"
+                                class="ant-card-cover--overlay-text-title fs-15 fw-500"
                               >{{item.pax}}</div>
-                              <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
+                              <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">
                                 <span>pax</span>
                               </div>
                             </div>
@@ -93,23 +93,6 @@
                           </div>
                         </div>
                       </a-card-meta>
-
-                      <div class="package-description--more p-16">
-                        <div class="d-flex align-items-center mb-16">
-                          <div class="fs-13 fw-400 text-ellipsis">
-                            <div class="cr-gray">Keberangkatan</div>
-                            <div class="cr-black">10 September 2019</div>
-                          </div>
-                          <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
-                            <div class="cr-gray">Kedatangan</div>
-                            <div class="cr-black">19 September 2019</div>
-                          </div>
-                        </div>
-
-                        <a-button block>
-                          <nuxt-link to="/catalog/manasik/order-review">Pesan</nuxt-link>
-                        </a-button>
-                      </div>
                     </a-card>
                   </nuxt-link>
                 </a-skeleton>

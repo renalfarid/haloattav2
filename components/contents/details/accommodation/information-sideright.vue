@@ -2,61 +2,108 @@
   <div class="ant-affix--card">
     <a-card class="ant-card--package-information">
       <div class="p-16">
+        <div class="ant-package--name fs-14 fw-400 cr-gray f-default mb-8">Travel Penyedia</div>
         <div class="d-flex align-items-center">
           <div class="mr-8">
-            <a-rate class="fs-16" :defaultValue="3" disabled />
-            <div class="ant-package--name fs-13 fw-400 cr-gray">Hotel bintang 3 setaraf</div>
-            <div class="ant-package--name fs-15 fw-500 cr-black">Rayyana Ajyad (Mekkah)</div>
-            <div class="ant-package--name fs-15 fw-500 cr-black f-default">Pinewood Hotel (Madinah)</div>
+            <a-avatar
+              class="vendor-logo"
+              :style="{ backgroundImage: 'url(https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843)' }"
+            />
+          </div>
+          <div>
+            <div class="ant-package--name fs-15 fw-500 cr-black">Umaroh ATTA</div>
+          </div>
+        </div>
+      </div>
+
+      <a-divider :style="{margin: '0'}" />
+
+      <div class="p-16">
+        <a-rate class="fs-16 mb-8" :defaultValue="3" disabled />
+
+        <div class="ant-package--name fs-18 fw-500 cr-black">Rayyana Ajyad (Mekkah)</div>
+        <div class="ant-package--name fs-18 fw-500 cr-black f-default">Pinewood Hotel (Madinah)</div>
+      </div>
+
+      <a-divider :style="{margin: '0'}" />
+
+      <div class="p-16">
+        <div class="d-flex align-items-center mb-8">
+          <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
+        </div>
+        <div class="d-flex align-items-center">
+          <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
+        </div>
+      </div>
+
+      <a-divider :style="{margin: '0'}" />
+
+      <div class="p-16">
+        <div class="ant-package--title fs-15 fw-500 cr-black mb-16">Jumlah Tamu</div>
+        <div class="d-flex align-items-center">
+          <div>
+            <div class="ant-package--title fs-15 fw-500 cr-black">Quad Room</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray">Rp22.000.000 /pax</div>
           </div>
           <div class="ml-auto">
-            <a-avatar src="/akomodasi/logo/ll3.svg" />
+            <number-input
+              v-model="quad"
+              :min="0"
+              :inputtable="false"
+              size="small"
+              inline
+              center
+              controls
+            />
+          </div>
+        </div>
+        <a-divider :style="{margin: '14px 0'}" />
+        <div class="d-flex align-items-center">
+          <div>
+            <div class="ant-package--title fs-15 fw-500 cr-black">Triple Room</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp23.000.000 /pax</div>
+          </div>
+          <div class="ml-auto">
+            <number-input
+              v-model="triple"
+              :min="0"
+              :inputtable="false"
+              size="small"
+              inline
+              center
+              controls
+            />
+          </div>
+        </div>
+        <a-divider :style="{margin: '14px 0'}" />
+        <div class="d-flex align-items-center">
+          <div>
+            <div class="ant-package--title fs-15 fw-500 cr-black">Double Room</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp24.000.000 /pax</div>
+          </div>
+          <div class="ml-auto">
+            <number-input
+              v-model="double"
+              :min="0"
+              :inputtable="false"
+              size="small"
+              inline
+              center
+              controls
+            />
           </div>
         </div>
       </div>
+
       <a-divider :style="{margin: '0'}" />
+
       <div class="p-16">
-        <div class="d-flex align-items-center">
-          <div class="ant-package--info fs-14 fw-400 cr-gray">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-400 cr-black ml-auto">9 Hari</div>
-        </div>
-        <div class="d-flex align-items-center">
-          <div class="ant-package--info fs-14 fw-400 cr-gray">Check In</div>
-          <div class="ant-package--info fs-14 fw-400 cr-black ml-auto">10 September 2019</div>
-        </div>
-        <div class="d-flex align-items-center">
-          <div class="ant-package--info fs-14 fw-400 cr-gray">Check Out</div>
-          <div class="ant-package--info fs-14 fw-400 cr-black ml-auto">19 September 2019</div>
-        </div>
-      </div>
-      <a-divider :style="{margin: '0'}" />
-      <div class="p-16">
-        <div class="fs-15 fw-500 cr-black mb-8">Jumlah Room</div>
-        <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-gray f-default">Quad (4)</div>
-          <div class="fs-14 fw-400 cr-black f-default ml-auto">
-            <span class="cr-gray mr-8">x</span> Rp 12.500.000
-          </div>
-        </div>
-        <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-gray f-default">Triple (3)</div>
-          <div class="fs-14 fw-400 cr-black f-default ml-auto">
-            <span class="cr-gray mr-8">x</span> Rp 12.500.000
-          </div>
-        </div>
-        <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-gray f-default">Double (2)</div>
-          <div class="fs-14 fw-400 cr-black f-default ml-auto">
-            <span class="cr-gray mr-8">x</span> Rp 12.500.000
-          </div>
-        </div>
-      </div>
-      <a-divider :style="{margin: '0'}" />
-      <div class="p-16">
-        <div class="d-flex align-items-center">
-          <div class="ant-package--title fs-15 fw-500 cr-black">Total Pesanan</div>
-          <div class="ant-package--subtitle ml-auto fs-15 fw-500 cr-black f-default">Rp 112.500.000</div>
-        </div>
+        <div class="ant-package--title fs-15 fw-400 d-block cr-black">Harga Bayar</div>
+        <div
+          class="ant-package--subtitle fs-22 fw-500 cr-black d-block f-default"
+        >Rp 520.000.000</div>
         <div :style="{margin: '16px 0'}">
           <a-button
             block
@@ -65,7 +112,7 @@
             @click="nextOrderReview"
           >Pesan</a-button>
         </div>
-        <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">
+        <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8">
           Dapatkan point langsung ketika
           anda menyelesaikan aktivitas
         </div>
@@ -75,9 +122,16 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      quad: 4,
+      triple: 3,
+      double: 2
+    };
+  },
   methods: {
     nextOrderReview() {
-      this.$router.push({ path: "/payment/order-data" });
+      this.$router.push({ path: "/catalog/accommodation/order-review" });
     }
   }
 };

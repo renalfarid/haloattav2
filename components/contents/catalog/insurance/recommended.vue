@@ -32,7 +32,10 @@
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left d-flex align-items-center">
                     <div class="mr-8">
-                      <a-avatar class="vendor-logo zIndex" :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }" />
+                      <a-avatar
+                        class="vendor-logo zIndex"
+                        :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
+                      />
                     </div>
                     <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.nama_vendor}}</div>
                   </div>
@@ -51,23 +54,6 @@
                 </div>
               </div>
             </a-card-meta>
-
-            <div class="package-description--more p-16">
-              <!-- <div class="d-flex align-items-center mb-16">
-                <div class="fs-13 fw-400 text-ellipsis">
-                  <div class="cr-gray">Keberangkatan</div>
-                  <div class="cr-black">10 September 2019</div>
-                </div>
-                <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
-                  <div class="cr-gray">Kedatangan</div>
-                  <div class="cr-black">19 September 2019</div>
-                </div>
-              </div>-->
-
-              <a-button block>
-                <nuxt-link to="/catalog/insurance/order-review">Pesan</nuxt-link>
-              </a-button>
-            </div>
           </a-card>
         </nuxt-link>
       </a-skeleton>
@@ -88,7 +74,7 @@ export default {
     this.getdata();
   },
   methods: {
-    getdata() {
+    async getdata() {
       axios
         .get("https://api.haloatta.com/api/asuransi/all", {
           params: {

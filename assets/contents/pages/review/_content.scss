@@ -43,6 +43,11 @@
         & .ant-card--package-review {
             box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
             border: 1px solid $color-border;
+            & .vendor-logo {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
             & .ant-card-cover {
                 @include border-radius(0);
                 & img {

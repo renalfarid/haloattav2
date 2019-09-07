@@ -8,33 +8,7 @@
   >
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Layanan" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="schedule" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Standar"
-            placeholder="Pilih Layanan"
-            optionFilterProp="children"
-            :showArrow="false"
-            style="width: 100%"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
-            size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Standar">Standar</a-select-option>
-            <a-select-option value="VIP">VIP</a-select-option>
-            <a-select-option value="VVIP">VVIP</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-
-      <a-col :span="12">
-        <a-form-item label="Tempat Penyelenggara" hasFeedback>
+        <a-form-item label="Kota Manasik" hasFeedback>
           <div class="icon-search">
             <a-icon type="environment" />
           </div>
@@ -55,36 +29,6 @@
             <a-select-option value="Makassar">Makassar</a-select-option>
             <a-select-option value="Jakarta">Jakarta</a-select-option>
           </a-select>
-        </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Jumlah Pax" hasFeedback>
-          <div class="icon-search">
-            <img class="max-width" src="/icons/search/boysmiling.svg" />
-          </div>
-          <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
-            <a-menu slot="overlay">
-              <a-menu-item key="0" disabled>
-                <div class="d-flex align-items-center">
-                  <div class="fs-14 fw-400 cr-black f-default">Jumlah Pax</div>
-                  <div class="ml-auto">
-                    <number-input
-                      :inputtable="false"
-                      v-model="pax"
-                      :min="1"
-                      size="small"
-                      center
-                      controls
-                    />
-                  </div>
-                </div>
-              </a-menu-item>
-            </a-menu>
-            <a-button class="ant-btn--add-passenger text-left" size="large" block>{{pax}} Pax</a-button>
-          </a-dropdown>
         </a-form-item>
       </a-col>
 
@@ -108,12 +52,40 @@
 
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-button
-          html-type="submit"
-          class="btn-search b-shadow b-radius"
-          size="large"
-          block
-        >Cari Manasik</a-button>
+        <a-form-item label="Jenis Layanan" hasFeedback>
+          <div class="icon-search">
+            <span class="icon-manasik-sm"></span>
+          </div>
+          <a-select
+            showSearch
+            defaultValue="Standar"
+            placeholder="Pilih Jenis Layanan"
+            optionFilterProp="children"
+            :showArrow="false"
+            style="width: 100%"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @change="handleChange"
+            :filterOption="filterOption"
+            size="large"
+          >
+            <a-select-option value="All">Tampilkan Semua</a-select-option>
+            <a-select-option value="Standar">Standar</a-select-option>
+            <a-select-option value="VIP">VIP</a-select-option>
+            <a-select-option value="VVIP">VVIP</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-col>
+
+      <a-col :span="12">
+        <a-form-item :style="{ bottom: '-25px' }">
+          <a-button
+            html-type="submit"
+            class="btn-search b-shadow b-radius"
+            size="large"
+            block
+          >Cari Manasik</a-button>
+        </a-form-item>
       </a-col>
     </a-row>
   </a-form>

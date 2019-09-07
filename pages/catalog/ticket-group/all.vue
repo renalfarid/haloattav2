@@ -44,10 +44,8 @@
                           <div class="ant-card-cover--overlay">
                             <div class="ant-card-cover--overlay-box-radius"></div>
                             <div class="ant-card-cover--overlay-text">
-                              <div class="ant-card-cover--overlay-text-title">sisa</div>
-                              <div class="ant-card-cover--overlay-text-subtitle">
-                                <span>{{item.qty}}</span> pax
-                              </div>
+                              <div class="ant-card-cover--overlay-text-title fs-15 fw-500">{{item.qty}}</div>
+                              <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">Pax</div>
                             </div>
                           </div>
 
@@ -88,7 +86,7 @@
                           />
                         </a-popover>
                         <div
-                          class="ml-auto fs-13 fw-400 cr-gray f-default text-ellipsis"
+                          class="ml-auto fs-13 fw-400 cr-gray f-default text-capitalize text-ellipsis"
                         >{{item.class_flight}}</div>
                       </div>
 
@@ -140,20 +138,16 @@
                           >Round Trip</div>
                         </div>
 
-                        <div class="d-flex align-items-center mb-16">
+                        <div class="d-flex align-items-center">
                           <div class="fs-13 fw-400 text-ellipsis">
                             <div class="cr-gray">Keberangkatan</div>
-                            <div class="cr-black">{{item.tanggal_keberangkatan}}</div>
+                            <div class="cr-black">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('ll')}}</div>
                           </div>
                           <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
                             <div class="cr-gray">Kedatangan</div>
-                            <div class="cr-black">{{item.tanggal_kepulangan}}</div>
+                            <div class="cr-black">{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('ll')}}</div>
                           </div>
                         </div>
-
-                        <a-button block>
-                          <nuxt-link to="/catalog/ticket-group/order-review">Pesan</nuxt-link>
-                        </a-button>
                       </div>
                     </a-card>
                   </nuxt-link>
@@ -168,6 +162,7 @@
 </template>
 <script>
 import filterResultTicket from "~/components/contents/lib/filter/result/ticket.vue";
+import moment from "moment";
 import axios from "axios";
 export default {
   name: "ticketAll",
@@ -189,6 +184,7 @@ export default {
     this.getdata();
   },
   methods: {
+    moment,
     getdata() {
       this.busy = true;
       axios

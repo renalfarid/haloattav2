@@ -143,26 +143,14 @@
 </template>
 <script>
 import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
-import Recommended from "~/components/contents/catalog/accommodation/recommended.vue";
+import Recommended from "~/components/contents/catalog/accommodation/umrah/recommended.vue";
 const partner = [
-  {
-    logo_partner: "/akomodasi/logo/ll1.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll2.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll3.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll4.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll5.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll6.svg"
-  }
+  { logo_partner: "/akomodasi/logo/ll1.svg" },
+  { logo_partner: "/akomodasi/logo/ll2.svg" },
+  { logo_partner: "/akomodasi/logo/ll3.svg" },
+  { logo_partner: "/akomodasi/logo/ll4.svg" },
+  { logo_partner: "/akomodasi/logo/ll5.svg" },
+  { logo_partner: "/akomodasi/logo/ll6.svg" }
 ];
 export default {
   name: "ticketGroup",

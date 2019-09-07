@@ -8,12 +8,12 @@
             <div class="fs-24 fw-500 cr-black">Semua LA Akomodasi</div>
             <div class="ml-auto">
               <nuxt-link to="/" class="fs-14 cr-gray">
-                <a-icon type="left" class="fs-12 mr-4"/>Kembali
+                <a-icon type="left" class="fs-12 mr-4" />Kembali
               </nuxt-link>
             </div>
           </div>
 
-          <filter-result-accommodation/>
+          <filter-result-accommodation />
         </div>
 
         <div class="ant-layout--results-list pb-16">
@@ -45,11 +45,11 @@
                             <div class="ant-card-cover--overlay-box-radius"></div>
                             <div class="ant-card-cover--overlay-text">
                               <div
-                                class="ant-card-cover--overlay-text-title fs-20 fw-500"
-                              >{{item.pax}}</div>
-                              <div class="ant-card-cover--overlay-text-subtitle text-uppercase">
-                                <span>ROOM</span>
-                              </div>
+                                class="ant-card-cover--overlay-text-title fs-15 fw-500"
+                              >45</div>
+                              <div
+                                class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
+                              >Pax</div>
                             </div>
                           </div>
 
@@ -66,13 +66,13 @@
                       <div class="d-flex align-items-center">
                         <div class="mr-8">
                           <a-avatar
-                            :src="item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
-                            size="small"
+                            class="vendor-logo"
+                            :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                           />
                         </div>
-                        <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">{{item.nama}}</div>
+                        <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">{{item.nama_vendor}}</div>
                         <div class="ml-auto">
-                          <a-rate class="fs-14 f-default" :defaultValue="item.rating" disabled/>
+                          <a-rate class="fs-14 f-default" :defaultValue="item.rating" disabled />
                         </div>
                       </div>
 
@@ -86,13 +86,13 @@
                         <a-col :span="12" class="text-left">
                           <div
                             class="fs-16 fw-500 cr-black text-capitalize text-ellipsis f-default"
-                          >{{item.hotel_mekkah}}</div>
+                          >{{item.nama_hotel_mekkah}}</div>
                           <div class="fs-14 fw-400 cr-black text-capitalize f-default">3 Hari Mekkah</div>
                         </a-col>
                         <a-col :span="12" class="text-right">
                           <div
                             class="fs-16 fw-500 cr-black text-capitalize text-ellipsis f-default"
-                          >{{item.hotel_madinah}}</div>
+                          >{{item.nama_hotel_madinah}}</div>
                           <div
                             class="fs-14 fw-400 cr-black text-capitalize f-default"
                           >4 Hari Madinah</div>
@@ -118,20 +118,16 @@
                           >{{item.class_room}}</div>
                         </div>
 
-                        <div class="d-flex align-items-center mb-16">
+                        <div class="d-flex align-items-center">
                           <div class="fs-14 fw-400 text-ellipsis">
                             <div class="cr-gray">Check In</div>
-                            <div class="cr-black">{{item.tanggal}}</div>
+                            <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('ll')}}</div>
                           </div>
                           <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                             <div class="cr-gray">Check Out</div>
-                            <div class="cr-black">19 September 2019</div>
+                            <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('ll')}}</div>
                           </div>
                         </div>
-
-                        <a-button block>
-                          <nuxt-link to="/catalog/accommodation/order-review">Pesan</nuxt-link>
-                        </a-button>
                       </div>
                     </a-card>
                   </nuxt-link>
@@ -146,6 +142,7 @@
 </template>
 <script>
 import filterResultAccommodation from "~/components/contents/lib/filter/result/accommodation.vue";
+import moment from "moment";
 import axios from "axios";
 export default {
   name: "accommodationAll",
@@ -167,6 +164,7 @@ export default {
     this.getdata();
   },
   methods: {
+    moment,
     getdata() {
       this.busy = true;
       axios

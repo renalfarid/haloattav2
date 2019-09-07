@@ -13,17 +13,7 @@
 
     <a-list-item class="ant-list-item--package-information">
       <div class="w-100">
-        <div class="d-flex align-items-center w-100">
-          <div>
-            <a-avatar src="/akomodasi/logo/ll3.svg" />
-          </div>
-          <div>
-            <div class="fs-14 fw-400 cr-gray f-default">Penyedia Visa</div>
-            <div class="fs-16 fw-500 cr-black">Babul Kabah</div>
-          </div>
-        </div>
-
-        <div class="ant-package--images mt-16">
+        <div class="ant-package--images">
           <a-row :gutter="10">
             <a-col :span="8">
               <div class="ant-package--images-large">
