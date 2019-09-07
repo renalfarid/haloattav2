@@ -1,24 +1,8 @@
 <template>
-  <a-list itemLayout="horizontal" class="ant-list--package-information">
-    <a-list-item class="ant-list-item--package-information">
-      <div>
-        <h2 class="ant-package--information-title fs-20 cr-black fw-500">Informasi Tiket</h2>
-        <div class="ant-package--information-text fs-15 cr-black fw-400">
-          <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio iste quibusdam consectetur amet consequatur numquam natus a repellendus! Quasi, dolores corporis doloribus velit voluptas quae neque unde aperiam sapiente commodi?</span>
-        </div>
-      </div>
-    </a-list-item>
-
+  <a-list itemLayout="horizontal" class="ant-list--package-information mt-8">
     <a-list-item class="ant-list-item--package-information">
       <div class="w-100">
-        <div class="d-flex align-items-center w-100">
-          <div>
-            <a-avatar :src="item.logo_maskapai" />
-          </div>
-          <div class="fs-16 fw-500 cr-black">{{item.nama_maskapai}}</div>
-          <div class="fs-16 fw-500 cr-black ml-auto">{{item.kode_maskapai}}</div>
-        </div>
-        <div class="ant-package--images w-100 mt-16">
+        <div class="ant-package--images w-100 mb-24">
           <a-row :gutter="10">
             <a-col :span="8">
               <div class="ant-package--images-large">
@@ -46,16 +30,39 @@
             </a-col>
           </a-row>
         </div>
+
+        <a-row :gutter="16" type="flex" justify="start">
+          <a-col :span="16">
+            <div
+              class="fs-28 fw-600 f-default cr-black"
+            >Tiket Group Umrah September Garuda Kanomas Tiket Group Umrah September Garuda Kanomas</div>
+          </a-col>
+          <a-col :span="8" class="text-right">
+            <a-avatar
+              :size="64"
+              :style="{ marginRight: '0' }"
+              class="ml-auto"
+              src="https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843"
+            />
+          </a-col>
+        </a-row>
       </div>
     </a-list-item>
 
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-center w-100">
-        <div>
-          <a-avatar shape="square" src="/icons/package/seat.png" />
-        </div>
+        <a-avatar class="mr-8" :src="item.logo_maskapai" />
+        <div class="fs-15 fw-500 cr-black">{{item.nama_maskapai}}</div>
+
+        <div class="fs-15 fw-500 cr-black ml-auto">{{item.kode_maskapai}}</div>
+      </div>
+    </a-list-item>
+
+    <a-list-item class="ant-list-item--package-information">
+      <div class="d-flex align-items-center w-100">
+        <a-avatar class="mr-8" shape="square" src="/icons/package/seat.png" />
         <div class="fs-15 fw-500 cr-black">Kelas Kabin</div>
-        <div class="fs-15 fw-500 cr-black ml-auto">{{item.class_flight}}</div>
+        <div class="fs-15 fw-500 cr-black text-capitalize ml-auto">{{item.class_flight}}</div>
       </div>
     </a-list-item>
 

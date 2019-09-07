@@ -12,12 +12,16 @@
               <a-comment class="ant-comment--accounts">
                 <template slot="actions">
                   <a-tag>
-                    <a-icon type="gold" />
-                    <span>101</span> POIN
+                    <div class="d-flex align-items-center">
+                      <a-icon class="mr-4" type="gold" />
+                      <span>101</span> POIN
+                    </div>
                   </a-tag>
                   <a-tag>
-                    <a-icon type="wallet" />Rp
-                    <span>69.000.000</span>
+                    <div class="d-flex align-items-center">
+                      <a-icon class="mr-4" type="wallet" />Rp
+                      <span>69.000.000</span>
+                    </div>
                   </a-tag>
                 </template>
                 <a slot="author">Awaluddin Muhammad Arifatullah</a>
@@ -163,7 +167,10 @@
           <umrah-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/umrah/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/umrah/all" class="fs-18 cr-green d-flex align-items-center">
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -172,7 +179,10 @@
       <div class="content-recomended">
         <div class="container">
           <div class="header-title">
-            <a-divider orientation="left" class="ant-divider-title-left">Tiket Pesawat Perjalanan Umrah Anda</a-divider>
+            <a-divider
+              orientation="left"
+              class="ant-divider-title-left"
+            >Tiket Pesawat Perjalanan Umrah Anda</a-divider>
             <a-row :gutter="16">
               <a-col :span="16">
                 <h6 class="fs-16 fw-400 cr-gray">
@@ -186,7 +196,13 @@
           <ticket-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/ticket-group/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link
+              to="/catalog/ticket-group/all"
+              class="fs-18 cr-green d-flex align-items-center"
+            >
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -209,7 +225,13 @@
           <accommodation-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/accommodation/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link
+              to="/catalog/accommodation/all"
+              class="fs-18 cr-green d-flex align-items-center"
+            >
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -232,7 +254,10 @@
           <visa-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/visa/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/visa/all" class="fs-18 cr-green d-flex align-items-center">
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -255,7 +280,10 @@
           <insurance-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/insurance/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/insurance/all" class="fs-18 cr-green d-flex align-items-center">
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -278,7 +306,10 @@
           <handling-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/handling/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/handling/all" class="fs-18 cr-green d-flex align-items-center">
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -301,7 +332,10 @@
           <manasik-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/manasik/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/manasik/all" class="fs-18 cr-green d-flex align-items-center">
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -324,7 +358,10 @@
           <equipment-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/equipment/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link to="/catalog/equipment/all" class="fs-18 cr-green d-flex align-items-center">
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -347,7 +384,13 @@
           <tourleader-recommended />
 
           <div class="all-package">
-            <nuxt-link to="/catalog/tourleader/all" class="fs-18 cr-green d-flex align-items-center">Tampilkan semua <a-icon class="fs-16 ml-8" type="right" /></nuxt-link>
+            <nuxt-link
+              to="/catalog/tourleader/all"
+              class="fs-18 cr-green d-flex align-items-center"
+            >
+              Tampilkan semua
+              <a-icon class="fs-16 ml-8" type="right" />
+            </nuxt-link>
           </div>
         </div>
       </div>
