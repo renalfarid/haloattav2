@@ -26,9 +26,8 @@
             margin: 0 auto;
             & .title {
                 text-shadow: 0 1px 0px rgba(0, 0, 0, .1);
+                line-height: normal;
                 color: #ffffff;
-                line-height: 45px;
-                font-size: 45px;
             }
             & .btn-join--us {
                 @include border-radius(6px);
@@ -228,12 +227,13 @@
                 z-index: 2;
                 & .ant-card-meta-title {
                     text-align: left;
-                    font-weight: 500;
-                    font-size: 46px;
+                    font-weight: 600;
+                    font-size: 40px;
                     color: #ffffff;
                     white-space: normal;
-                    line-height: 48px;
+                    line-height: normal;
                     margin-bottom: 20px;
+                    word-spacing: -10px !important;
                 }
                 & .ant-card-meta-description {
                     & .ant-btn {

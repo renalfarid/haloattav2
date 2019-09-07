@@ -6,7 +6,7 @@
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
             <a-col :span="10">
-              <h2 class="title">Kembangkan Bisnis Umrah Anda</h2>
+              <h2 class="fs-40 fw-600 title">Kembangkan Bisnis Umrah Anda</h2>
               <a-button class="btn-join--us d-none" size="large">Gabung Sekarang</a-button>
 
               <a-comment class="ant-comment--accounts">
