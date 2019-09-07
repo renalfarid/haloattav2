@@ -40,9 +40,8 @@
           <a-col :span="8" class="text-right">
             <a-avatar
               :size="64"
-              :style="{ marginRight: '0' }"
-              class="ml-auto"
-              src="https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843"
+              :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+              class="brand-vendor ml-auto"
             />
           </a-col>
         </a-row>
@@ -51,7 +50,7 @@
 
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-center w-100">
-        <a-avatar class="mr-8" :src="item.logo_maskapai" />
+        <a-avatar size="small" class="mr-8" :src="item.logo_maskapai" />
         <div class="fs-15 fw-500 cr-black">{{item.nama_maskapai}}</div>
 
         <div class="fs-15 fw-500 cr-black ml-auto">{{item.kode_maskapai}}</div>
@@ -60,7 +59,7 @@
 
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-center w-100">
-        <a-avatar class="mr-8" shape="square" src="/icons/package/seat.png" />
+        <a-avatar size="small" class="mr-8" shape="square" src="/icons/package/seat.png" />
         <div class="fs-15 fw-500 cr-black">Kelas Kabin</div>
         <div class="fs-15 fw-500 cr-black text-capitalize ml-auto">{{item.class_flight}}</div>
       </div>
@@ -69,7 +68,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/airplane.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/airplane.png" />
         </div>
         <div class="w-100">
           <div class="fs-15 fw-500 cr-black mb-16">Info Keberangkatan dan Kepulangan</div>
@@ -77,24 +76,32 @@
             <a-col :span="12">
               <div class="fs-14 fw-500 cr-black mb-16">Keberangkatan</div>
               <a-timeline>
-                <a-timeline-item>
+                <a-timeline-item color="green">
                   <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
-                  <div
-                    class="fs-14 fw-500 cr-black text-uppercase"
-                  >{{item.bandara_asal}} ({{item.kode_bandara_asal}})</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>{{item.bandara_asal}} ({{item.kode_bandara_asal}})</span>
+                  </div>
                   <div class="fs-15 fw-500 cr-black">{{item.jam_keberangkatan}}</div>
-                  <div class="fs-15 fw-400 cr-gray">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('ll')}}</div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
                 </a-timeline-item>
-                <a-timeline-item>
-                  <div class="fs-14 fw-400 cr-black"><span class="mr-8">Nonstop</span> <span class="fw-500">{{item.durasi_keberangkatan}}</span></div>
+                <a-timeline-item color="red">
+                  <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                  <div class="fs-14 fw-400 cr-black">
+                    <span class="mr-8">Nonstop</span>
+                    <span class="fw-500">{{item.durasi_keberangkatan}}</span>
+                  </div>
                 </a-timeline-item>
                 <a-timeline-item>
                   <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
-                  <div
-                    class="fs-14 fw-500 cr-black text-uppercase"
-                  >{{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>{{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</span>
+                  </div>
                   <div class="fs-15 fw-500 cr-black">{{item.tiba_keberangkatan}}</div>
-                  <div class="fs-15 fw-400 cr-gray">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('ll')}}</div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
                 </a-timeline-item>
               </a-timeline>
             </a-col>
@@ -102,43 +109,32 @@
             <a-col :span="12">
               <div class="fs-14 fw-500 cr-black mb-16">Kepulangan</div>
               <a-timeline>
-                <a-timeline-item>
-                  <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                    <a-col :span="14">
-                      <div
-                        class="fs-15 fw-400 cr-black"
-                      >Keberangkatan : {{item.bandara_asal}} ({{item.kode_bandara_asal}}) ke {{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</div>
-                      <div class="fs-15 fw-500 cr-black">{{item.jam_keberangkatan}}</div>
-                      <div class="fs-15 fw-400 cr-gray">{{item.tanggal_keberangkatan}}</div>
-                    </a-col>
-                    <a-col :span="4" class="text-center">
-                      <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                      <div class="fs-15 fw-400 cr-gray">{{item.durasi_keberangkatan}}</div>
-                    </a-col>
-                    <a-col :span="6" class="text-right">
-                      <div class="fs-15 fw-500 cr-black">{{item.tiba_keberangkatan}}</div>
-                      <div class="fs-15 fw-400 cr-gray">{{item.tanggal_keberangkatan}}</div>
-                    </a-col>
-                  </a-row>
+                <a-timeline-item color="green">
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>{{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</span>
+                  </div>
+                  <div class="fs-15 fw-500 cr-black">{{item.jam_kepulangan}}</div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item color="red">
+                  <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                  <div class="fs-14 fw-400 cr-black">
+                    <span class="mr-8">Nonstop</span>
+                    <span class="fw-500">{{item.durasi_kepulangan}}</span>
+                  </div>
                 </a-timeline-item>
                 <a-timeline-item>
-                  <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                    <a-col :span="14">
-                      <div
-                        class="fs-15 fw-400 cr-black"
-                      >Kepulangan : {{item.bandara_asal}} ({{item.kode_bandara_asal}}) ke {{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</div>
-                      <div class="fs-15 fw-500 cr-black">{{item.jam_kepulangan}}</div>
-                      <div class="fs-15 fw-400 cr-gray">{{item.tanggal_kepulangan}}</div>
-                    </a-col>
-                    <a-col :span="4" class="text-center">
-                      <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                      <div class="fs-15 fw-400 cr-gray">{{item.durasi_kepulangan}}</div>
-                    </a-col>
-                    <a-col :span="6" class="text-right">
-                      <div class="fs-15 fw-500 cr-black">{{item.tiba_kepulangan}}</div>
-                      <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
-                    </a-col>
-                  </a-row>
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>{{item.bandara_asal}} ({{item.kode_bandara_asal}})</span>
+                  </div>
+                  <div class="fs-15 fw-500 cr-black">{{item.tiba_kepulangan}}</div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
                 </a-timeline-item>
               </a-timeline>
             </a-col>
@@ -150,7 +146,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/direction.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/direction.png" />
         </div>
         <div>
           <div class="fs-15 fw-500 cr-black">Direct Flight</div>
@@ -162,7 +158,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/round_trip.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/round_trip.png" />
         </div>
         <div>
           <div class="fs-15 fw-500 cr-black">Round Trip</div>
@@ -174,7 +170,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/charity.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/charity.png" />
         </div>
         <div class="w-100">
           <div class="fs-15 fw-500 cr-black">Fasilitas</div>
