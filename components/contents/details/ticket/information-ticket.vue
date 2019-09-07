@@ -72,47 +72,77 @@
           <a-avatar shape="square" src="/icons/package/airplane.png" />
         </div>
         <div class="w-100">
-          <div class="fs-15 fw-500 cr-black">Info Keberangkatan dan Kepulangan</div>
-          <a-timeline :style="{marginTop: '16px'}">
-            <a-timeline-item>
-              <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                <a-col :span="14">
+          <div class="fs-15 fw-500 cr-black mb-16">Info Keberangkatan dan Kepulangan</div>
+          <a-row :gutter="16">
+            <a-col :span="12">
+              <div class="fs-14 fw-500 cr-black mb-16">Keberangkatan</div>
+              <a-timeline>
+                <a-timeline-item>
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
                   <div
-                    class="fs-15 fw-400 cr-black"
-                  >Keberangkatan : {{item.bandara_asal}} ({{item.kode_bandara_asal}}) ke {{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</div>
+                    class="fs-14 fw-500 cr-black text-uppercase"
+                  >{{item.bandara_asal}} ({{item.kode_bandara_asal}})</div>
                   <div class="fs-15 fw-500 cr-black">{{item.jam_keberangkatan}}</div>
-                  <div class="fs-15 fw-400 cr-gray">{{item.tanggal_keberangkatan}}</div>
-                </a-col>
-                <a-col :span="4" class="text-center">
-                  <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                  <div class="fs-15 fw-400 cr-gray">{{item.durasi_keberangkatan}}</div>
-                </a-col>
-                <a-col :span="6" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">{{item.tiba_keberangkatan}}</div>
-                  <div class="fs-15 fw-400 cr-gray">{{item.tanggal_keberangkatan}}</div>
-                </a-col>
-              </a-row>
-            </a-timeline-item>
-            <a-timeline-item>
-              <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                <a-col :span="14">
+                  <div class="fs-15 fw-400 cr-gray">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('ll')}}</div>
+                </a-timeline-item>
+                <a-timeline-item>
+                  <div class="fs-14 fw-400 cr-black"><span class="mr-8">Nonstop</span> <span class="fw-500">{{item.durasi_keberangkatan}}</span></div>
+                </a-timeline-item>
+                <a-timeline-item>
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
                   <div
-                    class="fs-15 fw-400 cr-black"
-                  >Kepulangan : {{item.bandara_asal}} ({{item.kode_bandara_asal}}) ke {{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</div>
-                  <div class="fs-15 fw-500 cr-black">{{item.jam_kepulangan}}</div>
-                  <div class="fs-15 fw-400 cr-gray">{{item.tanggal_kepulangan}}</div>
-                </a-col>
-                <a-col :span="4" class="text-center">
-                  <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                  <div class="fs-15 fw-400 cr-gray">{{item.durasi_kepulangan}}</div>
-                </a-col>
-                <a-col :span="6" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">{{item.tiba_kepulangan}}</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
-                </a-col>
-              </a-row>
-            </a-timeline-item>
-          </a-timeline>
+                    class="fs-14 fw-500 cr-black text-uppercase"
+                  >{{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</div>
+                  <div class="fs-15 fw-500 cr-black">{{item.tiba_keberangkatan}}</div>
+                  <div class="fs-15 fw-400 cr-gray">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('ll')}}</div>
+                </a-timeline-item>
+              </a-timeline>
+            </a-col>
+
+            <a-col :span="12">
+              <div class="fs-14 fw-500 cr-black mb-16">Kepulangan</div>
+              <a-timeline>
+                <a-timeline-item>
+                  <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
+                    <a-col :span="14">
+                      <div
+                        class="fs-15 fw-400 cr-black"
+                      >Keberangkatan : {{item.bandara_asal}} ({{item.kode_bandara_asal}}) ke {{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</div>
+                      <div class="fs-15 fw-500 cr-black">{{item.jam_keberangkatan}}</div>
+                      <div class="fs-15 fw-400 cr-gray">{{item.tanggal_keberangkatan}}</div>
+                    </a-col>
+                    <a-col :span="4" class="text-center">
+                      <div class="fs-15 fw-400 cr-gray">Nonstop</div>
+                      <div class="fs-15 fw-400 cr-gray">{{item.durasi_keberangkatan}}</div>
+                    </a-col>
+                    <a-col :span="6" class="text-right">
+                      <div class="fs-15 fw-500 cr-black">{{item.tiba_keberangkatan}}</div>
+                      <div class="fs-15 fw-400 cr-gray">{{item.tanggal_keberangkatan}}</div>
+                    </a-col>
+                  </a-row>
+                </a-timeline-item>
+                <a-timeline-item>
+                  <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
+                    <a-col :span="14">
+                      <div
+                        class="fs-15 fw-400 cr-black"
+                      >Kepulangan : {{item.bandara_asal}} ({{item.kode_bandara_asal}}) ke {{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</div>
+                      <div class="fs-15 fw-500 cr-black">{{item.jam_kepulangan}}</div>
+                      <div class="fs-15 fw-400 cr-gray">{{item.tanggal_kepulangan}}</div>
+                    </a-col>
+                    <a-col :span="4" class="text-center">
+                      <div class="fs-15 fw-400 cr-gray">Nonstop</div>
+                      <div class="fs-15 fw-400 cr-gray">{{item.durasi_kepulangan}}</div>
+                    </a-col>
+                    <a-col :span="6" class="text-right">
+                      <div class="fs-15 fw-500 cr-black">{{item.tiba_kepulangan}}</div>
+                      <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
+                    </a-col>
+                  </a-row>
+                </a-timeline-item>
+              </a-timeline>
+            </a-col>
+          </a-row>
         </div>
       </div>
     </a-list-item>
@@ -196,6 +226,7 @@
   </a-list>
 </template>
 <script>
+import moment from "moment";
 import axios from "axios";
 export default {
   data() {
@@ -209,6 +240,7 @@ export default {
     this.getdata();
   },
   methods: {
+    moment,
     async getdata() {
       axios
         .post("https://api.haloatta.com/api/tiket/detail", {
