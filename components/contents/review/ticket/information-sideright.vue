@@ -31,26 +31,26 @@
       <div class="p-16">
         <div class="fs-15 fw-500 cr-black mb-8">Jumlah Penumpang</div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-gray f-default">Dewasa (2)</div>
-          <div class="fs-14 fw-400 cr-black f-default ml-auto">
-            <span class="cr-gray mr-8">x</span> Rp 12.500.000
-          </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Dewasa (2) </div>
+          <span class="cr-gray mr-8">x</span>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 12.500.000</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-gray f-default">Anak (2)</div>
-          <div class="fs-14 fw-400 cr-black f-default ml-auto">
-            <span class="cr-gray mr-8">x</span> Rp 11.000.000
-          </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Anak (2) </div>
+          <span class="cr-gray mr-8">x</span>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 11.000.000</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-gray f-default">Bayi (1)</div>
-          <div class="fs-14 fw-400 cr-black f-default ml-auto">
-            <span class="cr-gray mr-8">x</span> Rp 6.500.000
-          </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Bayi (1) </div>
+          <span class="cr-gray mr-8">x</span>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 6.500.000</div>
         </div>
+
+        <a-divider :style="{margin: '8px 0'}" />
+
         <div class="d-flex align-items-center mb-24">
-          <div class="fs-15 fw-500 cr-black f-default">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default ml-auto">Rp 56.000.000</div>
+          <div class="fs-15 fw-500 cr-black f-default w-35">Total </div>
+          <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 56.000.000</div>
         </div>
 
         <div :style="{margin: '16px 0'}">
