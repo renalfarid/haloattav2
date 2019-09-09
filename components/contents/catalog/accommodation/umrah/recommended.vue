@@ -1,9 +1,9 @@
 <template>
-  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
+  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
         <nuxt-link to="/catalog/accommodation/detail" class="d-block">
-          <a-card class="ant-card-package-small">
+          <a-card class="ant-card-package">
             <div slot="cover">
               <div
                 class="ant-card-cover--images"
@@ -28,18 +28,11 @@
             </div>
 
             <div class="d-flex align-items-center">
-              <a-popover trigger="hover">
-                <template slot="content">
-                  <div class="fs-15 fw-500 cr-black">{{item.nama_vendor}}</div>
-                  <div class="fs-14 fw-400 cr-gray f-default">
-                    <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
-                  </div>
-                </template>
-                <a-avatar
-                  class="vendor-logo zIndex mr-8"
-                  :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-                />
-              </a-popover>
+              <a-avatar
+                class="vendor-logo zIndex mr-8"
+                :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
+              />
+              <div class="fs-14 fw-400 f-default text-ellipsis cr-gray">{{item.nama_vendor}}</div>
               <div class="ml-auto">
                 <a-rate
                   :style="{ top: '-2px' }"
@@ -117,7 +110,7 @@ export default {
       axios
         .get("https://api.haloatta.com/api/la/all", {
           params: {
-            per_page: 4
+            per_page: 3
           }
         })
         .then(response => {

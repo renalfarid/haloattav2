@@ -23,7 +23,7 @@
             :infinite-scroll-distance="limit"
           >
             <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }"
+              :grid="{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4 }"
               :dataSource="data"
             >
               <a-list-item
@@ -41,7 +41,7 @@
                           class="ant-card-cover--images"
                           :style="{ backgroundImage: `url(${item.gambar != '' ? item.gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                         >
-                          <div class="ant-card-cover--overlay">
+                          <div class="d-none ant-card-cover--overlay">
                             <div class="ant-card-cover--overlay-box-radius ant-pax--visa"></div>
                             <div class="ant-card-cover--overlay-text">
                               <div

@@ -1,5 +1,5 @@
 <template>
-  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }" :dataSource="lisData">
+  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
         <nuxt-link to="/catalog/visa/detail" class="d-block">
@@ -9,7 +9,7 @@
                 class="ant-card-cover--images"
                 :style="{ backgroundImage: `url(${item.gambar})` }"
               >
-                <div class="ant-card-cover--overlay">
+                <div class="d-none ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius ant-pax--visa"></div>
                   <div class="ant-card-cover--overlay-text">
                     <div class="ant-card-cover--overlay-text-title fs-15 fw-500">{{item.qty}}</div>
@@ -80,7 +80,7 @@ export default {
       axios
         .get("https://api.haloatta.com/api/visa/all", {
           params: {
-            per_page: 3
+            per_page: 4
           }
         })
         .then(response => {
