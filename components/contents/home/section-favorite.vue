@@ -21,7 +21,9 @@
               <div class="txt fs-16 fw-400 f-default">
                 <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam amet pariatur asperiores necessitatibus error architecto et</span>
               </div>
-              <a-button size="large"><nuxt-link to="/catalog/umrah/all">Explore Paket</nuxt-link></a-button>
+              <a-button size="large">
+                <nuxt-link to="/catalog/umrah/all">Explore Paket</nuxt-link>
+              </a-button>
             </div>
             <div class="gradient-bottom"></div>
           </div>
@@ -59,7 +61,9 @@
                   <a-popover trigger="hover">
                     <template slot="content">
                       <div class="fs-15 fw-500 cr-black">Awaluddin Muhammad Arifatullah</div>
-                      <div class="fs-14 fw-400 cr-gray f-default"><a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi</div>
+                      <div class="fs-14 fw-400 cr-gray f-default">
+                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                      </div>
                     </template>
                     <a-avatar
                       class="zIndex mr-8"
@@ -73,28 +77,10 @@
                     </template>
                     <a-avatar class="zIndex mr-8" src="/maskapai/logo/garuda.svg" />
                   </a-popover>
-
-                  <a-popover trigger="hover">
-                    <template slot="content">
-                      <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
-                      <div
-                        class="fs-13 fw-400 cr-black f-default mb-4"
-                      >Mekkah : Hotel Daruttauhid International Mekkah</div>
-                      <div
-                        class="fs-13 fw-400 cr-black f-default"
-                      >Madinah : Hotel Dar Al Eiman International Madinah</div>
-                    </template>
-                    <a-avatar
-                      class="zIndex mr-8"
-                      size="small"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
-                      src="/icons/search/tabs/color/accommodation.svg"
-                    />
-                  </a-popover>
                 </div>
-                <div
-                  class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black"
-                >Program 9 Hari</div>
+                <div class="ant-card-meta-title--top-right ml-auto">
+                  <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                </div>
               </div>
               <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
             </div>
@@ -102,10 +88,7 @@
             <div slot="description">
               <div class="ant-card-meta-description--bottom d-flex align-items-center">
                 <div class="ant-card-meta-description--bottom-right">
-                  <div class="fs-14 fw-400 cr-gray">
-                    Terjual
-                    <strong>{{item.pax_booked}}</strong> Pax
-                  </div>
+                  <div class="fs-14 fw-400 cr-black">Program 9 Hari</div>
                 </div>
                 <div class="ant-card-meta-description--bottom-left cr-primary ml-auto">
                   <span>Rp{{item.price_product}}</span>
@@ -114,18 +97,40 @@
             </div>
           </a-card-meta>
           <div class="package-description--more p-24">
-            <div class="d-flex align-items-center mb-8">
-              <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Keberangkatan Makassar</div>
+            <div class="mb-8">
+              <div>
+                <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+                  <span>Informasi Hotel</span>
+                </div>
+                <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
+                  <span>Makkah : Rayyana Ajyad</span>
+                </div>
+                <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
+                  <span>Madinah : Mirage Al Salam</span>
+                </div>
+              </div>
             </div>
 
-            <div class="d-flex align-items-center">
-              <div class="fs-13 fw-400 text-ellipsis">
-                <div class="cr-gray">Keberangkatan</div>
-                <div class="cr-black">10 September 2019</div>
+            <div class="mb-8">
+              <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+                <span>Kota Keberangkatan</span>
               </div>
-              <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
+              <div class="fs-15 fw-400 cr-gray f-default text-ellipsis">
+                <span>Makassar</span>
+              </div>
+            </div>
+
+            <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+              <span>Tanggal Keberangkatan</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="fs-14 fw-400 text-ellipsis">
+                <div class="cr-gray">Keberangkatan</div>
+                <div class="cr-gray">{{moment("2019-09-10", "YYYY-MM-DD").format('LL')}}</div>
+              </div>
+              <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                 <div class="cr-gray">Kedatangan</div>
-                <div class="cr-black">19 September 2019</div>
+                <div class="cr-gray">{{moment("2019-09-17", "YYYY-MM-DD").format('LL')}}</div>
               </div>
             </div>
           </div>
@@ -135,6 +140,7 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
   data() {
     return {
@@ -173,6 +179,9 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    moment
   }
 };
 </script>

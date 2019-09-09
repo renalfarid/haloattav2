@@ -59,9 +59,9 @@
             </a-row>
 
             <div class="d-flex align-items-center">
-              <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">Program {{item.days}} Hari</div>
+              <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Program {{item.days}} Hari</div>
               <div
-                class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis"
+                class="ml-auto fs-18 fw-500 cr-primary f-default text-ellipsis"
               >{{item.harga_quad | currency}}</div>
             </div>
 
@@ -76,11 +76,11 @@
               <div class="d-flex align-items-center">
                 <div class="fs-14 fw-400 text-ellipsis">
                   <div class="cr-gray">Check In</div>
-                  <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('ll')}}</div>
+                  <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
                 <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                   <div class="cr-gray">Check Out</div>
-                  <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('ll')}}</div>
+                  <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
               </div>
             </div>

@@ -92,39 +92,20 @@
                               </template>
                               <a-avatar size="small" class="zIndex mr-8" :src="item.image" />
                             </a-popover>
-
-                            <a-popover trigger="hover">
-                              <template slot="content">
-                                <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
-                                <div
-                                  class="fs-13 fw-400 cr-black f-default mb-4"
-                                >Mekkah : {{item.hotel_mekkah}}</div>
-                                <div
-                                  class="fs-13 fw-400 cr-black f-default"
-                                >Madinah : {{item.hotel_madinah}}</div>
-                              </template>
-                              <a-avatar
-                                class="zIndex mr-8"
-                                size="small"
-                                style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
-                                src="/icons/search/tabs/color/accommodation.svg"
-                              />
-                            </a-popover>
                           </div>
-                          <div
-                            class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black"
-                          >Program {{item.jumlah_hari}} Hari</div>
+                          <div class="ant-card-meta-title--top-right ml-auto">
+                            <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                          </div>
                         </div>
-                        <div class="ant-card-meta-title--package text-capitalize fw-500">{{item.nama}}</div>
+                        <div
+                          class="ant-card-meta-title--package text-capitalize fw-500"
+                        >{{item.nama}}</div>
                       </div>
 
                       <div slot="description">
                         <div class="ant-card-meta-description--bottom d-flex align-items-center">
                           <div class="ant-card-meta-description--bottom-right d-flex">
-                            <div class="fs-14 fw-400 cr-gray">
-                              Terjual
-                              <strong>{{item.seat - item.sisa_seat}}</strong> Pax
-                            </div>
+                            <div class="fs-14 fw-400 cr-black">Program {{item.jumlah_hari}} Hari</div>
                           </div>
                           <div
                             class="ant-card-meta-description--bottom-left cr-primary ml-auto"
@@ -132,19 +113,45 @@
                         </div>
                       </div>
                     </a-card-meta>
-                    <div class="package-description--more p-24">
-                      <div class="fs-15 fw-400 cr-black f-default text-ellipsis mb-8">
-                        <span>Keberangkatan {{item.nama_kota}}</span>
+                    <div class="package-description--more p-16">
+                      <div class="mb-8">
+                        <div>
+                          <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+                            <span>Informasi Hotel</span>
+                          </div>
+                          <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
+                            <span>Makkah : {{item.hotel_mekkah}}Rayyana Ajyad</span>
+                          </div>
+                          <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
+                            <span>Madinah : {{item.hotel_madinah}}</span>
+                          </div>
+                        </div>
                       </div>
 
+                      <div class="mb-8">
+                        <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+                          <span>Kota Keberangkatan</span>
+                        </div>
+                        <div class="fs-15 fw-400 cr-gray f-default text-ellipsis">
+                          <span>{{item.nama_kota}}</span>
+                        </div>
+                      </div>
+
+                      <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+                        <span>Tanggal Keberangkatan</span>
+                      </div>
                       <div class="d-flex align-items-center">
                         <div class="fs-14 fw-400 text-ellipsis">
                           <div class="cr-gray">Keberangkatan</div>
-                          <div class="cr-black">{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
+                          <div
+                            class="cr-gray"
+                          >{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
                         </div>
                         <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                           <div class="cr-gray">Kedatangan</div>
-                          <div class="cr-black">{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
+                          <div
+                            class="cr-gray"
+                          >{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
                         </div>
                       </div>
                     </div>

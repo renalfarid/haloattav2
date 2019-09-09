@@ -1,6 +1,6 @@
 <template>
   <div class="ant-affix--card">
-    <a-card class="ant-card--package-information">
+    <a-card class="ant-card--package-information mb-16">
       <div class="p-16">
         <div class="d-flex align-items-center">
           <div class="fs-15 fw-500 cr-black f-default mb-8">Informasi Penting</div>
@@ -12,9 +12,9 @@
           <li class="fs-14 cr-black">Pelunasan H -30 hari</li>
         </ul>
       </div>
+    </a-card>
 
-      <a-divider :style="{margin: '0'}" />
-      
+    <a-card class="ant-card--package-information">
       <div class="p-16">
         <a-rate class="fs-16 mb-8" :defaultValue="3" disabled />
 
