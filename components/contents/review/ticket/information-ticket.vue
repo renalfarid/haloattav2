@@ -1,30 +1,14 @@
 <template>
-  <a-list itemLayout="horizontal" class="ant-list--package-information">
-    <a-list-item class="ant-list-item--package-information">
-      <div>
-        <h2 class="ant-package--information-title fs-20 cr-black fw-500">Ulasan Pesanan</h2>
-        <div class="ant-package--information-text fs-15 cr-black fw-400">
-          <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio iste quibusdam consectetur amet consequatur numquam natus a repellendus! Quasi, dolores corporis doloribus velit voluptas quae neque unde aperiam sapiente commodi?</span>
-        </div>
-      </div>
-    </a-list-item>
-
+  <a-list itemLayout="horizontal" class="ant-list--package-information mt-8">
     <a-list-item class="ant-list-item--package-information">
       <div class="w-100">
-        <div class="d-flex align-items-center w-100">
-          <div>
-            <a-avatar src="https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png" />
-          </div>
-          <div class="fs-16 fw-500 cr-black">Lion Air</div>
-          <div class="fs-16 fw-500 cr-black ml-auto">JT-367</div>
-        </div>
-        <div class="ant-package--images w-100 mt-16">
+        <div class="ant-package--images w-100 mb-24">
           <a-row :gutter="10">
             <a-col :span="8">
               <div class="ant-package--images-large">
                 <div
                   class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/maskapai/c1.png)' }"
+                  :style="{ backgroundImage: `url(${item.gambar_maskapai != '' ? item.gambar_maskapai : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
                 ></div>
               </div>
             </a-col>
@@ -46,62 +30,115 @@
             </a-col>
           </a-row>
         </div>
+
+        <a-row :gutter="16" type="flex" justify="start">
+          <a-col :span="16">
+            <div
+              class="fs-28 fw-600 f-default cr-black"
+            >Tiket Group Umrah September Garuda Kanomas Tiket Group Umrah September Garuda Kanomas</div>
+          </a-col>
+          <a-col :span="8" class="text-right">
+            <a-avatar
+              :size="64"
+              :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+              class="brand-vendor ml-auto"
+            />
+          </a-col>
+        </a-row>
       </div>
     </a-list-item>
 
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-center w-100">
-        <div>
-          <a-avatar shape="square" src="/icons/package/seat.png" />
-        </div>
+        <a-avatar size="small" class="mr-8" :src="item.logo_maskapai" />
+        <div class="fs-15 fw-500 cr-black">{{item.nama_maskapai}}</div>
+
+        <div class="fs-15 fw-500 cr-black ml-auto">{{item.kode_maskapai}}</div>
+      </div>
+    </a-list-item>
+
+    <a-list-item class="ant-list-item--package-information">
+      <div class="d-flex align-items-center w-100">
+        <a-avatar size="small" class="mr-8" shape="square" src="/icons/package/seat.png" />
         <div class="fs-15 fw-500 cr-black">Kelas Kabin</div>
-        <div class="fs-15 fw-500 cr-black ml-auto">Economy Class</div>
+        <div class="fs-15 fw-500 cr-black text-capitalize ml-auto">{{item.class_flight}}</div>
       </div>
     </a-list-item>
 
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/airplane.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/airplane.png" />
         </div>
         <div class="w-100">
-          <div class="fs-15 fw-500 cr-black">Info Keberangkatan dan Kepulangan</div>
-          <a-timeline :style="{marginTop: '16px'}">
-            <a-timeline-item>
-              <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                <a-col :span="14">
-                  <div class="fs-15 fw-400 cr-black">Keberangkatan : Makassar (UPG) ke Jeddah (JED)</div>
-                  <div class="fs-15 fw-500 cr-black">09:45 AM</div>
-                  <div class="fs-15 fw-400 cr-gray">Kamis, 10 September 2019</div>
-                </a-col>
-                <a-col :span="4" class="text-center">
-                  <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                  <div class="fs-15 fw-400 cr-gray">10h45m</div>
-                </a-col>
-                <a-col :span="6" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">14:15 AM</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
-                </a-col>
-              </a-row>
-            </a-timeline-item>
-            <a-timeline-item>
-              <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                <a-col :span="14">
-                  <div class="fs-15 fw-400 cr-black">Kepulangan : Jeddah (JED) ke Makassar (UPG)</div>
-                  <div class="fs-15 fw-500 cr-black">09:45 AM</div>
-                  <div class="fs-15 fw-400 cr-gray">Kamis, 10 September 2019</div>
-                </a-col>
-                <a-col :span="4" class="text-center">
-                  <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                  <div class="fs-15 fw-400 cr-gray">10h45m</div>
-                </a-col>
-                <a-col :span="6" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">14:15 AM</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
-                </a-col>
-              </a-row>
-            </a-timeline-item>
-          </a-timeline>
+          <div class="fs-15 fw-500 cr-black mb-16">Info Keberangkatan dan Kepulangan</div>
+          <a-row :gutter="16">
+            <a-col :span="12">
+              <div class="fs-14 fw-500 cr-black mb-16">Keberangkatan</div>
+              <a-timeline>
+                <a-timeline-item color="green">
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>{{item.bandara_asal}} ({{item.kode_bandara_asal}})</span>
+                  </div>
+                  <div class="fs-15 fw-500 cr-black">{{item.jam_keberangkatan}}</div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item color="red">
+                  <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                  <div class="fs-14 fw-400 cr-black">
+                    <span class="mr-8">Nonstop</span>
+                    <span class="fw-500">{{item.durasi_keberangkatan}}</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item>
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>{{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</span>
+                  </div>
+                  <div class="fs-15 fw-500 cr-black">{{item.tiba_keberangkatan}}</div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+              </a-timeline>
+            </a-col>
+
+            <a-col :span="12">
+              <div class="fs-14 fw-500 cr-black mb-16">Kepulangan</div>
+              <a-timeline>
+                <a-timeline-item color="green">
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>{{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</span>
+                  </div>
+                  <div class="fs-15 fw-500 cr-black">{{item.jam_kepulangan}}</div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item color="red">
+                  <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                  <div class="fs-14 fw-400 cr-black">
+                    <span class="mr-8">Nonstop</span>
+                    <span class="fw-500">{{item.durasi_kepulangan}}</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item>
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>{{item.bandara_asal}} ({{item.kode_bandara_asal}})</span>
+                  </div>
+                  <div class="fs-15 fw-500 cr-black">{{item.tiba_kepulangan}}</div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+              </a-timeline>
+            </a-col>
+          </a-row>
         </div>
       </div>
     </a-list-item>
@@ -109,7 +146,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/direction.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/direction.png" />
         </div>
         <div>
           <div class="fs-15 fw-500 cr-black">Direct Flight</div>
@@ -121,7 +158,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/round_trip.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/round_trip.png" />
         </div>
         <div>
           <div class="fs-15 fw-500 cr-black">Round Trip</div>
@@ -133,7 +170,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/charity.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/charity.png" />
         </div>
         <div class="w-100">
           <div class="fs-15 fw-500 cr-black">Fasilitas</div>
@@ -184,3 +221,32 @@
     </a-list-item>
   </a-list>
 </template>
+<script>
+import moment from "moment";
+import axios from "axios";
+export default {
+  data() {
+    return {
+      loading: true,
+      item: []
+    };
+  },
+  created: function() {
+    // get todo items and start listening to events once component is created
+    this.getdata();
+  },
+  methods: {
+    moment,
+    async getdata() {
+      axios
+        .post("https://api.haloatta.com/api/tiket/detail", {
+          kode_produk: "TKT239610856"
+        })
+        .then(response => {
+          this.item = response.data.data;
+          this.loading = false;
+        });
+    }
+  }
+};
+</script>

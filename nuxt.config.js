@@ -7,7 +7,6 @@ module.exports = {
         title: "Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta",
         meta: [
             { charset: "utf-8" },
-            // { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             {
                 hid: "description",
                 name: "description",
@@ -15,11 +14,7 @@ module.exports = {
             }
         ],
         link: [
-            { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
-            {
-                rel: "stylesheet",
-                href: "https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700&display=swap&subset=latin-ext,vietnamese"
-            }
+            { rel: "icon", type: "image/x-icon", href: "/favicon.png" }
         ]
     },
     /*
@@ -59,7 +54,6 @@ module.exports = {
             {
                 symbol: "Rp",
                 thousandsSeparator: ".",
-                fractionCount: 3,
                 fractionSeparator: ".",
                 symbolPosition: "front",
                 symbolSpacing: true

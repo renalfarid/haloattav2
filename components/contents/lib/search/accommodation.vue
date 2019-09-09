@@ -53,53 +53,46 @@
     </a-row>
 
     <a-row :gutter="16">
-
       <a-col :span="12">
-        <a-form-item label="Dari Kota" hasFeedback>
+        <a-form-item label="Bulan Keberangkatan" hasFeedback>
           <div class="icon-search">
-            <img class="max-width" src="/icons/search/bedtime.svg" />
+            <a-icon type="calendar" />
           </div>
           <a-select
             showSearch
-            defaultValue="3 Hari Mekkah"
-            placeholder="Pilih Kota"
-            optionFilterProp="children"
-            :showArrow="false"
+            defaultValue="September 2019"
+            placeholder="Pilih Bulan Keberangkatan"
             style="width: 100%"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
+            :showArrow="false"
             :filterOption="filterOption"
             size="large"
           >
             <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="3 Hari Mekkah">3 Hari Mekkah</a-select-option>
-            <a-select-option value="4 Hari Mekkah">4 Hari Mekkah</a-select-option>
+            <a-select-option value="September 2019">September 2019</a-select-option>
+            <a-select-option value="November 2019">November 2019</a-select-option>
+            <a-select-option value="Desember 2019">Desember 2019</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
 
       <a-col :span="12">
-        <a-form-item label="Ke Kota" hasFeedback>
+        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
           <div class="icon-search">
-            <img class="max-width" src="/icons/search/bedtime.svg" />
+            <a-icon type="calendar" />
           </div>
           <a-select
             showSearch
-            defaultValue="3 Hari Madinah"
-            placeholder="Pilih Kota"
-            optionFilterProp="children"
+            defaultValue="All"
+            placeholder="Pilih Tanggal"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
             :filterOption="filterOption"
             size="large"
           >
             <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="3 Hari Madinah">3 Hari Madinah</a-select-option>
-            <a-select-option value="4 Hari Madinah">4 Hari Madinah</a-select-option>
+            <a-select-option value="01">01</a-select-option>
+            <a-select-option value="02">02</a-select-option>
+            <a-select-option value="03">03</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -107,19 +100,36 @@
 
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+        <a-form-item label="Jumlah Pax" hasFeedback>
           <div class="icon-search">
-            <a-icon type="calendar" />
+            <img class="max-width" src="/icons/search/boysmiling.svg" />
           </div>
-          <a-date-picker
-            size="large"
-            style="width: 100%"
-            v-decorator="['tanggal_checkIn',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-            :disabledDate="disabledDate"
-            placeholder="Pilih Tanggal"
-          >
-            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-          </a-date-picker>
+          <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
+            <a-menu slot="overlay">
+              <a-menu-item key="1" disabled>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Jumlah Pax</div>
+                  </div>
+                  <div class="ml-auto">
+                    <number-input
+                      v-model="qty"
+                      :min="1"
+                      :inputtable="false"
+                      size="small"
+                      center
+                      controls
+                    />
+                  </div>
+                </div>
+              </a-menu-item>
+            </a-menu>
+            <a-button
+              class="ant-btn--add-passenger fs-16 text-left"
+              size="large"
+              block
+            >{{qty}} Pax</a-button>
+          </a-dropdown>
         </a-form-item>
       </a-col>
 
@@ -142,7 +152,9 @@ export default {
   name: "searchAccommodation",
   data() {
     this.dateFormat = "YYYY-MM-DD";
-    return { };
+    return { 
+      qty: 1
+    };
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);

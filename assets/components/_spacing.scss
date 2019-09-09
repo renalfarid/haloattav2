@@ -12,9 +12,27 @@
     & .ant-divider-inner-text {
         padding-left: 0 !important;
         text-transform: uppercase;
+        word-spacing: -5px;
         color: $color-font;
         font-weight: 500;
         font-size: 22px;
+    }
+    &::before {
+        width: 0 !important;
+    }
+    &::after {
+        border-top: 3px solid $color-border !important;
+    }
+}
+
+.ant-divider-title-left-small {
+    & .ant-divider-inner-text {
+        padding-left: 0 !important;
+        text-transform: uppercase;
+        word-spacing: -5px;
+        color: $color-font;
+        font-weight: 500;
+        font-size: 18px;
     }
     &::before {
         width: 0 !important;

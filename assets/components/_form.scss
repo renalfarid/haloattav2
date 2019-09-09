@@ -1,8 +1,16 @@
 .form-search--costume {
+    & .ant-form-item-type {
+        & .ant-form-item-control {
+            border-bottom: 1px solid #bbb;
+            line-height: 40px;
+            height: 40px;
+        }
+    }
     & .ant-form-item {
         & .ant-form-item-label {
             padding-bottom: 0;
             & label {
+                word-spacing: -5px;
                 color: $color-font;
                 font-weight: 500;
                 font-size: 14px;

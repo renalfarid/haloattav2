@@ -111,9 +111,16 @@
                         }
                     }
                     & .ant-card-meta-title--package {
+                        overflow-wrap: break-word !important;
+                        text-overflow: ellipsis !important;
+                        -webkit-line-clamp: 2 !important;
+                        display: -webkit-box !important;
+                        -webkit-box-orient: vertical !important;
+                        overflow: hidden !important;
                         word-wrap: break-word;
+                        word-spacing: -5px !important;
                         color: $color-font;
-                        line-height: 20px;
+                        line-height: normal;
                         font-size: 16px;
                         height: 44px;
                     }
@@ -132,6 +139,7 @@
                         white-space: nowrap;
                         & .ant-card-meta-description--bottom-left {
                             font-size: 16px;
+                            word-spacing: -5px !important;
                         }
                         & .ant-card-meta-description--bottom-right {
                             color: $color-font-gray;

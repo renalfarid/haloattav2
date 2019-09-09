@@ -8,6 +8,15 @@
   >
     <a-row :gutter="16">
       <a-col :span="12">
+        <a-form-item class="ant-form-item-type" label="Tipe Perjalanan" hasFeedback>
+          <a-radio-group name="radioGroup" :defaultValue="1">
+            <a-radio :value="1" class="fs-16 cr-black mr-16">Pulang Pergi</a-radio>
+            <a-radio :value="2" class="fs-16 cr-black">Sekali Jalan</a-radio>
+          </a-radio-group>
+        </a-form-item>
+      </a-col>
+
+      <a-col :span="12">
         <a-form-item label="Kota Asal" hasFeedback>
           <div class="icon-search">
             <img class="max-width" src="/icons/search/airplane.svg" />
@@ -31,7 +40,9 @@
           </a-select>
         </a-form-item>
       </a-col>
+    </a-row>
 
+    <a-row :gutter="16">
       <a-col :span="12">
         <a-form-item label="Kota Tujuan" hasFeedback>
           <div class="icon-search">
@@ -54,6 +65,77 @@
             <a-select-option value="Jeddah">Jeddah (JED)</a-select-option>
             <a-select-option value="Medinah">Medinah (MED)</a-select-option>
           </a-select>
+        </a-form-item>
+      </a-col>
+
+      <a-col :span="12">
+        <a-form-item label="Jumlah Penumpang" hasFeedback>
+          <div class="icon-search">
+            <img class="max-width" src="/icons/search/boysmiling.svg" />
+          </div>
+          <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
+            <a-menu slot="overlay">
+              <a-menu-item key="0" disabled>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Dewasa</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(Umur 12 atau lebih)</div>
+                  </div>
+                  <div class="ml-auto">
+                    <number-input
+                      v-model="dewasa"
+                      :min="1"
+                      :inputtable="false"
+                      size="small"
+                      center
+                      controls
+                    />
+                  </div>
+                </div>
+              </a-menu-item>
+              <a-menu-item key="1" disabled>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Anak</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(Umur 2 sampai 11 thn)</div>
+                  </div>
+                  <div class="ml-auto">
+                    <number-input
+                      v-model="anak"
+                      :min="0"
+                      :inputtable="false"
+                      size="small"
+                      center
+                      controls
+                    />
+                  </div>
+                </div>
+              </a-menu-item>
+              <a-menu-item key="2" disabled>
+                <div class="d-flex align-items-center">
+                  <div>
+                    <div class="fs-14 fw-400 cr-black f-default">Bayi</div>
+                    <div class="fs-12 fw-400 cr-gray f-default">(Umur dibawah 2 thn)</div>
+                  </div>
+                  <div class="ml-auto">
+                    <number-input
+                      v-model="bayi"
+                      :min="0"
+                      :inputtable="false"
+                      size="small"
+                      center
+                      controls
+                    />
+                  </div>
+                </div>
+              </a-menu-item>
+            </a-menu>
+            <a-button
+              class="ant-btn--add-passenger fs-16 text-left"
+              size="large"
+              block
+            >{{dewasa}} Dewasa, {{anak}} Anak, {{bayi}} Bayi</a-button>
+          </a-dropdown>
         </a-form-item>
       </a-col>
     </a-row>
@@ -150,7 +232,10 @@ export default {
   name: "searchTicket",
   data() {
     return {
-      monthFormat: "MM/YYYY"
+      monthFormat: "MM/YYYY",
+      dewasa: 2,
+      anak: 1,
+      bayi: 0
     };
   },
   beforeCreate() {

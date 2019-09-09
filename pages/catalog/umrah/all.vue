@@ -47,7 +47,7 @@
                               class="ant-card-cover--overlay-text-title fs-15 fw-500"
                             >{{item.sisa_seat}}</div>
                             <div
-                              class="ant-card-cover--overlay-text-subtitlefs-12 text-uppercase"
+                              class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
                             >pax</div>
                           </div>
                         </div>

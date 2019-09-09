@@ -2,22 +2,19 @@
   <div class="ant-affix--card">
     <a-card class="ant-card--package-information">
       <div class="p-16">
-        <div class="ant-package--name fs-14 fw-400 cr-gray f-default mb-8">Travel Penyedia</div>
         <div class="d-flex align-items-center">
-          <div class="mr-8">
-            <a-avatar
-              class="vendor-logo"
-              :style="{ backgroundImage: 'url(https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843)' }"
-            />
-          </div>
-          <div>
-            <div class="ant-package--name fs-15 fw-500 cr-black">Umaroh ATTA</div>
-          </div>
+          <div class="fs-15 fw-500 cr-black f-default mb-8">Informasi Penting</div>
+          <a href="" class="fs-14 cr-primary ml-auto">Details</a>
         </div>
+        <ul class="pl-16 mb-0">
+          <li class="fs-14 cr-black">No reschedule</li>
+          <li class="fs-14 cr-black">Pembatalan tanpa pinalty 45 hari</li>
+          <li class="fs-14 cr-black">Pelunasan H -30 hari</li>
+        </ul>
       </div>
 
       <a-divider :style="{margin: '0'}" />
-
+      
       <div class="p-16">
         <a-rate class="fs-16 mb-8" :defaultValue="3" disabled />
 
@@ -100,10 +97,29 @@
       <a-divider :style="{margin: '0'}" />
 
       <div class="p-16">
-        <div class="ant-package--title fs-15 fw-400 d-block cr-black">Harga Bayar</div>
-        <div
-          class="ant-package--subtitle fs-22 fw-500 cr-black d-block f-default"
-        >Rp 520.000.000</div>
+        <div class="d-flex align-items-center mb-8">
+          <div class="fs-14 fw-400 cr-black f-default w-35">Quad (4) </div>
+          <span class="cr-gray mr-8">x</span>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 22.000.000</div>
+        </div>
+        <div class="d-flex align-items-center mb-8">
+          <div class="fs-14 fw-400 cr-black f-default w-35">Triple (3) </div>
+          <span class="cr-gray mr-8">x</span>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 23.000.000</div>
+        </div>
+        <div class="d-flex align-items-center mb-8">
+          <div class="fs-14 fw-400 cr-black f-default w-35">Double (2) </div>
+          <span class="cr-gray mr-8">x</span>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 24.000.000</div>
+        </div>
+
+        <a-divider :style="{margin: '8px 0'}" />
+
+        <div class="d-flex align-items-center mb-24">
+          <div class="fs-15 fw-500 cr-black f-default w-35">Total </div>
+          <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 156.000.000</div>
+        </div>
+
         <div :style="{margin: '16px 0'}">
           <a-button
             block

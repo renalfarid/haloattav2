@@ -1,29 +1,8 @@
 <template>
-  <a-list itemLayout="horizontal" class="ant-list--package-information">
-    <a-list-item class="ant-list-item--package-information">
-      <div>
-        <h2 class="ant-package--information-title fs-20 cr-black fw-500">Informasi LA Akomodasi</h2>
-        <div class="ant-package--information-text fs-15 cr-black fw-400">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Odio iste quibusdam consectetur amet consequatur numquam natus a repellendus! Quasi,
-          dolores corporis doloribus velit voluptas quae neque unde aperiam sapiente commodi?
-        </div>
-      </div>
-    </a-list-item>
-
+  <a-list itemLayout="horizontal" class="ant-list--package-information mt-8">
     <a-list-item class="ant-list-item--package-information">
       <div class="w-100">
-        <div class="d-flex align-items-center w-100">
-          <div>
-            <a-avatar src="/akomodasi/logo/ll3.svg" />
-          </div>
-          <div class="fs-16 fw-500 cr-black">Movenpick Hotels & Resorts</div>
-          <div class="ml-auto">
-            <a-rate class="fs-16" :defaultValue="3" disabled />
-          </div>
-        </div>
-
-        <div class="ant-package--images mt-16">
+        <div class="ant-package--images w-100 mb-24">
           <a-row :gutter="10">
             <a-col :span="8">
               <div class="ant-package--images-large">
@@ -51,52 +30,95 @@
             </a-col>
           </a-row>
         </div>
+
+        <a-row :gutter="16" type="flex" justify="start">
+          <a-col :span="16">
+            <div
+              class="fs-28 fw-600 f-default cr-black"
+            >LA Akomodasi Umrah September Madinah Atta Tours</div>
+          </a-col>
+          <a-col :span="8" class="text-right">
+            <a-avatar
+              :size="64"
+              :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+              class="brand-vendor ml-auto"
+            />
+          </a-col>
+        </a-row>
       </div>
     </a-list-item>
 
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/bedtime.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/bedtime.png" />
         </div>
         <div class="w-100">
-          <div class="fs-15 fw-500 cr-black">Durasi Inap</div>
-          <a-timeline :style="{marginTop: '16px'}">
-            <a-timeline-item>
-              <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                <a-col :span="8">
-                  <div class="fs-15 fw-400 cr-black">Mekkah : Rayyana Ajyad</div>
-                  <div class="fs-15 fw-500 cr-black">Menginap</div>
-                  <div class="fs-15 fw-400 cr-gray">3 Hari</div>
-                </a-col>
-                <a-col :span="8" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">Check In</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
-                </a-col>
-                <a-col :span="8" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">Check Out</div>
-                  <div class="fs-15 fw-400 cr-gray">Kamis, 20 September 2019</div>
-                </a-col>
-              </a-row>
-            </a-timeline-item>
-            <a-timeline-item>
-              <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                <a-col :span="8">
-                  <div class="fs-15 fw-400 cr-black">Madinah : Pinewood Hotel</div>
-                  <div class="fs-15 fw-500 cr-black">Menginap</div>
-                  <div class="fs-15 fw-400 cr-gray">3 Hari</div>
-                </a-col>
-                <a-col :span="8" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">Check In</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
-                </a-col>
-                <a-col :span="8" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">Check Out</div>
-                  <div class="fs-15 fw-400 cr-gray">Kamis, 20 September 2019</div>
-                </a-col>
-              </a-row>
-            </a-timeline-item>
-          </a-timeline>
+          <div class="fs-15 fw-500 cr-black mb-16">Durasi Inap Madinah dan Makkah</div>
+
+          <a-row :gutter="16">
+            <a-col :span="12">
+              <div class="fs-14 fw-500 cr-black mb-16">Madinah</div>
+              <a-timeline>
+                <a-timeline-item color="green">
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Check In</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>Pinewood Hotel</span>
+                  </div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment("2019-11-20", "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item color="red">
+                  <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                  <div class="fs-14 fw-400 cr-black">
+                    <span class="mr-8">Durasi</span>
+                    <span class="fw-500">3 Hari</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item>
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Check Out</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>Pinewood Hotel</span>
+                  </div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment("2019-11-23", "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+              </a-timeline>
+            </a-col>
+
+            <a-col :span="12">
+              <div class="fs-14 fw-500 cr-black mb-16">Makkah</div>
+              <a-timeline>
+                <a-timeline-item color="green">
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Check In</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>Rayyana Ajyad</span>
+                  </div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item color="red">
+                  <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                  <div class="fs-14 fw-400 cr-black">
+                    <span class="mr-8">Durasi</span>
+                    <span class="fw-500">6 Hari</span>
+                  </div>
+                </a-timeline-item>
+                <a-timeline-item>
+                  <div class="fs-12 fw-400 cr-gray text-uppercase">Check Out</div>
+                  <div class="fs-14 fw-500 cr-black text-uppercase">
+                    <span>Rayyana Ajyad</span>
+                  </div>
+                  <div class="fs-15 fw-400 cr-gray">
+                    <span>{{moment("2019-11-30", "YYYY-MM-DD").format('LL')}}</span>
+                  </div>
+                </a-timeline-item>
+              </a-timeline>
+            </a-col>
+          </a-row>
         </div>
       </div>
     </a-list-item>
@@ -104,7 +126,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/binoculars.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/binoculars.png" />
         </div>
         <div>
           <div class="fs-15 fw-500 cr-black">Jarah Hotel</div>
@@ -116,7 +138,7 @@
     <a-list-item class="ant-list-item--package-information">
       <div class="d-flex align-items-start w-100">
         <div>
-          <a-avatar shape="square" src="/icons/package/charity.png" />
+          <a-avatar size="small" shape="square" src="/icons/package/charity.png" />
         </div>
         <div class="w-100">
           <div class="fs-15 fw-500 cr-black">Fasilitas</div>
@@ -188,3 +210,14 @@
     </a-list-item>
   </a-list>
 </template>
+<script>
+import moment from "moment";
+export default {
+  data() {
+    return { };
+  },
+  methods: {
+    moment
+  }
+};
+</script>

@@ -87,7 +87,7 @@
 
             <div class="package-description--more p-16">
               <div class="d-flex align-items-center mb-8">
-                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">{{item.nama_kota}}</div>
+                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Kota Asal {{item.nama_kota}}</div>
                 <div class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto">Round Trip</div>
               </div>
 

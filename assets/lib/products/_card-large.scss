@@ -102,11 +102,13 @@
                         line-height: normal;
                         font-weight: 500;
                         font-size: 14px;
+                        word-spacing: -5px !important;
                     }
                     & .ant-card-cover--overlay-text-subtitle {
                         text-transform: lowercase;
                         line-height: normal;
                         font-size: 13px;
+                        word-spacing: -5px !important;
                     }
                 }
             }
@@ -164,11 +166,18 @@
                         }
                     }
                     & .ant-card-meta-title--package {
+                        overflow-wrap: break-word !important;
+                        text-overflow: ellipsis !important;
+                        -webkit-line-clamp: 2 !important;
+                        display: -webkit-box !important;
+                        -webkit-box-orient: vertical !important;
+                        overflow: hidden !important;
                         word-wrap: break-word;
                         color: $color-font;
-                        line-height: 21px;
+                        line-height: normal;
                         font-size: 18px;
-                        height: 42px;
+                        word-spacing: -5px !important;
+                        height: 46px;
                     }
                 }
                 & .ant-card-meta-description {
@@ -178,15 +187,17 @@
                         & .ant-card-meta-description--bottom-left {
                             font-weight: 500;
                             font-size: 18px;
+                            word-spacing: -5px !important;
                         }
                         & .ant-card-meta-description--bottom-right {
                             color: $color-font-gray;
                             font-size: 14px;
+                            word-spacing: -5px !important;
                             & .ant-tag {
                                 background-color: $color-green;
                                 @include border-radius(2px);
                                 font-weight: normal;
-                                line-height: 22px;
+                                line-height: normal;
                                 font-size: 14px;
                                 color: #ffffff;
                                 margin-right: 0;
