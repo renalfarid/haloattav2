@@ -29,7 +29,31 @@
         <a-divider />
         <a-form layout="vertical" class="form-search--costume">
           <a-row :gutter="16">
-            <a-col :span="8">
+            <a-col :span="6">
+              <a-form-item label="Negara Tujuan" hasFeedback>
+                <div class="icon-search">
+                  <img class="max-width" src="/icons/search/place.svg" />
+                </div>
+                <a-select
+                  showSearch
+                  defaultValue="Saudi Arabia"
+                  placeholder="Pilih Negara Tujuan"
+                  optionFilterProp="children"
+                  :showArrow="false"
+                  style="width: 100%"
+                  @focus="handleFocus"
+                  @blur="handleBlur"
+                  @change="handleChange"
+                  :filterOption="filterOption"
+                  size="large"
+                >
+                  <a-select-option value="All">Tampilkan Semua</a-select-option>
+                  <a-select-option value="Saudi Arabia">Saudi Arabia</a-select-option>
+                </a-select>
+              </a-form-item>
+            </a-col>
+
+            <a-col :span="6">
               <a-form-item label="Tipe Asuransi" hasFeedback>
                 <div class="icon-search">
                   <span class="icon-insurance-sm"></span>
@@ -47,33 +71,7 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
-              <a-form-item label="Program Hari" hasFeedback>
-                <div class="icon-search">
-                  <a-icon type="calendar" />
-                </div>
-                <a-select
-                  showSearch
-                  defaultValue="Program 9 Hari"
-                  placeholder="Pilih Program Hari"
-                  optionFilterProp="children"
-                  style="width: 100%"
-                  :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
-                  size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-                  <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-                  <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-
-            <a-col :span="8">
+            <a-col :span="6">
               <a-form-item label="Tanggal Keberangkatan" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
@@ -89,10 +87,29 @@
                 </a-date-picker>
               </a-form-item>
             </a-col>
+
+            <a-col :span="6">
+              <a-form-item label="Durasi" hasFeedback>
+                <div class="icon-search">
+                  <a-icon type="calendar" />
+                </div>
+                <a-select
+                  showSearch
+                  defaultValue="30 Hari"
+                  placeholder="Pilih Durasi"
+                  :showArrow="false"
+                  style="width: 100%"
+                  size="large"
+                >
+                  <a-select-option value="all">Tampilkan Semua</a-select-option>
+                  <a-select-option value="30 Hari">30 Hari</a-select-option>
+                </a-select>
+              </a-form-item>
+            </a-col>
           </a-row>
 
           <a-row :gutter="16" type="flex" justify="end">
-            <a-col :span="8">
+            <a-col :span="6">
               <a-button
                 html-type="submit"
                 class="btn-search b-shadow b-radius"

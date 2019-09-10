@@ -1,6 +1,6 @@
 <template>
   <div class="ant-affix--card">
-    <a-card class="ant-card--package-information">
+    <a-card class="ant-card--package-information mb-16">
       <div class="p-16">
         <div class="d-flex align-items-center">
           <div class="fs-15 fw-500 cr-black f-default mb-8">Informasi Penting</div>
@@ -12,9 +12,9 @@
           <li class="fs-14 cr-black">Pelunasan H -30 hari</li>
         </ul>
       </div>
+    </a-card>
 
-      <a-divider :style="{margin: '0'}" />
-      
+    <a-card class="ant-card--package-information">
       <div class="p-16">
         <a-rate class="fs-16 mb-8" :defaultValue="3" disabled />
 
@@ -38,11 +38,32 @@
       <a-divider :style="{margin: '0'}" />
 
       <div class="p-16">
-        <div class="ant-package--title fs-15 fw-500 cr-black mb-16">Jumlah Tamu</div>
+        <div class="d-flex align-items-center">
+          <div>
+            <div class="ant-package--title fs-15 fw-500 cr-black">Jumlah Tamu</div>
+          </div>
+          <div class="ml-auto">
+            <number-input
+              v-model="qty"
+              :min="0"
+              :inputtable="false"
+              size="small"
+              inline
+              center
+              controls
+            />
+          </div>
+        </div>
+      </div>
+
+      <a-divider :style="{margin: '0'}" />
+
+      <div class="p-16">
+        <div class="ant-package--title fs-15 fw-500 cr-black mb-16">Pengaturan Room</div>
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Quad Room</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray">Rp22.000.000 /pax</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray">Rp4.000.000 /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -60,7 +81,7 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Triple Room</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp23.000.000 /pax</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp5.000.000 /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -78,7 +99,7 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Double Room</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp24.000.000 /pax</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp7.000.000 /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -100,17 +121,17 @@
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Quad (4) </div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 22.000.000</div>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 4.000.000</div>
         </div>
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Triple (3) </div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 23.000.000</div>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 5.000.000</div>
         </div>
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Double (2) </div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 24.000.000</div>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 7.000.000</div>
         </div>
 
         <a-divider :style="{margin: '8px 0'}" />
@@ -140,6 +161,7 @@
 export default {
   data() {
     return {
+      qty: 9,
       quad: 4,
       triple: 3,
       double: 2

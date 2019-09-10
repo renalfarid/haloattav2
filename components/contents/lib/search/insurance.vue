@@ -8,6 +8,30 @@
   >
     <a-row :gutter="16">
       <a-col :span="12">
+        <a-form-item label="Negara Tujuan" hasFeedback>
+          <div class="icon-search">
+            <img class="max-width" src="/icons/search/place.svg" />
+          </div>
+          <a-select
+            showSearch
+            defaultValue="Saudi Arabia"
+            placeholder="Pilih Negara Tujuan"
+            optionFilterProp="children"
+            :showArrow="false"
+            style="width: 100%"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @change="handleChange"
+            :filterOption="filterOption"
+            size="large"
+          >
+            <a-select-option value="All">Tampilkan Semua</a-select-option>
+            <a-select-option value="Saudi Arabia">Saudi Arabia</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-col>
+
+      <a-col :span="12">
         <a-form-item label="Tipe Asuransi" hasFeedback>
           <div class="icon-search">
             <span class="icon-insurance-sm"></span>
@@ -21,32 +45,6 @@
             size="large"
           >
             <a-select-option value="umrah">Umrah</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-
-      <a-col :span="12">
-        <a-form-item label="Program Hari" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="calendar" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="Program 9 Hari"
-            placeholder="Pilih Program Hari"
-            optionFilterProp="children"
-            style="width: 100%"
-            :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
-            size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-            <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-            <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -71,14 +69,33 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item :style="{ bottom: '-25px' }">
-          <a-button
-            html-type="submit"
-            class="btn-search b-shadow b-radius"
+        <a-form-item label="Durasi" hasFeedback>
+          <div class="icon-search">
+            <a-icon type="calendar" />
+          </div>
+          <a-select
+            showSearch
+            defaultValue="30 Hari"
+            placeholder="Pilih Durasi"
+            :showArrow="false"
+            style="width: 100%"
             size="large"
-            block
-          >Cari Asuransi</a-button>
+          >
+            <a-select-option value="all">Tampilkan Semua</a-select-option>
+            <a-select-option value="30 Hari">30 Hari</a-select-option>
+          </a-select>
         </a-form-item>
+      </a-col>
+    </a-row>
+
+    <a-row :gutter="16" type="flex" justify="end">
+      <a-col :span="12">
+        <a-button
+          html-type="submit"
+          class="btn-search b-shadow b-radius"
+          size="large"
+          block
+        >Cari Asuransi</a-button>
       </a-col>
     </a-row>
   </a-form>
@@ -89,7 +106,7 @@ export default {
   name: "searchTicket",
   data() {
     this.dateFormat = "YYYY-MM-DD";
-    return { };
+    return {};
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);

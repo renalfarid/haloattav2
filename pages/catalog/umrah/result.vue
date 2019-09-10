@@ -38,8 +38,12 @@
                         <div class="ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius"></div>
                           <div class="ant-card-cover--overlay-text">
-                            <div class="ant-card-cover--overlay-text-title fs-15 fw-500">{{item.pax_available}}</div>
-                            <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
+                            <div
+                              class="ant-card-cover--overlay-text-title fs-15 fw-500"
+                            >{{item.pax_available}}</div>
+                            <div
+                              class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
+                            >pax</div>
                           </div>
                         </div>
 
@@ -61,7 +65,13 @@
                             <a-popover trigger="hover">
                               <template slot="content">
                                 <div class="fs-15 fw-500 cr-black">{{item.name_umaroh}}</div>
-                                <div class="fs-14 fw-400 cr-gray f-default"><a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi</div>
+                                <div class="fs-14 fw-400 cr-gray f-default">
+                                  <a-icon
+                                    type="safety-certificate"
+                                    theme="filled"
+                                    class="cr-green mr-4"
+                                  />Terverifikasi
+                                </div>
                               </template>
                               <a-avatar class="zIndex mr-8" :src="item.avatar_umaroh" />
                             </a-popover>
@@ -74,28 +84,10 @@
                               </template>
                               <a-avatar class="zIndex mr-8" src="/maskapai/logo/garuda.svg" />
                             </a-popover>
-
-                            <a-popover trigger="hover">
-                              <template slot="content">
-                                <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
-                                <div
-                                  class="fs-13 fw-400 cr-black f-default mb-4"
-                                >Mekkah : Hotel Daruttauhid International Mekkah</div>
-                                <div
-                                  class="fs-13 fw-400 cr-black f-default"
-                                >Madinah : Hotel Dar Al Eiman International Madinah</div>
-                              </template>
-                              <a-avatar
-                                class="zIndex mr-8"
-                                size="small"
-                                style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
-                                src="/icons/search/tabs/color/accommodation.svg"
-                              />
-                            </a-popover>
                           </div>
-                          <div
-                            class="ant-card-meta-title--top-right ml-auto fs-14 fw-400 cr-black"
-                          >Program 9 Hari</div>
+                          <div class="ant-card-meta-title--top-right ml-auto">
+                            <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                          </div>
                         </div>
                         <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
                       </div>
@@ -103,9 +95,8 @@
                       <div slot="description">
                         <div class="ant-card-meta-description--bottom d-flex align-items-center">
                           <div class="ant-card-meta-description--bottom-right d-flex">
-                            <div class="fs-14 fw-400 cr-gray">
-                              Terjual
-                              <strong>{{item.pax_booked}}</strong> Pax
+                            <div class="fs-14 fw-400 cr-black">
+                              Program 9 Hari
                             </div>
                           </div>
                           <div
@@ -115,18 +106,40 @@
                       </div>
                     </a-card-meta>
                     <div class="package-description--more p-24">
-                      <div class="fs-15 fw-400 cr-black f-default text-ellipsis mb-8">
-                        <span>Keberangkatan Makassar</span>
+                      <div class="mb-8">
+                        <div>
+                          <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+                            <span>Informasi Hotel</span>
+                          </div>
+                          <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
+                            <span>Makkah : Rayyana Ajyad</span>
+                          </div>
+                          <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
+                            <span>Madinah : Mirage Al Salam</span>
+                          </div>
+                        </div>
                       </div>
 
+                      <div class="mb-8">
+                        <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+                          <span>Kota Keberangkatan</span>
+                        </div>
+                        <div class="fs-15 fw-400 cr-gray f-default text-ellipsis">
+                          <span>Jakarta</span>
+                        </div>
+                      </div>
+
+                      <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
+                        <span>Tanggal Keberangkatan</span>
+                      </div>
                       <div class="d-flex align-items-center">
                         <div class="fs-14 fw-400 text-ellipsis">
                           <div class="cr-gray">Keberangkatan</div>
-                          <div class="cr-black">10 September 2019</div>
+                          <div class="cr-gray">{{moment("2019-10-10", "YYYY-MM-DD").format('ll')}}</div>
                         </div>
                         <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                           <div class="cr-gray">Kedatangan</div>
-                          <div class="cr-black">19 September 2019</div>
+                          <div class="cr-gray">{{moment("2019-10-10", "YYYY-MM-DD").format('ll')}}</div>
                         </div>
                       </div>
                     </div>
@@ -143,6 +156,7 @@
 <script>
 import searchResultUmrah from "~/components/contents/lib/search/result/umrah.vue";
 import filterResultUmrah from "~/components/contents/lib/filter/result/umrah.vue";
+import moment from "moment";
 import axios from "axios";
 export default {
   name: "umrahResults",
@@ -169,6 +183,7 @@ export default {
     this.loadMore();
   },
   methods: {
+    moment,
     loadMore() {
       console.log("Adding 6 more data results");
       this.busy = true;

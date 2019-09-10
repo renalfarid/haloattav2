@@ -68,7 +68,6 @@
             :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
             <a-select-option value="September 2019">September 2019</a-select-option>
             <a-select-option value="November 2019">November 2019</a-select-option>
             <a-select-option value="Desember 2019">Desember 2019</a-select-option>
@@ -77,14 +76,40 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item :style="{ bottom: '-25px' }">
-          <a-button
+        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+          <div class="icon-search">
+            <a-icon type="calendar" />
+          </div>
+          <a-select
+            showSearch
+            defaultValue="all"
+            placeholder="Pilih Tanggal"
+            optionFilterProp="children"
+            style="width: 100%"
+            :showArrow="false"
+            @focus="handleFocus"
+            @blur="handleBlur"
+            @change="handleChange"
+            :filterOption="filterOption"
+            size="large"
+          >
+            <a-select-option value="all">Tampilkan Semua</a-select-option>
+            <a-select-option value="1">1</a-select-option>
+            <a-select-option value="2">2</a-select-option>
+            <a-select-option value="3">3</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-col>
+    </a-row>
+
+    <a-row :gutter="16" type="flex" justify="end">
+      <a-col :span="12">
+        <a-button
             @click="searchUmrah"
             class="btn-search b-shadow b-radius"
             size="large"
             block
           >Cari Umrah</a-button>
-        </a-form-item>
       </a-col>
     </a-row>
   </a-form>

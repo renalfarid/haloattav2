@@ -29,25 +29,7 @@
         <a-divider />
         <a-form layout="vertical" class="form-search--costume">
           <a-row :gutter="16">
-            <a-col :span="12">
-              <a-form-item label="Jenis Visa" hasFeedback>
-                <div class="icon-search">
-                  <span class="icon-visa-sm"></span>
-                </div>
-                <a-select
-                  showSearch
-                  defaultValue="umrah"
-                  placeholder="Pilih Jenis Visa"
-                  :showArrow="false"
-                  style="width: 100%"
-                  size="large"
-                >
-                  <a-select-option value="umrah">Umrah</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-
-            <a-col :span="12">
+            <a-col :span="6">
               <a-form-item label="Negara Tujuan" hasFeedback>
                 <div class="icon-search">
                   <img class="max-width" src="/icons/search/place.svg" />
@@ -70,10 +52,26 @@
                 </a-select>
               </a-form-item>
             </a-col>
-          </a-row>
 
-          <a-row :gutter="16">
-            <a-col :span="12">
+            <a-col :span="6">
+              <a-form-item label="Jenis Visa" hasFeedback>
+                <div class="icon-search">
+                  <span class="icon-visa-sm"></span>
+                </div>
+                <a-select
+                  showSearch
+                  defaultValue="umrah"
+                  placeholder="Pilih Jenis Visa"
+                  :showArrow="false"
+                  style="width: 100%"
+                  size="large"
+                >
+                  <a-select-option value="umrah">Umrah</a-select-option>
+                </a-select>
+              </a-form-item>
+            </a-col>
+
+            <a-col :span="6">
               <a-form-item label="Tanggal Keberangkatan" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
@@ -90,7 +88,7 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="12">
+            <a-col :span="6">
               <a-form-item label="Tipe Visa" hasFeedback>
                 <div class="icon-search">
                   <img class="max-width" src="/icons/search/visa.svg" />
@@ -116,7 +114,7 @@
           </a-row>
 
           <a-row :gutter="16" type="flex" justify="end">
-            <a-col :span="8">
+            <a-col :span="6">
               <a-button
                 html-type="submit"
                 class="btn-search b-shadow b-radius"

@@ -94,11 +94,11 @@
               <div class="d-flex align-items-center">
                 <div class="fs-14 fw-400 text-ellipsis">
                   <div class="cr-gray">Keberangkatan</div>
-                  <div class="cr-black">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('ll')}}</div>
+                  <div class="cr-black">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
                 <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                   <div class="cr-gray">Kedatangan</div>
-                  <div class="cr-black">{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('ll')}}</div>
+                  <div class="cr-black">{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
               </div>
             </div>
