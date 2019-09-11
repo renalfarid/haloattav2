@@ -47,7 +47,7 @@
           </a-form-item>
 
           <a-row :gutter="16">
-            <a-col :span="8">
+            <a-col :span="6">
               <a-form-item label="Kota Asal">
                 <div class="icon-search">
                   <img class="max-width" src="/icons/search/airplane.svg" />
@@ -72,7 +72,7 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
+            <a-col :span="6">
               <a-form-item label="Kota Tujuan">
                 <div class="icon-search">
                   <a-icon type="environment" />
@@ -97,7 +97,24 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
+            <a-col :span="6">
+              <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+                <div class="icon-search">
+                  <a-icon type="calendar" />
+                </div>
+                <a-date-picker
+                  size="large"
+                  style="width: 100%"
+                  v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+                  :disabledDate="disabledDate"
+                  placeholder="Pilih Tanggal Keberangkatan"
+                >
+                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+                </a-date-picker>
+              </a-form-item>
+            </a-col>
+
+            <a-col :span="6">
               <a-form-item label="Program Hari">
                 <div class="icon-search">
                   <a-icon type="calendar" />
@@ -124,60 +141,14 @@
             </a-col>
           </a-row>
 
-          <a-row :gutter="16">
-            <a-col :span="8">
-              <a-form-item label="Bulan Keberangkatan" hasFeedback>
-                <div class="icon-search">
-                  <a-icon type="calendar" />
-                </div>
-                <a-select
-                  showSearch
-                  defaultValue="September 2019"
-                  placeholder="Pilih Bulan Keberangkatan"
-                  style="width: 100%"
-                  :showArrow="false"
-                  :filterOption="filterOption"
-                  size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="September 2019">September 2019</a-select-option>
-                  <a-select-option value="November 2019">November 2019</a-select-option>
-                  <a-select-option value="Desember 2019">Desember 2019</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-
-            <a-col :span="8">
-              <a-form-item label="Tanggal Keberangkatan" hasFeedback>
-                <div class="icon-search">
-                  <a-icon type="calendar" />
-                </div>
-                <a-select
-                  showSearch
-                  defaultValue="All"
-                  placeholder="Pilih Tanggal"
-                  style="width: 100%"
-                  :showArrow="false"
-                  :filterOption="filterOption"
-                  size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="01">01</a-select-option>
-                  <a-select-option value="02">02</a-select-option>
-                  <a-select-option value="03">03</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-
-            <a-col :span="8">
-              <a-form-item :style="{ bottom: '-25px' }">
-                <a-button
-                  html-type="submit"
-                  class="btn-search b-shadow b-radius"
-                  size="large"
-                  block
-                >Cari Tiket Group</a-button>
-              </a-form-item>
+          <a-row :gutter="16" type="flex" justify="end">
+            <a-col :span="6">
+              <a-button
+                html-type="submit"
+                class="btn-search b-shadow b-radius"
+                size="large"
+                block
+              >Cari Tiket Group</a-button>
             </a-col>
           </a-row>
         </a-form>
