@@ -1,50 +1,129 @@
 <template>
-  <a-list itemLayout="horizontal" class="ant-list--package-information mt-8">
-    <a-list-item class="ant-list-item--package-information">
-      <div class="w-100">
-        <a-row :gutter="16" type="flex" justify="start">
-          <a-col :span="16">
-            <div
-              class="fs-28 fw-600 f-default cr-black"
-            >LA Akomodasi Umrah September Madinah Atta Tours</div>
-          </a-col>
-          <a-col :span="8" class="text-right">
-            <a-avatar
-              :size="64"
-              :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
-              class="brand-vendor ml-auto"
-            />
-          </a-col>
-        </a-row>
-      </div>
-    </a-list-item>
-
+  <section>
     <!-- information hotel makkah -->
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-start w-100">
-        <div>
-          <a-avatar size="small" shape="square" src="/icons/package/bedtime.png" />
-        </div>
-        <div class="w-100">
-          <div class="d-flex align-items-center mb-16">
+    <a-card class="b-shadow b-solid bordered-left mt-32 mb-16" id="hotelmakkah">
+      <a-list itemLayout="horizontal" class="ant-list--package-information">
+        <a-list-item class="ant-list-item--package-information pt-0">
+          <div class="w-100">
+            <a-row :gutter="16" type="flex" justify="start">
+              <a-col :span="16">
+                <div
+                  class="fs-28 fw-600 f-default cr-black"
+                >LA Akomodasi Umrah September Madinah Atta Tours</div>
+              </a-col>
+              <a-col :span="8" class="text-right">
+                <a-avatar
+                  :size="64"
+                  :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                  class="brand-vendor ml-auto"
+                />
+              </a-col>
+            </a-row>
+          </div>
+        </a-list-item>
+
+        <a-list-item class="ant-list-item--package-information">
+          <div class="d-flex align-items-start w-100">
             <div>
-              <div class="fs-15 fw-400 cr-gray">Hotel Makkah</div>
-              <div class="fs-15 fw-500 cr-black text-uppercase">
-                <span>Rayyana Ajyad</span>
+              <a-avatar size="small" shape="square" src="/icons/package/bedtime.png" />
+            </div>
+            <div class="w-100">
+              <div class="d-flex align-items-center">
+                <div>
+                  <div class="fs-15 fw-400 cr-gray">Hotel Makkah</div>
+                  <div class="fs-15 fw-500 cr-black text-uppercase">
+                    <span>Rayyana Ajyad</span>
+                  </div>
+                </div>
+                <div class="ml-auto">
+                  <a-rate class="fs-16" :defaultValue="3" disabled />
+                </div>
               </div>
             </div>
-            <div class="ml-auto">
-              <a-rate class="fs-16" :defaultValue="3" disabled />
-            </div>
           </div>
+        </a-list-item>
 
-          <div class="ant-package--images w-100 mb-24">
+        <a-list-item class="ant-list-item--package-information">
+          <div class="w-100">
+            <a-row :gutter="8" class="mb-16">
+              <a-col :span="12">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Durasi Inap</div>
+                    <div class="fs-15 fw-500 cr-black text-capitalize">3 Hari Makkah</div>
+                  </div>
+                </div>
+              </a-col>
+              <a-col :span="12">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >Kurang Dari 500 Meter {{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                  </div>
+                </div>
+              </a-col>
+            </a-row>
+
+            <a-row :gutter="8">
+              <a-col :span="12">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Check-In</div>
+                    <div
+                      class="fs-15 fw-500 cr-black text-capitalize"
+                    >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                  </div>
+                </div>
+              </a-col>
+              <a-col :span="12">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Check-Out</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                  </div>
+                </div>
+              </a-col>
+            </a-row>
+          </div>
+        </a-list-item>
+
+        <a-list-item class="ant-list-item--package-information">
+          <div class="ant-package--images w-100" style="z-index: inherit">
+            <div class="fs-15 fw-400 cr-gray mb-16">Gambar Hotel</div>
             <a-row :gutter="10">
               <a-col :span="8">
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/c1.png)' }"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l1.jpg)' }"
                   ></div>
                 </div>
               </a-col>
@@ -52,7 +131,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/c2.png)' }"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l2.jpg)' }"
                   ></div>
                 </div>
               </a-col>
@@ -60,144 +139,121 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/c3.png)' }"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l3.jpg)' }"
                   ></div>
                 </div>
               </a-col>
             </a-row>
           </div>
-
-          <a-timeline>
-            <a-timeline-item color="green">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Check In</div>
-              <div class="fs-14 fw-500 cr-black text-uppercase">
-                <span>Rayyana Ajyad</span>
-              </div>
-              <div class="fs-15 fw-400 cr-gray">
-                <span>{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</span>
-              </div>
-            </a-timeline-item>
-            <a-timeline-item color="red">
-              <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
-              <div class="fs-14 fw-400 cr-black">
-                <span class="mr-8">Durasi</span>
-                <span class="fw-500">6 Hari</span>
-              </div>
-            </a-timeline-item>
-            <a-timeline-item>
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Check Out</div>
-              <div class="fs-14 fw-500 cr-black text-uppercase">
-                <span>Rayyana Ajyad</span>
-              </div>
-              <div class="fs-15 fw-400 cr-gray">
-                <span>{{moment("2019-11-30", "YYYY-MM-DD").format('LL')}}</span>
-              </div>
-            </a-timeline-item>
-          </a-timeline>
-        </div>
-      </div>
-    </a-list-item>
-
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-start w-100">
-        <div>
-          <a-avatar size="small" shape="square" src="/icons/package/binoculars.png" />
-        </div>
-        <div>
-          <div class="fs-15 fw-500 cr-black">Jarah Hotel</div>
-          <div class="fs-15 fw-400 cr-gray">Jarak kurang dari 500 meter</div>
-        </div>
-      </div>
-    </a-list-item>
-
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-start w-100">
-        <div>
-          <a-avatar size="small" shape="square" src="/icons/package/charity.png" />
-        </div>
-        <div class="w-100">
-          <div class="fs-15 fw-500 cr-black">Fasilitas</div>
-          <div class="fs-15 fw-400 cr-gray">Informasi fasilitas LA akomodasi anda</div>
-          <a-row :gutter="8">
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f1.png" slot="cover" />
-                <a-card-meta title="Bus VIP" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f2.png" slot="cover" />
-                <a-card-meta title="City Tour" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f3.png" slot="cover" />
-                <a-card-meta title="Mutawwif" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f4.png" slot="cover" />
-                <a-card-meta title="Akses Wifi" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f5.png" slot="cover" />
-                <a-card-meta title="Elevator" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f6.png" slot="cover" />
-                <a-card-meta title="Restoran" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f7.png" slot="cover" />
-                <a-card-meta title="Menu Indonesia" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f8.png" slot="cover" />
-                <a-card-meta title="Resepsionis 1x24 Jam" />
-              </a-card>
-            </a-col>
-          </a-row>
-        </div>
-      </div>
-    </a-list-item>
+        </a-list-item>
+      </a-list>
+    </a-card>
 
     <!-- information hotel madinah -->
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-start w-100">
-        <div>
-          <a-avatar size="small" shape="square" src="/icons/package/bedtime.png" />
-        </div>
-        <div class="w-100">
-          <div class="d-flex align-items-center mb-16">
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="hotelmadinah">
+      <a-list itemLayout="horizontal" class="ant-list--package-information">
+        <a-list-item class="ant-list-item--package-information pt-0">
+          <div class="d-flex align-items-start w-100">
             <div>
-              <div class="fs-15 fw-400 cr-gray">Hotel Madinah</div>
-              <div class="fs-15 fw-500 cr-black text-uppercase">
-                <span>Pinewood Hotel</span>
+              <a-avatar size="small" shape="square" src="/icons/package/bedtime.png" />
+            </div>
+            <div class="w-100">
+              <div class="d-flex align-items-center">
+                <div>
+                  <div class="fs-15 fw-400 cr-gray">Hotel Madinah</div>
+                  <div class="fs-15 fw-500 cr-black text-uppercase">
+                    <span>Pinewood Hotel</span>
+                  </div>
+                </div>
+                <div class="ml-auto">
+                  <a-rate class="fs-16" :defaultValue="3" disabled />
+                </div>
               </div>
             </div>
-            <div class="ml-auto">
-              <a-rate class="fs-16" :defaultValue="3" disabled />
-            </div>
           </div>
+        </a-list-item>
 
-          <div class="ant-package--images w-100 mb-24">
+        <a-list-item class="ant-list-item--package-information">
+          <div class="w-100">
+            <a-row :gutter="8" class="mb-16">
+              <a-col :span="12">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Durasi Inap</div>
+                    <div class="fs-15 fw-500 cr-black text-capitalize">3 Hari Makkah</div>
+                  </div>
+                </div>
+              </a-col>
+              <a-col :span="12">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >Kurang Dari 500 Meter {{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                  </div>
+                </div>
+              </a-col>
+            </a-row>
+
+            <a-row :gutter="8">
+              <a-col :span="12">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Check-In</div>
+                    <div
+                      class="fs-15 fw-500 cr-black text-capitalize"
+                    >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                  </div>
+                </div>
+              </a-col>
+              <a-col :span="12">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Check-Out</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                  </div>
+                </div>
+              </a-col>
+            </a-row>
+          </div>
+        </a-list-item>
+
+        <a-list-item class="ant-list-item--package-information">
+          <div class="ant-package--images w-100" style="z-index: inherit">
+            <div class="fs-15 fw-400 cr-gray mb-16">Gambar Hotel</div>
             <a-row :gutter="10">
               <a-col :span="8">
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/c1.png)' }"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l4.jpg)' }"
                   ></div>
                 </div>
               </a-col>
@@ -205,7 +261,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/c2.png)' }"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l5.jpg)' }"
                   ></div>
                 </div>
               </a-col>
@@ -213,132 +269,243 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/c3.png)' }"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l6.jpg)' }"
                   ></div>
                 </div>
               </a-col>
             </a-row>
           </div>
+        </a-list-item>
+      </a-list>
+    </a-card>
 
-          <a-timeline>
-            <a-timeline-item color="green">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Check In</div>
-              <div class="fs-14 fw-500 cr-black text-uppercase">
-                <span>Pinewood Hotel</span>
-              </div>
-              <div class="fs-15 fw-400 cr-gray">
-                <span>{{moment("2019-11-20", "YYYY-MM-DD").format('LL')}}</span>
-              </div>
-            </a-timeline-item>
-            <a-timeline-item color="red">
-              <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
-              <div class="fs-14 fw-400 cr-black">
-                <span class="mr-8">Durasi</span>
-                <span class="fw-500">3 Hari</span>
-              </div>
-            </a-timeline-item>
-            <a-timeline-item>
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Check Out</div>
-              <div class="fs-14 fw-500 cr-black text-uppercase">
-                <span>Pinewood Hotel</span>
-              </div>
-              <div class="fs-15 fw-400 cr-gray">
-                <span>{{moment("2019-11-23", "YYYY-MM-DD").format('LL')}}</span>
-              </div>
-            </a-timeline-item>
-          </a-timeline>
-        </div>
-      </div>
-    </a-list-item>
+    <!-- fasilitas -->
+    <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
+      <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
+      <a-row :gutter="8">
+        <a-col :span="6" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Bus VVIP</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">City Tour</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Mutawwif</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Makanan Indonesia</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Akses Wifi</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Elevator</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Restaurant</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Resepsionis 1x24 Jam</div>
+            </div>
+          </div>
+        </a-col>
+      </a-row>
+    </a-card>
 
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-start w-100">
-        <div>
-          <a-avatar size="small" shape="square" src="/icons/package/binoculars.png" />
-        </div>
-        <div>
-          <div class="fs-15 fw-500 cr-black">Jarah Hotel</div>
-          <div class="fs-15 fw-400 cr-gray">Jarak kurang dari 500 meter</div>
-        </div>
-      </div>
-    </a-list-item>
+    <!-- itinerary -->
+    <a-card class="b-shadow bordered-left b-solid mb-16" id="itinerary">
+      <div class="fs-16 fw-500 cr-black mb-24">Itinerary LA Akomodasi</div>
+      <a-row>
+        <a-col :span="24" class="mb-16">
+          <div class="d-flex align-items-start">
+            <div>
+              <a-avatar
+                style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                class="d-flex align-items-center mr-8"
+                :size="64"
+              >
+                <div>
+                  <div class="fs-12 fw-400 text-uppercase f-default">hari</div>
+                  <div class="fs-16 fw-500 text-uppercase f-default">01</div>
+                </div>
+              </a-avatar>
+            </div>
+            <div>
+              <div
+                class="fs-15 fw-400 cr-black"
+              >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis non asperiores laboriosam ex officiis, debitis eum itaque reiciendis nostrum ipsam qui, quae corrupti accusantium tempore ducimus labore animi id saepe.</div>
+            </div>
+          </div>
+        </a-col>
 
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-start w-100">
-        <div>
-          <a-avatar size="small" shape="square" src="/icons/package/charity.png" />
-        </div>
-        <div class="w-100">
-          <div class="fs-15 fw-500 cr-black">Fasilitas</div>
-          <div class="fs-15 fw-400 cr-gray">Informasi fasilitas LA akomodasi anda</div>
-          <a-row :gutter="8">
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f1.png" slot="cover" />
-                <a-card-meta title="Bus VIP" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f2.png" slot="cover" />
-                <a-card-meta title="City Tour" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f3.png" slot="cover" />
-                <a-card-meta title="Mutawwif" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f4.png" slot="cover" />
-                <a-card-meta title="Akses Wifi" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f5.png" slot="cover" />
-                <a-card-meta title="Elevator" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f6.png" slot="cover" />
-                <a-card-meta title="Restoran" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f7.png" slot="cover" />
-                <a-card-meta title="Menu Indonesia" />
-              </a-card>
-            </a-col>
-            <a-col :span="8">
-              <a-card :bordered="false">
-                <img alt="fasilitas" src="/akomodasi/f8.png" slot="cover" />
-                <a-card-meta title="Resepsionis 1x24 Jam" />
-              </a-card>
-            </a-col>
-          </a-row>
-        </div>
-      </div>
-    </a-list-item>
+        <a-col :span="24" class="mb-16">
+          <div class="d-flex align-items-start">
+            <div>
+              <a-avatar
+                style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                class="d-flex align-items-center mr-8"
+                :size="64"
+              >
+                <div>
+                  <div class="fs-12 fw-400 text-uppercase f-default">hari</div>
+                  <div class="fs-16 fw-500 text-uppercase f-default">02</div>
+                </div>
+              </a-avatar>
+            </div>
+            <div>
+              <div
+                class="fs-15 fw-400 cr-black"
+              >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis non asperiores laboriosam ex officiis, debitis eum itaque reiciendis nostrum ipsam qui, quae corrupti accusantium tempore ducimus labore animi id saepe.</div>
+            </div>
+          </div>
+        </a-col>
 
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-center w-100">
-        <div>
-          <div class="fs-16 fw-500 cr-black">Syarat dan Ketentuan LA Akomodasi</div>
-          <div class="fs-15 fw-400 cr-gray">Berikut syarat dan Ketentuan LA Akomodasi</div>
-        </div>
-        <div class="ml-auto">
-          <a-button class="b-shadow b-radius b-solid cr-primary" size="large">Baca Aturan</a-button>
-        </div>
-      </div>
-    </a-list-item>
-  </a-list>
+        <a-col :span="24" class="mb-16">
+          <div class="d-flex align-items-start">
+            <div>
+              <a-avatar
+                style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                class="d-flex align-items-center mr-8"
+                :size="64"
+              >
+                <div>
+                  <div class="fs-12 fw-400 text-uppercase f-default">hari</div>
+                  <div class="fs-16 fw-500 text-uppercase f-default">03</div>
+                </div>
+              </a-avatar>
+            </div>
+            <div>
+              <div
+                class="fs-15 fw-400 cr-black"
+              >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis non asperiores laboriosam ex officiis, debitis eum itaque reiciendis nostrum ipsam qui, quae corrupti accusantium tempore ducimus labore animi id saepe.</div>
+            </div>
+          </div>
+        </a-col>
+
+        <a-col :span="24" class="mb-16">
+          <div class="d-flex align-items-start">
+            <div>
+              <a-avatar
+                style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                class="d-flex align-items-center mr-8"
+                :size="64"
+              >
+                <div>
+                  <div class="fs-12 fw-400 text-uppercase f-default">hari</div>
+                  <div class="fs-16 fw-500 text-uppercase f-default">04</div>
+                </div>
+              </a-avatar>
+            </div>
+            <div>
+              <div
+                class="fs-15 fw-400 cr-black"
+              >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis non asperiores laboriosam ex officiis, debitis eum itaque reiciendis nostrum ipsam qui, quae corrupti accusantium tempore ducimus labore animi id saepe.</div>
+            </div>
+          </div>
+        </a-col>
+      </a-row>
+    </a-card>
+
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="ulasan">
+      <comments-accommodation />
+    </a-card>
+
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="vendor">
+      <vendor-accommodation />
+    </a-card>
+
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="policy">
+      <policy />
+    </a-card>
+
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="faq">
+      <faq />
+    </a-card>
+  </section>
 </template>
 <script>
+import commentsAccommodation from "~/components/contents/details/accommodation/comments.vue";
+import vendorAccommodation from "~/components/contents/details/accommodation/vendor.vue";
+import policy from "~/components/contents/details/accommodation/policy.vue";
+import faq from "~/components/contents/details/accommodation/faq.vue";
 import moment from "moment";
 export default {
   data() {
@@ -346,6 +513,12 @@ export default {
   },
   methods: {
     moment
+  },
+  components: {
+    commentsAccommodation,
+    vendorAccommodation,
+    policy,
+    faq
   }
 };
 </script>
