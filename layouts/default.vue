@@ -5,14 +5,17 @@
         <navbar />
 
         <a-layout-content>
-          <nuxt/>
+          <nuxt />
         </a-layout-content>
 
         <a-layout-footer :style="{ background: '#fff', padding: '24px 0' }">
-          <Footer/>
+          <Footer />
         </a-layout-footer>
         <a-back-top />
       </a-layout>
+      <div slot="placeholder" class="ant-spin-placeholder">
+        <a-spin tip="Loading..." />
+      </div>
     </no-ssr>
   </div>
 </template>

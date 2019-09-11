@@ -36,3 +36,18 @@
         margin: 32px !important;
     }
 }
+
+.ant-spin-placeholder {
+    @include align-items(center);
+    @include flexbox();
+    text-align: center;
+    height: 100vh;
+    overflow: hidden;
+    & .ant-spin {
+        margin: 0 auto;
+        & .ant-spin-text {
+            color: rgba($color: #000000, $alpha: .4);
+            letter-spacing: 2px;
+        }
+    }
+}
