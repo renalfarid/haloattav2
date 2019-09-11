@@ -27,6 +27,17 @@
             }
         }
     }
+    & .bordered-left {
+        &::before {
+            background: $color-main;
+            position: absolute;
+            content: '';
+            height: 40px;
+            width: 2px;
+            left: -1px;
+            top: 24px;
+        }
+    }
     & .ant-layout--package-details-body {
         & .ant-package--images {
             overflow: hidden;

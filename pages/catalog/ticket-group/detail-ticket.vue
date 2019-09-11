@@ -3,10 +3,10 @@
     <div class="ant-layout--results-space-small"></div>
     <div class="info-affix">
       <a-anchor :offsetTop="64">
-        <a-anchor-link href="#informasi" title="Deskripsi" />
+        <a-anchor-link href="#informasi" title="Informasi" />
         <a-anchor-link href="#fasilitas" title="Fasilitas" />
         <a-anchor-link href="#ulasan" title="Ulasan" />
-        <a-anchor-link href="#vendor" title="Informasi Vendor" />
+        <a-anchor-link href="#vendor" title="Vendor" />
         <a-anchor-link href="#policy" title="Kebijakan" />
         <a-anchor-link href="#faq" title="FAQ" />
       </a-anchor>

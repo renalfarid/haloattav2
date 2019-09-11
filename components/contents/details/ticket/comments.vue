@@ -1,6 +1,6 @@
 <template>
   <a-list class="comment-list" itemLayout="horizontal" :dataSource="data">
-    <template slot="header">
+    <div slot="header">
       <div class="d-flex align-items-center">
         <div class="fs-16 fw-500 cr-black mr-16">{{data.length}} Ulasan</div>
         <a-rate class="fs-16" :defaultValue="2" disabled />
@@ -37,7 +37,7 @@
           </div>
         </a-col>
       </a-row>
-    </template>
+    </div>
 
     <a-list-item slot="renderItem" slot-scope="item, index">
       <a-comment :avatar="item.avatar">

@@ -1,8 +1,8 @@
 <template>
   <section>
-    <a-card class="b-shadow b-solid mb-16 mt-32" id="informasi">
+    <a-card class="b-shadow b-solid bordered-left mb-16 mt-32" id="informasi">
       <a-list itemLayout="horizontal" class="ant-list--package-information">
-        <a-list-item class="ant-list-item--package-information">
+        <a-list-item class="ant-list-item--package-information pt-0">
           <div class="w-100">
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
@@ -142,7 +142,7 @@
       </a-list>
     </a-card>
 
-    <a-card class="b-shadow b-solid ant-list-item--package-information mb-16" id="fasilitas">
+    <a-card class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk</div>
       <div class="fs-15 fw-400 cr-gray mb-24">Informasi fasilitas penerbangan anda</div>
       <a-row :gutter="8">
@@ -181,19 +181,19 @@
       </a-row>
     </a-card>
 
-    <a-card class="b-shadow b-solid mb-16" id="ulasan">
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="ulasan">
       <comments-ticket />
     </a-card>
 
-    <a-card class="b-shadow b-solid mb-16" id="vendor">
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="vendor">
       <vendor-ticket />
     </a-card>
 
-    <a-card class="b-shadow b-solid mb-16" id="policy">
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="policy">
       <policy />
     </a-card>
 
-    <a-card class="b-shadow b-solid mb-16" id="faq">
+    <a-card class="b-shadow b-solid bordered-left mb-16" id="faq">
       <faq />
     </a-card>
   </section>

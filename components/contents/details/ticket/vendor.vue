@@ -1,6 +1,6 @@
 <template>
   <a-list itemLayout="horizontal" class="ant-list--package-information">
-    <a-list-item class="ant-list-item--package-information">
+    <a-list-item class="ant-list-item--package-information pt-0">
       <div class="w-100">
         <a-row :gutter="16" type="flex" justify="start">
           <a-col :span="16">
