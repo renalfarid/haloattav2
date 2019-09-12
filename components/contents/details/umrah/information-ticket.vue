@@ -24,7 +24,7 @@
                   <div class="fs-16 fw-500 cr-black">Lion Air</div>
                   <div class="fs-16 fw-500 cr-black ml-auto">JT-367</div>
                 </div>
-                <div class="ant-package--images w-100 mt-16">
+                <div class="ant-package--images w-100 mt-16" style="z-index: inherit">
                   <a-row :gutter="10">
                     <a-col :span="8">
                       <div class="ant-package--images-large">
