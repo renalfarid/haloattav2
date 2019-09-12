@@ -3,14 +3,47 @@
     <a-card class="ant-card--package-information mb-16">
       <div class="p-16">
         <div class="d-flex align-items-center">
-          <div class="fs-15 fw-500 cr-black f-default mb-8">Informasi Penting</div>
-          <a href="" class="fs-14 cr-primary ml-auto">Details</a>
+          <div class="fs-15 fw-500 cr-black f-default">Informasi Penting</div>
+          <a href class="fs-14 cr-primary ml-auto">Details</a>
         </div>
-        <ul class="pl-16 mb-0">
-          <li class="fs-14 cr-black">No reschedule</li>
-          <li class="fs-14 cr-black">Pembatalan tanpa pinalty 45 hari</li>
-          <li class="fs-14 cr-black">Pelunasan H -30 hari</li>
-        </ul>
+      </div>
+      <a-divider :style="{margin: '0'}" />
+      <div class="p-16">
+        <div class="d-flex align-items-start mb-8">
+          <a-avatar
+            style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+            class="mr-8"
+            size="small"
+            icon="check"
+          />
+          <div>
+            <div class="fs-14 fw-400 cr-black">No reschedule</div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-start mb-8">
+          <a-avatar
+            style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+            class="mr-8"
+            size="small"
+            icon="check"
+          />
+          <div>
+            <div class="fs-14 fw-400 cr-black">Pembatalan tanpa pinalty 45 hari</div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-start">
+          <a-avatar
+            style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+            class="mr-8"
+            size="small"
+            icon="check"
+          />
+          <div>
+            <div class="fs-14 fw-400 cr-black">Pelunasan 30 hari sebelum keberangkatan</div>
+          </div>
+        </div>
       </div>
     </a-card>
 

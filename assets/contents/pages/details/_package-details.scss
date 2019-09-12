@@ -1,6 +1,43 @@
 .ant-layout--package-details {
     position: relative;
     padding-bottom: 80px;
+    & .ant-package--images {
+        position: relative;
+        max-height: 400px;
+        overflow: hidden;
+        z-index: 99;
+        & .ant-package--images-large {
+            height: 400px;
+            & .ant-package--images-cover {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        & .ant-package--images-small {
+            height: 200px;
+            & .ant-package--images-cover {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+    & .bordered-left {
+        &::before {
+            background: $color-main;
+            position: absolute;
+            content: '';
+            height: 40px;
+            width: 2px;
+            left: -1px;
+            top: 24px;
+        }
+    }
     & .ant-layout--package-details-body {
         & .ant-package--images {
             overflow: hidden;
@@ -40,6 +77,9 @@
                     @include align-items(center);
                     @include flexbox;
                     margin-right: 16px;
+                    & i {
+                        margin: 0 auto;
+                    }
                     & img {
                         max-width: 100% !important;
                         height: auto !important;
