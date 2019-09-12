@@ -484,18 +484,22 @@
       </a-row>
     </a-card>
 
+    <!-- comments -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="ulasan">
       <comments-accommodation />
     </a-card>
 
+    <!-- vendor -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="vendor">
       <vendor-accommodation />
     </a-card>
 
+    <!-- policy -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="policy">
       <policy />
     </a-card>
 
+    <!-- faq -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="faq">
       <faq />
     </a-card>
