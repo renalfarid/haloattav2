@@ -79,7 +79,9 @@
           </div>
         </div>
       </div>
+
       <a-divider :style="{margin: '0'}" />
+      
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Jumlah Pax (4) </div>
@@ -87,7 +89,7 @@
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 500.000</div>
         </div>
 
-        <a-divider :style="{margin: '8px 0'}" />
+        <a-divider :style="{margin: '12px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total </div>

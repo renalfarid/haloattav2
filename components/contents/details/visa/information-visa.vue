@@ -25,75 +25,34 @@
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
             <a-row :gutter="16">
-              <a-col :span="12">
-                <a-row :gutter="16">
-                  <a-col :span="24" class="mb-16">
-                    <div class="d-flex align-items-start">
-                      <a-avatar
-                        style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-                        class="mr-8"
-                        size="small"
-                        icon="check"
-                      />
-                      <div>
-                        <div class="fs-15 fw-400 cr-gray f-default">Jenis Visa</div>
-                        <div class="fs-15 fw-500 cr-black text-capitalize">Visa Umrah</div>
-                      </div>
-                    </div>
-                  </a-col>
-
-                  <a-col :span="24" class="mb-16">
-                    <div class="d-flex align-items-start">
-                      <a-avatar
-                        style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-                        class="mr-8"
-                        size="small"
-                        icon="check"
-                      />
-                      <div>
-                        <div class="fs-15 fw-400 cr-gray f-default">Durasi</div>
-                        <div class="fs-15 fw-500 cr-black text-capitalize">30 Hari</div>
-                      </div>
-                    </div>
-                  </a-col>
-                </a-row>
+              <a-col :span="12" class="mb-16">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Jenis Visa</div>
+                    <div class="fs-15 fw-500 cr-black text-capitalize">Visa Umrah</div>
+                  </div>
+                </div>
               </a-col>
-              <a-col :span="12">
-                <a-row :gutter="16">
-                  <a-col :span="24" class="mb-16">
-                    <div class="d-flex align-items-start">
-                      <a-avatar
-                        style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-                        class="mr-8"
-                        size="small"
-                        icon="check"
-                      />
-                      <div>
-                        <div class="fs-15 fw-400 cr-gray f-default">Check-In</div>
-                        <div
-                          class="fs-15 fw-500 cr-black text-capitalize"
-                        >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
-                      </div>
-                    </div>
-                  </a-col>
 
-                  <a-col :span="24" class="mb-16">
-                    <div class="d-flex align-items-start">
-                      <a-avatar
-                        style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-                        class="mr-8"
-                        size="small"
-                        icon="check"
-                      />
-                      <div>
-                        <div class="fs-15 fw-400 cr-gray f-default">Check-Out</div>
-                        <div
-                          class="fs-15 fw-500 cr-black"
-                        >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
-                      </div>
-                    </div>
-                  </a-col>
-                </a-row>
+              <a-col :span="12" class="mb-16">
+                <div class="d-flex align-items-start">
+                  <a-avatar
+                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                    class="mr-8"
+                    size="small"
+                    icon="check"
+                  />
+                  <div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Durasi</div>
+                    <div class="fs-15 fw-500 cr-black text-capitalize">30 Hari</div>
+                  </div>
+                </div>
               </a-col>
             </a-row>
           </div>

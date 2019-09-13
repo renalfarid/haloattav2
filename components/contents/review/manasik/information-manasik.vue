@@ -1,86 +1,121 @@
 <template>
-  <a-list itemLayout="horizontal" class="ant-list--package-information">
-    <a-list-item class="ant-list-item--package-information">
-      <div>
-        <h2 class="ant-package--information-title fs-20 cr-black fw-500">Ulasan Pesanan Manasik Pemantapan</h2>
-        <div class="ant-package--information-text fs-15 cr-black fw-400">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Odio iste quibusdam consectetur amet consequatur numquam natus a repellendus! Quasi,
-          dolores corporis doloribus velit voluptas quae neque unde aperiam sapiente commodi?
-        </div>
-      </div>
-    </a-list-item>
+  <section>
+    <a-card class="b-shadow b-solid bordered-left mt-24 mb-16" id="informasi">
+      <a-list itemLayout="horizontal" class="ant-list--package-information">
+        <a-list-item class="ant-list-item--package-information pt-0">
+          <div class="w-100">
+            <a-row :gutter="16" type="flex" justify="start">
+              <a-col :span="16">
+                <div class="fs-28 fw-600 f-default cr-black">
+                  <span>Ballroom Aston Hotel & Convention Center Makassar</span>
+                </div>
+              </a-col>
+              <a-col :span="8" class="text-right">
+                <a-avatar
+                  :size="64"
+                  :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                  class="brand-vendor ml-auto"
+                />
+              </a-col>
+            </a-row>
+          </div>
+        </a-list-item>
+        <a-list-item class="ant-list-item--package-information">
+          <div class="w-100">
+            <div
+              class="fs-14 cr-black"
+            >This spacious Ballroom is the largest function space, located on the 18th floor, comfortably accommodates up to 1,000 people with panoramic view to the city. Perfect for any celebratory occasions such as wedding party, as well as major business meetings.</div>
+          </div>
+        </a-list-item>
+      </a-list>
+    </a-card>
 
-    <a-list-item class="ant-list-item--package-information">
-      <div class="w-100">
-        <div class="ant-package--images">
-          <a-row :gutter="10">
-            <a-col :span="8">
-              <div class="ant-package--images-large">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/manasik/package/m1.jpg)' }"
-                ></div>
-              </div>
-            </a-col>
-            <a-col :span="8">
-              <div class="ant-package--images-large">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/manasik/package/m2.jpg)' }"
-                ></div>
-              </div>
-            </a-col>
-            <a-col :span="8">
-              <div class="ant-package--images-large">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/manasik/package/m3.jpg)' }"
-                ></div>
-              </div>
-            </a-col>
-          </a-row>
-        </div>
-      </div>
-    </a-list-item>
-
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-start w-100">
-        <div>
-          <a-avatar class="max-width p-4" shape="square" src="/icons/package/manasik.png" />
-        </div>
-        <div class="w-100">
-          <div class="fs-15 fw-500 cr-black">Manasik Pemantapan Umrah</div>
-          <div class="fs-14 fw-400 cr-black">Standar Layanan</div>
-        </div>
-      </div>
-    </a-list-item>
-
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-start w-100">
-        <div>
-          <a-avatar shape="square" src="/icons/package/charity.png" />
-        </div>
-        <div class="w-100">
-          <div class="fs-15 fw-500 cr-black">Manasik Termasuk</div>
-          <div class="fs-14 fw-400 cr-gray">Tempat pelaksanaan Manasik</div>
-          <div class="fs-14 fw-400 cr-gray">Makanan dan Snack</div>
-          <div class="fs-14 fw-400 cr-gray">Ustad pembimbing Manasik</div>
-          <div class="fs-14 fw-400 cr-gray">Team manasik</div>
-        </div>
-      </div>
-    </a-list-item>
-
-    <a-list-item class="ant-list-item--package-information">
-      <div class="d-flex align-items-center w-100">
-        <div>
-          <div class="fs-16 fw-500 cr-black">Syarat dan Ketentuan Manasik Pemantapan</div>
-          <div class="fs-15 fw-400 cr-gray">Berikut Syarat dan Ketentuan Manasik Pemantapan</div>
-        </div>
-        <div class="ml-auto">
-          <a-button class="b-shadow b-radius b-solid cr-primary" size="large">Baca Aturan</a-button>
-        </div>
-      </div>
-    </a-list-item>
-  </a-list>
+    <!-- Fasilitas -->
+    <a-card
+      class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16"
+      id="fasilitas"
+    >
+      <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Room</div>
+      <a-row :gutter="8">
+        <a-col :span="8" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-14 fw-400 cr-black">550 sqm</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="8" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-14 fw-400 cr-black">Theatre Setup for 600 people</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="8" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-14 fw-400 cr-black">Cocktail Setup for 800 people</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="8" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-14 fw-400 cr-black">Classroom Setup for 300 people</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="8" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-14 fw-400 cr-black">Round Table Setup for 350 people</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="8" class="mb-16">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-14 fw-400 cr-black">U-shape Setup for100 people</div>
+            </div>
+          </div>
+        </a-col>
+      </a-row>
+    </a-card>
+  </section>
 </template>

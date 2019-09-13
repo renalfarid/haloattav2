@@ -40,6 +40,7 @@ module.exports = {
         { src: "@/plugins/vCharts", ssr: false },
         { src: "@/plugins/vInfinite-scroll", ssr: false },
         { src: "@/plugins/vClipboard", ssr: false },
+        { src: "@/plugins/vSticky", ssr: false },
         { src: "@/plugins/vAos", ssr: false }
     ],
     /*

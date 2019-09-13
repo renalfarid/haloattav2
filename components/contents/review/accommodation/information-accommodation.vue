@@ -72,7 +72,7 @@
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
                     <div
                       class="fs-15 fw-500 cr-black"
-                    >Kurang Dari 500 Meter {{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                    >Kurang Dari 500 Meter</div>
                   </div>
                 </div>
               </a-col>
@@ -88,10 +88,10 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Check-In</div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Dari Periode</div>
                     <div
                       class="fs-15 fw-500 cr-black text-capitalize"
-                    >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                    >{{moment("2019-10-24", "YYYY-MM-DD").format('LL')}}</div>
                   </div>
                 </div>
               </a-col>
@@ -104,10 +104,10 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Check-Out</div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Sampai Periode</div>
                     <div
                       class="fs-15 fw-500 cr-black"
-                    >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                    >{{moment("2019-12-24", "YYYY-MM-DD").format('LL')}}</div>
                   </div>
                 </div>
               </a-col>
@@ -170,7 +170,7 @@
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
                     <div
                       class="fs-15 fw-500 cr-black"
-                    >Kurang Dari 500 Meter {{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                    >Kurang Dari 500 Meter</div>
                   </div>
                 </div>
               </a-col>
@@ -186,7 +186,7 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Check-In</div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Dari Periode</div>
                     <div
                       class="fs-15 fw-500 cr-black text-capitalize"
                     >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
@@ -202,7 +202,7 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Check-Out</div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Sampai Periode</div>
                     <div
                       class="fs-15 fw-500 cr-black"
                     >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>

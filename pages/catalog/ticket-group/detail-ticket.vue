@@ -2,14 +2,22 @@
   <div class="ant-layout--package-details">
     <div class="ant-layout--results-space-small"></div>
     <div class="info-affix">
-      <a-anchor :offsetTop="64">
-        <a-anchor-link href="#informasi" title="Informasi" />
-        <a-anchor-link href="#fasilitas" title="Fasilitas" />
-        <a-anchor-link href="#ulasan" title="Ulasan" />
-        <a-anchor-link href="#vendor" title="Vendor" />
-        <a-anchor-link href="#policy" title="Kebijakan" />
-        <a-anchor-link href="#faq" title="FAQ" />
-      </a-anchor>
+      <a-affix :offsetTop="64">
+        <div class="container">
+          <a-row :gutter="32">
+            <a-col :span="17">
+              <a-anchor>
+                <a-anchor-link href="#informasi" title="Informasi" />
+                <a-anchor-link href="#fasilitas" title="Fasilitas" />
+                <a-anchor-link href="#ulasan" title="Ulasan" />
+                <a-anchor-link href="#vendor" title="Vendor" />
+                <a-anchor-link href="#policy" title="Kebijakan" />
+                <a-anchor-link href="#faq" title="FAQ" />
+              </a-anchor>
+            </a-col>
+          </a-row>
+        </div>
+      </a-affix>
     </div>
 
     <div class="ant-package--images w-100">
@@ -53,22 +61,24 @@
       </a-row>
     </div>
 
-    <div class="container">
-      <a-row :gutter="32">
-        <a-col :span="17">
-          <div class="ant-layout--package-details-body">
-            <information-ticket />
-          </div>
-        </a-col>
-
-        <a-col :span="7">
-          <div class="ant-layout--right" :style="{ margin: '32px 0'}">
-            <div class="ant-affix--container">
-              <information-sideright />
+    <div data-v-sticky-container>
+      <div class="container">
+        <a-row :gutter="32" v-sticky="stickyOptions">
+          <a-col :span="17">
+            <div class="ant-layout--package-details-body">
+              <information-ticket />
             </div>
-          </div>
-        </a-col>
-      </a-row>
+          </a-col>
+
+          <a-col :span="7">
+            <div class="ant-layout--right" :style="{ margin: '32px 0'}">
+              <div class="ant-affix--container">
+                <information-sideright />
+              </div>
+            </div>
+          </a-col>
+        </a-row>
+      </div>
     </div>
   </div>
 </template>
@@ -87,7 +97,11 @@ export default {
   },
   data() {
     return {
-      item: []
+      item: [],
+      stickyOptions: {
+        topSpacing: 140,
+        bottomSpacing: 0
+      }
     };
   },
   created: function() {
