@@ -57,7 +57,7 @@
             size="large"
             class="b-shadow b-radius ant-btn--action fs-15 fw-500"
             @click="nextOrder"
-          >Pesan Sekarang</a-button>
+          >Lanjutkan</a-button>
         </div>
         <div
           class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8"

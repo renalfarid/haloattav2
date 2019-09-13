@@ -92,7 +92,7 @@
             size="large"
             class="ant-btn--action b-shadow b-radius fs-15 fw-500"
             @click="nextOrderReview"
-          >Pesan Sekarang</a-button>
+          >Lanjutkan</a-button>
         </div>
         <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8">
           Dapatkan point langsung ketika
