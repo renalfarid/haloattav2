@@ -162,7 +162,7 @@
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 7.000.000</div>
         </div>
 
-        <a-divider :style="{margin: '8px 0'}" />
+        <a-divider :style="{margin: '12px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
