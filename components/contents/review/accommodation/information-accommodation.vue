@@ -19,6 +19,25 @@
                 />
               </a-col>
             </a-row>
+
+            <a-row :gutter="16" type="flex" justify="space-around" align="middle" class="mt-16">
+              <a-col :span="12">
+                <a-badge
+                  status="warning"
+                  text="Periode Low Season"
+                  class="text-uppercase m-0"
+                />
+              </a-col>
+              <a-col :span="12" class="text-right">
+                <span
+                  class="fs-14 fw-400 cr-gray text-capitalize"
+                >Dari : {{moment("2019-10-24", "YYYY-MM-DD").format('LL')}}</span>
+                <a-divider type="vertical"></a-divider>
+                <span
+                  class="fs-14 fw-400 cr-gray text-capitalize"
+                >Sampai : {{moment("2019-10-24", "YYYY-MM-DD").format('LL')}}</span>
+              </a-col>
+            </a-row>
           </div>
         </a-list-item>
 
@@ -45,7 +64,7 @@
 
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
-            <a-row :gutter="8" class="mb-16">
+            <a-row :gutter="8">
               <a-col :span="12">
                 <div class="d-flex align-items-start">
                   <a-avatar
@@ -70,44 +89,7 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
-                    <div
-                      class="fs-15 fw-500 cr-black"
-                    >Kurang Dari 500 Meter</div>
-                  </div>
-                </div>
-              </a-col>
-            </a-row>
-
-            <a-row :gutter="8">
-              <a-col :span="12">
-                <div class="d-flex align-items-start">
-                  <a-avatar
-                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-                    class="mr-8"
-                    size="small"
-                    icon="check"
-                  />
-                  <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Dari Periode</div>
-                    <div
-                      class="fs-15 fw-500 cr-black text-capitalize"
-                    >{{moment("2019-10-24", "YYYY-MM-DD").format('LL')}}</div>
-                  </div>
-                </div>
-              </a-col>
-              <a-col :span="12">
-                <div class="d-flex align-items-start">
-                  <a-avatar
-                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-                    class="mr-8"
-                    size="small"
-                    icon="check"
-                  />
-                  <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Sampai Periode</div>
-                    <div
-                      class="fs-15 fw-500 cr-black"
-                    >{{moment("2019-12-24", "YYYY-MM-DD").format('LL')}}</div>
+                    <div class="fs-15 fw-500 cr-black">Kurang Dari 500 Meter</div>
                   </div>
                 </div>
               </a-col>
@@ -143,7 +125,7 @@
 
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
-            <a-row :gutter="8" class="mb-16">
+            <a-row :gutter="8">
               <a-col :span="12">
                 <div class="d-flex align-items-start">
                   <a-avatar
@@ -168,44 +150,7 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
-                    <div
-                      class="fs-15 fw-500 cr-black"
-                    >Kurang Dari 500 Meter</div>
-                  </div>
-                </div>
-              </a-col>
-            </a-row>
-
-            <a-row :gutter="8">
-              <a-col :span="12">
-                <div class="d-flex align-items-start">
-                  <a-avatar
-                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-                    class="mr-8"
-                    size="small"
-                    icon="check"
-                  />
-                  <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Dari Periode</div>
-                    <div
-                      class="fs-15 fw-500 cr-black text-capitalize"
-                    >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
-                  </div>
-                </div>
-              </a-col>
-              <a-col :span="12">
-                <div class="d-flex align-items-start">
-                  <a-avatar
-                    style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-                    class="mr-8"
-                    size="small"
-                    icon="check"
-                  />
-                  <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Sampai Periode</div>
-                    <div
-                      class="fs-15 fw-500 cr-black"
-                    >{{moment("2019-11-24", "YYYY-MM-DD").format('LL')}}</div>
+                    <div class="fs-15 fw-500 cr-black">Kurang Dari 500 Meter</div>
                   </div>
                 </div>
               </a-col>

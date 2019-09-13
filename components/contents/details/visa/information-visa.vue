@@ -9,7 +9,7 @@
                 <div class="fs-28 fw-600 f-default cr-black">
                   <span>Visa Kanomas Durasi 30 Hari</span>
                 </div>
-                <a-badge status="warning" text="Low Season" class="text-uppercase mb-0 mt-16" />
+                <a-badge status="warning" text="Periode Low Season" class="text-uppercase mb-0 mt-16" />
               </a-col>
               <a-col :span="8" class="text-right">
                 <a-avatar

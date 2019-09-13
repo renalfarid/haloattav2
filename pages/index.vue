@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content-head">
-      <div class="content-head--cover" :style="{ backgroundImage: 'url(/umrah/cover/cu10.png)' }">
+      <div class="content-head--cover" :style="{ backgroundImage: 'url(/umrah/cover/cu47.png)' }">
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">

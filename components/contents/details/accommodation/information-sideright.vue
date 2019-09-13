@@ -47,18 +47,11 @@
       </div>
     </a-card>
 
-    <a-card
-      class="ant-card--package-information"
-    >
+    <a-card class="ant-card--package-information">
       <div class="p-16">
-        <a-rate class="fs-16 mb-8" :defaultValue="3" disabled />
-
-        <div class="ant-package--name fs-18 fw-500 cr-black">Rayyana Ajyad (Mekkah)</div>
-        <div class="ant-package--name fs-18 fw-500 cr-black f-default">Pinewood Hotel (Madinah)</div>
+        <div class="fs-15 fw-500 cr-black f-default">Informasi Pesanan</div>
       </div>
-
       <a-divider :style="{margin: '0'}" />
-
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>

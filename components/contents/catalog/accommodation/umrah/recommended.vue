@@ -12,7 +12,7 @@
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius"></div>
                   <div class="ant-card-cover--overlay-text">
-                    <div class="ant-card-cover--overlay-text-title fs-15 fw-500">75</div>
+                    <div class="ant-card-cover--overlay-text-title fs-15 fw-500">40</div>
                     <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
                   </div>
                 </div>
@@ -67,19 +67,20 @@
 
             <div class="package-description--more p-16">
               <div class="d-flex align-items-center mb-8">
-                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">{{item.tipe}} Session</div>
+                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Periode <span class="fw-500">{{item.tipe}}</span> Session</div>
                 <div
                   class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto"
                 >{{item.class_room}}</div>
               </div>
 
               <div class="d-flex align-items-center">
-                <div class="fs-14 fw-400 text-ellipsis">
-                  <div class="cr-gray">Check In</div>
+                <div class="fs-14 fw-400 text-ellipsis w-50">
+                  <div class="cr-gray">Tanggal Mulai</div>
                   <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
-                <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
-                  <div class="cr-gray">Check Out</div>
+                <div><a-icon class="cr-light" type="arrow-right" /></div>
+                <div class="fs-14 fw-400 text-ellipsis text-right ml-auto w-50">
+                  <div class="cr-gray">Tanggal Berakhir</div>
                   <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
               </div>
@@ -101,7 +102,6 @@ export default {
     };
   },
   created: function() {
-    // get todo items and start listening to events once component is created
     this.getdata();
   },
   methods: {

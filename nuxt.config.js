@@ -1,8 +1,5 @@
 module.exports = {
     mode: "universal",
-    /*
-     ** Headers of the page
-     */
     head: {
         title: "Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta",
         meta: [
@@ -17,20 +14,14 @@ module.exports = {
             { rel: "icon", type: "image/x-icon", href: "/favicon.png" }
         ]
     },
-    /*
-     ** Customize the progress-bar color
-     */
-    loading: { color: "#0FACF3" },
-    /*
-     ** Global CSS
-     */
+
+    loading: false,
+
     css: [
         { src: "ant-design-vue/dist/antd.css" },
         { src: "@/assets/haloatta.scss", lang: "scss" }
     ],
-    /*
-     ** Plugins to load before mounting the App
-     */
+
     plugins: [
         { src: "@/plugins/antd-ui" },
         { src: "@/plugins/vue-slick", ssr: false },
@@ -43,9 +34,7 @@ module.exports = {
         { src: "@/plugins/vSticky", ssr: false },
         { src: "@/plugins/vAos", ssr: false }
     ],
-    /*
-     ** Nuxt.js modules
-     */
+
     modules: [
         ["@nuxtjs/moment"],
         ["@nuxtjs/axios"],
@@ -70,13 +59,8 @@ module.exports = {
         defaultLocale: 'id',
         locales: ['id']
     },
-    /*
-     ** Build configuration
-     */
+
     build: {
-        /*
-         ** You can extend webpack config here
-         */
         // extractCSS: true,
         extend(config, ctx) {
             config.resolve.alias["vue"] = "vue/dist/vue.common";
