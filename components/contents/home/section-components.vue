@@ -17,7 +17,7 @@
       <slick ref="slick" :options="slickComponentsUmrah">
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/ticket.png" />
+            <img v-lazy="imgTicket" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Tiket Group">
                 <template slot="description">
@@ -33,7 +33,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/accommodation.png" />
+            <img v-lazy="imgAccommodation" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="LA Akomodasi">
                 <template slot="description">
@@ -49,7 +49,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/visa.png" />
+            <img v-lazy="imgVisa" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Visa Umrah">
                 <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
@@ -62,7 +62,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/insurance.png" />
+            <img v-lazy="imgInsurance" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Asuransi">
                 <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
@@ -75,7 +75,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/handling.png" />
+            <img v-lazy="imgHandling" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Handling">
                 <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
@@ -88,7 +88,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/manasik.png" />
+            <img v-lazy="imgManasik" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Manasik">
                 <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
@@ -101,7 +101,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/equipment.png" />
+            <img v-lazy="imgEquipment" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Perlengkapan">
                 <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
@@ -114,7 +114,7 @@
 
         <a-card class="card-product--components">
           <div slot="cover">
-            <img alt="haloatta" src="/components/tourleader.png" />
+            <img v-lazy="imgTourleader" />
             <div class="ant-card-cover--overlay">
               <a-card-meta title="Tour Leader">
                 <template slot="description">Lorem ipsum dolor sit amet consectetur adipisicing elit</template>
@@ -137,6 +137,14 @@
 export default {
   data() {
     return {
+      imgTicket: '/components/ticket.png',
+      imgAccommodation: '/components/accommodation.png',
+      imgVisa: '/components/visa.png',
+      imgInsurance: '/components/insurance.png',
+      imgHandling: '/components/handling.png',
+      imgManasik: '/components/manasik.png',
+      imgEquipment: '/components/equipment.png',
+      imgTourleader: '/components/tourleader.png',
       slickComponentsUmrah: {
         slidesToShow: 4,
         infinite: false,

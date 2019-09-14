@@ -5,10 +5,7 @@
         <nuxt-link to="/catalog/tourleader/detail" class="d-block">
           <a-card class="ant-card-package-small">
             <div slot="cover">
-              <div
-                class="ant-card-cover--images"
-                :style="{ backgroundImage: `url(${item.images_package})` }"
-              >
+              <div class="ant-card-cover--images" v-lazy:background-image="item.images_package">
                 <div class="ant-card--overlay-block">
                   <div class="d-flex align-items-center h-100">
                     <a-button>

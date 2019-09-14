@@ -17,7 +17,7 @@
             :infinite-scroll-distance="limit"
           >
             <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 4 }"
+              :grid="{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 3, xl: 3, xxl: 4 }"
               :dataSource="data"
             >
               <a-list-item
