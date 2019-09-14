@@ -46,7 +46,7 @@
               <div slot="description">
                 <div class="ant-card-meta-description--bottom d-flex align-items-center">
                   <div class="ant-card-meta-description--bottom-right d-flex">
-                    <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Perlengkapan Standar</div>
+                    <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Standar</div>
                   </div>
                   <div
                     class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
