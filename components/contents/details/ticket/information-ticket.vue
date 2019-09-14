@@ -142,6 +142,7 @@
       </a-list>
     </a-card>
 
+    <!-- Fasilitas -->
     <a-card class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk</div>
       <div class="fs-15 fw-400 cr-gray mb-24">Informasi fasilitas penerbangan anda</div>
@@ -181,18 +182,22 @@
       </a-row>
     </a-card>
 
+    <!-- Comments -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="ulasan">
       <comments-ticket />
     </a-card>
 
+    <!-- Vendor -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="vendor">
       <vendor-ticket />
     </a-card>
 
+    <!-- Policy -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="policy">
       <policy />
     </a-card>
 
+    <!-- Faq -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="faq">
       <faq />
     </a-card>

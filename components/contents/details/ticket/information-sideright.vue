@@ -47,117 +47,121 @@
       </div>
     </a-card>
 
-    <a-card class="ant-card--package-information">
-      <div class="p-16">
-        <div class="d-flex align-items-center mb-8">
-          <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
-        </div>
-        <div class="d-flex align-items-center">
-          <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
-        </div>
-      </div>
-
-      <a-divider :style="{margin: '0'}" />
-
-      <div class="p-16">
-        <div class="fs-15 fw-500 cr-black mb-8">Jumlah Penumpang</div>
-        <div class="d-flex align-items-center">
-          <div>
-            <div class="ant-package--title fs-15 fw-500 cr-black">Dewasa</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray">(Umur 12 thn atau lebih)</div>
+    <div data-v-sticky-inner class="sticky-position">
+      <a-card class="ant-card--package-information">
+        <div class="p-16">
+          <div class="d-flex align-items-center mb-8">
+            <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
+            <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
           </div>
-          <div class="ml-auto">
-            <number-input
-              v-model="dewasa"
-              :min="0"
-              :inputtable="false"
-              size="small"
-              inline
-              center
-              controls
-            />
+          <div class="d-flex align-items-center">
+            <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
+            <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
           </div>
         </div>
-        <a-divider :style="{margin: '14px 0'}" />
-        <div class="d-flex align-items-center">
-          <div>
-            <div class="ant-package--title fs-15 fw-500 cr-black">Anak</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">(Umur 2 sampai 12 thn)</div>
+
+        <a-divider :style="{margin: '0'}" />
+
+        <div class="p-16">
+          <div class="fs-15 fw-500 cr-black mb-8">Jumlah Penumpang</div>
+          <div class="d-flex align-items-center">
+            <div>
+              <div class="ant-package--title fs-15 fw-500 cr-black">Dewasa</div>
+              <div class="ant-package--subtitle fs-13 fw-400 cr-gray">(Umur 12 thn atau lebih)</div>
+            </div>
+            <div class="ml-auto">
+              <number-input
+                v-model="dewasa"
+                :min="0"
+                :inputtable="false"
+                size="small"
+                inline
+                center
+                controls
+              />
+            </div>
           </div>
-          <div class="ml-auto">
-            <number-input
-              v-model="anak"
-              :min="0"
-              :inputtable="false"
-              size="small"
-              inline
-              center
-              controls
-            />
+          <a-divider :style="{margin: '14px 0'}" />
+          <div class="d-flex align-items-center">
+            <div>
+              <div class="ant-package--title fs-15 fw-500 cr-black">Anak</div>
+              <div
+                class="ant-package--subtitle fs-13 fw-400 cr-gray f-default"
+              >(Umur 2 sampai 12 thn)</div>
+            </div>
+            <div class="ml-auto">
+              <number-input
+                v-model="anak"
+                :min="0"
+                :inputtable="false"
+                size="small"
+                inline
+                center
+                controls
+              />
+            </div>
+          </div>
+          <a-divider :style="{margin: '14px 0'}" />
+          <div class="d-flex align-items-center">
+            <div>
+              <div class="ant-package--title fs-15 fw-500 cr-black">Bayi</div>
+              <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">(Umur dibawah 2 thn)</div>
+            </div>
+            <div class="ml-auto">
+              <number-input
+                v-model="bayi"
+                :min="0"
+                :inputtable="false"
+                size="small"
+                inline
+                center
+                controls
+              />
+            </div>
           </div>
         </div>
-        <a-divider :style="{margin: '14px 0'}" />
-        <div class="d-flex align-items-center">
-          <div>
-            <div class="ant-package--title fs-15 fw-500 cr-black">Bayi</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">(Umur dibawah 2 thn)</div>
+
+        <a-divider :style="{margin: '0'}" />
+
+        <div class="p-16">
+          <div class="d-flex align-items-center mb-8">
+            <div class="fs-14 fw-400 cr-black f-default w-35">Dewasa (2)</div>
+            <span class="cr-gray mr-8">x</span>
+            <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 12.500.000</div>
           </div>
-          <div class="ml-auto">
-            <number-input
-              v-model="bayi"
-              :min="0"
-              :inputtable="false"
-              size="small"
-              inline
-              center
-              controls
-            />
+          <div class="d-flex align-items-center mb-8">
+            <div class="fs-14 fw-400 cr-black f-default w-35">Anak (2)</div>
+            <span class="cr-gray mr-8">x</span>
+            <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 11.000.000</div>
+          </div>
+          <div class="d-flex align-items-center mb-8">
+            <div class="fs-14 fw-400 cr-black f-default w-35">Bayi (1)</div>
+            <span class="cr-gray mr-8">x</span>
+            <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 6.500.000</div>
+          </div>
+
+          <a-divider :style="{margin: '8px 0'}" />
+
+          <div class="d-flex align-items-center mb-24">
+            <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
+            <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 56.000.000</div>
+          </div>
+
+          <div :style="{margin: '16px 0'}">
+            <a-button
+              block
+              size="large"
+              class="ant-btn--action b-shadow b-radius fs-15 fw-500"
+              @click="nextOrderReview"
+            >Pesan</a-button>
+          </div>
+          <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8">
+            Dapatkan point langsung ketika
+            anda menyelesaikan aktivitas
           </div>
         </div>
-      </div>
-
-      <a-divider :style="{margin: '0'}" />
-
-      <div class="p-16">
-        <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Dewasa (2)</div>
-          <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 12.500.000</div>
-        </div>
-        <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Anak (2)</div>
-          <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 11.000.000</div>
-        </div>
-        <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Bayi (1)</div>
-          <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 6.500.000</div>
-        </div>
-
-        <a-divider :style="{margin: '8px 0'}" />
-
-        <div class="d-flex align-items-center mb-24">
-          <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 56.000.000</div>
-        </div>
-
-        <div :style="{margin: '16px 0'}">
-          <a-button
-            block
-            size="large"
-            class="ant-btn--action b-shadow b-radius fs-15 fw-500"
-            @click="nextOrderReview"
-          >Pesan</a-button>
-        </div>
-        <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8">
-          Dapatkan point langsung ketika
-          anda menyelesaikan aktivitas
-        </div>
-      </div>
-    </a-card>
+      </a-card>
+    </div>
   </div>
 </template>
 <script>
