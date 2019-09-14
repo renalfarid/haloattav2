@@ -11,9 +11,9 @@
           <div>
             <div class="ant-card--results-info-title">Handling Domestik Umrah Keberangkatan Makassar</div>
             <div class="ant-card--results-info-subtitle">
-              <span>Keberangkatan 10 Desember 2019</span>
+              <span>Makassar</span>
               <a-divider type="vertical" />
-              <span>Pulang Pergi</span>
+              <span>30 Des 2019</span>
               <a-divider type="vertical" />
               <span>Standar</span>
             </div>
@@ -30,9 +30,25 @@
       <div class="ant-form--search" v-show="visibleSearch">
         <a-divider />
         <a-form layout="vertical" class="form-search--costume">
+          <a-row :gutter="16" type="flex" justify="end">
+            <a-col :span="6">
+              <a-form-item class="mb-0 pb-0">
+                <div class="d-flex align-items-center">
+                  <div class="mr-8">
+                    <a-switch v-on:click="clickShow = !clickShow">
+                      <a-icon type="check" slot="checkedChildren" />
+                      <a-icon type="close" slot="unCheckedChildren" />
+                    </a-switch>
+                  </div>
+                  <div class="fs-14 fw-500 cr-black">Pulang Pergi</div>
+                </div>
+              </a-form-item>
+            </a-col>
+          </a-row>
+
           <a-row :gutter="16">
-            <a-col :span="8">
-              <a-form-item label="Kota Asal" hasFeedback>
+            <a-col :span="6">
+              <a-form-item label="Dari" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="environment" />
                 </div>
@@ -49,50 +65,13 @@
                   :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
                   <a-select-option value="Makassar">Makassar</a-select-option>
                   <a-select-option value="Jakarta">Jakarta</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
-              <a-form-item label="Tanggal Keberangkatan" hasFeedback>
-                <div class="icon-search">
-                  <a-icon type="calendar" />
-                </div>
-                <a-date-picker
-                  size="large"
-                  style="width: 100%"
-                  v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-                  :disabledDate="disabledDate"
-                  placeholder="Pilih Tanggal Keberangkatan"
-                >
-                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-                </a-date-picker>
-              </a-form-item>
-            </a-col>
-
-            <a-col :span="8">
-              <a-form-item label="Tanggal Kedatangan">
-                <div class="icon-search">
-                  <a-icon type="calendar" />
-                </div>
-                <a-date-picker
-                  size="large"
-                  style="width: 100%"
-                  v-decorator="['enddate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-                  :disabledDate="disabledDate"
-                  placeholder="Pilih Tanggal Kedatangan"
-                >
-                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-                </a-date-picker>
-              </a-form-item>
-            </a-col>
-          </a-row>
-
-          <a-row :gutter="16">
-            <a-col :span="8">
+            <a-col :span="6">
               <a-form-item label="Jenis Layanan" hasFeedback>
                 <div class="icon-search">
                   <span class="icon-handling-sm"></span>
@@ -110,47 +89,59 @@
                   :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
                   <a-select-option value="Standar">Standar</a-select-option>
-                  <a-select-option value="VIP">VIP</a-select-option>
-                  <a-select-option value="VVIP">VVIP</a-select-option>
+                  <a-select-option value="Premium">Premium</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
-              <a-form-item label="Layanan Handling" hasFeedback>
-                <div class="icon-search">
-                  <span class="icon-handling-sm"></span>
+            <a-col :span="12">
+              <div class="d-flex align-items-center w-100">
+                <div class="w-100">
+                  <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+                    <div class="icon-search">
+                      <a-icon type="calendar" />
+                    </div>
+                    <a-date-picker
+                      size="large"
+                      style="width: 100%"
+                      v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+                      :disabledDate="disabledDate"
+                      placeholder="Pilih Tanggal Keberangkatan"
+                    >
+                      <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+                    </a-date-picker>
+                  </a-form-item>
                 </div>
-                <a-select
-                  showSearch
-                  defaultValue="Pulang Pergi"
-                  placeholder="Pilih Layanan Handling"
-                  optionFilterProp="children"
-                  :showArrow="false"
-                  style="width: 100%"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
-                  size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Pulang Pergi">Pulang Pergi</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
 
-            <a-col :span="8">
-              <a-form-item :style="{ bottom: '-25px' }">
-                <a-button
-                  html-type="submit"
-                  class="btn-search b-shadow b-radius"
-                  size="large"
-                  block
-                >Cari Handling</a-button>
-              </a-form-item>
+                <div class="w-100 pl-16" v-if="clickShow">
+                  <a-form-item label="Tanggal Kedatangan">
+                    <div class="icon-search">
+                      <a-icon type="calendar" />
+                    </div>
+                    <a-date-picker
+                      size="large"
+                      style="width: 100%"
+                      v-decorator="['enddate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+                      :disabledDate="disabledDate"
+                      placeholder="Pilih Tanggal Kedatangan"
+                    >
+                      <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+                    </a-date-picker>
+                  </a-form-item>
+                </div>
+              </div>
+            </a-col>
+          </a-row>
+
+          <a-row :gutter="16" type="flex" justify="end">
+            <a-col :span="6">
+              <a-button
+                html-type="submit"
+                class="btn-search b-shadow b-radius"
+                size="large"
+                block
+              >Cari Handling</a-button>
             </a-col>
           </a-row>
         </a-form>
@@ -165,7 +156,8 @@ export default {
   data() {
     this.dateFormat = "YYYY-MM-DD";
     return {
-      visibleSearch: false
+      visibleSearch: false,
+      clickShow: false
     };
   },
   beforeCreate() {
