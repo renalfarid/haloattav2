@@ -8,7 +8,7 @@
   >
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Kota Asal" hasFeedback>
+        <a-form-item label="Kota Pemesan" hasFeedback>
           <div class="icon-search">
             <a-icon type="environment" />
           </div>
@@ -25,41 +25,20 @@
             :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
             <a-select-option value="Makassar">Makassar</a-select-option>
             <a-select-option value="Jakarta">Jakarta</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
-
       <a-col :span="12">
-        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="calendar" />
-          </div>
-          <a-date-picker
-            size="large"
-            style="width: 100%"
-            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-            :disabledDate="disabledDate"
-            placeholder="Pilih Tanggal"
-          >
-            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-          </a-date-picker>
-        </a-form-item>
-      </a-col>
-    </a-row>
-
-    <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Jenis Perlengkapan" hasFeedback>
+        <a-form-item label="Kategori" hasFeedback>
           <div class="icon-search">
             <span class="icon-equipment-sm"></span>
           </div>
           <a-select
             showSearch
-            defaultValue="Standar"
-            placeholder="Pilih Layanan"
+            defaultValue="Perlengkapan Umrah"
+            placeholder="Pilih Kategori"
             optionFilterProp="children"
             :showArrow="false"
             style="width: 100%"
@@ -69,23 +48,20 @@
             :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Standar">Standar</a-select-option>
-            <a-select-option value="VIP">VIP</a-select-option>
-            <a-select-option value="VVIP">VVIP</a-select-option>
+            <a-select-option value="Perlengkapan Umrah">Perlengkapan Umrah</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
+    </a-row>
 
+    <a-row :gutter="16" type="flex" justify="end">
       <a-col :span="12">
-        <a-form-item :style="{ bottom: '-25px' }">
-          <a-button
-            html-type="submit"
-            class="btn-search b-shadow b-radius"
-            size="large"
-            block
-          >Cari Perlengkapan</a-button>
-        </a-form-item>
+        <a-button
+          html-type="submit"
+          class="btn-search b-shadow b-radius"
+          size="large"
+          block
+        >Cari Perlengkapan</a-button>
       </a-col>
     </a-row>
   </a-form>
