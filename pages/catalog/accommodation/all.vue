@@ -124,7 +124,7 @@
                             <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                           </div>
                           <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
-                            <div class="cr-gray">Tanggal Mulai</div>
+                            <div class="cr-gray">Tanggal Berakhir</div>
                             <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                           </div>
                         </div>
