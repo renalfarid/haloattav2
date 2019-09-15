@@ -5,7 +5,7 @@ import VueLazyload from 'vue-lazyload'
 
 // or with options
 Vue.use(VueLazyload, {
-    preLoad: 1.5,
+    preLoad: 1,
     error: '/loading.png',
     loading: '/loading.png',
     attempt: 1,

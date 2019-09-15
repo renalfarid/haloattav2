@@ -22,10 +22,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 4, xxl: 4 }"
-              :dataSource="data"
-            >
+            <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -37,10 +34,7 @@
                   <nuxt-link to="/catalog/insurance/detail" class="d-block">
                     <a-card class="ant-card-package-small">
                       <div slot="cover">
-                        <div
-                          class="ant-card-cover--images"
-                          :style="{ backgroundImage: `url(${item.gambar})` }"
-                        >
+                        <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                           <div class="d-none ant-card-cover--overlay">
                             <div class="ant-card-cover--overlay-box-radius ant-pax--insurance"></div>
                             <div class="ant-card-cover--overlay-text">
@@ -68,10 +62,7 @@
                           <div class="ant-card-meta-title--top d-flex align-items-center">
                             <div class="ant-card-meta-title--top-left d-flex align-items-center">
                               <div class="mr-8">
-                                <a-avatar
-                                  class="vendor-logo zIndex"
-                                  :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-                                />
+                                <a-avatar class="vendor-logo zIndex" v-lazy:background-image="item.foto" />
                               </div>
                               <div
                                 class="fs-13 fw-400 cr-gray f-default text-ellipsis"
