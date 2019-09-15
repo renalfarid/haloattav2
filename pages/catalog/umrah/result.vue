@@ -16,10 +16,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }"
-              :dataSource="data"
-            >
+            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -33,7 +30,7 @@
                     <div slot="cover">
                       <div
                         class="ant-card-cover--images"
-                        :style="{ backgroundImage: `url(${item.images_product})` }"
+                        v-lazy:background-image="item.images_product"
                       >
                         <div class="ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius"></div>
@@ -73,7 +70,10 @@
                                   />Terverifikasi
                                 </div>
                               </template>
-                              <a-avatar class="zIndex mr-8" :src="item.avatar_umaroh" />
+                              <a-avatar
+                                class="vendor-logo zIndex mr-8"
+                                v-lazy:background-image="item.avatar_umaroh"
+                              />
                             </a-popover>
 
                             <a-popover trigger="hover">
@@ -95,9 +95,7 @@
                       <div slot="description">
                         <div class="ant-card-meta-description--bottom d-flex align-items-center">
                           <div class="ant-card-meta-description--bottom-right d-flex">
-                            <div class="fs-14 fw-400 cr-black">
-                              Program 9 Hari
-                            </div>
+                            <div class="fs-14 fw-400 cr-black">Program 9 Hari</div>
                           </div>
                           <div
                             class="ant-card-meta-description--bottom-left cr-primary ml-auto"

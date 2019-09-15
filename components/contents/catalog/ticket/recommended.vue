@@ -75,7 +75,7 @@
                 class="fs-14 fw-400 cr-gray f-default text-ellipsis"
               >Program {{item.program_hari}} Hari</div>
               <div
-                class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis"
+                class="ml-auto fs-18 fw-500 cr-primary f-default text-ellipsis"
               >{{item.harga_jual | currency}}</div>
             </div>
 
