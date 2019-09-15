@@ -5,9 +5,9 @@ import VueLazyload from 'vue-lazyload'
 
 // or with options
 Vue.use(VueLazyload, {
-    preLoad: 1.3,
-    error: 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843',
-    // loading: '/loading.gif',
+    preLoad: 1.5,
+    error: '/loading.png',
+    loading: '/loading.png',
     attempt: 1,
     listenEvents: ['scroll']
 })

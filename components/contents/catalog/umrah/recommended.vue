@@ -1,5 +1,5 @@
 <template>
-  <a-list :grid="{ gutter: 16, xs: 4, sm: 4, md: 4, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
+  <a-list :grid="{ gutter: 16, column: 4}" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
         <a-card class="ant-card-package-small">

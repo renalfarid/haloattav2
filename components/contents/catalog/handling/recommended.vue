@@ -1,5 +1,5 @@
 <template>
-  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
+  <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
         <nuxt-link to="/catalog/handling/detail" class="d-block">
