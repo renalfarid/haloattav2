@@ -16,10 +16,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4 }"
-              :dataSource="data"
-            >
+            <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -33,7 +30,7 @@
                       <div slot="cover">
                         <div
                           class="ant-card-cover--images"
-                          :style="{ backgroundImage: `url(${item.images_package})` }"
+                          v-lazy:background-image="item.images_package"
                         >
                           <div class="d-none ant-card-cover--overlay">
                             <div class="ant-card-cover--overlay-box-radius ant-pax--insurance"></div>
@@ -41,7 +38,9 @@
                               <div
                                 class="ant-card-cover--overlay-text-title fs-15 fw-500"
                               >{{item.pax}}</div>
-                              <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">
+                              <div
+                                class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
+                              >
                                 <span>pax</span>
                               </div>
                             </div>
@@ -62,7 +61,7 @@
                           <div class="ant-card-meta-title--top d-flex align-items-center">
                             <div class="ant-card-meta-title--top-left d-flex align-items-center">
                               <div class="mr-8">
-                                <a-avatar :src="item.logo_provider" size="small" />
+                                <a-avatar class="vendor-logo zIndex" size="small" v-lazy:background-image="item.foto" />
                               </div>
                               <div
                                 class="fs-13 fw-400 cr-gray f-default text-ellipsis"
@@ -77,9 +76,7 @@
                         <div slot="description">
                           <div class="ant-card-meta-description--bottom d-flex align-items-center">
                             <div class="ant-card-meta-description--bottom-right d-flex">
-                              <div
-                                class="fs-14 fw-400 cr-black f-default text-ellipsis"
-                              >Standar</div>
+                              <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Standar</div>
                             </div>
                             <div
                               class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"

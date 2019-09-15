@@ -34,7 +34,7 @@
                       </a-popover>
                     </div>
                     <div class="mr-8">
-                      <a-avatar :src="item.logo_provider" size="small" />
+                      <a-avatar class="vendor-logo zIndex" size="small" v-lazy:background-image="item.logo_provider" />
                     </div>
                     <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.provider}}</div>
                   </div>
