@@ -15,7 +15,7 @@
     <a-row :gutter="16">
       <a-col :span="16">
         <a-card class="card-product-overlay">
-          <div class="box-content" :style="{ backgroundImage: 'url(/umrah/cover/cu40.jpg)' }">
+          <div class="box-content" v-lazy:background-image="imgCover">
             <div class="box-content--overlay text-center">
               <div class="txt-title fs-40 fw-500 f-default mb-8">Bisa Share Profit Loh!</div>
               <div class="txt fs-16 fw-400 f-default">
@@ -34,10 +34,7 @@
         <a-card class="ant-card-package">
           <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
-            <div
-              class="ant-card-cover--images"
-              :style="{ backgroundImage: `url(${item.images_product})` }"
-            >
+            <div class="ant-card-cover--images" v-lazy:background-image="item.images_product">
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
@@ -144,6 +141,7 @@ import moment from "moment";
 export default {
   data() {
     return {
+      imgCover: '/umrah/cover/cu40.jpg',
       lisData: [
         {
           id: 1,

@@ -11,9 +11,11 @@
           <div>
             <div class="ant-card--results-info-title">Tour Leader Umrah Makassar</div>
             <div class="ant-card--results-info-subtitle">
-              Keberangkatan 10 Desember 2019
+              <span>Umrah</span>
               <a-divider type="vertical" />
-              <span>Program 9 Hari</span>
+              <span>Makassar ke Saudi Arabia</span>
+              <a-divider type="vertical" />
+              <span>9 Hari</span>
             </div>
           </div>
         </div>
@@ -29,8 +31,8 @@
         <a-divider />
         <a-form layout="vertical" class="form-search--costume">
           <a-row :gutter="16">
-            <a-col :span="12">
-              <a-form-item label="Kota Asal" hasFeedback>
+            <a-col :span="8">
+              <a-form-item label="Dari" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="environment" />
                 </div>
@@ -47,33 +49,61 @@
                   :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
                   <a-select-option value="Makassar">Makassar</a-select-option>
                   <a-select-option value="Jakarta">Jakarta</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
 
-            <a-col :span="12">
-              <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+            <a-col :span="8">
+              <a-form-item label="Ke" hasFeedback>
                 <div class="icon-search">
-                  <a-icon type="calendar" />
+                  <a-icon type="environment" />
                 </div>
-                <a-date-picker
-                  size="large"
+                <a-select
+                  showSearch
+                  defaultValue="Saudi Arabia"
+                  placeholder="Pilih Tujuan"
+                  optionFilterProp="children"
+                  :showArrow="false"
                   style="width: 100%"
-                  v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
-                  :disabledDate="disabledDate"
-                  placeholder="Pilih Tanggal"
+                  @focus="handleFocus"
+                  @blur="handleBlur"
+                  @change="handleChange"
+                  :filterOption="filterOption"
+                  size="large"
                 >
-                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
-                </a-date-picker>
+                  <a-select-option value="Saudi Arabia">Saudi Arabia</a-select-option>
+                </a-select>
+              </a-form-item>
+            </a-col>
+
+            <a-col :span="8">
+              <a-form-item label="Jenis Kegiatan" hasFeedback>
+                <div class="icon-search">
+                  <span class="icon-tourleader-sm"></span>
+                </div>
+                <a-select
+                  showSearch
+                  defaultValue="Umrah"
+                  placeholder="Pilih Kegiatan"
+                  optionFilterProp="children"
+                  style="width: 100%"
+                  :showArrow="false"
+                  @focus="handleFocus"
+                  @blur="handleBlur"
+                  @change="handleChange"
+                  :filterOption="filterOption"
+                  size="large"
+                >
+                  <a-select-option value="Umrah">Umrah</a-select-option>
+                </a-select>
               </a-form-item>
             </a-col>
           </a-row>
 
           <a-row :gutter="16">
-            <a-col :span="12">
+            <a-col :span="8">
               <a-form-item label="Program Hari" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
@@ -103,40 +133,32 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="12">
-              <a-form-item label="Tipe Tourleader" hasFeedback>
+            <a-col :span="8">
+              <a-form-item label="Tanggal Keberangkatan" hasFeedback>
                 <div class="icon-search">
-                  <span class="icon-tourleader-sm"></span>
+                  <a-icon type="calendar" />
                 </div>
-                <a-select
-                  showSearch
-                  defaultValue="pemula"
-                  placeholder="Pilih Tour Leader"
-                  optionFilterProp="children"
-                  style="width: 100%"
-                  :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
+                <a-date-picker
                   size="large"
+                  style="width: 100%"
+                  v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+                  :disabledDate="disabledDate"
+                  placeholder="Pilih Tanggal"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="pemula">Pemula</a-select-option>
-                  <a-select-option value="Berpengalaman">Berpengalaman</a-select-option>
-                </a-select>
+                  <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+                </a-date-picker>
               </a-form-item>
             </a-col>
-          </a-row>
 
-          <a-row :gutter="16" type="flex" justify="end">
             <a-col :span="8">
-              <a-button
-                html-type="submit"
-                class="btn-search b-shadow b-radius"
-                size="large"
-                block
-              >Cari Tour Leader</a-button>
+              <a-form-item :style="{ bottom: '-25px' }">
+                <a-button
+                  html-type="submit"
+                  class="btn-search b-shadow b-radius"
+                  size="large"
+                  block
+                >Cari Tour Leader</a-button>
+              </a-form-item>
             </a-col>
           </a-row>
         </a-form>

@@ -5,10 +5,7 @@
         <nuxt-link to="/catalog/equipment/detail" class="d-block">
           <a-card class="ant-card-package-small">
             <div slot="cover">
-              <div
-                class="ant-card-cover--images"
-                :style="{ backgroundImage: `url(${item.gambar})` }"
-              >
+              <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                 <div class="d-none ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius ant-pax--insurance"></div>
                   <div class="ant-card-cover--overlay-text">
@@ -32,10 +29,7 @@
                 <div class="ant-card-meta-title--top d-flex align-items-center">
                   <div class="ant-card-meta-title--top-left d-flex align-items-center">
                     <div class="mr-8">
-                      <a-avatar
-                        class="vendor-logo zIndex"
-                        :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-                      />
+                      <a-avatar class="vendor-logo zIndex" v-lazy:background-image="item.foto" />
                     </div>
                     <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.nama_vendor}}</div>
                   </div>
@@ -46,7 +40,7 @@
               <div slot="description">
                 <div class="ant-card-meta-description--bottom d-flex align-items-center">
                   <div class="ant-card-meta-description--bottom-right d-flex">
-                    <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Perlengkapan Standar</div>
+                    <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Standar</div>
                   </div>
                   <div
                     class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"

@@ -14,7 +14,7 @@
         <a-back-top />
       </a-layout>
       <div slot="placeholder" class="ant-spin-placeholder">
-        <a-spin tip="Loading..." />
+        <a-spin tip="Mohon Tunggu Sebentar..." />
       </div>
     </no-ssr>
   </div>

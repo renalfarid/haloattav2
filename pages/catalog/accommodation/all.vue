@@ -23,7 +23,7 @@
             :infinite-scroll-distance="limit"
           >
             <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 4 }"
+              :grid="{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 3, xl: 3, xxl: 4 }"
               :dataSource="data"
             >
               <a-list-item
@@ -124,7 +124,7 @@
                             <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                           </div>
                           <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
-                            <div class="cr-gray">Tanggal Mulai</div>
+                            <div class="cr-gray">Tanggal Berakhir</div>
                             <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                           </div>
                         </div>

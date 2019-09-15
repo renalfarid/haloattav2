@@ -5,10 +5,7 @@
         <a-card class="ant-card-package-small">
           <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
-            <div
-              class="ant-card-cover--images"
-              :style="{ backgroundImage: `url(${item.gambar != '' ? item.gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-            >
+            <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
@@ -40,7 +37,7 @@
                     <a-avatar
                       size="small"
                       class="vendor-logo zIndex mr-8"
-                      :style="{ backgroundImage: `url(${item.foto_vendor != '' ? item.foto_vendor : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
+                      v-lazy:background-image="item.foto_vendor"
                     />
                   </a-popover>
 

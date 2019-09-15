@@ -79,7 +79,7 @@
                             <div class="ant-card-meta-description--bottom-right d-flex">
                               <div
                                 class="fs-14 fw-400 cr-black f-default text-ellipsis"
-                              >Perlengkapan Standar</div>
+                              >Standar</div>
                             </div>
                             <div
                               class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"

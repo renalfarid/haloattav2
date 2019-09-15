@@ -5,10 +5,7 @@
         <nuxt-link to="/catalog/accommodation/detail" class="d-block">
           <a-card class="ant-card-package">
             <div slot="cover">
-              <div
-                class="ant-card-cover--images"
-                :style="{ backgroundImage: `url(${item.gambar})` }"
-              >
+              <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius"></div>
                   <div class="ant-card-cover--overlay-text">
@@ -28,10 +25,7 @@
             </div>
 
             <div class="d-flex align-items-center">
-              <a-avatar
-                class="vendor-logo zIndex mr-8"
-                :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-              />
+              <a-avatar class="vendor-logo zIndex mr-8" v-lazy:background-image="item.foto" />
               <div class="fs-14 fw-400 f-default text-ellipsis cr-gray">{{item.nama_vendor}}</div>
               <div class="ml-auto">
                 <a-rate
@@ -67,7 +61,10 @@
 
             <div class="package-description--more p-16">
               <div class="d-flex align-items-center mb-8">
-                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Periode <span class="fw-500">{{item.tipe}}</span> Session</div>
+                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">
+                  Periode
+                  <span class="fw-500">{{item.tipe}}</span> Session
+                </div>
                 <div
                   class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto"
                 >{{item.class_room}}</div>
@@ -78,7 +75,9 @@
                   <div class="cr-gray">Tanggal Mulai</div>
                   <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
-                <div><a-icon class="cr-light" type="arrow-right" /></div>
+                <div>
+                  <a-icon class="cr-light" type="arrow-right" />
+                </div>
                 <div class="fs-14 fw-400 text-ellipsis text-right ml-auto w-50">
                   <div class="cr-gray">Tanggal Berakhir</div>
                   <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>

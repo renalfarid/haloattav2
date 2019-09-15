@@ -18,10 +18,10 @@
           <nuxt-link to="/blog/detail">
             <a-card class="card-news--large-overlay">
               <div slot="cover">
-              <div class="haloummi">
-                <img src="/haloummi.png" />
-              </div>
-                <div class="box-content" :style="{ backgroundImage: `url(${blog1})` }">
+                <div class="haloummi">
+                  <img src="/haloummi.png" />
+                </div>
+                <div class="box-content" v-lazy:background-image="blog1">
                   <div :style="{ width: '100%', zIndex: '2' }">
                     <div class="box-overlay">
                       <div class="txt">Haram Hukumnya merubah aturan yang disepakati</div>
@@ -42,10 +42,10 @@
           <nuxt-link to="/blog/detail">
             <a-card class="card-news--large-overlay">
               <div slot="cover">
-              <div class="haloummi">
-                <img src="/haloummi.png" />
-              </div>
-                <div class="box-content" :style="{ backgroundImage: `url(${blog4})` }">
+                <div class="haloummi">
+                  <img src="/haloummi.png" />
+                </div>
+                <div class="box-content" v-lazy:background-image="blog4">
                   <div :style="{ width: '100%', zIndex: '2' }">
                     <div class="box-overlay">
                       <div class="txt">Agar tidak over bagasi saat traveling</div>
@@ -66,10 +66,10 @@
           <nuxt-link to="/blog/detail">
             <a-card class="card-news--large-overlay">
               <div slot="cover">
-              <div class="haloummi">
-                <img src="/haloummi.png" />
-              </div>
-                <div class="box-content" :style="{ backgroundImage: `url(${blog4})` }">
+                <div class="haloummi">
+                  <img src="/haloummi.png" />
+                </div>
+                <div class="box-content" v-lazy:background-image="blog3">
                   <div :style="{ width: '100%', zIndex: '2' }">
                     <div class="box-overlay">
                       <div class="txt">Agar tidak over bagasi saat traveling</div>
@@ -93,10 +93,10 @@
         <nuxt-link to="/blog/detail">
           <a-card class="card-news--small-overlay">
             <div slot="cover">
-            <div class="haloummi">
-              <img src="/haloummi.png" />
-            </div>
-              <div class="box-content" :style="{ backgroundImage: `url(${blog2})` }">
+              <div class="haloummi">
+                <img src="/haloummi.png" />
+              </div>
+              <div class="box-content" v-lazy:background-image="blog2">
                 <div :style="{ width: '100%', zIndex: '2' }">
                   <div class="box-overlay">
                     <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
@@ -119,36 +119,10 @@
         <nuxt-link to="/blog/detail">
           <a-card class="card-news--small-overlay">
             <div slot="cover">
-            <div class="haloummi">
-              <img src="/haloummi.png" />
-            </div>
-              <div class="box-content" :style="{ backgroundImage: `url(${blog3})` }">
-                <div :style="{ width: '100%', zIndex: '2' }">
-                  <div class="box-overlay">
-                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
-                    <div class="item">
-                      <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
-                      <span class="time">
-                        <a-icon type="clock-circle" />5 jam lalu
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="gradient-bottom"></div>
+              <div class="haloummi">
+                <img src="/haloummi.png" />
               </div>
-            </div>
-          </a-card>
-        </nuxt-link>
-      </a-col>
-
-      <a-col :span="6">
-        <nuxt-link to="/blog/detail">
-          <a-card class="card-news--small-overlay">
-            <div slot="cover">
-            <div class="haloummi">
-              <img src="/haloummi.png" />
-            </div>
-              <div class="box-content" :style="{ backgroundImage: `url(${blog4})` }">
+              <div class="box-content" v-lazy:background-image="blog3">
                 <div :style="{ width: '100%', zIndex: '2' }">
                   <div class="box-overlay">
                     <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
@@ -174,7 +148,33 @@
               <div class="haloummi">
                 <img src="/haloummi.png" />
               </div>
-              <div class="box-content" :style="{ backgroundImage: `url(${blog5})` }">
+              <div class="box-content" v-lazy:background-image="blog4">
+                <div :style="{ width: '100%', zIndex: '2' }">
+                  <div class="box-overlay">
+                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
+                    <div class="item">
+                      <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
+                      <span class="time">
+                        <a-icon type="clock-circle" />5 jam lalu
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="gradient-bottom"></div>
+              </div>
+            </div>
+          </a-card>
+        </nuxt-link>
+      </a-col>
+
+      <a-col :span="6">
+        <nuxt-link to="/blog/detail">
+          <a-card class="card-news--small-overlay">
+            <div slot="cover">
+              <div class="haloummi">
+                <img src="/haloummi.png" />
+              </div>
+              <div class="box-content" v-lazy:background-image="blog5">
                 <div :style="{ width: '100%', zIndex: '2' }">
                   <div class="box-overlay">
                     <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>

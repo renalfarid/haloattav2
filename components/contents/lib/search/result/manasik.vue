@@ -11,9 +11,13 @@
           <div>
             <div class="ant-card--results-info-title">Manasik Pemantapan Umrah Makassar</div>
             <div class="ant-card--results-info-subtitle">
-              <span>Tanggal 30 Desember 2019</span>
+              <span>Manasik</span>
               <a-divider type="vertical" />
-              <span>Standar</span>
+              <span>Kota Makassar</span>
+              <a-divider type="vertical" />
+              <span>30 Des 2019</span>
+              <a-divider type="vertical" />
+              <span>Ballrom Hotel</span>
             </div>
           </div>
         </div>
@@ -29,8 +33,8 @@
         <a-divider />
         <a-form layout="vertical" class="form-search--costume">
           <a-row :gutter="16">
-            <a-col :span="8">
-              <a-form-item label="Kota Manasik" hasFeedback>
+            <a-col :span="6">
+              <a-form-item label="Kota Asal" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="environment" />
                 </div>
@@ -47,15 +51,14 @@
                   :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
                   <a-select-option value="Makassar">Makassar</a-select-option>
                   <a-select-option value="Jakarta">Jakarta</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
-              <a-form-item label="Rencana Manasik" hasFeedback>
+            <a-col :span="6">
+              <a-form-item label="Tanggal Kegiatan" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
                 </div>
@@ -71,41 +74,51 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
-              <a-form-item label="Jenis Layanan" hasFeedback>
+            <a-col :span="6">
+              <a-form-item label="Jenis Kegiatan" hasFeedback>
                 <div class="icon-search">
                   <span class="icon-manasik-sm"></span>
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="Standar"
-                  placeholder="Pilih Jenis Layanan"
-                  optionFilterProp="children"
+                  defaultValue="Manasik"
+                  placeholder="Pilih Jenis Kegiatan"
                   :showArrow="false"
                   style="width: 100%"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Standar">Standar</a-select-option>
-                  <a-select-option value="VIP">VIP</a-select-option>
-                  <a-select-option value="VVIP">VVIP</a-select-option>
+                  <a-select-option value="Manasik">Manasik</a-select-option>
+                </a-select>
+              </a-form-item>
+            </a-col>
+
+            <a-col :span="6">
+              <a-form-item label="Ruangan" hasFeedback>
+                <div class="icon-search">
+                  <span class="icon-manasik-sm"></span>
+                </div>
+                <a-select
+                  showSearch
+                  defaultValue="Ballroom Hotel"
+                  placeholder="Pilih Ruangan"
+                  :showArrow="false"
+                  style="width: 100%"
+                  size="large"
+                >
+                  <a-select-option value="Ballroom Hotel">Ballroom Hotel</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
           </a-row>
 
           <a-row :gutter="16" type="flex" justify="end">
-            <a-col :span="8">
+            <a-col :span="6">
               <a-button
                 html-type="submit"
                 class="btn-search b-shadow b-radius"
                 size="large"
                 block
-              >Cari Manasik</a-button>
+              >Cari</a-button>
             </a-col>
           </a-row>
         </a-form>

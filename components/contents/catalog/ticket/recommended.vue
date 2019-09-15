@@ -5,10 +5,7 @@
         <nuxt-link to="/catalog/ticket-group/detail-ticket" class="d-block">
           <a-card class="ant-card--package-ticket">
             <div slot="cover">
-              <div
-                class="ant-card-cover--images"
-                :style="{ backgroundImage: `url(${item.gambar})` }"
-              >
+              <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                 <div class="ant-card-cover--overlay">
                   <div class="ant-card-cover--overlay-box-radius"></div>
                   <div class="ant-card-cover--overlay-text">
@@ -34,10 +31,7 @@
                     <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
                   </div>
                 </template>
-                <a-avatar
-                  class="vendor-logo zIndex mr-8"
-                  :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-                />
+                <a-avatar class="vendor-logo zIndex mr-8" v-lazy:background-image="item.foto" />
               </a-popover>
               <a-popover trigger="hover">
                 <template slot="content">
@@ -87,18 +81,24 @@
 
             <div class="package-description--more p-16">
               <div class="d-flex align-items-center mb-8">
-                <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Kota Asal {{item.nama_kota}}</div>
+                <div
+                  class="fs-15 fw-400 cr-black f-default text-ellipsis"
+                >Kota Asal {{item.nama_kota}}</div>
                 <div class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto">Round Trip</div>
               </div>
 
               <div class="d-flex align-items-center">
                 <div class="fs-14 fw-400 text-ellipsis">
                   <div class="cr-gray">Keberangkatan</div>
-                  <div class="cr-black">{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</div>
+                  <div
+                    class="cr-black"
+                  >{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
                 <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                   <div class="cr-gray">Kedatangan</div>
-                  <div class="cr-black">{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</div>
+                  <div
+                    class="cr-black"
+                  >{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</div>
                 </div>
               </div>
             </div>
