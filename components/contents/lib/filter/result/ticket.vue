@@ -46,7 +46,7 @@
       </div>
 
       <div class="ml-auto">
-        <a-cascader :options="sortData" @change="onChangeSort" :defaultValue="['Rekomendasi']">
+        <a-cascader :options="sortData" @change="onChangeSort">
           <a-tag class="fs-14 cr-black">
             {{sortLabel}}
             <a-icon class="fs-12" type="down" />
