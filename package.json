@@ -23,7 +23,7 @@
         "echarts": "^4.2.1",
         "express": "^4.16.4",
         "jquery": "^3.4.1",
-        "nuxt": "^2.8.1",
+        "nuxt": "^2.9.2",
         "pimg": "^1.2.1",
         "v-charts": "^1.19.0",
         "vue-clipboard2": "^0.3.0",

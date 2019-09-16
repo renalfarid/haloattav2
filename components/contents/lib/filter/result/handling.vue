@@ -3,16 +3,27 @@
     <a-card class="ant-card--results-filter d-flex align-items-center" :bordered="false">
       <div class="ant-card--results-filter-label">Filter</div>
       <div>
-        <a-cascader :options="vendorData" @change="onChangeVendor" :defaultValue="['semua vendor']">
-          <a-tag class="fs-14 cr-black">Vendor {{vendorLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+        <a-cascader :options="vendorData" @change="onChangeVendor">
+          <a-tag class="fs-14 cr-black">
+            {{vendorLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
         </a-cascader>
 
-        <a-cascader :options="hargaData" @change="onChangeHarga" :defaultValue="['semua harga']">
-          <a-tag class="fs-14 cr-black">Harga {{hargaLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+        <a-cascader :options="hargaData" @change="onChangeHarga">
+          <a-tag class="fs-14 cr-black">
+            {{hargaLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
         </a-cascader>
+      </div>
 
-        <a-cascader :options="programData" @change="onChangeProgram" :defaultValue="['semua program']">
-          <a-tag class="fs-14 cr-black">Program {{programLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+      <div class="ml-auto">
+        <a-cascader :options="sortData" @change="onChangeSort">
+          <a-tag class="fs-14 cr-black">
+            {{sortLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
         </a-cascader>
       </div>
     </a-card>
@@ -23,44 +34,48 @@ export default {
   data() {
     return {
       vendorLabel: "Semua Vendor",
-      hargaLabel: "Semua Harga",
-      programLabel: "Semua Program",
+      hargaLabel: "Premi",
+      sortLabel: "Pilih Berdasarkan",
       vendorData: [
         {
-          value: "semua vendor",
-          label: "Semua Vendor"
+          value: "adira",
+          label: "Adira"
         },
         {
-          value: "hasanuddin handling",
-          label: "Hasanuddin Handling"
+          value: "In Healt",
+          label: "In Healt"
+        },
+        {
+          value: "Zurich",
+          label: "Zurich"
         }
       ],
       hargaData: [
         {
-          value: "semua harga",
-          label: "Semua Harga"
+          value: "Terendah",
+          label: "Terendah"
         },
         {
-          value: "Rp0 - Rp20,000,000",
-          label: "Rp0 - Rp20,000,000"
-        },
-        {
-          value: "Rp20,000,000 - Rp20,000,000",
-          label: "Rp20,000,000 - Rp40.000.000"
+          value: "Tertinggi",
+          label: "Tertinggi"
         }
       ],
-      programData: [
+      sortData: [
         {
-          value: "semua program",
-          label: "Semua Program"
+          value: "Terlaris",
+          label: "Terlaris"
         },
         {
-          value: "9 hari",
-          label: "9 Hari"
+          value: "Terbaru",
+          label: "Terbaru"
         },
         {
-          value: "10 hari",
-          label: "10 Hari"
+          value: "Terpopuler",
+          label: "Terpopuler"
+        },
+        {
+          value: "Rekomendasi",
+          label: "Rekomendasi"
         }
       ]
     };
@@ -72,8 +87,8 @@ export default {
     onChangeHarga(value, selectedOptions) {
       this.hargaLabel = selectedOptions.map(o => o.label).join(", ");
     },
-    onChangeProgram(value, selectedOptions) {
-      this.programLabel = selectedOptions.map(o => o.label).join(", ");
+    onChangeSort(value, selectedOptions) {
+      this.sortLabel = selectedOptions.map(o => o.label).join(", ");
     }
   }
 };
