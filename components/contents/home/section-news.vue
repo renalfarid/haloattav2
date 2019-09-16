@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header-title">
-      <a-divider orientation="left" class="ant-divider-title-left">Informasi Tentang Umrah</a-divider>
+      <a-divider orientation="left" class="ant-divider-title-left">Halo Ummi</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
           <h6 class="subtitle">
@@ -193,6 +193,13 @@
         </nuxt-link>
       </a-col>
     </a-row>
+
+    <div class="all-package mt-24 mb-16">
+      <nuxt-link to="/blog" class="fs-18 cr-green d-flex align-items-center">
+        Tampilkan semua
+        <a-icon class="fs-16 ml-8" type="right" />
+      </nuxt-link>
+    </div>
   </div>
 </template>
 <script>

@@ -11,13 +11,11 @@
           <div>
             <div class="ant-card--results-info-title">
               LA Akomodasi Umrah 3 Hari Mekkah
-              <a-icon type="arrow-right" class="cr-gray ml-8 mr-8" />
-              4 Hari Madinah
+              <a-icon type="arrow-right" class="cr-gray ml-8 mr-8" />4 Hari Madinah
             </div>
             <div class="ant-card--results-info-subtitle">
               Keberangkatan 10 Desember 2019
-              <a-divider type="vertical" />
-              Program 9 Hari
+              <a-divider type="vertical" />Program 9 Hari
             </div>
           </div>
         </div>
@@ -39,7 +37,7 @@
           class="form-search--costume"
         >
           <a-row :gutter="16">
-            <a-col :span="8">
+            <a-col :span="6">
               <a-form-item label="Jenis LA Akomodasi" hasFeedback>
                 <div class="icon-search">
                   <span class="icon-accommodation-sm"></span>
@@ -57,7 +55,7 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
+            <a-col :span="6">
               <a-form-item label="Program Hari" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
@@ -83,7 +81,7 @@
               </a-form-item>
             </a-col>
 
-            <a-col :span="8">
+            <a-col :span="6">
               <a-form-item label="Tanggal Keberangkatan" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
@@ -99,68 +97,50 @@
                 </a-date-picker>
               </a-form-item>
             </a-col>
+
+            <a-col :span="6">
+              <a-form-item label="Jumlah Pax" hasFeedback>
+                <div class="icon-search">
+                  <img class="max-width" src="/icons/search/boysmiling.svg" />
+                </div>
+                <a-dropdown overlayClassName="ant-menu--passenger" :trigger="['click']">
+                  <a-menu slot="overlay">
+                    <a-menu-item key="1" disabled>
+                      <div class="d-flex align-items-center">
+                        <div>
+                          <div class="fs-14 fw-400 cr-black f-default">Jumlah Pax</div>
+                        </div>
+                        <div class="ml-auto">
+                          <number-input
+                            v-model="qty"
+                            :min="1"
+                            :inputtable="false"
+                            size="small"
+                            center
+                            controls
+                          />
+                        </div>
+                      </div>
+                    </a-menu-item>
+                  </a-menu>
+                  <a-button
+                    class="ant-btn--add-passenger fs-16 text-left"
+                    size="large"
+                    block
+                  >Jumlah {{qty}} Pax</a-button>
+                </a-dropdown>
+              </a-form-item>
+            </a-col>
           </a-row>
 
-          <a-row :gutter="16">
-            <a-col :span="8">
-              <a-form-item label="Dari Kota" hasFeedback>
-                <div class="icon-search">
-                  <img class="max-width" src="/icons/search/bedtime.svg" />
-                </div>
-                <a-select
-                  showSearch
-                  defaultValue="3 Hari Mekkah"
-                  placeholder="Pilih Kota"
-                  optionFilterProp="children"
-                  :showArrow="false"
-                  style="width: 100%"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
-                  size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="3 Hari Mekkah">3 Hari Mekkah</a-select-option>
-                  <a-select-option value="4 Hari Mekkah">4 Hari Mekkah</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-
-            <a-col :span="8">
-              <a-form-item label="Ke Kota" hasFeedback>
-                <div class="icon-search">
-                  <img class="max-width" src="/icons/search/bedtime.svg" />
-                </div>
-                <a-select
-                  showSearch
-                  defaultValue="3 Hari Madinah"
-                  placeholder="Pilih Kota"
-                  optionFilterProp="children"
-                  style="width: 100%"
-                  :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
-                  size="large"
-                >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="3 Hari Madinah">3 Hari Madinah</a-select-option>
-                  <a-select-option value="4 Hari Madinah">4 Hari Madinah</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-
-            <a-col :span="8">
-              <a-form-item :style="{ bottom: '-25px' }">
-                <a-button
-                  html-type="submit"
-                  class="btn-search b-shadow b-radius"
-                  size="large"
-                  block
-                >Cari LA Akomodasi</a-button>
-              </a-form-item>
+          <a-row :gutter="16" type="flex" justify="end">
+            <a-col :span="6">
+              <a-button
+                html-type="submit"
+                class="btn-search b-shadow b-radius"
+                size="large"
+                block
+              >Cari LA Akomodasi</a-button>
             </a-col>
           </a-row>
         </a-form>
@@ -174,7 +154,8 @@ export default {
   data() {
     this.dateFormat = "YYYY-MM-DD";
     return {
-      visibleSearch: false
+      visibleSearch: false,
+      qty: 1
     };
   },
   beforeCreate() {
