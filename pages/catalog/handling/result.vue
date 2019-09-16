@@ -16,7 +16,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="data">
+            <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="data" :loading="loading">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -24,57 +24,57 @@
                 data-aos="fade-up"
                 data-aos-duration="1200"
               >
-                <a-skeleton :loading="loading" active>
-                  <nuxt-link to="/catalog/handling/detail" class="d-block">
-                    <a-card class="ant-card-package-small">
-                      <div slot="cover">
-                        <div
-                          class="ant-card-cover--images"
-                          v-lazy:background-image="item.images_package"
-                        >
-                          <div class="ant-card--overlay-block">
-                            <div class="d-flex align-items-center h-100">
-                              <a-button>
-                                <nuxt-link to="/catalog/handling/detail">Lihat detail</nuxt-link>
-                              </a-button>
-                            </div>
+                <nuxt-link to="/catalog/handling/detail" class="d-block">
+                  <a-card class="ant-card-package-small">
+                    <div slot="cover">
+                      <div
+                        class="ant-card-cover--images"
+                        v-lazy:background-image="item.images_package"
+                      >
+                        <div class="ant-card--overlay-block">
+                          <div class="d-flex align-items-center h-100">
+                            <a-button>
+                              <nuxt-link to="/catalog/handling/detail">Lihat detail</nuxt-link>
+                            </a-button>
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <a-card-meta>
-                        <div slot="title">
-                          <div class="ant-card-meta-title--top d-flex align-items-center mb-16">
-                            <div class="ant-card-meta-title--top-left d-flex align-items-center">
-                              <div class="mr-8">
-                                <a-avatar class="vendor-logo zIndex" size="small" v-lazy:background-image="item.logo_provider" />
-                              </div>
-                              <div
-                                class="fs-13 fw-400 cr-gray f-default text-ellipsis"
-                              >{{item.provider}}</div>
-                            </div>
-                          </div>
-                          <div
-                            class="ant-card-meta-title--package fs-15 fw-500"
-                          >{{item.name_handling}}</div>
-                        </div>
-
-                        <div slot="description">
-                          <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                            <div class="ant-card-meta-description--bottom-right d-flex">
-                              <div
-                                class="fs-14 fw-400 cr-black f-default text-ellipsis"
-                              >Pulang Pergi</div>
+                    <a-card-meta>
+                      <div slot="title">
+                        <div class="ant-card-meta-title--top d-flex align-items-center mb-16">
+                          <div class="ant-card-meta-title--top-left d-flex align-items-center">
+                            <div class="mr-8">
+                              <a-avatar
+                                class="vendor-logo zIndex"
+                                size="small"
+                                v-lazy:background-image="item.logo_provider"
+                              />
                             </div>
                             <div
-                              class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
-                            >Rp{{item.price}}</div>
+                              class="fs-13 fw-400 cr-gray f-default text-ellipsis"
+                            >{{item.provider}}</div>
                           </div>
                         </div>
-                      </a-card-meta>
-                    </a-card>
-                  </nuxt-link>
-                </a-skeleton>
+                        <div
+                          class="ant-card-meta-title--package fs-15 fw-500"
+                        >{{item.name_handling}}</div>
+                      </div>
+
+                      <div slot="description">
+                        <div class="ant-card-meta-description--bottom d-flex align-items-center">
+                          <div class="ant-card-meta-description--bottom-right d-flex">
+                            <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Pulang Pergi</div>
+                          </div>
+                          <div
+                            class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
+                          >Rp{{item.price}}</div>
+                        </div>
+                      </div>
+                    </a-card-meta>
+                  </a-card>
+                </nuxt-link>
               </a-list-item>
             </a-list>
           </div>
@@ -103,14 +103,11 @@ export default {
       data: []
     };
   },
-  mounted() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 1500);
-  },
+  
   created() {
     this.loadMore();
   },
+
   methods: {
     loadMore() {
       console.log("Adding 6 more data results");
@@ -122,6 +119,7 @@ export default {
         );
         this.data = this.data.concat(append);
         this.busy = false;
+        this.loading = false;
       });
     }
   },
