@@ -1,10 +1,10 @@
 <template>
   <div>
-    <no-ssr>
+    <client-only>
       <nuxt />
       <div slot="placeholder" class="ant-spin-placeholder">
         <a-spin tip="Mohon Tunggu Sebentar..." />
       </div>
-    </no-ssr>
+    </client-only>
   </div>
 </template>

@@ -24,18 +24,18 @@ module.exports = {
 
     plugins: [
         { src: "@/plugins/antd-ui" },
-        { src: "@/plugins/vue-slick", ssr: false },
-        { src: "@/plugins/vInput-number", ssr: false },
-        { src: "@/plugins/vCurrency-filter", ssr: false },
-        { src: "@/plugins/vCountdown", ssr: false },
-        { src: "@/plugins/vCharts", ssr: false },
-        { src: "@/plugins/vInfinite-scroll", ssr: false },
-        { src: "@/plugins/vClipboard", ssr: false },
-        { src: "@/plugins/vSticky", ssr: false },
-        { src: "@/plugins/vLazytube", ssr: false },
-        { src: "@/plugins/vLazyimg", ssr: false },
-        { src: "@/plugins/vPimg", ssr: false },
-        { src: "@/plugins/vAos", ssr: false }
+        { src: "@/plugins/vue-slick", mode: 'client' },
+        { src: "@/plugins/vInput-number", mode: 'client' },
+        { src: "@/plugins/vCurrency-filter", mode: 'client' },
+        { src: "@/plugins/vCountdown", mode: 'client' },
+        { src: "@/plugins/vCharts", mode: 'client' },
+        { src: "@/plugins/vInfinite-scroll", mode: 'client' },
+        { src: "@/plugins/vClipboard", mode: 'client' },
+        { src: "@/plugins/vSticky", mode: 'client' },
+        { src: "@/plugins/vLazytube", mode: 'client' },
+        { src: "@/plugins/vLazyimg", mode: 'client' },
+        { src: "@/plugins/vPimg", mode: 'client' },
+        { src: "@/plugins/vAos", mode: 'client' }
     ],
 
     modules: [
