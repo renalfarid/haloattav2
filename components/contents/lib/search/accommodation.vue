@@ -54,51 +54,22 @@
 
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item label="Bulan Keberangkatan" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="calendar" />
-          </div>
-          <a-select
-            showSearch
-            defaultValue="September 2019"
-            placeholder="Pilih Bulan Keberangkatan"
-            style="width: 100%"
-            :showArrow="false"
-            :filterOption="filterOption"
-            size="large"
-          >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="September 2019">September 2019</a-select-option>
-            <a-select-option value="November 2019">November 2019</a-select-option>
-            <a-select-option value="Desember 2019">Desember 2019</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>
-
-      <a-col :span="12">
         <a-form-item label="Tanggal Keberangkatan" hasFeedback>
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
-          <a-select
-            showSearch
-            defaultValue="All"
-            placeholder="Pilih Tanggal"
-            style="width: 100%"
-            :showArrow="false"
-            :filterOption="filterOption"
+          <a-date-picker
             size="large"
+            style="width: 100%"
+            v-decorator="['tanggal_checkIn',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
+            :disabledDate="disabledDate"
+            placeholder="Pilih Tanggal Keberangkatan"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="01">01</a-select-option>
-            <a-select-option value="02">02</a-select-option>
-            <a-select-option value="03">03</a-select-option>
-          </a-select>
+            <a-icon class="d-none" slot="suffixIcon" type="calendar" />
+          </a-date-picker>
         </a-form-item>
       </a-col>
-    </a-row>
 
-    <a-row :gutter="16">
       <a-col :span="12">
         <a-form-item label="Jumlah Pax" hasFeedback>
           <div class="icon-search">
@@ -124,24 +95,20 @@
                 </div>
               </a-menu-item>
             </a-menu>
-            <a-button
-              class="ant-btn--add-passenger fs-16 text-left"
-              size="large"
-              block
-            >{{qty}} Pax</a-button>
+            <a-button class="ant-btn--add-passenger fs-16 text-left" size="large" block>Jumlah {{qty}} Pax</a-button>
           </a-dropdown>
         </a-form-item>
       </a-col>
+    </a-row>
 
+    <a-row :gutter="16" type="flex" justify="end">
       <a-col :span="12">
-        <a-form-item :style="{ bottom: '-25px' }">
-          <a-button
-            html-type="submit"
-            class="btn-search b-shadow b-radius"
-            size="large"
-            block
-          >Cari LA Akomodasi</a-button>
-        </a-form-item>
+        <a-button
+          html-type="submit"
+          class="btn-search b-shadow b-radius"
+          size="large"
+          block
+        >Cari LA Akomodasi</a-button>
       </a-col>
     </a-row>
   </a-form>
@@ -152,7 +119,7 @@ export default {
   name: "searchAccommodation",
   data() {
     this.dateFormat = "YYYY-MM-DD";
-    return { 
+    return {
       qty: 1
     };
   },

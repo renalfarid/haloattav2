@@ -32,6 +32,7 @@ module.exports = {
         { src: "@/plugins/vInfinite-scroll", ssr: false },
         { src: "@/plugins/vClipboard", ssr: false },
         { src: "@/plugins/vSticky", ssr: false },
+        { src: "@/plugins/vLazytube", ssr: false },
         { src: "@/plugins/vLazyimg", ssr: false },
         { src: "@/plugins/vPimg", ssr: false },
         { src: "@/plugins/vAos", ssr: false }
