@@ -16,7 +16,6 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="data">
             <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="data" :loading="loading">
               <a-list-item
                 slot="renderItem"
