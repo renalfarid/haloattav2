@@ -74,7 +74,7 @@
                             <div class="ant-card-meta-description--bottom-right d-flex">
                               <div
                                 class="fs-14 fw-400 cr-black f-default text-ellipsis"
-                              >Program 9 Hari</div>
+                              >Visa Berlaku 9 Hari</div>
                             </div>
                             <div
                               class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
