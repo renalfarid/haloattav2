@@ -1,23 +1,16 @@
 <template>
-  <div>
-    <no-ssr>
-      <a-layout>
-        <navbar />
+  <a-layout>
+    <navbar />
 
-        <a-layout-content>
-          <nuxt />
-        </a-layout-content>
+    <a-layout-content>
+      <nuxt />
+    </a-layout-content>
 
-        <a-layout-footer :style="{ background: '#fff', padding: '24px 0' }">
-          <Footer />
-        </a-layout-footer>
-        <a-back-top />
-      </a-layout>
-      <div slot="placeholder" class="ant-spin-placeholder">
-        <a-spin tip="Mohon Tunggu Sebentar..." />
-      </div>
-    </no-ssr>
-  </div>
+    <a-layout-footer :style="{ background: '#fff', padding: '24px 0' }">
+      <Footer />
+    </a-layout-footer>
+    <a-back-top />
+  </a-layout>
 </template>
 <script>
 import Navbar from "~/components/header/navbar.vue";

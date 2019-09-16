@@ -22,10 +22,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 3, xl: 3, xxl: 4 }"
-              :dataSource="data"
-            >
+            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -37,16 +34,11 @@
                   <nuxt-link to="/catalog/accommodation/detail" class="d-block">
                     <a-card class="ant-card-package">
                       <div slot="cover">
-                        <div
-                          class="ant-card-cover--images"
-                          :style="{ backgroundImage: `url(${item.gambar != '' ? item.gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-                        >
+                        <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                           <div class="ant-card-cover--overlay">
                             <div class="ant-card-cover--overlay-box-radius"></div>
                             <div class="ant-card-cover--overlay-text">
-                              <div
-                                class="ant-card-cover--overlay-text-title fs-15 fw-500"
-                              >40</div>
+                              <div class="ant-card-cover--overlay-text-title fs-15 fw-500">40</div>
                               <div
                                 class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
                               >Pax</div>
@@ -65,12 +57,11 @@
 
                       <div class="d-flex align-items-center">
                         <div class="mr-8">
-                          <a-avatar
-                            class="vendor-logo"
-                            :style="{ backgroundImage: `url(${item.foto != '' ? item.foto : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-                          />
+                          <a-avatar class="vendor-logo zIndex" v-lazy:background-image="item.foto" />
                         </div>
-                        <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">{{item.nama_vendor}}</div>
+                        <div
+                          class="fs-14 fw-400 cr-gray f-default text-ellipsis"
+                        >{{item.nama_vendor}}</div>
                         <div class="ml-auto">
                           <a-rate class="fs-14 f-default" :defaultValue="item.rating" disabled />
                         </div>
@@ -110,9 +101,10 @@
 
                       <div class="package-description--more p-24">
                         <div class="d-flex align-items-center mb-8">
-                          <div
-                            class="fs-14 fw-400 cr-black f-default text-ellipsis"
-                          >Periode <span class="fw-500">{{item.tipe}}</span> Session</div>
+                          <div class="fs-14 fw-400 cr-black f-default text-ellipsis">
+                            Periode
+                            <span class="fw-500">{{item.tipe}}</span> Session
+                          </div>
                           <div
                             class="fs-14 fw-400 cr-black f-default text-ellipsis ml-auto"
                           >{{item.class_room}}</div>
@@ -121,11 +113,15 @@
                         <div class="d-flex align-items-center">
                           <div class="fs-14 fw-400 text-ellipsis">
                             <div class="cr-gray">Tanggal Mulai</div>
-                            <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
+                            <div
+                              class="cr-black"
+                            >{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                           </div>
                           <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                             <div class="cr-gray">Tanggal Berakhir</div>
-                            <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
+                            <div
+                              class="cr-black"
+                            >{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                           </div>
                         </div>
                       </div>

@@ -22,10 +22,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 4, xl: 4, xxl: 4 }"
-              :dataSource="data"
-            >
+            <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -39,9 +36,8 @@
                       <div slot="cover">
                         <div
                           class="ant-card-cover--images"
-                          :style="{ backgroundImage: `url(${item.images_package})` }"
+                          v-lazy:background-image="item.images_package"
                         >
-
                           <div class="ant-card--overlay-block">
                             <div class="d-flex align-items-center h-100">
                               <a-button>
@@ -57,7 +53,7 @@
                           <div class="ant-card-meta-title--top d-flex align-items-center">
                             <div class="ant-card-meta-title--top-left d-flex align-items-center">
                               <div class="mr-8">
-                                <a-avatar :src="item.logo_provider" size="small" />
+                                <a-avatar class="vendor-logo zIndex" size="small" v-lazy:background-image="item.foto" />
                               </div>
                               <div
                                 class="fs-13 fw-400 cr-gray f-default text-ellipsis"

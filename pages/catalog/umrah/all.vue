@@ -21,10 +21,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }"
-              :dataSource="data"
-            >
+            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -36,10 +33,7 @@
                   <a-card class="ant-card-package">
                     <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
                     <div slot="cover">
-                      <div
-                        class="ant-card-cover--images"
-                        :style="{ backgroundImage: `url(${item.gambar != '' ? item.gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
-                      >
+                      <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                         <div class="ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius"></div>
                           <div class="ant-card-cover--overlay-text">
@@ -80,7 +74,7 @@
                               </template>
                               <a-avatar
                                 class="vendor-logo zIndex mr-8"
-                                :style="{ backgroundImage: `url(${item.foto_vendor != '' ? item.foto_vendor : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'})` }"
+                                v-lazy:background-image="item.foto_vendor"
                               />
                             </a-popover>
 

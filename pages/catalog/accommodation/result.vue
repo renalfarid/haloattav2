@@ -16,10 +16,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 2, lg: 3, xl: 3, xxl: 4 }"
-              :dataSource="data"
-            >
+            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -33,13 +30,15 @@
                       <div slot="cover">
                         <div
                           class="ant-card-cover--images"
-                          :style="{ backgroundImage: `url(${item.images_package})` }"
+                          v-lazy:background-image="item.images_package"
                         >
                           <div class="ant-card-cover--overlay">
                             <div class="ant-card-cover--overlay-box-radius"></div>
                             <div class="ant-card-cover--overlay-text">
                               <div class="ant-card-cover--overlay-text-title fs-15 fw-500">40</div>
-                              <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">Pax</div>
+                              <div
+                                class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
+                              >Pax</div>
                             </div>
                           </div>
 
@@ -55,7 +54,7 @@
 
                       <div class="d-flex align-items-center">
                         <div class="mr-8">
-                          <a-avatar :src="item.logo_vendor" size="small" />
+                          <a-avatar class="vendor-logo zIndex" v-lazy:background-image="item.logo_vendor" />
                         </div>
                         <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">{{item.vendor}}</div>
                         <div class="ml-auto">
@@ -101,7 +100,10 @@
 
                       <div class="package-description--more p-24">
                         <div class="d-flex align-items-center mb-8">
-                          <div class="fs-14 fw-400 cr-black f-default text-ellipsis">Periode <span class="fw-500">LOW</span> Session</div>
+                          <div class="fs-14 fw-400 cr-black f-default text-ellipsis">
+                            Periode
+                            <span class="fw-500">LOW</span> Session
+                          </div>
                           <div
                             class="fs-14 fw-400 cr-black f-default text-ellipsis ml-auto"
                           >{{item.class_room}}</div>

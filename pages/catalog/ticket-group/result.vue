@@ -16,10 +16,7 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }"
-              :dataSource="data"
-            >
+            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -33,13 +30,15 @@
                       <div slot="cover">
                         <div
                           class="ant-card-cover--images"
-                          :style="{ backgroundImage: `url(${item.images_package})` }"
+                          v-lazy:background-image="item.images_package"
                         >
                           <div class="ant-card-cover--overlay">
                             <div class="ant-card-cover--overlay-box-radius"></div>
                             <div class="ant-card-cover--overlay-text">
                               <div class="ant-card-cover--overlay-text-title fs-15 fw-500">40</div>
-                              <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
+                              <div
+                                class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
+                              >pax</div>
                             </div>
                           </div>
 
@@ -65,16 +64,16 @@
                               />Terverifikasi
                             </div>
                           </template>
-                          <a-avatar class="zIndex mr-8" src="/user/av1.svg" />
+                          <a-avatar class="vendor-logo zIndex mr-8" v-lazy:background-image="item.foto" />
                         </a-popover>
                         <a-popover trigger="hover">
                           <template slot="content">
-                            <div class="fs-13 fw-400 cr-gray f-default">Maskapai {{item.maskapai}}</div>
+                            <div class="fs-14 fw-400 cr-gray f-default">Maskapai {{item.maskapai}}</div>
                           </template>
                           <a-avatar class="zIndex mr-8" :src="item.logo_maskapai" />
                         </a-popover>
                         <div
-                          class="ml-auto fs-13 fw-400 cr-gray f-default text-ellipsis"
+                          class="ml-auto fs-14 fw-400 cr-gray f-default text-ellipsis"
                         >{{item.class_cabin}}</div>
                       </div>
 
@@ -90,8 +89,8 @@
                           <div class="fs-14 fw-400 cr-black text-uppercase f-default">09:00 am</div>
                         </a-col>
                         <a-col :span="8" class="text-center">
-                          <div class="fs-13 fw-400 cr-gray text-capitalize f-default mb-8">Nonstop</div>
-                          <div class="fs-13 fw-400 cr-gray text-capitalize f-default">6h45m</div>
+                          <div class="fs-14 fw-400 cr-gray text-capitalize f-default mb-8">Nonstop</div>
+                          <div class="fs-14 fw-400 cr-gray text-capitalize f-default">6h45m</div>
                         </a-col>
                         <a-col :span="8" class="text-right">
                           <div class="fs-30 fw-500 cr-black text-uppercase f-default">jed</div>
@@ -102,24 +101,24 @@
                       <div class="d-flex align-items-end align-items-center">
                         <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">Program 9 Hari</div>
                         <div
-                          class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis"
+                          class="ml-auto fs-18 fw-500 cr-primary f-default text-ellipsis"
                         >Rp{{item.price}}</div>
                       </div>
 
                       <div class="package-description--more p-16">
                         <div class="d-flex align-items-center mb-8">
-                          <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Makassar</div>
+                          <div class="fs-15 fw-400 cr-black f-default text-ellipsis">Kota Asal Makassar</div>
                           <div
                             class="fs-15 fw-400 cr-black f-default text-ellipsis ml-auto"
                           >Round Trip</div>
                         </div>
 
                         <div class="d-flex align-items-center">
-                          <div class="fs-13 fw-400 text-ellipsis">
+                          <div class="fs-14 fw-400 text-ellipsis">
                             <div class="cr-gray">Keberangkatan</div>
                             <div class="cr-black">10 September 2019</div>
                           </div>
-                          <div class="fs-13 fw-400 text-ellipsis text-right ml-auto">
+                          <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                             <div class="cr-gray">Kedatangan</div>
                             <div class="cr-black">19 September 2019</div>
                           </div>

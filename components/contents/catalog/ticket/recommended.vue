@@ -1,5 +1,5 @@
 <template>
-  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }" :dataSource="lisData">
+  <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
         <nuxt-link to="/catalog/ticket-group/detail-ticket" class="d-block">
@@ -75,7 +75,7 @@
                 class="fs-14 fw-400 cr-gray f-default text-ellipsis"
               >Program {{item.program_hari}} Hari</div>
               <div
-                class="ml-auto fs-16 fw-500 cr-primary f-default text-ellipsis"
+                class="ml-auto fs-18 fw-500 cr-primary f-default text-ellipsis"
               >{{item.harga_jual | currency}}</div>
             </div>
 

@@ -1,5 +1,5 @@
 <template>
-  <a-list :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }" :dataSource="lisData">
+  <a-list :grid="{ gutter: 16, column: 4 }" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-skeleton :loading="loading" active>
         <nuxt-link to="/catalog/tourleader/detail" class="d-block">
@@ -34,7 +34,7 @@
                       </a-popover>
                     </div>
                     <div class="mr-8">
-                      <a-avatar :src="item.logo_provider" size="small" />
+                      <a-avatar class="vendor-logo zIndex" size="small" v-lazy:background-image="item.logo_provider" />
                     </div>
                     <div class="fs-13 fw-400 cr-gray f-default text-ellipsis">{{item.provider}}</div>
                   </div>
