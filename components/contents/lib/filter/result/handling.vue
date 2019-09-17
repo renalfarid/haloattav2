@@ -34,30 +34,26 @@ export default {
   data() {
     return {
       vendorLabel: "Semua Vendor",
-      hargaLabel: "Premi",
+      hargaLabel: "Harga",
       sortLabel: "Pilih Berdasarkan",
       vendorData: [
         {
-          value: "adira",
-          label: "Adira"
+          value: "Hasanuddin Handling",
+          label: "Hasanuddin Handling"
         },
         {
-          value: "In Healt",
-          label: "In Healt"
-        },
-        {
-          value: "Zurich",
-          label: "Zurich"
+          value: "Cengkareng Handling",
+          label: "Cengkareng Handling"
         }
       ],
       hargaData: [
         {
-          value: "Terendah",
-          label: "Terendah"
+          value: "Rp0 - Rp100.000",
+          label: "Rp0 - Rp100.000"
         },
         {
-          value: "Tertinggi",
-          label: "Tertinggi"
+          value: "Rp100.000 - Rp300.000",
+          label: "Rp100.000 - Rp300.000"
         }
       ],
       sortData: [

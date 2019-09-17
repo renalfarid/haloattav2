@@ -114,8 +114,11 @@ export default {
     onChangeHarga(value, selectedOptions) {
       this.hargaLabel = selectedOptions.map(o => o.label).join(", ");
     },
-    onChangeProgram(value, selectedOptions) {
-      this.programLabel = selectedOptions.map(o => o.label).join(", ");
+    onChangeUmaroh(value, selectedOptions) {
+      this.umarohLabel = selectedOptions.map(o => o.label).join(", ");
+    },
+    onChangeSort(value, selectedOptions) {
+      this.sortLabel = selectedOptions.map(o => o.label).join(", ");
     }
   }
 };
