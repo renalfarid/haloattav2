@@ -33,8 +33,8 @@
 export default {
   data() {
     return {
-      vendorLabel: "Semua Room",
-      hargaLabel: "Premi",
+      vendorLabel: "Tipe Room",
+      hargaLabel: "Harga",
       sortLabel: "Pilih Berdasarkan",
       vendorData: [
         {
@@ -52,12 +52,12 @@ export default {
       ],
       hargaData: [
         {
-          value: "Terendah",
-          label: "Terendah"
+          value: "Rp0 - Rp100.000",
+          label: "Rp0 - Rp100.000"
         },
         {
-          value: "Tertinggi",
-          label: "Tertinggi"
+          value: "Rp100.000 - Rp300.000",
+          label: "Rp100.000 - Rp300.000"
         }
       ],
       sortData: [

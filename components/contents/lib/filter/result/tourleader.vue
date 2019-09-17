@@ -3,16 +3,57 @@
     <a-card class="ant-card--results-filter d-flex align-items-center" :bordered="false">
       <div class="ant-card--results-filter-label">Filter</div>
       <div>
-        <a-cascader :options="vendorData" @change="onChangeVendor" :defaultValue="['semua vendor']">
-          <a-tag class="fs-14 cr-black">Vendor {{vendorLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+        <a-cascader :options="vendorData" @change="onChangeVendor">
+          <a-tag class="fs-14 cr-black">
+            {{vendorLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
         </a-cascader>
 
-        <a-cascader :options="hargaData" @change="onChangeHarga" :defaultValue="['semua harga']">
-          <a-tag class="fs-14 cr-black">Harga {{hargaLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+        <a-cascader :options="hargaData" @change="onChangeHarga">
+          <a-tag class="fs-14 cr-black">
+            {{hargaLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
         </a-cascader>
 
-        <a-cascader :options="programData" @change="onChangeProgram" :defaultValue="['semua program']">
-          <a-tag class="fs-14 cr-black">Program {{programLabel}} <a-icon class="fs-12" type="down" /></a-tag>
+        <a-cascader
+          :options="professionData"
+          @change="onChangeProfession"
+        >
+          <a-tag class="fs-14 cr-black">
+            {{professionLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
+        </a-cascader>
+
+        <a-cascader
+          :options="genderData"
+          @change="onChangeGender"
+        >
+          <a-tag class="fs-14 cr-black">
+            {{genderLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
+        </a-cascader>
+
+        <a-cascader
+          :options="bahasaData"
+          @change="onChangeBahasa"
+        >
+          <a-tag class="fs-14 cr-black">
+            {{bahasaLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
+        </a-cascader>
+      </div>
+
+      <div class="ml-auto">
+        <a-cascader :options="sortData" @change="onChangeSort">
+          <a-tag class="fs-14 cr-black">
+            {{sortLabel}}
+            <a-icon class="fs-12" type="down" />
+          </a-tag>
         </a-cascader>
       </div>
     </a-card>
@@ -22,24 +63,19 @@
 export default {
   data() {
     return {
-      vendorLabel: "Semua Vendor",
-      hargaLabel: "Semua Harga",
-      programLabel: "Semua Program",
+      vendorLabel: "Vendor",
+      hargaLabel: "Harga",
+      professionLabel: "Profesi",
+      genderLabel: "Gender",
+      bahasaLabel: "Bahasa",
+      sortLabel: "Pilih Berdasarkan",
       vendorData: [
-        {
-          value: "semua vendor",
-          label: "Semua Vendor"
-        },
         {
           value: "leader jobs",
           label: "Leader Jobs"
         }
       ],
       hargaData: [
-        {
-          value: "semua harga",
-          label: "Semua Harga"
-        },
         {
           value: "Rp0 - Rp20,000,000",
           label: "Rp0 - Rp20,000,000"
@@ -49,18 +85,60 @@ export default {
           label: "Rp20,000,000 - Rp40.000.000"
         }
       ],
-      programData: [
+      professionData: [
         {
-          value: "semua program",
-          label: "Semua Program"
+          value: "Ustad",
+          label: "Ustad"
         },
         {
-          value: "9 hari",
-          label: "9 Hari"
+          value: "MC",
+          label: "MC"
+        }
+      ],
+      genderData: [
+        {
+          value: "Laki - Laki",
+          label: "Laki - Laki"
         },
         {
-          value: "10 hari",
-          label: "10 Hari"
+          value: "Perempuan",
+          label: "Perempuan"
+        }
+      ],
+      bahasaData: [
+        {
+          value: "Indonesia",
+          label: "Indonesia"
+        },
+        {
+          value: "Inggris",
+          label: "Inggris"
+        },
+        {
+          value: "Arab",
+          label: "Arab"
+        }
+      ],
+      sortData: [
+        {
+          value: "Terpopuler",
+          label: "Terpopuler"
+        },
+        {
+          value: "Terlaris",
+          label: "Terlaris"
+        },
+        {
+          value: "Terbaru",
+          label: "Terbaru"
+        },
+        {
+          value: "Termurah",
+          label: "Termurah"
+        },
+        {
+          value: "Termahal",
+          label: "Termahal"
         }
       ]
     };
@@ -72,8 +150,17 @@ export default {
     onChangeHarga(value, selectedOptions) {
       this.hargaLabel = selectedOptions.map(o => o.label).join(", ");
     },
-    onChangeProgram(value, selectedOptions) {
-      this.programLabel = selectedOptions.map(o => o.label).join(", ");
+    onChangeProfession(value, selectedOptions) {
+      this.professionLabel = selectedOptions.map(o => o.label).join(", ");
+    },
+    onChangeGender(value, selectedOptions) {
+      this.genderLabel = selectedOptions.map(o => o.label).join(", ");
+    },
+    onChangeBahasa(value, selectedOptions) {
+      this.bahasaLabel = selectedOptions.map(o => o.label).join(", ");
+    },
+    onChangeSort(value, selectedOptions) {
+      this.sortLabel = selectedOptions.map(o => o.label).join(", ");
     }
   }
 };

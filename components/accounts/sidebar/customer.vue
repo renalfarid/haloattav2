@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="pl-16 pr-16 mb-16">
+    <div class="d-none pl-16 pr-16 mb-16">
       <a-button type="primary" class="b-shadow b-radius" block>
         <nuxt-link to="/upgrade">Upgrade Akun</nuxt-link>
       </a-button>
@@ -79,13 +79,9 @@
       <a-menu-item class="ant-menu--sider-item" key="disabled-1" disabled>
         <a-divider></a-divider>
       </a-menu-item>
-      
-      <a-menu-item class="ant-menu--sider-item" key="3">
-        <nuxt-link to="/accounts/management/seat" class="nav-text">Manajemen Seat</nuxt-link>
-      </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="9">
-        <nuxt-link to="/accounts/departure" class="nav-text">Daftar Pemberangkatan</nuxt-link>
+        <nuxt-link to="/accounts/departure" class="nav-text">Daftar Keberangkatan</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>

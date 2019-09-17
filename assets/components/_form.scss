@@ -73,6 +73,9 @@
                 }
             }
         }
+        & .ant-form-explain {
+            word-spacing: -5px !important;
+        }
     }
     & .ant-btn--add-passenger {
         @include border-radius(0);

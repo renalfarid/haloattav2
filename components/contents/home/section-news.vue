@@ -14,79 +14,87 @@
 
     <a-row :gutter="16">
       <a-col :span="24">
-        <a-carousel>
-          <nuxt-link to="/blog/detail">
-            <a-card class="card-news--large-overlay">
-              <div slot="cover">
-                <div class="haloummi">
-                  <img src="/haloummi.png" />
-                </div>
-                <div class="box-content" v-lazy:background-image="blog1">
-                  <div :style="{ width: '100%', zIndex: '2' }">
-                    <div class="box-overlay">
-                      <div class="txt">Haram Hukumnya merubah aturan yang disepakati</div>
-                      <div class="item">
-                        <a-tag color="#f50" class="ant-tag--kajian ant-tag--large">Kajian</a-tag>
-                        <span class="time">
-                          <a-icon type="clock-circle" />5 jam lalu
-                        </span>
+        <client-only>
+          <a-carousel>
+            <div>
+              <nuxt-link to="/blog/detail">
+                <a-card class="card-news--large-overlay">
+                  <div slot="cover">
+                    <div class="haloummi">
+                      <img src="/haloummi.png" />
+                    </div>
+                    <div class="box-content" v-lazy:background-image="blog1">
+                      <div :style="{ width: '100%', zIndex: '2' }">
+                        <div class="box-overlay">
+                          <div class="txt">Haram Hukumnya merubah aturan yang disepakati</div>
+                          <div class="item">
+                            <a-tag color="#f50" class="ant-tag--kajian ant-tag--large">Kajian</a-tag>
+                            <span class="time">
+                              <a-icon type="clock-circle" />5 jam lalu
+                            </span>
+                          </div>
+                        </div>
                       </div>
+                      <div class="gradient-bottom"></div>
                     </div>
                   </div>
-                  <div class="gradient-bottom"></div>
-                </div>
-              </div>
-            </a-card>
-          </nuxt-link>
+                </a-card>
+              </nuxt-link>
+            </div>
 
-          <nuxt-link to="/blog/detail">
-            <a-card class="card-news--large-overlay">
-              <div slot="cover">
-                <div class="haloummi">
-                  <img src="/haloummi.png" />
-                </div>
-                <div class="box-content" v-lazy:background-image="blog4">
-                  <div :style="{ width: '100%', zIndex: '2' }">
-                    <div class="box-overlay">
-                      <div class="txt">Agar tidak over bagasi saat traveling</div>
-                      <div class="item">
-                        <a-tag color="#f50" class="ant-tag--travel ant-tag--large">travel</a-tag>
-                        <span class="time">
-                          <a-icon type="clock-circle" />5 jam lalu
-                        </span>
+            <div>
+              <nuxt-link to="/blog/detail">
+                <a-card class="card-news--large-overlay">
+                  <div slot="cover">
+                    <div class="haloummi">
+                      <img src="/haloummi.png" />
+                    </div>
+                    <div class="box-content" v-lazy:background-image="blog4">
+                      <div :style="{ width: '100%', zIndex: '2' }">
+                        <div class="box-overlay">
+                          <div class="txt">Agar tidak over bagasi saat traveling</div>
+                          <div class="item">
+                            <a-tag color="#f50" class="ant-tag--travel ant-tag--large">travel</a-tag>
+                            <span class="time">
+                              <a-icon type="clock-circle" />5 jam lalu
+                            </span>
+                          </div>
+                        </div>
                       </div>
+                      <div class="gradient-bottom"></div>
                     </div>
                   </div>
-                  <div class="gradient-bottom"></div>
-                </div>
-              </div>
-            </a-card>
-          </nuxt-link>
+                </a-card>
+              </nuxt-link>
+            </div>
 
-          <nuxt-link to="/blog/detail">
-            <a-card class="card-news--large-overlay">
-              <div slot="cover">
-                <div class="haloummi">
-                  <img src="/haloummi.png" />
-                </div>
-                <div class="box-content" v-lazy:background-image="blog3">
-                  <div :style="{ width: '100%', zIndex: '2' }">
-                    <div class="box-overlay">
-                      <div class="txt">Agar tidak over bagasi saat traveling</div>
-                      <div class="item">
-                        <a-tag color="#f50" class="ant-tag--travel ant-tag--large">travel</a-tag>
-                        <span class="time">
-                          <a-icon type="clock-circle" />5 jam lalu
-                        </span>
+            <div>
+              <nuxt-link to="/blog/detail">
+                <a-card class="card-news--large-overlay">
+                  <div slot="cover">
+                    <div class="haloummi">
+                      <img src="/haloummi.png" />
+                    </div>
+                    <div class="box-content" v-lazy:background-image="blog3">
+                      <div :style="{ width: '100%', zIndex: '2' }">
+                        <div class="box-overlay">
+                          <div class="txt">Agar tidak over bagasi saat traveling</div>
+                          <div class="item">
+                            <a-tag color="#f50" class="ant-tag--travel ant-tag--large">travel</a-tag>
+                            <span class="time">
+                              <a-icon type="clock-circle" />5 jam lalu
+                            </span>
+                          </div>
+                        </div>
                       </div>
+                      <div class="gradient-bottom"></div>
                     </div>
                   </div>
-                  <div class="gradient-bottom"></div>
-                </div>
-              </div>
-            </a-card>
-          </nuxt-link>
-        </a-carousel>
+                </a-card>
+              </nuxt-link>
+            </div>
+          </a-carousel>
+        </client-only>
       </a-col>
 
       <a-col :span="6">
