@@ -96,28 +96,28 @@
                   <div class="mr-8">
                     <a-avatar
                       v-if="item.products_categorie === 'umrah'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
-                      src="/icons/search/tabs/color/umrah.svg"
+                      style="backgroundColor: rgb(15, 172, 243);padding: 2px"
+                      src="/icons/search/tabs/white/umrah.svg"
                     />
                     <a-avatar
                       v-if="item.products_categorie === 'tiket'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
-                      src="/icons/search/tabs/color/ticket.svg"
+                      style="backgroundColor: rgb(244, 54, 98);padding: 4px"
+                      src="/icons/search/tabs/white/ticket.svg"
                     />
                     <a-avatar
                       v-if="item.products_categorie === 'akomodasi'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
-                      src="/icons/search/tabs/color/accommodation.svg"
+                      style="backgroundColor: rgb(5, 203, 176);padding: 4px"
+                      src="/icons/search/tabs/white/accommodation.svg"
                     />
                     <a-avatar
                       v-if="item.products_categorie === 'visa'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
-                      src="/icons/search/tabs/color/visa.svg"
+                      style="backgroundColor: rgb(82, 196, 26);padding: 4px"
+                      src="/icons/search/tabs/white/visa.svg"
                     />
                     <a-avatar
                       v-if="item.products_categorie === 'insurance'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
-                      src="/icons/search/tabs/color/insurance.svg"
+                      style="backgroundColor: rgb(255, 124, 10);padding: 4px"
+                      src="/icons/search/tabs/white/insurance.svg"
                     />
                   </div>
                   <div
