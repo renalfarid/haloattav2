@@ -10,12 +10,25 @@
                   class="fs-28 fw-600 f-default cr-black"
                 >Tiket Group Umrah September Garuda Kanomas</div>
               </a-col>
-              <a-col :span="8" class="text-right">
-                <a-avatar
-                  :size="64"
-                  :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
-                  class="brand-vendor ml-auto"
-                />
+              <a-col :span="8">
+                <div class="d-flex align-end align-items-center text-right">
+                  <div>
+                    <a @click="toggleWishlist" class="fs-22 cr-gray mb-0">
+                      <a-icon v-if="wishlist == false" type="heart" />
+                      <a-icon
+                        v-else-if="wishlist == true"
+                        type="heart"
+                        theme="twoTone"
+                        twoToneColor="#eb2f96"
+                      />
+                    </a>
+                  </div>
+                  <a-avatar
+                    size="large"
+                    :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                    class="brand-vendor ml-16"
+                  />
+                </div>
               </a-col>
             </a-row>
           </div>
@@ -34,7 +47,12 @@
           <a-row :gutter="8" class="w-100">
             <a-col :span="8">
               <div class="d-flex align-items-start">
-                <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3" class="mr-8" size="small" icon="check" />
+                <a-avatar
+                  style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                  class="mr-8"
+                  size="small"
+                  icon="check"
+                />
                 <div>
                   <div class="fs-15 fw-400 cr-gray f-default">Kelas Kabin</div>
                   <div class="fs-15 fw-500 cr-black text-capitalize">{{item.class_flight}}</div>
@@ -43,7 +61,12 @@
             </a-col>
             <a-col :span="8">
               <div class="d-flex align-items-start">
-                <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3" class="mr-8" size="small" icon="check" />
+                <a-avatar
+                  style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                  class="mr-8"
+                  size="small"
+                  icon="check"
+                />
                 <div>
                   <div class="fs-15 fw-400 cr-gray f-default">Tipe Penerbangan</div>
                   <div class="fs-15 fw-500 cr-black">Pulang Pergi</div>
@@ -52,7 +75,12 @@
             </a-col>
             <a-col :span="8">
               <div class="d-flex align-items-start">
-                <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3" class="mr-8" size="small" icon="check" />
+                <a-avatar
+                  style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                  class="mr-8"
+                  size="small"
+                  icon="check"
+                />
                 <div>
                   <div class="fs-15 fw-400 cr-gray f-default">Penerbangan</div>
                   <div class="fs-15 fw-500 cr-black">Direct/Penerbangan Langsung</div>
@@ -143,13 +171,21 @@
     </a-card>
 
     <!-- Fasilitas -->
-    <a-card class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16" id="fasilitas">
+    <a-card
+      class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16"
+      id="fasilitas"
+    >
       <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk</div>
       <div class="fs-15 fw-400 cr-gray mb-24">Informasi fasilitas penerbangan anda</div>
       <a-row :gutter="8">
         <a-col :span="6">
           <div class="d-flex align-items-start">
-            <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3" class="mr-8" size="small" icon="check" />
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
             <div>
               <div class="fs-15 fw-500 cr-black">Bagasi 25 Kg</div>
             </div>
@@ -157,7 +193,12 @@
         </a-col>
         <a-col :span="6">
           <div class="d-flex align-items-start">
-            <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3" class="mr-8" size="small" icon="check" />
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
             <div>
               <div class="fs-15 fw-500 cr-black">Makan & Coffe Break</div>
             </div>
@@ -165,7 +206,12 @@
         </a-col>
         <a-col :span="6">
           <div class="d-flex align-items-start">
-            <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3" class="mr-8" size="small" icon="check" />
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
             <div>
               <div class="fs-15 fw-500 cr-black">Entertaiment</div>
             </div>
@@ -173,7 +219,12 @@
         </a-col>
         <a-col :span="6">
           <div class="d-flex align-items-start">
-            <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3" class="mr-8" size="small" icon="check" />
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
             <div>
               <div class="fs-15 fw-500 cr-black">Akses Disabilitas</div>
             </div>
@@ -213,6 +264,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      wishlist: false,
       loading: true,
       item: []
     };
@@ -222,6 +274,9 @@ export default {
   },
   methods: {
     moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
     async getdata() {
       axios
         .post("https://api.haloatta.com/api/tiket/detail", {

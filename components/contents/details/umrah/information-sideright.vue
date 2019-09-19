@@ -7,6 +7,12 @@
             <a-avatar src="https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843" />
           </div>
           <div class="fs-16 fw-500 cr-black">Umaroh Attaubah</div>
+          <div class="ml-auto pl-8">
+            <a @click="toggleWishlist" class="fs-22 cr-gray">
+              <a-icon v-if="wishlist == false" type="heart" />
+              <a-icon v-else-if="wishlist == true" type="heart" theme="twoTone" twoToneColor="#eb2f96" />
+            </a>
+          </div>
         </div>
 
         <div class="ant-package--rate mb-8">
@@ -139,6 +145,7 @@
 export default {
   data() {
     return {
+      wishlist: false,
       jamaah: 9,
       quad: 4,
       triple: 3,
@@ -146,6 +153,9 @@ export default {
     };
   },
   methods: {
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
     nextOrderReview() {
       this.$router.push({ path: "/catalog/umrah/order-review" });
     }
