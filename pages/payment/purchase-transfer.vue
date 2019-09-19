@@ -63,10 +63,18 @@
                         <div class="ant-package--information-bill mt-16 mb-16">
                           <a-row :gutter="16">
                             <a-col :span="16">
-                              <a-input placeholder="Masukkan kode voucher anda jika ada" size="large" />
+                              <a-input
+                                placeholder="Masukkan kode voucher anda jika ada"
+                                size="large"
+                              />
                             </a-col>
                             <a-col :span="8">
-                              <a-button type="primary" class="b-shadow b-radius" size="large" block>Gunakan</a-button>
+                              <a-button
+                                type="primary"
+                                class="b-shadow b-radius"
+                                size="large"
+                                block
+                              >Gunakan</a-button>
                             </a-col>
                           </a-row>
                         </div>
@@ -141,7 +149,7 @@
                                         <dd
                                           class="ant-deflist__value text-ellipsis fw-400 cr-black"
                                         >
-                                          <span>085213247455</span>
+                                          <span>111345777888999</span>
                                         </dd>
                                         <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
                                         <dd
@@ -153,7 +161,10 @@
                                     </a-col>
                                     <a-col :span="2" class="text-right">
                                       <a-button
-                                        class="d-none ant-btn--action-outline"
+                                        v-clipboard:copy="BCA"
+                                        v-clipboard:success="onCopy"
+                                        v-clipboard:error="onError"
+                                        class="ant-btn--action-outline"
                                         size="small"
                                         block
                                       >Salin</a-button>
@@ -183,7 +194,7 @@
                                         <dd
                                           class="ant-deflist__value text-ellipsis fw-400 cr-black"
                                         >
-                                          <span>085213247455</span>
+                                          <span>152444567890</span>
                                         </dd>
                                         <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
                                         <dd
@@ -195,7 +206,10 @@
                                     </a-col>
                                     <a-col :span="2" class="text-right">
                                       <a-button
-                                        class="d-none ant-btn--action-outline"
+                                        v-clipboard:copy="MANDIRI"
+                                        v-clipboard:success="onCopy"
+                                        v-clipboard:error="onError"
+                                        class="ant-btn--action-outline"
                                         size="small"
                                         block
                                       >Salin</a-button>
@@ -225,7 +239,7 @@
                                         <dd
                                           class="ant-deflist__value text-ellipsis fw-400 cr-black"
                                         >
-                                          <span>085213247455</span>
+                                          <span>155455678922</span>
                                         </dd>
                                         <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
                                         <dd
@@ -237,7 +251,10 @@
                                     </a-col>
                                     <a-col :span="2" class="text-right">
                                       <a-button
-                                        class="d-none ant-btn--action-outline"
+                                        v-clipboard:copy="BNI"
+                                        v-clipboard:success="onCopy"
+                                        v-clipboard:error="onError"
+                                        class="ant-btn--action-outline"
                                         size="small"
                                         block
                                       >Salin</a-button>
@@ -267,7 +284,7 @@
                                         <dd
                                           class="ant-deflist__value text-ellipsis fw-400 cr-black"
                                         >
-                                          <span>085213247455</span>
+                                          <span>17244456789</span>
                                         </dd>
                                         <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
                                         <dd
@@ -279,7 +296,10 @@
                                     </a-col>
                                     <a-col :span="2" class="text-right">
                                       <a-button
-                                        class="d-none ant-btn--action-outline"
+                                        v-clipboard:copy="BRI"
+                                        v-clipboard:success="onCopy"
+                                        v-clipboard:error="onError"
+                                        class="ant-btn--action-outline"
                                         size="small"
                                         block
                                       >Salin</a-button>
@@ -332,12 +352,15 @@
                                       <a-input
                                         addonBefore="Rp."
                                         size="large"
-                                        value="930.000.731"
+                                        :value="price"
                                         disabled
                                       >
                                         <a-button
                                           slot="addonAfter"
-                                          class="d-none ant-btn--action-outline"
+                                          v-clipboard:copy="price"
+                                          v-clipboard:success="onCopy"
+                                          v-clipboard:error="onError"
+                                          class="ant-btn--action-outline"
                                           size="small"
                                           block
                                         >Salin</a-button>
@@ -409,7 +432,10 @@
                                       >
                                         <a-button
                                           slot="addonAfter"
-                                          class="d-none ant-btn--action-outline"
+                                          v-clipboard:copy="priceDp"
+                                          v-clipboard:success="onCopy"
+                                          v-clipboard:error="onError"
+                                          class="ant-btn--action-outline"
                                           size="small"
                                           block
                                         >Salin</a-button>
@@ -484,7 +510,12 @@ export default {
     return {
       choosePaymentMethod: "transfer",
       chosePayment: "lunas",
-      priceDp: "500.000.000"
+      price: "930.000.000",
+      priceDp: "500.000.000",
+      BCA: "111345777888999",
+      MANDIRI: "152444567890",
+      BNI: "155455678922",
+      BRI: "17244456789"
     };
   },
   methods: {
@@ -499,6 +530,12 @@ export default {
     },
     nextPaymentConfirmation() {
       this.$router.push("/payment/payment-confirmation");
+    },
+    onCopy: function(e) {
+      this.$message.success("Berhasil menyalin");
+    },
+    onError: function(e) {
+      this.$message.success("Gagal menyalin");
     }
   },
   components: {

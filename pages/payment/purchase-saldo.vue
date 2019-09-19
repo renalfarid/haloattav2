@@ -72,7 +72,11 @@
                               </a-col>
                               <a-col :span="8">
                                 <a-form-item>
-                                  <a-button class="ant-btn--action-outline b-shadow b-radius" size="large" block>
+                                  <a-button
+                                    class="ant-btn--action-outline b-shadow b-radius"
+                                    size="large"
+                                    block
+                                  >
                                     <nuxt-link to="/accounts/top-up">Top Up Saldo</nuxt-link>
                                   </a-button>
                                 </a-form-item>
@@ -95,10 +99,18 @@
                         <div class="ant-package--information-bill mt-16 mb-16">
                           <a-row :gutter="16">
                             <a-col :span="16">
-                              <a-input placeholder="Masukkan kode voucher anda jika ada" size="large" />
+                              <a-input
+                                placeholder="Masukkan kode voucher anda jika ada"
+                                size="large"
+                              />
                             </a-col>
                             <a-col :span="8">
-                              <a-button type="primary" class="b-shadow b-radius" size="large" block>Gunakan</a-button>
+                              <a-button
+                                type="primary"
+                                class="b-shadow b-radius"
+                                size="large"
+                                block
+                              >Gunakan</a-button>
                             </a-col>
                           </a-row>
                         </div>
@@ -186,9 +198,19 @@
                                       <a-input
                                         addonBefore="Rp."
                                         size="large"
-                                        value="930.000.731"
+                                        :value="price"
                                         disabled
-                                      ></a-input>
+                                      >
+                                        <a-button
+                                          slot="addonAfter"
+                                          v-clipboard:copy="price"
+                                          v-clipboard:success="onCopy"
+                                          v-clipboard:error="onError"
+                                          class="ant-btn--action-outline"
+                                          size="small"
+                                          block
+                                        >Salin</a-button>
+                                      </a-input>
                                     </a-form-item>
                                     <div class="ant-price--info fw-400 fs-12">
                                       <span
@@ -234,12 +256,7 @@
                                       label="Masukkan DP anda (min 30% dari total tagihan)"
                                       help="Minimal DP anda Rp. 500.000.000"
                                     >
-                                      <a-input
-                                        addonBefore="Rp. "
-                                        size="large"
-                                        v-model="priceDp"
-                                        :value="priceDp"
-                                      />
+                                      <a-input addonBefore="Rp. " size="large" value="500.000.000" />
                                     </a-form-item>
 
                                     <a-form-item label="Kode Unik">
@@ -250,9 +267,19 @@
                                       <a-input
                                         addonBefore="Rp."
                                         size="large"
-                                        value="500.000.731"
+                                        :value="priceDp"
                                         disabled
-                                      ></a-input>
+                                      >
+                                      <a-button
+                                          slot="addonAfter"
+                                          v-clipboard:copy="priceDp"
+                                          v-clipboard:success="onCopy"
+                                          v-clipboard:error="onError"
+                                          class="ant-btn--action-outline"
+                                          size="small"
+                                          block
+                                        >Salin</a-button>
+                                      </a-input>
                                     </a-form-item>
 
                                     <div class="ant-price--info fw-400 fs-12">
@@ -330,7 +357,8 @@ export default {
     return {
       choosePaymentMethod: "saldo",
       chosePayment: "lunas",
-      priceDp: "500.000.000"
+      priceDp: "500.000.731",
+      price: "930.000.731"
     };
   },
   methods: {
@@ -348,6 +376,12 @@ export default {
     },
     nextEpackageFailed() {
       this.$router.push("/payment/ePackage-failed");
+    },
+    onCopy: function(e) {
+      this.$message.success("Berhasil menyalin");
+    },
+    onError: function(e) {
+      this.$message.success("Gagal menyalin");
     }
   },
   components: {
