@@ -1,0 +1,11 @@
+.ant-card--notification {
+    & .ant-collapse {
+        & .ant-collapse-item {
+            border: none;
+            margin: 16px 0;
+            & .ant-collapse-header {
+                padding: 16px;
+            }
+        }
+    }
+}

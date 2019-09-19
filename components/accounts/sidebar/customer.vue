@@ -97,6 +97,10 @@
         </nuxt-link>
       </a-menu-item>
 
+      <a-menu-item class="ant-menu--sider-item" key="8">
+        <nuxt-link to="/accounts/notifikasi" class="nav-text">Notifikasi</nuxt-link>
+      </a-menu-item>
+
       <a-menu-item class="ant-menu--sider-item" key="7">
         <nuxt-link to="/accounts/setting" class="nav-text">Pengaturan</nuxt-link>
       </a-menu-item>
