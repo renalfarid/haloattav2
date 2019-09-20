@@ -117,6 +117,7 @@ export default {
       lisData: []
     };
   },
+  
   created: function() {
     this.getdata();
   },

@@ -11,12 +11,25 @@
                   class="fs-28 fw-600 f-default cr-black"
                 >LA Akomodasi Umrah September Madinah Atta Tours</div>
               </a-col>
-              <a-col :span="8" class="text-right">
-                <a-avatar
-                  :size="64"
-                  :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
-                  class="brand-vendor ml-auto"
-                />
+              <a-col :span="8">
+                <div class="d-flex align-end align-items-center text-right">
+                  <div>
+                    <a @click="toggleWishlist" class="fs-22 cr-gray mb-0">
+                      <a-icon v-if="wishlist == false" type="heart" />
+                      <a-icon
+                        v-else-if="wishlist == true"
+                        type="heart"
+                        theme="twoTone"
+                        twoToneColor="#eb2f96"
+                      />
+                    </a>
+                  </div>
+                  <a-avatar
+                    size="large"
+                    :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                    class="brand-vendor ml-16"
+                  />
+                </div>
               </a-col>
             </a-row>
 
@@ -454,10 +467,15 @@ import faq from "~/components/contents/details/accommodation/faq.vue";
 import moment from "moment";
 export default {
   data() {
-    return {};
+    return {
+      wishlist: false
+    };
   },
   methods: {
-    moment
+    moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    }
   },
   components: {
     commentsAccommodation,

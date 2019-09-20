@@ -113,7 +113,7 @@
       </a-sub-menu>
 
       <a-menu-item class="ant-menu--sider-item" key="9">
-        <nuxt-link to="/accounts/departure" class="nav-text">Daftar Pemberangkatan</nuxt-link>
+        <nuxt-link to="/accounts/departure" class="nav-text">Daftar Pesanan</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>
@@ -131,15 +131,6 @@
           <nuxt-link to="/accounts/transaction/sales" class="nav-text">Daftar Penjualan</nuxt-link>
         </a-menu-item>
       </a-sub-menu>
-
-      <a-menu-item class="ant-menu--sider-item" key="5">
-        <nuxt-link to="/accounts/transaction/order">
-          <div class="d-flex align-items-center">
-            <span class="nav-text">Pesanan Saya</span>
-            <a-badge class="ml-auto" count="3" />
-          </div>
-        </nuxt-link>
-      </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="7">
         <nuxt-link to="/accounts/setting" class="nav-text">Pengaturan</nuxt-link>

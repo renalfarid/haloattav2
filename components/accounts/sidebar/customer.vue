@@ -81,7 +81,10 @@
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="9">
-        <nuxt-link to="/accounts/departure" class="nav-text">Daftar Keberangkatan</nuxt-link>
+        <nuxt-link to="/accounts/departure" class="nav-text">Daftar Pesanan</nuxt-link>
+      </a-menu-item>
+      <a-menu-item class="ant-menu--sider-item" key="10">
+        <nuxt-link to="/accounts/wishlist" class="nav-text">Disimpan</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="disabled-2" disabled>
@@ -90,17 +93,12 @@
 
       <a-menu-item class="ant-menu--sider-item" key="4">
         <nuxt-link to="/accounts/transaction/purchase">
-          <span class="nav-text">Transaksi</span>
+          <span class="nav-text">Pesanan Saya</span>
         </nuxt-link>
       </a-menu-item>
 
-      <a-menu-item class="ant-menu--sider-item" key="5">
-        <nuxt-link to="/accounts/transaction/order">
-          <div class="d-flex align-items-center">
-            <span class="nav-text">Pesanan Saya</span>
-            <a-badge class="ml-auto" count="4" />
-          </div>
-        </nuxt-link>
+      <a-menu-item class="ant-menu--sider-item" key="8">
+        <nuxt-link to="/accounts/notifikasi" class="nav-text">Notifikasi</nuxt-link>
       </a-menu-item>
 
       <a-menu-item class="ant-menu--sider-item" key="7">
