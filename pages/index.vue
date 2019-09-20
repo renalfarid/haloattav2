@@ -9,17 +9,17 @@
               <h2 class="fs-40 fw-600 title">Kembangkan Bisnis Umrah Anda</h2>
               <a-button class="btn-join--us d-none" size="large">Gabung Sekarang</a-button>
 
-              <a-comment class="ant-comment--accounts">
+              <a-comment v-if="$store.state.auth" class="ant-comment--accounts">
                 <template slot="actions">
                   <a-tag>
                     <div class="d-flex align-items-center">
-                      <a-icon class="mr-4" type="gold" />
+                      <a-icon class="mr-4" type="gold"/>
                       <span>101</span> POIN
                     </div>
                   </a-tag>
                   <a-tag>
                     <div class="d-flex align-items-center">
-                      <a-icon class="mr-4" type="wallet" />Rp
+                      <a-icon class="mr-4" type="wallet"/>Rp
                       <span>69.000.000</span>
                     </div>
                   </a-tag>
@@ -47,63 +47,63 @@
                   <span slot="tab">
                     <div class="icon-umrah"></div>Paket Umrah
                   </span>
-                  <search-umrah />
+                  <search-umrah/>
                 </a-tab-pane>
 
                 <a-tab-pane key="2">
                   <span slot="tab">
                     <div class="icon-ticket"></div>Tiket Group
                   </span>
-                  <search-ticket />
+                  <search-ticket/>
                 </a-tab-pane>
 
                 <a-tab-pane key="3">
                   <span slot="tab">
                     <div class="icon-accommodation"></div>LA Akomodasi
                   </span>
-                  <search-accommodation />
+                  <search-accommodation/>
                 </a-tab-pane>
 
                 <a-tab-pane key="4">
                   <span slot="tab">
                     <div class="icon-visa"></div>Visa Umrah
                   </span>
-                  <search-visa />
+                  <search-visa/>
                 </a-tab-pane>
 
                 <a-tab-pane key="5">
                   <span slot="tab">
                     <div class="icon-insurance"></div>Asuransi
                   </span>
-                  <search-insurance />
+                  <search-insurance/>
                 </a-tab-pane>
 
                 <a-tab-pane key="6">
                   <span slot="tab">
                     <div class="icon-handling"></div>Handling
                   </span>
-                  <search-handling />
+                  <search-handling/>
                 </a-tab-pane>
 
                 <a-tab-pane key="7">
                   <span slot="tab">
                     <div class="icon-manasik"></div>Manasik
                   </span>
-                  <search-manasik />
+                  <search-manasik/>
                 </a-tab-pane>
 
                 <a-tab-pane key="8">
                   <span slot="tab">
                     <div class="icon-equipment"></div>Perlengkapan
                   </span>
-                  <search-equipment />
+                  <search-equipment/>
                 </a-tab-pane>
 
                 <a-tab-pane key="9">
                   <span slot="tab">
                     <div class="icon-tourleader"></div>Tour Leader
                   </span>
-                  <search-tourleader />
+                  <search-tourleader/>
                 </a-tab-pane>
               </a-tabs>
             </a-col>
@@ -115,7 +115,7 @@
     <!-- if there is data then display it package umrah favorit -->
     <div class="content-favorites">
       <!-- if before login -->
-      <sectionFavorite />
+      <sectionFavorite/>
       <!-- if after login -->
       <!-- <section-myumrah /> -->
     </div>
@@ -135,12 +135,12 @@
           </a-row>
         </div>
 
-        <umrah-recommended />
+        <umrah-recommended/>
 
         <div class="all-package">
           <nuxt-link to="/catalog/umrah/all" class="fs-18 cr-green d-flex align-items-center">
             Tampilkan semua
-            <a-icon class="fs-16 ml-8" type="right" />
+            <a-icon class="fs-16 ml-8" type="right"/>
           </nuxt-link>
         </div>
       </div>
@@ -174,7 +174,7 @@
 
     <!-- if there is data then display it components choices -->
     <div class="content-components-umrah">
-      <sectionComponentsUmrah />
+      <sectionComponentsUmrah/>
     </div>
 
     <!-- if there is data then display it video -->
@@ -190,7 +190,7 @@
     </div>
 
     <div class="content-news">
-      <sectionNews />
+      <sectionNews/>
     </div>
   </div>
 </template>
