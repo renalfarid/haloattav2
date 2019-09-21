@@ -162,7 +162,7 @@
                     class="cr-primary fs-14"
                   >Lihat Detail</nuxt-link>
                   <div v-if="item.purchase_status === 'Belum Dibayar'">
-                    <a-divider type="vertical" />
+                    <a-divider type="vertical"/>
                     <a-button
                       class="b-shadow b-radius ant-btn--action"
                       @click="nextConf"
@@ -171,7 +171,7 @@
 
                   <div v-if="item.purchase_status === 'Kedaluwarsa'">
                     <div>
-                      <a-divider type="vertical" />
+                      <a-divider type="vertical"/>
                       <a class="cr-red fs-14" @click="remove(index)">Hapus</a>
                     </div>
                   </div>
@@ -256,6 +256,7 @@ const dataPembelian = [
 ];
 import moment from "moment";
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "mitraPurchase",
   head() {

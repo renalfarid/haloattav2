@@ -41,7 +41,7 @@
               </div>
 
               <div class="ant-card-wishlist">
-                <a-icon class="fs-22" type="heart" theme="twoTone" twoToneColor="#eb2f96" />
+                <a-icon class="fs-22" type="heart" theme="twoTone" twoToneColor="#eb2f96"/>
               </div>
 
               <div class="ant-card--overlay-block" v-if="item.status === 'available'">
@@ -67,7 +67,7 @@
                     <template slot="content">
                       <div class="fs-15 fw-500 cr-black">ATTA</div>
                       <div class="fs-14 fw-400 cr-gray f-default">
-                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                       </div>
                     </template>
                     <a-avatar
@@ -87,7 +87,7 @@
                   </a-popover>
                 </div>
                 <div class="ant-card-meta-title--top-right ml-auto">
-                  <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                  <a-rate class="fs-14 mb-4" :defaultValue="3" disabled/>
                 </div>
               </div>
               <div
@@ -161,6 +161,7 @@
 import axios from "axios";
 import moment from "moment";
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "wishlist",
   head() {
@@ -176,14 +177,16 @@ export default {
           id: 1,
           name_product: "Umrah Exclusive November 2019 Keberangkatan Jakarta",
           images_product: "/umrah/package/u1.png",
-          avatar_umaroh: "https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png",
+          avatar_umaroh:
+            "https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png",
           status: "available"
         },
         {
           id: 2,
           name_product: "Umrah Exclusive November 2020 Keberangkatan Jakarta",
           images_product: "/umrah/package/u2.png",
-          avatar_umaroh: "https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png",
+          avatar_umaroh:
+            "https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png",
           status: "kedaluwarsa"
         }
       ]
@@ -195,7 +198,8 @@ export default {
     showDeleteConfirm() {
       this.$confirm({
         title: "Hapus Item",
-        content: "Item ini sudah tidak lagi tersedia. Hapus dari Daftar Simpan?",
+        content:
+          "Item ini sudah tidak lagi tersedia. Hapus dari Daftar Simpan?",
         okText: "Ya, Hapus",
         okType: "primary",
         cancelText: "Tidak, Simpan Item Ini",

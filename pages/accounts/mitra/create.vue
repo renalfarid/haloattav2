@@ -9,15 +9,23 @@
             keuntungan, jadwal keberangkatan dan dapatkan
             berbagai benefit lainnya
           </div>
-          <a-button class="b-solid d-none b-radius b-shadow ant-btn--action mb-8 mr-8" size="large" @click="createPackage">Buat Paket v1</a-button>
-          <a-button class="b-solid b-radius b-shadow ant-btn--action" size="large" @click="createPackage2">Buat Paket</a-button>
+          <a-button
+            class="b-solid d-none b-radius b-shadow ant-btn--action mb-8 mr-8"
+            size="large"
+            @click="createPackage"
+          >Buat Paket v1</a-button>
+          <a-button
+            class="b-solid b-radius b-shadow ant-btn--action"
+            size="large"
+            @click="createPackage2"
+          >Buat Paket</a-button>
         </a-col>
         <a-col :span="14">
-          <img src="/icons/steps_1.png" />
+          <img src="/icons/steps_1.png">
         </a-col>
       </a-row>
 
-      <a-divider :style="{marginBottom: '40px'}" />
+      <a-divider :style="{marginBottom: '40px'}"/>
 
       <a-row :gutter="32">
         <a-col :span="10">
@@ -27,7 +35,7 @@
 
       <a-row :gutter="32" type="flex" justify="space-around" align="middle">
         <a-col :span="14">
-          <img src="/icons/steps_2.png" />
+          <img src="/icons/steps_2.png">
         </a-col>
         <a-col :span="10">
           <div
@@ -51,13 +59,13 @@
           </div>
         </a-col>
         <a-col :span="14">
-          <img src="/icons/steps_3.png" />
+          <img src="/icons/steps_3.png">
         </a-col>
       </a-row>
 
       <a-row :gutter="32" type="flex" justify="space-around" align="middle" class="mb-32">
         <a-col :span="14">
-          <img src="/icons/steps_4.png" />
+          <img src="/icons/steps_4.png">
         </a-col>
         <a-col :span="10">
           <div class="fs-24 fw-500 cr-black f-default text-right mb-16">Pilih Komponen Optional</div>
@@ -78,7 +86,11 @@
           </div>
         </a-col>
         <a-col :span="14" class="text-right">
-          <a-button class="b-solid b-radius b-shadow ant-btn--action" size="large" @click="createPackage">Buat Paket</a-button>
+          <a-button
+            class="b-solid b-radius b-shadow ant-btn--action"
+            size="large"
+            @click="createPackage"
+          >Buat Paket</a-button>
         </a-col>
       </a-row>
     </a-card>
@@ -86,6 +98,7 @@
 </template>
 <script>
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "mitraCreate",
   head() {
@@ -94,11 +107,11 @@ export default {
     };
   },
   methods: {
-    createPackage(){
-      this.$router.push('/create/steps/schedule');
+    createPackage() {
+      this.$router.push("/create/steps/schedule");
     },
     createPackage2() {
-      this.$router.push('/create/v2/steps/1');
+      this.$router.push("/create/v2/steps/1");
     }
   }
 };

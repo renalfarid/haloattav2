@@ -5,16 +5,16 @@
       <div class="ant-form-modal--login-top">
         <a-button class="ant-form-item--facebook" size="large" block>
           <span class="d-flex align-items-center">
-            <img src="/icons/facebook.png" class="mr-8" /> Daftar dengan Facebook
+            <img src="/icons/facebook.png" class="mr-8"> Daftar dengan Facebook
           </span>
         </a-button>
         <a-button class="ant-form-item--google" size="large" block>
           <span class="d-flex align-items-center">
-            <img src="/icons/google.png" class="mr-8" /> Daftar dengan Google
+            <img src="/icons/google.png" class="mr-8"> Daftar dengan Google
           </span>
         </a-button>
       </div>
-      <a-divider />
+      <a-divider/>
       <a-form class="ant-form-modal--login" :form="form" @submit="handleSubmitRegister">
         <a-form-item>
           <a-input
@@ -22,7 +22,7 @@
             placeholder="Kontak Email"
             size="large"
           >
-            <a-icon slot="prefix" type="mail" />
+            <a-icon slot="prefix" type="mail"/>
           </a-input>
         </a-form-item>
         <a-form-item>
@@ -31,7 +31,7 @@
             placeholder="Nomor Telepon"
             size="large"
           >
-            <a-icon slot="prefix" type="phone" />
+            <a-icon slot="prefix" type="phone"/>
           </a-input>
         </a-form-item>
         <a-form-item>
@@ -40,7 +40,7 @@
             placeholder="Nama Depan"
             size="large"
           >
-            <a-icon slot="prefix" type="user" />
+            <a-icon slot="prefix" type="user"/>
           </a-input>
         </a-form-item>
         <a-form-item>
@@ -49,7 +49,7 @@
             placeholder="Nama Belakang"
             size="large"
           >
-            <a-icon slot="prefix" type="user" />
+            <a-icon slot="prefix" type="user"/>
           </a-input>
         </a-form-item>
         <a-form-item>
@@ -58,7 +58,7 @@
             placeholder="Buat Kata Sandi"
             size="large"
           >
-            <a-icon slot="prefix" type="lock" />
+            <a-icon slot="prefix" type="lock"/>
           </a-input>
         </a-form-item>
         <a-form-item>
@@ -80,19 +80,20 @@
       <div class="ant-form-modal--login-top">
         <a-button class="ant-form-item--facebook" size="large" block>
           <span class="d-flex align-items-center">
-            <img src="/icons/facebook.png" class="mr-8" /> Masuk dengan Facebook
+            <img src="/icons/facebook.png" class="mr-8"> Masuk dengan Facebook
           </span>
         </a-button>
         <a-button class="ant-form-item--google" size="large" block>
           <span class="d-flex align-items-center">
-            <img src="/icons/google.png" class="mr-8" /> Masuk dengan Google
+            <img src="/icons/google.png" class="mr-8"> Masuk dengan Google
           </span>
         </a-button>
       </div>
-      <a-divider />
+      <a-divider/>
       <a-form class="ant-form-modal--login" :form="form" @submit="handleSubmitLogin">
         <a-form-item>
           <a-input
+            v-model="username"
             v-decorator="['userName',{ rules: [{ required: true, message: 'Harus di isi!' }] }]"
             placeholder="Email atau No. Telp"
             size="large"
@@ -100,14 +101,15 @@
         </a-form-item>
         <a-form-item>
           <a-input
+            v-model="password"
             v-decorator="['password',{ valuePropName: 'password', initialValue: [], rules: [{ required: true, message: 'Harus di isi' }] }]"
             :type="passwordFieldType"
             placeholder="Kata Sandi"
             size="large"
           >
             <a slot="suffix" class="cr-gray" @click="showPassword">
-              <a-icon v-if="passwordFieldType === 'password'" type="eye" />
-              <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible" />
+              <a-icon v-if="passwordFieldType === 'password'" type="eye"/>
+              <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible"/>
             </a>
           </a-input>
         </a-form-item>
@@ -128,9 +130,12 @@
 </template>
 
 <script>
+import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
 export default {
   data() {
     return {
+      username: "",
       isShowing: false,
       password: "",
       passwordFieldType: "password"
@@ -149,6 +154,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log(values);
+          this.loginpost();
         }
       });
     },
@@ -162,6 +168,65 @@ export default {
     },
     authentication() {
       this.isShowing = !this.isShowing;
+    },
+    loginpost() {
+      axios
+        .post(process.env.token, {
+          username: this.username,
+          password: this.password,
+          grant_type: "password",
+          client_id: 8,
+          client_secret: "Uu4QDKCnPbcwMXf5ScMrfkdIFLEewIP5Z7NQSVt2"
+        })
+        .then(response => {
+          console.log(response);
+          const auth = {
+            accessToken: response.data.access_token,
+            name: "ilham"
+          };
+          this.$store.commit("setAuth", auth); // mutating to store for client rendering
+          Cookie.set("auth", response.data.access_token); // saving token in cookie for server rendering
+          this.getUser(response.data.access_token);
+        })
+        .catch(err => {
+          console.log("error", err);
+        });
+    },
+    async getUser(token) {
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+      console.log(token);
+      axios
+        .get(process.env.baseUrl + "user/info", config)
+        .then(response => {
+          console.log(response);
+          const auth = {
+            nama:
+              response.data.data.nama_depan +
+              " " +
+              response.data.data.nama_belakang,
+            email: response.data.data.email,
+            alamat: response.data.data.alamat,
+            status: response.data.data.role_nama,
+            telepon: response.data.data.telepon
+          };
+          this.$store.commit("setAuth", auth); // mutating to store for client rendering
+          this.nama =
+            response.data.data.nama_depan +
+            " " +
+            response.data.data.nama_belakang;
+          this.email = response.data.data.email;
+          this.alamat = response.data.data.alamat;
+          this.status = response.data.data.role_nama;
+          this.telepon = response.data.data.telepon;
+          this.$router.replace("/");
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

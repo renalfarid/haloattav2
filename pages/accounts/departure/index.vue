@@ -128,16 +128,28 @@
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Status Pemberangkatan</div>
                 <div class="fs-14 fw-500 cr-black">
-                    <a-badge status="default" :text="item.status_departure" v-if="item.status_departure === 'Menunggu Pemberangkatan'" />
-                    <a-badge status="processing" :text="item.status_departure" v-if="item.status_departure === 'Pemberangkatan'" />
-                    <a-badge status="success" :text="item.status_departure" v-if="item.status_departure === 'Selesai'" />
+                  <a-badge
+                    status="default"
+                    :text="item.status_departure"
+                    v-if="item.status_departure === 'Menunggu Pemberangkatan'"
+                  />
+                  <a-badge
+                    status="processing"
+                    :text="item.status_departure"
+                    v-if="item.status_departure === 'Pemberangkatan'"
+                  />
+                  <a-badge
+                    status="success"
+                    :text="item.status_departure"
+                    v-if="item.status_departure === 'Selesai'"
+                  />
                 </div>
               </a-col>
               <a-col :span="5" class="text-right">
                 <nuxt-link to="/accounts/departure/detail">
                   <span class="fs-14 fw-500 cr-green">
                     Lihat Detail
-                    <a-icon type="right" class="fs-12 ml-8" />
+                    <a-icon type="right" class="fs-12 ml-8"/>
                   </span>
                 </nuxt-link>
               </a-col>
@@ -153,7 +165,8 @@ const dataSeat = [
   {
     no_transaction: "ATT-UMH-14674422219080148",
     products_categorie: "umrah",
-    products_name: "Paket Umrah Exclusive September 2019, Keberangkatan Makassar",
+    products_name:
+      "Paket Umrah Exclusive September 2019, Keberangkatan Makassar",
     pax: "4",
     date: "05 Januari 2019",
     program: "Program 9 Hari",
@@ -202,6 +215,7 @@ const dataSeat = [
   }
 ];
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "mitraDeparture",
   head() {

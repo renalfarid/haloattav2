@@ -6,7 +6,12 @@
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
         <a-col :span="6" class="text-uppercase cr-gray fs-14">Urutkan Berdasarkan</a-col>
         <a-col :span="8">
-          <a-select showSearch defaultValue="Jumlah HALO Point Terendah" size="large" style="width: 100%">
+          <a-select
+            showSearch
+            defaultValue="Jumlah HALO Point Terendah"
+            size="large"
+            style="width: 100%"
+          >
             <a-select-option value="Jumlah HALO Point Terendah">Jumlah HALO Point Terendah</a-select-option>
             <a-select-option value="Jumlah HALO Point Tertinggi">Jumlah HALO Point Tertinggi</a-select-option>
           </a-select>
@@ -49,22 +54,26 @@
 <script>
 const data = [
   {
-    promo_images: "https://av-uploads.s3.amazonaws.com/inventory/items/variants/inv-item-20190207062651.jpg",
+    promo_images:
+      "https://av-uploads.s3.amazonaws.com/inventory/items/variants/inv-item-20190207062651.jpg",
     promo_name: "Peduli Bencana Gempa Palu-Donggala",
     promo_point: "540"
   },
   {
-    promo_images: "https://av-uploads.s3.amazonaws.com/egift_image/image-egift-20181210020017.png",
+    promo_images:
+      "https://av-uploads.s3.amazonaws.com/egift_image/image-egift-20181210020017.png",
     promo_name: "eVoucher Rp 10.000",
     promo_point: "600"
   },
   {
-    promo_images: "https://av-uploads.s3.amazonaws.com/inventory/items/variants/inv-item-20190207120146.jpg",
+    promo_images:
+      "https://av-uploads.s3.amazonaws.com/inventory/items/variants/inv-item-20190207120146.jpg",
     promo_name: "KFC Rp 20.000",
     promo_point: "12000"
   }
 ];
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "PromoHaloPoin",
   head() {
@@ -75,7 +84,7 @@ export default {
   data() {
     return {
       loading: true,
-      data,
+      data
     };
   },
   mounted() {

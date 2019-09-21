@@ -3,15 +3,15 @@
     <a-card :loading="loading" :bordered="false" class="b-radius b-shadow b-solid mb-16">
       <span slot="title" class="fs-16 fw-500 cr-black">
         <!-- if status tagihan 'menunggu pembayaran' -->
-        <a-avatar size="small" style="backgroundColor: #FF7C0A" class="mr-8" icon="clock-circle" />Menunggu Pembayaran
+        <a-avatar size="small" style="backgroundColor: #FF7C0A" class="mr-8" icon="clock-circle"/>Menunggu Pembayaran
       </span>
       <span slot="title" class="fs-16 fw-500 cr-black d-none">
         <!-- if status tagihan 'kedaluwarsa' -->
-        <a-avatar size="small" style="backgroundColor: #F43662" class="mr-8" icon="close" />Batas Waktu Habis
+        <a-avatar size="small" style="backgroundColor: #F43662" class="mr-8" icon="close"/>Batas Waktu Habis
       </span>
       <!-- if status tagihan 'berhasil' -->
       <span slot="title" class="fs-16 fw-500 cr-black d-none">
-        <a-avatar size="small" style="backgroundColor: #52c41a" class="mr-8" icon="check" />Pembelian Berhasil
+        <a-avatar size="small" style="backgroundColor: #52c41a" class="mr-8" icon="check"/>Pembelian Berhasil
       </span>
       <div v-if="!loading" slot="extra" class="fw-500 fs-16 cr-black">No. Transaksi: HT1234567890</div>
       <a-steps :current="1">
@@ -40,7 +40,7 @@
       <div class="ant-card-body-item">
         <a-row :gutter="16" type="flex" justify="space-around" align="middle">
           <a-col :span="12">
-            <img class="logo" src="/haloatta.png" />
+            <img class="logo" src="/haloatta.png">
           </a-col>
           <a-col :span="12">
             <div class="text-right mb-16">
@@ -118,7 +118,7 @@
                   <img
                     :style="{maxWidth: '100%', height: '18px'}"
                     src="https://upload.wikimedia.org/wikipedia/id/thumb/e/e0/BCA_logo.svg/1280px-BCA_logo.svg.png"
-                  />
+                  >
                 </div>
               </div>
 
@@ -147,7 +147,7 @@
                   <img
                     :style="{maxWidth: '100%', height: '18px'}"
                     src="https://upload.wikimedia.org/wikipedia/id/thumb/f/fa/Bank_Mandiri_logo.svg/1280px-Bank_Mandiri_logo.svg.png"
-                  />
+                  >
                 </div>
               </div>
 
@@ -180,7 +180,7 @@
                   <img
                     :style="{maxWidth: '100%', height: '18px'}"
                     src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1280px-BNI_logo.svg.png"
-                  />
+                  >
                 </div>
               </div>
 
@@ -209,7 +209,7 @@
                   <img
                     :style="{maxWidth: '100%', height: '18px'}"
                     src="https://upload.wikimedia.org/wikipedia/commons/9/97/Logo_BRI.png"
-                  />
+                  >
                 </div>
               </div>
 
@@ -325,6 +325,7 @@
 </template>
 <script>
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "invoice",
   head() {

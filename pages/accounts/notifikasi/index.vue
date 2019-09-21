@@ -6,7 +6,7 @@
       <a-collapse-panel key="1" :showArrow="false" class="b-shadow b-solid b-radius">
         <template slot="header">
           <div class="d-flex align-items-center">
-            <a-avatar style="color: #f56a00; backgroundColor: #fde3cf" icon="alert" class="mr-8" />
+            <a-avatar style="color: #f56a00; backgroundColor: #fde3cf" icon="alert" class="mr-8"/>
             <span class="fs-16 fw-500 cr-black">Promo Umrah 2020</span>
           </div>
         </template>
@@ -16,7 +16,7 @@
       <a-collapse-panel key="2" :showArrow="false" class="b-shadow b-solid b-radius">
         <template slot="header">
           <div class="d-flex align-items-center">
-            <a-avatar style="color: #f56a00; backgroundColor: #fde3cf" icon="alert" class="mr-8" />
+            <a-avatar style="color: #f56a00; backgroundColor: #fde3cf" icon="alert" class="mr-8"/>
             <span class="fs-16 fw-500 cr-black">Voucher Promo Umrah 50%</span>
           </div>
         </template>
@@ -27,6 +27,7 @@
 </template>
 <script>
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "notification",
   head() {

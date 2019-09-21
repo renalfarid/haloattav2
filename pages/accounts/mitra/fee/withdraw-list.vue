@@ -91,6 +91,7 @@ const dataWithdraw = [
   }
 ];
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "feeWithdraw",
   head() {
@@ -110,7 +111,7 @@ export default {
       }
     };
   },
-  mounted(){
+  mounted() {
     setTimeout(() => {
       this.loading = false;
     }, 1500);
