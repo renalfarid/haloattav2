@@ -10,11 +10,11 @@
           <div class="fs-30 fw-500 cr-white f-default mb-24">Selamat datang di Haloatta</div>
 
           <a-button class="ant-btn--facebook" size="large" block>
-            <img src="/icons/facebook.png" /> Masuk dengan Facebook
+            <img src="/icons/facebook.png"> Masuk dengan Facebook
           </a-button>
 
           <a-button class="ant-btn--google" size="large" block>
-            <img src="/icons/google.png" /> Masuk dengan Google
+            <img src="/icons/google.png"> Masuk dengan Google
           </a-button>
 
           <a-divider></a-divider>
@@ -22,7 +22,7 @@
           <a-form :form="form" @submit="handleSubmit">
             <a-form-item>
               <a-input
-                v-decorator="['userName',{ rules: [{ required: true, message: 'Harus di isi!' }] }]"
+                v-decorator="['username',{ rules: [{ required: true, message: 'Harus di isi!' }] }]"
                 placeholder="Email atau No. Telp"
                 size="large"
               />
@@ -30,18 +30,18 @@
             <a-form-item>
               <a-input
                 v-decorator="['password',{ valuePropName: 'password', initialValue: true, rules: [{ required: true, message: 'Harus di isi' }] }]"
-                :type="passwordFieldType"
                 placeholder="Kata Sandi"
                 size="large"
               >
-              <a slot="suffix" class="cr-gray" @click="showPassword" >
-                <a-icon v-if="passwordFieldType === 'password'" type="eye"/>
-                <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible"/>
-              </a>
+                <a slot="suffix" class="cr-gray" @click="showPassword">
+                  <a-icon v-if="passwordFieldType === 'password'" type="eye"/>
+                  <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible"/>
+                </a>
               </a-input>
             </a-form-item>
             <a-form-item>
               <a-button
+                @click="requestLogin"
                 class="ant-btn--authentication mb-8"
                 html-type="submit"
                 size="large"
@@ -61,10 +61,10 @@
       </a-col>
       <a-col :span="17" class="d-flex align-items-center p-16 vh-100">
         <a-card class="m-auto">
-          <img class="logo mb-32" src="/haloatta.png" />
+          <img class="logo mb-32" src="/haloatta.png">
           <div class="fs-30 fw-500 cr-black f-default mb-8">
             Bergabunglah untuk menjadi
-            <br />Mitra kami
+            <br>Mitra kami
           </div>
           <div class="fs-18 fw-400 cr-black mb-24">Tingkatkan penjualan produk anda bersama kami</div>
           <div>
@@ -74,13 +74,17 @@
             >Daftar Mitra</a-button>
           </div>
         </a-card>
-        <img class="img-cover--bottom" src="/icons/authentication.png" />
+        <img class="img-cover--bottom" src="/icons/authentication.png">
       </a-col>
     </a-row>
   </div>
 </template>
 <script>
+import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
+
 export default {
+  middleware: "notAuthenticated",
   layout: "application",
   name: "login",
   head() {
@@ -91,7 +95,8 @@ export default {
   },
   data() {
     return {
-      password: "",
+      username: "ilhamsabar@gmail.com",
+      password: "admin123",
       passwordFieldType: "password"
     };
   },
@@ -100,15 +105,58 @@ export default {
   },
   methods: {
     showPassword() {
-      this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+      this.passwordFieldType =
+        this.passwordFieldType === "password" ? "text" : "password";
     },
     handleSubmit(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log(values);
+          axios
+            .post("https://api.haloatta.com/oauth/token", {
+              username: this.username,
+              password: this.password,
+              grant_type: "password",
+              client_id: 8,
+              client_secret: "Uu4QDKCnPbcwMXf5ScMrfkdIFLEewIP5Z7NQSVt2"
+            })
+            .then(response => {
+              // console.log(response.status);
+              this.$store.commit("setAuth", response.data.access_token); // mutating to store for client rendering
+              Cookie.set("auth", response.data.access_token); // saving token in cookie for server rendering
+              this.$router.push("/");
+            })
+            .catch(err => {
+              console.log("error", err);
+              // if (err.response.status == 401) {
+              //   console.log("error", "Password salah");
+              // }
+            });
         }
       });
+    },
+    requestLogin() {
+      axios
+        .post("https://api.haloatta.com/oauth/token", {
+          username: this.username,
+          password: this.password,
+          grant_type: "password",
+          client_id: 8,
+          client_secret: "Uu4QDKCnPbcwMXf5ScMrfkdIFLEewIP5Z7NQSVt2"
+        })
+        .then(response => {
+          // console.log(response.status);
+          this.$store.commit("setAuth", response.data.access_token); // mutating to store for client rendering
+          Cookie.set("auth", auth); // saving token in cookie for server rendering
+          this.$router.push("/");
+        })
+        .catch(err => {
+          // console.log("error", err.response);
+          // if (err.response.status == 401) {
+          //   console.log("error", "Password salah");
+          // }
+        });
     }
   }
 };
