@@ -2,7 +2,7 @@
   <div class="ant-layout-sider--accounts-item">
     <div class="ant-layout-sider--accounts-logo">
       <nuxt-link to="/">
-        <img src="/haloatta.png" />
+        <img src="/haloatta.png">
       </nuxt-link>
     </div>
 
@@ -14,7 +14,7 @@
         />
       </div>
       <div class="text-ellipsis pr-16">
-        <div class="fs-16 fw-500 f-default d-inline cr-black">Gustang Arifatullah</div>
+        <div class="fs-16 fw-500 f-default d-inline cr-black">{{$store.state.auth.nama}}</div>
       </div>
     </div>
 
@@ -24,37 +24,37 @@
       </a-button>
     </div>
 
-    <a-divider :style="{margin: '14px 0'}" />
+    <a-divider :style="{margin: '14px 0'}"/>
 
     <nuxt-link to="/accounts/top-up" class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
-        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3" icon="wallet" />
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3" icon="wallet"/>
       </div>
       <div>
         <div class="fs-14 cr-gray">Saldo Halopay</div>
         <div class="fs-15 fw-500 f-default cr-black">{{ 100000000 | currency }}</div>
       </div>
       <div class="ml-auto">
-        <a-icon type="right" class="cr-primary fs-12" />
+        <a-icon type="right" class="cr-primary fs-12"/>
       </div>
     </nuxt-link>
 
-    <a-divider :style="{margin: '14px 0'}" />
+    <a-divider :style="{margin: '14px 0'}"/>
 
     <nuxt-link to="/accounts/poin" class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
-        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3;" icon="crown" />
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3;" icon="crown"/>
       </div>
       <div>
         <div class="fs-14 cr-gray">Halo Poin</div>
         <div class="fs-15 fw-500 f-default cr-black">10 poin</div>
       </div>
       <div class="ml-auto">
-        <a-icon type="right" class="cr-primary fs-12" />
+        <a-icon type="right" class="cr-primary fs-12"/>
       </div>
     </nuxt-link>
 
-    <a-divider />
+    <a-divider/>
 
     <a-menu class="ant-menu--sider" mode="vertical" :defaultSelectedKeys="['1']">
       <a-menu-item class="ant-menu--sider-item" key="1">
@@ -112,7 +112,38 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
-  props: ["current"]
+  props: ["current"],
+  data() {
+    return {
+      nama: ""
+    };
+  },
+  created: function() {
+    // get todo items and start listening to events once component is created
+    this.getlocal();
+  },
+  methods: {
+    getlocal() {
+      const config = {
+        headers: {
+          Authorization: "Bearer " + this.$store.state.auth.accessToken
+        }
+      };
+      console.log(this.$store.state.auth.accessToken);
+      axios
+        .get("https://api.haloatta.com/api/user/info", config)
+        .then(response => {
+          this.nama =
+            response.data.data.nama_depan +
+            " " +
+            response.data.data.nama_belakang;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
 };
 </script>

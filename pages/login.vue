@@ -22,6 +22,7 @@
           <a-form :form="form" @submit="handleSubmit">
             <a-form-item>
               <a-input
+                v-model="username"
                 v-decorator="['username',{ rules: [{ required: true, message: 'Harus di isi!' }] }]"
                 placeholder="Email atau No. Telp"
                 size="large"
@@ -29,6 +30,7 @@
             </a-form-item>
             <a-form-item>
               <a-input
+                v-model="password"
                 v-decorator="['password',{ valuePropName: 'password', initialValue: true, rules: [{ required: true, message: 'Harus di isi' }] }]"
                 placeholder="Kata Sandi"
                 size="large"
@@ -41,7 +43,6 @@
             </a-form-item>
             <a-form-item>
               <a-button
-                @click="requestLogin"
                 class="ant-btn--authentication mb-8"
                 html-type="submit"
                 size="large"
@@ -95,8 +96,8 @@ export default {
   },
   data() {
     return {
-      username: "ilhamsabar@gmail.com",
-      password: "admin123",
+      username: "",
+      password: "",
       passwordFieldType: "password"
     };
   },
@@ -122,40 +123,55 @@ export default {
               client_secret: "Uu4QDKCnPbcwMXf5ScMrfkdIFLEewIP5Z7NQSVt2"
             })
             .then(response => {
-              // console.log(response.status);
-              this.$store.commit("setAuth", response.data.access_token); // mutating to store for client rendering
+              console.log(response);
+              const auth = {
+                accessToken: response.data.access_token,
+                name: "ilham"
+              };
+              this.$store.commit("setAuth", auth); // mutating to store for client rendering
               Cookie.set("auth", response.data.access_token); // saving token in cookie for server rendering
-              this.$router.push("/");
+              this.getUser(response.data.access_token);
             })
             .catch(err => {
               console.log("error", err);
-              // if (err.response.status == 401) {
-              //   console.log("error", "Password salah");
-              // }
             });
         }
       });
     },
-    requestLogin() {
+    async getUser(token) {
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+      console.log(token);
       axios
-        .post("https://api.haloatta.com/oauth/token", {
-          username: this.username,
-          password: this.password,
-          grant_type: "password",
-          client_id: 8,
-          client_secret: "Uu4QDKCnPbcwMXf5ScMrfkdIFLEewIP5Z7NQSVt2"
-        })
+        .get("https://api.haloatta.com/api/user/info", config)
         .then(response => {
-          // console.log(response.status);
-          this.$store.commit("setAuth", response.data.access_token); // mutating to store for client rendering
-          Cookie.set("auth", auth); // saving token in cookie for server rendering
+          console.log(response);
+          const auth = {
+            nama:
+              response.data.data.nama_depan +
+              " " +
+              response.data.data.nama_belakang,
+            email: response.data.data.email,
+            alamat: response.data.data.alamat,
+            status: response.data.data.role_nama,
+            telepon: response.data.data.telepon
+          };
+          this.$store.commit("setAuth", auth); // mutating to store for client rendering
+          this.nama =
+            response.data.data.nama_depan +
+            " " +
+            response.data.data.nama_belakang;
+          this.email = response.data.data.email;
+          this.alamat = response.data.data.alamat;
+          this.status = response.data.data.role_nama;
+          this.telepon = response.data.data.telepon;
           this.$router.push("/");
         })
         .catch(err => {
-          // console.log("error", err.response);
-          // if (err.response.status == 401) {
-          //   console.log("error", "Password salah");
-          // }
+          console.log(err);
         });
     }
   }

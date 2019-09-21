@@ -47,7 +47,7 @@
               </a-menu>
 
               <!-- before login -->
-              <div class="navbar-button ml-8">
+              <div class="navbar-button ml-8" v-if="!$store.state.auth">
                 <a-button
                   class="btn-authentication b-shadow b-radius fw-500"
                   @click="showAuthentication"
@@ -57,7 +57,7 @@
               <!-- after login -->
               <div class="navbar-accounts">
                 <nuxt-link to="/accounts">
-                  <a-avatar icon="user" />
+                  <a-avatar icon="user"/>
                 </nuxt-link>
               </div>
             </div>
@@ -65,7 +65,7 @@
 
           <!-- modal login -->
           <a-modal wrapClassName="ant-modal-authentication" v-model="authentication">
-            <modal-authentication />
+            <modal-authentication/>
           </a-modal>
         </a-layout-header>
       </div>

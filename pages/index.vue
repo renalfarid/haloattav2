@@ -24,7 +24,7 @@
                     </div>
                   </a-tag>
                 </template>
-                <a slot="author">Awaluddin Muhammad Arifatullah</a>
+                <a slot="author">{{$store.state.auth.nama}}</a>
                 <a-avatar
                   src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png"
                   alt="haloatta"
@@ -215,6 +215,7 @@ import sectionComponentsUmrah from "~/components/contents/home/section-component
 import umrahRecommended from "~/components/contents/catalog/umrah/recommended.vue";
 
 import sectionNews from "~/components/contents/home/section-news.vue";
+
 export default {
   name: "homePage",
   head() {

@@ -15,7 +15,7 @@ module.exports = {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || "http://localhost:8000/api/"
+    baseUrl: "https://api.haloatta.com/api/"
   },
 
   loading: false,

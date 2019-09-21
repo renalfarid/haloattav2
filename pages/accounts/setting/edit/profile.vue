@@ -7,25 +7,25 @@
       <a-row :gutter="24" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-right cr-gray fs-14">Foto Profil</a-col>
         <a-col :span="20">
-          <a-avatar size="large" src="/user/maha_user.jpg" />
+          <a-avatar size="large" src="/user/maha_user.jpg"/>
         </a-col>
       </a-row>
-      <a-divider :style="{ margin: '16px 0' }" />
+      <a-divider :style="{ margin: '16px 0' }"/>
       <a-row :gutter="24" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-right cr-gray fs-14">Nama Depan</a-col>
-        <a-col :span="20" class="cr-black fs-14">Alba</a-col>
+        <a-col :span="20" class="cr-black fs-14">{{$store.state.auth.nama}}</a-col>
       </a-row>
-      <a-divider :style="{ margin: '16px 0' }" />
+      <a-divider :style="{ margin: '16px 0' }"/>
       <a-row :gutter="24" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-right cr-gray fs-14">Nama Belakang</a-col>
         <a-col :span="20" class="cr-black fs-14">Husain Mustofa</a-col>
       </a-row>
-      <a-divider :style="{ margin: '16px 0' }" />
+      <a-divider :style="{ margin: '16px 0' }"/>
       <a-row :gutter="24" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-right cr-gray fs-14">Jenis Kelamin</a-col>
         <a-col :span="20" class="cr-black fs-14">Laki-Laki</a-col>
       </a-row>
-      <a-divider :style="{ margin: '16px 0' }" />
+      <a-divider :style="{ margin: '16px 0' }"/>
       <a-row :gutter="24" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-right cr-gray fs-14">Tanggal Lahir</a-col>
         <a-col :span="20" class="cr-black fs-14">Maros, 30 April 1993</a-col>
@@ -57,9 +57,9 @@
                 :beforeUpload="beforeUpload"
                 @change="handleChange"
               >
-                <img v-if="imageUrl" :src="imageUrl" class="max-width" alt="avatar" />
+                <img v-if="imageUrl" :src="imageUrl" class="max-width" alt="avatar">
                 <div v-else>
-                  <a-icon class="fs-18" :type="loading ? 'loading' : 'plus'" />
+                  <a-icon class="fs-18" :type="loading ? 'loading' : 'plus'"/>
                   <div class="ant-upload-text fw-400 cr-gray">Upload</div>
                 </div>
               </a-upload>
@@ -142,7 +142,12 @@
         <a-divider></a-divider>
         <a-row :gutter="16" type="flex" justify="end" align="middle">
           <a-col :span="12">
-            <a-button type="primary" class="b-shadow b-radius" html-type="submit" block>Simpan Perubahan</a-button>
+            <a-button
+              type="primary"
+              class="b-shadow b-radius"
+              html-type="submit"
+              block
+            >Simpan Perubahan</a-button>
           </a-col>
         </a-row>
       </a-form>
