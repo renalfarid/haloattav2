@@ -24,38 +24,26 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/asuransi/package/a1.png)' }"
-            ></div>
+            <expandable-image src="/asuransi/package/a1.png" />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/asuransi/package/a2.png)' }"
-                ></div>
+                <expandable-image src="/asuransi/package/a2.png" />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/asuransi/package/a3.png)' }"
-                ></div>
+                <expandable-image src="/asuransi/package/a3.png" />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/asuransi/package/a4.png)' }"
-            ></div>
+            <expandable-image src="/asuransi/package/a4.png" />
           </div>
         </a-col>
       </a-row>
