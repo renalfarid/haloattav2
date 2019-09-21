@@ -204,6 +204,7 @@ export default {
         .then(response => {
           console.log(response);
           const auth = {
+            accessToken: token,
             nama:
               response.data.data.nama_depan +
               " " +

@@ -32,20 +32,25 @@
 
       <a-col :span="8" v-for="(item, index) in lisData" :key="index">
         <a-card class="ant-card-package">
-          <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
+          <nuxt-link
+            :to="'/catalog/umrah/detail-package?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+          ></nuxt-link>
           <div slot="cover">
-            <div class="ant-card-cover--images" v-lazy:background-image="item.images_product">
+            <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
-                  <div class="ant-card-cover--overlay-text-title fs-15">{{item.pax_available}}</div>
+                  <div class="ant-card-cover--overlay-text-title fs-15">{{item.sisa_seat}}</div>
                   <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
                 </div>
               </div>
               <div class="ant-card--overlay-block">
                 <div class="d-flex align-items-center h-100">
                   <a-button>
-                    <nuxt-link to="/catalog/umrah/detail-package">Lihat detail</nuxt-link>
+                    <nuxt-link
+                      :to="'/catalog/umrah/detail-package?kode_produk='+item.kode_produk"
+                    >Lihat detail</nuxt-link>
                   </a-button>
                 </div>
               </div>
@@ -57,9 +62,9 @@
                 <div class="ant-card-meta-title--top-left f-default d-flex align-items-center">
                   <a-popover trigger="hover">
                     <template slot="content">
-                      <div class="fs-15 fw-500 cr-black">Awaluddin Muhammad Arifatullah</div>
+                      <div class="fs-15 fw-500 cr-black">{{item.nama_vendor}}</div>
                       <div class="fs-14 fw-400 cr-gray f-default">
-                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                       </div>
                     </template>
                     <a-avatar
@@ -70,25 +75,25 @@
 
                   <a-popover trigger="hover">
                     <template slot="content">
-                      <div class="fs-13 fw-400 cr-black f-default">Maskapai Garuda Indonesia</div>
+                      <div class="fs-13 fw-400 cr-black f-default">Maskapai {{item.nama_maskapai}}</div>
                     </template>
-                    <a-avatar class="zIndex mr-8" src="/maskapai/logo/garuda.svg" />
+                    <a-avatar class="zIndex mr-8" :src="item.image"/>
                   </a-popover>
                 </div>
                 <div class="ant-card-meta-title--top-right ml-auto">
-                  <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                  <a-rate class="fs-14 mb-4" :defaultValue="item.kelas_bintang" disabled/>
                 </div>
               </div>
-              <div class="ant-card-meta-title--package fw-500">{{item.name_product}}</div>
+              <div class="ant-card-meta-title--package fw-500">{{item.nama}}</div>
             </div>
 
             <div slot="description">
               <div class="ant-card-meta-description--bottom d-flex align-items-center">
                 <div class="ant-card-meta-description--bottom-right">
-                  <div class="fs-14 fw-400 cr-black">Program 9 Hari</div>
+                  <div class="fs-14 fw-400 cr-black">Program {{item.jumlah_hari}} Hari</div>
                 </div>
                 <div class="ant-card-meta-description--bottom-left cr-primary ml-auto">
-                  <span>Rp{{item.price_product}}</span>
+                  <span>{{item.harga_jual | currency}}</span>
                 </div>
               </div>
             </div>
@@ -113,7 +118,7 @@
                 <span>Kota Keberangkatan</span>
               </div>
               <div class="fs-15 fw-400 cr-gray f-default text-ellipsis">
-                <span>Makassar</span>
+                <span>{{item.nama_kota}}</span>
               </div>
             </div>
 
@@ -123,11 +128,11 @@
             <div class="d-flex align-items-center">
               <div class="fs-14 fw-400 text-ellipsis">
                 <div class="cr-gray">Keberangkatan</div>
-                <div class="cr-gray">{{moment("2019-09-10", "YYYY-MM-DD").format('LL')}}</div>
+                <div class="cr-gray">{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('LL')}}</div>
               </div>
               <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                 <div class="cr-gray">Kedatangan</div>
-                <div class="cr-gray">{{moment("2019-09-17", "YYYY-MM-DD").format('LL')}}</div>
+                <div class="cr-gray">{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('LL')}}</div>
               </div>
             </div>
           </div>
@@ -137,49 +142,33 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 import moment from "moment";
 export default {
   data() {
     return {
-      imgCover: '/umrah/cover/cu40.jpg',
-      lisData: [
-        {
-          id: 1,
-          name_product: "Umrah Hemat November 2019 Keberangkatan Jakarta",
-          images_product: "/umrah/package/u1.png",
-          price_product: "19.400.000",
-          pax_available: 38,
-          pax_booked: 7
-        },
-        {
-          id: 2,
-          name_product: "Umrah Hemat Desember 2019 Keberangkatan Makassar",
-          images_product: "/umrah/package/u2.png",
-          price_product: "17.900.000",
-          pax_available: 41,
-          pax_booked: 13
-        },
-        {
-          id: 3,
-          name_product: "Umrah Hemat Januari 2020 Keberangkatan Makassar",
-          images_product: "/umrah/package/u3.png",
-          price_product: "17.300.000",
-          pax_available: 41,
-          pax_booked: 20
-        },
-        {
-          id: 4,
-          name_product: "Umrah Hemat Februari 2020 Keberangkatan Makassar",
-          images_product: "/umrah/package/u4.png",
-          price_product: "16.900.000",
-          pax_available: 40,
-          pax_booked: 3
-        }
-      ]
+      imgCover: "/umrah/cover/cu40.jpg",
+      lisData: []
     };
   },
+  created() {
+    this.getdata();
+  },
   methods: {
-    moment
+    moment,
+    async getdata() {
+      axios
+        .get(process.env.baseUrl + "paket/umroh/recomended", {
+          params: {
+            per_page: 4
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+          this.lisData = response.data.data.data;
+          this.loading = false;
+        });
+    }
   }
 };
 </script>
