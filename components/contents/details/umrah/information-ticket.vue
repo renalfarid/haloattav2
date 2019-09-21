@@ -1,218 +1,235 @@
 <template>
   <div>
-    <div :style="{ position: 'relative' }">
-      <a-row :gutter="32">
-        <a-col :span="17">
-          <a-list itemLayout="horizontal" class="ant-list--package-information">
-            <a-list-item class="ant-list-item--package-information">
-              <div>
-                <h2 class="ant-package--information-title fs-20 cr-black fw-500">Informasi Tiket</h2>
-                <div class="ant-package--information-text fs-15 cr-black fw-400">
-                  <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio iste quibusdam consectetur amet consequatur numquam natus a repellendus! Quasi, dolores corporis doloribus velit voluptas quae neque unde aperiam sapiente commodi?</span>
+    <a-card class="b-shadow b-solid mb-16">
+      <a-list itemLayout="horizontal" class="ant-list--package-information">
+        <a-list-item class="ant-list-item--package-information pt-0">
+          <div class="ant-package--images w-100" style="z-index: inherit">
+            <a-row :gutter="10">
+              <a-col :span="8">
+                <div class="ant-package--images-small">
+                  <expandable-image src="/maskapai/garuda/t6.jpg" />
                 </div>
-              </div>
-            </a-list-item>
+              </a-col>
+              <a-col :span="8">
+                <div class="ant-package--images-small">
+                  <expandable-image src="/maskapai/garuda/t7.jpg" />
+                </div>
+              </a-col>
+              <a-col :span="8">
+                <div class="ant-package--images-small">
+                  <expandable-image src="/maskapai/garuda/t8.jpg" />
+                </div>
+              </a-col>
+            </a-row>
+          </div>
+        </a-list-item>
 
-            <a-list-item class="ant-list-item--package-information">
-              <div class="w-100">
-                <div class="d-flex align-items-center w-100">
-                  <div>
-                    <a-avatar
-                      src="https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png"
-                    />
-                  </div>
-                  <div class="fs-16 fw-500 cr-black">Lion Air</div>
-                  <div class="fs-16 fw-500 cr-black ml-auto">JT-367</div>
-                </div>
-                <div class="ant-package--images w-100 mt-16" style="z-index: inherit">
-                  <a-row :gutter="10">
-                    <a-col :span="8">
-                      <div class="ant-package--images-large">
-                        <div
-                          class="ant-package--images-cover"
-                          :style="{ backgroundImage: 'url(/maskapai/c1.png)' }"
-                        ></div>
-                      </div>
-                    </a-col>
-                    <a-col :span="8">
-                      <div class="ant-package--images-large">
-                        <div
-                          class="ant-package--images-cover"
-                          :style="{ backgroundImage: 'url(/maskapai/c2.png)' }"
-                        ></div>
-                      </div>
-                    </a-col>
-                    <a-col :span="8">
-                      <div class="ant-package--images-large">
-                        <div
-                          class="ant-package--images-cover"
-                          :style="{ backgroundImage: 'url(/maskapai/c3.png)' }"
-                        ></div>
-                      </div>
-                    </a-col>
-                  </a-row>
-                </div>
-              </div>
-            </a-list-item>
+        <a-list-item class="ant-list-item--package-information">
+          <div class="d-flex align-items-center w-100">
+            <a-avatar
+              size="large"
+              class="mr-8"
+              src="https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png"
+            />
+            <div class="fs-16 fw-500 cr-black">Lion Air</div>
 
-            <a-list-item class="ant-list-item--package-information">
-              <div class="d-flex align-items-center w-100">
+            <div class="fs-16 fw-500 cr-black ml-auto">JT-333</div>
+          </div>
+        </a-list-item>
+
+        <a-list-item class="ant-list-item--package-information">
+          <a-row :gutter="8" class="w-100">
+            <a-col :span="8">
+              <div class="d-flex align-items-start">
+                <a-avatar
+                  style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                  class="mr-8"
+                  size="small"
+                  icon="check"
+                />
                 <div>
-                  <a-avatar shape="square" src="/icons/package/seat.png" />
+                  <div class="fs-15 fw-400 cr-gray f-default">Kelas Kabin</div>
+                  <div class="fs-15 fw-500 cr-black text-capitalize">Ekonomi</div>
                 </div>
-                <div class="fs-15 fw-500 cr-black">Kelas Kabin</div>
-                <div class="fs-15 fw-500 cr-black ml-auto">Economy Class</div>
               </div>
-            </a-list-item>
-
-            <a-list-item class="ant-list-item--package-information">
-              <div class="d-flex align-items-start w-100">
+            </a-col>
+            <a-col :span="8">
+              <div class="d-flex align-items-start">
+                <a-avatar
+                  style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                  class="mr-8"
+                  size="small"
+                  icon="check"
+                />
                 <div>
-                  <a-avatar shape="square" src="/icons/package/airplane.png" />
+                  <div class="fs-15 fw-400 cr-gray f-default">Tipe Penerbangan</div>
+                  <div class="fs-15 fw-500 cr-black">Pulang Pergi</div>
                 </div>
-                <div class="w-100">
-                  <div class="fs-15 fw-500 cr-black">Info Keberangkatan dan Kepulangan</div>
-                  <a-timeline :style="{marginTop: '16px'}">
-                    <a-timeline-item>
-                      <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                        <a-col :span="14">
-                          <div
-                            class="fs-15 fw-400 cr-black"
-                          >Keberangkatan : Makassar (UPG) ke Jeddah (JED)</div>
-                          <div class="fs-15 fw-500 cr-black">09:45 AM</div>
-                          <div class="fs-15 fw-400 cr-gray">Kamis, 10 September 2019</div>
-                        </a-col>
-                        <a-col :span="4" class="text-center">
-                          <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                          <div class="fs-15 fw-400 cr-gray">10h45m</div>
-                        </a-col>
-                        <a-col :span="6" class="text-right">
-                          <div class="fs-15 fw-500 cr-black">14:15 AM</div>
-                          <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
-                        </a-col>
-                      </a-row>
+              </div>
+            </a-col>
+            <a-col :span="8">
+              <div class="d-flex align-items-start">
+                <a-avatar
+                  style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+                  class="mr-8"
+                  size="small"
+                  icon="check"
+                />
+                <div>
+                  <div class="fs-15 fw-400 cr-gray f-default">Penerbangan</div>
+                  <div class="fs-15 fw-500 cr-black">Direct/Penerbangan Langsung</div>
+                </div>
+              </div>
+            </a-col>
+          </a-row>
+        </a-list-item>
+
+        <a-list-item class="ant-list-item--package-information">
+          <div class="d-flex align-items-start w-100">
+            <div>
+              <a-avatar size="small" shape="square" src="/icons/package/airplane.png" />
+            </div>
+            <div class="w-100">
+              <div class="fs-16 fw-500 cr-black mb-16">Jadwal Keberangkatan dan Kepulangan</div>
+              <a-row :gutter="16">
+                <a-col :span="12">
+                  <div class="fs-14 fw-500 cr-black mb-16">Keberangkatan</div>
+                  <a-timeline>
+                    <a-timeline-item color="green">
+                      <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
+                      <div class="fs-14 fw-500 cr-black text-uppercase">
+                        <span>Makassar (UPG)</span>
+                      </div>
+                      <div class="fs-15 fw-500 cr-black">12:00</div>
+                      <div class="fs-15 fw-400 cr-gray">
+                        <span>{{moment("20019-12-20", "YYYY-MM-DD").format('LL')}}</span>
+                      </div>
+                    </a-timeline-item>
+                    <a-timeline-item color="red">
+                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                      <div class="fs-14 fw-400 cr-black">
+                        <span class="mr-8">Nonstop</span>
+                        <span class="fw-500">10j 0m</span>
+                      </div>
                     </a-timeline-item>
                     <a-timeline-item>
-                      <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
-                        <a-col :span="14">
-                          <div
-                            class="fs-15 fw-400 cr-black"
-                          >Kepulangan : Jeddah (JED) ke Makassar (UPG)</div>
-                          <div class="fs-15 fw-500 cr-black">09:45 AM</div>
-                          <div class="fs-15 fw-400 cr-gray">Kamis, 10 September 2019</div>
-                        </a-col>
-                        <a-col :span="4" class="text-center">
-                          <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                          <div class="fs-15 fw-400 cr-gray">10h45m</div>
-                        </a-col>
-                        <a-col :span="6" class="text-right">
-                          <div class="fs-15 fw-500 cr-black">14:15 AM</div>
-                          <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
-                        </a-col>
-                      </a-row>
+                      <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
+                      <div class="fs-14 fw-500 cr-black text-uppercase">
+                        <span>Jeddah (JED)</span>
+                      </div>
+                      <div class="fs-15 fw-500 cr-black">18:00</div>
+                      <div class="fs-15 fw-400 cr-gray">
+                        <span>{{moment("20019-12-20", "YYYY-MM-DD").format('LL')}}</span>
+                      </div>
                     </a-timeline-item>
                   </a-timeline>
-                </div>
-              </div>
-            </a-list-item>
+                </a-col>
 
-            <a-list-item class="ant-list-item--package-information">
-              <div class="d-flex align-items-start w-100">
-                <div>
-                  <a-avatar shape="square" src="/icons/package/direction.png" />
-                </div>
-                <div>
-                  <div class="fs-15 fw-500 cr-black">Direct Flight</div>
-                  <div class="fs-15 fw-400 cr-gray">Penerbangan Langsung Tanpa Transit</div>
-                </div>
-              </div>
-            </a-list-item>
+                <a-col :span="12">
+                  <div class="fs-14 fw-500 cr-black mb-16">Kepulangan</div>
+                  <a-timeline>
+                    <a-timeline-item color="green">
+                      <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
+                      <div class="fs-14 fw-500 cr-black text-uppercase">
+                        <span>Jeddah (JED)</span>
+                      </div>
+                      <div class="fs-15 fw-500 cr-black">12:00</div>
+                      <div class="fs-15 fw-400 cr-gray">
+                        <span>{{moment("20019-12-29", "YYYY-MM-DD").format('LL')}}</span>
+                      </div>
+                    </a-timeline-item>
+                    <a-timeline-item color="red">
+                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                      <div class="fs-14 fw-400 cr-black">
+                        <span class="mr-8">Nonstop</span>
+                        <span class="fw-500">10j 0m</span>
+                      </div>
+                    </a-timeline-item>
+                    <a-timeline-item>
+                      <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
+                      <div class="fs-14 fw-500 cr-black text-uppercase">
+                        <span>Jakarta (CGK)</span>
+                      </div>
+                      <div class="fs-15 fw-500 cr-black">18:00</div>
+                      <div class="fs-15 fw-400 cr-gray">
+                        <span>{{moment("20019-12-29", "YYYY-MM-DD").format('LL')}}</span>
+                      </div>
+                    </a-timeline-item>
+                  </a-timeline>
+                </a-col>
+              </a-row>
+            </div>
+          </div>
+        </a-list-item>
+      </a-list>
+    </a-card>
 
-            <a-list-item class="ant-list-item--package-information">
-              <div class="d-flex align-items-start w-100">
-                <div>
-                  <a-avatar shape="square" src="/icons/package/round_trip.png" />
-                </div>
-                <div>
-                  <div class="fs-15 fw-500 cr-black">Round Trip</div>
-                  <div
-                    class="fs-15 fw-400 cr-gray"
-                  >Tiket termasuk penerbangan keberangkatan dan kepulangan</div>
-                </div>
-              </div>
-            </a-list-item>
-
-            <a-list-item class="ant-list-item--package-information">
-              <div class="d-flex align-items-start w-100">
-                <div>
-                  <a-avatar shape="square" src="/icons/package/charity.png" />
-                </div>
-                <div class="w-100">
-                  <div class="fs-15 fw-500 cr-black">Fasilitas</div>
-                  <div class="fs-15 fw-400 cr-gray">Informasi fasilitas penerbangan anda</div>
-                  <a-row :gutter="8">
-                    <a-col :span="8">
-                      <a-card :bordered="false">
-                        <img alt="fasilitas" src="/maskapai/f1.png" slot="cover" />
-                        <a-card-meta title="Entertainment" />
-                      </a-card>
-                    </a-col>
-                    <a-col :span="8">
-                      <a-card :bordered="false">
-                        <img alt="fasilitas" src="/maskapai/f2.png" slot="cover" />
-                        <a-card-meta title="Bagasi" />
-                      </a-card>
-                    </a-col>
-                    <a-col :span="8">
-                      <a-card :bordered="false">
-                        <img alt="fasilitas" src="/maskapai/f3.png" slot="cover" />
-                        <a-card-meta title="Food & Coffee Break" />
-                      </a-card>
-                    </a-col>
-                    <a-col :span="8">
-                      <a-card :bordered="false">
-                        <img alt="fasilitas" src="/maskapai/f4.png" slot="cover" />
-                        <a-card-meta title="Akses Disabilitas" />
-                      </a-card>
-                    </a-col>
-                  </a-row>
-                </div>
-              </div>
-            </a-list-item>
-
-            <a-list-item class="ant-list-item--package-information">
-              <div class="d-flex align-items-center w-100">
-                <div>
-                  <div class="fs-16 fw-500 cr-black">
-                    Syarat & Ketentuan
-                    <span>Lion Air</span>
-                  </div>
-                  <div class="fs-15 fw-400 cr-gray">Berikut syarat dan Ketentuan maskapai Lion Air</div>
-                </div>
-                <div class="ml-auto">
-                  <a-button>Baca Aturan</a-button>
-                </div>
-              </div>
-            </a-list-item>
-          </a-list>
+    <!-- Fasilitas -->
+    <a-card class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16">
+      <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk</div>
+      <div class="fs-15 fw-400 cr-gray mb-24">Informasi fasilitas penerbangan anda</div>
+      <a-row :gutter="8">
+        <a-col :span="6">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Bagasi 25 Kg</div>
+            </div>
+          </div>
         </a-col>
-
-        <a-col :span="7" :style="{margin : '16px 0'}">
-          <div class="ant-layout--right">
-            <div class="ant-affix--container">
-              <informationSideRight />
+        <a-col :span="6">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Makan & Coffe Break</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Entertaiment</div>
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="6">
+          <div class="d-flex align-items-start">
+            <a-avatar
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              class="mr-8"
+              size="small"
+              icon="check"
+            />
+            <div>
+              <div class="fs-15 fw-500 cr-black">Akses Disabilitas</div>
             </div>
           </div>
         </a-col>
       </a-row>
-    </div>
+    </a-card>
   </div>
 </template>
 <script>
-import informationSideRight from "~/components/contents/details/umrah/information-sideright.vue";
+import moment from "moment";
 export default {
-  components: {
-    informationSideRight
+  methods: {
+    moment
   }
 };
 </script>

@@ -12,6 +12,8 @@
             height: 200px;
             width: 100%;
             & .ant-card-cover--overlay {
+                position: relative;
+                z-index: 12;
                 & .ant-card-cover--overlay-box-radius {
                     background: $color-main-overlay;
                     @include border-radius(100px);

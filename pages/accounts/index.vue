@@ -13,26 +13,23 @@
                 src="https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png"
               />
             </div>
-            <div class="fs-18 fw-500 cr-black f-default text-ellipsis">Alba Husain Mustafa</div>
+            <div class="fs-18 fw-500 cr-black f-default text-ellipsis">{{nama}}</div>
           </div>
         </a-col>
         <a-col :span="7">
           <dl class="ant-deflist">
             <dt class="ant-deflist__label">Status Akun</dt>
-            <dd class="ant-deflist__value text-ellipsis">Umaroh Personal</dd>
+            <dd class="ant-deflist__value text-ellipsis">{{status}}</dd>
             <dt class="ant-deflist__label">E-mail</dt>
-            <dd class="ant-deflist__value text-ellipsis">jordialba@gmail.com</dd>
+            <dd class="ant-deflist__value text-ellipsis">{{email}}</dd>
           </dl>
         </a-col>
         <a-col :span="8">
           <dl class="ant-deflist">
             <dt class="ant-deflist__label">No. Telp</dt>
-            <dd class="ant-deflist__value text-ellipsis">08123456789</dd>
+            <dd class="ant-deflist__value text-ellipsis">{{telepon}}</dd>
             <dt class="ant-deflist__label">Alamat</dt>
-            <dd class="ant-deflist__value text-ellipsis">
-              Jl. Maccini Raya No.40, Kel.Maccini, Kec Maccini Sombala,
-              Kota Makassar, Sulawesi Selatan, 90421
-            </dd>
+            <dd class="ant-deflist__value text-ellipsis">{{alamat}}</dd>
           </dl>
         </a-col>
         <a-col :span="2">
@@ -47,7 +44,7 @@
       <a-col :span="12">
         <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
           <div class="fs-16 fw-500 cr-black">Data Penjualan</div>
-          <no-ssr>
+          <client-only>
             <ve-line
               :data="chartDataSales"
               :grid="grid"
@@ -55,14 +52,14 @@
               :legend-visible="false"
               height="260px"
             ></ve-line>
-          </no-ssr>
+          </client-only>
         </a-card>
       </a-col>
 
       <a-col :span="12">
         <a-card :bordered="false" class="b-solid b-shadow b-radius text-center">
           <div class="fs-16 fw-500 cr-black">Data Pembelian</div>
-          <no-ssr>
+          <client-only>
             <ve-line
               :data="chartDataPurchase"
               :grid="grid"
@@ -70,13 +67,14 @@
               :legend-visible="false"
               height="260px"
             ></ve-line>
-          </no-ssr>
+          </client-only>
         </a-card>
       </a-col>
     </a-row>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   middleware: "authenticated",
   layout: "accounts",
@@ -108,6 +106,11 @@ export default {
       top: 16
     };
     return {
+      nama: "",
+      email: "",
+      telepon: "",
+      alamat: "",
+      status: "",
       chartDataSales: {
         columns: ["name", "sales"],
         rows: [
@@ -191,6 +194,58 @@ export default {
         ]
       }
     };
+  },
+  created: function() {
+    // get todo items and start listening to events once component is created
+    if (!this.$store.state.auth.nama) {
+      this.getUser();
+    } else {
+      this.getlocal();
+    }
+  },
+  methods: {
+    getUser() {
+      const config = {
+        headers: {
+          Authorization: "Bearer " + this.$store.state.auth.accessToken
+        }
+      };
+      console.log(this.$store.state.auth.accessToken);
+      axios
+        .get("https://api.haloatta.com/api/user/info", config)
+        .then(response => {
+          console.log(response);
+          const auth = {
+            nama:
+              response.data.data.nama_depan +
+              " " +
+              response.data.data.nama_belakang,
+            email: response.data.data.email,
+            alamat: response.data.data.alamat,
+            status: response.data.data.role_nama,
+            telepon: response.data.data.telepon
+          };
+          this.$store.commit("setAuth", auth); // mutating to store for client rendering
+          this.nama =
+            response.data.data.nama_depan +
+            " " +
+            response.data.data.nama_belakang;
+          this.email = response.data.data.email;
+          this.alamat = response.data.data.alamat;
+          this.status = response.data.data.role_nama;
+          this.telepon = response.data.data.telepon;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getlocal() {
+      this.nama = this.$store.state.auth.nama;
+      this.email = this.$store.state.auth.email;
+      this.alamat = this.$store.state.auth.alamat;
+      this.status = this.$store.state.auth.status;
+      this.telepon = this.$store.state.auth.telepon;
+    }
   }
 };
 </script>

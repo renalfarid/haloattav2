@@ -7,23 +7,27 @@
         overflow: hidden;
         z-index: 99;
         & .ant-package--images-large {
+            overflow: hidden;
             height: 400px;
-            & .ant-package--images-cover {
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                height: 100%;
-                width: 100%;
+            & .expandable-image {
+                height: 400px;
+                & img {
+                    position: static;
+                    min-height: 100%;
+                    object-fit: cover;
+                }
             }
         }
         & .ant-package--images-small {
+            overflow: hidden;
             height: 200px;
-            & .ant-package--images-cover {
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                height: 100%;
-                width: 100%;
+            & .expandable-image {
+                height: 200px;
+                & img {
+                    position: static;
+                    height: 100%;
+                    object-fit: cover;
+                }
             }
         }
     }
@@ -38,63 +42,48 @@
             top: 24px;
         }
     }
-    & .ant-layout--package-details-body {
-        & .ant-package--images {
-            overflow: hidden;
-            & .ant-package--images-large {
-                height: 200px;
-                & .ant-package--images-cover {
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    height: 100%;
-                    width: 100%;
+    & .ant-list--package-information {
+        & .ant-list-item--package-information {
+            padding: 24px 0;
+            & .brand-vendor {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-color: #fafafa;
+                background-size: cover;
+            }
+            & .ant-timeline {
+                & .ant-timeline-item {
+                    & .ant-timeline-item-tail {
+                        border-left: 2px dashed $color-border;
+                    }
+                    & .ant-timeline-item-head {
+                        &.ant-timeline-item-head-blue {
+                            border-color: $color-main;
+                        }
+                    }
                 }
             }
-        }
-        & .ant-list--package-information {
-            & .ant-list-item--package-information {
-                padding: 24px 0;
-                & .brand-vendor {
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                    background-color: #fafafa;
-                    background-size: cover;
+            & .ant-avatar {
+                @include align-items(center);
+                @include flexbox;
+                margin-right: 16px;
+                & i {
+                    margin: 0 auto;
+                    font-size: 12px;
                 }
-                & .ant-timeline {
-                    & .ant-timeline-item {
-                        & .ant-timeline-item-tail {
-                            border-left: 2px dashed $color-border;
-                        }
-                        & .ant-timeline-item-head {
-                            &.ant-timeline-item-head-blue {
-                                border-color: $color-main;
-                            }
-                        }
-                    }
+                & img {
+                    max-width: 100% !important;
+                    height: auto !important;
                 }
-                & .ant-avatar {
-                    @include align-items(center);
-                    @include flexbox;
-                    margin-right: 16px;
-                    & i {
-                        margin: 0 auto;
-                        font-size: 12px;
-                    }
-                    & img {
-                        max-width: 100% !important;
-                        height: auto !important;
-                    }
-                }
-                & .ant-card {
-                    margin: 16px 0 0 0;
-                    & .ant-card-body {
-                        padding: 16px 0;
-                        & .ant-card-meta-title {
-                            color: $color-font-gray;
-                            font-size: 14px;
-                            font-weight: 400;
-                        }
+            }
+            & .ant-card {
+                margin: 16px 0 0 0;
+                & .ant-card-body {
+                    padding: 16px 0;
+                    & .ant-card-meta-title {
+                        color: $color-font-gray;
+                        font-size: 14px;
+                        font-weight: 400;
                     }
                 }
             }

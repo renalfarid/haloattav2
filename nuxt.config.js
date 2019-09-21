@@ -15,7 +15,8 @@ module.exports = {
   },
 
   env: {
-    baseUrl: process.env.BASE_URL || "http://localhost:8000/api/"
+    baseUrl: "https://api.haloatta.com/api/",
+    token: "https://api.haloatta.com/oauth/token"
   },
 
   loading: false,
@@ -36,6 +37,7 @@ module.exports = {
     { src: "@/plugins/vClipboard", mode: "client" },
     { src: "@/plugins/vSticky", mode: "client" },
     { src: "@/plugins/vLazytube", mode: "client" },
+    { src: "@/plugins/vMyphotos", mode: "client" },
     { src: "@/plugins/vLazyimg", mode: "client" },
     { src: "@/plugins/vPimg", mode: "client" },
     { src: "@/plugins/vAos", mode: "client" }
