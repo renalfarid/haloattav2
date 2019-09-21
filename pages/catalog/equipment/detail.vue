@@ -23,38 +23,26 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/perlengkapan/package/p1.jpg)' }"
-            ></div>
+            <expandable-image src="/perlengkapan/package/p1.jpg" />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/perlengkapan/package/p2.jpg)' }"
-                ></div>
+                <expandable-image src="/perlengkapan/package/p2.jpg" />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/perlengkapan/package/p3.jpeg)' }"
-                ></div>
+                <expandable-image src="/perlengkapan/package/p3.jpeg" />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/perlengkapan/package/p4.jpg)' }"
-            ></div>
+            <expandable-image src="/perlengkapan/package/p4.jpg" />
           </div>
         </a-col>
       </a-row>

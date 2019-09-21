@@ -31,20 +31,70 @@
     </a-affix>
 
     <div class="container">
-      <div class="ant-tabs--content">
-        <div v-if="activetab === 1" class="ant-tabs--content-body">
-          <informationTicket />
-        </div>
-        <div v-if="activetab === 2" class="ant-tabs--content-body">
-          <informationAccommodation />
-        </div>
-        <div v-if="activetab === 3" class="ant-tabs--content-body">
-          <informationEquipment />
-        </div>
-        <div v-if="activetab === 4" class="ant-tabs--content-body">
-          <informationItinerary />
-        </div>
-      </div>
+      <a-row :gutter="32">
+        <a-col :span="17">
+          <a-card class="b-shadow b-solid bordered-left mt-16">
+            <a-list itemLayout="horizontal" class="ant-list--package-information">
+              <a-list-item class="ant-list-item--package-information pt-0 pb-0">
+                <div class="w-100">
+                  <a-row :gutter="16" type="flex" justify="start">
+                    <a-col :span="16">
+                      <div
+                        class="fs-28 fw-600 f-default cr-black"
+                      >Umrah Exclusive Rombongan September</div>
+                    </a-col>
+                    <a-col :span="8">
+                      <div class="d-flex align-end align-items-center text-right">
+                        <div>
+                          <a @click="toggleWishlist" class="fs-24 cr-gray mb-0">
+                            <a-icon v-if="wishlist == false" type="heart" />
+                            <a-icon
+                              v-else-if="wishlist == true"
+                              type="heart"
+                              theme="filled"
+                              style="color:#eb2f96"
+                            />
+                          </a>
+                        </div>
+                        <a-avatar
+                          size="large"
+                          :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                          class="brand-vendor ml-16"
+                        />
+                      </div>
+                    </a-col>
+                  </a-row>
+                  <div class="ant-package--rate mt-8 mb-0">
+                    <a-rate class="fs-18 mb-0" :defaultValue="3" disabled />
+                  </div>
+                </div>
+              </a-list-item>
+            </a-list>
+          </a-card>
+
+          <div class="ant-tabs--content">
+            <div v-if="activetab === 1" class="ant-tabs--content-body">
+              <informationTicket />
+            </div>
+            <div v-if="activetab === 2" class="ant-tabs--content-body">
+              <informationAccommodation />
+            </div>
+            <div v-if="activetab === 3" class="ant-tabs--content-body">
+              <informationEquipment />
+            </div>
+            <div v-if="activetab === 4" class="ant-tabs--content-body">
+              <informationItinerary />
+            </div>
+          </div>
+        </a-col>
+        <a-col :span="7" :style="{margin : '16px 0'}">
+          <div class="ant-layout--right">
+            <div class="ant-affix--container">
+              <informationSideRight />
+            </div>
+          </div>
+        </a-col>
+      </a-row>
     </div>
   </div>
 </template>
@@ -53,6 +103,7 @@ import informationTicket from "~/components/contents/details/umrah/information-t
 import informationAccommodation from "~/components/contents/details/umrah/information-accommodation.vue";
 import informationEquipment from "~/components/contents/details/umrah/information-equipment.vue";
 import informationItinerary from "~/components/contents/details/umrah/information-itinerary.vue";
+import informationSideRight from "~/components/contents/details/umrah/information-sideright.vue";
 export default {
   name: "detailPackage",
   head() {
@@ -63,19 +114,26 @@ export default {
   },
   data() {
     return {
-      activetab: 1
+      activetab: 1,
+      wishlist: false
     };
   },
+
+  methods: {
+    change(affixed) {
+      console.log(affixed);
+    },
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    }
+  },
+
   components: {
     informationTicket,
     informationAccommodation,
     informationEquipment,
-    informationItinerary
-  },
-  methods: {
-    change(affixed) {
-      console.log(affixed);
-    }
+    informationItinerary,
+    informationSideRight
   }
 };
 </script>

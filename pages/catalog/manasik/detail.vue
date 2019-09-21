@@ -24,38 +24,26 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/manasik/package/m1.jpg)' }"
-            ></div>
+            <expandable-image src="/manasik/package/m1.jpg" />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/manasik/package/m2.jpg)' }"
-                ></div>
+                <expandable-image src="/manasik/package/m2.jpg" />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/manasik/package/m3.jpg)' }"
-                ></div>
+                <expandable-image src="/manasik/package/m3.jpg" />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/manasik/package/m4.jpg)' }"
-            ></div>
+            <expandable-image src="/manasik/package/m4.jpg" />
           </div>
         </a-col>
       </a-row>

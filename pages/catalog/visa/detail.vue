@@ -23,38 +23,26 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/visa/package/v1.jpg)' }"
-            ></div>
+            <expandable-image src="/visa/package/v1.jpg" />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/visa/package/v2.jpg)' }"
-                ></div>
+                <expandable-image src="/visa/package/v2.jpg" />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/visa/package/v3.jpg)' }"
-                ></div>
+                <expandable-image src="/visa/package/v3.jpg" />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/visa/package/v4.jpg)' }"
-            ></div>
+            <expandable-image src="/visa/package/v4.jpg" />
           </div>
         </a-col>
       </a-row>

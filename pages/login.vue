@@ -115,7 +115,7 @@ export default {
         if (!err) {
           console.log(values);
           axios
-            .post("https://api.haloatta.com/oauth/token", {
+            .post(process.env.token, {
               username: this.username,
               password: this.password,
               grant_type: "password",
@@ -146,7 +146,7 @@ export default {
       };
       console.log(token);
       axios
-        .get("https://api.haloatta.com/api/user/info", config)
+        .get(process.env.baseUrl + "user/info", config)
         .then(response => {
           console.log(response);
           const auth = {

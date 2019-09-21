@@ -6,7 +6,7 @@
         <div class="container">
           <a-row :gutter="32">
             <a-col :span="17">
-              <a-anchor>
+              <a-anchor class="offsetTop-item">
                 <a-anchor-link href="#hotelmakkah" title="Hotel Makkah" />
                 <a-anchor-link href="#hotelmadinah" title="Hotel Madinah" />
                 <a-anchor-link href="#fasilitas" title="Fasilitas" />
@@ -25,38 +25,26 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/akomodasi/hotel/l1.jpg)' }"
-            ></div>
+            <expandable-image src="/akomodasi/hotel/l1.jpg" />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/akomodasi/hotel/l2.jpg)' }"
-                ></div>
+                <expandable-image src="/akomodasi/hotel/l2.jpg" />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/akomodasi/hotel/l3.jpg)' }"
-                ></div>
+                <expandable-image src="/akomodasi/hotel/l3.jpg" />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/akomodasi/hotel/l4.jpg)' }"
-            ></div>
+            <expandable-image src="/akomodasi/hotel/l4.jpg" />
           </div>
         </a-col>
       </a-row>

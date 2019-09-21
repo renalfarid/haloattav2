@@ -23,38 +23,26 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/tourleader/package/tl1.png)' }"
-            ></div>
+            <expandable-image src="/tourleader/package/tl1.png" />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/tourleader/package/tl2.png)' }"
-                ></div>
+                <expandable-image src="/tourleader/package/tl2.png" />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <div
-                  class="ant-package--images-cover"
-                  :style="{ backgroundImage: 'url(/tourleader/package/tl3.png)' }"
-                ></div>
+                <expandable-image src="/tourleader/package/tl3.png" />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <div
-              class="ant-package--images-cover"
-              :style="{ backgroundImage: 'url(/tourleader/package/tl4.png)' }"
-            ></div>
+            <expandable-image src="/tourleader/package/tl4.png" />
           </div>
         </a-col>
       </a-row>

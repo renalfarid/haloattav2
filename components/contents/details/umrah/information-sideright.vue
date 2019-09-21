@@ -2,30 +2,69 @@
   <div class="ant-affix--card">
     <a-card class="ant-card--package-information mb-16">
       <div class="p-16">
-        <div class="d-flex align-items-center mb-16">
-          <div class="mr-8">
-            <a-avatar src="https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843" />
-          </div>
-          <div class="fs-16 fw-500 cr-black">Umaroh Attaubah</div>
-          <div class="ml-auto pl-8">
-            <a @click="toggleWishlist" class="fs-22 cr-gray">
-              <a-icon v-if="wishlist == false" type="heart" />
-              <a-icon v-else-if="wishlist == true" type="heart" theme="twoTone" twoToneColor="#eb2f96" />
-            </a>
+        <div class="d-flex align-items-center">
+          <div class="fs-15 fw-500 cr-black f-default">Informasi Penting</div>
+          <a href class="fs-14 cr-primary ml-auto">Details</a>
+        </div>
+      </div>
+      <a-divider :style="{margin: '0'}" />
+      <div class="p-16">
+        <div class="d-flex align-items-start mb-8">
+          <a-avatar
+            style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+            class="mr-8"
+            size="small"
+            icon="check"
+          />
+          <div>
+            <div class="fs-14 fw-400 cr-black">No reschedule</div>
           </div>
         </div>
 
-        <div class="ant-package--rate mb-8">
-          <a-rate class="fs-18" :defaultValue="3" disabled />
+        <div class="d-flex align-items-start mb-8">
+          <a-avatar
+            style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+            class="mr-8"
+            size="small"
+            icon="check"
+          />
+          <div>
+            <div class="fs-14 fw-400 cr-black">Pembatalan tanpa pinalty 45 hari</div>
+          </div>
         </div>
-        <div
-          class="ant-package--name fs-22 fw-500 cr-black f-default mb-8"
-        >Umrah Exclusive Rombongan September</div>
-        <div class="ant-package--info fs-15 fw-400 cr-gray">Program 9 Hari</div>
+
+        <div class="d-flex align-items-start">
+          <a-avatar
+            style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+            class="mr-8"
+            size="small"
+            icon="check"
+          />
+          <div>
+            <div class="fs-14 fw-400 cr-black">Pelunasan 30 hari sebelum keberangkatan</div>
+          </div>
+        </div>
       </div>
     </a-card>
-
+    
     <a-card class="ant-card--package-information">
+      <div class="p-16">
+        <div class="fs-15 fw-500 cr-black f-default">Informasi Pesanan</div>
+      </div>
+      <a-divider :style="{margin: '0'}" />
+      <div class="p-16">
+        <div class="d-flex align-items-center mb-8">
+          <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
+        </div>
+        <div class="d-flex align-items-center">
+          <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
+        </div>
+      </div>
+
+      <a-divider :style="{margin: '0'}" />
+      
       <div class="p-16">
         <div class="d-flex align-items-center">
           <div>
