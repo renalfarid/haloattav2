@@ -7,7 +7,16 @@
         overflow: hidden;
         z-index: 99;
         & .ant-package--images-large {
+            overflow: hidden;
             height: 400px;
+            & .expandable-image {
+                height: 400px;
+                & img {
+                    position: static;
+                    min-height: 100%;
+                    object-fit: cover;
+                }
+            }
             & .ant-package--images-cover {
                 background-position: center center;
                 background-repeat: no-repeat;
@@ -17,7 +26,16 @@
             }
         }
         & .ant-package--images-small {
+            overflow: hidden;
             height: 200px;
+            & .expandable-image {
+                height: 200px;
+                & img {
+                    position: static;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
             & .ant-package--images-cover {
                 background-position: center center;
                 background-repeat: no-repeat;
