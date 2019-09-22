@@ -30,7 +30,7 @@
                   <template slot="content">
                     <div class="fs-15 fw-500 cr-black">{{item.nama}}</div>
                     <div class="fs-14 fw-400 cr-gray f-default">
-                      <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
+                      <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
                     </div>
                   </template>
                   <a-avatar
@@ -44,11 +44,11 @@
                   <template slot="content">
                     <div class="fs-13 fw-400 cr-black f-default">Maskapai {{item.nama_maskapai}}</div>
                   </template>
-                  <a-avatar class="zIndex mr-8" size="small" :src="item.image" />
+                  <a-avatar class="zIndex mr-8" size="small" :src="item.image"/>
                 </a-popover>
               </div>
               <div class="ant-card-meta-title--top-right ml-auto">
-                <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                <a-rate class="fs-14 mb-4" :defaultValue="item.kelas_bintang" disabled/>
               </div>
             </div>
             <div class="ant-card-meta-title--package text-capitalize fw-500">{{item.nama}}</div>
@@ -117,11 +117,11 @@ export default {
       lisData: []
     };
   },
-  
+
   created: function() {
     this.getdata();
   },
-  
+
   methods: {
     moment,
     async getdata() {

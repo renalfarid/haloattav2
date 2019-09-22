@@ -39,9 +39,7 @@
                 <div class="w-100">
                   <a-row :gutter="16" type="flex" justify="start">
                     <a-col :span="16">
-                      <div
-                        class="fs-28 fw-600 f-default cr-black"
-                      >Umrah Exclusive Rombongan September</div>
+                      <div class="fs-28 fw-600 f-default cr-black">{{nama}}</div>
                     </a-col>
                     <a-col :span="8">
                       <div class="d-flex align-end align-items-center text-right">
@@ -58,14 +56,14 @@
                         </div>
                         <a-avatar
                           size="large"
-                          :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                          :style="{ marginRight: '0', backgroundImage: `url(${foto_vendor})` }"
                           class="brand-vendor ml-16"
                         />
                       </div>
                     </a-col>
                   </a-row>
                   <div class="ant-package--rate mt-8 mb-0">
-                    <a-rate class="fs-18 mb-0" :defaultValue="3" disabled/>
+                    <a-rate class="fs-18 mb-0" :defaultValue="bintang" disabled/>
                   </div>
                 </div>
               </a-list-item>
@@ -105,6 +103,7 @@ import informationEquipment from "~/components/contents/details/umrah/informatio
 import informationItinerary from "~/components/contents/details/umrah/information-itinerary.vue";
 import informationSideRight from "~/components/contents/details/umrah/information-sideright.vue";
 import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
 export default {
   name: "detailPackage",
   head() {
@@ -116,7 +115,11 @@ export default {
   data() {
     return {
       activetab: 1,
-      wishlist: false
+      wishlist: false,
+      nama: "",
+      bintang: 1,
+      foto_vendor: "",
+      datatiket: "default"
     };
   },
   created() {
@@ -138,6 +141,12 @@ export default {
         })
         .then(response => {
           console.log(response);
+          this.datatiket = response.data.data.tiket;
+          this.nama = response.data.data.umroh.nama;
+          this.bintang = response.data.data.umroh.kelas_bintang;
+          this.foto_vendor = response.data.data.umroh.foto_vendor;
+          this.$store.commit("umroh/setUmroh", response.data.data); // mutating to store for client rendering
+          Cookie.set("umroh", response.data.data); // saving token in cookie for server rendering
         })
         .catch(err => {
           console.log("error", err);
