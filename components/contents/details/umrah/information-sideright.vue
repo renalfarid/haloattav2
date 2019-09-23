@@ -55,11 +55,13 @@
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
+          <div
+            class="ant-package--info fs-14 fw-500 cr-black ml-auto"
+          >{{moment(tgl_berangkat, "YYYY-MM-DD").format('LL')}}</div>
         </div>
         <div class="d-flex align-items-center">
           <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{program_hari}} Hari</div>
         </div>
       </div>
 
@@ -127,7 +129,9 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Double Room</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp24.000.000 /pax</div>
+            <div
+              class="ant-package--subtitle fs-13 fw-400 cr-gray f-default"
+            >{{harga_double | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -189,11 +193,13 @@ export default {
     return {
       wishlist: false,
       jamaah: 1,
+      program_hari: 1,
       quad: 1,
       harga_quad: 0,
       harga_triple: 0,
       harga_double: 0,
       total: 0,
+      tgl_berangkat: 0,
       triple: 0,
       double: 0
     };
@@ -212,6 +218,8 @@ export default {
       this.harga_quad = this.$store.state.umroh.umroh.harga.quad;
       this.harga_triple = this.$store.state.umroh.umroh.harga.triple;
       this.harga_double = this.$store.state.umroh.umroh.harga.double;
+      this.tgl_berangkat = this.$store.state.umroh.umroh.umroh.tgl_berangkat;
+      this.program_hari = this.$store.state.umroh.umroh.umroh.program_hari;
     },
     toggleWishlist() {
       this.wishlist = !this.wishlist;
