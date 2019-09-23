@@ -76,6 +76,10 @@
         </a-menu-item>
       </a-sub-menu>
 
+      <a-menu-item class="ant-menu--sider-item" key="11">
+        <nuxt-link to="/accounts/voucher" class="nav-text">Voucher Saya</nuxt-link>
+      </a-menu-item>
+
       <a-menu-item class="ant-menu--sider-item" key="disabled-1" disabled>
         <a-divider></a-divider>
       </a-menu-item>

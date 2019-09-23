@@ -5,7 +5,7 @@
         <a-col :span="12">
           <div class="fs-30 fw-500 cr-black f-default mb-16">
             Top Up Saldo
-            <br />Halo Pay anda
+            <br>Halo Pay anda
           </div>
 
           <a-form layout="vertical" :form="form" @submit="handleSubmit" hideRequiredMark>
@@ -46,7 +46,7 @@
                           <img
                             :style="{maxWidth: '100%', height: '18px'}"
                             src="https://upload.wikimedia.org/wikipedia/commons/9/97/Logo_BRI.png"
-                          />
+                          >
                         </div>
                       </div>
 
@@ -72,7 +72,7 @@
                           <img
                             :style="{maxWidth: '100%', height: '18px'}"
                             src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1280px-BNI_logo.svg.png"
-                          />
+                          >
                         </div>
                       </div>
 
@@ -98,7 +98,7 @@
                           <img
                             :style="{maxWidth: '100%', height: '18px'}"
                             src="https://upload.wikimedia.org/wikipedia/id/thumb/e/e0/BCA_logo.svg/1280px-BCA_logo.svg.png"
-                          />
+                          >
                         </div>
                       </div>
 
@@ -124,7 +124,7 @@
                           <img
                             :style="{maxWidth: '100%', height: '18px'}"
                             src="https://upload.wikimedia.org/wikipedia/id/thumb/f/fa/Bank_Mandiri_logo.svg/1280px-Bank_Mandiri_logo.svg.png"
-                          />
+                          >
                         </div>
                       </div>
 
@@ -161,7 +161,7 @@
           </a-form>
         </a-col>
         <a-col :span="12">
-          <img class="max-width" src="/icons/topUp.png" />
+          <img class="max-width" src="/icons/topUp.png">
         </a-col>
       </a-row>
     </a-card>
@@ -169,6 +169,7 @@
 </template>
 <script>
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "topUp",
   head() {

@@ -118,6 +118,7 @@ const dataTopup = [
   }
 ];
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "transactionHalopay",
   head() {

@@ -1,12 +1,8 @@
 <template>
   <div class="ant-transaction--purchase-detail">
     <a-card :loading="loading" :bordered="false" class="b-radius b-shadow b-solid mb-16">
-      <nuxt-link
-        to="/accounts/transaction/purchase"
-        slot="title"
-        class="fs-15 fw-400 cr-gray"
-      >
-        <a-icon type="arrow-left" class="mr-8" />Kembali
+      <nuxt-link to="/accounts/transaction/purchase" slot="title" class="fs-15 fw-400 cr-gray">
+        <a-icon type="arrow-left" class="mr-8"/>Kembali
       </nuxt-link>
       <div v-if="!loading" slot="extra" class="fw-500 fs-16 cr-black">No. Transaksi: HT1234567890</div>
       <a-steps :current="1">
@@ -42,22 +38,26 @@
       </div>
     </a-card>
 
-    <a-card :loading="loading" :bordered="false" class="ant-card--padding b-shadow b-radius b-solid mb-16">
+    <a-card
+      :loading="loading"
+      :bordered="false"
+      class="ant-card--padding b-shadow b-radius b-solid mb-16"
+    >
       <span slot="title" class="fs-16 fw-500 cr-black">
         <!-- if status tagihan 'menunggu pembayaran' -->
-        <a-avatar size="small" style="backgroundColor: #FF7C0A" class="mr-8" icon="clock-circle" />Menunggu Pembayaran
+        <a-avatar size="small" style="backgroundColor: #FF7C0A" class="mr-8" icon="clock-circle"/>Menunggu Pembayaran
       </span>
       <span slot="title" class="fs-16 fw-500 cr-black d-none">
         <!-- if status tagihan 'kedaluwarsa' -->
-        <a-avatar size="small" style="backgroundColor: #F43662" class="mr-8" icon="close" />Batas Waktu Habis
+        <a-avatar size="small" style="backgroundColor: #F43662" class="mr-8" icon="close"/>Batas Waktu Habis
       </span>
       <!-- if status tagihan 'berhasil' -->
       <span slot="title" class="fs-16 fw-500 cr-black d-none">
-        <a-avatar size="small" style="backgroundColor: #0FACF3" class="mr-8" icon="check" />Pembelian Berhasil
+        <a-avatar size="small" style="backgroundColor: #0FACF3" class="mr-8" icon="check"/>Pembelian Berhasil
       </span>
       <a v-if="!loading" slot="extra" class="fs-18 fw-500 cr-black" @click="toggleCollapsed">
         Rp 807.999.657
-        <a-icon class="fs-13 cr-primary ml-8" :type="collapsed ? 'up' : 'down'" />
+        <a-icon class="fs-13 cr-primary ml-8" :type="collapsed ? 'up' : 'down'"/>
       </a>
 
       <a-list v-show="collapsed">
@@ -192,7 +192,7 @@
             </div>
             <div class="fs-15 fw-500 cr-black f-default">
               Umrah Hemat September 2019,
-              <br />keberangkatan Makassar
+              <br>keberangkatan Makassar
             </div>
           </div>
         </a-col>
@@ -210,6 +210,7 @@
 </template>
 <script>
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "mitraPurchaseDetail",
   head() {

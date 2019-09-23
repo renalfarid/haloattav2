@@ -158,6 +158,7 @@ const dataPenjualan = [
 ];
 import moment from "moment";
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "mitraSales",
   head() {

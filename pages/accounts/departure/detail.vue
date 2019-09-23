@@ -2,7 +2,7 @@
   <div class="ant-layout--accounts-management-seat">
     <div class="mb-16">
       <nuxt-link to="/accounts/management/seat" class="fs-14 fw-400 cr-gray">
-        <a-icon type="left" class="mr-8" />Kembali
+        <a-icon type="left" class="mr-8"/>Kembali
       </nuxt-link>
     </div>
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
@@ -19,7 +19,7 @@
             </div>
             <div class="fs-14 fw-500 cr-black f-default">
               <span>Paket Umrah Exclusive September 2019</span>,
-              <br />
+              <br>
               <span>Keberangkatan Makassar</span>
             </div>
           </div>
@@ -73,11 +73,11 @@
             </a-col>
             <a-col :span="4" class="text-right">
               <nuxt-link to="/accounts/jamaah/formulir">
-                  <span class="fs-14 fw-500 cr-green">
-                    Lihat Formulir
-                    <a-icon type="right" class="ml-8" />
-                  </span>
-                </nuxt-link>
+                <span class="fs-14 fw-500 cr-green">
+                  Lihat Formulir
+                  <a-icon type="right" class="ml-8"/>
+                </span>
+              </nuxt-link>
             </a-col>
           </a-row>
         </div>
@@ -109,6 +109,7 @@ const dataSeat = [
   }
 ];
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "mitraDaftarSeat",
   head() {

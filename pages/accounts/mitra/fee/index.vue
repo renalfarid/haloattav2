@@ -11,7 +11,7 @@
             <div class="fs-18 fw-500 cr-black f-default">{{ jumlahFee | currency }}</div>
           </div>
           <div class="mr-16">
-            <a-icon :type="seeFee ? 'up' : 'down'" />
+            <a-icon :type="seeFee ? 'up' : 'down'"/>
           </div>
         </a>
       </a-col>
@@ -224,6 +224,7 @@ const dataSales = [
   }
 ];
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "feeSales",
   head() {

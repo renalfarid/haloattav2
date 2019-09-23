@@ -1,7 +1,7 @@
 <template>
   <div class="ant-transaction--purchase-detail">
     <nuxt-link to="/accounts/mitra/transaction/sales" class="fs-15 fw-400 cr-gray">
-      <a-icon type="arrow-left" class="mr-8" />Kembali
+      <a-icon type="arrow-left" class="mr-8"/>Kembali
     </nuxt-link>
 
     <a-card
@@ -12,7 +12,7 @@
       <div slot="title">Detail Pemesan</div>
       <div v-if="!loading" slot="extra" class="fw-500 fs-16 cr-black">
         No. Pesanan
-        <a-divider type="vertical" />HT1234567890
+        <a-divider type="vertical"/>HT1234567890
       </div>
 
       <a-list>
@@ -62,19 +62,19 @@
     >
       <span slot="title" class="fs-16 fw-500 cr-black">
         <!-- if status tagihan 'Belum Dibayar' -->
-        <a-avatar size="small" style="backgroundColor: #FF7C0A" class="mr-8" icon="clock-circle" />Belum Dibayar
+        <a-avatar size="small" style="backgroundColor: #FF7C0A" class="mr-8" icon="clock-circle"/>Belum Dibayar
       </span>
       <span slot="title" class="fs-16 fw-500 cr-black d-none">
         <!-- if status tagihan 'kedaluwarsa' -->
-        <a-avatar size="small" style="backgroundColor: #F43662" class="mr-8" icon="close" />Batas Waktu Pembayaran Habis
+        <a-avatar size="small" style="backgroundColor: #F43662" class="mr-8" icon="close"/>Batas Waktu Pembayaran Habis
       </span>
       <!-- if status tagihan 'Dibayar' -->
       <span slot="title" class="fs-16 fw-500 cr-black d-none">
-        <a-avatar size="small" style="backgroundColor: #0FACF3" class="mr-8" icon="check" />Pembelian Berhasil
+        <a-avatar size="small" style="backgroundColor: #0FACF3" class="mr-8" icon="check"/>Pembelian Berhasil
       </span>
       <a v-if="!loading" slot="extra" class="fs-18 fw-500 cr-black" @click="toggleCollapsed">
         Rp 807.999.657
-        <a-icon class="fs-13 cr-primary ml-8" :type="collapsed ? 'up' : 'down'" />
+        <a-icon class="fs-13 cr-primary ml-8" :type="collapsed ? 'up' : 'down'"/>
       </a>
 
       <a-list v-show="collapsed">
@@ -124,7 +124,7 @@
             </div>
             <div class="fs-15 fw-500 cr-black f-default">
               Umrah Hemat September 2019,
-              <br />keberangkatan Makassar
+              <br>keberangkatan Makassar
             </div>
           </div>
         </a-col>
@@ -142,6 +142,7 @@
 </template>
 <script>
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "mitraPurchaseDetailSales",
   head() {

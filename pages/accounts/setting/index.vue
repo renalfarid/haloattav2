@@ -5,7 +5,7 @@
       Informasi profil anda tidak
       akan kami beritahukan kepada pihak mana pun.
     </div>
-    
+
     <a-card
       :tabList="tabListNoTitle"
       :activeTabKey="noTitleKey"
@@ -13,20 +13,19 @@
       class="b-shadow b-radius b-solid mt-16"
     >
       <div v-if="noTitleKey === 'akun'">
-        
-        <edit-profile />
+        <edit-profile/>
 
-        <edit-email-phone />
+        <edit-email-phone/>
 
-        <edit-password />
+        <edit-password/>
       </div>
 
       <div v-else-if="noTitleKey === 'alamat'">
-        <add-address />
+        <add-address/>
       </div>
 
       <div v-else-if="noTitleKey === 'bank'">
-        <add-bank />
+        <add-bank/>
       </div>
     </a-card>
   </div>
@@ -38,6 +37,7 @@ import editPassword from "~/pages/accounts/setting/edit/password.vue";
 import addAddress from "~/pages/accounts/setting/add/address.vue";
 import addBank from "~/pages/accounts/setting/add/bank.vue";
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "setting",
   head() {

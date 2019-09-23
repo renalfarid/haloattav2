@@ -29,6 +29,7 @@ const data = [
   }
 ];
 export default {
+  middleware: "authenticated",
   layout: "accounts",
   name: "mutationHalopay",
   head() {

@@ -7,17 +7,17 @@
             <a-row :gutter="10">
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t6.jpg" />
+                  <expandable-image src="/maskapai/garuda/t6.jpg"/>
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t7.jpg" />
+                  <expandable-image src="/maskapai/garuda/t7.jpg"/>
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t8.jpg" />
+                  <expandable-image src="/maskapai/garuda/t8.jpg"/>
                 </div>
               </a-col>
             </a-row>
@@ -87,7 +87,7 @@
         <a-list-item class="ant-list-item--package-information">
           <div class="d-flex align-items-start w-100">
             <div>
-              <a-avatar size="small" shape="square" src="/icons/package/airplane.png" />
+              <a-avatar size="small" shape="square" src="/icons/package/airplane.png"/>
             </div>
             <div class="w-100">
               <div class="fs-16 fw-500 cr-black mb-16">Jadwal Keberangkatan dan Kepulangan</div>
@@ -106,7 +106,7 @@
                       </div>
                     </a-timeline-item>
                     <a-timeline-item color="red">
-                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;"/>
                       <div class="fs-14 fw-400 cr-black">
                         <span class="mr-8">Nonstop</span>
                         <span class="fw-500">10j 0m</span>
@@ -139,7 +139,7 @@
                       </div>
                     </a-timeline-item>
                     <a-timeline-item color="red">
-                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
+                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;"/>
                       <div class="fs-14 fw-400 cr-black">
                         <span class="mr-8">Nonstop</span>
                         <span class="fw-500">10j 0m</span>
@@ -228,8 +228,20 @@
 <script>
 import moment from "moment";
 export default {
+  props: {
+    data: Object
+  },
+  created() {
+    this.getdetail();
+  },
   methods: {
-    moment
+    moment,
+    async getdetail() {
+      console.log(this.$store.state.umroh);
+    }
+  },
+  mounted: function() {
+    console.log("The props are also available in JS:", this.$store.state.umroh);
   }
 };
 </script>
