@@ -1,0 +1,38 @@
+.ant-card--voucher {
+    & .ant-card {
+        & .ant-card-body {
+            padding: 0;
+            & .card-voucher {
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-flow: row wrap;
+                flex-flow: row wrap;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                & .card-voucher--item {
+                    padding: 16px;
+                    &.card-voucher--item-color {
+                        background-color: $color-main;
+                        position: relative;
+                    }
+                    &.card-voucher--item-brand {
+                        position: relative;
+                        &::before {
+                            -webkit-transform: skewX(-20deg);
+                            transform: skewX(-20deg);
+                            content: "";
+                            background: #fff;
+                            width: 44px;
+                            position: absolute;
+                            left: -22px;
+                            top: 0;
+                            bottom: 0;
+                            z-index: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

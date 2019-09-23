@@ -56,19 +56,6 @@
             & .ant-list--package-information {
                 & .ant-list-item--package-information {
                     padding: 24px 0;
-                    & .ant-timeline {
-                        & .ant-timeline-item {
-                            & .ant-timeline-item-tail {
-                                border-left: 2px dashed $color-border;
-                            }
-                            & .ant-timeline-item-head {
-                                background-color: $color-main;
-                                &.ant-timeline-item-head-blue {
-                                    border-color: $color-main;
-                                }
-                            }
-                        }
-                    }
                     & .ant-avatar {
                         @include align-items(center);
                         @include flexbox;
