@@ -1,7 +1,7 @@
 <template>
   <div class="ant-layout--accounts-jamaah">
     <div class="mb-16">
-      <nuxt-link to="/accounts/management/seat/pax-list" class="fs-14 fw-400 cr-gray">
+      <nuxt-link to="/accounts/departure/detail" class="fs-14 fw-400 cr-gray">
         <a-icon type="left" class="mr-8" />Kembali
       </nuxt-link>
     </div>
@@ -46,7 +46,12 @@
         </a-step>
         <a-step title="Registrasi">
           <span slot="description">
-            <p class="fs-14 f-default">Nomor Porsi Registrasi Siskopatuh</p>
+            <p class="fs-14 f-default">Registrasi Data ke Siskopatuh</p>
+          </span>
+        </a-step>
+        <a-step title="Nomor Porsi">
+          <span slot="description">
+            <p class="fs-14 f-default">Nomor Porsi Siskopatuh</p>
           </span>
         </a-step>
         <a-step title="Manifest">

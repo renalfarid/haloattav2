@@ -76,23 +76,28 @@
                   <div class="mr-8">
                     <a-avatar
                       v-if="item.products_categorie === 'umrah'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 2px"
-                      src="/icons/search/tabs/color/umrah.svg"
+                      style="backgroundColor: rgb(15, 172, 243);padding: 2px"
+                      src="/icons/search/tabs/white/umrah.svg"
+                    />
+                    <a-avatar
+                      v-if="item.products_categorie === 'tiket'"
+                      style="backgroundColor: rgb(244, 54, 98);padding: 4px"
+                      src="/icons/search/tabs/white/ticket.svg"
                     />
                     <a-avatar
                       v-if="item.products_categorie === 'akomodasi'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
-                      src="/icons/search/tabs/color/accommodation.svg"
-                    />
-                    <a-avatar
-                      v-if="item.products_categorie === 'tiket group'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
-                      src="/icons/search/tabs/color/ticket.svg"
+                      style="backgroundColor: rgb(5, 203, 176);padding: 4px"
+                      src="/icons/search/tabs/white/accommodation.svg"
                     />
                     <a-avatar
                       v-if="item.products_categorie === 'visa'"
-                      style="backgroundColor: rgba(15, 172, 243, .1);padding: 4px"
-                      src="/icons/search/tabs/color/visa.svg"
+                      style="backgroundColor: rgb(82, 196, 26);padding: 4px"
+                      src="/icons/search/tabs/white/visa.svg"
+                    />
+                    <a-avatar
+                      v-if="item.products_categorie === 'insurance'"
+                      style="backgroundColor: rgb(255, 124, 10);padding: 4px"
+                      src="/icons/search/tabs/white/insurance.svg"
                     />
                   </div>
                   <div class="fs-14 fw-500 cr-black f-default">{{item.products_name}}</div>
@@ -100,7 +105,7 @@
               </a-col>
               <a-col :span="7">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Pemesanan</div>
-                <div class="fs-14 fw-500 cr-black">{{item.order_date.format('llll')}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.order_date.format('LL')}}</div>
               </a-col>
               <a-col :span="7" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
@@ -134,19 +139,19 @@
               <a-col :span="5">
                 <div v-if="item.purchase_status === 'Belum Dibayar'">
                   <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('llll')}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('LL')}}</div>
                 </div>
                 <div v-if="item.purchase_status === 'Menunggu Verifikasi'">
                   <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('llll')}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('LL')}}</div>
                 </div>
                 <div v-if="item.purchase_status === 'Kedaluwarsa'">
                   <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('llll')}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('LL')}}</div>
                 </div>
                 <div v-if="item.purchase_status === 'Dibayar'">
                   <div class="fs-14 fw-400 cr-gray">Tanggal Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_date.format('llll')}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.payment_date.format('LL')}}</div>
                 </div>
               </a-col>
               <a-col :span="9">
@@ -242,7 +247,7 @@ const dataPembelian = [
   },
   {
     order_number: "ATT-TKT-54021040019072938",
-    products_categorie: "tiket group",
+    products_categorie: "tiket",
     products_name: "Makassar (UPG) ke Jeddah (JED)",
     total_amount: 30000333,
     number_purchase: "4",
