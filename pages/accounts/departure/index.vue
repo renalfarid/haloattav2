@@ -39,17 +39,7 @@
           </a-select>
         </a-col>
         <a-col :span="7">
-          <a-select
-            showSearch
-            placeholder="Pilih Status Berkas"
-            defaultValue="Semua Status Berkas"
-            size="large"
-            style="width: 100%"
-          >
-            <a-select-option value="Semua Status Berkas">Semua Status Berkas</a-select-option>
-            <a-select-option value="Pengumpulan Berkas">Pengumpulan Berkas</a-select-option>
-            <a-select-option value="Berkas Lengkap">Berkas Lengkap</a-select-option>
-          </a-select>
+          
         </a-col>
       </a-row>
     </a-card>
