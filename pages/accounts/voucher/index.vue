@@ -11,25 +11,78 @@
               style="width:40%"
             >
               <div class="m-auto text-center">
-                <div class="fs-12 text-uppercase cr-white mb-8">Haloatta</div>
-                <div class="fs-40 cr-white">30</div>
-                <div class="fs-12 cr-white text-uppercase mt-8">voucher umrah</div>
+                <div class="voucher-brand"><div class="fs-14 text-uppercase p-relative zIndex">Haloatta</div></div>
+                <div class="mt-8 mb-8 item-middle d-flex align-items-center">
+                  <img class="m-auto" src="/icons/search/tabs/black/umrah.svg" />
+                </div>
+                <div class="fs-12 fw-500 text-uppercase">voucher umrah</div>
               </div>
             </div>
 
             <div class="card-voucher--item card-voucher--item-color" style="width: 60%">
-              <div class="uk-background-secondary uk-light uk-padding">
-                <div class="voucher-code text-right">
-                  <div class="fs-14 text-uppercase cr-gray">777 345 221 447</div>
+              <div class="voucher-code">
+                <div class="fs-14 text-uppercase p-relative zIndex">
+                  <span class="fs-12 mr-4">kode voucher</span> 345 221 447
                 </div>
+              </div>
 
-                <div class="fs-20 text-uppercase cr-black mb-8 mt-8 text-right">
-                  <span>Rp3.000.000</span>
+              <div class="mb-8 mt-8 item-middle d-flex align-items-center">
+                <div>
+                  <div class="fs-14 cr-black f-default">
+                    <span>Potongan Harga</span>
+                  </div>
+                  <div class="fs-20 cr-black fw-500 f-default">
+                    <span>Rp 3.000.000</span>
+                  </div>
                 </div>
+              </div>
 
-                <div class="fs-12 fw-400 cr-gray text-right">
-                  <i>Berlaku sampai 30 Desember 2020</i>
+              <div class="fs-12 fw-400 cr-gray">
+                Berlaku sampai
+                <span class="fw-500 cr-black ml-4">30 Desember 2020</span>
+              </div>
+            </div>
+          </div>
+        </a-card>
+      </a-col>
+
+      <a-col :span="12">
+        <a-card :bordered="false" class="mb-16">
+          <div class="card-voucher">
+            <div
+              class="card-voucher--item card-voucher--item-number d-flex align-items-center"
+              style="width:40%"
+            >
+              <div class="m-auto text-center">
+                <div class="voucher-brand"><div class="fs-14 text-uppercase p-relative zIndex">Haloatta</div></div>
+                <div class="mt-8 mb-8 item-middle d-flex align-items-center">
+                  <img class="m-auto" src="/icons/search/tabs/black/umrah.svg" />
                 </div>
+                <div class="fs-12 fw-500 text-uppercase">voucher umrah</div>
+              </div>
+            </div>
+
+            <div class="card-voucher--item card-voucher--item-color" style="width: 60%">
+              <div class="voucher-code">
+                <div class="fs-14 text-uppercase p-relative zIndex">
+                  <span class="fs-12 mr-4">kode voucher</span> 345 221 447
+                </div>
+              </div>
+
+              <div class="mb-8 mt-8 item-middle d-flex align-items-center">
+                <div>
+                  <div class="fs-14 cr-black f-default">
+                    <span>Potongan Harga</span>
+                  </div>
+                  <div class="fs-20 cr-black fw-500 f-default">
+                    <span>Rp 3.000.000</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fs-12 fw-400 cr-gray">
+                Berlaku sampai
+                <span class="fw-500 cr-black ml-4">30 Desember 2020</span>
               </div>
             </div>
           </div>
