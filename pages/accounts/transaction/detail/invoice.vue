@@ -295,10 +295,28 @@
             <a-divider></a-divider>
             <a-row :gutter="16">
               <a-col :span="12">
-                <div class="fs-14 fw-500 cr-black text-uppercase">Total Pembayaran</div>
+                <div class="fs-14 fw-500 cr-gray text-uppercase">Total</div>
               </a-col>
               <a-col :span="12" class="text-right">
-                <div class="fs-18 fw-500 cr-primary">Rp909.000.000</div>
+                <div class="fs-14 fw-500 cr-black">Rp909.000.000</div>
+              </a-col>
+            </a-row>
+            <a-divider></a-divider>
+            <a-row :gutter="16">
+              <a-col :span="12">
+                <div class="fs-14 fw-500 cr-gray text-uppercase">DP</div>
+              </a-col>
+              <a-col :span="12" class="text-right">
+                <div class="fs-14 fw-500 cr-black">Rp500.000.000</div>
+              </a-col>
+            </a-row>
+            <a-divider></a-divider>
+            <a-row :gutter="16" type="flex" justify="space-around" align="middle">
+              <a-col :span="12">
+                <div class="fs-14 fw-500 cr-black text-uppercase">Sisa Pembayaran</div>
+              </a-col>
+              <a-col :span="12" class="text-right">
+                <div class="fs-18 fw-500 cr-primary">Rp409.000.000</div>
               </a-col>
             </a-row>
           </a-col>

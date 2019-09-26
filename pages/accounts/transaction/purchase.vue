@@ -196,8 +196,22 @@ const dataPembelian = [
     products_categorie: "umrah",
     products_name:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Makassar",
-    total_amount: 500000731,
+    total_amount: 900000731,
     number_purchase: "40",
+    order_date: moment("2019-07-10", "YYYY-MM-DD"),
+    payment_date: moment("2019-07-10", "YYYY-MM-DD"),
+    payment_limit: moment("2019-07-14", "YYYY-MM-DD"),
+    purchase_status: "Belum Dibayar",
+    payment_type: "Lunas",
+    payment_method: "ATAM/Bank Transfer"
+  },
+  {
+    order_number: "ATT-UMR-54021040019072933",
+    products_categorie: "umrah",
+    products_name:
+      "Umrah Hemat Desember 2019 Program 9 Hari, keberangkatan Makassar",
+    total_amount: 500000731,
+    number_purchase: "20",
     order_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_limit: moment("2019-07-14", "YYYY-MM-DD"),

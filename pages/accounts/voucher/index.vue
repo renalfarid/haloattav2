@@ -4,54 +4,31 @@
 
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-card :bordered="false" class="b-shadow b-radius mb-16">
+        <a-card :bordered="false" class="mb-16">
           <div class="card-voucher">
-            <div class="card-voucher--item card-voucher--item-color" style="width: 45%">
-              <div class="d-flex align-items-center h-100">
-                <div class="pr-16">
-                  <div class="fs-26 fw-500 cr-white">RP 3.000.000</div>
-                  <div class="fs-14 fw-400 cr-white">Voucher Paket Umrah</div>
-                </div>
+            <div
+              class="card-voucher--item card-voucher--item-number d-flex align-items-center"
+              style="width:40%"
+            >
+              <div class="m-auto text-center">
+                <div class="fs-12 text-uppercase cr-white mb-8">Haloatta</div>
+                <div class="fs-40 cr-white">30</div>
+                <div class="fs-12 cr-white text-uppercase mt-8">voucher umrah</div>
               </div>
             </div>
 
-            <div class="card-voucher--item card-voucher--item-brand" style="width: 55%">
+            <div class="card-voucher--item card-voucher--item-color" style="width: 60%">
               <div class="uk-background-secondary uk-light uk-padding">
-                <div class="voucher-code mb-16 text-right">
-                  <div class="fs-14 text-uppercase cr-gray">Voucher Code</div>
-                  <div class="fs-20 fw-500 cr-black">777 345 221 447</div>
+                <div class="voucher-code text-right">
+                  <div class="fs-14 text-uppercase cr-gray">777 345 221 447</div>
                 </div>
-                
-                <div class="fs-13 fw-400 cr-gray text-right">
+
+                <div class="fs-20 text-uppercase cr-black mb-8 mt-8 text-right">
+                  <span>Rp3.000.000</span>
+                </div>
+
+                <div class="fs-12 fw-400 cr-gray text-right">
                   <i>Berlaku sampai 30 Desember 2020</i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </a-card>
-      </a-col>
-
-      <a-col :span="12">
-        <a-card :bordered="false" class="b-shadow b-radius mb-16">
-          <div class="card-voucher">
-            <div class="card-voucher--item card-voucher--item-color" style="width: 45%">
-              <div class="d-flex align-items-center h-100">
-                <div class="pr-16">
-                  <div class="fs-26 fw-500 cr-white">RP 1.000.000</div>
-                  <div class="fs-14 fw-400 cr-white">Voucher Paket Umrah</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card-voucher--item card-voucher--item-brand" style="width: 55%">
-              <div class="uk-background-secondary uk-light uk-padding">
-                <div class="voucher-code mb-16 text-right">
-                  <div class="fs-14 text-uppercase cr-gray">Voucher Code</div>
-                  <div class="fs-20 fw-500 cr-black">123 556 777 890</div>
-                </div>
-                
-                <div class="fs-13 fw-400 cr-gray text-right">
-                  <i>Berlaku sampai 12 April 2020</i>
                 </div>
               </div>
             </div>
@@ -72,7 +49,9 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      icon: "/brand.png"
+    };
   }
 };
 </script>

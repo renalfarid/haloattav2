@@ -11,28 +11,59 @@
                 display: -ms-flexbox;
                 display: flex;
                 & .card-voucher--item {
-                    padding: 16px;
-                    &.card-voucher--item-color {
+                    padding: 16px 24px;
+                    &.card-voucher--item-number {
                         background-color: $color-main;
+                        border-top-right-radius: 8px;
+                        border-bottom-right-radius: 8px;
                         position: relative;
-                    }
-                    &.card-voucher--item-brand {
-                        position: relative;
-                        &::before {
-                            -webkit-transform: skewX(-20deg);
-                            transform: skewX(-20deg);
-                            content: "";
-                            background: #fff;
-                            width: 44px;
-                            position: absolute;
-                            left: -22px;
-                            top: 0;
-                            bottom: 0;
-                            z-index: 1;
+                        & .ant-avatar {
+                            background-color: rgba($color: #fff, $alpha: .1);
+                            color: #fff;
                         }
+                        &:before,
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            display: block;
+                            width: .9em;
+                            height: .9em;
+                            background: #fff;
+                            border-radius: 50px;
+                            right: -.5em;
+                            z-index: 10;
+                        }
+                        &:before {
+                            top: -.4em;
+                        }
+                        &:after {
+                            bottom: -.4em;
+                        }
+                    }
+                    &.card-voucher--item-color {
+                        background-color: rgba($color: $color-main, $alpha: .2);
+                        position: relative;
                     }
                 }
             }
+        }
+        &::before {
+            border-left: 10px dotted #fff;
+            position: absolute;
+            content: '';
+            bottom: 8px;
+            left: -4px;
+            z-index: 2;
+            top: 8px;
+        }
+        &::after {
+            border-right: 10px dotted #fff;
+            position: absolute;
+            content: '';
+            bottom: 8px;
+            right: -4px;
+            z-index: 2;
+            top: 8px;
         }
     }
 }
