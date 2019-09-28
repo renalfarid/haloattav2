@@ -60,7 +60,7 @@
 
         <div class="d-flex align-items-center mb-16">
           <div>
-            <div class="fs-18 fw-500 cr-black">Pemesan:</div>
+            <div class="fs-18 fw-500 cr-black text-uppercase">Pemesan:</div>
           </div>
           <div class="ml-auto">
             <div class="fs-40 fw-500 cr-black">Kwintansi</div>
@@ -83,23 +83,23 @@
           <a-col :span="12">
             <div class="text-right">
               <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Nomor Kwitansi</div>
+                <div class="fs-13 fw-500 cr-black text-uppercase">Nomor Kwitansi</div>
                 <div class="fs-14 fw-400 cr-gray">ATT-UMR-54021040019072938</div>
               </div>
               <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Metode Pembayaran</div>
+                <div class="fs-13 fw-500 cr-black text-uppercase">Metode Pembayaran</div>
                 <div class="fs-14 fw-400 cr-gray">ATM/Bank Transfer</div>
               </div>
               <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Tipe Pembayaran</div>
+                <div class="fs-13 fw-500 cr-black text-uppercase">Tipe Pembayaran</div>
                 <div class="fs-14 fw-400 cr-gray">Lunas</div>
               </div>
               <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Tanggal Pembelian</div>
+                <div class="fs-13 fw-500 cr-black text-uppercase">Tanggal Pembelian</div>
                 <div class="fs-14 fw-400 cr-gray">Senin, 20 Mei 2019</div>
               </div>
               <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Tanggal Pembayaran</div>
+                <div class="fs-13 fw-500 cr-black text-uppercase">Tanggal Pembayaran</div>
                 <div class="fs-14 fw-400 cr-gray">Senin, 22 Mei 2019</div>
               </div>
             </div>
@@ -108,8 +108,6 @@
       </div>
 
       <div class="ant-card-body-item">
-        <div class="fs-18 fw-500 cr-black mb-16">Daftar Pembelian :</div>
-
         <a-row :gutter="16">
           <a-col :span="9">
             <div class="fs-14 fw-500 cr-gray text-uppercase">Detail Pembelian</div>
@@ -118,7 +116,7 @@
             <div class="fs-14 fw-500 cr-gray text-uppercase">Tanggal Keberangkatan</div>
           </a-col>
           <a-col :span="3">
-            <div class="fs-14 fw-500 cr-gray text-uppercase">Jumlah Pax</div>
+            <div class="fs-14 fw-500 cr-gray text-uppercase">Pax</div>
           </a-col>
           <a-col :span="6" class="text-right">
             <div class="fs-14 fw-500 cr-gray text-uppercase">Jumlah Pembayaran</div>
@@ -130,7 +128,7 @@
         <a-row :gutter="16">
           <a-col :span="9">
             <div
-              class="fs-14 fw-500 cr-black f-default text-ellipsis"
+              class="fs-14 fw-500 cr-black"
             >Umrah Exclusive Desember 2019, Keberangkatan Makassar</div>
             <div class="fs-14 fw-400 cr-black">Program 9 Hari</div>
           </a-col>

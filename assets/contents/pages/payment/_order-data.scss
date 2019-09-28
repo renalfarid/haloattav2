@@ -4,6 +4,17 @@
             padding: 24px 0;
         }
     }
+    & .ant-form {
+        & .ant-form-item {
+            & .ant-form-item-control {
+                & .ant-select-selection {
+                    & .ant-select-selection__rendered {
+                        margin-left: 0 !important;
+                    }
+                }
+            }
+        }
+    }
     & .ant-btn--action {
         background-color: $color-main;
         min-width: 260px;

@@ -13,11 +13,11 @@
           <a-avatar size="small" style="backgroundColor: #05CBB0" icon="mail"/>
         </a-badge>
       </span>
-      <span style="margin-right: 16px" class="d-none">
+      <nuxt-link to="/accounts/notifikasi" style="margin-right: 16px">
         <a-badge dot>
-          <a-avatar size="small" style="backgroundColor: #FF7C0A" icon="bell"/>
+          <a-avatar size="small" style="backgroundColor: #FF7C0A" icon="alert"/>
         </a-badge>
-      </span>
+      </nuxt-link>
     </div>
     <div class="header-right ml-auto">
       <div class="header-accounts">

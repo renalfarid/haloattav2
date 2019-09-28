@@ -346,7 +346,7 @@
 
         <a-form-item>
           <a-button size="large" class="b-shadow b-radius mr-8">
-            <nuxt-link to="/accounts/management/seat/pax-list">Kembali</nuxt-link>
+            <nuxt-link to="/accounts/departure/detail">Kembali</nuxt-link>
           </a-button>
           <a-button
             type="primary"

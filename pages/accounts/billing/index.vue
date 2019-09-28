@@ -1,10 +1,10 @@
 <template>
   <div class="ant-transaction--purchase">
-    <div class="fs-18 fw-500 cr-black">Transaksi Pembelian</div>
+    <div class="fs-18 fw-500 cr-black">Tagihan Saya</div>
     <a-card :bordered="false" class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16">
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
-        <a-col :span="4" class="text-uppercase cr-gray fs-14">Filter Pembelian</a-col>
-        <a-col :span="7">
+        <a-col :span="4" class="text-uppercase cr-gray fs-14">Filter Tagihan</a-col>
+        <a-col :span="8">
           <a-select showSearch defaultValue="Semua Produk" size="large" style="width: 100%">
             <a-select-option value="Semua Produk">Semua Produk</a-select-option>
             <a-select-option value="Umrah">Umrah</a-select-option>
@@ -18,27 +18,11 @@
             <a-select-option value="Tour Leader">Tour Leader</a-select-option>
           </a-select>
         </a-col>
-        <a-col :span="6">
-          <a-select defaultValue="Semua Status" size="large" style="width: 100%">
-            <a-select-option value="Semua Status">Semua Status</a-select-option>
-            <a-select-option value="Belum Dibayar">Belum Dibayar</a-select-option>
-            <a-select-option value="Dibayar">Dibayar</a-select-option>
-            <a-select-option value="Verifikasi">Menunggu Verifikasi</a-select-option>
-            <a-select-option value="Kedaluwarsa">Kedaluwarsa</a-select-option>
-          </a-select>
-        </a-col>
-        <a-col :span="7">
-          <a-range-picker
-            :ranges="{ Today: [moment(), moment()], 'This Month': [moment(), moment().endOf('month')] }"
-            :placeholder="['Dari Tanggal', 'Hingga Tanggal']"
-            @change="onChange"
-            size="large"
-          />
-        </a-col>
+        <a-col :span="12"></a-col>
       </a-row>
     </a-card>
 
-    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataPembelian">
+    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataTagihan">
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -108,21 +92,9 @@
                 <div class="fs-14 fw-500 cr-black">{{item.order_date.format('LL')}}</div>
               </a-col>
               <a-col :span="7" class="text-right">
-                <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
-                <div class="fs-14 fw-500 cr-red" v-if="item.purchase_status === 'Belum Dibayar'">
-                  <span>{{item.purchase_status}}</span>
-                </div>
-                <div class="fs-14 fw-500 cr-red" v-if="item.purchase_status === 'Kedaluwarsa'">
-                  <span>{{item.purchase_status}}</span>
-                </div>
-                <div
-                  class="fs-14 fw-500 cr-orange"
-                  v-if="item.purchase_status === 'Menunggu Verifikasi'"
-                >
-                  <span>{{item.purchase_status}}</span>
-                </div>
-                <div class="fs-14 fw-500 cr-green" v-if="item.purchase_status === 'Dibayar'">
-                  <span>{{item.purchase_status}}</span>
+                <div class="fs-14 fw-400 cr-gray">Sisa Pembayaran</div>
+                <div class="fs-16 fw-500 cr-red">
+                  <span>{{item.remaining_payment | currency}}</span>
                 </div>
               </a-col>
             </a-row>
@@ -137,48 +109,21 @@
                 <div class="fs-14 fw-500 cr-black">{{item.payment_type}}</div>
               </a-col>
               <a-col :span="5">
-                <div v-if="item.purchase_status === 'Belum Dibayar'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('LL')}}</div>
-                </div>
-                <div v-if="item.purchase_status === 'Menunggu Verifikasi'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('LL')}}</div>
-                </div>
-                <div v-if="item.purchase_status === 'Kedaluwarsa'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('LL')}}</div>
-                </div>
-                <div v-if="item.purchase_status === 'Dibayar'">
-                  <div class="fs-14 fw-400 cr-gray">Tanggal Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.payment_date.format('LL')}}</div>
-                </div>
+                <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
+                <div class="fs-14 fw-500 cr-black">{{item.payment_limit.format('LL')}}</div>
               </a-col>
               <a-col :span="9">
                 <div class="d-flex align-items-center align-end">
                   <nuxt-link
-                    v-if="item.purchase_status === 'Dibayar'"
-                    to="/accounts/transaction/detail/receipt"
+                    to="/accounts/billing/detail"
                     class="cr-primary fs-14"
                   >Lihat Detail</nuxt-link>
-                  <nuxt-link
-                    v-else
-                    to="/accounts/transaction/detail/invoice"
-                    class="cr-primary fs-14"
-                  >Lihat Detail</nuxt-link>
-                  <div v-if="item.purchase_status === 'Belum Dibayar'">
-                    <a-divider type="vertical"/>
+                  <a-divider type="vertical" />
+                  <div>
                     <a-button
                       class="b-shadow b-radius ant-btn--action"
                       @click="nextConf"
                     >Bayar Sekarang</a-button>
-                  </div>
-
-                  <div v-if="item.purchase_status === 'Kedaluwarsa'">
-                    <div>
-                      <a-divider type="vertical"/>
-                      <a class="cr-red fs-14" @click="remove(index)">Hapus</a>
-                    </div>
                   </div>
                 </div>
               </a-col>
@@ -190,19 +135,19 @@
   </div>
 </template>
 <script>
-const dataPembelian = [
+const dataTagihan = [
   {
     order_number: "ATT-UMR-54021040019072938",
     products_categorie: "umrah",
     products_name:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Makassar",
     total_amount: 900000731,
+    remaining_payment: 630000000,
     number_purchase: "40",
     order_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_limit: moment("2019-07-14", "YYYY-MM-DD"),
-    purchase_status: "Belum Dibayar",
-    payment_type: "Lunas",
+    payment_type: "DP",
     payment_method: "ATAM/Bank Transfer"
   },
   {
@@ -211,11 +156,11 @@ const dataPembelian = [
     products_name:
       "Umrah Hemat Desember 2019 Program 9 Hari, keberangkatan Makassar",
     total_amount: 500000731,
+    remaining_payment: 130000000,
     number_purchase: "20",
     order_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_limit: moment("2019-07-14", "YYYY-MM-DD"),
-    purchase_status: "Belum Dibayar",
     payment_type: "DP",
     payment_method: "ATAM/Bank Transfer"
   },
@@ -223,26 +168,26 @@ const dataPembelian = [
     order_number: "ATT-AKM-54021040019072938",
     products_categorie: "akomodasi",
     products_name: "3 Hari Makkah dan 4 Hari Madinah",
-    total_amount: 20000731,
+    total_amount: 200000731,
+    remaining_payment: 30000000,
     number_purchase: "10",
     order_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_limit: moment("2019-07-14", "YYYY-MM-DD"),
-    purchase_status: "Menunggu Verifikasi",
-    payment_type: "Lunas",
+    payment_type: "DP",
     payment_method: "ATAM/Bank Transfer"
   },
   {
     order_number: "ATT-VSA-54021040019072938",
     products_categorie: "visa",
     products_name: "Visa Umrah September 2019",
-    total_amount: 500731,
+    total_amount: 500000731,
+    remaining_payment: 230000000,
     number_purchase: "8",
     order_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_limit: moment("2019-07-14", "YYYY-MM-DD"),
-    purchase_status: "Kedaluwarsa",
-    payment_type: "Lunas",
+    payment_type: "DP",
     payment_method: "ATAM/Bank Transfer"
   },
   {
@@ -251,12 +196,12 @@ const dataPembelian = [
     products_name:
       "Umrah Hemat September 2019 Program 9 Hari, keberangkatan Bandung",
     total_amount: 930000733,
+    remaining_payment: 150000000,
     number_purchase: "20",
     order_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_limit: moment("2019-07-14", "YYYY-MM-DD"),
-    purchase_status: "Dibayar",
-    payment_type: "Lunas",
+    payment_type: "DP",
     payment_method: "Saldo Halopay"
   },
   {
@@ -264,12 +209,12 @@ const dataPembelian = [
     products_categorie: "tiket",
     products_name: "Makassar (UPG) ke Jeddah (JED)",
     total_amount: 30000333,
+    remaining_payment: 33000000,
     number_purchase: "4",
     order_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_date: moment("2019-07-10", "YYYY-MM-DD"),
     payment_limit: moment("2019-07-14", "YYYY-MM-DD"),
-    purchase_status: "Dibayar",
-    payment_type: "Lunas",
+    payment_type: "DP",
     payment_method: "Saldo Halopay"
   }
 ];
@@ -277,17 +222,17 @@ import moment from "moment";
 export default {
   middleware: "authenticated",
   layout: "accounts",
-  name: "mitraPurchase",
+  name: "billing",
   head() {
     return {
-      title: "Semua Transaksi Pembelian - Haloatta"
+      title: "Semua Tagihan Saya - Haloatta"
     };
   },
   data() {
     return {
       dateFormat: "YYYY/MM/DD",
       loading: true,
-      dataPembelian,
+      dataTagihan,
       pagination: {
         onChange: page => {
           console.log(page);
@@ -308,7 +253,7 @@ export default {
       console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
     },
     remove(index) {
-      this.$delete(this.dataPembelian, index);
+      this.$delete(this.dataTagihan, index);
       this.$notification.open({
         message: "Berhasil Dihapus!",
         icon: (
