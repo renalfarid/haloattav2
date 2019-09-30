@@ -45,7 +45,7 @@
                       <div class="d-flex align-end align-items-center text-right">
                         <div>
                           <a @click="toggleWishlist" class="fs-24 cr-gray mb-0">
-                            <a-icon v-if="wishlist == false" type="heart"/>
+                            <a-icon v-if="wishlist == false" type="heart" />
                             <a-icon
                               v-else-if="wishlist == true"
                               type="heart"
@@ -63,7 +63,7 @@
                     </a-col>
                   </a-row>
                   <div class="ant-package--rate mt-8 mb-0">
-                    <a-rate class="fs-18 mb-0" :defaultValue="bintang" disabled/>
+                    <a-rate class="fs-18 mb-0" :defaultValue="bintang" disabled />
                   </div>
                 </div>
               </a-list-item>
@@ -72,23 +72,23 @@
 
           <div class="ant-tabs--content">
             <div v-if="activetab === 1" class="ant-tabs--content-body">
-              <informationTicket/>
+              <informationTicket :data="datatiket" />
             </div>
             <div v-if="activetab === 2" class="ant-tabs--content-body">
-              <informationAccommodation/>
+              <informationAccommodation />
             </div>
             <div v-if="activetab === 3" class="ant-tabs--content-body">
-              <informationEquipment/>
+              <informationEquipment />
             </div>
             <div v-if="activetab === 4" class="ant-tabs--content-body">
-              <informationItinerary/>
+              <informationItinerary />
             </div>
           </div>
         </a-col>
         <a-col :span="7" :style="{margin : '16px 0'}">
           <div class="ant-layout--right">
             <div class="ant-affix--container">
-              <informationSideRight/>
+              <informationSideRight />
             </div>
           </div>
         </a-col>
@@ -132,7 +132,7 @@ export default {
     toggleWishlist() {
       this.wishlist = !this.wishlist;
     },
-    getdetail() {
+    async getdetail() {
       let params = this.$route.query;
       console.log(params);
       axios
@@ -140,7 +140,7 @@ export default {
           kode_produk: params.kode_produk
         })
         .then(response => {
-          console.log(response);
+          // console.log(response);
           this.datatiket = response.data.data.tiket;
           this.nama = response.data.data.umroh.nama;
           this.bintang = response.data.data.umroh.kelas_bintang;

@@ -7,17 +7,17 @@
             <a-row :gutter="10">
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t6.jpg"/>
+                  <expandable-image src="/maskapai/garuda/t6.jpg" />
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t7.jpg"/>
+                  <expandable-image src="/maskapai/garuda/t7.jpg" />
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t8.jpg"/>
+                  <expandable-image src="/maskapai/garuda/t8.jpg" />
                 </div>
               </a-col>
             </a-row>
@@ -26,14 +26,10 @@
 
         <a-list-item class="ant-list-item--package-information">
           <div class="d-flex align-items-center w-100">
-            <a-avatar
-              size="large"
-              class="mr-8"
-              src="https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png"
-            />
-            <div class="fs-16 fw-500 cr-black">Lion Air</div>
+            <a-avatar size="large" class="mr-8" :src="data.logo_maskapai" />
+            <div class="fs-16 fw-500 cr-black">{{data.nama_maskapai}}</div>
 
-            <div class="fs-16 fw-500 cr-black ml-auto">JT-333</div>
+            <div class="fs-16 fw-500 cr-black ml-auto">{{data.kode_maskapai}}</div>
           </div>
         </a-list-item>
 
@@ -49,7 +45,7 @@
                 />
                 <div>
                   <div class="fs-15 fw-400 cr-gray f-default">Kelas Kabin</div>
-                  <div class="fs-15 fw-500 cr-black text-capitalize">Ekonomi</div>
+                  <div class="fs-15 fw-500 cr-black text-capitalize">{{data.class_flight}}</div>
                 </div>
               </div>
             </a-col>
@@ -87,7 +83,7 @@
         <a-list-item class="ant-list-item--package-information">
           <div class="d-flex align-items-start w-100">
             <div>
-              <a-avatar size="small" shape="square" src="/icons/package/airplane.png"/>
+              <a-avatar size="small" shape="square" src="/icons/package/airplane.png" />
             </div>
             <div class="w-100">
               <div class="fs-16 fw-500 cr-black mb-16">Jadwal Keberangkatan dan Kepulangan</div>
@@ -98,28 +94,28 @@
                     <a-timeline-item color="green">
                       <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
                       <div class="fs-14 fw-500 cr-black text-uppercase">
-                        <span>Makassar (UPG)</span>
+                        <span>{{data.bandara_asal}} ({{data.kode_bandara_asal}})</span>
                       </div>
-                      <div class="fs-15 fw-500 cr-black">12:00</div>
+                      <div class="fs-15 fw-500 cr-black">{{data.jam_keberangkatan}}</div>
                       <div class="fs-15 fw-400 cr-gray">
-                        <span>{{moment("20019-12-20", "YYYY-MM-DD").format('LL')}}</span>
+                        <span>{{moment(data.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
                       </div>
                     </a-timeline-item>
                     <a-timeline-item color="red">
-                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;"/>
+                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
                       <div class="fs-14 fw-400 cr-black">
                         <span class="mr-8">Nonstop</span>
-                        <span class="fw-500">10j 0m</span>
+                        <span class="fw-500">{{data.durasi_keberangkatan}}</span>
                       </div>
                     </a-timeline-item>
                     <a-timeline-item>
                       <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
                       <div class="fs-14 fw-500 cr-black text-uppercase">
-                        <span>Jeddah (JED)</span>
+                        <span>{{data.bandara_tujuan}} ({{data.kode_bandara_tujuan}})</span>
                       </div>
-                      <div class="fs-15 fw-500 cr-black">18:00</div>
+                      <div class="fs-15 fw-500 cr-black">{{data.tiba_keberangkatan}}</div>
                       <div class="fs-15 fw-400 cr-gray">
-                        <span>{{moment("20019-12-20", "YYYY-MM-DD").format('LL')}}</span>
+                        <span>{{moment(data.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
                       </div>
                     </a-timeline-item>
                   </a-timeline>
@@ -131,28 +127,28 @@
                     <a-timeline-item color="green">
                       <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
                       <div class="fs-14 fw-500 cr-black text-uppercase">
-                        <span>Jeddah (JED)</span>
+                        <span>{{data.bandara_tujuan}} ({{data.kode_bandara_tujuan}})</span>
                       </div>
-                      <div class="fs-15 fw-500 cr-black">12:00</div>
+                      <div class="fs-15 fw-500 cr-black">{{data.jam_kepulangan}}</div>
                       <div class="fs-15 fw-400 cr-gray">
-                        <span>{{moment("20019-12-29", "YYYY-MM-DD").format('LL')}}</span>
+                        <span>{{moment(data.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</span>
                       </div>
                     </a-timeline-item>
                     <a-timeline-item color="red">
-                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;"/>
+                      <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
                       <div class="fs-14 fw-400 cr-black">
                         <span class="mr-8">Nonstop</span>
-                        <span class="fw-500">10j 0m</span>
+                        <span class="fw-500">{{data.durasi_kepulangan}}</span>
                       </div>
                     </a-timeline-item>
                     <a-timeline-item>
                       <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
                       <div class="fs-14 fw-500 cr-black text-uppercase">
-                        <span>Jakarta (CGK)</span>
+                        <span>{{data.bandara_asal}} ({{data.kode_bandara_asal}})</span>
                       </div>
-                      <div class="fs-15 fw-500 cr-black">18:00</div>
+                      <div class="fs-15 fw-500 cr-black">{{data.tiba_kepulangan}}</div>
                       <div class="fs-15 fw-400 cr-gray">
-                        <span>{{moment("20019-12-29", "YYYY-MM-DD").format('LL')}}</span>
+                        <span>{{moment(data.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</span>
                       </div>
                     </a-timeline-item>
                   </a-timeline>
@@ -228,9 +224,7 @@
 <script>
 import moment from "moment";
 export default {
-  props: {
-    data: Object
-  },
+  props: ["data"],
   created() {
     this.getdetail();
   },
