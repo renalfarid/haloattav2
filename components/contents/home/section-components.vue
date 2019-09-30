@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="header-title">
-      <a-divider orientation="left" class="ant-divider-title-left">Halo Choice</a-divider>
+      <a-divider orientation="left" class="ant-divider-title-left">Komponen Pilihan Haloatta</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
           <h6 class="subtitle">
@@ -14,6 +14,20 @@
     </div>
 
     <a-row :gutter="16" class="mb-16">
+      <a-col :span="8">
+        <nuxt-link to="/catalog/umrah">
+          <a-card class="card-product--components">
+            <div class="ant-card-cover-images" v-lazy:background-image="imgUmrah"></div>
+            <div class="ant-card-cover--overlay">
+              <h3 class="fs-26 fw-600 mb-0">Paket Umrah</h3>
+              <p class="fs-16 fw-400 mb-0">
+                Lorem ipsum dolor sit amet
+                consectetur adipisicing elit
+              </p>
+            </div>
+          </a-card>
+        </nuxt-link>
+      </a-col>
       <a-col :span="8">
         <nuxt-link to="/catalog/ticket-group">
           <a-card class="card-product--components">
@@ -42,6 +56,9 @@
           </a-card>
         </nuxt-link>
       </a-col>
+    </a-row>
+
+    <a-row :gutter="16" class="mb-16">
       <a-col :span="8">
         <nuxt-link to="/catalog/visa">
           <a-card class="card-product--components">
@@ -56,9 +73,6 @@
           </a-card>
         </nuxt-link>
       </a-col>
-    </a-row>
-
-    <a-row :gutter="16" class="mb-16">
       <a-col :span="8">
         <nuxt-link to="/catalog/insurance">
           <a-card class="card-product--components">
@@ -87,6 +101,8 @@
           </a-card>
         </nuxt-link>
       </a-col>
+    </a-row>
+    <a-row :gutter="16" class="mb-16">
       <a-col :span="8">
         <nuxt-link to="/catalog/manasik">
           <a-card class="card-product--components">
@@ -101,9 +117,6 @@
           </a-card>
         </nuxt-link>
       </a-col>
-    </a-row>
-
-    <a-row :gutter="16" class="mb-16">
       <a-col :span="8">
         <nuxt-link to="/catalog/equipment">
           <a-card class="card-product--components">
@@ -132,7 +145,6 @@
           </a-card>
         </nuxt-link>
       </a-col>
-      <a-col :span="8"></a-col>
     </a-row>
   </div>
 </template>
@@ -140,6 +152,7 @@
 export default {
   data() {
     return {
+      imgUmrah: "/components/umrah.png",
       imgTicket: "/components/ticket.png",
       imgAccommodation: "/components/accommodation.png",
       imgVisa: "/components/visa.png",

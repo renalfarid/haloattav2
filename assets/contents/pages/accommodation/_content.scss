@@ -9,26 +9,17 @@
 }
 
 .content-partner--accommodation {
-    & .ant-list {
-        margin: 24px 0;
-        & .ant-row {
-            @include align-items(center);
-            @include flexbox();
-            & .ant-list-item {
-                cursor: pointer;
-                & img {
-                    max-height: 80px;
-                    display: block;
-                    margin: 0 auto;
-                    -webkit-filter: grayscale(100%);
-                    filter: grayscale(100%);
-                }
-                &:hover {
-                    & img {
-                        -webkit-filter: grayscale(0);
-                        filter: grayscale(0);
-                    }
-                }
+    & .brand-logo {
+        max-height: 80px;
+        padding: 8px;
+        display: block;
+        margin: 0 auto;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        &:hover {
+            & img {
+                -webkit-filter: grayscale(0);
+                filter: grayscale(0);
             }
         }
     }

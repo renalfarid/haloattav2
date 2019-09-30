@@ -120,11 +120,10 @@
         height: 320px;
         border: none;
         & .ant-card-cover-images {
-            opacity: 1;
             -webkit-transform: translate3d(0, 10%, 0) scale3d(1.2, 1.2, 1);
             transform: translate3d(0, 10%, 0) scale3d(1.2, 1.2, 1);
-            -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
-            transition: transform 0.5s, opacity 0.5s;
+            -webkit-transition: -webkit-transform 0.35s, opacity 0.35s;
+            transition: transform 0.35s, opacity 0.35s;
             @include border-radius(0);
             background-position: center center;
             background-repeat: no-repeat;
@@ -138,9 +137,9 @@
             height: 100%;
             padding: 0;
             & .ant-card-cover--overlay {
-                background-image: -webkit-linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
-                background-image: -moz-linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
-                background-image: linear-gradient(to top, rgba(5, 13, 40, .4), rgba(0, 0, 0, 0)) !important;
+                background-image: -webkit-linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
+                background-image: -moz-linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
+                background-image: linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
                 position: absolute;
                 padding: 24px;
                 width: 100%;
@@ -154,7 +153,6 @@
         }
         &:hover {
             & .ant-card-cover-images {
-                opacity: .8;
                 -webkit-transform: translate3d(0, 0, 0);
                 transform: translate3d(0, 0, 0);
             }
