@@ -11,6 +11,18 @@
                 <div class="ant-card-cover--overlay-text-title fs-15">{{item.sisa_seat}}</div>
                 <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
               </div>
+
+              <div class="ant-card-wishlist">
+                <a @click="toggleWishlist" class="fs-24 cr-gray mb-0">
+                  <a-icon v-if="wishlist == false" theme="twoTone" twoToneColor="#eb2f96" type="heart" />
+                  <a-icon
+                    v-else-if="wishlist == true"
+                    type="heart"
+                    theme="filled"
+                    style="color:#eb2f96"
+                  />
+                </a>
+              </div>
             </div>
 
             <div class="ant-card--overlay-block">
@@ -30,7 +42,7 @@
                   <template slot="content">
                     <div class="fs-15 fw-500 cr-black">{{item.nama}}</div>
                     <div class="fs-14 fw-400 cr-gray f-default">
-                      <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
+                      <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
                     </div>
                   </template>
                   <a-avatar
@@ -44,11 +56,11 @@
                   <template slot="content">
                     <div class="fs-13 fw-400 cr-black f-default">Maskapai {{item.nama_maskapai}}</div>
                   </template>
-                  <a-avatar class="zIndex mr-8" size="small" :src="item.image"/>
+                  <a-avatar class="zIndex mr-8" size="small" :src="item.image" />
                 </a-popover>
               </div>
               <div class="ant-card-meta-title--top-right ml-auto">
-                <a-rate class="fs-14 mb-4" :defaultValue="item.kelas_bintang" disabled/>
+                <a-rate class="fs-14 mb-4" :defaultValue="item.kelas_bintang" disabled />
               </div>
             </div>
             <div class="ant-card-meta-title--package text-capitalize fw-500">{{item.nama}}</div>
@@ -113,6 +125,7 @@ import moment from "moment";
 export default {
   data() {
     return {
+      wishlist: false,
       loading: true,
       lisData: []
     };
@@ -124,6 +137,9 @@ export default {
 
   methods: {
     moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
     async getdata() {
       axios
         .get("https://api.haloatta.com/api/paket/umroh/all", {

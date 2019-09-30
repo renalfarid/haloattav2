@@ -163,6 +163,23 @@
                               class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
                             >pax</div>
                           </div>
+
+                          <div class="ant-card-wishlist">
+                            <a @click="toggleWishlist" class="fs-24 cr-gray mb-0">
+                              <a-icon
+                                v-if="wishlist == false"
+                                theme="twoTone"
+                                twoToneColor="#eb2f96"
+                                type="heart"
+                              />
+                              <a-icon
+                                v-else-if="wishlist == true"
+                                type="heart"
+                                theme="filled"
+                                style="color:#eb2f96"
+                              />
+                            </a>
+                          </div>
                         </div>
 
                         <div class="ant-card--overlay-block">
@@ -293,6 +310,7 @@ export default {
   data() {
     return {
       form: this.$form.createForm(this),
+      wishlist: false,
       loading: true,
       busy: false,
       limit: 8,
@@ -305,6 +323,9 @@ export default {
   },
   methods: {
     moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
     handleChange(value) {
       console.log(`selected ${value}`);
     },
