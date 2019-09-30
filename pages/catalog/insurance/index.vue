@@ -1,10 +1,7 @@
 <template>
   <div>
     <div class="content-head content-head--insurance">
-      <div
-        class="content-head--cover"
-        :style="{ backgroundImage: 'url(/asuransi/cover/ac1.png)' }"
-      >
+      <div class="content-head--cover" :style="{ backgroundImage: 'url(/asuransi/cover/ac1.png)' }">
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
@@ -122,14 +119,13 @@
           </a-col>
         </a-row>
 
-        <a-list
-          :grid="{ gutter: 24, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: 6 }"
-          :dataSource="partner"
-        >
-          <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-            <img class="max-width" :src="item.logo_partner" />
-          </a-list-item>
-        </a-list>
+        <div>
+          <a-row :gutter="16">
+            <a-col :span="4" v-for="(item, index) in partner" :key="index" class="mb-24">
+              <img class="brand-logo max-width" :src="item.logo" />
+            </a-col>
+          </a-row>
+        </div>
       </div>
     </div>
 
@@ -144,26 +140,6 @@
 <script>
 import searchInsurance from "~/components/contents/lib/search/insurance.vue";
 import Recommended from "~/components/contents/catalog/insurance/recommended.vue";
-const partner = [
-  {
-    logo_partner: "/akomodasi/logo/ll1.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll2.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll3.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll4.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll5.svg"
-  },
-  {
-    logo_partner: "/akomodasi/logo/ll6.svg"
-  }
-];
 export default {
   name: "insurance",
   head() {
@@ -173,7 +149,32 @@ export default {
   },
   data() {
     return {
-      partner,
+      partner: [
+        {
+          id: 1,
+          logo: "/akomodasi/logo/ll1.svg"
+        },
+        {
+          id: 2,
+          logo: "/akomodasi/logo/ll2.svg"
+        },
+        {
+          id: 3,
+          logo: "/akomodasi/logo/ll3.svg"
+        },
+        {
+          id: 4,
+          logo: "/akomodasi/logo/ll4.svg"
+        },
+        {
+          id: 5,
+          logo: "/akomodasi/logo/ll5.svg"
+        },
+        {
+          id: 6,
+          logo: "/akomodasi/logo/ll6.svg"
+        }
+      ],
       slickContent: {
         slidesToShow: 1,
         slidesToScroll: 1,

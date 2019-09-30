@@ -119,14 +119,13 @@
           </a-col>
         </a-row>
 
-        <a-list
-          :grid="{ gutter: 24, xs: 1, sm: 2, md: 4, lg: 4, xl: 6, xxl: 6 }"
-          :dataSource="partner"
-        >
-          <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-            <img class="max-width" :src="item.logo_partner" />
-          </a-list-item>
-        </a-list>
+        <div>
+          <a-row :gutter="16">
+            <a-col :span="4" v-for="(item, index) in partner" :key="index" class="mb-24">
+              <img class="brand-logo max-width" :src="item.logo" />
+            </a-col>
+          </a-row>
+        </div>
       </div>
     </div>
 
@@ -141,26 +140,6 @@
 <script>
 import searchTicket from "~/components/contents/lib/search/ticket.vue";
 import Recommended from "~/components/contents/catalog/ticket/recommended.vue";
-const partner = [
-  {
-    logo_partner: "/maskapai/logo/garuda.svg"
-  },
-  {
-    logo_partner: "/maskapai/logo/emirates.svg"
-  },
-  {
-    logo_partner: "/maskapai/logo/citylink.svg"
-  },
-  {
-    logo_partner: "/maskapai/logo/liong.svg"
-  },
-  {
-    logo_partner: "/maskapai/logo/saudi.svg"
-  },
-  {
-    logo_partner: "/maskapai/logo/scoot.svg"
-  }
-];
 export default {
   name: "ticketGroup",
   head() {
@@ -170,7 +149,32 @@ export default {
   },
   data() {
     return {
-      partner,
+      partner: [
+        {
+          id: 1,
+          logo: "/akomodasi/logo/ll1.svg"
+        },
+        {
+          id: 2,
+          logo: "/akomodasi/logo/ll2.svg"
+        },
+        {
+          id: 3,
+          logo: "/akomodasi/logo/ll3.svg"
+        },
+        {
+          id: 4,
+          logo: "/akomodasi/logo/ll4.svg"
+        },
+        {
+          id: 5,
+          logo: "/akomodasi/logo/ll5.svg"
+        },
+        {
+          id: 6,
+          logo: "/akomodasi/logo/ll6.svg"
+        }
+      ],
       slickContent: {
         slidesToShow: 1,
         slidesToScroll: 1,

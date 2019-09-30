@@ -1,15 +1,12 @@
 <template>
   <div>
-    <div class="content-head content-head--tourleader">
-      <div
-        class="content-head--cover"
-        :style="{ backgroundImage: 'url(/tourleader/cover/ct1.png)' }"
-      >
+    <div class="content-head content-head--umrah">
+      <div class="content-head--cover" :style="{ backgroundImage: 'url(/umrah/cover/cu22.png)' }">
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
             <a-col :span="10">
-              <h2 class="title">Ragam Pilihan Tour Leader</h2>
+              <h2 class="title">Ragam Pilihan Paket Umrah</h2>
               <p class="cr-white fs-16 fw-400">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -18,7 +15,7 @@
             </a-col>
             <a-col :span="14">
               <a-card :bordered="false" class="b-shadow b-radius b-opacity">
-                <search-tourleader />
+                <search-umrah />
               </a-card>
             </a-col>
           </a-row>
@@ -26,9 +23,9 @@
       </div>
     </div>
 
-    <div class="content-about--tourleader pt-40 pb-40">
+    <div class="content-about--umrah pt-40 pb-40">
       <div class="container">
-        <a-divider orientation="left" class="ant-divider-title-left">Tentang Tour Leader</a-divider>
+        <a-divider orientation="left" class="ant-divider-title-left">Tentang Umrah</a-divider>
         <a-row :gutter="24" type="flex" justify="space-between" align="middle">
           <a-col :span="12">
             <p class="fs-16 cr-black">
@@ -50,17 +47,17 @@
             <img
               class="mx-width d-block m-auto"
               style="maxHeight: 320px"
-              src="/tourleader/ilustrasi/ti1.png"
+              src="/akomodasi/illustration/li1.png"
             />
           </a-col>
         </a-row>
       </div>
     </div>
 
-    <div class="content-slide--tourleader pb-40 pt-40">
+    <div class="content-slide--umrah pb-40 pt-40">
       <div class="container">
         <div class="container-slick">
-          <a-divider orientation="left" class="ant-divider-title-left">Tips memilih Tour Leader</a-divider>
+          <a-divider orientation="left" class="ant-divider-title-left">Tips memilih Paket Umrah</a-divider>
           <slick class="slider-nav" ref="slick" :options="slickContent">
             <a-card :bordered="false">
               <a-row :gutter="24" type="flex" justify="space-between" align="middle">
@@ -68,11 +65,11 @@
                   <img
                     class="mx-width d-block m-auto"
                     style="maxHeight: 320px"
-                    src="/tourleader/ilustrasi/ti2.png"
+                    src="/akomodasi/illustration/li2.png"
                   />
                 </a-col>
                 <a-col :span="12">
-                  <div class="fs-22 fw-500 cr-black">Pastikan Vendor Berpengalaman</div>
+                  <div class="fs-22 fw-500 cr-black">Pastikan Jarak Hotel Anda Dekat</div>
                   <div class="fs-16 fw-400 cr-black">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     Dolore facilis ipsum amet consequatur harum facere,
@@ -103,16 +100,16 @@
       </div>
     </div>
 
-    <div class="content-cover--tourleader">
+    <div class="content-cover--umrah">
       <div
         class="content-cover--images"
-        :style="{ backgroundImage: 'url(/tourleader/cover/ct2.png)'}"
+        :style="{ backgroundImage: 'url(/akomodasi/cover/lc2.png)'}"
       ></div>
     </div>
 
-    <div class="content-partner--tourleader pb-40 pt-40">
+    <div class="content-partner--umrah pb-40 pt-40">
       <div class="container">
-        <a-divider orientation="left" class="ant-divider-title-left">Partner Tour Leader</a-divider>
+        <a-divider orientation="left" class="ant-divider-title-left">Partner Umrah</a-divider>
         <a-row>
           <a-col :span="16">
             <p class="fs-16 cr-black">
@@ -132,7 +129,7 @@
       </div>
     </div>
 
-    <div class="content-recommended--tourleader pt-40 pb-40">
+    <div class="content-recommended--umrah pt-40 pb-40">
       <div class="container">
         <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi untuk kamu</a-divider>
         <Recommended />
@@ -141,13 +138,13 @@
   </div>
 </template>
 <script>
-import searchTourleader from "~/components/contents/lib/search/tourleader.vue";
-import Recommended from "~/components/contents/catalog/tourleader/recommended.vue";
+import searchUmrah from "~/components/contents/lib/search/umrah.vue";
+import Recommended from "~/components/contents/catalog/umrah/recommended.vue";
 export default {
-  name: "tourleader",
+  name: "umrah",
   head() {
     return {
-      title: "Pesan Tour Leader Pilihan - Best Travel Agen | Haloatta"
+      title: "Pesan Paket Umrah - Best Travel Agen | Haloatta"
     };
   },
   data() {
@@ -201,7 +198,7 @@ export default {
     }
   },
   components: {
-    searchTourleader,
+    searchUmrah,
     Recommended
   }
 };
