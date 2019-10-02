@@ -14,7 +14,12 @@
 
               <div class="ant-card-wishlist">
                 <a @click="toggleWishlist" class="fs-24 cr-gray mb-0">
-                  <a-icon v-if="wishlist == false" theme="twoTone" twoToneColor="#eb2f96" type="heart" />
+                  <a-icon
+                    v-if="wishlist == false"
+                    theme="twoTone"
+                    twoToneColor="#eb2f96"
+                    type="heart"
+                  />
                   <a-icon
                     v-else-if="wishlist == true"
                     type="heart"
@@ -28,7 +33,9 @@
             <div class="ant-card--overlay-block">
               <div class="d-flex align-items-center h-100">
                 <a-button>
-                  <nuxt-link to="/catalog/umrah/detail-package">Lihat detail</nuxt-link>
+                  <nuxt-link
+                    :to="'/catalog/umrah/detail-package?kode_produk='+item.kode_produk"
+                  >Lihat detail</nuxt-link>
                 </a-button>
               </div>
             </div>
