@@ -1,0 +1,76 @@
+.content-cover--umaroh {
+    & .content-cover--images {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 420px;
+        width: 100%;
+    }
+}
+
+.content-about--umaroh {
+    & .divider {
+        border-top: 1px solid #e8e8e8;
+        display: inline-block;
+        margin: 16px auto;
+        width: 100px;
+        height: 1px;
+    }
+}
+
+.content-umaroh--benefit {
+    & .divider {
+        border-top: 1px solid #e8e8e8;
+        display: inline-block;
+        margin: 16px auto;
+        width: 100px;
+        height: 1px;
+    }
+}
+
+.content-umaroh--testimoni {
+    & .quote {
+        max-height: 40px;
+    }
+}
+
+.content-slide--umaroh {
+    & .divider {
+        border-top: 1px solid #e8e8e8;
+        display: inline-block;
+        margin: 16px auto;
+        width: 100px;
+        height: 1px;
+    }
+    & .picture {
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        width: 160px;
+        height: 160px;
+        & .picture-images {
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.content-partner--umaroh {
+    & .brand-logo {
+        max-height: 80px;
+        padding: 8px;
+        display: block;
+        margin: 0 auto;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        &:hover {
+            & img {
+                -webkit-filter: grayscale(0);
+                filter: grayscale(0);
+            }
+        }
+    }
+}
