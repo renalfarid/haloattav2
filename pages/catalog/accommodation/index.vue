@@ -9,7 +9,7 @@
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
             <a-col :span="10">
-              <h2 class="title">Ragam Pilihan LA Akomodasi</h2>
+              <h2 class="title fs-40">Ragam Pilihan LA Akomodasi</h2>
               <p class="cr-white fs-16 fw-400">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

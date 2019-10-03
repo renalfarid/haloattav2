@@ -159,7 +159,7 @@
                   >
                     <template slot="description">
                       <a-button size="large" class="b-shadow b-radius">
-                        <nuxt-link to="/accounts/mitra/create">Buat Paket</nuxt-link>
+                        <nuxt-link to="/umaroh">Lihat Selengkapnya</nuxt-link>
                       </a-button>
                     </template>
                   </a-card-meta>
