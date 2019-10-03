@@ -75,7 +75,7 @@
               <informationTicket :data="datatiket" />
             </div>
             <div v-if="activetab === 2" class="ant-tabs--content-body">
-              <informationAccommodation />
+              <informationAccommodation :data="dataLA" />
             </div>
             <div v-if="activetab === 3" class="ant-tabs--content-body">
               <informationEquipment />
@@ -119,7 +119,8 @@ export default {
       nama: "",
       bintang: 1,
       foto_vendor: "",
-      datatiket: "default"
+      datatiket: "default",
+      dataLA: "default"
     };
   },
   created() {
@@ -142,6 +143,7 @@ export default {
         .then(response => {
           // console.log(response);
           this.datatiket = response.data.data.tiket;
+          this.dataLA = response.data.data.la;
           this.nama = response.data.data.umroh.nama;
           this.bintang = response.data.data.umroh.kelas_bintang;
           this.foto_vendor = response.data.data.umroh.foto_vendor;

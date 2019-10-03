@@ -5,12 +5,12 @@
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="ant-package--images w-100" style="z-index: inherit">
             <a-row :gutter="10">
-              <a-col :span="8">
+              <a-col :span="8" v-for="n in 3" :key="n">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t6.jpg" />
+                  <expandable-image :src="data.gambar_maskapai" />
                 </div>
               </a-col>
-              <a-col :span="8">
+              <!-- <a-col :span="8">
                 <div class="ant-package--images-small">
                   <expandable-image src="/maskapai/garuda/t7.jpg" />
                 </div>
@@ -19,7 +19,7 @@
                 <div class="ant-package--images-small">
                   <expandable-image src="/maskapai/garuda/t8.jpg" />
                 </div>
-              </a-col>
+              </a-col>-->
             </a-row>
           </div>
         </a-list-item>

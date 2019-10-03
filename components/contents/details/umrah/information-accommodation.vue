@@ -35,11 +35,11 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Makkah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>Rayyana Ajyad</span>
+                    <span>{{data.nama_hotel_mekkah}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
-                  <a-rate class="fs-16" :defaultValue="3" disabled />
+                  <a-rate class="fs-16" :defaultValue="data.kelas_bintang" disabled />
                 </div>
               </div>
             </div>
@@ -281,6 +281,8 @@
 <script>
 import informationSideRight from "~/components/contents/details/umrah/information-sideright.vue";
 export default {
+  props: ["data"],
+
   components: {
     informationSideRight
   }
