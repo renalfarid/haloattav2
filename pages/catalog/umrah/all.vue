@@ -134,6 +134,12 @@
           <filter-result-umrah />
         </div>
 
+        <client-only>
+          <a-card>
+            
+          </a-card>
+        </client-only>
+
         <div class="ant-layout--results-list pb-16">
           <div
             v-infinite-scroll="getdata"
@@ -326,15 +332,9 @@ export default {
     toggleWishlist() {
       this.wishlist = !this.wishlist;
     },
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
+    handleChange(value) {},
+    handleBlur() {},
+    handleFocus() {},
     filterOption(input, option) {
       return (
         option.componentOptions.children[0].text
