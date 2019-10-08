@@ -35,7 +35,7 @@
 
             <a-row :gutter="16" type="flex" justify="space-around" align="middle" class="mt-16">
               <a-col :span="12">
-                <a-badge status="warning" text="Periode Low Season" class="text-uppercase m-0" />
+                <a-badge status="warning" :text="data.tipe" class="text-uppercase m-0" />
               </a-col>
               <a-col :span="12" class="text-right">
                 <span
@@ -60,7 +60,7 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Makkah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>Rayyana Ajyad</span>
+                    <span>{{data.nama_hotel_mekkah}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
@@ -98,7 +98,9 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
-                    <div class="fs-15 fw-500 cr-black">Kurang Dari 500 Meter</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >{{(data.jarak_hotel !=null)?data.jarak_hotel:'kosong'}}</div>
                   </div>
                 </div>
               </a-col>
@@ -114,7 +116,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l1.jpg)' }"
+                    :style="{ backgroundImage: `url(${data.images_hotel})` }"
                   ></div>
                 </div>
               </a-col>
@@ -153,7 +155,7 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Madinah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>Pinewood Hotel</span>
+                    <span>{{data.nama_hotel_madinah}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
@@ -191,7 +193,9 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
-                    <div class="fs-15 fw-500 cr-black">Kurang Dari 500 Meter</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >{{(data.jarak_hotel !=null)?data.jarak_hotel:'kosong'}}</div>
                   </div>
                 </div>
               </a-col>
@@ -237,7 +241,7 @@
     <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
       <a-row :gutter="8">
-        <a-col :span="6" class="mb-16">
+        <a-col :span="6" class="mb-16" v-for="item in fasilitas_termasuk" :key="item">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -246,11 +250,11 @@
               icon="check"
             />
             <div>
-              <div class="fs-15 fw-500 cr-black">Bus VVIP</div>
+              <div class="fs-15 fw-500 cr-black">{{item}}</div>
             </div>
           </div>
         </a-col>
-        <a-col :span="6" class="mb-16">
+        <!-- <a-col :span="6" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -340,7 +344,7 @@
               <div class="fs-15 fw-500 cr-black">Resepsionis 1x24 Jam</div>
             </div>
           </div>
-        </a-col>
+        </a-col>-->
       </a-row>
     </a-card>
 
@@ -466,12 +470,20 @@ import policy from "~/components/contents/details/accommodation/policy.vue";
 import faq from "~/components/contents/details/accommodation/faq.vue";
 import moment from "moment";
 export default {
+  props: ["data"],
   data() {
     return {
-      wishlist: false
+      wishlist: false,
+      fasilitas_termasuk: []
     };
   },
+  created() {
+    this.splitFasilitas();
+  },
   methods: {
+    splitFasilitas() {
+      this.fasilitas_termasuk = this.data.fasilitas_termasuk.split("<br>");
+    },
     moment,
     toggleWishlist() {
       this.wishlist = !this.wishlist;
