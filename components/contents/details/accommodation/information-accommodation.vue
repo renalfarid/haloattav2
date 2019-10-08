@@ -240,8 +240,9 @@
     <!-- fasilitas -->
     <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
+      <p>{{data.fasilitas_termasuk}}</p>
       <a-row :gutter="8">
-        <a-col :span="6" class="mb-16" v-for="item in fasilitas_termasuk" :key="item">
+        <!-- <a-col :span="6" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -250,10 +251,10 @@
               icon="check"
             />
             <div>
-              <div class="fs-15 fw-500 cr-black">{{item}}</div>
+              <div class="fs-15 fw-500 cr-black">{{data.fasilitas_termasuk}}</div>
             </div>
           </div>
-        </a-col>
+        </a-col>-->
         <!-- <a-col :span="6" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
@@ -482,7 +483,7 @@ export default {
   },
   methods: {
     splitFasilitas() {
-      this.fasilitas_termasuk = this.data.fasilitas_termasuk.split("<br>");
+      // this.fasilitas_termasuk = this.data.fasilitas_termasuk.split("<br>");
     },
     moment,
     toggleWishlist() {
