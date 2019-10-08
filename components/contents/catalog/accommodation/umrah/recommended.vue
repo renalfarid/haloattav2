@@ -1,7 +1,10 @@
 <template>
   <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="lisData" :loading="loading">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-      <nuxt-link to="/catalog/accommodation/detail" class="d-block">
+      <nuxt-link
+        :to="'/catalog/accommodation/detail?kode_produk='+item.kode_produk"
+        class="d-block"
+      >
         <a-card class="ant-card-package">
           <div slot="cover">
             <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
@@ -16,7 +19,9 @@
               <div class="ant-card--overlay-block">
                 <div class="d-flex align-items-center h-100">
                   <a-button>
-                    <nuxt-link to="/catalog/accommodation/detail">Lihat detail</nuxt-link>
+                    <nuxt-link
+                      :to="'/catalog/accommodation/detail?kode_produk='+item.kode_produk"
+                    >Lihat detail</nuxt-link>
                   </a-button>
                 </div>
               </div>

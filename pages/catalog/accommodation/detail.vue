@@ -54,7 +54,7 @@
       <a-row :gutter="32">
         <a-col :span="17">
           <div class="ant-layout--package-details-body">
-            <information-accommodation />
+            <information-accommodation :data="dataLA" />
           </div>
         </a-col>
 
@@ -72,6 +72,7 @@
 <script>
 import informationAccommodation from "~/components/contents/details/accommodation/information-accommodation.vue";
 import informationSideright from "~/components/contents/details/accommodation/information-sideright.vue";
+import axios from "axios";
 export default {
   name: "detailAccommodation",
   head() {
@@ -81,7 +82,38 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      wishlist: false,
+      dataLA: "default"
+    };
+  },
+  created() {
+    this.getdetail();
+  },
+  methods: {
+    change(affixed) {
+      console.log(affixed);
+    },
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
+    async getdetail() {
+      let params = this.$route.query;
+      // console.log(params);
+      axios
+        .post(process.env.baseUrl + "la/detail", {
+          kode_produk: params.kode_produk
+        })
+        .then(response => {
+          // console.log(response);
+          this.dataLA = response.data.data;
+          this.$store.commit("la/setLa", response.data.data); // mutating to store for client rendering
+          Cookie.set("la", response.data.data); // saving token in cookie for server rendering
+        })
+        .catch(err => {
+          console.log("error", err);
+        });
+    }
   },
   components: {
     informationAccommodation,
