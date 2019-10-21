@@ -52,7 +52,7 @@
       <a-row :gutter="32">
         <a-col :span="17">
           <div class="ant-layout--package-details-body">
-            <information-handling />
+            <information-handling :data="item" />
           </div>
         </a-col>
 
@@ -70,6 +70,8 @@
 <script>
 import informationHandling from "~/components/contents/details/handling/information-handling.vue";
 import informationSideright from "~/components/contents/details/handling/information-sideright.vue";
+import moment from "moment";
+import axios from "axios";
 export default {
   name: "detailHandling",
   head() {
@@ -79,7 +81,26 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      item: ""
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    moment,
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "handling/detail", {
+          kode_produk: params.kode_produk
+        })
+        .then(response => {
+          this.item = response.data.data;
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationHandling,
