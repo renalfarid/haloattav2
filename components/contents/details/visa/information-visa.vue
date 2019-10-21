@@ -7,9 +7,13 @@
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
                 <div class="fs-28 fw-600 f-default cr-black">
-                  <span>Visa Kanomas Durasi 30 Hari</span>
+                  <span>{{data.nama}}</span>
                 </div>
-                <a-badge status="warning" text="Periode Low Season" class="text-uppercase mb-0 mt-16" />
+                <a-badge
+                  status="warning"
+                  text="Periode Low Season"
+                  class="text-uppercase mb-0 mt-16"
+                />
               </a-col>
 
               <a-col :span="8">
@@ -64,7 +68,7 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Durasi</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">30 Hari</div>
+                    <div class="fs-15 fw-500 cr-black text-capitalize">{{data.duration_stay}} Hari</div>
                   </div>
                 </div>
               </a-col>
@@ -102,6 +106,7 @@ import policy from "~/components/contents/details/visa/policy.vue";
 import faq from "~/components/contents/details/visa/faq.vue";
 import moment from "moment";
 export default {
+  props: ["data"],
   components: {
     commentsVisa,
     vendorVisa,
