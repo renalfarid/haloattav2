@@ -6,9 +6,7 @@
           <div class="w-100">
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
-                <div
-                  class="fs-28 fw-600 f-default cr-black"
-                >Tiket Group Umrah September Garuda Kanomas</div>
+                <div class="fs-28 fw-600 f-default cr-black">{{data.nama || "Nama Belum Ada"}}</div>
               </a-col>
               <a-col :span="8">
                 <div class="d-flex align-end align-items-center text-right">
@@ -36,10 +34,10 @@
 
         <a-list-item class="ant-list-item--package-information">
           <div class="d-flex align-items-center w-100">
-            <a-avatar size="small" class="mr-8" :src="item.logo_maskapai" />
-            <div class="fs-15 fw-500 cr-black">{{item.nama_maskapai}}</div>
+            <a-avatar size="small" class="mr-8" :src="data.logo_maskapai" />
+            <div class="fs-15 fw-500 cr-black">{{data.nama_maskapai}}</div>
 
-            <div class="fs-15 fw-500 cr-black ml-auto">{{item.kode_maskapai}}</div>
+            <div class="fs-15 fw-500 cr-black ml-auto">{{data.kode_maskapai}}</div>
           </div>
         </a-list-item>
 
@@ -55,7 +53,7 @@
                 />
                 <div>
                   <div class="fs-15 fw-400 cr-gray f-default">Kelas Kabin</div>
-                  <div class="fs-15 fw-500 cr-black text-capitalize">{{item.class_flight}}</div>
+                  <div class="fs-15 fw-500 cr-black text-capitalize">{{data.class_flight}}</div>
                 </div>
               </div>
             </a-col>
@@ -104,28 +102,28 @@
                     <a-timeline-item color="green">
                       <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
                       <div class="fs-14 fw-500 cr-black text-uppercase">
-                        <span>{{item.bandara_asal}} ({{item.kode_bandara_asal}})</span>
+                        <span>{{data.bandara_asal}} ({{data.kode_bandara_asal}})</span>
                       </div>
-                      <div class="fs-15 fw-500 cr-black">{{item.jam_keberangkatan}}</div>
+                      <div class="fs-15 fw-500 cr-black">{{data.jam_keberangkatan}}</div>
                       <div class="fs-15 fw-400 cr-gray">
-                        <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                        <span>{{moment(data.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
                       </div>
                     </a-timeline-item>
                     <a-timeline-item color="red">
                       <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
                       <div class="fs-14 fw-400 cr-black">
                         <span class="mr-8">Nonstop</span>
-                        <span class="fw-500">{{item.durasi_keberangkatan}}</span>
+                        <span class="fw-500">{{data.durasi_keberangkatan}}</span>
                       </div>
                     </a-timeline-item>
                     <a-timeline-item>
                       <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
                       <div class="fs-14 fw-500 cr-black text-uppercase">
-                        <span>{{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</span>
+                        <span>{{data.bandara_tujuan}} ({{data.kode_bandara_tujuan}})</span>
                       </div>
-                      <div class="fs-15 fw-500 cr-black">{{item.tiba_keberangkatan}}</div>
+                      <div class="fs-15 fw-500 cr-black">{{data.tiba_keberangkatan}}</div>
                       <div class="fs-15 fw-400 cr-gray">
-                        <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                        <span>{{moment(data.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
                       </div>
                     </a-timeline-item>
                   </a-timeline>
@@ -137,28 +135,28 @@
                     <a-timeline-item color="green">
                       <div class="fs-12 fw-400 cr-gray text-uppercase">Take Off</div>
                       <div class="fs-14 fw-500 cr-black text-uppercase">
-                        <span>{{item.bandara_tujuan}} ({{item.kode_bandara_tujuan}})</span>
+                        <span>{{data.bandara_tujuan}} ({{data.kode_bandara_tujuan}})</span>
                       </div>
-                      <div class="fs-15 fw-500 cr-black">{{item.jam_kepulangan}}</div>
+                      <div class="fs-15 fw-500 cr-black">{{data.jam_kepulangan}}</div>
                       <div class="fs-15 fw-400 cr-gray">
-                        <span>{{moment(item.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</span>
+                        <span>{{moment(data.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</span>
                       </div>
                     </a-timeline-item>
                     <a-timeline-item color="red">
                       <a-icon slot="dot" type="clock-circle-o" style="font-size: 14px;" />
                       <div class="fs-14 fw-400 cr-black">
                         <span class="mr-8">Nonstop</span>
-                        <span class="fw-500">{{item.durasi_kepulangan}}</span>
+                        <span class="fw-500">{{data.durasi_kepulangan}}</span>
                       </div>
                     </a-timeline-item>
                     <a-timeline-item>
                       <div class="fs-12 fw-400 cr-gray text-uppercase">Landing</div>
                       <div class="fs-14 fw-500 cr-black text-uppercase">
-                        <span>{{item.bandara_asal}} ({{item.kode_bandara_asal}})</span>
+                        <span>{{data.bandara_asal}} ({{data.kode_bandara_asal}})</span>
                       </div>
-                      <div class="fs-15 fw-500 cr-black">{{item.tiba_kepulangan}}</div>
+                      <div class="fs-15 fw-500 cr-black">{{data.tiba_kepulangan}}</div>
                       <div class="fs-15 fw-400 cr-gray">
-                        <span>{{moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
+                        <span>{{moment(data.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</span>
                       </div>
                     </a-timeline-item>
                   </a-timeline>
@@ -262,6 +260,7 @@ import faq from "~/components/contents/details/ticket/faq.vue";
 import moment from "moment";
 import axios from "axios";
 export default {
+  props: ["data"],
   data() {
     return {
       wishlist: false,
@@ -269,23 +268,10 @@ export default {
       item: []
     };
   },
-  created: function() {
-    this.getdata();
-  },
   methods: {
     moment,
     toggleWishlist() {
       this.wishlist = !this.wishlist;
-    },
-    async getdata() {
-      axios
-        .post("https://api.haloatta.com/api/tiket/detail", {
-          kode_produk: "TKT239610856"
-        })
-        .then(response => {
-          this.item = response.data.data;
-          this.loading = false;
-        });
     }
   },
   components: {
