@@ -7,7 +7,7 @@
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
                 <div class="fs-28 fw-600 f-default cr-black">
-                  <span>Asuransi Perjalanan Umrah Syariah Mandiri Durasi 30 Hari</span>
+                  <span>{{data.nama}}</span>
                 </div>
               </a-col>
 
@@ -48,7 +48,7 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jenis Asuransi</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">Perjalanan Umrah</div>
+                    <div class="fs-15 fw-500 cr-black text-capitalize">{{data.jenis_asuransi}}</div>
                   </div>
                 </div>
               </a-col>
@@ -178,6 +178,7 @@ import policy from "~/components/contents/details/insurance/policy.vue";
 import faq from "~/components/contents/details/insurance/faq.vue";
 import moment from "moment";
 export default {
+  props: ["data"],
   components: {
     commentsInsurance,
     vendorInsurance,

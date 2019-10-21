@@ -24,13 +24,13 @@
                 data-aos="fade-up"
                 data-aos-duration="1200"
               >
-                <nuxt-link to="/catalog/insurance/detail" class="d-block">
+                <nuxt-link
+                  :to="'/catalog/insurance/detail?kode_produk='+item.kode_produk"
+                  class="d-block"
+                >
                   <a-card class="ant-card-package-small">
                     <div slot="cover">
-                      <div
-                        class="ant-card-cover--images"
-                        v-lazy:background-image="item.images_package"
-                      >
+                      <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                         <div class="d-none ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius ant-pax--insurance"></div>
                           <div class="ant-card-cover--overlay-text">
@@ -46,7 +46,9 @@
                         <div class="ant-card--overlay-block">
                           <div class="d-flex align-items-center h-100">
                             <a-button>
-                              <nuxt-link to="/catalog/insurance/detail">Lihat detail</nuxt-link>
+                              <nuxt-link
+                                :to="'/catalog/insurance/detail?kode_produk='+item.kode_produk"
+                              >Lihat detail</nuxt-link>
                             </a-button>
                           </div>
                         </div>
@@ -59,18 +61,17 @@
                           <div class="ant-card-meta-title--top-left d-flex align-items-center">
                             <div class="mr-8">
                               <a-avatar
-                                class="vendor-logo zIndex" size="small"
-                                v-lazy:background-image="item.logo_provider"
+                                class="vendor-logo zIndex"
+                                size="small"
+                                v-lazy:background-image="item.foto"
                               />
                             </div>
                             <div
                               class="fs-13 fw-400 cr-gray f-default text-ellipsis"
-                            >{{item.provider}}</div>
+                            >{{item.nama_vendor}}</div>
                           </div>
                         </div>
-                        <div
-                          class="ant-card-meta-title--package fs-15 fw-500"
-                        >{{item.name_insurance}}</div>
+                        <div class="ant-card-meta-title--package fs-15 fw-500">{{item.nama}}</div>
                       </div>
 
                       <div slot="description">
@@ -82,7 +83,7 @@
                           </div>
                           <div
                             class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
-                          >Rp{{item.price}}</div>
+                          >{{item.harga_satuan | currency}}</div>
                         </div>
                       </div>
                     </a-card-meta>
@@ -100,6 +101,7 @@
 import searchResultInsurance from "~/components/contents/lib/search/result/insurance.vue";
 import filterResultInsurance from "~/components/contents/lib/filter/result/insurance.vue";
 import axios from "axios";
+import moment from "moment";
 export default {
   name: "insuranceResult",
   head() {
@@ -120,18 +122,28 @@ export default {
     this.loadMore();
   },
   methods: {
+    moment,
     loadMore() {
-      console.log("Adding 6 more data results");
       this.busy = true;
-      axios.get("/dataInsurance.json").then(response => {
-        const append = response.data.slice(
-          this.data.length,
-          this.data.length + this.limit
-        );
-        this.data = this.data.concat(append);
-        this.loading = false;
-        this.busy = false;
-      });
+      // let params = this.$route.query;
+
+      axios
+        .get(process.env.baseUrl + "asuransi/all", {
+          params: {
+            page: "1",
+            per_page: "8"
+          }
+        })
+        .then(response => {
+          const append = response.data.data.data.slice(
+            this.data.length,
+            this.data.length + this.limit
+          );
+
+          this.data = this.data.concat(append);
+          this.loading = false;
+          this.busy = false;
+        });
     }
   },
   components: {
