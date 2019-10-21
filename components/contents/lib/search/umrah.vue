@@ -9,15 +9,16 @@
           <a-select
             showSearch
             placeholder="Pilih Kota Asal"
+            v-model="kota_asal"
             :showArrow="false"
             style="width: 100%"
             size="large"
             v-decorator="['cityStart',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
           >
             <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Makassar">Makassar</a-select-option>
-            <a-select-option value="Jakarta">Jakarta</a-select-option>
-            <a-select-option value="Bandung">Bandung</a-select-option>
+            <a-select-option value="makassar">Makassar</a-select-option>
+            <a-select-option value="jakarta">Jakarta</a-select-option>
+            <a-select-option value="bandung">Bandung</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -58,6 +59,7 @@
           <a-select
             showSearch
             defaultValue="September 2019"
+            v-model="bulan_keberangkatan"
             placeholder="Pilih Bulan Keberangkatan"
             optionFilterProp="children"
             style="width: 100%"
@@ -69,7 +71,7 @@
             size="large"
           >
             <a-select-option value="September 2019">September 2019</a-select-option>
-            <a-select-option value="November 2019">November 2019</a-select-option>
+            <a-select-option value="2019-10">Oktober 2019</a-select-option>
             <a-select-option value="Desember 2019">Desember 2019</a-select-option>
           </a-select>
         </a-form-item>
@@ -105,22 +107,29 @@
     <a-row :gutter="16" type="flex" justify="end">
       <a-col :span="12">
         <a-button
-            @click="searchUmrah"
-            class="btn-search b-shadow b-radius"
-            size="large"
-            block
-          >Cari Umrah</a-button>
+          @click="searchUmrah"
+          class="btn-search b-shadow b-radius"
+          size="large"
+          block
+        >Cari Umrah</a-button>
       </a-col>
     </a-row>
   </a-form>
 </template>
 <script>
+// import axios from "axios";
 export default {
   data() {
     return {
-      form: this.$form.createForm(this)
+      form: this.$form.createForm(this),
+      option: [],
+      kota_asal: "",
+      bulan_keberangkatan: ""
     };
   },
+  // created() {
+  //   this.getOptions();
+  // },
   methods: {
     handleChange(value) {
       console.log(`selected ${value}`);
@@ -141,10 +150,23 @@ export default {
     searchUmrah() {
       this.form.validateFields(err => {
         if (!err) {
-          return this.$router.push({ path: "/catalog/umrah/result" });
+          return this.$router.push({
+            path: "/catalog/umrah/result",
+            query: {
+              kota_asal: this.kota_asal,
+              bulan_keberangkatan: this.bulan_keberangkatan
+            }
+          });
         }
       });
     }
+    // getOptions() {
+    //   axios.get(process.env.baseUrl + "option/umrah").then(response => {
+    //     console.log(response.data.data.kota, "option");
+
+    //     this.data = response.data.data;
+    //   });
+    // }
   }
 };
 </script>
