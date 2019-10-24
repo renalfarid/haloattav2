@@ -24,7 +24,9 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <expandable-image :src="item.gambar_maskapai != '' ? item.gambar_maskapai : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'" />
+            <expandable-image
+              :src="item.gambar_maskapai != '' ? item.gambar_maskapai : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+            />
           </div>
         </a-col>
         <a-col :span="6">
@@ -54,7 +56,7 @@
         <a-row :gutter="32" v-sticky="stickyOptions">
           <a-col :span="17">
             <div class="ant-layout--package-details-body">
-              <information-ticket />
+              <information-ticket :data="item" />
             </div>
           </a-col>
 
@@ -85,7 +87,7 @@ export default {
   },
   data() {
     return {
-      item: [],
+      item: "",
       stickyOptions: {
         topSpacing: 140,
         bottomSpacing: 0
@@ -98,9 +100,10 @@ export default {
   methods: {
     moment,
     async getdata() {
+      let params = this.$route.query;
       axios
-        .post("https://api.haloatta.com/api/tiket/detail", {
-          kode_produk: "TKT239610856"
+        .post(process.env.baseUrl + "tiket/detail", {
+          kode_produk: params.kode_produk
         })
         .then(response => {
           this.item = response.data.data;

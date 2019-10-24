@@ -52,7 +52,7 @@
       <a-row :gutter="32">
         <a-col :span="17">
           <div class="ant-layout--package-details-body">
-            <information-visa />
+            <information-visa :data="item" />
           </div>
         </a-col>
 
@@ -70,6 +70,8 @@
 <script>
 import informationVisa from "~/components/contents/details/visa/information-visa.vue";
 import informationSideright from "~/components/contents/details/visa/information-sideright.vue";
+import moment from "moment";
+import axios from "axios";
 export default {
   name: "detailVisa",
   head() {
@@ -79,7 +81,26 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      item: ""
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    moment,
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "visa/detail", {
+          kode_produk: params.kode_produk
+        })
+        .then(response => {
+          this.item = response.data.data;
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationVisa,

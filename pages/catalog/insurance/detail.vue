@@ -53,7 +53,7 @@
       <a-row :gutter="32">
         <a-col :span="17">
           <div class="ant-layout--package-details-body">
-            <information-insurance />
+            <information-insurance :data="item" />
           </div>
         </a-col>
 
@@ -71,6 +71,7 @@
 <script>
 import informationInsurance from "~/components/contents/details/insurance/information-insurance.vue";
 import informationSideright from "~/components/contents/details/insurance/information-sideright.vue";
+import axios from "axios";
 export default {
   name: "detailInsurance",
   head() {
@@ -80,7 +81,25 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      item: ""
+    };
+  },
+  created() {
+    this.getdata();
+  },
+  methods: {
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "asuransi/detail", {
+          kode_produk: params.kode_produk
+        })
+        .then(response => {
+          this.item = response.data.data;
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationInsurance,

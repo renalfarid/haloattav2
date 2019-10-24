@@ -24,13 +24,13 @@
                 data-aos="fade-up"
                 data-aos-duration="1200"
               >
-                <nuxt-link to="/catalog/accommodation/detail" class="d-block">
+                <nuxt-link
+                  :to="'/catalog/accommodation/detail?kode_produk='+item.kode_produk"
+                  class="d-block"
+                >
                   <a-card class="ant-card-package">
                     <div slot="cover">
-                      <div
-                        class="ant-card-cover--images"
-                        v-lazy:background-image="item.images_package"
-                      >
+                      <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                         <div class="ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius"></div>
                           <div class="ant-card-cover--overlay-text">
@@ -44,7 +44,9 @@
                         <div class="ant-card--overlay-block">
                           <div class="d-flex align-items-center h-100">
                             <a-button>
-                              <nuxt-link to="/catalog/accommodation/detail">Lihat detail</nuxt-link>
+                              <nuxt-link
+                                :to="'/catalog/accommodation/detail?kode_produk='+item.kode_produk"
+                              >Lihat detail</nuxt-link>
                             </a-button>
                           </div>
                         </div>
@@ -53,12 +55,9 @@
 
                     <div class="d-flex align-items-center">
                       <div class="mr-8">
-                        <a-avatar
-                          class="vendor-logo zIndex"
-                          v-lazy:background-image="item.logo_vendor"
-                        />
+                        <a-avatar class="vendor-logo zIndex" v-lazy:background-image="item.foto" />
                       </div>
-                      <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">{{item.vendor}}</div>
+                      <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">{{item.nama_vendor}}</div>
                       <div class="ml-auto">
                         <a-rate class="fs-14 f-default" :defaultValue="4" disabled />
                       </div>
@@ -72,33 +71,33 @@
                       class="mt-8 mb-8"
                     >
                       <a-col :span="12" class="text-left">
-                        <div class="fs-16 fw-500 cr-black text-capitalize text-ellipsis f-default">
-                          Rayyana
-                          Ajyad
-                        </div>
+                        <div
+                          class="fs-16 fw-500 cr-black text-capitalize text-ellipsis f-default"
+                        >{{item.nama_hotel_mekkah}}</div>
                         <div class="fs-14 fw-400 cr-black text-capitalize f-default">3 Hari Mekkah</div>
                       </a-col>
                       <a-col :span="12" class="text-right">
-                        <div class="fs-16 fw-500 cr-black text-capitalize text-ellipsis f-default">
-                          Pinewood
-                          Hotel
-                        </div>
+                        <div
+                          class="fs-16 fw-500 cr-black text-capitalize text-ellipsis f-default"
+                        >{{item.nama_hotel_madinah}}</div>
                         <div class="fs-14 fw-400 cr-black text-capitalize f-default">4 Hari Madinah</div>
                       </a-col>
                     </a-row>
 
                     <div class="d-flex align-items-center">
-                      <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">Program 9 Hari</div>
+                      <div
+                        class="fs-14 fw-400 cr-gray f-default text-ellipsis"
+                      >Program {{item.days}} Hari</div>
                       <div
                         class="ml-auto fs-18 fw-500 cr-primary f-default text-ellipsis"
-                      >Rp{{item.price}}</div>
+                      >{{item.harga_quad | currency}}</div>
                     </div>
 
                     <div class="package-description--more p-24">
                       <div class="d-flex align-items-center mb-8">
                         <div class="fs-14 fw-400 cr-black f-default text-ellipsis">
                           Periode
-                          <span class="fw-500">LOW</span> Session
+                          <span class="fw-500">{{item.tipe}}</span> Session
                         </div>
                         <div
                           class="fs-14 fw-400 cr-black f-default text-ellipsis ml-auto"
@@ -108,11 +107,11 @@
                       <div class="d-flex align-items-center">
                         <div class="fs-14 fw-400 text-ellipsis">
                           <div class="cr-gray">Tanggal Mulai</div>
-                          <div class="cr-black">10 September 2019</div>
+                          <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                         </div>
                         <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
                           <div class="cr-gray">Tanggal Berakhir</div>
-                          <div class="cr-black">10 November 2019</div>
+                          <div class="cr-black">{{moment(item.tanggal, "YYYY-MM-DD").format('LL')}}</div>
                         </div>
                       </div>
                     </div>
@@ -130,6 +129,7 @@
 import searchResultAccommodation from "~/components/contents/lib/search/result/accommodation.vue";
 import filterResultAccommodation from "~/components/contents/lib/filter/result/accommodation.vue";
 import axios from "axios";
+import moment from "moment";
 export default {
   name: "accommodationResult",
   head() {
@@ -146,25 +146,34 @@ export default {
       data: []
     };
   },
-  
+
   created() {
     this.loadMore();
   },
 
   methods: {
+    moment,
     loadMore() {
-      console.log("Adding 6 more data results");
       this.busy = true;
-      this.loading = true;
-      axios.get("/dataAccommodation.json").then(response => {
-        const append = response.data.slice(
-          this.data.length,
-          this.data.length + this.limit
-        );
-        this.data = this.data.concat(append);
-        this.busy = false;
-        this.loading = false;
-      });
+      // let params = this.$route.query;
+
+      axios
+        .get(process.env.baseUrl + "la/all", {
+          params: {
+            page: "2",
+            per_page: "8"
+          }
+        })
+        .then(response => {
+          const append = response.data.data.data.slice(
+            this.data.length,
+            this.data.length + this.limit
+          );
+
+          this.data = this.data.concat(append);
+          this.loading = false;
+          this.busy = false;
+        });
     }
   },
   components: {

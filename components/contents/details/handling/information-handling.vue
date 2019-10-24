@@ -7,7 +7,7 @@
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
                 <div class="fs-28 fw-600 f-default cr-black">
-                  <span>Handling Domestik Perjalanan Umrah Bina Avia Persada</span>
+                  <span>{{data.nama}}</span>
                 </div>
               </a-col>
 
@@ -152,6 +152,7 @@ import policy from "~/components/contents/details/handling/policy.vue";
 import faq from "~/components/contents/details/handling/faq.vue";
 import moment from "moment";
 export default {
+  props: ["data"],
   components: {
     commentsHandling,
     vendorHandling,

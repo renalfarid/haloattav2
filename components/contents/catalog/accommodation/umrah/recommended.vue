@@ -103,7 +103,7 @@ export default {
     moment,
     async getdata() {
       axios
-        .get("https://api.haloatta.com/api/la/all", {
+        .get(process.env.baseUrl + "la/all", {
           params: {
             per_page: 3
           }
