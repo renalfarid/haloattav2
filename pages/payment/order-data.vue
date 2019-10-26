@@ -55,7 +55,7 @@
                               >Anda masuk menggunakan akun anda</div>
                               <div
                                 class="fs-16 fw-500 cr-black"
-                              >Anda Login sebagai Jordi Alba Mustofa</div>
+                              >Anda Login sebagai {{$store.state.auth.nama}}</div>
                             </div>
                           </div>
                         </div>
@@ -69,7 +69,10 @@
                             class="mb-16"
                             hasFeedback
                           >
-                            <a-input v-decorator="['userName',{ rules: [{ required: true }]}]" />
+                            <a-input
+                              v-model="dataPemesan.nama"
+                              v-decorator="['anu',{ rules: [{ required: true }]}]"
+                            />
                           </a-form-item>
 
                           <a-form-item
@@ -78,7 +81,10 @@
                             class="mb-16"
                             hasFeedback
                           >
-                            <a-input v-decorator="['telp',{ rules: [{ required: true }]}]" />
+                            <a-input
+                              v-model="dataPemesan.nohp"
+                              v-decorator="['telp',{ rules: [{ required: true }]}]"
+                            />
                           </a-form-item>
 
                           <a-form-item
@@ -86,7 +92,10 @@
                             help="Contoh: email@contoh.com"
                             hasFeedback
                           >
-                            <a-input v-decorator="['email',{ rules: [{ required: true }]}]" />
+                            <a-input
+                              v-model="dataPemesan.email"
+                              v-decorator="['email',{ rules: [{ required: true }]}]"
+                            />
                           </a-form-item>
                         </div>
                       </a-list-item>
@@ -378,12 +387,14 @@
 <script>
 import siderPayment from "@/pages/payment/sider.vue";
 import moment from "moment";
+import axios from "axios";
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result));
   reader.readAsDataURL(img);
 }
 export default {
+  middleware: "authenticated",
   layout: "application",
   name: "orderData",
   head() {
@@ -395,7 +406,12 @@ export default {
     return {
       value: 1,
       loading: false,
-      photoJamaah: ""
+      photoJamaah: "",
+      dataPemesan: {
+        nama: "",
+        nohp: "",
+        email: ""
+      }
     };
   },
   beforeCreate() {
@@ -431,11 +447,39 @@ export default {
     },
     handleSubmitMore(e) {
       e.preventDefault();
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          return this.$router.push({ path: "/payment/purchase-saldo" });
+      // this.form.validateFields((err, values) => {
+      //   if (!err) {
+      //     return this.$router.push({
+      //       path: "/payment/purchase-saldo",
+      //       query: {
+      //         kota_asal: this.nama
+      //       }
+      //     });
+      //   }
+      // });
+      let params = this.$route.query;
+      let data = {
+        jenis_transaksi: params.type,
+        kode_produk: params.kode,
+        nama_pemesan: this.dataPemesan.nama,
+        nomor_handphone: this.dataPemesan.nohp,
+        pax: params.qty
+      };
+      const config = {
+        headers: {
+          Authorization: "Bearer " + this.$store.state.auth.accessToken
         }
-      });
+      };
+
+      axios
+        .post(process.env.baseUrl + "transaksi", data, config)
+        .then(response => {
+          console.log(response);
+          this.$router.push("/accounts");
+        })
+        .catch(err => {
+          console.log("error", err);
+        });
     }
   },
   components: {

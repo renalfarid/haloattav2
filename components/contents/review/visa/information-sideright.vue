@@ -55,7 +55,7 @@
         </div>
         <div class="d-flex align-items-center">
           <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{data.duration_stay}} Hari</div>
         </div>
       </div>
 
@@ -64,9 +64,10 @@
       <div class="p-16">
         <div class="fs-15 fw-500 cr-black mb-8">Jumlah Tamu</div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-gray f-default">Tamu (4)</div>
+          <div class="fs-14 fw-400 cr-gray f-default">Tamu ({{qty}})</div>
           <div class="fs-14 fw-400 cr-black f-default ml-auto">
-            <span class="cr-gray mr-8">x</span> Rp 12.500.000
+            <span class="cr-gray mr-8">x</span>
+            {{data.harga_jual | currency}}
           </div>
         </div>
 
@@ -74,7 +75,7 @@
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 4.000.000</div>
+          <div class="fs-15 fw-500 cr-black f-default text-right w-65">{{total | currency}}</div>
         </div>
         <div :style="{margin: '16px 0'}">
           <a-button
@@ -92,12 +93,44 @@
     </a-card>
   </div>
 </template>
+
 <script>
+import moment from "moment";
 export default {
+  props: ["data"],
+
+  data() {
+    return {
+      wishlist: false,
+      qty: 0,
+      total: 0
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
   methods: {
+    moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
     nextOrderReview() {
-      this.$router.push({ path: "/payment/order-data" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/order-data",
+        query: {
+          type: params.type,
+          kode: params.kode,
+          qty: this.qty
+        }
+      });
+    },
+    getdata() {
+      let params = this.$route.query;
+      this.qty = params.qty;
+      this.total = this.qty * this.$props.data.harga_jual;
     }
   }
 };
 </script>
+
