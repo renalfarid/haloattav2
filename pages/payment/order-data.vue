@@ -462,9 +462,26 @@ export default {
         jenis_transaksi: params.type,
         kode_produk: params.kode,
         nama_pemesan: this.dataPemesan.nama,
-        nomor_handphone: this.dataPemesan.nohp,
-        pax: params.qty
+        nomor_handphone: this.dataPemesan.nohp
       };
+
+      if (
+        params.type == "VISA" ||
+        params.type == "ASURANSI" ||
+        params.type == "HANDLING" ||
+        params.type == "MANASIK"
+      ) {
+        data["pax"] = params.qty;
+      } else if (params.type == "LA") {
+        data["quad"] = params.quad;
+        data["triple"] = params.triple;
+        data["double"] = params.double;
+      } else if (params.type == "TIKET") {
+        data["dewasa"] = params.dewasa;
+        data["anak"] = params.anak;
+        data["bayi"] = params.bayi;
+      }
+
       const config = {
         headers: {
           Authorization: "Bearer " + this.$store.state.auth.accessToken

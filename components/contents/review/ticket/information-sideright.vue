@@ -64,17 +64,17 @@
       <div class="p-16">
         <div class="fs-15 fw-500 cr-black mb-8">Jumlah Penumpang</div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Dewasa (2) </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Dewasa (2)</div>
           <span class="cr-gray mr-8">x</span>
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 12.500.000</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Anak (2) </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Anak (2)</div>
           <span class="cr-gray mr-8">x</span>
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 11.000.000</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Bayi (1) </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Bayi (1)</div>
           <span class="cr-gray mr-8">x</span>
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 6.500.000</div>
         </div>
@@ -82,7 +82,7 @@
         <a-divider :style="{margin: '8px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
-          <div class="fs-15 fw-500 cr-black f-default w-35">Total </div>
+          <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
           <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 56.000.000</div>
         </div>
 
@@ -103,29 +103,24 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import moment from "moment";
 export default {
   data() {
-    return {
-      item: []
-    };
-  },
-  created: function() {
-    this.getdata();
+    return {};
   },
   methods: {
-    async getdata() {
-      axios
-        .post("https://api.haloatta.com/api/tiket/detail", {
-          kode_produk: "TKT239610856"
-        })
-        .then(response => {
-          this.item = response.data.data;
-          this.loading = false;
-        });
-    },
     nextOrderReview() {
-      this.$router.push({ path: "/payment/order-data" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/order-data",
+        query: {
+          type: params.type,
+          kode: params.kode,
+          dewasa: params.dewasa,
+          anak: params.anak,
+          bayi: params.bayi
+        }
+      });
     }
   }
 };

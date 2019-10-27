@@ -7,7 +7,7 @@
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
                 <div class="fs-28 fw-600 f-default cr-black">
-                  <span>Ballroom Aston Hotel & Convention Center Makassar</span>
+                  <span>{{data.nama}}</span>
                 </div>
               </a-col>
               <a-col :span="8" class="text-right">
@@ -22,9 +22,7 @@
         </a-list-item>
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
-            <div
-              class="fs-14 cr-black"
-            >This spacious Ballroom is the largest function space, located on the 18th floor, comfortably accommodates up to 1,000 people with panoramic view to the city. Perfect for any celebratory occasions such as wedding party, as well as major business meetings.</div>
+            <div class="fs-14 cr-black">{{data.deskripsi}}</div>
           </div>
         </a-list-item>
       </a-list>
@@ -119,3 +117,22 @@
     </a-card>
   </section>
 </template>
+<script>
+import moment from "moment";
+export default {
+  props: ["data"],
+
+  data() {
+    return {
+      wishlist: false
+    };
+  },
+  methods: {
+    moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    }
+  }
+};
+</script>
+

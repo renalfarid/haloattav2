@@ -53,7 +53,7 @@
       <a-row :gutter="32">
         <a-col :span="17">
           <div class="ant-layout--package-details-body">
-            <information-manasik />
+            <information-manasik :data="item" />
           </div>
         </a-col>
 
@@ -71,6 +71,7 @@
 <script>
 import informationManasik from "~/components/contents/details/manasik/information-manasik.vue";
 import informationSideright from "~/components/contents/details/manasik/information-sideright.vue";
+import axios from "axios";
 export default {
   name: "detailManasik",
   head() {
@@ -80,7 +81,25 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      item: ""
+    };
+  },
+  created() {
+    this.getdata();
+  },
+  methods: {
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "manasik/detail", {
+          kode_produk: params.kode_produk
+        })
+        .then(response => {
+          this.item = response.data.data;
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationManasik,
