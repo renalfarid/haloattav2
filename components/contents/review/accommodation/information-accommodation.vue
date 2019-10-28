@@ -1,7 +1,7 @@
 <template>
   <section>
     <!-- information hotel makkah -->
-    <a-card class="b-shadow b-solid bordered-left mt-24 mb-16" id="hotelmakkah">
+    <a-card class="b-shadow b-solid bordered-left mt-32 mb-16" id="hotelmakkah">
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="w-100">
@@ -11,22 +11,31 @@
                   class="fs-28 fw-600 f-default cr-black"
                 >LA Akomodasi Umrah September Madinah Atta Tours</div>
               </a-col>
-              <a-col :span="8" class="text-right">
-                <a-avatar
-                  :size="64"
-                  :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
-                  class="brand-vendor ml-auto"
-                />
+              <a-col :span="8">
+                <div class="d-flex align-end align-items-center text-right">
+                  <div>
+                    <a @click="toggleWishlist" class="fs-22 cr-gray mb-0">
+                      <a-icon v-if="wishlist == false" type="heart" />
+                      <a-icon
+                        v-else-if="wishlist == true"
+                        type="heart"
+                        theme="twoTone"
+                        twoToneColor="#eb2f96"
+                      />
+                    </a>
+                  </div>
+                  <a-avatar
+                    size="large"
+                    :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                    class="brand-vendor ml-16"
+                  />
+                </div>
               </a-col>
             </a-row>
 
             <a-row :gutter="16" type="flex" justify="space-around" align="middle" class="mt-16">
               <a-col :span="12">
-                <a-badge
-                  status="warning"
-                  text="Periode Low Season"
-                  class="text-uppercase m-0"
-                />
+                <a-badge status="warning" :text="data.tipe" class="text-uppercase m-0" />
               </a-col>
               <a-col :span="12" class="text-right">
                 <span
@@ -51,7 +60,7 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Makkah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>Rayyana Ajyad</span>
+                    <span>{{data.nama_hotel_mekkah}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
@@ -89,8 +98,42 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
-                    <div class="fs-15 fw-500 cr-black">Kurang Dari 500 Meter</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >{{(data.jarak_hotel !=null)?data.jarak_hotel:'kosong'}}</div>
                   </div>
+                </div>
+              </a-col>
+            </a-row>
+          </div>
+        </a-list-item>
+
+        <a-list-item class="ant-list-item--package-information">
+          <div class="ant-package--images w-100" style="z-index: inherit">
+            <div class="fs-15 fw-400 cr-gray mb-16">Gambar Hotel</div>
+            <a-row :gutter="10">
+              <a-col :span="8">
+                <div class="ant-package--images-large">
+                  <div
+                    class="ant-package--images-cover"
+                    :style="{ backgroundImage: `url(${data.images_hotel})` }"
+                  ></div>
+                </div>
+              </a-col>
+              <a-col :span="8">
+                <div class="ant-package--images-large">
+                  <div
+                    class="ant-package--images-cover"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l2.jpg)' }"
+                  ></div>
+                </div>
+              </a-col>
+              <a-col :span="8">
+                <div class="ant-package--images-large">
+                  <div
+                    class="ant-package--images-cover"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l3.jpg)' }"
+                  ></div>
                 </div>
               </a-col>
             </a-row>
@@ -112,7 +155,7 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Madinah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>Pinewood Hotel</span>
+                    <span>{{data.nama_hotel_madinah}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
@@ -150,8 +193,42 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
-                    <div class="fs-15 fw-500 cr-black">Kurang Dari 500 Meter</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >{{(data.jarak_hotel !=null)?data.jarak_hotel:'kosong'}}</div>
                   </div>
+                </div>
+              </a-col>
+            </a-row>
+          </div>
+        </a-list-item>
+
+        <a-list-item class="ant-list-item--package-information">
+          <div class="ant-package--images w-100" style="z-index: inherit">
+            <div class="fs-15 fw-400 cr-gray mb-16">Gambar Hotel</div>
+            <a-row :gutter="10">
+              <a-col :span="8">
+                <div class="ant-package--images-large">
+                  <div
+                    class="ant-package--images-cover"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l4.jpg)' }"
+                  ></div>
+                </div>
+              </a-col>
+              <a-col :span="8">
+                <div class="ant-package--images-large">
+                  <div
+                    class="ant-package--images-cover"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l5.jpg)' }"
+                  ></div>
+                </div>
+              </a-col>
+              <a-col :span="8">
+                <div class="ant-package--images-large">
+                  <div
+                    class="ant-package--images-cover"
+                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l6.jpg)' }"
+                  ></div>
                 </div>
               </a-col>
             </a-row>
@@ -163,111 +240,8 @@
     <!-- fasilitas -->
     <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
+      <p>{{data.fasilitas_termasuk}}</p>
       <a-row :gutter="8">
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Bus VVIP</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">City Tour</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Mutawwif</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Makanan Indonesia</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Akses Wifi</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Elevator</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Restaurant</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Resepsionis 1x24 Jam</div>
-            </div>
-          </div>
-        </a-col>
       </a-row>
     </a-card>
   </section>
@@ -275,11 +249,24 @@
 <script>
 import moment from "moment";
 export default {
+  props: ["data"],
   data() {
-    return {};
+    return {
+      wishlist: false,
+      fasilitas_termasuk: []
+    };
+  },
+  created() {
+    this.splitFasilitas();
   },
   methods: {
-    moment
+    splitFasilitas() {
+      // this.fasilitas_termasuk = this.data.fasilitas_termasuk.split("<br>");
+    },
+    moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    }
   }
 };
 </script>

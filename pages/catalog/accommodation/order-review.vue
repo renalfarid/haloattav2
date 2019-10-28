@@ -5,7 +5,7 @@
       <div class="container">
         <a-row :gutter="32">
           <a-col :span="17">
-            <informationAccommodation />
+            <informationAccommodation :data="item" />
           </a-col>
           <a-col :span="7">
             <informationSideRight />
@@ -18,12 +18,37 @@
 <script>
 import informationAccommodation from "~/components/contents/review/accommodation/information-accommodation.vue";
 import informationSideRight from "~/components/contents/review/accommodation/information-sideright.vue";
+import moment from "moment";
+import axios from "axios";
 export default {
   name: "orderReview",
   head() {
     return {
       title: "Ulasan Pesanan - Booking LA Akomodasi Lebih Mudah"
     };
+  },
+  data() {
+    return {
+      item: ""
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    moment,
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "la/detail", {
+          kode_produk: params.kode
+        })
+        .then(response => {
+          this.item = response.data.data;
+
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationAccommodation,

@@ -63,7 +63,7 @@
 
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Jumlah Pax (4) </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Jumlah Pax (4)</div>
           <span class="cr-gray mr-8">x</span>
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 500.000</div>
         </div>
@@ -71,7 +71,7 @@
         <a-divider :style="{margin: '12px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
-          <div class="fs-15 fw-500 cr-black f-default w-35">Total </div>
+          <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
           <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 2.000.000</div>
         </div>
 
@@ -92,10 +92,23 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
+  data() {
+    return {};
+  },
   methods: {
+    moment,
     nextOrderReview() {
-      this.$router.push({ path: "/payment/order-data" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/order-data",
+        query: {
+          type: params.type,
+          kode: params.kode,
+          qty: params.qty
+        }
+      });
     }
   }
 };

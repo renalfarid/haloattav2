@@ -5,10 +5,10 @@
       <div class="container">
         <a-row :gutter="32">
           <a-col :span="17">
-            <informationInsurance />
+            <informationInsurance :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight />
+            <informationSideRight :data="item" />
           </a-col>
         </a-row>
       </div>
@@ -18,12 +18,35 @@
 <script>
 import informationInsurance from "~/components/contents/review/insurance/information-insurance.vue";
 import informationSideRight from "~/components/contents/review/insurance/information-sideright.vue";
+import axios from "axios";
 export default {
   name: "orderReview",
   head() {
     return {
       title: "Ulasan Pesanan - Booking Asuransi Umrah Lebih Mudah"
     };
+  },
+  data() {
+    return {
+      item: ""
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "asuransi/detail", {
+          kode_produk: params.kode
+        })
+        .then(response => {
+          this.item = response.data.data;
+
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationInsurance,

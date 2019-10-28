@@ -96,10 +96,23 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
+  data() {
+    return {};
+  },
   methods: {
+    moment,
     nextOrderReview() {
-      this.$router.push({ path: "/payment/order-data" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/order-data",
+        query: {
+          type: params.type,
+          kode: params.kode,
+          qty: params.qty
+        }
+      });
     }
   }
 };

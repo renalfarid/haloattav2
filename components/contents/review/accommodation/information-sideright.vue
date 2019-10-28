@@ -67,17 +67,17 @@
 
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Quad (4) </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Quad (4)</div>
           <span class="cr-gray mr-8">x</span>
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 22.000.000</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Triple (3) </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Triple (3)</div>
           <span class="cr-gray mr-8">x</span>
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 23.000.000</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Double (2) </div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Double (2)</div>
           <span class="cr-gray mr-8">x</span>
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 24.000.000</div>
         </div>
@@ -85,7 +85,7 @@
         <a-divider :style="{margin: '12px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
-          <div class="fs-15 fw-500 cr-black f-default w-35">Total </div>
+          <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
           <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 156.000.000</div>
         </div>
 
@@ -106,10 +106,25 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
+  data() {
+    return {};
+  },
   methods: {
+    moment,
     nextOrderReview() {
-      this.$router.push({ path: "/payment/order-data" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/order-data",
+        query: {
+          type: params.type,
+          kode: params.kode,
+          quad: params.quad,
+          triple: params.triple,
+          double: params.double
+        }
+      });
     }
   }
 };
