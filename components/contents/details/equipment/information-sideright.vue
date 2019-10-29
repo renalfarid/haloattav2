@@ -39,11 +39,19 @@
 
         <div :style="{margin: '16px 0'}">
           <a-button
+            v-if="$store.state.auth"
             block
             size="large"
             class="ant-btn--action b-shadow b-radius fs-15 fw-500"
             @click="nextOrderReview"
           >Pesan</a-button>
+          <a-button
+            v-else
+            block
+            size="large"
+            class="ant-btn--action b-shadow b-radius fs-15 fw-500"
+            @click="toLogin"
+          >Login</a-button>
         </div>
         <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8">
           Dapatkan point langsung ketika
@@ -57,12 +65,23 @@
 export default {
   data() {
     return {
-      qty: 40
+      qty: 2
     };
   },
   methods: {
     nextOrderReview() {
-      this.$router.push({ path: "/catalog/equipment/order-review" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/catalog/equipment/order-review",
+        query: {
+          type: "PERLENGKAPAN",
+          kode: params.kode_produk,
+          qty: this.qty
+        }
+      });
+    },
+    toLogin() {
+      this.$router.push({ path: "/login" });
     }
   }
 };

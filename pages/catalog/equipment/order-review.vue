@@ -5,10 +5,10 @@
       <div class="container">
         <a-row :gutter="32">
           <a-col :span="17">
-            <informationEquipment />
+            <informationEquipment :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight />
+            <informationSideRight :data="item" />
           </a-col>
         </a-row>
       </div>
@@ -18,12 +18,38 @@
 <script>
 import informationEquipment from "~/components/contents/review/equipment/information-equipment.vue";
 import informationSideRight from "~/components/contents/review/equipment/information-sideright.vue";
+import moment from "moment";
+import axios from "axios";
 export default {
+  middleware: "authenticated",
   name: "orderReview",
   head() {
     return {
       title: "Ulasan Pesanan - Booking Perlengkapan Umrah Lebih Mudah"
     };
+  },
+  data() {
+    return {
+      item: ""
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    moment,
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "perlengkapan/detail", {
+          kode_produk: params.kode
+        })
+        .then(response => {
+          this.item = response.data.data;
+
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationEquipment,

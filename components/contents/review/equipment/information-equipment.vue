@@ -6,7 +6,7 @@
           <a-row :gutter="16" type="flex" justify="start">
             <a-col :span="16">
               <div class="fs-28 fw-600 f-default cr-black">
-                <span>Kain Ihram Umrah</span>
+                <span>{{data.nama}}</span>
               </div>
             </a-col>
             <a-col :span="8" class="text-right">
@@ -32,3 +32,21 @@
     </a-list>
   </a-card>
 </template>
+<script>
+import moment from "moment";
+export default {
+  props: ["data"],
+
+  data() {
+    return {
+      wishlist: false
+    };
+  },
+  methods: {
+    moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    }
+  }
+};
+</script>

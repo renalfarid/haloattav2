@@ -52,7 +52,7 @@
       <a-row :gutter="32">
         <a-col :span="17">
           <div class="ant-layout--package-details-body">
-            <information-equipment />
+            <information-equipment :data="item" />
           </div>
         </a-col>
 
@@ -70,16 +70,36 @@
 <script>
 import informationEquipment from "~/components/contents/details/equipment/information-equipment.vue";
 import informationSideright from "~/components/contents/details/equipment/information-sideright.vue";
+import moment from "moment";
+import axios from "axios";
 export default {
   name: "detailEquipment",
   head() {
     return {
-      title:
-        "Perlengkapan Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
+      title: "Perlengkapan Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
     };
   },
   data() {
-    return {};
+    return {
+      item: ""
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    moment,
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "perlengkapan/detail", {
+          kode_produk: params.kode_produk
+        })
+        .then(response => {
+          this.item = response.data.data;
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationEquipment,

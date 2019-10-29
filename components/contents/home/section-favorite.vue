@@ -46,7 +46,12 @@
                 </div>
                 <div class="ant-card-wishlist">
                   <a @click="toggleWishlist" class="fs-24 cr-gray mb-0">
-                    <a-icon v-if="wishlist == false" theme="twoTone" twoToneColor="#eb2f96" type="heart" />
+                    <a-icon
+                      v-if="wishlist == false"
+                      theme="twoTone"
+                      twoToneColor="#eb2f96"
+                      type="heart"
+                    />
                     <a-icon
                       v-else-if="wishlist == true"
                       type="heart"
@@ -179,7 +184,7 @@ export default {
           }
         })
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           this.lisData = response.data.data.data;
           this.loading = false;
         });
