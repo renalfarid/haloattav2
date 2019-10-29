@@ -14,19 +14,16 @@
         <a-col :span="12">
           <div class="d-flex align-items-center w-100">
             <div>
-              <a-avatar
-                class="mr-16"
-                src="https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png"
-              />
+              <a-avatar class="mr-16" :src="tiket.logo_maskapai" />
             </div>
             <div>
               <div class="fs-14 fw-400 cr-gray f-default">Informasi Maskapai</div>
-              <div class="fs-16 fw-500 cr-black">Lion Air - JT-367</div>
+              <div class="fs-16 fw-500 cr-black">{{tiket.nama_maskapai}} - {{tiket.kode_maskapai}}</div>
             </div>
           </div>
         </a-col>
         <a-col :span="12">
-          <div class="fs-15 fw-500 cr-black text-right">Economy Class</div>
+          <div class="fs-15 fw-500 cr-black text-right">{{tiket.class_flight}}</div>
         </a-col>
       </a-row>
     </a-list-item>
@@ -38,7 +35,7 @@
         </div>
         <div>
           <div class="fs-14 fw-400 cr-gray">Direct Flight</div>
-          <div class="fs-15 fw-400 cr-black">Penerbangan Langsung Tanpa Transit</div>
+          <div class="fs-15 fw-400 cr-black">{{tiket.jenis_flight}}</div>
         </div>
       </div>
     </a-list-item>
@@ -66,34 +63,46 @@
             <a-timeline-item>
               <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
                 <a-col :span="14">
-                  <div class="fs-15 fw-400 cr-black">Keberangkatan : Makassar (UPG) ke Jeddah (JED)</div>
-                  <div class="fs-15 fw-500 cr-black">09:45 AM</div>
-                  <div class="fs-15 fw-400 cr-gray">Kamis, 10 September 2019</div>
+                  <div
+                    class="fs-15 fw-400 cr-black"
+                  >Keberangkatan : {{tiket.bandara_asal}} ({{tiket.kode_bandara_asal}}) ke {{tiket.bandara_tujuan}} ({{tiket.kode_bandara_tujuan}})</div>
+                  <div class="fs-15 fw-500 cr-black">{{tiket.jam_keberangkatan}}</div>
+                  <div
+                    class="fs-15 fw-400 cr-gray"
+                  >{{moment(tiket.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</div>
                 </a-col>
                 <a-col :span="4" class="text-center">
                   <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                  <div class="fs-15 fw-400 cr-gray">10h45m</div>
+                  <div class="fs-15 fw-400 cr-gray">{{tiket.durasi_keberangkatan}}</div>
                 </a-col>
                 <a-col :span="6" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">14:15 AM</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
+                  <div class="fs-15 fw-500 cr-black">{{tiket.tiba_keberangkatan}}</div>
+                  <div
+                    class="fs-15 fw-400 cr-gray"
+                  >{{moment(tiket.tanggal_keberangkatan, "YYYY-MM-DD").format('LL')}}</div>
                 </a-col>
               </a-row>
             </a-timeline-item>
             <a-timeline-item>
               <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
                 <a-col :span="14">
-                  <div class="fs-15 fw-400 cr-black">Kepulangan : Jeddah (JED) ke Makassar (UPG)</div>
-                  <div class="fs-15 fw-500 cr-black">09:45 AM</div>
-                  <div class="fs-15 fw-400 cr-gray">Kamis, 10 September 2019</div>
+                  <div
+                    class="fs-15 fw-400 cr-black"
+                  >Kepulangan : {{tiket.bandara_tujuan}} ({{tiket.kode_bandara_tujuan}}) ke {{tiket.bandara_asal}} ({{tiket.kode_bandara_asal}})</div>
+                  <div class="fs-15 fw-500 cr-black">{{tiket.jam_kepulangan}}</div>
+                  <div
+                    class="fs-15 fw-400 cr-gray"
+                  >{{moment(tiket.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</div>
                 </a-col>
                 <a-col :span="4" class="text-center">
                   <div class="fs-15 fw-400 cr-gray">Nonstop</div>
-                  <div class="fs-15 fw-400 cr-gray">10h45m</div>
+                  <div class="fs-15 fw-400 cr-gray">{{tiket.durasi_kepulangan}}</div>
                 </a-col>
                 <a-col :span="6" class="text-right">
-                  <div class="fs-15 fw-500 cr-black">14:15 AM</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
+                  <div class="fs-15 fw-500 cr-black">{{tiket.tiba_kepulangan}}</div>
+                  <div
+                    class="fs-15 fw-400 cr-gray"
+                  >{{moment(tiket.tanggal_kepulangan, "YYYY-MM-DD").format('LL')}}</div>
                 </a-col>
               </a-row>
             </a-timeline-item>
@@ -114,14 +123,14 @@
             </div>
             <div>
               <div class="fs-14 fw-400 cr-gray f-default">Informasi Hotel</div>
-              <div class="fs-16 fw-500 cr-black">Movenpick Hotels & Resorts</div>
+              <div class="fs-16 fw-500 cr-black">{{la.nama}}</div>
             </div>
           </div>
         </a-col>
         <a-col :span="12">
           <div class="text-right">
             <div class="fs-14 fw-400 cr-gray">Jarah Hotel</div>
-            <div class="fs-15 fw-500 cr-black">Jarak kurang dari 500 meter</div>
+            <div class="fs-15 fw-500 cr-black">{{la.jarak_hotel || "-"}}</div>
           </div>
         </a-col>
       </a-row>
@@ -138,7 +147,7 @@
             <a-timeline-item>
               <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
                 <a-col :span="8">
-                  <div class="fs-15 fw-400 cr-black">Mekkah : Rayyana Ajyad</div>
+                  <div class="fs-15 fw-400 cr-black">Mekkah : {{umroh.hotel_mekah}}</div>
                   <div class="fs-15 fw-500 cr-black">Menginap</div>
                   <div class="fs-15 fw-400 cr-gray">3 Hari</div>
                 </a-col>
@@ -155,7 +164,7 @@
             <a-timeline-item>
               <a-row :gutter="16" type="flex" justify="space-between" align="bottom">
                 <a-col :span="8">
-                  <div class="fs-15 fw-400 cr-black">Madinah : Pinewood Hotel</div>
+                  <div class="fs-15 fw-400 cr-black">Madinah : {{umroh.hotel_madinah}}</div>
                   <div class="fs-15 fw-500 cr-black">Menginap</div>
                   <div class="fs-15 fw-400 cr-gray">3 Hari</div>
                 </a-col>
@@ -258,3 +267,21 @@
     </a-list-item>
   </a-list>
 </template>
+<script>
+import moment from "moment";
+export default {
+  props: ["la", "tiket", "umroh"],
+  data() {
+    return {};
+  },
+  created() {
+    this.splitFasilitas();
+  },
+  methods: {
+    splitFasilitas() {
+      // this.fasilitas_termasuk = this.data.fasilitas_termasuk.split("<br>");
+    },
+    moment
+  }
+};
+</script>

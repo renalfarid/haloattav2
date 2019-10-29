@@ -134,7 +134,7 @@ export default {
           }
         })
         .then(response => {
-          console.log(response.data.data.data);
+          // console.log(response.data.data.data);
           this.data = this.data.concat(response.data.data.data);
           this.loading = false;
           this.busy = false;

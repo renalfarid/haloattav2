@@ -480,6 +480,11 @@ export default {
         data["dewasa"] = params.dewasa;
         data["anak"] = params.anak;
         data["bayi"] = params.bayi;
+      } else if (params.type == "UMROH") {
+        data["quad"] = params.quad;
+        data["triple"] = params.triple;
+        data["double"] = params.double;
+        data["nomor_voucher"] = [];
       }
 
       const config = {
@@ -488,8 +493,16 @@ export default {
         }
       };
 
+      let url = "";
+
+      if (params.type == "UMROH") {
+        url = process.env.baseUrl + "transaksi/umroh";
+      } else {
+        url = process.env.baseUrl + "transaksi";
+      }
+
       axios
-        .post(process.env.baseUrl + "transaksi", data, config)
+        .post(url, data, config)
         .then(response => {
           console.log(response);
           this.$router.push("/accounts");
