@@ -62,7 +62,10 @@
                           <div class="ant-card-meta-title--top d-flex align-items-center">
                             <div class="ant-card-meta-title--top-left d-flex align-items-center">
                               <div class="mr-8">
-                                <a-avatar class="vendor-logo zIndex" v-lazy:background-image="item.foto" />
+                                <a-avatar
+                                  class="vendor-logo zIndex"
+                                  v-lazy:background-image="item.foto"
+                                />
                               </div>
                               <div
                                 class="fs-13 fw-400 cr-gray f-default text-ellipsis"
@@ -136,7 +139,7 @@ export default {
           }
         })
         .then(response => {
-          console.log(response.data.data.data);
+          // console.log(response.data.data.data);
           this.data = this.data.concat(response.data.data.data);
           this.loading = false;
           this.busy = false;

@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     change(affixed) {
-      console.log(affixed);
+      // console.log(affixed);
     },
     toggleWishlist() {
       this.wishlist = !this.wishlist;

@@ -231,11 +231,11 @@ export default {
   methods: {
     moment,
     async getdetail() {
-      console.log(this.$store.state.umroh);
+      // console.log(this.$store.state.umroh);
     }
   },
   mounted: function() {
-    console.log("The props are also available in JS:", this.$store.state.umroh);
+    // console.log("The props are also available in JS:", this.$store.state.umroh);
   }
 };
 </script>

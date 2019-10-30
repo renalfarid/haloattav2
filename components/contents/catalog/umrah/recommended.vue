@@ -155,7 +155,7 @@ export default {
           }
         })
         .then(response => {
-          console.log(response.data.data.data, "ok");
+          // console.log(response.data.data.data, "ok");
           this.lisData = response.data.data.data;
           this.loading = false;
         });
