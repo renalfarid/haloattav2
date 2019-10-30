@@ -7,7 +7,7 @@
           <a href class="fs-14 cr-primary ml-auto">Details</a>
         </div>
       </div>
-      <a-divider :style="{margin: '0'}"/>
+      <a-divider :style="{margin: '0'}" />
       <div class="p-16">
         <div class="d-flex align-items-start mb-8">
           <a-avatar
@@ -51,7 +51,7 @@
       <div class="p-16">
         <div class="fs-15 fw-500 cr-black f-default">Informasi Pesanan</div>
       </div>
-      <a-divider :style="{margin: '0'}"/>
+      <a-divider :style="{margin: '0'}" />
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
@@ -65,7 +65,7 @@
         </div>
       </div>
 
-      <a-divider :style="{margin: '0'}"/>
+      <a-divider :style="{margin: '0'}" />
 
       <div class="p-16">
         <div class="d-flex align-items-center">
@@ -85,7 +85,7 @@
           </div>
         </div>
       </div>
-      <a-divider :style="{margin: '0'}"/>
+      <a-divider :style="{margin: '0'}" />
       <div class="p-16">
         <div class="ant-package--title fs-15 fw-500 cr-black mb-8">Pengaturan Room</div>
         <div class="d-flex align-items-center">
@@ -105,7 +105,7 @@
             />
           </div>
         </div>
-        <a-divider :style="{margin: '14px 0'}"/>
+        <a-divider :style="{margin: '14px 0'}" />
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Triple Room</div>
@@ -125,7 +125,7 @@
             />
           </div>
         </div>
-        <a-divider :style="{margin: '14px 0'}"/>
+        <a-divider :style="{margin: '14px 0'}" />
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Double Room</div>
@@ -146,7 +146,7 @@
           </div>
         </div>
       </div>
-      <a-divider :style="{margin: '0'}"/>
+      <a-divider :style="{margin: '0'}" />
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Quad (4)</div>
@@ -164,7 +164,7 @@
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">{{harga_double | currency}}</div>
         </div>
 
-        <a-divider :style="{margin: '8px 0'}"/>
+        <a-divider :style="{margin: '8px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
@@ -173,11 +173,19 @@
 
         <div :style="{margin: '16px 0'}">
           <a-button
+            v-if="$store.state.auth"
             block
             size="large"
             class="b-shadow b-radius ant-btn--action fs-15 fw-500"
             @click="nextOrderReview"
           >Pesan Sekarang</a-button>
+          <a-button
+            v-else
+            block
+            size="large"
+            class="ant-btn--action b-shadow b-radius fs-15 fw-500"
+            @click="toLogin"
+          >Login</a-button>
         </div>
         <div
           class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8"
@@ -209,12 +217,12 @@ export default {
   },
   mounted: function() {
     this.getdetail();
-    console.log("Information Page:", this.$store.state.umroh);
+    // console.log("Information Page:", this.$store.state.umroh);
   },
   methods: {
     moment,
     async getdetail() {
-      console.log(this.$store.state.umroh);
+      // console.log(this.$store.state.umroh);
       this.harga_quad = this.$store.state.umroh.umroh.harga.quad;
       this.harga_triple = this.$store.state.umroh.umroh.harga.triple;
       this.harga_double = this.$store.state.umroh.umroh.harga.double;
@@ -225,7 +233,21 @@ export default {
       this.wishlist = !this.wishlist;
     },
     nextOrderReview() {
-      this.$router.push({ path: "/catalog/umrah/order-review" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/catalog/umrah/order-review",
+        query: {
+          type: "UMROH",
+          kode: params.kode_produk,
+          quad: this.quad,
+          triple: this.triple,
+          double: this.double,
+          pax: this.jamaah
+        }
+      });
+    },
+    toLogin() {
+      this.$router.push({ path: "/login" });
     }
   }
 };

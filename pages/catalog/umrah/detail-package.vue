@@ -128,14 +128,14 @@ export default {
   },
   methods: {
     change(affixed) {
-      console.log(affixed);
+      // console.log(affixed);
     },
     toggleWishlist() {
       this.wishlist = !this.wishlist;
     },
     async getdetail() {
       let params = this.$route.query;
-      console.log(params);
+
       axios
         .post(process.env.baseUrl + "paket/umroh/detail", {
           kode_produk: params.kode_produk
