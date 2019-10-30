@@ -6,12 +6,12 @@
       </div>
       <a-row :gutter="24" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-right cr-gray fs-14">Alamat E-mail</a-col>
-        <a-col :span="20" class="cr-black fs-14">gustangkd@gmail.com</a-col>
+        <a-col :span="20" class="cr-black fs-14">{{profile ? profile.email : ''}}</a-col>
       </a-row>
       <a-divider :style="{ margin: '16px 0' }" />
       <a-row :gutter="24" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-right cr-gray fs-14">No. Telepon</a-col>
-        <a-col :span="20" class="cr-black fs-14">085213247455</a-col>
+        <a-col :span="20" class="cr-black fs-14">{{profile ? profile.telepon : ''}}</a-col>
       </a-row>
     </a-card>
     <!-- modal collection edit Emailtelp form -->
@@ -70,11 +70,14 @@
 export default {
   data() {
     return {
-      visibleEditEmailtelp: false
+      visibleEditEmailtelp: false,
     };
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);
+  },
+  props : {
+      profile : Object
   },
   methods: {
     // set modal

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="p-24">
+    <div class="p-24" v-if="!dataAddress.length">
       <div class="text-center fs-14 cr-gray">Alamat anda belum terdaftar</div>
       <div class="text-center mt-8">
         <a-button
@@ -10,6 +10,22 @@
         >Tambah Alamat</a-button>
       </div>
     </div>
+    <a-card title="Data Alamat" class="b-shadow b-radius b-solid" v-if="dataAddress.length">
+      <div slot="extra">
+        <a-button class="b-shadow b-radius cr-primary" icon="plus" @click="showEditAddress">Tambah</a-button>
+      </div>
+      <a-table :columns="columns" :dataSource="dataAddress" :pagination="false">
+        <template slot="action" slot-scope="text, record">
+          <a-popconfirm
+                  v-if="dataAddress.length"
+                  title="Sure to delete?"
+                  @confirm="() => onDelete(record.key)"
+          >
+            <a href="javascript:;">Hapus</a>
+          </a-popconfirm>
+        </template>
+      </a-table>
+    </a-card>
     <!-- modal collection edit Address form -->
     <a-modal :visible="visibleEditAddress" title="Alamat" @cancel="closeModal" :footer="false">
       <a-form layout="vertical" :form="form" @submit="handleSubmit" hideRequiredMark>
@@ -138,6 +154,20 @@ const provinceData = ["Sulawesi Selatan"];
 const cityData = ["Makassar"];
 const districtData = ["Tamalanrea"];
 const postalcodeData = ["92294"];
+const columns = [
+  { title: "Provinsi", dataIndex: "provinsi", key: "provinsi" },
+  { title: "Kota", dataIndex: "kota", key: "kota" },
+  { title: "Kecamatan", dataIndex: "kecamatan", key: "kecamatan" },
+  { title: "Kode POS", dataIndex: "pos", key: "pos" },
+  {
+    title: "Tindakan",
+    key: "operation",
+    fixed: "right",
+    width: 100,
+    scopedSlots: { customRender: "action" }
+  }
+];
+const dataAddress = [];
 export default {
   data() {
     return {
@@ -145,11 +175,28 @@ export default {
       provinceData,
       cityData,
       districtData,
-      postalcodeData
+      postalcodeData,
+      dataAddress,
+      columns
     };
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);
+  },
+  props : {
+    alamat : Array
+  },
+  created(){
+    console.log('alamat',this.alamat);
+    this.dataAddress = this.alamat.map(val => {
+      return {
+        key : val.id,
+        provinsi : val.id_provinsi,
+        kota : val.id_kabkota,
+        kecamatan : val.id_kecamatan,
+        pos : val.kode_pos,
+      }
+    })
   },
   methods: {
     // set modal

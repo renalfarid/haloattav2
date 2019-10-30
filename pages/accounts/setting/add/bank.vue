@@ -1,6 +1,16 @@
 <template>
   <div>
-    <a-card title="Data Rekening Bank" class="b-shadow b-radius b-solid">
+    <div class="p-24" v-if="!dataBank.length">
+      <div class="text-center fs-14 cr-gray">Bank anda belum terdaftar</div>
+      <div class="text-center mt-8">
+        <a-button
+                class="b-shadow b-radius cr-primary"
+                icon="plus"
+                @click="showAddBank"
+        >Tambah Alamat</a-button>
+      </div>
+    </div>
+    <a-card title="Data Rekening Bank" class="b-shadow b-radius b-solid"  v-if="dataBank.length">
       <div slot="extra">
         <a-button class="b-shadow b-radius cr-primary" icon="plus" @click="showAddBank">Tambah</a-button>
       </div>
@@ -87,15 +97,7 @@ const columns = [
     scopedSlots: { customRender: "action" }
   }
 ];
-const dataBank = [
-  {
-    key: "1",
-    code: "HT338",
-    name: "Gustang Arifatullah",
-    bank: "Mandiri 一 KCP Makassar",
-    number: "152 000 000 000"
-  }
-];
+const dataBank = [];
 export default {
   data() {
     return {
@@ -104,8 +106,22 @@ export default {
       visibleAddBank: false
     };
   },
+  props : {
+      bank : Array
+  },
   beforeCreate() {
     this.form = this.$form.createForm(this);
+  },
+  created(){
+    this.dataBank = this.bank.map(val => {
+      return {
+        key : val.id,
+        code : val.kode_bank,
+        name : val.atas_nama,
+        bank : val.nama_bank,
+        number : val.no_rekening
+      }
+    })
   },
   methods: {
     // set modal
