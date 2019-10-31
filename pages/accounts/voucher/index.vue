@@ -3,7 +3,7 @@
         <div class="fs-18 fw-500 cr-black mb-24">Voucher Saya</div>
 
         <a-row :gutter="16">
-            <a-col :span="12" v-for="voucher in vouchers">
+            <a-col :span="12" v-for="voucher in vouchers" :key="voucher.no_voucher">
                 <a-card :bordered="false" class="mb-16">
                     <div class="card-voucher">
                         <div

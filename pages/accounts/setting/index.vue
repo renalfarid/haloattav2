@@ -15,17 +15,17 @@
             <div v-if="noTitleKey === 'akun'">
                 <edit-profile :profile="profile.akun"/>
 
-                <edit-email-phone :profile="profile.akun"/>
+                <edit-email-phone @saved="savedEvent" :profile="profile.akun"/>
 
                 <edit-password/>
             </div>
 
             <div v-else-if="noTitleKey === 'alamat'">
-                <add-address :alamat="profile.alamat"/>
+                <add-address @saved="savedEvent" :alamat="profile.alamat"/>
             </div>
 
             <div v-else-if="noTitleKey === 'bank'">
-                <add-bank :bank="profile.bank"/>
+                <add-bank @saved="savedEvent" :bank="profile.bank"/>
             </div>
         </a-card>
     </div>
@@ -69,6 +69,9 @@
                 profile: {}
             };
         },
+        beforeCreate(){
+
+        },
         created() {
           this.getUserInfo()
         },
@@ -93,6 +96,11 @@
                     .catch(err => {
                         console.log(err);
                     });
+            },
+            savedEvent(event){
+                if (event){
+                    this.getUserInfo();
+                }
             }
         },
         components: {editProfile, editEmailPhone, editPassword, addAddress, addBank}

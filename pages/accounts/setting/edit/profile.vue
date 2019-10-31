@@ -170,7 +170,7 @@
 </template>
 <script>
     import moment from "moment";
-
+    import axios from "axios";
     const Cookie = process.client ? require("js-cookie") : undefined;
 
     function getBase64(img, callback) {
@@ -185,6 +185,7 @@
                 loading: false,
                 visibleEditProfile: false,
                 imageUrl: "",
+                imageUpload : null
             };
         },
         beforeCreate() {
@@ -207,6 +208,7 @@
                         this.loading = false;
                     });
                 }
+                console.log(info);
             },
             beforeUpload(file) {
                 const isLt2M = file.size / 1024 / 1024 < 2;
@@ -228,6 +230,26 @@
                 this.form.validateFields((err, values) => {
                     if (!err) {
                         console.log(values);
+                        const token = Cookie.get('auth');
+                        const config = {
+                            headers: {
+                                Authorization: "Bearer " + token
+                            }
+                        };
+                        axios
+                            .post(process.env.baseUrl+'user/update-profile',{
+                                foto : values.avatar,
+                                nama_depan : values.firstname,
+                                nama_belakang : values.lastname,
+                                tanggal_lahir : new moment(values.birthday).format("YYYY-MM-DD"),
+                                jk : values.jeniskelamin,
+                            },config)
+                            .then((res) => {
+                                console.log(res);
+                            })
+                            .catch(execption => {
+                                console.log(execption)
+                            })
                     }
                 });
             }
