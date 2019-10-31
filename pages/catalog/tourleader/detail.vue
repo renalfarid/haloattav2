@@ -52,7 +52,7 @@
       <a-row :gutter="32">
         <a-col :span="17">
           <div class="ant-layout--package-details-body">
-            <information-tourleader />
+            <information-tourleader :data="item" />
           </div>
         </a-col>
 
@@ -70,6 +70,8 @@
 <script>
 import informationTourleader from "~/components/contents/details/tourleader/information-tourleader.vue";
 import informationSideright from "~/components/contents/details/tourleader/information-sideright.vue";
+import moment from "moment";
+import axios from "axios";
 export default {
   name: "detailTourleader",
   head() {
@@ -78,7 +80,26 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      item: ""
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    moment,
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "tourleader/detail", {
+          kode_produk: params.kode_produk
+        })
+        .then(response => {
+          this.item = response.data.data;
+          this.loading = false;
+        });
+    }
   },
   components: {
     informationTourleader,

@@ -469,6 +469,7 @@ export default {
         params.type == "VISA" ||
         params.type == "ASURANSI" ||
         params.type == "HANDLING" ||
+        params.type == "TOURLEADER" ||
         params.type == "MANASIK"
       ) {
         data["pax"] = params.qty;
