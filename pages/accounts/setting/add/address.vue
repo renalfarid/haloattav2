@@ -231,7 +231,8 @@
                         axios
                             .post(process.env.baseUrl + 'user/update-address',edit_values,config)
                                 .then(res => {
-                                  this.visibleEditAddress = false;
+                                    this.form.resetFields();
+                                    this.visibleEditAddress = false;
                                   this.$emit('saved',true);
                                 })
                     }

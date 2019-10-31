@@ -7,7 +7,7 @@
                         class="b-shadow b-radius cr-primary"
                         icon="plus"
                         @click="showAddBank"
-                >Tambah Alamat
+                >Tambah Bank
                 </a-button>
             </div>
         </div>
@@ -165,12 +165,13 @@
                     }
                 };
                 console.log(key);
-                axios.post(process.env.baseUrl + 'user/deleted-bank',{
-                  kode_bank : key
-                },config)
-                        .then(response => {
-                          this.$emit('saved',true);
-                        });
+                axios
+                    .post(process.env.baseUrl + 'user/deleted-bank', {
+                        kode_bank: key
+                    }, config)
+                    .then(response => {
+                        this.$emit('saved', true);
+                    });
                 this.dataBank = dataBank.filter(item => item.key !== key)
             },
             // set form submit
@@ -194,6 +195,7 @@
                         axios
                             .post(process.env.baseUrl + 'user/add-bank', new_value, config)
                             .then(response => {
+                                this.form.resetFields();
                                 this.visibleAddBank = false;
                                 this.$emit('saved', true);
                             })
