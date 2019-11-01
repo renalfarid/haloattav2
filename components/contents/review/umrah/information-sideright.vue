@@ -3,17 +3,19 @@
     <div class="p-16">
       <div class="d-flex align-items-center mb-16">
         <div class="mr-8">
-          <a-avatar src="https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843" />
+          <a-avatar
+            :src="(umroh.foto_vendor !='') ? umroh.foto_vendor : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+          />
         </div>
         <div class="fs-16 fw-500 cr-black">Umaroh Attaubah</div>
       </div>
 
       <div class="ant-package--rate mb-8">
-        <a-rate class="fs-18" :defaultValue="3" disabled />
+        <a-rate class="fs-18" :defaultValue="kelas_bintang" disabled />
       </div>
 
-      <div class="ant-package--name fs-22 fw-500 cr-black f-default mb-8">{{data.nama}}</div>
-      <div class="ant-package--info fs-15 fw-400 cr-gray">Program {{data.jumlah_hari}} Hari</div>
+      <div class="ant-package--name fs-22 fw-500 cr-black f-default mb-8">{{umroh.nama}}</div>
+      <div class="ant-package--info fs-15 fw-400 cr-gray">Program {{umroh.program_hari}} Hari</div>
     </div>
     <a-divider :style="{margin: '0'}" />
     <div class="p-16 d-flex align-items-center">
@@ -48,7 +50,7 @@
       <div class="ant-package--title fs-15 fw-400 d-block cr-black">Harga Bayar</div>
       <div
         class="ant-package--subtitle fs-22 fw-500 cr-black d-block f-default"
-      >{{harga_jual | currency}}</div>
+      >{{(harga.quad * quad) + (harga.triple * triple) + (harga.double * double) | currency}}</div>
       <div :style="{margin: '16px 0'}">
         <a-button
           block
@@ -65,7 +67,7 @@
 </template>
 <script>
 export default {
-  props: ["data"],
+  props: ["harga", "umroh"],
   data() {
     return {
       quad: 0,
@@ -73,7 +75,7 @@ export default {
       double: 0,
       pax: 0,
       harga_jual: 0,
-      kelas_bintang: 0
+      kelas_bintang: 2
     };
   },
   created() {
@@ -99,8 +101,7 @@ export default {
       this.triple = params.triple;
       this.double = params.double;
       this.pax = params.pax;
-      this.harga_jual = params.pax * this.$props.data.harga_jual;
-      this.kelas_bintang = this.$props.data.kelas_bintang;
+      this.kelas_bintang = this.$props.umroh.kelas_bintang;
     }
   },
   mounted: function() {
@@ -109,8 +110,7 @@ export default {
     this.triple = params.triple;
     this.double = params.double;
     this.pax = params.pax;
-    this.harga_jual = params.pax * this.$props.data.harga_jual;
-    this.kelas_bintang = this.$props.data.kelas_bintang;
+    this.kelas_bintang = this.$props.umroh.kelas_bintang;
   }
 };
 </script>
