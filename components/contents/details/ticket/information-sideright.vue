@@ -52,11 +52,13 @@
         <div class="p-16">
           <div class="d-flex align-items-center mb-8">
             <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
-            <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
+            <div
+              class="ant-package--info fs-14 fw-500 cr-black ml-auto"
+            >{{moment(data.berangkat, "YYYY-MM-DD").format('LL')}}</div>
           </div>
           <div class="d-flex align-items-center">
             <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-            <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
+            <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">- Hari</div>
           </div>
         </div>
 
@@ -125,26 +127,34 @@
 
         <div class="p-16">
           <div class="d-flex align-items-center mb-8">
-            <div class="fs-14 fw-400 cr-black f-default w-35">Dewasa (2)</div>
+            <div class="fs-14 fw-400 cr-black f-default w-35">Dewasa ({{dewasa}})</div>
             <span class="cr-gray mr-8">x</span>
-            <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 12.500.000</div>
+            <div
+              class="fs-14 fw-400 cr-black f-default text-right w-65"
+            >{{dewasa * data.harga | currency }}</div>
           </div>
           <div class="d-flex align-items-center mb-8">
-            <div class="fs-14 fw-400 cr-black f-default w-35">Anak (2)</div>
+            <div class="fs-14 fw-400 cr-black f-default w-35">Anak ({{anak}})</div>
             <span class="cr-gray mr-8">x</span>
-            <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 11.000.000</div>
+            <div
+              class="fs-14 fw-400 cr-black f-default text-right w-65"
+            >{{anak * data.harga | currency }}</div>
           </div>
           <div class="d-flex align-items-center mb-8">
-            <div class="fs-14 fw-400 cr-black f-default w-35">Bayi (1)</div>
+            <div class="fs-14 fw-400 cr-black f-default w-35">Bayi ({{bayi}})</div>
             <span class="cr-gray mr-8">x</span>
-            <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 6.500.000</div>
+            <div
+              class="fs-14 fw-400 cr-black f-default text-right w-65"
+            >{{bayi * data.harga | currency }}</div>
           </div>
 
           <a-divider :style="{margin: '8px 0'}" />
 
           <div class="d-flex align-items-center mb-24">
             <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-            <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 56.000.000</div>
+            <div
+              class="fs-15 fw-500 cr-black f-default text-right w-65"
+            >{{(dewasa + anak + bayi) * data.harga | currency}}</div>
           </div>
 
           <div :style="{margin: '16px 0'}">
@@ -174,15 +184,18 @@
 </template>
 <script>
 import axios from "axios";
+import moment from "moment";
 export default {
+  props: ["data"],
   data() {
     return {
-      dewasa: 2,
-      anak: 2,
-      bayi: 1
+      dewasa: 1,
+      anak: 0,
+      bayi: 0
     };
   },
   methods: {
+    moment,
     nextOrderReview() {
       let params = this.$route.query;
       this.$router.push({
