@@ -470,6 +470,7 @@ export default {
         params.type == "ASURANSI" ||
         params.type == "HANDLING" ||
         params.type == "TOURLEADER" ||
+        params.type == "PERLENGKAPAN" ||
         params.type == "MANASIK"
       ) {
         data["pax"] = params.qty;
