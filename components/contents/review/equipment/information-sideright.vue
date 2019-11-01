@@ -33,10 +33,40 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
+  props: ["data"],
+
+  data() {
+    return {
+      wishlist: false,
+      qty: 0,
+      total: 0
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
   methods: {
+    moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
     nextOrderReview() {
-      this.$router.push({ path: "/payment/order-data" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/order-data",
+        query: {
+          type: params.type,
+          kode: params.kode,
+          qty: this.qty
+        }
+      });
+    },
+    getdata() {
+      let params = this.$route.query;
+      this.qty = params.qty;
+      this.total = this.qty * this.$props.data.harga_jual;
     }
   }
 };

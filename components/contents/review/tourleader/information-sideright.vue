@@ -20,7 +20,7 @@
 
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Jamaah (40)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Jamaah ({{qty}})</div>
           <span class="cr-gray mr-8">x</span>
           <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 300.000</div>
         </div>
@@ -29,7 +29,7 @@
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 12.000.000</div>
+          <div class="fs-15 fw-500 cr-black f-default text-right w-65">{{total | currency}}</div>
         </div>
         <div :style="{margin: '16px 0'}">
           <a-button
@@ -48,10 +48,40 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
+  props: ["data"],
+
+  data() {
+    return {
+      wishlist: false,
+      qty: 0,
+      total: 0
+    };
+  },
+  created: function() {
+    this.getdata();
+  },
   methods: {
+    moment,
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
     nextOrderReview() {
-      this.$router.push({ path: "/payment/order-data" });
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/order-data",
+        query: {
+          type: params.type,
+          kode: params.kode,
+          qty: this.qty
+        }
+      });
+    },
+    getdata() {
+      let params = this.$route.query;
+      this.qty = params.qty;
+      this.total = this.qty * this.$props.data.harga;
     }
   }
 };
