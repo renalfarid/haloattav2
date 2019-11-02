@@ -8,7 +8,7 @@
             <informationOrder :la="la" :umroh="umroh" :tiket="tiket" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight :data="sideright" />
+            <informationSideRight :harga="harga" :umroh="umrohsidebar" />
           </a-col>
         </a-row>
       </div>
@@ -32,7 +32,8 @@ export default {
       la: "",
       tiket: "",
       umroh: "",
-      sideright: {}
+      umrohsidebar: {},
+      harga: ""
     };
   },
   created: function() {
@@ -52,11 +53,14 @@ export default {
           this.tiket = this.item.tiket;
           this.umroh = this.item.umroh;
 
-          this.sideright = {
-            nama: this.item.umroh.nama,
-            jumlah_hari: this.item.umroh.jumlah_hari,
-            harga_jual: this.item.umroh.harga_jual,
-            kelas_bintang: this.item.umroh.kelas_bintang
+          //props right side
+          this.harga = response.data.data.harga;
+          this.umrohsidebar = {
+            berangkat: response.data.data.umroh.tgl_berangkat,
+            program_hari: response.data.data.umroh.jumlah_hari,
+            kelas_bintang: response.data.data.umroh.kelas_bintang,
+            nama: response.data.data.umroh.nama,
+            foto_vendor: response.data.data.umroh.foto
           };
 
           this.loading = false;

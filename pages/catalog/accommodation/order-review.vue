@@ -8,7 +8,7 @@
             <informationAccommodation :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight />
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -29,7 +29,8 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
   created: function() {
@@ -47,6 +48,15 @@ export default {
           this.item = response.data.data;
 
           this.loading = false;
+
+          this.sidebar = {
+            program_hari: response.data.data.program_hari,
+            harga: {
+              quad: response.data.data.harga_quad,
+              triple: response.data.data.harga_triple,
+              double: response.data.data.harga_double
+            }
+          };
         });
     }
   },

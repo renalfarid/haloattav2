@@ -4,16 +4,20 @@
       <div class="p-16">
         <div class="fs-15 fw-500 cr-gray mb-8">Informasi Pesanan</div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Jumlah (40)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Jumlah ({{qty}})</div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 100.000</div>
+          <div
+            class="fs-14 fw-400 cr-black f-default text-right w-65"
+          >{{data.harga_jual | currency}}</div>
         </div>
 
         <a-divider :style="{margin: '12px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 4.000.000</div>
+          <div
+            class="fs-15 fw-500 cr-black f-default text-right w-65"
+          >{{qty * data.harga_jual | currency}}</div>
         </div>
 
         <div :style="{margin: '16px 0'}">

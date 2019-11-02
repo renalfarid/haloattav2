@@ -57,11 +57,11 @@
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
           <div
             class="ant-package--info fs-14 fw-500 cr-black ml-auto"
-          >{{moment(tgl_berangkat, "YYYY-MM-DD").format('LL')}}</div>
+          >{{moment(umroh.berangkat, "YYYY-MM-DD").format('LL')}}</div>
         </div>
         <div class="d-flex align-items-center">
           <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{program_hari}} Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{umroh.program_hari}} Hari</div>
         </div>
       </div>
 
@@ -91,7 +91,7 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Quad Room</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray">{{harga_quad | currency}} /pax</div>
+            <div class="ant-package--subtitle fs-13 fw-400 cr-gray">{{harga.quad | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -111,7 +111,7 @@
             <div class="ant-package--title fs-15 fw-500 cr-black">Triple Room</div>
             <div
               class="ant-package--subtitle fs-13 fw-400 cr-gray f-default"
-            >{{harga_triple | currency}} /pax</div>
+            >{{harga.triple | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -131,7 +131,7 @@
             <div class="ant-package--title fs-15 fw-500 cr-black">Double Room</div>
             <div
               class="ant-package--subtitle fs-13 fw-400 cr-gray f-default"
-            >{{harga_double | currency}} /pax</div>
+            >{{harga.double | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -149,26 +149,34 @@
       <a-divider :style="{margin: '0'}" />
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Quad (4)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Quad ({{quad}})</div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">{{harga_quad | currency}}</div>
+          <div
+            class="fs-14 fw-400 cr-black f-default text-right w-65"
+          >{{harga.quad * quad | currency}}</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Triple (3)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Triple ({{triple}})</div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">{{harga_triple | currency}}</div>
+          <div
+            class="fs-14 fw-400 cr-black f-default text-right w-65"
+          >{{harga.triple * triple | currency}}</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Double (2)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Double ({{double}})</div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">{{harga_double | currency}}</div>
+          <div
+            class="fs-14 fw-400 cr-black f-default text-right w-65"
+          >{{harga.double * double | currency}}</div>
         </div>
 
         <a-divider :style="{margin: '8px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">{{total | currency}}</div>
+          <div
+            class="fs-15 fw-500 cr-black f-default text-right w-65"
+          >{{(harga.quad * quad) + (harga.triple * triple) + (harga.double * double) | currency}}</div>
         </div>
 
         <div :style="{margin: '16px 0'}">
@@ -197,17 +205,13 @@
 <script>
 import moment from "moment";
 export default {
+  props: ["harga", "umroh"],
   data() {
     return {
       wishlist: false,
       jamaah: 1,
-      program_hari: 1,
       quad: 1,
-      harga_quad: 0,
-      harga_triple: 0,
-      harga_double: 0,
       total: 0,
-      tgl_berangkat: 0,
       triple: 0,
       double: 0
     };
@@ -223,11 +227,6 @@ export default {
     moment,
     async getdetail() {
       // console.log(this.$store.state.umroh);
-      this.harga_quad = this.$store.state.umroh.umroh.harga.quad;
-      this.harga_triple = this.$store.state.umroh.umroh.harga.triple;
-      this.harga_double = this.$store.state.umroh.umroh.harga.double;
-      this.tgl_berangkat = this.$store.state.umroh.umroh.umroh.tgl_berangkat;
-      this.program_hari = this.$store.state.umroh.umroh.umroh.program_hari;
     },
     toggleWishlist() {
       this.wishlist = !this.wishlist;
