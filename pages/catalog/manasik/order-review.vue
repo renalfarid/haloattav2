@@ -20,6 +20,7 @@ import informationManasik from "~/components/contents/review/manasik/information
 import informationSideRight from "~/components/contents/review/manasik/information-sideright.vue";
 import axios from "axios";
 export default {
+  middleware: "authenticated",
   name: "orderReview",
   head() {
     return {
