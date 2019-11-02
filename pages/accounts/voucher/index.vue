@@ -95,7 +95,6 @@
                             }).slice(0,-3);
                           return val;
                         });
-                        console.log(data);
                         this.vouchers = data;
                     })
                     .catch(err => {

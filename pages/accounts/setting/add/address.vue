@@ -31,7 +31,7 @@
                                       v-decorator="[
               'province',
               {
-                initialValue: [],
+                initialValue: alamat.length ? alamat[0].provinsi_id : '',
                 rules: [{ required: true, message: 'Harus di isi!' }],
               }
             ]"
@@ -56,7 +56,7 @@
                                       v-decorator="[
               'city',
               {
-                initialValue: [],
+                initialValue: alamat.length ? alamat[0].city_id : '',
                 rules: [{ required: true, message: 'Harus di isi!' }],
               }
             ]"
@@ -80,7 +80,7 @@
                                       v-decorator="[
               'district',
               {
-                initialValue: [],
+                initialValue: alamat.length ? alamat[0].kecamatan_id : '',
                 rules: [{ required: true, message: 'Harus di isi!' }],
               }
             ]"
@@ -186,19 +186,23 @@
                 }
             });
             this.getProvince();
+            if (this.alamat.length){
+                this.getKabKota(this.alamat[0].provinsi_id);
+                this.getKecamatan(this.alamat[0].city_id)
+            }
         },
-        watch : {
-            alamat : function (newVal, oldVal) {
-              this.dataAddress = newVal.map(val => {
-                return {
-                  key: val.id,
-                  provinsi: val.provinsi,
-                  kota: val.kabupaten,
-                  kecamatan: val.kecamatan,
-                  pos: val.kode_pos,
-                  alamat: val.alamat,
-                }
-              });
+        watch: {
+            alamat: function (newVal, oldVal) {
+                this.dataAddress = newVal.map(val => {
+                    return {
+                        key: val.id,
+                        provinsi: val.provinsi,
+                        kota: val.kabupaten,
+                        kecamatan: val.kecamatan,
+                        pos: val.kode_pos,
+                        alamat: val.alamat,
+                    }
+                });
             }
         },
         methods: {
@@ -222,19 +226,19 @@
                             }
                         };
                         const edit_values = {
-                          id_provinsi : values.province,
-                          id_kabkot : values.city,
-                          id_kecamatan : values.district,
-                          kode_pos : values.postal,
-                          alamat : values.address,
+                            id_provinsi: values.province,
+                            id_kabkot: values.city,
+                            id_kecamatan: values.district,
+                            kode_pos: values.postal,
+                            alamat: values.address,
                         };
                         axios
-                            .post(process.env.baseUrl + 'user/update-address',edit_values,config)
-                                .then(res => {
-                                    this.form.resetFields();
-                                    this.visibleEditAddress = false;
-                                  this.$emit('saved',true);
-                                })
+                            .post(process.env.baseUrl + 'user/update-address', edit_values, config)
+                            .then(res => {
+                                this.form.resetFields();
+                                this.visibleEditAddress = false;
+                                this.$emit('saved', true);
+                            })
                     }
                 });
             },
@@ -245,6 +249,9 @@
                         Authorization: "Bearer " + token
                     }
                 };
+                this.provinceData = [];
+                this.cityData = [];
+                this.districtData = [];
                 axios.get(process.env.baseUrl + 'option/provinsi', config)
                     .then(response => {
                         this.provinceData = response.data.data;
@@ -259,6 +266,10 @@
                 };
                 this.cityData = [];
                 this.districtData = [];
+                this.form.setFieldsValue({
+                    city : null,
+                    district : null
+                });
                 axios.get(process.env.baseUrl + 'option/kabupaten?province_id=' + id_province, config)
                     .then(response => {
                         this.cityData = response.data.data;
@@ -272,6 +283,9 @@
                     }
                 };
                 this.districtData = [];
+                this.form.setFieldsValue({
+                    district : null
+                });
                 axios.get(process.env.baseUrl + 'option/kecamatan?city_id=' + id_kabupaten, config)
                     .then(response => {
                         this.districtData = response.data.data;

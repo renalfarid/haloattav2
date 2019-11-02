@@ -108,8 +108,10 @@
                       axios
                               .post(process.env.baseUrl+'user/update-contact',values,config)
                               .then((res) => {
-                                  this.visibleEditEmailtelp = false;
-                                  this.$emit('saved',true)
+                                  if (res.data.status == 200) {
+                                      this.visibleEditEmailtelp = false;
+                                      this.$emit('saved', true)
+                                  }
                               })
                               .catch(execption => {
                                 console.log(execption)

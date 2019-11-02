@@ -195,9 +195,11 @@
                         axios
                             .post(process.env.baseUrl + 'user/add-bank', new_value, config)
                             .then(response => {
-                                this.form.resetFields();
-                                this.visibleAddBank = false;
-                                this.$emit('saved', true);
+                                if (response.data.status == 200) {
+                                    this.form.resetFields();
+                                    this.visibleAddBank = false;
+                                    this.$emit('saved', true);
+                                }
                             })
                     }
                 });

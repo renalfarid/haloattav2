@@ -57,7 +57,7 @@
                                     v-decorator="[
               'avatar',
               {
-                initialValue: profile ? profile.foto : '',
+                initialValue: imageUrl,
                 rules: [{ required: true, message: 'Harus di isi!' }],
               }
             ]"
@@ -194,6 +194,9 @@
         props: {
             profile : Object
         },
+        created(){
+
+        },
         methods: {
             moment,
             // set upload
@@ -238,14 +241,17 @@
                         };
                         axios
                             .post(process.env.baseUrl+'user/update-profile',{
-                                foto : values.avatar,
+                                foto : this.imageUrl,
                                 nama_depan : values.firstname,
                                 nama_belakang : values.lastname,
                                 tanggal_lahir : new moment(values.birthday).format("YYYY-MM-DD"),
                                 jk : values.jeniskelamin,
                             },config)
                             .then((res) => {
-                                console.log(res);
+                                if (res.data.status == 200) {
+                                    this.visibleEditProfile = false;
+                                    this.$emit('saved',true);
+                                }
                             })
                             .catch(execption => {
                                 console.log(execption)
