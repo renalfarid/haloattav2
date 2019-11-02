@@ -20,6 +20,7 @@ import informationInsurance from "~/components/contents/review/insurance/informa
 import informationSideRight from "~/components/contents/review/insurance/information-sideright.vue";
 import axios from "axios";
 export default {
+  middleware: "authenticated",
   name: "orderReview",
   head() {
     return {
