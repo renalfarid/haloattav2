@@ -59,7 +59,7 @@
         <a-col :span="7">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
-              <information-sideright />
+              <information-sideright :data="sidebar" />
             </div>
           </div>
         </a-col>
@@ -82,7 +82,8 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
   created: function() {
@@ -99,6 +100,10 @@ export default {
         .then(response => {
           this.item = response.data.data;
           this.loading = false;
+          this.sidebar = {
+            durasi: response.data.data.duration_stay,
+            harga: response.data.data.harga_jual
+          };
         });
     }
   },

@@ -88,7 +88,7 @@
         <a-col :span="7" :style="{margin : '16px 0'}">
           <div class="ant-layout--right">
             <div class="ant-affix--container">
-              <informationSideRight />
+              <informationSideRight :harga="harga" :umroh="umroh" />
             </div>
           </div>
         </a-col>
@@ -120,7 +120,9 @@ export default {
       bintang: 1,
       foto_vendor: "",
       datatiket: "default",
-      dataLA: "default"
+      dataLA: "default",
+      harga: "",
+      umroh: {}
     };
   },
   created() {
@@ -147,6 +149,14 @@ export default {
           this.nama = response.data.data.umroh.nama;
           this.bintang = response.data.data.umroh.kelas_bintang;
           this.foto_vendor = response.data.data.umroh.foto_vendor;
+
+          //props right side
+          this.harga = response.data.data.harga;
+          this.umroh = {
+            berangkat: response.data.data.umroh.tgl_berangkat,
+            program_hari: response.data.data.umroh.jumlah_hari
+          };
+
           this.$store.commit("umroh/setUmroh", response.data.data); // mutating to store for client rendering
           Cookie.set("umroh", response.data.data); // saving token in cookie for server rendering
         })

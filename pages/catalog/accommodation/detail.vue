@@ -61,7 +61,7 @@
         <a-col :span="7">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
-              <information-sideright />
+              <information-sideright :data="sidebar" />
             </div>
           </div>
         </a-col>
@@ -84,7 +84,8 @@ export default {
   data() {
     return {
       wishlist: false,
-      dataLA: "default"
+      dataLA: "default",
+      sidebar: {}
     };
   },
   created() {
@@ -107,6 +108,15 @@ export default {
         .then(response => {
           // console.log(response);
           this.dataLA = response.data.data;
+
+          this.sidebar = {
+            program_hari: response.data.data.program_hari,
+            harga: {
+              quad: response.data.data.harga_quad,
+              triple: response.data.data.harga_triple,
+              double: response.data.data.harga_double
+            }
+          };
           this.$store.commit("la/setLa", response.data.data); // mutating to store for client rendering
           Cookie.set("la", response.data.data); // saving token in cookie for server rendering
         })

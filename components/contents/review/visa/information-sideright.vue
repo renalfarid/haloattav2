@@ -51,11 +51,11 @@
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">-</div>
         </div>
         <div class="d-flex align-items-center">
           <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{data.duration_stay}} Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{data.durasi}} Hari</div>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
           <div class="fs-14 fw-400 cr-gray f-default">Tamu ({{qty}})</div>
           <div class="fs-14 fw-400 cr-black f-default ml-auto">
             <span class="cr-gray mr-8">x</span>
-            {{data.harga_jual | currency}}
+            {{data.harga | currency}}
           </div>
         </div>
 
@@ -75,7 +75,9 @@
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">{{total | currency}}</div>
+          <div
+            class="fs-15 fw-500 cr-black f-default text-right w-65"
+          >{{data.harga * qty | currency}}</div>
         </div>
         <div :style="{margin: '16px 0'}">
           <a-button
@@ -128,7 +130,6 @@ export default {
     getdata() {
       let params = this.$route.query;
       this.qty = params.qty;
-      this.total = this.qty * this.$props.data.harga_jual;
     }
   }
 };
