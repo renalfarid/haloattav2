@@ -51,11 +51,11 @@
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">-</div>
         </div>
         <div class="d-flex align-items-center">
           <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">- Hari</div>
         </div>
       </div>
 
@@ -63,16 +63,18 @@
 
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Jumlah Pax (4)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Jumlah Pax ({{qty}})</div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 500.000</div>
+          <div class="fs-14 fw-400 cr-black f-default text-right w-65">{{data.harga | currency}}</div>
         </div>
 
         <a-divider :style="{margin: '12px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 2.000.000</div>
+          <div
+            class="fs-15 fw-500 cr-black f-default text-right w-65"
+          >{{data.harga * qty | currency}}</div>
         </div>
 
         <div :style="{margin: '16px 0'}">
@@ -94,8 +96,14 @@
 <script>
 import moment from "moment";
 export default {
+  props: ["data"],
   data() {
-    return {};
+    return {
+      qty: 0
+    };
+  },
+  created() {
+    this.sidebarinfo();
   },
   methods: {
     moment,
@@ -109,7 +117,15 @@ export default {
           qty: params.qty
         }
       });
+    },
+    sidebarinfo() {
+      let params = this.$route.query;
+      this.qty = params.qty;
     }
+  },
+  mounted: function() {
+    let params = this.$route.query;
+    this.qty = params.qty;
   }
 };
 </script>

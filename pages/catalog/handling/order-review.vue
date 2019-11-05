@@ -8,7 +8,7 @@
             <informationHandling :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight :data="item" />
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -20,6 +20,7 @@ import informationHandling from "~/components/contents/review/handling/informati
 import informationSideRight from "~/components/contents/review/handling/information-sideright.vue";
 import axios from "axios";
 export default {
+  middleware: "authenticated",
   name: "orderReview",
   head() {
     return {
@@ -28,7 +29,8 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
   created: function() {
@@ -45,6 +47,10 @@ export default {
           this.item = response.data.data;
 
           this.loading = false;
+
+          this.sidebar = {
+            harga: response.data.data.harga_satuan
+          };
         });
     }
   },

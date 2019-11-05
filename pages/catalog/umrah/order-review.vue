@@ -21,6 +21,7 @@ import informationSideRight from "~/components/contents/review/umrah/information
 import moment from "moment";
 import axios from "axios";
 export default {
+  middleware: "authenticated",
   name: "orderReview",
   head() {
     return {

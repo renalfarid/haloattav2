@@ -21,7 +21,7 @@ import informationSideRight from "~/components/contents/review/visa/information-
 import moment from "moment";
 import axios from "axios";
 export default {
-  // middleware: "authenticated",
+  middleware: "authenticated",
   name: "orderReview",
   head() {
     return {
@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       item: "",
-      sidebar:{}
+      sidebar: {}
     };
   },
   created: function() {
