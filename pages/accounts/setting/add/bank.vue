@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <e-verification v-if="otp" @submitOtp="submitData" :tipe="tipe_otp"></e-verification>
+    <div v-else>
         <div class="p-24" v-if="!dataBank.length">
             <div class="text-center fs-14 cr-gray">Bank anda belum terdaftar</div>
             <div class="text-center mt-8">
@@ -90,7 +91,7 @@
 </template>
 <script>
     import axios from "axios";
-
+    import eVerification from "~/pages/accounts/setting/otp.vue";
     const Cookie = process.client ? require("js-cookie") : undefined;
     const columns = [
         {title: "Kode", dataIndex: "code", key: "code"},
@@ -115,7 +116,10 @@
                 dataBank,
                 columns,
                 listBank,
-                visibleAddBank: false
+                visibleAddBank: false,
+                otp : false,
+                formValues : {},
+                tipe_otp : 'add_bank'
             };
         },
         props: {
@@ -186,24 +190,56 @@
                             }
                         };
                         console.log(values);
-                        const new_value = {
+                        this.formValues = {
                             no_rekening: values.number_rekening,
                             atas_nama: values.name,
                             cabang: values.kantor,
                             nama_bank: values.bank,
                         };
                         axios
-                            .post(process.env.baseUrl + 'user/add-bank', new_value, config)
-                            .then(response => {
-                                if (response.data.status == 200) {
-                                    this.form.resetFields();
-                                    this.visibleAddBank = false;
-                                    this.$emit('saved', true);
-                                }
+                            .post(process.env.baseUrl + 'otp/createotp',{
+                                tipe : this.tipe_otp
+                            },config)
+                            .then(() => {
+                                this.$message.success('Otp Berhasil Dikirim')
+                                this.otp = true;
+                            })
+                            .catch(() => {
+                                this.$message.success('Gagal Mengirim Otp')
                             })
                     }
                 });
+            },
+            submitData(otp){
+                const token = Cookie.get('auth');
+                const config = {
+                    headers: {
+                        Authorization: "Bearer " + token
+                    }
+                };
+
+                const new_value = this.formValues;
+                new_value.otp_code = otp;
+                axios
+                    .post(process.env.baseUrl + 'user/add-bank', new_value, config)
+                    .then(response => {
+                        if (response.data.status == 200) {
+                            this.form.resetFields();
+                            this.visibleAddBank = false;
+                            this.$message.success('Bank Berhasil Ditambahkan');
+                            this.$emit('saved', true);
+                            this.otp = false;
+                        } else {
+                            this.$message.error(response.data.msg);
+                        }
+                    })
+                    .catch(() => {
+                        this.$message.success('Otp salah');
+                    })
             }
+        },
+        components :{
+            eVerification
         }
     };
 </script>

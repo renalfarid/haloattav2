@@ -186,7 +186,7 @@
                 }
             });
             this.getProvince();
-            if (this.alamat.length){
+            if (this.alamat.length) {
                 this.getKabKota(this.alamat[0].provinsi_id);
                 this.getKecamatan(this.alamat[0].city_id)
             }
@@ -267,8 +267,8 @@
                 this.cityData = [];
                 this.districtData = [];
                 this.form.setFieldsValue({
-                    city : null,
-                    district : null
+                    city: null,
+                    district: null
                 });
                 axios.get(process.env.baseUrl + 'option/kabupaten?province_id=' + id_province, config)
                     .then(response => {
@@ -284,7 +284,7 @@
                 };
                 this.districtData = [];
                 this.form.setFieldsValue({
-                    district : null
+                    district: null
                 });
                 axios.get(process.env.baseUrl + 'option/kecamatan?city_id=' + id_kabupaten, config)
                     .then(response => {
