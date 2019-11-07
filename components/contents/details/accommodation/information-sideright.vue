@@ -93,7 +93,7 @@
             <div class="ant-package--title fs-15 fw-500 cr-black">Quad Room</div>
             <div
               class="ant-package--subtitle fs-13 fw-400 cr-gray"
-            >{{data.harga.quad | currency}} /pax</div>
+            >{{data.harga_quad | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -113,7 +113,7 @@
             <div class="ant-package--title fs-15 fw-500 cr-black">Triple Room</div>
             <div
               class="ant-package--subtitle fs-13 fw-400 cr-gray f-default"
-            >{{data.harga.triple | currency}} /pax</div>
+            >{{data.harga_triple | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -133,7 +133,7 @@
             <div class="ant-package--title fs-15 fw-500 cr-black">Double Room</div>
             <div
               class="ant-package--subtitle fs-13 fw-400 cr-gray f-default"
-            >{{data.harga.double | currency}} /pax</div>
+            >{{data.harga_double | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -157,21 +157,21 @@
           <span class="cr-gray mr-8">x</span>
           <div
             class="fs-14 fw-400 cr-black f-default text-right w-65"
-          >{{data.harga.quad * quad | currency}}</div>
+          >{{data.harga_quad * quad | currency}}</div>
         </div>
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Triple ({{triple}})</div>
           <span class="cr-gray mr-8">x</span>
           <div
             class="fs-14 fw-400 cr-black f-default text-right w-65"
-          >{{data.harga.triple * triple | currency}}</div>
+          >{{data.harga_triple * triple | currency}}</div>
         </div>
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Double ({{double}})</div>
           <span class="cr-gray mr-8">x</span>
           <div
             class="fs-14 fw-400 cr-black f-default text-right w-65"
-          >{{data.harga.double * double | currency}}</div>
+          >{{data.harga_double * double | currency}}</div>
         </div>
 
         <a-divider :style="{margin: '12px 0'}" />
@@ -180,7 +180,7 @@
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
           <div
             class="fs-15 fw-500 cr-black f-default text-right w-65"
-          >{{(quad * data.harga.quad)+(double * data.harga.double)+ (triple * data.harga.triple) | currency}}</div>
+          >{{(quad * data.harga_quad)+(double * data.harga_double)+ (triple * data.harga_triple) | currency}}</div>
         </div>
 
         <div :style="{margin: '16px 0'}">
