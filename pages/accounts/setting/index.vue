@@ -13,7 +13,7 @@
                 class="b-shadow b-radius b-solid mt-16"
         >
             <div v-if="noTitleKey === 'akun'">
-                <edit-profile :profile="profile.akun"/>
+                <edit-profile @saved="savedEvent" :profile="profile.akun"/>
 
                 <edit-email-phone @saved="savedEvent" :profile="profile.akun"/>
 
