@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <e-verification v-if="otp" @submitOtp="submitData" :tipe="tipe_otp"></e-verification>
+    <div v-else>
         <a-card title="Informasi Profil" class="b-shadow b-radius b-solid mb-24">
             <div slot="extra">
                 <a-button class="b-shadow b-radius cr-primary" icon="edit" @click="showEditProfile">Edit</a-button>
@@ -34,11 +35,11 @@
             <a-divider :style="{ margin: '16px 0' }"/>
             <a-row :gutter="24" type="flex" justify="space-around" align="middle">
                 <a-col :span="4" class="text-right cr-gray fs-14">Tanggal Lahir</a-col>
-                <a-col :span="20" class="cr-black fs-14">{{profile ? (new Date(profile.tanggal_lahir).toLocaleDateString('id-ID', {
+                <a-col :span="20" class="cr-black fs-14">{{profile ? profile.tanggal_lahir ? (new Date(profile.tanggal_lahir).toLocaleDateString('id-ID', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
-                    })) : ''}}</a-col>
+                    })) : 'Tanggal Lahir belum di isi' : ''}}</a-col>
             </a-row>
         </a-card>
         <!-- modal collection edit profile form -->
@@ -57,7 +58,7 @@
                                     v-decorator="[
               'avatar',
               {
-                initialValue: profile ? profile.foto : '',
+                initialValue: imageUrl,
                 rules: [{ required: true, message: 'Harus di isi!' }],
               }
             ]"
@@ -141,7 +142,7 @@
                                     v-decorator="[
               'birthday',
               {
-                initialValue: profile ? new moment(profile.tanggal_lahir) : new moment(),
+                initialValue: profile ? profile.tanggal_lahir ? new moment(profile.tanggal_lahir) : new moment()  : new moment(),
                 rules: [{ type: 'object', required: true, message: 'Harus di isi!' }],
               }
             ]"
@@ -171,6 +172,7 @@
 <script>
     import moment from "moment";
     import axios from "axios";
+    import eVerification from "~/pages/accounts/setting/otp.vue";
     const Cookie = process.client ? require("js-cookie") : undefined;
 
     function getBase64(img, callback) {
@@ -185,14 +187,23 @@
                 loading: false,
                 visibleEditProfile: false,
                 imageUrl: "",
-                imageUpload : null
+                imageUpload : null,
+                otp : false,
+                tipe_otp : 'change_profile',
+                formValues : {}
             };
+        },
+        components :{
+          eVerification
         },
         beforeCreate() {
             this.form = this.$form.createForm(this);
         },
         props: {
             profile : Object
+        },
+        created(){
+
         },
         methods: {
             moment,
@@ -236,22 +247,52 @@
                                 Authorization: "Bearer " + token
                             }
                         };
+                        this.formValues = {
+                            foto : this.imageUrl,
+                            nama_depan : values.firstname,
+                            nama_belakang : values.lastname,
+                            tanggal_lahir : new moment(values.birthday).format("YYYY-MM-DD"),
+                            jk : values.jeniskelamin,
+                        };
                         axios
-                            .post(process.env.baseUrl+'user/update-profile',{
-                                foto : values.avatar,
-                                nama_depan : values.firstname,
-                                nama_belakang : values.lastname,
-                                tanggal_lahir : new moment(values.birthday).format("YYYY-MM-DD"),
-                                jk : values.jeniskelamin,
+                            .post(process.env.baseUrl + 'otp/createotp',{
+                                tipe : this.tipe_otp
                             },config)
-                            .then((res) => {
-                                console.log(res);
+                            .then(() => {
+                                this.$message.success('Otp Berhasil Dikirim')
+                                this.otp = true;
                             })
-                            .catch(execption => {
-                                console.log(execption)
+                            .catch(() => {
+                                this.$message.success('Gagal Mengirim Otp')
                             })
                     }
                 });
+            },
+            submitData(otp){
+                const token = Cookie.get('auth');
+                const config = {
+                    headers: {
+                        Authorization: "Bearer " + token
+                    }
+                };
+                const new_value = this.formValues;
+                new_value.otp_code = otp;
+                axios
+                    .post(process.env.baseUrl+'user/update-profile',new_value,config)
+                    .then(response => {
+                        if (response.data.status == 200) {
+                            this.form.resetFields();
+                            this.visibleEditProfile = false;
+                            this.$message.success('Profile Berhasil Diubah');
+                            this.$emit('saved', true);
+                            this.otp = false;
+                        } else {
+                            this.$message.error(response.data.msg);
+                        }
+                    })
+                    .catch(() => {
+                        this.$message.success('Otp salah');
+                    })
             }
         }
     };
