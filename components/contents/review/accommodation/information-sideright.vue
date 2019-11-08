@@ -71,21 +71,21 @@
           <span class="cr-gray mr-8">x</span>
           <div
             class="fs-14 fw-400 cr-black f-default text-right w-65"
-          >{{data.harga.quad * quad | currency}}</div>
+          >{{data.harga_quad * quad | currency}}</div>
         </div>
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Triple ({{triple}})</div>
           <span class="cr-gray mr-8">x</span>
           <div
             class="fs-14 fw-400 cr-black f-default text-right w-65"
-          >{{data.harga.triple * triple | currency}}</div>
+          >{{data.harga_triple * triple | currency}}</div>
         </div>
         <div class="d-flex align-items-center mb-8">
           <div class="fs-14 fw-400 cr-black f-default w-35">Double ({{double}})</div>
           <span class="cr-gray mr-8">x</span>
           <div
             class="fs-14 fw-400 cr-black f-default text-right w-65"
-          >{{data.harga.double * double | currency}}</div>
+          >{{data.harga_double * double | currency}}</div>
         </div>
 
         <a-divider :style="{margin: '12px 0'}" />
@@ -94,7 +94,7 @@
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
           <div
             class="fs-15 fw-500 cr-black f-default text-right w-65"
-          >{{(quad * data.harga.quad) + (triple * data.harga.triple) + (double * data.harga.double) | currency}}</div>
+          >{{(quad * data.harga_quad) + (triple * data.harga_triple) + (double * data.harga_double) | currency}}</div>
         </div>
 
         <div :style="{margin: '16px 0'}">
