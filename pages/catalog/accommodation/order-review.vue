@@ -51,11 +51,9 @@ export default {
 
           this.sidebar = {
             program_hari: response.data.data.program_hari,
-            harga: {
-              quad: response.data.data.harga_quad,
-              triple: response.data.data.harga_triple,
-              double: response.data.data.harga_double
-            }
+            harga_quad: response.data.data.harga_quad,
+            harga_triple: response.data.data.harga_triple,
+            harga_double: response.data.data.harga_double
           };
         });
     }

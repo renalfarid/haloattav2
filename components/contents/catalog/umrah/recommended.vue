@@ -2,7 +2,10 @@
   <a-list :loading="loading" :grid="{ gutter: 16, column: 4}" :dataSource="lisData">
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
       <a-card class="ant-card-package-small">
-        <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
+        <nuxt-link
+          :to="'/catalog/umrah/detail-package?kode_produk='+item.kode_produk"
+          class="ant-list-item--link"
+        ></nuxt-link>
         <div slot="cover">
           <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
             <div class="ant-card-cover--overlay">
