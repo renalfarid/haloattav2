@@ -8,7 +8,7 @@
             <informationManasik :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight :data="item" />
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -20,7 +20,7 @@ import informationManasik from "~/components/contents/review/manasik/information
 import informationSideRight from "~/components/contents/review/manasik/information-sideright.vue";
 import axios from "axios";
 export default {
-  middleware: "authenticated",
+  // middleware: "authenticated",
   name: "orderReview",
   head() {
     return {
@@ -29,7 +29,8 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
   created: function() {
@@ -44,6 +45,10 @@ export default {
         })
         .then(response => {
           this.item = response.data.data;
+
+          this.sidebar = {
+            harga: response.data.data.harga_satuan
+          };
 
           this.loading = false;
         });
