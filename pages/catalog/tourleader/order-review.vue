@@ -8,7 +8,7 @@
             <informationTourleader :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight :data="item" />
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -30,7 +30,8 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
   created: function() {
@@ -46,6 +47,10 @@ export default {
         })
         .then(response => {
           this.item = response.data.data;
+
+          this.sidebar = {
+            harga: response.data.data.harga
+          };
 
           this.loading = false;
         });
