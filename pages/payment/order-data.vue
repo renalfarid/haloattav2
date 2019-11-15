@@ -388,6 +388,8 @@
 import siderPayment from "@/pages/payment/sider.vue";
 import moment from "moment";
 import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
+
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result));
@@ -489,9 +491,11 @@ export default {
         data["nomor_voucher"] = [];
       }
 
+      const token = Cookie.get("auth");
+
       const config = {
         headers: {
-          Authorization: "Bearer " + this.$store.state.auth.accessToken
+          Authorization: "Bearer " + token
         }
       };
 
@@ -507,7 +511,12 @@ export default {
         .post(url, data, config)
         .then(response => {
           console.log(response);
-          this.$router.push("/accounts");
+          this.$router.push({
+            path: "/accounts/billing/detail",
+            query: {
+              notrans: response.data.data.notrans
+            }
+          });
         })
         .catch(err => {
           console.log("error", err);

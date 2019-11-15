@@ -3,136 +3,93 @@
     <a-card :bordered="false" class="b-solid b-radius b-shadow">
       <a-row :gutter="32" type="flex" justify="space-around" align="middle">
         <a-col :span="12">
-          <div class="fs-30 fw-500 cr-black f-default mb-8">Upload Bukti Transfer Anda</div>
+          <div class="fs-30 fw-500 cr-black f-default mb-8">
+            Upload Bukti Transfer Anda
+          </div>
 
           <div class="fs-15 fw-400 cr-black mb-16">
-            Upload bukti pembayaran bank transfer anda untuk
-            mempercepat proses verifikasi.
+            Upload bukti pembayaran bank transfer anda untuk mempercepat proses
+            verifikasi.
           </div>
-          <a-form layout="vertical" :form="form" @submit="handleSubmit" hideRequiredMark>
+          <a-form
+            layout="vertical"
+            :form="form"
+            @submit="handleSubmit"
+            hideRequiredMark
+          >
             <a-form-item label="No. Transaksi">
-              <a-input defaultValue="TP1234567890HT" size="large" disabled />
+              <a-input
+                v-decorator="[
+                  'nomor_transaksi',
+                  { initialValue: item.notrans }
+                ]"
+                size="large"
+                disabled
+              />
             </a-form-item>
 
             <a-form-item label="Jumlah Tagihan">
-              <a-input defaultValue="Rp 500.000.731" size="large" disabled />
+              <a-input
+                v-decorator="['bayar', { initialValue: item.total_tagihan }]"
+                size="large"
+                disabled
+              />
             </a-form-item>
 
             <a-form-item label="Rekening Tujuan" class="mb-0">
               <a-select
+                v-decorator="['kode_bank', { initialValue: value }]"
                 @change="onChange"
-                v-model="value"
                 placeholder="Pilih Rekening Tujuan Transfer"
                 size="large"
               >
-                <a-select-option :value="1">BRI</a-select-option>
-                <a-select-option :value="2">BNI</a-select-option>
-                <a-select-option :value="3">BCA</a-select-option>
-                <a-select-option :value="4">MANDIRI</a-select-option>
+                <a-select-option
+                  v-for="(item, key) in item.bank"
+                  :key="key"
+                  :value="item.kdbank"
+                  >{{ item.aliasbank }}</a-select-option
+                >
               </a-select>
             </a-form-item>
 
             <a-form-item>
-              <a-list>
-                <a-list-item v-if="value === 1">
+              <a-list :dataSource="item.bank">
+                <a-list-item
+                  slot="renderItem"
+                  slot-scope="item, index"
+                  :key="index"
+                  v-if="value === item.kdbank"
+                >
                   <a-skeleton :loading="loading" active>
                     <div class="b-shadow b-radius b-solid p-24 w-100">
                       <div class="d-flex align-items-center mb-8">
-                        <div class="fs-15 fw-500">Bank Rakyat Indonesia (BRI)</div>
+                        <div class="fs-15 fw-500">
+                          {{ item.namabank }} ({{ item.aliasbank }})
+                        </div>
                         <div class="ml-auto">
                           <img
-                            :style="{maxWidth: '100%', height: '18px'}"
-                            src="https://upload.wikimedia.org/wikipedia/commons/9/97/Logo_BRI.png"
+                            :style="{ maxWidth: '100%', height: '18px' }"
+                            :src="item.images"
                           />
                         </div>
                       </div>
 
                       <dl class="ant-deflist ant-deflist--small">
-                        <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
-                        <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
-                          <span>085213247455</span>
+                        <dt class="ant-deflist__label cr-black fw-400">
+                          Nomor Rekening
+                        </dt>
+                        <dd
+                          class="ant-deflist__value text-ellipsis fw-400 cr-black"
+                        >
+                          <span>{{ item.norekening }}</span>
                         </dd>
-                        <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
-                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
-                          <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
-                        </dd>
-                      </dl>
-                    </div>
-                  </a-skeleton>
-                </a-list-item>
-                <a-list-item v-if="value === 2">
-                  <a-skeleton :loading="loading" active>
-                    <div class="b-shadow b-radius b-solid p-24 w-100">
-                      <div class="d-flex align-items-center mb-8">
-                        <div class="fs-15 fw-500">Bank Negara Indonesia (BNI)</div>
-                        <div class="ml-auto">
-                          <img
-                            :style="{maxWidth: '100%', height: '18px'}"
-                            src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1280px-BNI_logo.svg.png"
-                          />
-                        </div>
-                      </div>
-
-                      <dl class="ant-deflist ant-deflist--small">
-                        <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
-                        <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
-                          <span>085213247455</span>
-                        </dd>
-                        <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
-                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
-                          <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
-                        </dd>
-                      </dl>
-                    </div>
-                  </a-skeleton>
-                </a-list-item>
-                <a-list-item v-if="value === 3">
-                  <a-skeleton :loading="loading" active>
-                    <div class="b-shadow b-radius b-solid p-24 w-100">
-                      <div class="d-flex align-items-center mb-8">
-                        <div class="fs-15 fw-500">Bank Central Asia (BCA)</div>
-                        <div class="ml-auto">
-                          <img
-                            :style="{maxWidth: '100%', height: '18px'}"
-                            src="https://upload.wikimedia.org/wikipedia/id/thumb/e/e0/BCA_logo.svg/1280px-BCA_logo.svg.png"
-                          />
-                        </div>
-                      </div>
-
-                      <dl class="ant-deflist ant-deflist--small">
-                        <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
-                        <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
-                          <span>085213247455</span>
-                        </dd>
-                        <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
-                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
-                          <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
-                        </dd>
-                      </dl>
-                    </div>
-                  </a-skeleton>
-                </a-list-item>
-                <a-list-item v-if="value === 4">
-                  <a-skeleton :loading="loading" active>
-                    <div class="b-shadow b-radius b-solid p-24 w-100">
-                      <div class="d-flex align-items-center mb-8">
-                        <div class="fs-15 fw-500">Bank Mandiri</div>
-                        <div class="ml-auto">
-                          <img
-                            :style="{maxWidth: '100%', height: '18px'}"
-                            src="https://upload.wikimedia.org/wikipedia/id/thumb/f/fa/Bank_Mandiri_logo.svg/1280px-Bank_Mandiri_logo.svg.png"
-                          />
-                        </div>
-                      </div>
-
-                      <dl class="ant-deflist ant-deflist--small">
-                        <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
-                        <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
-                          <span>085213247455</span>
-                        </dd>
-                        <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
-                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
-                          <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
+                        <dt class="ant-deflist__label cr-black fw-400">
+                          Nama Penerima
+                        </dt>
+                        <dd
+                          class="ant-deflist__value text-ellipsis cr-black fw-400"
+                        >
+                          <span>-/belum ada</span>
                         </dd>
                       </dl>
                     </div>
@@ -144,24 +101,27 @@
             <a-form-item>
               <a-upload-dragger
                 v-decorator="[
-                    'upload',
-                    {
+                  'upload',
+                  {
                     rules: [{ required: true, message: 'Harus di isi!' }]
-                    }
+                  }
                 ]"
                 name="bukti_transfer"
                 :beforeUpload="beforeUpload"
                 action="/"
                 @change="handleChange"
               >
-                <div class="d-flex align-items-center text-left" :style="{padding: '16px 24px'}">
+                <div
+                  class="d-flex align-items-center text-left"
+                  :style="{ padding: '16px 24px' }"
+                >
                   <div class="ant-upload-drag-icon mr-16">
                     <a-avatar size="large" icon="upload" />
                   </div>
                   <div>
                     <p class="ant-upload-text fs-15 cr-gray f-default">
-                      Klik atau drag didalam area ini untuk
-                      mengupload foto bukti transfer anda
+                      Klik atau drag didalam area ini untuk mengupload foto
+                      bukti transfer anda
                     </p>
                   </div>
                 </div>
@@ -174,7 +134,8 @@
                 size="large"
                 html-type="submit"
                 class="b-shadow b-radius"
-              >Kirim Bukti Pembayaran</a-button>
+                >Kirim Bukti Pembayaran</a-button
+              >
             </a-form-item>
           </a-form>
         </a-col>
@@ -186,6 +147,15 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
+
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+
 export default {
   layout: "accounts",
   name: "eConfirmation",
@@ -198,7 +168,10 @@ export default {
   data() {
     return {
       loading: true,
-      value: 1
+      value: "BRI-ATTA",
+      item: "",
+      imageUrl: "",
+      formValues: {}
     };
   },
 
@@ -212,6 +185,10 @@ export default {
     }, 1500);
   },
 
+  created: function() {
+    this.getdata();
+  },
+
   methods: {
     onChange(value) {
       console.log("changed", value);
@@ -220,7 +197,44 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          this.formValues = {
+            nomor_transaksi: values.nomor_transaksi,
+            metode_pembayaran: "TRANSFER",
+            jenis_pembayaran: "PELUNASAN",
+            bayar: values.bayar,
+            kode_bank: values.kode_bank,
+            file: this.imageUrl
+          };
+
+          const token = Cookie.get("auth");
+          const config = {
+            headers: {
+              Authorization: "Bearer " + token
+            }
+          };
+
+          axios
+            .post(
+              process.env.baseUrl + "transaksi/pembayaran",
+              this.formValues,
+              config
+            )
+            .then(response => {
+              console.log(response.data, "anu anu");
+
+              if (response.data.status == 200) {
+                this.form.resetFields();
+                this.$message.success("Profile Berhasil Diubah");
+                this.$emit("saved", true);
+              } else {
+                this.$message.error(response.data);
+                console.log("salah coy");
+              }
+            })
+            .catch(() => {
+              this.$message.success("Ada kesalahan");
+              console.log("salah");
+            });
         }
       });
     },
@@ -234,6 +248,7 @@ export default {
           message: `${info.file.name}`,
           description: "Gambar bukti pembayaran berhasil di upload."
         });
+        this.imageUrl = [info.file,info.file.name];
       } else if (status === "error") {
         this.$notification.error({
           message: `${info.file.name}`,
@@ -248,6 +263,26 @@ export default {
         this.$message.error("Kapasitas gambar tidak boleh melebihi 2MB!");
       }
       return isLt2M;
+    },
+    async getdata() {
+      const token = Cookie.get("auth");
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+      let params = this.$route.query;
+      axios
+        .post(
+          process.env.baseUrl + "transaksi/paymentdetail",
+          {
+            notrans: params.notrans
+          },
+          config
+        )
+        .then(response => {
+          this.item = response.data.data;
+        });
     }
   }
 };

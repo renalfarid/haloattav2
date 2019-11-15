@@ -25,7 +25,7 @@
                         <span>Pembayaran</span>
                       </div>
                       <div class="ant-package--information-text fs-16 cr-gray fw-400">
-                        <span>Pilih metode pembayaran dan petunjuk untuk melakukan proses pembayaran pesanan anda</span>
+                        <span>Pilih metode pembayaran dan petunjuk untuk melakukan proses pembayaran pesanan anda {{$store.state.auth.nama}}</span>
                       </div>
                     </div>
                   </a-list-item>
@@ -515,18 +515,33 @@ export default {
       BCA: "111345777888999",
       MANDIRI: "152444567890",
       BNI: "155455678922",
-      BRI: "17244456789"
+      BRI: "17244456789",
+      item: ""
     };
+  },
+  created: function() {
+    this.getdata();
   },
   methods: {
     onChange(e) {
       console.log(`checked = ${e.target.value}`);
     },
     nextPurchaseSaldo() {
-      this.$router.push("/payment/purchase-saldo");
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/purchase-saldo",
+        query: {
+          notrans: params.notrans
+        }
+      });
     },
     nextPurchaseTransfer() {
-      this.$router.push("/payment/purchase-transfer");
+      this.$router.push({
+        path: "/payment/purchase-transfer",
+        query: {
+          notrans: params.notrans
+        }
+      });
     },
     nextPaymentConfirmation() {
       this.$router.push("/payment/payment-confirmation");
@@ -536,6 +551,17 @@ export default {
     },
     onError: function(e) {
       this.$message.success("Gagal menyalin");
+    },
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "transaksi/paymentdetail", {
+          notrans: params.notrans
+        })
+        .then(response => {
+          this.item = response.data.data;
+          console.log(this.item, "ini item");
+        });
     }
   },
   components: {
