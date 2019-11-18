@@ -7,7 +7,7 @@
     </div>
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
       <div slot="title">Detail Produk</div>
-      <div slot="extra" class="fs-16 fw-500 cr-black">No. Transaksi PUHA12345678</div>
+      <div slot="extra" class="fs-16 fw-500 cr-black">No. Transaksi {{item.notrans}}</div>
       <a-row :gutter="8">
         <a-col :span="12">
           <div class="d-flex align-items-center">
@@ -18,22 +18,22 @@
               />
             </div>
             <div class="fs-14 fw-500 cr-black f-default">
-              <span>Paket Umrah Exclusive September 2019</span>,
+              <span>-/tidak ada</span>,
               <br />
-              <span>Keberangkatan Makassar</span>
+              <span>-/tidak ada</span>
             </div>
           </div>
         </a-col>
         <a-col :span="4">
-          <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
-          <div class="fs-14 fw-500 cr-black">20 September 2019</div>
+          <div class="fs-14 fw-400 cr-gray">Limit Pembayaran</div>
+          <div class="fs-14 fw-500 cr-black">{{item.limit_pembayaran}}</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-14 fw-400 cr-gray">Program Hari</div>
+          <div class="fs-14 fw-400 cr-gray">Program Hari (tidak ada)</div>
           <div class="fs-14 fw-500 cr-black">Program 9 Hari</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
+          <div class="fs-14 fw-400 cr-gray">Jumlah Pax(tidak ada)</div>
           <div class="fs-14 fw-500 cr-black">4 Pax</div>
         </a-col>
       </a-row>
@@ -43,21 +43,28 @@
           <div class="fs-15 fw-400 cr-gray">Jumlah Pembayaran :</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-15 fw-500 cr-black">{{ 400000000 | currency}}</div>
+          <div class="fs-15 fw-500 cr-black">{{ item.total_tagihan | currency}}</div>
         </a-col>
       </a-row>
       <a-divider></a-divider>
       <a-row :gutter="8" type="flex" justify="end">
         <a-col :span="4" class="text-right">
-          <div class="fs-15 fw-400 cr-gray">Sisa Pembayaran :</div>
+          <div class="fs-15 fw-400 cr-gray">Sisa Pembayaran : (tidak ada)</div>
         </a-col>
         <a-col :span="4" class="text-right">
           <div class="fs-15 fw-500 cr-red">{{ 200000000 | currency}}</div>
         </a-col>
       </a-row>
+      <a-row :gutter="8" type="flex" justify="end">
+        <a-col :span="4" class="text-right">
+          <a-button class="b-shadow b-radius ant-btn--action">
+            <nuxt-link :to="'/accounts/e-confirm?notrans='+item.notrans">Bayar Sekarang</nuxt-link>
+          </a-button>
+        </a-col>
+      </a-row>
     </a-card>
 
-    <div class="fs-16 fw-500 cr-black">Informasi Pembayaran Anda</div>
+    <div class="fs-16 fw-500 cr-black">Informasi Pembayaran Anda (tidak ada)</div>
     <a-list itemLayout="horizontal" :dataSource="dataTagihan">
       <a-list-item
         slot="renderItem"
@@ -105,6 +112,9 @@
 </template>
 <script>
 import moment from "moment";
+import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
+
 const dataTagihan = [
   {
     key: 1,
@@ -125,12 +135,35 @@ export default {
 
   data() {
     return {
-      dataTagihan
+      dataTagihan,
+      item: ""
     };
   },
-
+  created: function() {
+    this.getdata();
+  },
   methods: {
-    moment
+    moment,
+    async getdata() {
+      const token = Cookie.get("auth");
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+      let params = this.$route.query;
+      axios
+        .post(
+          process.env.baseUrl + "transaksi/paymentdetail",
+          {
+            notrans: params.notrans
+          },
+          config
+        )
+        .then(response => {
+          this.item = response.data.data;
+        });
+    }
   }
 };
 </script>

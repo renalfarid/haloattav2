@@ -270,7 +270,7 @@
                                         :value="priceDp"
                                         disabled
                                       >
-                                      <a-button
+                                        <a-button
                                           slot="addonAfter"
                                           v-clipboard:copy="priceDp"
                                           v-clipboard:success="onCopy"
@@ -358,18 +358,34 @@ export default {
       choosePaymentMethod: "saldo",
       chosePayment: "lunas",
       priceDp: "500.000.731",
-      price: "930.000.731"
+      price: "930.000.731",
+      item: ""
     };
+  },
+  created: function() {
+    this.getdata();
   },
   methods: {
     onChange(e) {
       console.log(`checked = ${e.target.value}`);
     },
     nextPurchaseSaldo() {
-      this.$router.push("/payment/purchase-saldo");
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/purchase-saldo",
+        query: {
+          notrans: params.notrans
+        }
+      });
     },
     nextPurchaseTransfer() {
-      this.$router.push("/payment/purchase-transfer");
+      let params = this.$route.query;
+      this.$router.push({
+        path: "/payment/purchase-transfer",
+        query: {
+          notrans: params.notrans
+        }
+      });
     },
     nextEpackagePaidOff() {
       this.$router.push("/payment/ePackage-Dp");
@@ -382,6 +398,17 @@ export default {
     },
     onError: function(e) {
       this.$message.success("Gagal menyalin");
+    },
+    async getdata() {
+      let params = this.$route.query;
+      axios
+        .post(process.env.baseUrl + "transaksi/paymentdetail", {
+          notrans: params.notrans
+        })
+        .then(response => {
+          this.item = response.data.data;
+          console.log(this.item, "ini item");
+        });
     }
   },
   components: {
