@@ -3,20 +3,13 @@
     <a-card :bordered="false" class="b-solid b-radius b-shadow">
       <a-row :gutter="32" type="flex" justify="space-around" align="middle">
         <a-col :span="12">
-          <div class="fs-30 fw-500 cr-black f-default mb-8">
-            Upload Bukti Transfer Anda
-          </div>
+          <div class="fs-30 fw-500 cr-black f-default mb-8">Upload Bukti Transfer Anda</div>
 
           <div class="fs-15 fw-400 cr-black mb-16">
             Upload bukti pembayaran bank transfer anda untuk mempercepat proses
             verifikasi.
           </div>
-          <a-form
-            layout="vertical"
-            :form="form"
-            @submit="handleSubmit"
-            hideRequiredMark
-          >
+          <a-form layout="vertical" :form="form" @submit="handleSubmit" hideRequiredMark>
             <a-form-item label="No. Transaksi">
               <a-input
                 v-decorator="[
@@ -47,8 +40,7 @@
                   v-for="(item, key) in item.bank"
                   :key="key"
                   :value="item.kdbank"
-                  >{{ item.aliasbank }}</a-select-option
-                >
+                >{{ item.aliasbank }}</a-select-option>
               </a-select>
             </a-form-item>
 
@@ -56,39 +48,26 @@
               <a-list :dataSource="item.bank">
                 <a-list-item
                   slot="renderItem"
-                  slot-scope="item, index"
+                  slot-scope="item2, index"
                   :key="index"
-                  v-if="value === item.kdbank"
+                  v-if="value === item2.kdbank"
                 >
                   <a-skeleton :loading="loading" active>
                     <div class="b-shadow b-radius b-solid p-24 w-100">
                       <div class="d-flex align-items-center mb-8">
-                        <div class="fs-15 fw-500">
-                          {{ item.namabank }} ({{ item.aliasbank }})
-                        </div>
+                        <div class="fs-15 fw-500">{{ item2.namabank }} ({{ item2.aliasbank }})</div>
                         <div class="ml-auto">
-                          <img
-                            :style="{ maxWidth: '100%', height: '18px' }"
-                            :src="item.images"
-                          />
+                          <img :style="{ maxWidth: '100%', height: '18px' }" :src="item2.images" />
                         </div>
                       </div>
 
                       <dl class="ant-deflist ant-deflist--small">
-                        <dt class="ant-deflist__label cr-black fw-400">
-                          Nomor Rekening
-                        </dt>
-                        <dd
-                          class="ant-deflist__value text-ellipsis fw-400 cr-black"
-                        >
-                          <span>{{ item.norekening }}</span>
+                        <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
+                        <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
+                          <span>{{ item2.norekening }}</span>
                         </dd>
-                        <dt class="ant-deflist__label cr-black fw-400">
-                          Nama Penerima
-                        </dt>
-                        <dd
-                          class="ant-deflist__value text-ellipsis cr-black fw-400"
-                        >
+                        <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
+                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
                           <span>-/belum ada</span>
                         </dd>
                       </dl>
@@ -111,10 +90,7 @@
                 action="/"
                 @change="handleChange"
               >
-                <div
-                  class="d-flex align-items-center text-left"
-                  :style="{ padding: '16px 24px' }"
-                >
+                <div class="d-flex align-items-center text-left" :style="{ padding: '16px 24px' }">
                   <div class="ant-upload-drag-icon mr-16">
                     <a-avatar size="large" icon="upload" />
                   </div>
@@ -134,8 +110,7 @@
                 size="large"
                 html-type="submit"
                 class="b-shadow b-radius"
-                >Kirim Bukti Pembayaran</a-button
-              >
+              >Kirim Bukti Pembayaran</a-button>
             </a-form-item>
           </a-form>
         </a-col>
@@ -213,27 +188,29 @@ export default {
             }
           };
 
+          const new_value = this.formValues;
+
           axios
             .post(
               process.env.baseUrl + "transaksi/pembayaran",
-              this.formValues,
+              new_value,
               config
             )
             .then(response => {
-              console.log(response.data, "anu anu");
-
               if (response.data.status == 200) {
                 this.form.resetFields();
-                this.$message.success("Profile Berhasil Diubah");
+                this.$message.success(response.data.msg);
                 this.$emit("saved", true);
+                this.$router.push({
+                  path: "/accounts/billing"
+                });
               } else {
-                this.$message.error(response.data);
-                console.log("salah coy");
+                this.$message.error(response.data.msg);
               }
             })
             .catch(() => {
-              this.$message.success("Ada kesalahan");
-              console.log("salah");
+              this.$message.error("Ada kesalahan");
+              console.log(this.formValues, "salah");
             });
         }
       });
@@ -248,7 +225,9 @@ export default {
           message: `${info.file.name}`,
           description: "Gambar bukti pembayaran berhasil di upload."
         });
-        this.imageUrl = [info.file,info.file.name];
+        getBase64(info.file.originFileObj, imageUrl => {
+          this.imageUrl = imageUrl;
+        });
       } else if (status === "error") {
         this.$notification.error({
           message: `${info.file.name}`,
