@@ -406,7 +406,7 @@ export default {
   },
   data() {
     return {
-      value: 1,
+      value: 2,
       loading: false,
       photoJamaah: "",
       dataPemesan: {
@@ -511,8 +511,14 @@ export default {
         .post(url, data, config)
         .then(response => {
           console.log(response);
+          // this.$router.push({
+          //   path: "/accounts/billing/detail",
+          //   query: {
+          //     notrans: response.data.data.notrans
+          //   }
+          // });
           this.$router.push({
-            path: "/accounts/billing/detail",
+            path: "/payment/purchase-transfer",
             query: {
               notrans: response.data.data.notrans
             }
