@@ -67,7 +67,7 @@
 
       <a-divider :style="{margin: '0'}" />
 
-      <div class="p-16">
+      <!-- <div class="p-16">
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Jumlah Jamaah</div>
@@ -84,8 +84,8 @@
             />
           </div>
         </div>
-      </div>
-      <a-divider :style="{margin: '0'}" />
+      </div>-->
+      <!-- <a-divider :style="{margin: '0'}" /> -->
       <div class="p-16">
         <div class="ant-package--title fs-15 fw-500 cr-black mb-8">Pengaturan Room</div>
         <div class="d-flex align-items-center">
