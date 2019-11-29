@@ -1,4 +1,4 @@
-import Vue from 'vue'
-import FixedHeader from 'vue-fixed-header'
+// import Vue from 'vue'
+// import VueFixedHeader from 'vue-fixed-header'
 
-Vue.use(FixedHeader)
+// Vue.component("VueFixedHeader", VueFixedHeader)

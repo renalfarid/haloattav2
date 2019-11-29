@@ -2,7 +2,7 @@
   <div class="ant-layout--package-details">
     <div class="ant-layout--results-space-small"></div>
     <div class="info-affix">
-      <a-affix :offsetTop="64">
+      <a-affix :offsetTop="0">
         <div class="container">
           <a-row :gutter="32">
             <a-col :span="17">
