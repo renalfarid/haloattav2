@@ -88,7 +88,7 @@
                               <span>Selesaikan Pembayaran Anda Sebelum</span>
                             </div>
 
-                            <no-ssr>
+                            <client-only>
                               <countdown class="ant-countdown" :time="2 * 24 * 60 * 60 * 1000">
                                 <div class="ant-countdown--item mt-16 mb-16" slot-scope="props">
                                   <span
@@ -108,7 +108,7 @@
                                   >{{ props.seconds }}</span> detik
                                 </div>
                               </countdown>
-                            </no-ssr>
+                            </client-only>
 
                             <div class="ant-package--information-title fs-14 cr-gray fw-400">
                               Batas waktu pembayaran anda sebelum tanggal
