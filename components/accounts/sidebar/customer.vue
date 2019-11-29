@@ -2,7 +2,7 @@
   <div class="ant-layout-sider--accounts-item">
     <div class="ant-layout-sider--accounts-logo">
       <nuxt-link to="/">
-        <img src="/haloatta.png">
+        <img src="/haloatta.png" />
       </nuxt-link>
     </div>
 
@@ -24,37 +24,37 @@
       </a-button>
     </div>
 
-    <a-divider :style="{margin: '14px 0'}"/>
+    <a-divider :style="{margin: '14px 0'}" />
 
     <nuxt-link to="/accounts/top-up" class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
-        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3" icon="wallet"/>
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3" icon="wallet" />
       </div>
       <div>
         <div class="fs-14 cr-gray">Saldo Halopay</div>
         <div class="fs-15 fw-500 f-default cr-black">{{ 100000000 | currency }}</div>
       </div>
       <div class="ml-auto">
-        <a-icon type="right" class="cr-primary fs-12"/>
+        <a-icon type="right" class="cr-primary fs-12" />
       </div>
     </nuxt-link>
 
-    <a-divider :style="{margin: '14px 0'}"/>
+    <a-divider :style="{margin: '14px 0'}" />
 
     <nuxt-link to="/accounts/poin" class="ant-avatar--user d-flex align-items-center">
       <div class="mr-8">
-        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3;" icon="crown"/>
+        <a-avatar style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3;" icon="crown" />
       </div>
       <div>
         <div class="fs-14 cr-gray">Halo Poin</div>
         <div class="fs-15 fw-500 f-default cr-black">10 poin</div>
       </div>
       <div class="ml-auto">
-        <a-icon type="right" class="cr-primary fs-12"/>
+        <a-icon type="right" class="cr-primary fs-12" />
       </div>
     </nuxt-link>
 
-    <a-divider/>
+    <a-divider />
 
     <a-menu class="ant-menu--sider" mode="vertical" :defaultSelectedKeys="['1']">
       <a-menu-item class="ant-menu--sider-item" key="1">
@@ -112,14 +112,15 @@
         <nuxt-link to="/accounts/setting" class="nav-text">Pengaturan</nuxt-link>
       </a-menu-item>
 
-      <a-menu-item class="ant-menu--sider-item" key="logout">
-        <nuxt-link to="/" class="nav-text">keluar</nuxt-link>
+      <a-menu-item class="ant-menu--sider-item" key="logout" @click="logout">
+        <nuxt-link to class="nav-text">keluar</nuxt-link>
       </a-menu-item>
     </a-menu>
   </div>
 </template>
 <script>
 import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
 export default {
   props: ["current"],
   data() {
@@ -150,6 +151,11 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    async logout() {
+      await this.$store.commit("resetUser");
+      await Cookie.remove("auth");
+      await this.$router.push("/");
     }
   }
 };
