@@ -10,11 +10,11 @@
           <div class="fs-30 fw-500 cr-white f-default mb-24">Selamat datang di Haloatta</div>
 
           <a-button class="ant-btn--facebook" size="large" block>
-            <img src="/icons/facebook.png"> Masuk dengan Facebook
+            <img src="/icons/facebook.png" /> Masuk dengan Facebook
           </a-button>
 
           <a-button class="ant-btn--google" size="large" block>
-            <img src="/icons/google.png"> Masuk dengan Google
+            <img src="/icons/google.png" /> Masuk dengan Google
           </a-button>
 
           <a-divider></a-divider>
@@ -36,8 +36,8 @@
                 size="large"
               >
                 <a slot="suffix" class="cr-gray" @click="showPassword">
-                  <a-icon v-if="passwordFieldType === 'password'" type="eye"/>
-                  <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible"/>
+                  <a-icon v-if="passwordFieldType === 'password'" type="eye" />
+                  <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible" />
                 </a>
               </a-input>
             </a-form-item>
@@ -62,10 +62,10 @@
       </a-col>
       <a-col :span="17" class="d-flex align-items-center p-16 vh-100">
         <a-card class="m-auto">
-          <img class="logo mb-32" src="/haloatta.png">
+          <img class="logo mb-32" src="/haloatta.png" />
           <div class="fs-30 fw-500 cr-black f-default mb-8">
             Bergabunglah untuk menjadi
-            <br>Mitra kami
+            <br />Mitra kami
           </div>
           <div class="fs-18 fw-400 cr-black mb-24">Tingkatkan penjualan produk anda bersama kami</div>
           <div>
@@ -75,7 +75,7 @@
             >Daftar Mitra</a-button>
           </div>
         </a-card>
-        <img class="img-cover--bottom" src="/icons/authentication.png">
+        <img class="img-cover--bottom" src="/icons/authentication.png" />
       </a-col>
     </a-row>
   </div>
