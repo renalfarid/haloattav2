@@ -368,7 +368,7 @@
               </a-col>
               <!-- card sider -->
               <a-col :span="8">
-                <siderPayment />
+                <siderPayment :total="total" />
               </a-col>
             </a-row>
           </a-col>
@@ -413,11 +413,17 @@ export default {
         nama: "",
         nohp: "",
         email: ""
-      }
+      },
+      total: 0
     };
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);
+  },
+  asyncData({ query }) {
+    return {
+      total: query.total
+    };
   },
   methods: {
     moment,

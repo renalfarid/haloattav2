@@ -75,9 +75,7 @@
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div
-            class="fs-15 fw-500 cr-black f-default text-right w-65"
-          >{{data.harga * qty | currency}}</div>
+          <div class="fs-15 fw-500 cr-black f-default text-right w-65">{{total | currency}}</div>
         </div>
         <div :style="{margin: '16px 0'}">
           <a-button
@@ -123,13 +121,15 @@ export default {
         query: {
           type: params.type,
           kode: params.kode,
-          qty: this.qty
+          qty: this.qty,
+          total: this.total
         }
       });
     },
     getdata() {
       let params = this.$route.query;
       this.qty = params.qty;
+      this.total = params.qty * this.$props.data.harga;
     }
   }
 };
