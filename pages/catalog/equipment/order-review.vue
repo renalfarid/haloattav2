@@ -33,23 +33,15 @@ export default {
       item: ""
     };
   },
-  created: function() {
-    this.getdata();
-  },
-  methods: {
-    moment,
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "perlengkapan/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
+  async asyncData({ query }) {
+    const myRespone = await axios.post(
+      process.env.baseUrl + "perlengkapan/detail",
+      { kode_produk: query.kode }
+    );
 
-          this.loading = false;
-        });
-    }
+    return {
+      item: myRespone.data.data
+    };
   },
   components: {
     informationEquipment,
