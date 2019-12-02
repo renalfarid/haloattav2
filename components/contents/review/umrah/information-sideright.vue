@@ -25,13 +25,13 @@
         Program {{ umroh.program_hari }} Hari
       </div>
     </div>
-    <a-divider :style="{ margin: '0' }" />
+    <!-- <a-divider :style="{ margin: '0' }" />
     <div class="p-16 d-flex align-items-center">
       <div class="ant-package--title fs-15 fw-500 cr-black">Jumlah Jamaah</div>
       <div class="ant-package--subtitle fs-14 fw-400 cr-black ml-auto">
         {{ pax }} Pax
       </div>
-    </div>
+    </div> -->
     <a-divider :style="{ margin: '0' }" />
     <div class="p-16">
       <div class="ant-package--title fs-15 fw-500 cr-black">Room Jamaah</div>
