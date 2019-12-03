@@ -33,26 +33,17 @@ export default {
       sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
-  },
-  methods: {
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "handling/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
+  async asyncData({ query }) {
+    const myRespone = await axios.post(process.env.baseUrl + "handling/detail", {
+      kode_produk: query.kode
+    });
 
-          this.loading = false;
-
-          this.sidebar = {
-            harga: response.data.data.harga_satuan
-          };
-        });
-    }
+    return {
+      item: myRespone.data.data,
+      sidebar: {
+        harga: myRespone.data.data.harga_satuan
+      }
+    };
   },
   components: {
     informationHandling,

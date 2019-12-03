@@ -1,17 +1,17 @@
 <template>
   <a-card class="ant-card--payment-sider">
-    <div class="p-16">
+    <!-- <div class="p-16">
       <div class="ant-package--title fs-12 fw-400 text-uppercase cr-gray">Nomor Pesanan</div>
       <div class="ant-package--subtitle fs-15 fw-500 cr-black">HT099000990987</div>
-    </div>
+    </div>-->
     <a-divider :style="{margin: '0'}" />
     <!-- ----------------------------------- -->
     <div class="p-16">
       <div class="ant-package--title fs-12 fw-400 text-uppercase cr-gray">Total Pembayaran</div>
-      <div class="ant-package--subtitle fs-22 fw-500 cr-black">Rp930.000.731</div>
+      <div class="ant-package--subtitle fs-22 fw-500 cr-black">{{total | currency}}</div>
     </div>
     <!-- ----------------------------------- -->
-    <a-divider :style="{margin: '0'}" />
+    <!-- <a-divider :style="{margin: '0'}" />
     <div class="p-16">
       <div class="ant-package--title fs-12 fw-400 text-uppercase cr-gray">Informasi Paket</div>
       <div class="ant-package--subtitle fs-15 fw-500 f-default cr-black mb-8">
@@ -29,9 +29,9 @@
         Program 9 Hari
         <a-divider type="vertical" />40 pax
       </div>
-    </div>
+    </div>-->
     <!-- ----------------------------------- -->
-    <a-divider :style="{margin: '0'}" />
+    <!-- <a-divider :style="{margin: '0'}" />
     <div class="p-16">
       <div class="ant-package--title fs-12 fw-400 text-uppercase cr-gray mb-8">
         <span>Informasi Tiket</span>
@@ -95,9 +95,9 @@
         <div class="ant-package--subtitle fs-15 fw-400 cr-black">Anak</div>
         <div class="ant-package--subtitle fs-15 fw-400 cr-black ml-auto">10 pax</div>
       </div>
-    </div>
+    </div>-->
     <!-- ----------------------------------- -->
-    <a-divider :style="{margin: '0'}" />
+    <!-- <a-divider :style="{margin: '0'}" />
     <div class="p-16">
       <div class="ant-package--title fs-12 fw-400 text-uppercase cr-gray mb-8">
         <span>Informasi LA Akomodasi</span>
@@ -149,16 +149,22 @@
         <div class="ant-package--subtitle fs-15 fw-400 cr-black">Triple</div>
         <div class="ant-package--subtitle fs-15 fw-400 cr-black ml-auto">10 pax</div>
       </div>
-    </div>
+    </div>-->
     <!-- ----------------------------------- -->
     <a-divider :style="{margin: '0'}" />
-    <div class="p-16">
+    <!-- <div class="p-16">
       <div class="ant-package--title fs-12 fw-400 text-uppercase cr-gray">
         <span>Informasi Kelengkapan</span>
       </div>
       <div class="ant-package--subtitle fs-14 fw-400 cr-black">
         <span>Termasuk Visa, Asuransi, Handling Domestik, Manasik Pemantapan, Perlengkapan Umrah, Tour Leader</span>
       </div>
-    </div>
+    </div>-->
   </a-card>
 </template>
+
+<script>
+export default {
+  props: ["total"]
+};
+</script>

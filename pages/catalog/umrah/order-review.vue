@@ -37,36 +37,31 @@ export default {
       harga: ""
     };
   },
-  created: function() {
-    this.getdata();
+  async asyncData({ query }) {
+    const myRespone = await axios.post(
+      process.env.baseUrl + "paket/umroh/detail",
+      { kode_produk: query.kode }
+    );
+
+    let getRespone = myRespone.data.data;
+
+    return {
+      la: getRespone.la,
+      tiket: getRespone.tiket,
+      umroh: getRespone.umroh,
+
+      harga: getRespone.harga,
+      umrohsidebar: {
+        berangkat: getRespone.umroh.tgl_berangkat,
+        program_hari: getRespone.umroh.jumlah_hari,
+        kelas_bintang: getRespone.umroh.kelas_bintang,
+        nama: getRespone.umroh.nama,
+        foto_vendor: getRespone.umroh.foto
+      }
+    };
   },
   methods: {
-    moment,
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "paket/umroh/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
-          this.la = this.item.la;
-          this.tiket = this.item.tiket;
-          this.umroh = this.item.umroh;
-
-          //props right side
-          this.harga = response.data.data.harga;
-          this.umrohsidebar = {
-            berangkat: response.data.data.umroh.tgl_berangkat,
-            program_hari: response.data.data.umroh.jumlah_hari,
-            kelas_bintang: response.data.data.umroh.kelas_bintang,
-            nama: response.data.data.umroh.nama,
-            foto_vendor: response.data.data.umroh.foto
-          };
-
-          this.loading = false;
-        });
-    }
+    moment
   },
   components: {
     informationOrder,

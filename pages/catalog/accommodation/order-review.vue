@@ -33,30 +33,23 @@ export default {
       sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
+  async asyncData({ query }) {
+    const myRespone = await axios.post(process.env.baseUrl + "la/detail", {
+      kode_produk: query.kode
+    });
+
+    return {
+      item: myRespone.data.data,
+      sidebar: {
+        program_hari: myRespone.data.data.program_hari,
+        harga_quad: myRespone.data.data.harga_quad,
+        harga_triple: myRespone.data.data.harga_triple,
+        harga_double: myRespone.data.data.harga_double
+      }
+    };
   },
   methods: {
-    moment,
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "la/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
-
-          this.loading = false;
-
-          this.sidebar = {
-            program_hari: response.data.data.program_hari,
-            harga_quad: response.data.data.harga_quad,
-            harga_triple: response.data.data.harga_triple,
-            harga_double: response.data.data.harga_double
-          };
-        });
-    }
+    moment
   },
   components: {
     informationAccommodation,

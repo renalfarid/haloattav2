@@ -33,27 +33,20 @@ export default {
       sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
-  },
-  methods: {
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "tiket/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
+  async asyncData({ query }) {
+    const myRespone = await axios.post(process.env.baseUrl + "tiket/detail", {
+      kode_produk: query.kode
+    });
 
-          this.loading = false;
-          this.sidebar = {
-            berangkat: response.data.data.tanggal_keberangkatan,
-            harga: response.data.data.harga_jual
-          };
-        });
-    }
+    return {
+      item: myRespone.data.data,
+      sidebar: {
+        berangkat: myRespone.data.data.tanggal_keberangkatan,
+        harga: myRespone.data.data.harga_jual
+      }
+    };
   },
+
   components: {
     informationOrder,
     informationSideRight

@@ -34,28 +34,23 @@ export default {
       sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
+  async asyncData({ query }) {
+
+    const myRespone = await axios.post(
+      process.env.baseUrl + "visa/detail",
+      { kode_produk: query.kode }
+    );
+
+    return {
+      item: myRespone.data.data,
+      sidebar: {
+        durasi: myRespone.data.data.duration_stay,
+        harga: myRespone.data.data.harga_jual
+      }
+    };
   },
   methods: {
-    moment,
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "visa/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
-
-          this.loading = false;
-
-          this.sidebar = {
-            durasi: response.data.data.duration_stay,
-            harga: response.data.data.harga_jual
-          };
-        });
-    }
+    moment
   },
   components: {
     informationVisa,
