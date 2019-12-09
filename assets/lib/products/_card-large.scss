@@ -3,7 +3,7 @@
     border: none;
     & .ant-card-body {
         overflow: hidden;
-        height: 358px;
+        height: 380px;
         padding: 0;
         & .box-content {
             background-position: center center;
@@ -115,7 +115,7 @@
                 }
             }
             & .ant-card--overlay-block {
-                background: rgba(255, 255, 255, .6);
+                background-color: rgba($color: #fff, $alpha: .95);
                 position: absolute;
                 display: block;
                 visibility: hidden;
@@ -133,6 +133,13 @@
                         text-decoration: none;
                         color: $color-font-gray;
                     }
+                }
+                & .ant-card--overlay-block-body {
+                    position: absolute;
+                    padding: 16px;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
                 }
             }
         }
@@ -185,7 +192,6 @@
                 & .ant-card-meta-description {
                     & .ant-card-meta-description--bottom {
                         white-space: nowrap;
-                        margin-top: 6px;
                         & .ant-card-meta-description--bottom-left {
                             font-weight: 500;
                             font-size: 18px;
