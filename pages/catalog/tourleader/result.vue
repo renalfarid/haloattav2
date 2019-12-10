@@ -32,10 +32,12 @@
                         v-lazy:background-image="item.images_package"
                       >
                         <div class="ant-card--overlay-block">
-                          <div class="d-flex align-items-center h-100">
-                            <a-button>
-                              <nuxt-link to="/catalog/tourleader/detail">Lihat detail</nuxt-link>
-                            </a-button>
+                          <div class="ant-card--overlay-block-body">
+                            <div
+                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis"
+                            >
+                              {{item.informasi_singkat ? item.informasi_singkat : '-'}}
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -76,6 +78,11 @@
                       </div>
 
                       <div slot="description">
+                        <!-- <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">
+                          <a-icon type="environment" class="mr-4" />
+                          <span>Kota {{ item.nama_kota }}</span>
+                        </div> -->
+                        
                         <div class="ant-card-meta-description--bottom d-flex align-items-center">
                           <div class="ant-card-meta-description--bottom-right d-flex">
                             <div
@@ -88,20 +95,6 @@
                         </div>
                       </div>
                     </a-card-meta>
-
-                    <div class="package-description--more p-16">
-                      <div class="d-flex align-items-center mb-16">
-                        <div class="fs-14 fw-400 cr-black text-ellipsis">Asal Makassar</div>
-                        <div
-                          class="fs-14 fw-400 cr-black text-ellipsis text-right ml-auto"
-                        >Laki-Laki</div>
-                      </div>
-
-                      <div>
-                        <div class="fs-14 fw-400 cr-gray text-ellipsis">Keterangan</div>
-                        <div class="fs-14 fw-400 cr-black">Mampu berbahasa arab dan indonesia</div>
-                      </div>
-                    </div>
                   </a-card>
                 </nuxt-link>
               </a-list-item>

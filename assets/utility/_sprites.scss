@@ -132,6 +132,19 @@
     width: 32px;
 }
 
+.icon-ticket-xs {
+    background-image: url('/icons/search/tabs/black/ticket.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: relative;
+    margin-bottom: -2px;
+    margin-left: -2px;
+    height: 16px;
+    width: 16px;
+}
+
 .icon-accommodation {
     background-image: url('/icons/search/tabs/black/accommodation.svg');
     background-position: center center;
@@ -153,6 +166,19 @@
     margin: 0 auto;
     height: 26px;
     width: 26px;
+}
+
+.icon-accommodation-xs {
+    background-image: url('/icons/search/tabs/black/accommodation.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: relative;
+    margin-bottom: -2px;
+    margin-left: -2px;
+    height: 16px;
+    width: 16px;
 }
 
 .icon-visa {
