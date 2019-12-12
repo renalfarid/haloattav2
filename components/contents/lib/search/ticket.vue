@@ -114,6 +114,7 @@
           class="btn-search b-shadow b-radius"
           size="large"
           block
+          :style="{ bottom: '-25px' }"
           >Cari Tiket Group</a-button
         >
       </a-col>
