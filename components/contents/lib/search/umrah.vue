@@ -9,16 +9,15 @@
           <a-select
             showSearch
             placeholder="Pilih Kota Asal"
-            v-model="kota_asal"
             :showArrow="false"
             style="width: 100%"
             size="large"
-            v-decorator="['cityStart',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+            v-decorator="['kota_asal',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="makassar">Makassar</a-select-option>
-            <a-select-option value="jakarta">Jakarta</a-select-option>
-            <a-select-option value="bandung">Bandung</a-select-option>
+            <a-select-option :value="1">Tampilkan Semua</a-select-option>
+            <a-select-option :value="2">Makassar</a-select-option>
+            <a-select-option :value="3">Jakarta</a-select-option>
+            <a-select-option :value="4">Bandung</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -30,21 +29,16 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Program 9 Hari"
             placeholder="Pilih Program Hari"
-            optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
+            v-decorator="['program',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-            <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-            <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
+            <a-select-option :value="1">Semua Program Hari</a-select-option>
+            <a-select-option :value="2">Program 9 Hari</a-select-option>
+            <a-select-option :value="3">Program 10 Hari</a-select-option>
+            <a-select-option :value="4">Program 11 Hari</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -58,21 +52,16 @@
           </div>
           <a-select
             showSearch
-            defaultValue="September 2019"
-            v-model="bulan_keberangkatan"
             placeholder="Pilih Bulan Keberangkatan"
-            optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
+            v-decorator="['bulan_keberangkatan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
           >
-            <a-select-option value="September 2019">September 2019</a-select-option>
-            <a-select-option value="2019-10">Oktober 2019</a-select-option>
-            <a-select-option value="Desember 2019">Desember 2019</a-select-option>
+            <a-select-option :value="1">Semua Bulan</a-select-option>
+            <a-select-option :value="2">September 2019</a-select-option>
+            <a-select-option :value="3">Oktober 2019</a-select-option>
+            <a-select-option :value="4">Desember 2019</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -84,21 +73,16 @@
           </div>
           <a-select
             showSearch
-            defaultValue="all"
             placeholder="Pilih Tanggal"
-            optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
+            v-decorator="['tgl_keberangkatan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
           >
-            <a-select-option value="all">Tampilkan Semua</a-select-option>
-            <a-select-option value="1">1</a-select-option>
-            <a-select-option value="2">2</a-select-option>
-            <a-select-option value="3">3</a-select-option>
+            <a-select-option :value="1">Semua Tanggal</a-select-option>
+            <a-select-option :value="2">1</a-select-option>
+            <a-select-option :value="3">2</a-select-option>
+            <a-select-option :value="4">3</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -131,22 +115,6 @@ export default {
   //   this.getOptions();
   // },
   methods: {
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
-    filterOption(input, option) {
-      return (
-        option.componentOptions.children[0].text
-          .toLowerCase()
-          .indexOf(input.toLowerCase()) >= 0
-      );
-    },
     searchUmrah() {
       this.form.validateFields(err => {
         if (!err) {
