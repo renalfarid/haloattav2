@@ -14,34 +14,27 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Makassar"
-            placeholder="Pilih"
-            optionFilterProp="children"
+            :defaultValue="1"
+            placeholder="Pilih Kota"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="Makassar">Makassar</a-select-option>
-            <a-select-option value="Jakarta">Jakarta</a-select-option>
+            <a-select-option :value="1">Makassar</a-select-option>
+            <a-select-option :value="2">Jakarta</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
 
       <a-col :span="12">
         <a-form-item label="Tanggal Kegiatan" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="calendar" />
-          </div>
+          <div class="icon-search"><a-icon type="calendar" /></div>
           <a-date-picker
             size="large"
             style="width: 100%"
-            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
             :disabledDate="disabledDate"
             placeholder="Pilih Tanggal"
+            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
           >
             <a-icon class="d-none" slot="suffixIcon" type="calendar" />
           </a-date-picker>
@@ -52,36 +45,32 @@
     <a-row :gutter="16">
       <a-col :span="12">
         <a-form-item label="Jenis Kegiatan" hasFeedback>
-          <div class="icon-search">
-            <span class="icon-manasik-sm"></span>
-          </div>
+          <div class="icon-search"><span class="icon-manasik-sm"></span></div>
           <a-select
             showSearch
-            defaultValue="Manasik"
+            :defaultValue="1"
             placeholder="Pilih Jenis Kegiatan"
             :showArrow="false"
             style="width: 100%"
             size="large"
           >
-            <a-select-option value="Manasik">Manasik</a-select-option>
+            <a-select-option :value="1">Manasik</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
 
       <a-col :span="12">
         <a-form-item label="Ruangan" hasFeedback>
-          <div class="icon-search">
-            <span class="icon-manasik-sm"></span>
-          </div>
+          <div class="icon-search"><span class="icon-manasik-sm"></span></div>
           <a-select
             showSearch
-            defaultValue="Ballroom Hotel"
+            :defaultValue="1"
             placeholder="Pilih Ruangan"
             :showArrow="false"
             style="width: 100%"
             size="large"
           >
-            <a-select-option value="Ballroom Hotel">Ballroom Hotel</a-select-option>
+            <a-select-option :value="1">Ballroom Hotel</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -114,22 +103,6 @@ export default {
   },
   methods: {
     moment,
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
-    filterOption(input, option) {
-      return (
-        option.componentOptions.children[0].text
-          .toLowerCase()
-          .indexOf(input.toLowerCase()) >= 0
-      );
-    },
     disabledDate(current) {
       return current && current < moment().endOf("day");
     },
@@ -137,7 +110,6 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
           return this.$router.push("/catalog/manasik/result");
         }
       });

@@ -27,17 +27,12 @@
                 <nuxt-link to="/catalog/tourleader/detail" class="d-block">
                   <a-card class="ant-card-package-small">
                     <div slot="cover">
-                      <div
-                        class="ant-card-cover--images"
-                        v-lazy:background-image="item.images_package"
-                      >
+                      <div class="ant-card-cover--images" v-lazy:background-image="item.foto">
                         <div class="ant-card--overlay-block">
                           <div class="ant-card--overlay-block-body">
                             <div
                               class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis"
-                            >
-                              {{item.informasi_singkat ? item.informasi_singkat : '-'}}
-                            </div>
+                            >{{item.informasi_singkat ? item.informasi_singkat : '-'}}</div>
                           </div>
                         </div>
                       </div>
@@ -64,34 +59,32 @@
                               <a-avatar
                                 class="vendor-logo zIndex"
                                 size="small"
-                                v-lazy:background-image="item.logo_provider"
+                                v-lazy:background-image="item.foto_perusahaan"
                               />
                             </div>
                             <div
                               class="fs-13 fw-400 cr-gray f-default text-ellipsis"
-                            >{{item.provider}}</div>
+                            >{{item.nama_vendor}}</div>
                           </div>
                         </div>
-                        <div
-                          class="ant-card-meta-title--package fs-15 fw-500"
-                        >{{item.name_tourleader}}</div>
+                        <div class="ant-card-meta-title--package fs-15 fw-500">{{item.nama}}</div>
                       </div>
 
                       <div slot="description">
                         <!-- <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">
                           <a-icon type="environment" class="mr-4" />
                           <span>Kota {{ item.nama_kota }}</span>
-                        </div> -->
-                        
+                        </div>-->
+
                         <div class="ant-card-meta-description--bottom d-flex align-items-center">
                           <div class="ant-card-meta-description--bottom-right d-flex">
                             <div
                               class="fs-14 fw-400 cr-black f-default text-ellipsis"
-                            >Program 9 Hari</div>
+                            >Program (tidak ada)</div>
                           </div>
                           <div
                             class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
-                          >Rp{{item.price}}</div>
+                          >{{item.harga|currency}}</div>
                         </div>
                       </div>
                     </a-card-meta>
@@ -125,22 +118,32 @@ export default {
       data: []
     };
   },
-  created() {
-    this.loadMore();
+  async asyncData() {
+    const myRespone = await axios.get(process.env.baseUrl + "tourleader/all", {
+      params: {
+        per_page: "8"
+      }
+    });
+
+    return {
+      loading: false,
+      busy: false,
+      data: myRespone.data.data.data
+    };
   },
   methods: {
     loadMore() {
       // console.log("Adding 6 more data results");
-      this.busy = true;
-      axios.get("/dataTourleader.json").then(response => {
-        const append = response.data.slice(
-          this.data.length,
-          this.data.length + this.limit
-        );
-        this.data = this.data.concat(append);
-        this.loading = false;
-        this.busy = false;
-      });
+      // this.busy = true;
+      // axios.get("/dataTourleader.json").then(response => {
+      //   const append = response.data.slice(
+      //     this.data.length,
+      //     this.data.length + this.limit
+      //   );
+      //   this.data = this.data.concat(append);
+      //   this.loading = false;
+      //   this.busy = false;
+      // });
     }
   },
   components: {
