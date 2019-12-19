@@ -24,7 +24,10 @@
                 data-aos="fade-up"
                 data-aos-duration="1200"
               >
-                <nuxt-link to="/catalog/tourleader/detail" class="d-block">
+                <nuxt-link
+                  :to="'/catalog/tourleader/detail?kode_produk='+item.kode_produk"
+                  class="d-block"
+                >
                   <a-card class="ant-card-package-small">
                     <div slot="cover">
                       <div class="ant-card-cover--images" v-lazy:background-image="item.foto">
