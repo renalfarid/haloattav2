@@ -1,5 +1,10 @@
 <template>
-  <a-form layout="vertical" :form="form" class="form-search--costume" hideRequiredMark>
+  <a-form
+    layout="vertical"
+    :form="form"
+    class="form-search--costume"
+    hideRequiredMark
+  >
     <a-row :gutter="16">
       <a-col :span="12">
         <a-form-item label="Kota Asal" hasFeedback>
@@ -12,12 +17,18 @@
             :showArrow="false"
             style="width: 100%"
             size="large"
-            v-decorator="['kota_asal',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+            v-decorator="[
+              'kota_asal',
+              { rules: [{ required: true, message: 'Harus di isi!' }] }
+            ]"
           >
-            <a-select-option :value="1">Tampilkan Semua</a-select-option>
-            <a-select-option :value="2">Makassar</a-select-option>
-            <a-select-option :value="3">Jakarta</a-select-option>
-            <a-select-option :value="4">Bandung</a-select-option>
+            <a-select-option value="all">Tampilkan Semua</a-select-option>
+            <a-select-option
+              v-for="(item, key) in this.$store.state.itemOption.umroh.kota"
+              :key="key"
+              :value="item.nama_kota"
+              >{{ item.nama_kota }}</a-select-option
+            >
           </a-select>
         </a-form-item>
       </a-col>
@@ -33,12 +44,18 @@
             style="width: 100%"
             :showArrow="false"
             size="large"
-            v-decorator="['program',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+            v-decorator="[
+              'program',
+              { rules: [{ required: true, message: 'Harus di isi!' }] }
+            ]"
           >
-            <a-select-option :value="1">Semua Program Hari</a-select-option>
-            <a-select-option :value="2">Program 9 Hari</a-select-option>
-            <a-select-option :value="3">Program 10 Hari</a-select-option>
-            <a-select-option :value="4">Program 11 Hari</a-select-option>
+            <a-select-option value="all">Semua Program Hari</a-select-option>
+            <a-select-option
+              v-for="(item, key) in this.$store.state.itemOption.umroh.hari"
+              :key="key"
+              :value="item.jumlah_hari"
+              >Program {{ item.jumlah_hari }} Hari</a-select-option
+            >
           </a-select>
         </a-form-item>
       </a-col>
@@ -56,17 +73,26 @@
             style="width: 100%"
             :showArrow="false"
             size="large"
-            v-decorator="['bulan_keberangkatan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+            v-decorator="[
+              'bulan_keberangkatan',
+              { rules: [{ required: true, message: 'Harus di isi!' }] }
+            ]"
           >
-            <a-select-option :value="1">Semua Bulan</a-select-option>
-            <a-select-option :value="2">September 2019</a-select-option>
-            <a-select-option :value="3">Oktober 2019</a-select-option>
-            <a-select-option :value="4">Desember 2019</a-select-option>
+            <a-select-option value="all">Semua Bulan</a-select-option>
+            <a-select-option
+              v-for="(item, key) in this.$store.state.itemOption.umroh
+                .bulan_keberangkatan"
+              :key="key"
+              :value="item.tgl_berangkat"
+              >{{
+                moment(item.tgl_berangkat, 'YYYY-MM-DD').format('LL')
+              }}</a-select-option
+            >
           </a-select>
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
+      <!-- <a-col :span="12">
         <a-form-item label="Tanggal Keberangkatan" hasFeedback>
           <div class="icon-search">
             <a-icon type="calendar" />
@@ -77,7 +103,10 @@
             style="width: 100%"
             :showArrow="false"
             size="large"
-            v-decorator="['tgl_keberangkatan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+            v-decorator="[
+              'tgl_keberangkatan',
+              { rules: [{ required: true, message: 'Harus di isi!' }] }
+            ]"
           >
             <a-select-option :value="1">Semua Tanggal</a-select-option>
             <a-select-option :value="2">1</a-select-option>
@@ -85,7 +114,7 @@
             <a-select-option :value="4">3</a-select-option>
           </a-select>
         </a-form-item>
-      </a-col>
+      </a-col> -->
     </a-row>
 
     <a-row :gutter="16" type="flex" justify="end">
@@ -95,46 +124,41 @@
           class="btn-search b-shadow b-radius"
           size="large"
           block
-        >Cari Umrah</a-button>
+          >Cari Umrah</a-button
+        >
       </a-col>
     </a-row>
   </a-form>
 </template>
 <script>
 // import axios from "axios";
+import moment from 'moment';
 export default {
   data() {
     return {
       form: this.$form.createForm(this),
       option: [],
-      kota_asal: "",
-      bulan_keberangkatan: ""
+      kota_asal: '',
+      bulan_keberangkatan: ''
     };
   },
-  // created() {
-  //   this.getOptions();
-  // },
+
   methods: {
+    moment,
     searchUmrah() {
-      this.form.validateFields(err => {
+      this.form.validateFields((err, values) => {
         if (!err) {
           return this.$router.push({
-            path: "/catalog/umrah/result",
+            path: '/catalog/umrah/result',
             query: {
-              kota_asal: this.kota_asal,
-              bulan_keberangkatan: this.bulan_keberangkatan
+              kota_asal: values.kota_asal,
+              bulan_keberangkatan: values.bulan_keberangkatan,
+              program: values.program
             }
           });
         }
       });
     }
-    // getOptions() {
-    //   axios.get(process.env.baseUrl + "option/umrah").then(response => {
-    //     console.log(response.data.data.kota, "option");
-
-    //     this.data = response.data.data;
-    //   });
-    // }
   }
 };
 </script>

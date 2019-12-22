@@ -13,14 +13,10 @@
           <div class="ant-layout--results-list-label fw-400">
             Hasil Pencarian Paket Umrah
           </div>
-          <div
-            v-infinite-scroll="loadMore"
-            :infinite-scroll-disabled="busy"
-            :infinite-scroll-distance="limit"
-          >
+          <div>
             <a-list
               :grid="{ gutter: 16, column: 3 }"
-              :dataSource="data"
+              :dataSource="this.$store.state.catalog.umroh"
               :loading="loading"
             >
               <a-list-item
@@ -98,14 +94,14 @@
                             <a-icon type="calendar" class="mr-4" />
                             Berangkat
                             {{
-                              moment(item.tgl_berangkat, "YYYY-MM-DD").format(
-                                "ll"
+                              moment(item.tgl_berangkat, 'YYYY-MM-DD').format(
+                                'll'
                               )
                             }}
                             -
                             {{
-                              moment(item.tgl_berangkat, "YYYY-MM-DD").format(
-                                "ll"
+                              moment(item.tgl_berangkat, 'YYYY-MM-DD').format(
+                                'll'
                               )
                             }}
                           </div>
@@ -146,10 +142,7 @@
                                 {{ item.nama_maskapai }}
                               </div>
                             </template>
-                            <a-avatar
-                              class="zIndex mr-8"
-                              :src="item.image"
-                            />
+                            <a-avatar class="zIndex mr-8" :src="item.image" />
                           </a-popover>
                         </div>
                         <div class="ant-card-meta-title--top-right ml-auto">
@@ -201,16 +194,16 @@
   </div>
 </template>
 <script>
-import searchResultUmrah from "~/components/contents/lib/search/result/umrah.vue";
-import filterResultUmrah from "~/components/contents/lib/filter/result/umrah.vue";
-import moment from "moment";
-import axios from "axios";
+import searchResultUmrah from '~/components/contents/lib/search/result/umrah.vue';
+import filterResultUmrah from '~/components/contents/lib/filter/result/umrah.vue';
+import moment from 'moment';
+import axios from 'axios';
 export default {
-  name: "umrahResults",
+  name: 'umrahResults',
   head() {
     return {
       title:
-        "Hasil Pencarian Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
+        'Hasil Pencarian Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya'
     };
   },
   data() {
@@ -222,35 +215,37 @@ export default {
       data: []
     };
   },
-  created() {
-    this.loadMore();
+  async asyncData({ query, store }) {
+    let data = [];
+    data['kota_asal'] = query.kota_asal == 'all' ? '' : query.kota_asal;
+    data['bulan_keberangkatan'] =
+      query.bulan_keberangkatan == 'all' ? '' : query.bulan_keberangkatan;
+    data['program'] = query.program == 'all' ? '' : query.program;
+    data['hotel_bintang'] =
+      query.hotel_bintang == 'all' ? '' : query.hotel_bintang;
+
+    const myRespone = await axios.get(process.env.baseUrl + 'paket/umroh/all', {
+      params: {
+        kota_asal: data['kota_asal'],
+        bulan_keberangkatan: data['bulan_keberangkatan'],
+        program_hari: data['program'],
+        hotel_bintang: data['hotel_bintang']
+      }
+    });
+
+    store.commit('catalog/setUmroh', myRespone.data.data.data);
+    // console.log(myRespone.data.data.data, 'test anu');
+
+    return {
+      loading: false,
+      busy: false
+    };
   },
+
   methods: {
     moment,
     toggleWishlist() {
       this.wishlist = !this.wishlist;
-    },
-    loadMore() {
-      this.busy = true;
-      let params = this.$route.query;
-
-      axios
-        .get(process.env.baseUrl + "paket/umroh/all", {
-          params: {
-            kota_asal: params.kota_asal,
-            bulan_keberangkatan: params.bulan_keberangkatan
-          }
-        })
-        .then(response => {
-          const append = response.data.data.data.slice(
-            this.data.length,
-            this.data.length + this.limit
-          );
-
-          this.data = this.data.concat(append);
-          this.loading = false;
-          this.busy = false;
-        });
     }
   },
   components: {
