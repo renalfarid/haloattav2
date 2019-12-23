@@ -37,13 +37,10 @@
               <a
                 href="https://eservices.haj.gov.sa/eservices3/pages/VisaPaymentInquiry/VisaInquiry.xhtml?dswid=-7084"
                 target="_blank"
-                >Visa Progresif</a
-              >
+              >Visa Progresif</a>
             </a-menu-item>
             <a-menu-item key="information:2">
-              <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"
-                >Status Keberangkatan</a
-              >
+              <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank">Status Keberangkatan</a>
             </a-menu-item>
           </a-sub-menu>
         </a-menu>
@@ -54,8 +51,7 @@
             <a-button
               class="btn-authentication b-shadow b-radius fw-500"
               @click="showAuthentication"
-              >Login/Daftar</a-button
-            >
+            >Login/Daftar</a-button>
           </div>
         </div>
 
@@ -88,11 +84,7 @@
           </a-button>
         </div>
         <a-divider />
-        <a-form
-          class="ant-form-modal--login"
-          :form="form"
-          @submit="handleSubmitRegister"
-        >
+        <a-form class="ant-form-modal--login" :form="form" @submit="handleSubmitRegister">
           <a-form-item>
             <a-input
               v-decorator="[
@@ -140,7 +132,7 @@
           <a-form-item>
             <a-input
               v-decorator="[
-                'lasttname',
+                'lastname',
                 { rules: [{ required: true, message: 'Harus di isi!' }] }
               ]"
               placeholder="Nama Belakang"
@@ -166,14 +158,10 @@
             </a-input>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" size="large" html-type="submit" block
-              >Daftar</a-button
-            >
+            <a-button type="primary" size="large" html-type="submit" block>Daftar</a-button>
             <div class="d-flex align-items-center mt-8">
               <div>
-                <a class="fs-14 cr-primary fw-400" @click="changeForm"
-                  >atau Masuk disini</a
-                >
+                <a class="fs-14 cr-primary fw-400" @click="changeForm">atau Masuk disini</a>
               </div>
               <div class="ml-auto">
                 <a class="fs-14 cr-gray fw-400" href>Lupa password?</a>
@@ -230,22 +218,15 @@
             >
               <a slot="suffix" class="cr-gray" @click="showPassword">
                 <a-icon v-if="passwordFieldType === 'password'" type="eye" />
-                <a-icon
-                  v-if="passwordFieldType === 'text'"
-                  type="eye-invisible"
-                />
+                <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible" />
               </a>
             </a-input>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" size="large" @click="loginpost" block
-              >Masuk</a-button
-            >
+            <a-button type="primary" size="large" @click="loginpost" block>Masuk</a-button>
             <div class="d-flex align-items-center mt-8">
               <div>
-                <a class="fs-14 cr-primary fw-400" @click="changeForm"
-                  >atau Daftar disini</a
-                >
+                <a class="fs-14 cr-primary fw-400" @click="changeForm">atau Daftar disini</a>
               </div>
               <div class="ml-auto">
                 <a class="fs-14 cr-gray fw-400" href>Lupa password?</a>
@@ -268,7 +249,8 @@ export default {
       username: "",
       password: "",
       passwordFieldType: "password",
-      form: this.$form.createForm(this)
+      form: this.$form.createForm(this),
+      formValues: {}
     };
   },
   methods: {
@@ -298,7 +280,35 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log(values);
+          this.formValues = {
+            nama_depan: values.firstname,
+            nama_belakang: values.lastname,
+            password: values.password,
+            re_password: values.password,
+            email: values.email,
+            telepon: values.telp
+          };
+
+          const new_value = this.formValues;
+          axios
+            .post(process.env.baseUrl + "register", new_value)
+            .then(response => {
+              if (response.data.status == 200) {
+                this.form.resetFields();
+                this.$message.success(response.data.msg);
+                this.$router.push({
+                  path: "/login"
+                });
+              } else {
+                this.$message.error(response.data.msg);
+              }
+            })
+            .catch(() => {
+              this.$message.error("Ada kesalahan");
+              console.log(this.formValues, "salah");
+            });
+
+          console.log(this.formValues, "salah");
         }
       });
     },
