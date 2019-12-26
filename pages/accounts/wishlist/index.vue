@@ -26,7 +26,7 @@
       </a-row>
     </a-card>
 
-    <a-list :grid="{ gutter: 16, column: 3}" :dataSource="lisData">
+    <a-list :grid="{ gutter: 16, column: 3}" :dataSource="lisData" :loading="loading">
       <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
         <a-card class="ant-card-package">
           <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
@@ -54,7 +54,7 @@
 
               <div class="ant-card--overlay-block" v-if="item.status === 'Y'">
                 <div class="d-flex align-items-center h-100">
-                  <a-button @click="showDeleteConfirm">Hapus</a-button>
+                  <a-button @click="showDeleteConfirm(item.kode_produk)">Hapus</a-button>
                 </div>
               </div>
             </div>
@@ -159,6 +159,7 @@
 import axios from "axios";
 import moment from "moment";
 const cookieparser = require("cookieparser");
+const Cookie = process.client ? require("js-cookie") : undefined;
 export default {
   middleware: "authenticated",
   layout: "accounts",
@@ -171,6 +172,7 @@ export default {
 
   data() {
     return {
+      loading: true,
       lisData: []
     };
   },
@@ -187,13 +189,14 @@ export default {
     });
 
     return {
-      lisData: myRespone.data.data.data
+      lisData: myRespone.data.data.data,
+      loading: false
     };
   },
 
   methods: {
     moment,
-    showDeleteConfirm() {
+    showDeleteConfirm(id) {
       this.$confirm({
         title: "Hapus Item",
         content:
@@ -201,13 +204,44 @@ export default {
         okText: "Ya, Hapus",
         okType: "primary",
         cancelText: "Tidak, Simpan Item Ini",
-        onOk() {
-          console.log("OK");
+        onOk: () => {
+          // this.loading = true;
+          this.submitDeleteItem(id);
         },
         onCancel() {
-          console.log("Cancel");
+          console.log("Cancel" + id);
         }
       });
+    },
+
+    submitDeleteItem(id) {
+      const token = Cookie.get("auth");
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+
+      let data = {
+        kode_produk: id
+      };
+
+      axios
+        .post(process.env.baseUrl + "produk/remove-favorite", data, config)
+        .then(response => {
+          if (response.data.status == 200) {
+            // this.loading = false;
+            setTimeout(function() {
+              location.reload(true);
+            }, 1500);
+            this.$message.success(response.data.msg);
+          } else {
+            this.$message.error(response.data.msg);
+          }
+        })
+        .catch(() => {
+          this.$message.error("Salah");
+        });
     }
   }
 };
