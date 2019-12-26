@@ -31,17 +31,17 @@
         <a-card class="ant-card-package">
           <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
           <div slot="cover">
-            <div class="ant-card-cover--images" v-lazy:background-image="item.images_product">
+            <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
-                  <div class="ant-card-cover--overlay-text-title fs-15">40</div>
-                  <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax</div>
+                  <div class="ant-card-cover--overlay-text-title fs-15">No</div>
+                  <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax (-)</div>
                 </div>
               </div>
 
               <div class="ant-card-wishlist">
-                <a-icon class="fs-22" type="heart" theme="twoTone" twoToneColor="#eb2f96"/>
+                <a-icon class="fs-22" type="heart" theme="twoTone" twoToneColor="#eb2f96" />
               </div>
 
               <div class="ant-card--overlay-block" v-if="item.status === 'available'">
@@ -52,7 +52,7 @@
                 </div>
               </div>
 
-              <div class="ant-card--overlay-block" v-if="item.status === 'kedaluwarsa'">
+              <div class="ant-card--overlay-block" v-if="item.status === 'Y'">
                 <div class="d-flex align-items-center h-100">
                   <a-button @click="showDeleteConfirm">Hapus</a-button>
                 </div>
@@ -67,7 +67,7 @@
                     <template slot="content">
                       <div class="fs-15 fw-500 cr-black">ATTA</div>
                       <div class="fs-14 fw-400 cr-gray f-default">
-                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4"/>Terverifikasi
+                        <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
                       </div>
                     </template>
                     <a-avatar
@@ -76,7 +76,7 @@
                     />
                   </a-popover>
 
-                  <a-popover trigger="hover">
+                  <!-- <a-popover trigger="hover">
                     <template slot="content">
                       <div class="fs-13 fw-400 cr-black f-default">Maskapai Lion Air</div>
                     </template>
@@ -84,21 +84,19 @@
                       class="zIndex mr-8"
                       src="http://indocargotimes.com/uploads/berita/Lion-Air-Group.jpg"
                     />
-                  </a-popover>
+                  </a-popover>-->
                 </div>
                 <div class="ant-card-meta-title--top-right ml-auto">
-                  <a-rate class="fs-14 mb-4" :defaultValue="3" disabled/>
+                  <!-- <a-rate class="fs-14 mb-4" :defaultValue="3" disabled /> -->
                 </div>
               </div>
-              <div
-                class="ant-card-meta-title--package text-capitalize fw-500"
-              >Umrah Exclusive November 2019 Keberangkatan Jakarta</div>
+              <div class="ant-card-meta-title--package text-capitalize fw-500">{{item.nama}}</div>
             </div>
 
             <div slot="description">
               <div class="ant-card-meta-description--bottom d-flex align-items-center">
                 <div class="ant-card-meta-description--bottom-right d-flex">
-                  <div class="fs-14 fw-400 cr-black">Program 9 Hari</div>
+                  <!-- <div class="fs-14 fw-400 cr-black">Program 9 Hari</div> -->
                 </div>
                 <div
                   class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
@@ -108,13 +106,13 @@
                 <span v-if="item.status === 'available'">
                   <a-tag color="green">Available</a-tag>
                 </span>
-                <span v-if="item.status === 'kedaluwarsa'">
+                <span v-if="item.status === 'Y'">
                   <a-tag color="red">Kedaluwarsa</a-tag>
                 </span>
               </div>
             </div>
           </a-card-meta>
-          <div class="package-description--more p-16">
+          <!-- <div class="package-description--more p-16">
             <div class="mb-8">
               <div>
                 <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
@@ -151,7 +149,7 @@
                 <div class="cr-gray">{{moment("2019-12-20", "YYYY-MM-DD").format('ll')}}</div>
               </div>
             </div>
-          </div>
+          </div>-->
         </a-card>
       </a-list-item>
     </a-list>
@@ -160,6 +158,7 @@
 <script>
 import axios from "axios";
 import moment from "moment";
+const cookieparser = require("cookieparser");
 export default {
   middleware: "authenticated",
   layout: "accounts",
@@ -172,24 +171,23 @@ export default {
 
   data() {
     return {
-      lisData: [
-        {
-          id: 1,
-          name_product: "Umrah Exclusive November 2019 Keberangkatan Jakarta",
-          images_product: "/umrah/package/u1.png",
-          avatar_umaroh:
-            "https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png",
-          status: "available"
-        },
-        {
-          id: 2,
-          name_product: "Umrah Exclusive November 2020 Keberangkatan Jakarta",
-          images_product: "/umrah/package/u2.png",
-          avatar_umaroh:
-            "https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png",
-          status: "kedaluwarsa"
-        }
-      ]
+      lisData: []
+    };
+  },
+  async asyncData({ req }) {
+    const parsed = await cookieparser.parse(req.headers.cookie);
+
+    const myRespone = await axios.get(process.env.baseUrl + "produk/favorite", {
+      params: {
+        per_page: "8"
+      },
+      headers: {
+        Authorization: "Bearer " + parsed.auth
+      }
+    });
+
+    return {
+      lisData: myRespone.data.data.data
     };
   },
 
