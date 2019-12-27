@@ -29,14 +29,61 @@
     <a-list :grid="{ gutter: 16, column: 3}" :dataSource="lisData" :loading="loading">
       <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
         <a-card class="ant-card-package">
-          <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
+          <nuxt-link
+            :to="'/catalog/umrah/detail-package?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+            v-if="item.kategori == 'UMRAH REGULER'"
+          ></nuxt-link>
+
+          <nuxt-link
+            :to="'/catalog/ticket-group/detail-ticket?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+            v-if="item.kategori == 'Tiket Pesawat'"
+          ></nuxt-link>
+
+          <nuxt-link
+            :to="'/catalog/visa/detail?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+            v-if="item.kategori == 'Visa'"
+          ></nuxt-link>
+
+          <nuxt-link
+            :to="'/catalog/accommodation/detail?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+            v-if="item.kategori == 'Land Arrangement'"
+          ></nuxt-link>
+
+          <nuxt-link
+            :to="'/catalog/handling/detail?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+            v-if="item.kategori == 'Handling Domestik'"
+          ></nuxt-link>
+
+          <nuxt-link
+            :to="'/catalog/insurance/detail?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+            v-if="item.kategori == 'Asuransi'"
+          ></nuxt-link>
+
+          <nuxt-link
+            :to="'/catalog/manasik/detail?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+            v-if="item.kategori == 'Manasik'"
+          ></nuxt-link>
+
+          <nuxt-link
+            :to="'/catalog/equipment/detail?kode_produk='+item.kode_produk"
+            class="ant-list-item--link"
+            v-if="item.kategori == 'Perlengkapan'"
+          ></nuxt-link>
+
           <div slot="cover">
             <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
               <div class="ant-card-cover--overlay">
                 <div class="ant-card-cover--overlay-box-radius"></div>
                 <div class="ant-card-cover--overlay-text">
-                  <div class="ant-card-cover--overlay-text-title fs-15">No</div>
-                  <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax (-)</div>
+                  <div class="ant-card-cover--overlay-text-title fs-15">No Api</div>
+                  <div class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase">pax -</div>
                 </div>
               </div>
 
@@ -65,14 +112,14 @@
                 <div class="ant-card-meta-title--top-left f-default d-flex align-items-center">
                   <a-popover trigger="hover">
                     <template slot="content">
-                      <div class="fs-15 fw-500 cr-black">ATTA</div>
+                      <div class="fs-15 fw-500 cr-black">{{item.nama_vendor}}</div>
                       <div class="fs-14 fw-400 cr-gray f-default">
                         <a-icon type="safety-certificate" theme="filled" class="cr-green mr-4" />Terverifikasi
                       </div>
                     </template>
                     <a-avatar
                       class="vendor-logo zIndex mr-8"
-                      v-lazy:background-image="item.avatar_umaroh"
+                      v-lazy:background-image="item.foto_vendor"
                     />
                   </a-popover>
 
@@ -100,13 +147,13 @@
                 </div>
                 <div
                   class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
-                >{{20000000 | currency}}</div>
+                >{{item.harga | currency}}</div>
               </div>
               <div class="ant-status-wishlist mt-8">
-                <span v-if="item.status === 'available'">
+                <span v-if="item.is_expired === 'N'">
                   <a-tag color="green">Available</a-tag>
                 </span>
-                <span v-if="item.status === 'Y'">
+                <span v-if="item.is_expired === 'Y'">
                   <a-tag color="red">Kedaluwarsa</a-tag>
                 </span>
               </div>
@@ -173,29 +220,54 @@ export default {
   data() {
     return {
       loading: true,
-      lisData: []
+      lisData: [],
+      category: ""
     };
   },
-  async asyncData({ req }) {
-    const parsed = await cookieparser.parse(req.headers.cookie);
+  // async asyncData({ req }) {
+  //   const parsed = await cookieparser.parse(req.headers.cookie);
+  //   await console.log("coba");
+  //   // const token = Cookie.get("auth");
+  //   const myRespone = await axios.get(process.env.baseUrl + "produk/favorite", {
+  //     params: {
+  //       per_page: "8"
+  //     },
+  //     headers: {
+  //       Authorization: "Bearer " + parsed.auth
+  //     }
+  //   });
 
-    const myRespone = await axios.get(process.env.baseUrl + "produk/favorite", {
-      params: {
-        per_page: "8"
-      },
-      headers: {
-        Authorization: "Bearer " + parsed.auth
-      }
-    });
-
-    return {
-      lisData: myRespone.data.data.data,
-      loading: false
-    };
+  //   return {
+  //     lisData: myRespone.data.data.data,
+  //     loading: false
+  //   };
+  // },
+  mounted() {
+    this.getData();
   },
 
   methods: {
     moment,
+    getData() {
+      // const parsed = cookieparser.parse(req.headers.cookie);
+      const token = Cookie.get("auth");
+      axios
+        .get(process.env.baseUrl + "produk/favorite", {
+          params: {
+            per_page: "8"
+          },
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        })
+        .then(response => {
+          (this.lisData = response.data.data.data), (this.loading = false);
+        })
+        .catch(() => {
+          this.$message.error("Salah");
+        });
+    },
+
     showDeleteConfirm(id) {
       this.$confirm({
         title: "Hapus Item",
