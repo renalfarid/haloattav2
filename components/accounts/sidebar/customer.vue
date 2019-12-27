@@ -14,7 +14,7 @@
         />
       </div>
       <div class="text-ellipsis pr-16">
-        <div class="fs-16 fw-500 f-default d-inline cr-black">{{$store.state.auth.nama}}</div>
+        <div class="fs-16 fw-500 f-default d-inline cr-black">{{this.$store.state.auth.nama}}</div>
       </div>
     </div>
 
@@ -32,7 +32,7 @@
       </div>
       <div>
         <div class="fs-14 cr-gray">Saldo Halopay</div>
-        <div class="fs-15 fw-500 f-default cr-black">{{ 100000000 | currency }}</div>
+        <div class="fs-15 fw-500 f-default cr-black">{{ this.$store.state.auth.saldo | currency }}</div>
       </div>
       <div class="ml-auto">
         <a-icon type="right" class="cr-primary fs-12" />
@@ -47,7 +47,7 @@
       </div>
       <div>
         <div class="fs-14 cr-gray">Halo Poin</div>
-        <div class="fs-15 fw-500 f-default cr-black">10 poin</div>
+        <div class="fs-15 fw-500 f-default cr-black">{{this.$store.state.auth.poin}} poin</div>
       </div>
       <div class="ml-auto">
         <a-icon type="right" class="cr-primary fs-12" />
