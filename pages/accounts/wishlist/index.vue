@@ -271,8 +271,7 @@ export default {
     showDeleteConfirm(id) {
       this.$confirm({
         title: "Hapus Item",
-        content:
-          "Item ini sudah tidak lagi tersedia. Hapus dari Daftar Simpan?",
+        content: "Hapus dari Daftar Simpan?",
         okText: "Ya, Hapus",
         okType: "primary",
         cancelText: "Tidak, Simpan Item Ini",
