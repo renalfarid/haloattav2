@@ -352,7 +352,7 @@
               </a-col>
               <!-- card sider -->
               <a-col :span="8">
-                <siderPayment />
+                <siderPayment :total="price" />
               </a-col>
             </a-row>
           </a-col>

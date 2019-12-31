@@ -234,8 +234,14 @@ export default {
     };
   },
   async asyncData({ store }) {
-    const myRespone = await axios.get(process.env.baseUrl + "option/umrah");
-    store.commit("itemOption/setUmroh", myRespone.data.data);
+    try {
+      const myRespone = await axios.get(process.env.baseUrl + "option/umrah");
+      store.commit("itemOption/setUmroh", myRespone.data.data);
+    } catch (error) {
+      store.commit("itemOption/setUmroh", []);
+      // message.error("Ada kesalahan");
+      // console.log("error" + error);
+    }
   },
   methods: {
     callback(val) {
