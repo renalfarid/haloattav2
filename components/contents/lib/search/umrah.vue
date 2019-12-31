@@ -1,10 +1,5 @@
 <template>
-  <a-form
-    layout="vertical"
-    :form="form"
-    class="form-search--costume"
-    hideRequiredMark
-  >
+  <a-form layout="vertical" :form="form" class="form-search--costume" hideRequiredMark>
     <a-row :gutter="16">
       <a-col :span="12">
         <a-form-item label="Kota Asal" hasFeedback>
@@ -27,8 +22,7 @@
               v-for="(item, key) in this.$store.state.itemOption.umroh.kota"
               :key="key"
               :value="item.nama_kota"
-              >{{ item.nama_kota }}</a-select-option
-            >
+            >{{ item.nama_kota }}</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -54,8 +48,7 @@
               v-for="(item, key) in this.$store.state.itemOption.umroh.hari"
               :key="key"
               :value="item.jumlah_hari"
-              >Program {{ item.jumlah_hari }} Hari</a-select-option
-            >
+            >Program {{ item.jumlah_hari }} Hari</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -83,11 +76,12 @@
               v-for="(item, key) in this.$store.state.itemOption.umroh
                 .bulan_keberangkatan"
               :key="key"
-              :value="item.tgl_berangkat"
-              >{{
-                moment(item.tgl_berangkat, 'YYYY-MM-DD').format('LL')
-              }}</a-select-option
+              :value="item.bulan_tahun"
             >
+              {{
+              moment(item.bulan_tahun).format('MMMM YYYY')
+              }}
+            </a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -114,7 +108,7 @@
             <a-select-option :value="4">3</a-select-option>
           </a-select>
         </a-form-item>
-      </a-col> -->
+      </a-col>-->
     </a-row>
 
     <a-row :gutter="16" type="flex" justify="end">
@@ -124,22 +118,21 @@
           class="btn-search b-shadow b-radius"
           size="large"
           block
-          >Cari Umrah</a-button
-        >
+        >Cari Umrah</a-button>
       </a-col>
     </a-row>
   </a-form>
 </template>
 <script>
 // import axios from "axios";
-import moment from 'moment';
+import moment from "moment";
 export default {
   data() {
     return {
       form: this.$form.createForm(this),
       option: [],
-      kota_asal: '',
-      bulan_keberangkatan: ''
+      kota_asal: "",
+      bulan_keberangkatan: ""
     };
   },
 
@@ -149,7 +142,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           return this.$router.push({
-            path: '/catalog/umrah/result',
+            path: "/catalog/umrah/result",
             query: {
               kota_asal: values.kota_asal,
               bulan_keberangkatan: values.bulan_keberangkatan,
