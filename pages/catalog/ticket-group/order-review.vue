@@ -42,7 +42,8 @@ export default {
       item: myRespone.data.data,
       sidebar: {
         berangkat: myRespone.data.data.tanggal_keberangkatan,
-        harga: myRespone.data.data.harga_jual
+        harga: myRespone.data.data.harga_jual,
+        program_hari: myRespone.data.data.program_hari
       }
     };
   },

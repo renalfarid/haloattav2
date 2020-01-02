@@ -149,15 +149,15 @@
                 <a-col :span="8">
                   <div class="fs-15 fw-400 cr-black">Mekkah : {{umroh.hotel_mekah}}</div>
                   <div class="fs-15 fw-500 cr-black">Menginap</div>
-                  <div class="fs-15 fw-400 cr-gray">3 Hari</div>
+                  <div class="fs-15 fw-400 cr-gray">{{la.durasi_inap_mekkah}} Hari</div>
                 </a-col>
                 <a-col :span="8" class="text-right">
                   <div class="fs-15 fw-500 cr-black">Check In</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
+                  <div class="fs-15 fw-400 cr-gray">{{la.checkin_mekah || "-"}}</div>
                 </a-col>
                 <a-col :span="8" class="text-right">
                   <div class="fs-15 fw-500 cr-black">Check Out</div>
-                  <div class="fs-15 fw-400 cr-gray">Kamis, 20 September 2019</div>
+                  <div class="fs-15 fw-400 cr-gray">{{la.checkout_mekah || "-"}}</div>
                 </a-col>
               </a-row>
             </a-timeline-item>
@@ -166,15 +166,15 @@
                 <a-col :span="8">
                   <div class="fs-15 fw-400 cr-black">Madinah : {{umroh.hotel_madinah}}</div>
                   <div class="fs-15 fw-500 cr-black">Menginap</div>
-                  <div class="fs-15 fw-400 cr-gray">3 Hari</div>
+                  <div class="fs-15 fw-400 cr-gray">{{la.durasi_inap_madinah}} Hari</div>
                 </a-col>
                 <a-col :span="8" class="text-right">
                   <div class="fs-15 fw-500 cr-black">Check In</div>
-                  <div class="fs-15 fw-400 cr-gray">Rabu, 10 September 2019</div>
+                  <div class="fs-15 fw-400 cr-gray">{{la.checkin_madinah || "-"}}</div>
                 </a-col>
                 <a-col :span="8" class="text-right">
                   <div class="fs-15 fw-500 cr-black">Check Out</div>
-                  <div class="fs-15 fw-400 cr-gray">Kamis, 20 September 2019</div>
+                  <div class="fs-15 fw-400 cr-gray">{{la.checkout_madinah || "-"}}</div>
                 </a-col>
               </a-row>
             </a-timeline-item>
@@ -185,17 +185,17 @@
 
     <a-list-item class="ant-list-item--package-information">
       <a-row type="flex" justify="space-between" align="middle" class="w-100">
-        <a-col :span="8">
+        <a-col :span="8" v-for="perlengkapan in kelengkapan" :key="perlengkapan">
           <div class="d-flex align-items-center w-100 mb-8 mt-8">
             <div>
               <a-avatar size="small" shape="square" class="mr-16" src="/icons/package/visa.png" />
             </div>
             <div>
-              <div class="fs-14 fw-500 cr-black">Visa Umrah</div>
+              <div class="fs-14 fw-500 cr-black">{{perlengkapan}}</div>
             </div>
           </div>
         </a-col>
-        <a-col :span="8">
+        <!-- <a-col :span="8">
           <div class="d-flex align-items-center w-100 mb-8 mt-8">
             <div>
               <a-avatar
@@ -262,7 +262,7 @@
               <div class="fs-14 fw-500 cr-black">Tour Leader</div>
             </div>
           </div>
-        </a-col>
+        </a-col>-->
       </a-row>
     </a-list-item>
   </a-list>
@@ -270,7 +270,7 @@
 <script>
 import moment from "moment";
 export default {
-  props: ["la", "tiket", "umroh"],
+  props: ["la", "tiket", "umroh", "kelengkapan"],
   data() {
     return {};
   },

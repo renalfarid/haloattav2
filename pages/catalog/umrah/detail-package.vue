@@ -127,22 +127,8 @@ export default {
       itinerary: []
     };
   },
-  // created() {
-  //   this.getdetail();
-  // },
   async asyncData({ query, store }) {
     let data = [];
-
-    // const myRespone = await axios.get(process.env.baseUrl + "paket/umroh/all", {
-    //   params: {
-    //     kota_asal: data["kota_asal"],
-    //     bulan_keberangkatan: data["bulan_keberangkatan"],
-    //     program_hari: data["program"],
-    //     hotel_bintang: data["hotel_bintang"]
-    //   }
-    // });
-
-    // store.commit("catalog/setUmroh", myRespone.data.data.data);
 
     const myRespone = await axios.post(
       process.env.baseUrl + "paket/umroh/detail",
