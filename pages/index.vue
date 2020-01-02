@@ -13,25 +13,31 @@
           >
             <a-col :xs="24" :sm="24" :md="10">
               <h2 class="fs-40 fw-600 title">Kembangkan Bisnis Umrah Anda</h2>
-              <a-button class="btn-join--us d-none" size="large">Gabung Sekarang</a-button>
+              <a-button class="btn-join--us d-none" size="large"
+                >Gabung Sekarang</a-button
+              >
 
               <a-comment v-if="$store.state.auth" class="ant-comment--accounts">
                 <template slot="actions">
                   <a-tag>
                     <div class="d-flex align-items-center">
                       <a-icon class="mr-4" type="gold" />
-                      <span>{{this.$store.state.auth.poin}}</span> POIN
+                      <span>{{ this.$store.state.auth.poin }}</span> POIN
                     </div>
                   </a-tag>
                   <a-tag>
                     <div class="d-flex align-items-center">
                       <a-icon class="mr-4" type="wallet" />
-                      <span>{{this.$store.state.auth.saldo | currency}}</span>
+                      <span>{{ this.$store.state.auth.saldo | currency }}</span>
                     </div>
                   </a-tag>
                 </template>
                 <a slot="author">{{ $store.state.auth.nama }}</a>
-                <a-avatar :src="this.$store.state.auth.foto" alt="haloatta" slot="avatar" />
+                <a-avatar
+                  :src="this.$store.state.auth.foto"
+                  alt="haloatta"
+                  slot="avatar"
+                />
                 <p slot="content">Jl Kebahagiaan Utara - BTP Blok A, No 537</p>
               </a-comment>
             </a-col>
@@ -47,63 +53,72 @@
               >
                 <a-tab-pane key="1">
                   <span slot="tab">
-                    <div class="icon-umrah"></div>Paket Umrah
+                    <div class="icon-umrah"></div>
+                    Paket Umrah
                   </span>
                   <search-umrah />
                 </a-tab-pane>
 
                 <a-tab-pane key="2">
                   <span slot="tab">
-                    <div class="icon-ticket"></div>Tiket Group
+                    <div class="icon-ticket"></div>
+                    Tiket Group
                   </span>
                   <search-ticket />
                 </a-tab-pane>
 
                 <a-tab-pane key="3">
                   <span slot="tab">
-                    <div class="icon-accommodation"></div>LA Akomodasi
+                    <div class="icon-accommodation"></div>
+                    LA Akomodasi
                   </span>
                   <search-accommodation />
                 </a-tab-pane>
 
                 <a-tab-pane key="4">
                   <span slot="tab">
-                    <div class="icon-visa"></div>Visa Umrah
+                    <div class="icon-visa"></div>
+                    Visa Umrah
                   </span>
                   <search-visa />
                 </a-tab-pane>
 
                 <a-tab-pane key="5">
                   <span slot="tab">
-                    <div class="icon-insurance"></div>Asuransi
+                    <div class="icon-insurance"></div>
+                    Asuransi
                   </span>
                   <search-insurance />
                 </a-tab-pane>
 
                 <a-tab-pane key="6">
                   <span slot="tab">
-                    <div class="icon-handling"></div>Handling
+                    <div class="icon-handling"></div>
+                    Handling
                   </span>
                   <search-handling />
                 </a-tab-pane>
 
                 <a-tab-pane key="7">
                   <span slot="tab">
-                    <div class="icon-manasik"></div>Manasik
+                    <div class="icon-manasik"></div>
+                    Manasik
                   </span>
                   <search-manasik />
                 </a-tab-pane>
 
                 <a-tab-pane key="8">
                   <span slot="tab">
-                    <div class="icon-equipment"></div>Perlengkapan
+                    <div class="icon-equipment"></div>
+                    Perlengkapan
                   </span>
                   <search-equipment />
                 </a-tab-pane>
 
                 <a-tab-pane key="9">
                   <span slot="tab">
-                    <div class="icon-tourleader"></div>Tour Leader
+                    <div class="icon-tourleader"></div>
+                    Tour Leader
                   </span>
                   <search-tourleader />
                 </a-tab-pane>
@@ -126,7 +141,9 @@
     <div class="content-recomended">
       <div class="container">
         <div class="header-title">
-          <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi Haloatta</a-divider>
+          <a-divider orientation="left" class="ant-divider-title-left"
+            >Rekomendasi Haloatta</a-divider
+          >
           <a-row :gutter="16">
             <a-col :span="16">
               <h6 class="fs-16 fw-400 cr-gray">
@@ -141,7 +158,10 @@
         <umrah-recommended />
 
         <div class="all-package">
-          <nuxt-link to="/catalog/umrah/all" class="fs-18 cr-green d-flex align-items-center">
+          <nuxt-link
+            to="/catalog/umrah/all"
+            class="fs-18 cr-green d-flex align-items-center"
+          >
             Tampilkan semua
             <a-icon class="fs-16 ml-8" type="right" />
           </nuxt-link>
@@ -155,7 +175,13 @@
         <div slot="cover">
           <div class="cover-images" v-lazy:background-image="imgBanner">
             <div class="container">
-              <a-row :gutter="16" type="flex" justify="start" align="middle" class="h-100">
+              <a-row
+                :gutter="16"
+                type="flex"
+                justify="start"
+                align="middle"
+                class="h-100"
+              >
                 <a-col :span="12">
                   <a-card-meta
                     title="Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
@@ -199,46 +225,46 @@
 </template>
 
 <script>
-import searchUmrah from "~/components/contents/lib/search/umrah.vue";
-import searchTicket from "~/components/contents/lib/search/ticket.vue";
-import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
-import searchVisa from "~/components/contents/lib/search/visa.vue";
-import searchInsurance from "~/components/contents/lib/search/insurance.vue";
-import searchHandling from "~/components/contents/lib/search/handling.vue";
-import searchManasik from "~/components/contents/lib/search/manasik.vue";
-import searchEquipment from "~/components/contents/lib/search/equipment.vue";
-import searchTourleader from "~/components/contents/lib/search/tourleader.vue";
+import searchUmrah from '~/components/contents/lib/search/umrah.vue';
+import searchTicket from '~/components/contents/lib/search/ticket.vue';
+import searchAccommodation from '~/components/contents/lib/search/accommodation.vue';
+import searchVisa from '~/components/contents/lib/search/visa.vue';
+import searchInsurance from '~/components/contents/lib/search/insurance.vue';
+import searchHandling from '~/components/contents/lib/search/handling.vue';
+import searchManasik from '~/components/contents/lib/search/manasik.vue';
+import searchEquipment from '~/components/contents/lib/search/equipment.vue';
+import searchTourleader from '~/components/contents/lib/search/tourleader.vue';
 
 // if before login
-import sectionFavorite from "~/components/contents/home/section-favorite.vue";
+import sectionFavorite from '~/components/contents/home/section-favorite.vue';
 // if after login
 // import sectionMyumrah from "~/components/contents/home/section-myumrah.vue";
-import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
+import sectionComponentsUmrah from '~/components/contents/home/section-components.vue';
 
-import umrahRecommended from "~/components/contents/catalog/umrah/recommended.vue";
+import umrahRecommended from '~/components/contents/catalog/umrah/recommended.vue';
 
-import sectionNews from "~/components/contents/home/section-news.vue";
-import axios from "axios";
+import sectionNews from '~/components/contents/home/section-news.vue';
+import axios from 'axios';
 
 export default {
-  name: "homePage",
+  name: 'homePage',
   head() {
     return {
-      title: "Haloatta - Booking Paket Umrah, Tiket, LA dan Visa"
+      title: 'Haloatta - Booking Paket Umrah, Tiket, LA dan Visa'
     };
   },
   data() {
     return {
-      imgCover: "/umrah/cover/cu47.png",
-      imgBanner: "/umrah/cover/cu17.png"
+      imgCover: '/umrah/cover/cu47.png',
+      imgBanner: '/umrah/cover/cu17.png'
     };
   },
   async asyncData({ store }) {
     try {
-      const myRespone = await axios.get(process.env.baseUrl + "option/umrah");
-      store.commit("itemOption/setUmroh", myRespone.data.data);
+      const myRespone = await axios.get(process.env.baseUrl + 'option/umrah');
+      store.dispatch('itemOption/setUmroh', myRespone.data.data);
     } catch (error) {
-      store.commit("itemOption/setUmroh", []);
+      store.dispatch('itemOption/setUmroh', []);
       // message.error("Ada kesalahan");
       // console.log("error" + error);
     }

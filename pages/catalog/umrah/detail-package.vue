@@ -78,10 +78,10 @@
               <informationAccommodation :data="dataLA" />
             </div>
             <div v-if="activetab === 3" class="ant-tabs--content-body">
-              <informationEquipment />
+              <informationEquipment :data="kelengkapan" />
             </div>
             <div v-if="activetab === 4" class="ant-tabs--content-body">
-              <informationItinerary />
+              <informationItinerary :data="itinerary" />
             </div>
           </div>
         </a-col>
@@ -122,12 +122,59 @@ export default {
       datatiket: "default",
       dataLA: "default",
       harga: "",
-      umroh: {}
+      umroh: {},
+      kelengkapan: [],
+      itinerary: []
     };
   },
-  created() {
-    this.getdetail();
+  // created() {
+  //   this.getdetail();
+  // },
+  async asyncData({ query, store }) {
+    let data = [];
+
+    // const myRespone = await axios.get(process.env.baseUrl + "paket/umroh/all", {
+    //   params: {
+    //     kota_asal: data["kota_asal"],
+    //     bulan_keberangkatan: data["bulan_keberangkatan"],
+    //     program_hari: data["program"],
+    //     hotel_bintang: data["hotel_bintang"]
+    //   }
+    // });
+
+    // store.commit("catalog/setUmroh", myRespone.data.data.data);
+
+    const myRespone = await axios.post(
+      process.env.baseUrl + "paket/umroh/detail",
+      {
+        kode_produk: query.kode_produk
+      }
+    );
+
+    return {
+      loading: false,
+      busy: false,
+      datatiket: myRespone.data.data.tiket,
+      dataLA: {
+        fasilitas: myRespone.data.data.la.fasilitas_termasuk,
+        hotel_mekkah: myRespone.data.data.hotel_mekkah,
+        hotel_madinah: myRespone.data.data.hotel_madinah
+      },
+      nama: myRespone.data.data.umroh.nama,
+      bintang: myRespone.data.data.umroh.kelas_bintang,
+      foto_vendor: myRespone.data.data.umroh.foto,
+
+      //props right side
+      harga: myRespone.data.data.harga,
+      umroh: {
+        berangkat: myRespone.data.data.umroh.tgl_berangkat,
+        program_hari: myRespone.data.data.umroh.jumlah_hari
+      },
+      kelengkapan: myRespone.data.data.kelengkapan,
+      itinerary: myRespone.data.data.itenary
+    };
   },
+
   methods: {
     change(affixed) {
       // console.log(affixed);

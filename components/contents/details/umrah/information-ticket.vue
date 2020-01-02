@@ -162,7 +162,7 @@
 
     <!-- Fasilitas -->
     <a-card class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16">
-      <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk</div>
+      <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk (api blm ada)</div>
       <div class="fs-15 fw-400 cr-gray mb-24">Informasi fasilitas penerbangan anda</div>
       <a-row :gutter="8">
         <a-col :span="6">

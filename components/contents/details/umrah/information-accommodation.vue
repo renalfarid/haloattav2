@@ -8,17 +8,17 @@
             <a-row :gutter="10">
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/akomodasi/hotel/l5.jpg" />
+                  <expandable-image :src="data.hotel_mekkah.img_room_double" />
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/akomodasi/hotel/l6.jpg" />
+                  <expandable-image :src="data.hotel_mekkah.img_room_triple" />
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/akomodasi/hotel/l7.jpg" />
+                  <expandable-image :src="data.hotel_mekkah.img_room_quard" />
                 </div>
               </a-col>
             </a-row>
@@ -35,11 +35,11 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Makkah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>{{data.nama_hotel_mekkah}}</span>
+                    <span>{{data.hotel_mekkah.nama_hotel}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
-                  <a-rate class="fs-16" :defaultValue="data.kelas_bintang" disabled />
+                  <a-rate class="fs-16" :defaultValue="data.hotel_mekkah.rating" disabled />
                 </div>
               </div>
             </div>
@@ -58,7 +58,7 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Durasi Inap</div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Durasi Inap (belum ada)</div>
                     <div class="fs-15 fw-500 cr-black text-capitalize">3 Hari Makkah</div>
                   </div>
                 </div>
@@ -73,7 +73,9 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
-                    <div class="fs-15 fw-500 cr-black">Kurang Dari 500 Meter</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >{{data.hotel_mekkah.jarak_hotel || 'Belum ada'}}</div>
                   </div>
                 </div>
               </a-col>
@@ -91,17 +93,17 @@
             <a-row :gutter="10">
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/akomodasi/hotel/l1.jpg" />
+                  <expandable-image :src="data.hotel_madinah.img_room_double" />
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/akomodasi/hotel/l2.jpg" />
+                  <expandable-image :src="data.hotel_madinah.img_room_triple" />
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-small">
-                  <expandable-image src="/akomodasi/hotel/l3.jpg" />
+                  <expandable-image :src="data.hotel_madinah.img_room_quard" />
                 </div>
               </a-col>
             </a-row>
@@ -118,11 +120,11 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Madinah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>Pinewood Hotel</span>
+                    <span>{{data.hotel_madinah.nama_hotel}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
-                  <a-rate class="fs-16" :defaultValue="3" disabled />
+                  <a-rate class="fs-16" :defaultValue="data.hotel_madinah.rating" disabled />
                 </div>
               </div>
             </div>
@@ -141,7 +143,7 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Durasi Inap</div>
+                    <div class="fs-15 fw-400 cr-gray f-default">Durasi Inap (belum ada)</div>
                     <div class="fs-15 fw-500 cr-black text-capitalize">3 Hari Makkah</div>
                   </div>
                 </div>
@@ -156,7 +158,9 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
-                    <div class="fs-15 fw-500 cr-black">Kurang Dari 500 Meter</div>
+                    <div
+                      class="fs-15 fw-500 cr-black"
+                    >{{data.hotel_madinah.jarak_hotel || 'Belum ada'}}</div>
                   </div>
                 </div>
               </a-col>
@@ -170,7 +174,7 @@
     <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
       <a-row :gutter="8">
-        <a-col :span="6" class="mb-16">
+        <a-col :span="6" class="mb-16" v-for="fasilitas in fasilitas_termasuk" :key="fasilitas">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -179,11 +183,11 @@
               icon="check"
             />
             <div>
-              <div class="fs-15 fw-500 cr-black">Bus VVIP</div>
+              <div class="fs-15 fw-500 cr-black">{{fasilitas}}</div>
             </div>
           </div>
         </a-col>
-        <a-col :span="6" class="mb-16">
+        <!-- <a-col :span="6" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -273,18 +277,30 @@
               <div class="fs-15 fw-500 cr-black">Resepsionis 1x24 Jam</div>
             </div>
           </div>
-        </a-col>
+        </a-col>-->
       </a-row>
     </a-card>
   </div>
 </template>
 <script>
-import informationSideRight from "~/components/contents/details/umrah/information-sideright.vue";
+// import informationSideRight from "~/components/contents/details/umrah/information-sideright.vue";
 export default {
   props: ["data"],
 
-  components: {
-    informationSideRight
+  data() {
+    return {
+      wishlist: false,
+      fasilitas_termasuk: []
+    };
+  },
+
+  created() {
+    this.splitFasilitas();
+  },
+  methods: {
+    splitFasilitas() {
+      this.fasilitas_termasuk = this.$props.data.fasilitas.split("<br>");
+    }
   }
 };
 </script>

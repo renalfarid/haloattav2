@@ -7,7 +7,7 @@
           <div class="w-100">
             <div class="fs-14 fw-400 cr-gray text-uppercase mb-16">Harga Termasuk</div>
             <a-row :gutter="8">
-              <a-col :span="8">
+              <a-col :span="8" v-for="fasilitas in data" :key="fasilitas">
                 <div class="d-flex align-items-center mb-16">
                   <div>
                     <a-avatar
@@ -16,72 +16,7 @@
                       src="/icons/search/tabs/color/visa.svg"
                     />
                   </div>
-                  <div class="fs-15 fw-400 cr-black f-default">Visa Perjalanan</div>
-                </div>
-              </a-col>
-
-              <a-col :span="8">
-                <div class="d-flex align-items-center mb-16">
-                  <div>
-                    <a-avatar
-                      style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;padding: 4px"
-                      class="mr-8"
-                      src="/icons/search/tabs/color/insurance.svg"
-                    />
-                  </div>
-                  <div class="fs-15 fw-400 cr-black f-default">Asuransi Perjalanan</div>
-                </div>
-              </a-col>
-
-              <a-col :span="8">
-                <div class="d-flex align-items-center mb-16">
-                  <div>
-                    <a-avatar
-                      style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;padding: 4px"
-                      class="mr-8"
-                      src="/icons/search/tabs/color/handling.svg"
-                    />
-                  </div>
-                  <div class="fs-15 fw-400 cr-black f-default">Handling Bandara</div>
-                </div>
-              </a-col>
-
-              <a-col :span="8">
-                <div class="d-flex align-items-center mb-16">
-                  <div>
-                    <a-avatar
-                      style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;padding: 4px"
-                      class="mr-8"
-                      src="/icons/search/tabs/color/manasik.svg"
-                    />
-                  </div>
-                  <div class="fs-15 fw-400 cr-black f-default">Manasik</div>
-                </div>
-              </a-col>
-
-              <a-col :span="8">
-                <div class="d-flex align-items-center mb-16">
-                  <div>
-                    <a-avatar
-                      style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;padding: 4px"
-                      class="mr-8"
-                      src="/icons/search/tabs/color/equipment.svg"
-                    />
-                  </div>
-                  <div class="fs-15 fw-400 cr-black f-default">Perlengkapan Umrah</div>
-                </div>
-              </a-col>
-
-              <a-col :span="8">
-                <div class="d-flex align-items-center mb-16">
-                  <div>
-                    <a-avatar
-                      style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;padding: 4px"
-                      class="mr-8"
-                      src="/icons/search/tabs/color/tourleader.svg"
-                    />
-                  </div>
-                  <div class="fs-15 fw-400 cr-black f-default">Tour Leader</div>
+                  <div class="fs-15 fw-400 cr-black f-default">{{fasilitas}}</div>
                 </div>
               </a-col>
             </a-row>
@@ -91,3 +26,8 @@
     </a-card>
   </div>
 </template>
+<script>
+export default {
+  props: ["data"]
+};
+</script>
