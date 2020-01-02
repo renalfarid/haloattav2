@@ -88,9 +88,6 @@ export default {
       sidebar: {}
     };
   },
-  // created() {
-  //   this.getdetail();
-  // },
   async asyncData({ query, store }) {
     let data = [];
 
@@ -122,33 +119,6 @@ export default {
     toggleWishlist() {
       this.wishlist = !this.wishlist;
     }
-    // async getdetail() {
-    //   let params = this.$route.query;
-    //   // console.log(params);
-    //   axios
-    //     .post(process.env.baseUrl + "la/detail", {
-    //       kode_produk: params.kode_produk
-    //     })
-    //     .then(response => {
-    //       // console.log(response);
-    //       this.dataLA = response.data.data;
-
-    //       this.sidebar = {
-    //         program_hari: response.data.data.program_hari,
-    //         harga_quad: response.data.data.harga_quad,
-    //         harga_triple: response.data.data.harga_triple,
-    //         harga_double: response.data.data.harga_double
-    //       };
-
-    //       // console.log(this.sidebar.harga.quad);
-
-    //       // this.$store.commit("la/setLa", response.data.data); // mutating to store for client rendering
-    //       // Cookie.set("la", response.data.data); // saving token in cookie for server rendering
-    //     })
-    //     .catch(err => {
-    //       console.log("error", err);
-    //     });
-    // }
   },
   components: {
     informationAccommodation,

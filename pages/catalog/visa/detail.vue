@@ -23,26 +23,26 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <expandable-image src="/visa/package/v1.jpg" />
+            <expandable-image :src="item.informasi.gambar" />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <expandable-image src="/visa/package/v2.jpg" />
+                <expandable-image :src="item.informasi.gambar" />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <expandable-image src="/visa/package/v3.jpg" />
+                <expandable-image :src="item.informasi.gambar" />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <expandable-image src="/visa/package/v4.jpg" />
+            <expandable-image :src="item.informasi.gambar" />
           </div>
         </a-col>
       </a-row>
@@ -86,26 +86,27 @@ export default {
       sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
+  async asyncData({ query, store }) {
+    let data = [];
+
+    const myRespone = await axios.post(process.env.baseUrl + "visa/detail", {
+      kode_produk: query.kode_produk
+    });
+
+    return {
+      item: {
+        informasi: myRespone.data.data,
+        ulasan: myRespone.data.data2.ulasan
+      },
+      loading: false,
+      sidebar: {
+        durasi: myRespone.data.data.duration_stay,
+        harga: myRespone.data.data.harga_jual
+      }
+    };
   },
   methods: {
-    moment,
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "visa/detail", {
-          kode_produk: params.kode_produk
-        })
-        .then(response => {
-          this.item = response.data.data;
-          this.loading = false;
-          this.sidebar = {
-            durasi: response.data.data.duration_stay,
-            harga: response.data.data.harga_jual
-          };
-        });
-    }
+    moment
   },
   components: {
     informationVisa,

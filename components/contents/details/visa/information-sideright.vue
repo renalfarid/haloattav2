@@ -1,6 +1,6 @@
 <template>
   <div class="ant-affix--card">
-    <a-card class="ant-card--package-information mb-16">
+    <!-- <a-card class="ant-card--package-information mb-16">
       <div class="p-16">
         <div class="d-flex align-items-center">
           <div class="fs-15 fw-500 cr-black f-default">Informasi Penting</div>
@@ -45,14 +45,14 @@
           </div>
         </div>
       </div>
-    </a-card>
+    </a-card>-->
 
     <a-card class="ant-card--package-information">
       <div class="p-16">
-        <div class="d-flex align-items-center mb-8">
+        <!-- <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
           <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">-</div>
-        </div>
+        </div>-->
         <div class="d-flex align-items-center">
           <div class="ant-package--info fs-14 fw-400 cr-black">Durasi</div>
           <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{data.durasi}} Hari</div>
