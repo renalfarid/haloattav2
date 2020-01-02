@@ -39,7 +39,11 @@ export default {
     });
 
     return {
-      item: myRespone.data.data,
+      item: {
+        informasi: myRespone.data.data,
+        hotel_mekkah: myRespone.data.data2.hotel_mekkah,
+        hotel_madinah: myRespone.data.data2.hotel_madinah
+      },
       sidebar: {
         program_hari: myRespone.data.data.program_hari,
         harga_quad: myRespone.data.data.harga_quad,
