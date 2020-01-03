@@ -26,8 +26,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Paket Umrah</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan paket umrah sesuai kebutuhan anda
               </p>
             </div>
           </a-card>
@@ -40,8 +39,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Tiket Group</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan tiket pesawat berbagai maskapai untuk kelancaran perjalanan anda
               </p>
             </div>
           </a-card>
@@ -54,8 +52,8 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">LA Akomodasi</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan perusahaan jasa Land Arrangement (LA) 
+                resmi yang melayani para tamu Allah selama di kota suci Makkah Al Mukarromah dan Madinah Al Munawwaroh.
               </p>
             </div>
           </a-card>
@@ -71,8 +69,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Visa Perjalanan</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan vendor/suplier visa untuk memudah pengguna untuk membuat paket umroh.
               </p>
             </div>
           </a-card>
@@ -85,8 +82,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Asuransi Perjalanan</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan asuransi untuk keamanan dan kenyamanan penyelengaraan ibadah umroh dan haji
               </p>
             </div>
           </a-card>
@@ -99,8 +95,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Handling Domestik</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan layanan handling untuk memberikan kemudahan bagi pengguna aplikasi khususnya travel atau umaroh fitur ini merupakan keunggulan dari aplikasi haloatta
               </p>
             </div>
           </a-card>
@@ -115,8 +110,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Room Manasik</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan Ruang Manasik untuk mempersiapkan kematangan dalam melakukan ibadah umroh
               </p>
             </div>
           </a-card>
@@ -129,8 +123,8 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Perlengkapan</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan perlengkapan umrah yang memberikan kemudahan seluruh Travel, Umaroh, Vendor, dan Jamaah 
+                untuk mendapatkan informasi harga, merk, ukuran, suplier, serta dapat bertransaksi langsung
               </p>
             </div>
           </a-card>
@@ -143,8 +137,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Tour Leader</h3>
               <p class="fs-16 fw-400 mb-0">
-                Lorem ipsum dolor sit amet
-                consectetur adipisicing elit
+                Beragam pilihan Tour leader baik perusahaan dan perorangan yang besertifikat dan berpengalaman
               </p>
             </div>
           </a-card>
