@@ -14,7 +14,7 @@
               <a-col :span="8" class="text-right">
                 <a-avatar
                   :size="64"
-                  :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                  :style="{ marginRight: '0', backgroundImage: `url(${data.foto})` }"
                   class="brand-vendor ml-auto"
                 />
               </a-col>

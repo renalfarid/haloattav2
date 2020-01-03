@@ -5,7 +5,7 @@
       <div class="container">
         <a-row :gutter="32">
           <a-col :span="17">
-            <informationOrder :la="la" :umroh="umroh" :tiket="tiket" />
+            <informationOrder :la="la" :kelengkapan="kelengkapan" :umroh="umroh" :tiket="tiket" />
           </a-col>
           <a-col :span="7">
             <informationSideRight :harga="harga" :umroh="umrohsidebar" />
@@ -34,7 +34,8 @@ export default {
       tiket: "",
       umroh: "",
       umrohsidebar: {},
-      harga: ""
+      harga: "",
+      kelengkapan: ""
     };
   },
   async asyncData({ query }) {
@@ -49,6 +50,7 @@ export default {
       la: getRespone.la,
       tiket: getRespone.tiket,
       umroh: getRespone.umroh,
+      kelengkapan: getRespone.kelengkapan,
 
       harga: getRespone.harga,
       umrohsidebar: {
@@ -56,7 +58,9 @@ export default {
         program_hari: getRespone.umroh.jumlah_hari,
         kelas_bintang: getRespone.umroh.kelas_bintang,
         nama: getRespone.umroh.nama,
-        foto_vendor: getRespone.umroh.foto
+        foto_vendor: getRespone.umroh.foto,
+        kelengkapan: getRespone.kelengkapan,
+        nama_vendor: getRespone.umroh.nama_vendor
       }
     };
   },

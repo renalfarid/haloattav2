@@ -42,7 +42,8 @@ export default {
     return {
       item: myRespone.data.data,
       sidebar: {
-        harga: myRespone.data.data.harga_satuan
+        harga: myRespone.data.data.harga_satuan,
+        durasi: myRespone.data.data.durasi_perlindungan
       }
     };
   },

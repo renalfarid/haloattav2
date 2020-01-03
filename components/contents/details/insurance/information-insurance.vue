@@ -63,7 +63,9 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Durasi</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">30 Hari</div>
+                    <div
+                      class="fs-15 fw-500 cr-black text-capitalize"
+                    >{{data.durasi_perlindungan}} Hari</div>
                   </div>
                 </div>
               </a-col>
@@ -95,7 +97,7 @@
     >
       <div class="fs-16 fw-500 cr-black mb-24">Manfaat Asuransi</div>
       <a-row :gutter="8">
-        <a-col :span="12" class="mb-16">
+        <a-col :span="12" class="mb-16" v-for="kelebihan in manfaat" :key="kelebihan">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -104,46 +106,7 @@
               icon="check"
             />
             <div>
-              <div class="fs-15 fw-500 cr-black">Santunan Kematian akibat kecelakaan</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="12" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Manfaat Biaya Medis</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="12" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Kehilangan atau Kerusakan Bagasi</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="12" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Manfaat Pembatalan Perjalanan</div>
+              <div class="fs-15 fw-500 cr-black">{{kelebihan}}</div>
             </div>
           </div>
         </a-col>
@@ -187,13 +150,20 @@ export default {
   },
   data() {
     return {
-      wishlist: false
+      wishlist: false,
+      manfaat: []
     };
+  },
+  created() {
+    this.splitManfaat();
   },
   methods: {
     moment,
     toggleWishlist() {
       this.wishlist = !this.wishlist;
+    },
+    splitManfaat() {
+      this.manfaat = this.$props.data.deskripsi.split("\r\n");
     }
   }
 };

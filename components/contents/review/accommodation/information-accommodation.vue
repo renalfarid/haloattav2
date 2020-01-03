@@ -7,9 +7,7 @@
           <div class="w-100">
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
-                <div
-                  class="fs-28 fw-600 f-default cr-black"
-                >LA Akomodasi Umrah September Madinah Atta Tours</div>
+                <div class="fs-28 fw-600 f-default cr-black">{{data.informasi.nama}}</div>
               </a-col>
               <a-col :span="8">
                 <div class="d-flex align-end align-items-center text-right">
@@ -26,7 +24,7 @@
                   </div>
                   <a-avatar
                     size="large"
-                    :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                    :style="{ marginRight: '0', backgroundImage: `url(${data.informasi.foto})` }"
                     class="brand-vendor ml-16"
                   />
                 </div>
@@ -35,16 +33,16 @@
 
             <a-row :gutter="16" type="flex" justify="space-around" align="middle" class="mt-16">
               <a-col :span="12">
-                <a-badge status="warning" :text="data.tipe" class="text-uppercase m-0" />
+                <a-badge status="warning" :text="data.informasi.tipe" class="text-uppercase m-0" />
               </a-col>
               <a-col :span="12" class="text-right">
                 <span
                   class="fs-14 fw-400 cr-gray text-capitalize"
-                >Dari : {{moment("2019-10-24", "YYYY-MM-DD").format('LL')}}</span>
+                >Dari(belum ada) : {{moment("2019-10-24", "YYYY-MM-DD").format('LL')}}</span>
                 <a-divider type="vertical"></a-divider>
                 <span
                   class="fs-14 fw-400 cr-gray text-capitalize"
-                >Sampai : {{moment("2019-10-24", "YYYY-MM-DD").format('LL')}}</span>
+                >Sampai(belum ada) : {{moment("2019-10-24", "YYYY-MM-DD").format('LL')}}</span>
               </a-col>
             </a-row>
           </div>
@@ -60,11 +58,11 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Makkah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>{{data.nama_hotel_mekkah}}</span>
+                    <span>{{data.hotel_mekkah.nama_hotel}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
-                  <a-rate class="fs-16" :defaultValue="3" disabled />
+                  <a-rate class="fs-16" :defaultValue="data.hotel_mekkah.rating" disabled />
                 </div>
               </div>
             </div>
@@ -84,7 +82,9 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Durasi Inap</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">3 Hari Makkah</div>
+                    <div
+                      class="fs-15 fw-500 cr-black text-capitalize"
+                    >{{data.informasi.durasi_inap_mekkah}} Hari Makkah</div>
                   </div>
                 </div>
               </a-col>
@@ -100,7 +100,7 @@
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
                     <div
                       class="fs-15 fw-500 cr-black"
-                    >{{(data.jarak_hotel !=null)?data.jarak_hotel:'kosong'}}</div>
+                    >{{(data.hotel_mekkah.jarak_hotel !=null)?data.hotel_mekkah.jarak_hotel:'kosong'}}</div>
                   </div>
                 </div>
               </a-col>
@@ -116,7 +116,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: `url(${data.images_hotel})` }"
+                    :style="{ backgroundImage: `url(${data.hotel_mekkah.img_room_double})` }"
                   ></div>
                 </div>
               </a-col>
@@ -124,7 +124,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l2.jpg)' }"
+                    :style="{ backgroundImage: `url(${data.hotel_mekkah.img_room_triple})` }"
                   ></div>
                 </div>
               </a-col>
@@ -132,7 +132,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l3.jpg)' }"
+                    :style="{ backgroundImage: `url(${data.hotel_mekkah.img_room_quard})` }"
                   ></div>
                 </div>
               </a-col>
@@ -155,11 +155,11 @@
                 <div>
                   <div class="fs-15 fw-400 cr-gray">Hotel Madinah</div>
                   <div class="fs-15 fw-500 cr-black text-uppercase">
-                    <span>{{data.nama_hotel_madinah}}</span>
+                    <span>{{data.hotel_madinah.nama_hotel}}</span>
                   </div>
                 </div>
                 <div class="ml-auto">
-                  <a-rate class="fs-16" :defaultValue="3" disabled />
+                  <a-rate class="fs-16" :defaultValue="data.hotel_madinah.rating" disabled />
                 </div>
               </div>
             </div>
@@ -179,7 +179,9 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Durasi Inap</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">3 Hari Makkah</div>
+                    <div
+                      class="fs-15 fw-500 cr-black text-capitalize"
+                    >{{data.informasi.durasi_inap_madinah}} Hari Makkah</div>
                   </div>
                 </div>
               </a-col>
@@ -195,7 +197,7 @@
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
                     <div
                       class="fs-15 fw-500 cr-black"
-                    >{{(data.jarak_hotel !=null)?data.jarak_hotel:'kosong'}}</div>
+                    >{{(data.hotel_madinah.jarak_hotel !=null)?data.hotel_madinah.jarak_hotel:'kosong'}}</div>
                   </div>
                 </div>
               </a-col>
@@ -211,7 +213,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l4.jpg)' }"
+                    :style="{ backgroundImage: `url(${data.hotel_madinah.img_room_double})` }"
                   ></div>
                 </div>
               </a-col>
@@ -219,7 +221,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l5.jpg)' }"
+                    :style="{ backgroundImage: `url(${data.hotel_madinah.img_room_triple})` }"
                   ></div>
                 </div>
               </a-col>
@@ -227,7 +229,7 @@
                 <div class="ant-package--images-large">
                   <div
                     class="ant-package--images-cover"
-                    :style="{ backgroundImage: 'url(/akomodasi/hotel/l6.jpg)' }"
+                    :style="{ backgroundImage: `url(${data.hotel_madinah.img_room_quard})` }"
                   ></div>
                 </div>
               </a-col>
@@ -240,9 +242,8 @@
     <!-- fasilitas -->
     <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
-      <p>{{data.fasilitas_termasuk}}</p>
-      <a-row :gutter="8">
-      </a-row>
+      <p>{{data.informasi.fasilitas_termasuk}}</p>
+      <a-row :gutter="8"></a-row>
     </a-card>
   </section>
 </template>
@@ -261,7 +262,7 @@ export default {
   },
   methods: {
     splitFasilitas() {
-      // this.fasilitas_termasuk = this.data.fasilitas_termasuk.split("<br>");
+      // this.fasilitas_termasuk = this.data.informasi.fasilitas_termasuk.split("<br>");
     },
     moment,
     toggleWishlist() {

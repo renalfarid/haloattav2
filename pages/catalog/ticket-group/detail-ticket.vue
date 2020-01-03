@@ -25,7 +25,7 @@
         <a-col :span="10">
           <div class="ant-package--images-large">
             <expandable-image
-              :src="item.gambar_maskapai != '' ? item.gambar_maskapai : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+              :src="gambar_maskapai[0].gambar != '' ? gambar_maskapai[0].gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
             />
           </div>
         </a-col>
@@ -33,19 +33,25 @@
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <expandable-image src="/maskapai/garuda/t6.jpg" />
+                <expandable-image
+                  :src="gambar_maskapai[1].gambar != '' ? gambar_maskapai[1].gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <expandable-image src="/maskapai/garuda/t7.jpg" />
+                <expandable-image
+                  :src="gambar_maskapai[2].gambar != '' ? gambar_maskapai[2].gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <expandable-image src="/maskapai/garuda/t8.jpg" />
+            <expandable-image
+              :src="gambar_maskapai[3].gambar != '' ? gambar_maskapai[3].gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+            />
           </div>
         </a-col>
       </a-row>
@@ -56,7 +62,7 @@
         <a-row :gutter="32" v-sticky="stickyOptions">
           <a-col :span="17">
             <div class="ant-layout--package-details-body">
-              <information-ticket :data="item" />
+              <information-ticket :data="item" :vendor="vendor" :review="review" />
             </div>
           </a-col>
 
@@ -92,30 +98,36 @@ export default {
         topSpacing: 140,
         bottomSpacing: 0
       },
-      sidebar: {}
+      sidebar: {},
+      gambar_maskapai: [],
+      vendor: "",
+      review: ""
     };
   },
-  created: function() {
-    this.getdata();
-  },
-  methods: {
-    moment,
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "tiket/detail", {
-          kode_produk: params.kode_produk
-        })
-        .then(response => {
-          this.item = response.data.data;
-          this.loading = false;
+  async asyncData({ query, store }) {
+    let data = [];
 
-          this.sidebar = {
-            berangkat: response.data.data.tanggal_keberangkatan,
-            harga: response.data.data.harga_jual
-          };
-        });
-    }
+    const myRespone = await axios.post(process.env.baseUrl + "tiket/detail", {
+      kode_produk: query.kode_produk
+    });
+
+    return {
+      item: myRespone.data.data,
+      loading: false,
+      gambar_maskapai: myRespone.data.data2.foto_maskapai,
+      vendor: myRespone.data.data2.vendor,
+      review: myRespone.data.data2.ulasan,
+
+      sidebar: {
+        berangkat: myRespone.data.data.tanggal_keberangkatan,
+        harga: myRespone.data.data.harga_jual,
+        program_hari: myRespone.data.data.program_hari
+      }
+    };
+  },
+
+  methods: {
+    moment
   },
   components: {
     informationTicket,

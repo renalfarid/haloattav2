@@ -10,8 +10,14 @@ export const mutations = {
   }
 };
 
-export const getters = {
-  umroh(state) {
-    return state.umroh;
+export const actions = {
+  setUmroh({ commit }, data) {
+    commit('setUmroh', data);
   }
 };
+
+// export const getters = {
+//   umroh(state) {
+//     return state.umroh;
+//   }
+// };
