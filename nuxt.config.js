@@ -43,6 +43,9 @@ module.exports = {
     modules: [
         ["@nuxtjs/moment"],
         ["@nuxtjs/axios"],
+        ['nuxt-vuex-localstorage', {
+            mode: 'debug'
+        }],
         ["@nuxtjs/proxy"],
         [
             "vue-currency-filter/nuxt",
