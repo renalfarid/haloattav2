@@ -2,7 +2,7 @@
   <div class="ant-layout--package-details">
     <div class="ant-layout--results-space-small"></div>
     <div class="info-affix">
-      <a-affix :offsetTop="64">
+      <a-affix :offsetTop="0">
         <div class="container">
           <a-row :gutter="32">
             <a-col :span="17">
@@ -24,26 +24,34 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <expandable-image src="/asuransi/package/a1.png" />
+            <expandable-image
+              :src="item.gambar || 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+            />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <expandable-image src="/asuransi/package/a2.png" />
+                <expandable-image
+                  :src="item.gambar || 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <expandable-image src="/asuransi/package/a3.png" />
+                <expandable-image
+                  :src="item.gambar || 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <expandable-image src="/asuransi/package/a4.png" />
+            <expandable-image
+              :src="item.gambar || 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+            />
           </div>
         </a-col>
       </a-row>
@@ -60,7 +68,7 @@
         <a-col :span="7">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
-              <information-sideright />
+              <information-sideright :data="sidebar" />
             </div>
           </div>
         </a-col>
@@ -82,25 +90,30 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
-  created() {
-    this.getdata();
+  async asyncData({ query, store }) {
+    let data = [];
+
+    const myRespone = await axios.post(
+      process.env.baseUrl + "asuransi/detail",
+      {
+        kode_produk: query.kode_produk
+      }
+    );
+
+    return {
+      item: myRespone.data.data,
+      loading: false,
+      sidebar: {
+        harga: myRespone.data.data.harga_satuan,
+        durasi: myRespone.data.data.durasi_perlindungan
+      }
+    };
   },
-  methods: {
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "asuransi/detail", {
-          kode_produk: params.kode_produk
-        })
-        .then(response => {
-          this.item = response.data.data;
-          this.loading = false;
-        });
-    }
-  },
+  methods: {},
   components: {
     informationInsurance,
     informationSideright

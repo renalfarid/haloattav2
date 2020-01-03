@@ -24,17 +24,19 @@
                 data-aos="fade-up"
                 data-aos-duration="1200"
               >
-                <nuxt-link to="/catalog/manasik/detail" class="d-block">
+                <nuxt-link
+                  :to="'/catalog/manasik/detail?kode_produk='+item.kode_produk"
+                  class="d-block"
+                >
                   <a-card class="ant-card-package-small">
                     <div slot="cover">
-                      <div
-                        class="ant-card-cover--images"
-                        v-lazy:background-image="item.images_package"
-                      >
+                      <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                         <div class="ant-card--overlay-block">
                           <div class="d-flex align-items-center h-100">
                             <a-button>
-                              <nuxt-link to="/catalog/manasik/detail">Lihat detail</nuxt-link>
+                              <nuxt-link
+                                :to="'/catalog/manasik/detail?kode_produk='+item.kode_produk"
+                              >Lihat detail</nuxt-link>
                             </a-button>
                           </div>
                         </div>
@@ -54,10 +56,10 @@
                             </div>
                             <div
                               class="fs-13 fw-400 cr-gray f-default text-ellipsis"
-                            >{{item.provider}}</div>
+                            >{{item.nama_vendor}}</div>
                           </div>
                         </div>
-                        <div class="ant-card-meta-title--package fs-15 fw-500">{{item.name_manasik}}</div>
+                        <div class="ant-card-meta-title--package fs-15 fw-500">{{item.nama}}</div>
                       </div>
 
                       <div slot="description">
@@ -69,7 +71,7 @@
                           </div>
                           <div
                             class="ant-card-meta-description--bottom-left fw-500 cr-primary text-ellipsis ml-auto"
-                          >Rp{{item.price}}</div>
+                          >{{item.harga_jual | currency}}</div>
                         </div>
                       </div>
                     </a-card-meta>
@@ -103,22 +105,32 @@ export default {
       data: []
     };
   },
-  created() {
-    this.loadMore();
+  async asyncData() {
+    const myRespone = await axios.get(process.env.baseUrl + "manasik/all", {
+      params: {
+        per_page: "8"
+      }
+    });
+
+    return {
+      loading: false,
+      busy: false,
+      data: myRespone.data.data.data
+    };
   },
   methods: {
     loadMore() {
-      console.log("Adding 6 more data results");
-      this.busy = true;
-      axios.get("/dataManasik.json").then(response => {
-        const append = response.data.slice(
-          this.data.length,
-          this.data.length + this.limit
-        );
-        this.data = this.data.concat(append);
-        this.loading = false;
-        this.busy = false;
-      });
+      // console.log("Adding 6 more data results");
+      // this.busy = true;
+      // axios.get("/dataManasik.json").then(response => {
+      //   const append = response.data.slice(
+      //     this.data.length,
+      //     this.data.length + this.limit
+      //   );
+      //   this.data = this.data.concat(append);
+      //   this.loading = false;
+      //   this.busy = false;
+      // });
     }
   },
   components: {

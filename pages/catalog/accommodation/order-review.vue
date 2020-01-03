@@ -8,7 +8,7 @@
             <informationAccommodation :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight />
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -29,26 +29,31 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
+  async asyncData({ query }) {
+    const myRespone = await axios.post(process.env.baseUrl + "la/detail", {
+      kode_produk: query.kode
+    });
+
+    return {
+      item: {
+        informasi: myRespone.data.data,
+        hotel_mekkah: myRespone.data.data2.hotel_mekkah,
+        hotel_madinah: myRespone.data.data2.hotel_madinah
+      },
+      sidebar: {
+        program_hari: myRespone.data.data.program_hari,
+        harga_quad: myRespone.data.data.harga_quad,
+        harga_triple: myRespone.data.data.harga_triple,
+        harga_double: myRespone.data.data.harga_double
+      }
+    };
   },
   methods: {
-    moment,
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "la/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
-
-          this.loading = false;
-        });
-    }
+    moment
   },
   components: {
     informationAccommodation,

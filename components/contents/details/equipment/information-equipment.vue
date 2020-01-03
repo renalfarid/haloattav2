@@ -7,7 +7,7 @@
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
                 <div class="fs-28 fw-600 f-default cr-black">
-                  <span>Kain Ihram Umrah</span>
+                  <span>{{data.nama}}</span>
                 </div>
               </a-col>
 
@@ -26,7 +26,7 @@
                   </div>
                   <a-avatar
                     size="large"
-                    :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                    :style="{ marginRight: '0', backgroundImage: `url(${data.foto != '' ? data.foto :'https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png'})` }"
                     class="brand-vendor ml-16"
                   />
                 </div>
@@ -75,6 +75,7 @@ import policy from "~/components/contents/details/equipment/policy.vue";
 import faq from "~/components/contents/details/equipment/faq.vue";
 import moment from "moment";
 export default {
+  props: ["data"],
   components: {
     commentsEquipment,
     vendorEquipment,

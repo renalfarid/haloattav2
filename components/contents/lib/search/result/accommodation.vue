@@ -44,13 +44,13 @@
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="umrah"
+                  :defaultValue="1"
                   placeholder="Pilih LA Akomodasi"
                   style="width: 100%"
                   :showArrow="false"
                   size="large"
                 >
-                  <a-select-option value="umrah">Umrah</a-select-option>
+                  <a-select-option :value="1">Umrah</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
@@ -62,21 +62,16 @@
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="Program 9 Hari"
+                  :defaultValue="1"
                   placeholder="Pilih Program Hari"
-                  optionFilterProp="children"
                   style="width: 100%"
                   :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-                  <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-                  <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
+                  <a-select-option :value="1">Semua Program Hari</a-select-option>
+                  <a-select-option :value="2">Program 9 Hari</a-select-option>
+                  <a-select-option :value="3">Program 10 Hari</a-select-option>
+                  <a-select-option :value="4">Program 11 Hari</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
@@ -89,9 +84,9 @@
                 <a-date-picker
                   size="large"
                   style="width: 100%"
-                  v-decorator="['tanggal_checkIn',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
                   :disabledDate="disabledDate"
                   placeholder="Pilih Tanggal Keberangkatan"
+                  v-decorator="['tanggal_checkIn',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
                 >
                   <a-icon class="d-none" slot="suffixIcon" type="calendar" />
                 </a-date-picker>
@@ -163,25 +158,6 @@ export default {
   },
   methods: {
     moment,
-    callback(val) {
-      console.log(val);
-    },
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
-    filterOption(input, option) {
-      return (
-        option.componentOptions.children[0].text
-          .toLowerCase()
-          .indexOf(input.toLowerCase()) >= 0
-      );
-    },
     showSearch() {
       this.visibleSearch = !this.visibleSearch;
     },
@@ -192,7 +168,6 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
           return this.$router.push("/accommodation/result");
         }
       });

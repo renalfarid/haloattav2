@@ -1,6 +1,6 @@
 <template>
   <div class="ant-affix--card mt-24">
-    <a-card class="ant-card--package-information mb-16">
+    <!-- <a-card class="ant-card--package-information mb-16">
       <div class="p-16">
         <div class="d-flex align-items-center">
           <div class="fs-15 fw-500 cr-black f-default">Informasi Penting</div>
@@ -45,17 +45,17 @@
           </div>
         </div>
       </div>
-    </a-card>
+    </a-card>-->
 
     <a-card class="ant-card--package-review">
       <div class="p-16">
-        <div class="d-flex align-items-center mb-8">
+        <!-- <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
-        </div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">-</div>
+        </div>-->
         <div class="d-flex align-items-center">
           <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{data.duration_stay}} Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{data.durasi}} Hari</div>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
           <div class="fs-14 fw-400 cr-gray f-default">Tamu ({{qty}})</div>
           <div class="fs-14 fw-400 cr-black f-default ml-auto">
             <span class="cr-gray mr-8">x</span>
-            {{data.harga_jual | currency}}
+            {{data.harga | currency}}
           </div>
         </div>
 
@@ -121,14 +121,15 @@ export default {
         query: {
           type: params.type,
           kode: params.kode,
-          qty: this.qty
+          qty: this.qty,
+          total: this.total
         }
       });
     },
     getdata() {
       let params = this.$route.query;
       this.qty = params.qty;
-      this.total = this.qty * this.$props.data.harga_jual;
+      this.total = params.qty * this.$props.data.harga;
     }
   }
 };

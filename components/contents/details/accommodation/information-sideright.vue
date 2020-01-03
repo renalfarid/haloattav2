@@ -1,6 +1,6 @@
 <template>
   <div class="ant-affix--card">
-    <a-card class="ant-card--package-information mb-16">
+    <!-- <a-card class="ant-card--package-information mb-16">
       <div class="p-16">
         <div class="d-flex align-items-center">
           <div class="fs-15 fw-500 cr-black f-default">Informasi Penting</div>
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-    </a-card>
+    </a-card>-->
 
     <a-card class="ant-card--package-information">
       <div class="p-16">
@@ -53,19 +53,19 @@
       </div>
       <a-divider :style="{margin: '0'}" />
       <div class="p-16">
-        <div class="d-flex align-items-center mb-8">
+        <!-- <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">Berangkat</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">10 September 2019</div>
-        </div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">-</div>
+        </div>-->
         <div class="d-flex align-items-center">
           <div class="ant-package--info fs-14 fw-400 cr-black">Program Hari</div>
-          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">9 Hari</div>
+          <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">{{data.program_hari}} Hari</div>
         </div>
       </div>
 
       <a-divider :style="{margin: '0'}" />
 
-      <div class="p-16">
+      <!-- <div class="p-16">
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Jumlah Tamu</div>
@@ -84,14 +84,16 @@
         </div>
       </div>
 
-      <a-divider :style="{margin: '0'}" />
+      <a-divider :style="{margin: '0'}" />-->
 
       <div class="p-16">
         <div class="ant-package--title fs-15 fw-500 cr-black mb-16">Pengaturan Room</div>
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Quad Room</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray">Rp4.000.000 /pax</div>
+            <div
+              class="ant-package--subtitle fs-13 fw-400 cr-gray"
+            >{{data.harga_quad | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -109,7 +111,9 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Triple Room</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp5.000.000 /pax</div>
+            <div
+              class="ant-package--subtitle fs-13 fw-400 cr-gray f-default"
+            >{{data.harga_triple | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -127,7 +131,9 @@
         <div class="d-flex align-items-center">
           <div>
             <div class="ant-package--title fs-15 fw-500 cr-black">Double Room</div>
-            <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default">Rp7.000.000 /pax</div>
+            <div
+              class="ant-package--subtitle fs-13 fw-400 cr-gray f-default"
+            >{{data.harga_double | currency}} /pax</div>
           </div>
           <div class="ml-auto">
             <number-input
@@ -147,26 +153,34 @@
 
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Quad (4)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Quad ({{quad}})</div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 4.000.000</div>
+          <div
+            class="fs-14 fw-400 cr-black f-default text-right w-65"
+          >{{data.harga_quad * quad | currency}}</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Triple (3)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Triple ({{triple}})</div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 5.000.000</div>
+          <div
+            class="fs-14 fw-400 cr-black f-default text-right w-65"
+          >{{data.harga_triple * triple | currency}}</div>
         </div>
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">Double (2)</div>
+          <div class="fs-14 fw-400 cr-black f-default w-35">Double ({{double}})</div>
           <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">Rp 7.000.000</div>
+          <div
+            class="fs-14 fw-400 cr-black f-default text-right w-65"
+          >{{data.harga_double * double | currency}}</div>
         </div>
 
         <a-divider :style="{margin: '12px 0'}" />
 
         <div class="d-flex align-items-center mb-24">
           <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">Rp 156.000.000</div>
+          <div
+            class="fs-15 fw-500 cr-black f-default text-right w-65"
+          >{{(quad * data.harga_quad)+(double * data.harga_double)+ (triple * data.harga_triple) | currency}}</div>
         </div>
 
         <div :style="{margin: '16px 0'}">
@@ -194,17 +208,20 @@
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
+  props: ["data"],
   data() {
     return {
       stickyEnabled: true,
       qty: 9,
-      quad: 4,
-      triple: 3,
-      double: 2
+      quad: 0,
+      triple: 0,
+      double: 0
     };
   },
   methods: {
+    moment,
     nextOrderReview() {
       let params = this.$route.query;
       this.$router.push({

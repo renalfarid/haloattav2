@@ -1,15 +1,24 @@
 <template>
   <div class="ant-layout--results-search">
-    <a-card class="ant-card--results-info b-shadow b-solid b-radius" :bordered="false">
+    <a-card
+      class="ant-card--results-info b-shadow b-solid b-radius"
+      :bordered="false"
+    >
       <div class="d-flex align-items-center">
         <div class="ant-card--results-info-left d-flex align-items-center">
           <div>
-            <a-avatar style="backgroundColor: #707070" class="d-flex align-items-center" :size="64">
+            <a-avatar
+              style="backgroundColor: #707070"
+              class="d-flex align-items-center"
+              :size="64"
+            >
               <i class="icon-equipment-white"></i>
             </a-avatar>
           </div>
           <div>
-            <div class="ant-card--results-info-title">Perlengkapan Umrah Makassar</div>
+            <div class="ant-card--results-info-title">
+              Perlengkapan Umrah Makassar
+            </div>
             <div class="ant-card--results-info-subtitle">
               <span>Makassar</span>
               <a-divider type="vertical" />
@@ -21,7 +30,9 @@
           class="ant-card--results-info-right ml-auto"
           v-bind:class="visibleSearch ? 'd-none' : ''"
         >
-          <a-button @click="showSearch" class="b-shadow b-radius">Ganti Pencarian</a-button>
+          <a-button @click="showSearch" class="b-shadow b-radius"
+            >Ganti Pencarian</a-button
+          >
         </div>
       </div>
 
@@ -36,19 +47,14 @@
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="Makassar"
-                  placeholder="Pilih"
-                  optionFilterProp="children"
+                  :defaultValue="1"
+                  placeholder="Pilih Kota"
                   style="width: 100%"
                   :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="Makassar">Makassar</a-select-option>
-                  <a-select-option value="Jakarta">Jakarta</a-select-option>
+                  <a-select-option :value="1">Makassar</a-select-option>
+                  <a-select-option :value="2">Jakarta</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
@@ -60,31 +66,28 @@
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="Perlengkapan Umrah"
+                  :defaultValue="1"
                   placeholder="Pilih Kategori"
-                  optionFilterProp="children"
                   :showArrow="false"
                   style="width: 100%"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="Perlengkapan Umrah">Perlengkapan Umrah</a-select-option>
+                  <a-select-option :value="1"
+                    >Perlengkapan Umrah</a-select-option
+                  >
                 </a-select>
               </a-form-item>
             </a-col>
 
             <a-col :span="6">
-              <a-form-item :style="{ bottom: '-25px' }">
-                <a-button
-                  html-type="submit"
-                  class="btn-search b-shadow b-radius"
-                  size="large"
-                  block
-                >Cari Perlengkapan</a-button>
-              </a-form-item>
+              <a-button
+                html-type="submit"
+                class="btn-search b-shadow b-radius"
+                size="large"
+                :style="{ bottom: '-25px' }"
+                block
+                >Cari Perlengkapan</a-button
+              >
             </a-col>
           </a-row>
         </a-form>
@@ -107,22 +110,6 @@ export default {
   },
   methods: {
     moment,
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
-    filterOption(input, option) {
-      return (
-        option.componentOptions.children[0].text
-          .toLowerCase()
-          .indexOf(input.toLowerCase()) >= 0
-      );
-    },
     disabledDate(current) {
       return current && current < moment().endOf("day");
     },
@@ -130,7 +117,6 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
           return this.$router.push("/catalog/equipment/result");
         }
       });

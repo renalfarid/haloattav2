@@ -1,9 +1,10 @@
 <template>
   <div class="ant-layout--accounts-management-seat">
     <div class="fs-18 fw-500 cr-black">Daftar Pemberangkatan</div>
-    <div
-      class="fs-16 fw-400 cr-gray"
-    >Lengkapi berkas Formulir Keberangkatan Anda, 45 hari sebelum tanggal pemberangkatan</div>
+    <div class="fs-16 fw-400 cr-gray">
+      Lengkapi berkas Formulir Keberangkatan Anda, 45 hari sebelum tanggal
+      pemberangkatan
+    </div>
 
     <a-card :bordered="false" class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16">
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
@@ -38,13 +39,11 @@
             <a-select-option value="Selesai">Selesai</a-select-option>
           </a-select>
         </a-col>
-        <a-col :span="7">
-          
-        </a-col>
+        <a-col :span="7"></a-col>
       </a-row>
     </a-card>
 
-    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataSeat">
+    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataHistory">
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -57,19 +56,19 @@
             <a-row :gutter="16" class="m-0 p-16">
               <a-col :span="8">
                 <div class="fs-14 fw-400 cr-gray">No. Transaksi</div>
-                <div class="fs-14 fw-500 cr-black">{{item.no_transaction}}</div>
+                <div class="fs-14 fw-500 cr-black">{{ item.nomor_transaksi }}</div>
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Program Hari</div>
-                <div class="fs-14 fw-500">{{item.program}}</div>
+                <div class="fs-14 fw-500">-/tidak ada</div>
               </a-col>
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
-                <div class="fs-14 fw-500 cr-black">{{item.date}}</div>
+                <div class="fs-14 fw-500 cr-black">-/tidak ada</div>
               </a-col>
               <a-col :span="5" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
-                <div class="fs-14 fw-500 cr-black">{{item.pax}} Pax</div>
+                <div class="fs-14 fw-500 cr-black">{{ item.pax }} Pax</div>
               </a-col>
             </a-row>
 
@@ -85,34 +84,32 @@
                 <div class="d-flex align-items-center">
                   <div class="mr-8">
                     <a-avatar
-                      v-if="item.products_categorie === 'umrah'"
+                      v-if="item.tipe_produk === 'UMRAH REGULER'"
                       style="backgroundColor: rgb(15, 172, 243);padding: 2px"
                       src="/icons/search/tabs/white/umrah.svg"
                     />
                     <a-avatar
-                      v-if="item.products_categorie === 'tiket'"
+                      v-if="item.tipe_produk === 'Sikopatuh'"
                       style="backgroundColor: rgb(244, 54, 98);padding: 4px"
                       src="/icons/search/tabs/white/ticket.svg"
                     />
                     <a-avatar
-                      v-if="item.products_categorie === 'akomodasi'"
+                      v-if="item.tipe_produk === 'akomodasi'"
                       style="backgroundColor: rgb(5, 203, 176);padding: 4px"
                       src="/icons/search/tabs/white/accommodation.svg"
                     />
                     <a-avatar
-                      v-if="item.products_categorie === 'visa'"
+                      v-if="item.tipe_produk === 'visa'"
                       style="backgroundColor: rgb(82, 196, 26);padding: 4px"
                       src="/icons/search/tabs/white/visa.svg"
                     />
                     <a-avatar
-                      v-if="item.products_categorie === 'insurance'"
+                      v-if="item.tipe_produk === 'insurance'"
                       style="backgroundColor: rgb(255, 124, 10);padding: 4px"
                       src="/icons/search/tabs/white/insurance.svg"
                     />
                   </div>
-                  <div
-                    class="fs-14 fw-500 cr-black f-default text-capitalize"
-                  >{{item.products_name}}</div>
+                  <div class="fs-14 fw-500 cr-black f-default text-capitalize">{{ item.nama_paket }}</div>
                 </div>
               </a-col>
               <a-col :span="5">
@@ -133,13 +130,14 @@
                     :text="item.status_departure"
                     v-if="item.status_departure === 'Selesai'"
                   />
+                  <a-badge status="success" text="-/tidak ada" v-else />
                 </div>
               </a-col>
               <a-col :span="5" class="text-right">
                 <nuxt-link to="/accounts/departure/detail">
                   <span class="fs-14 fw-500 cr-green">
                     Lihat Detail
-                    <a-icon type="right" class="fs-12 ml-8"/>
+                    <a-icon type="right" class="fs-12 ml-8" />
                   </span>
                 </nuxt-link>
               </a-col>
@@ -151,59 +149,8 @@
   </div>
 </template>
 <script>
-const dataSeat = [
-  {
-    no_transaction: "ATT-UMH-14674422219080148",
-    products_categorie: "umrah",
-    products_name:
-      "Paket Umrah Exclusive September 2019, Keberangkatan Makassar",
-    pax: "4",
-    date: "05 Januari 2019",
-    program: "Program 9 Hari",
-    status_departure: "Menunggu Pemberangkatan",
-    status_file: "Berkas Lengkap"
-  },
-  {
-    no_transaction: "ATT-TKT-14674422219080148",
-    products_categorie: "tiket",
-    products_name: "Makassar - Jakarta",
-    pax: "2",
-    date: "10 Januari 2019",
-    program: "Program 9 Hari",
-    status_departure: "Pemberangkatan",
-    status_file: "Berkas Lengkap"
-  },
-  {
-    no_transaction: "ATT-AKM-14674422219080148",
-    products_categorie: "akomodasi",
-    products_name: "Paket haramain 1 Al Hajj",
-    pax: "2",
-    date: "10 Januari 2019",
-    program: "Program 9 Hari",
-    status_departure: "Selesai",
-    status_file: "Berkas Lengkap"
-  },
-  {
-    no_transaction: "ATT-VSI-14674422219080148",
-    products_categorie: "visa",
-    products_name: "Visa Darul Manasek",
-    pax: "2",
-    date: "10 Januari 2019",
-    program: "Program 9 Hari",
-    status_departure: "Menunggu Pemberangkatan",
-    status_file: "Pengumpulan Berkas"
-  },
-  {
-    no_transaction: "ATT-INS-14674422219080148",
-    products_categorie: "insurance",
-    products_name: "Asuransi umrah aswata",
-    pax: "2",
-    date: "10 Januari 2019",
-    program: "Program 9 Hari",
-    status_departure: "Selesai",
-    status_file: "Berkas Lengkap"
-  }
-];
+const Cookie = process.client ? require("js-cookie") : undefined;
+import axios from "axios";
 export default {
   middleware: "authenticated",
   layout: "accounts",
@@ -217,19 +164,49 @@ export default {
   data() {
     return {
       loading: true,
-      dataSeat,
       pagination: {
         onChange: page => {
           console.log(page);
         },
         pageSize: 10
-      }
+      },
+      dataHistory: []
     };
   },
   mounted() {
     setTimeout(() => {
       this.loading = false;
     }, 1500);
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    async getdata() {
+      const token = Cookie.get("auth");
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+
+      let data = {
+        status_bayar: "Lunas"
+      };
+
+      axios
+        .post(process.env.baseUrl + "transaksi/history", data, config)
+        .then(response => {
+          if (response.data.status == 200) {
+            this.dataHistory = response.data.data.data;
+          } else {
+            this.$message.error(response.data.msg);
+          }
+        })
+        .catch(() => {
+          this.$message.success("Salah");
+        });
+    }
   }
 };
 </script>

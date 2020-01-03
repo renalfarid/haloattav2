@@ -139,7 +139,7 @@ export default {
   },
   methods: {
     loadMore() {
-      console.log("Adding 6 more data results");
+      // console.log("Adding 6 more data results");
       this.busy = true;
       axios.get("/dataEquipment.json").then(response => {
         const append = response.data.slice(

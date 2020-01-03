@@ -8,7 +8,7 @@
             <informationInsurance :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight :data="item" />
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -20,6 +20,7 @@ import informationInsurance from "~/components/contents/review/insurance/informa
 import informationSideRight from "~/components/contents/review/insurance/information-sideright.vue";
 import axios from "axios";
 export default {
+  middleware: "authenticated",
   name: "orderReview",
   head() {
     return {
@@ -28,25 +29,23 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
-  },
-  methods: {
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "asuransi/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
+  async asyncData({ query }) {
+    const myRespone = await axios.post(
+      process.env.baseUrl + "asuransi/detail",
+      { kode_produk: query.kode }
+    );
 
-          this.loading = false;
-        });
-    }
+    return {
+      item: myRespone.data.data,
+      sidebar: {
+        harga: myRespone.data.data.harga_satuan,
+        durasi: myRespone.data.data.durasi_perlindungan
+      }
+    };
   },
   components: {
     informationInsurance,

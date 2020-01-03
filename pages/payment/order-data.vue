@@ -368,7 +368,7 @@
               </a-col>
               <!-- card sider -->
               <a-col :span="8">
-                <siderPayment />
+                <siderPayment :total="total" />
               </a-col>
             </a-row>
           </a-col>
@@ -388,6 +388,8 @@
 import siderPayment from "@/pages/payment/sider.vue";
 import moment from "moment";
 import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
+
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result));
@@ -404,18 +406,24 @@ export default {
   },
   data() {
     return {
-      value: 1,
+      value: 2,
       loading: false,
       photoJamaah: "",
       dataPemesan: {
         nama: "",
         nohp: "",
         email: ""
-      }
+      },
+      total: 0
     };
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);
+  },
+  asyncData({ query }) {
+    return {
+      total: query.total
+    };
   },
   methods: {
     moment,
@@ -469,6 +477,8 @@ export default {
         params.type == "VISA" ||
         params.type == "ASURANSI" ||
         params.type == "HANDLING" ||
+        params.type == "TOURLEADER" ||
+        params.type == "PERLENGKAPAN" ||
         params.type == "MANASIK"
       ) {
         data["pax"] = params.qty;
@@ -480,19 +490,45 @@ export default {
         data["dewasa"] = params.dewasa;
         data["anak"] = params.anak;
         data["bayi"] = params.bayi;
+      } else if (params.type == "UMROH") {
+        data["quad"] = params.quad;
+        data["triple"] = params.triple;
+        data["double"] = params.double;
+        data["nomor_voucher"] = [];
       }
+
+      const token = Cookie.get("auth");
 
       const config = {
         headers: {
-          Authorization: "Bearer " + this.$store.state.auth.accessToken
+          Authorization: "Bearer " + token
         }
       };
 
+      let url = "";
+
+      if (params.type == "UMROH") {
+        url = process.env.baseUrl + "transaksi/umroh";
+      } else {
+        url = process.env.baseUrl + "transaksi";
+      }
+
       axios
-        .post(process.env.baseUrl + "transaksi", data, config)
+        .post(url, data, config)
         .then(response => {
           console.log(response);
-          this.$router.push("/accounts");
+          // this.$router.push({
+          //   path: "/accounts/billing/detail",
+          //   query: {
+          //     notrans: response.data.data.notrans
+          //   }
+          // });
+          this.$router.push({
+            path: "/payment/purchase-transfer",
+            query: {
+              notrans: response.data.data.notrans
+            }
+          });
         })
         .catch(err => {
           console.log("error", err);

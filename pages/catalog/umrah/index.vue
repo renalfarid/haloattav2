@@ -4,8 +4,8 @@
       <div class="content-head--cover" :style="{ backgroundImage: 'url(/umrah/cover/cu22.png)' }">
         <div class="content-head--body">
           <div class="gradient-top"></div>
-          <a-row :gutter="90" class="w-100" type="flex" justify="space-around" align="middle">
-            <a-col :span="10">
+          <a-row :gutter="90" class="w-100 m-auto" type="flex" justify="space-around" align="middle">
+            <a-col :xs="24" :sm="24" :md="12" :lg="10">
               <h2 class="title fs-40">Ragam Pilihan Paket Umrah</h2>
               <p class="cr-white fs-16 fw-400">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -13,7 +13,7 @@
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
               </p>
             </a-col>
-            <a-col :span="14">
+            <a-col :xs="24" :sm="24" :md="12" :lg="14">
               <a-card :bordered="false" class="b-shadow b-radius b-opacity">
                 <search-umrah />
               </a-card>

@@ -7,7 +7,7 @@
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
                 <div class="fs-28 fw-600 f-default cr-black">
-                  <span>{{data.nama}}</span>
+                  <span>{{data.informasi.nama}}</span>
                 </div>
                 <a-badge
                   status="warning"
@@ -31,7 +31,7 @@
                   </div>
                   <a-avatar
                     size="large"
-                    :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                    :style="{ marginRight: '0', backgroundImage: `url(${data.informasi.foto})` }"
                     class="brand-vendor ml-16"
                   />
                 </div>
@@ -68,7 +68,9 @@
                   />
                   <div>
                     <div class="fs-15 fw-400 cr-gray f-default">Durasi</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">{{data.duration_stay}} Hari</div>
+                    <div
+                      class="fs-15 fw-500 cr-black text-capitalize"
+                    >{{data.informasi.duration_stay}} Hari</div>
                   </div>
                 </div>
               </a-col>
@@ -80,7 +82,7 @@
 
     <!-- comments -->
     <a-card class="b-shadow b-solid bordered-left mb-16" id="ulasan">
-      <comments-visa />
+      <comments-visa :review="data.ulasan" />
     </a-card>
 
     <!-- vendor -->

@@ -2,7 +2,7 @@
   <div class="ant-layout--package-details">
     <div class="ant-layout--results-space-small"></div>
     <div class="info-affix">
-      <a-affix :offsetTop="64">
+      <a-affix :offsetTop="0">
         <div class="container">
           <a-row :gutter="32">
             <a-col :span="17">
@@ -25,26 +25,26 @@
       <a-row>
         <a-col :span="10">
           <div class="ant-package--images-large">
-            <expandable-image src="/akomodasi/hotel/l1.jpg" />
+            <expandable-image :src="dataLA.informasi.images_hotel" />
           </div>
         </a-col>
         <a-col :span="6">
           <a-row>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <expandable-image src="/akomodasi/hotel/l2.jpg" />
+                <expandable-image :src="dataLA.informasi.images_hotel" />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
-                <expandable-image src="/akomodasi/hotel/l3.jpg" />
+                <expandable-image :src="dataLA.informasi.images_hotel" />
               </div>
             </a-col>
           </a-row>
         </a-col>
         <a-col :span="8">
           <div class="ant-package--images-large">
-            <expandable-image src="/akomodasi/hotel/l4.jpg" />
+            <expandable-image :src="dataLA.informasi.images_hotel" />
           </div>
         </a-col>
       </a-row>
@@ -61,7 +61,7 @@
         <a-col :span="7">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
-              <information-sideright />
+              <information-sideright :data="sidebar" />
             </div>
           </div>
         </a-col>
@@ -84,35 +84,40 @@ export default {
   data() {
     return {
       wishlist: false,
-      dataLA: "default"
+      dataLA: {},
+      sidebar: {}
     };
   },
-  created() {
-    this.getdetail();
+  async asyncData({ query, store }) {
+    let data = [];
+
+    const myRespone = await axios.post(process.env.baseUrl + "la/detail", {
+      kode_produk: query.kode_produk
+    });
+
+    return {
+      dataLA: {
+        informasi: myRespone.data.data,
+        hotel_mekkah: myRespone.data.data2.hotel_mekkah,
+        hotel_madinah: myRespone.data.data2.hotel_madinah,
+        ulasan: myRespone.data.data2.ulasan,
+        vendor: myRespone.data.data2.vendor
+      },
+
+      sidebar: {
+        program_hari: myRespone.data.data.program_hari,
+        harga_quad: myRespone.data.data.harga_quad,
+        harga_triple: myRespone.data.data.harga_triple,
+        harga_double: myRespone.data.data.harga_double
+      }
+    };
   },
   methods: {
     change(affixed) {
-      console.log(affixed);
+      // console.log(affixed);
     },
     toggleWishlist() {
       this.wishlist = !this.wishlist;
-    },
-    async getdetail() {
-      let params = this.$route.query;
-      // console.log(params);
-      axios
-        .post(process.env.baseUrl + "la/detail", {
-          kode_produk: params.kode_produk
-        })
-        .then(response => {
-          // console.log(response);
-          this.dataLA = response.data.data;
-          this.$store.commit("la/setLa", response.data.data); // mutating to store for client rendering
-          Cookie.set("la", response.data.data); // saving token in cookie for server rendering
-        })
-        .catch(err => {
-          console.log("error", err);
-        });
     }
   },
   components: {

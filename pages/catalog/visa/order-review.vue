@@ -8,7 +8,7 @@
             <informationVisa :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight :data="item" />
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -30,26 +30,27 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
+  async asyncData({ query }) {
+
+    const myRespone = await axios.post(
+      process.env.baseUrl + "visa/detail",
+      { kode_produk: query.kode }
+    );
+
+    return {
+      item: myRespone.data.data,
+      sidebar: {
+        durasi: myRespone.data.data.duration_stay,
+        harga: myRespone.data.data.harga_jual
+      }
+    };
   },
   methods: {
-    moment,
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "visa/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
-
-          this.loading = false;
-        });
-    }
+    moment
   },
   components: {
     informationVisa,

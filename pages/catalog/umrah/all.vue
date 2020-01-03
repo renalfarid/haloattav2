@@ -3,9 +3,12 @@
     <div class="ant-layout--results-space"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
+        <div class="ant-layout--results-top" :style="{ marginBottom: '20px' }">
           <div class="ant-layout--results-search">
-            <a-card class="ant-card--results-info b-shadow b-solid b-radius" :bordered="false">
+            <a-card
+              class="ant-card--results-info b-shadow b-solid b-radius"
+              :bordered="false"
+            >
               <div class="ant-form--search">
                 <a-form
                   layout="vertical"
@@ -17,7 +20,10 @@
                     <a-col :span="12">
                       <a-form-item label="Kota Asal" hasFeedback>
                         <div class="icon-search">
-                          <img class="max-width" src="/icons/search/airplane.svg" />
+                          <img
+                            class="max-width"
+                            src="/icons/search/airplane.svg"
+                          />
                         </div>
                         <a-select
                           showSearch
@@ -25,12 +31,27 @@
                           :showArrow="false"
                           style="width: 100%"
                           size="large"
-                          v-decorator="['cityStart',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                          v-decorator="[
+                            'cityStart',
+                            {
+                              rules: [
+                                { required: true, message: 'Harus di isi!' }
+                              ]
+                            }
+                          ]"
                         >
-                          <a-select-option value="All">Tampilkan Semua</a-select-option>
-                          <a-select-option value="Makassar">Makassar</a-select-option>
-                          <a-select-option value="Jakarta">Jakarta</a-select-option>
-                          <a-select-option value="Bandung">Bandung</a-select-option>
+                          <a-select-option value="All"
+                            >Tampilkan Semua</a-select-option
+                          >
+                          <a-select-option value="Makassar"
+                            >Makassar</a-select-option
+                          >
+                          <a-select-option value="Jakarta"
+                            >Jakarta</a-select-option
+                          >
+                          <a-select-option value="Bandung"
+                            >Bandung</a-select-option
+                          >
                         </a-select>
                       </a-form-item>
                     </a-col>
@@ -53,10 +74,18 @@
                           :filterOption="filterOption"
                           size="large"
                         >
-                          <a-select-option value="All">Tampilkan Semua</a-select-option>
-                          <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-                          <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-                          <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
+                          <a-select-option value="All"
+                            >Tampilkan Semua</a-select-option
+                          >
+                          <a-select-option value="Program 9 Hari"
+                            >Program 9 Hari</a-select-option
+                          >
+                          <a-select-option value="Program 10 Hari"
+                            >Program 10 Hari</a-select-option
+                          >
+                          <a-select-option value="Program 11 Hari"
+                            >Program 11 Hari</a-select-option
+                          >
                         </a-select>
                       </a-form-item>
                     </a-col>
@@ -81,10 +110,18 @@
                           :filterOption="filterOption"
                           size="large"
                         >
-                          <a-select-option value="All">Tampilkan Semua</a-select-option>
-                          <a-select-option value="September 2019">September 2019</a-select-option>
-                          <a-select-option value="November 2019">November 2019</a-select-option>
-                          <a-select-option value="Desember 2019">Desember 2019</a-select-option>
+                          <a-select-option value="All"
+                            >Tampilkan Semua</a-select-option
+                          >
+                          <a-select-option value="September 2019"
+                            >September 2019</a-select-option
+                          >
+                          <a-select-option value="November 2019"
+                            >November 2019</a-select-option
+                          >
+                          <a-select-option value="Desember 2019"
+                            >Desember 2019</a-select-option
+                          >
                         </a-select>
                       </a-form-item>
                     </a-col>
@@ -107,7 +144,9 @@
                           :filterOption="filterOption"
                           size="large"
                         >
-                          <a-select-option value="all">Tampilkan Semua</a-select-option>
+                          <a-select-option value="all"
+                            >Tampilkan Semua</a-select-option
+                          >
                           <a-select-option value="1">1</a-select-option>
                           <a-select-option value="2">2</a-select-option>
                           <a-select-option value="3">3</a-select-option>
@@ -123,7 +162,8 @@
                         class="btn-search b-shadow b-radius"
                         size="large"
                         block
-                      >Cari Umrah</a-button>
+                        >Cari Umrah</a-button
+                      >
                     </a-col>
                   </a-row>
                 </a-form>
@@ -150,22 +190,38 @@
               >
                 <a-skeleton :loading="loading" active>
                   <a-card class="ant-card-package">
-                    <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
+                    <nuxt-link
+                      :to="
+                        '/catalog/umrah/detail-package?kode_produk=' +
+                          item.kode_produk
+                      "
+                      class="ant-list-item--link"
+                    ></nuxt-link>
                     <div slot="cover">
-                      <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
+                      <div
+                        class="ant-card-cover--images"
+                        v-lazy:background-image="item.gambar"
+                      >
                         <div class="ant-card-cover--overlay">
                           <div class="ant-card-cover--overlay-box-radius"></div>
                           <div class="ant-card-cover--overlay-text">
                             <div
                               class="ant-card-cover--overlay-text-title fs-15 fw-500"
-                            >{{item.sisa_seat}}</div>
+                            >
+                              {{ item.sisa_seat }}
+                            </div>
                             <div
                               class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
-                            >pax</div>
+                            >
+                              pax
+                            </div>
                           </div>
 
                           <div class="ant-card-wishlist">
-                            <a @click="toggleWishlist" class="fs-24 cr-gray mb-0">
+                            <a
+                              @click="toggleWishlist"
+                              class="fs-24 cr-gray mb-0"
+                            >
                               <a-icon
                                 v-if="wishlist == false"
                                 theme="twoTone"
@@ -183,23 +239,58 @@
                         </div>
 
                         <div class="ant-card--overlay-block">
-                          <div class="d-flex align-items-center h-100">
-                            <a-button>
-                              <nuxt-link to="/catalog/umrah/detail-package">Lihat detail</nuxt-link>
-                            </a-button>
+                          <div class="ant-card--overlay-block-body">
+                            <div
+                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-4"
+                            >
+                              <i class="icon-accommodation-xs mr-4"></i>
+                              <span
+                                >Hotel {{ item.hotel_mekkah }} - Makkah</span
+                              >
+                            </div>
+                            <div
+                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-4"
+                            >
+                              <i class="icon-accommodation-xs mr-4"></i>
+                              <span
+                                >Hotel {{ item.hotel_madinah }} - Madinah</span
+                              >
+                            </div>
+                            <div
+                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis"
+                            >
+                              <a-icon type="calendar" class="mr-4" />
+                              Berangkat
+                              {{
+                                moment(item.tgl_berangkat, "YYYY-MM-DD").format(
+                                  "ll"
+                                )
+                              }}
+                              -
+                              {{
+                                moment(item.tgl_berangkat, "YYYY-MM-DD").format(
+                                  "ll"
+                                )
+                              }}
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <a-card-meta>
                       <div slot="title">
-                        <div class="ant-card-meta-title--top d-flex align-items-center">
+                        <div
+                          class="ant-card-meta-title--top d-flex align-items-center"
+                        >
                           <div
                             class="ant-card-meta-title--top-left f-default d-flex align-items-center"
                           >
                             <a-popover trigger="hover">
                               <template slot="content">
-                                <div class="fs-15 fw-500 cr-black">{{item.nama}}</div>
+                                <div class="fs-15 fw-500 cr-black">
+                                  {{ item.nama }}
+                                </div>
                                 <div class="fs-14 fw-400 cr-gray f-default">
                                   <a-icon
                                     type="safety-certificate"
@@ -216,75 +307,56 @@
 
                             <a-popover trigger="hover">
                               <template slot="content">
-                                <div
-                                  class="fs-13 fw-400 cr-black f-default"
-                                >Maskapai {{item.nama_maskapai}}</div>
+                                <div class="fs-13 fw-400 cr-black f-default">
+                                  Maskapai {{ item.nama_maskapai }}
+                                </div>
                               </template>
-                              <a-avatar size="small" class="zIndex mr-8" :src="item.image" />
+                              <a-avatar
+                                class="zIndex mr-8"
+                                :src="item.image"
+                              />
                             </a-popover>
                           </div>
                           <div class="ant-card-meta-title--top-right ml-auto">
-                            <a-rate class="fs-14 mb-4" :defaultValue="3" disabled />
+                            <a-rate
+                              class="fs-14 mb-4"
+                              :defaultValue="3"
+                              disabled
+                            />
                           </div>
                         </div>
                         <div
                           class="ant-card-meta-title--package text-capitalize fw-500"
-                        >{{item.nama}}</div>
+                        >
+                          {{ item.nama }}
+                        </div>
                       </div>
 
                       <div slot="description">
-                        <div class="ant-card-meta-description--bottom d-flex align-items-center">
-                          <div class="ant-card-meta-description--bottom-right d-flex">
-                            <div class="fs-14 fw-400 cr-black">Program {{item.jumlah_hari}} Hari</div>
+                        <div
+                          class="fs-14 fw-400 cr-gray f-default text-ellipsis mt-8"
+                        >
+                          <a-icon type="environment" class="mr-4" />
+                          <span>Kota {{ item.nama_kota }}</span>
+                        </div>
+                        <div
+                          class="ant-card-meta-description--bottom d-flex align-items-center"
+                        >
+                          <div
+                            class="ant-card-meta-description--bottom-right d-flex"
+                          >
+                            <div class="fs-14 fw-400 cr-black">
+                              Program {{ item.jumlah_hari }} Hari
+                            </div>
                           </div>
                           <div
                             class="ant-card-meta-description--bottom-left cr-primary ml-auto"
-                          >{{item.harga_jual | currency}}</div>
+                          >
+                            {{ item.harga_jual | currency }}
+                          </div>
                         </div>
                       </div>
                     </a-card-meta>
-                    <div class="package-description--more p-16">
-                      <div class="mb-8">
-                        <div>
-                          <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
-                            <span>Informasi Hotel</span>
-                          </div>
-                          <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
-                            <span>Makkah : {{item.hotel_mekkah}}Rayyana Ajyad</span>
-                          </div>
-                          <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
-                            <span>Madinah : {{item.hotel_madinah}}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="mb-8">
-                        <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
-                          <span>Kota Keberangkatan</span>
-                        </div>
-                        <div class="fs-15 fw-400 cr-gray f-default text-ellipsis">
-                          <span>{{item.nama_kota}}</span>
-                        </div>
-                      </div>
-
-                      <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
-                        <span>Tanggal Keberangkatan</span>
-                      </div>
-                      <div class="d-flex align-items-center">
-                        <div class="fs-14 fw-400 text-ellipsis">
-                          <div class="cr-gray">Keberangkatan</div>
-                          <div
-                            class="cr-gray"
-                          >{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
-                        </div>
-                        <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
-                          <div class="cr-gray">Kedatangan</div>
-                          <div
-                            class="cr-gray"
-                          >{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('ll')}}</div>
-                        </div>
-                      </div>
-                    </div>
                   </a-card>
                 </a-skeleton>
               </a-list-item>
@@ -323,7 +395,9 @@ export default {
   },
   methods: {
     moment,
-    toggleWishlist() { this.wishlist = !this.wishlist; },
+    toggleWishlist() {
+      this.wishlist = !this.wishlist;
+    },
     handleChange(value) {},
     handleBlur() {},
     handleFocus() {},
@@ -351,7 +425,7 @@ export default {
           }
         })
         .then(response => {
-          console.log(response.data.data.data);
+          // console.log(response.data.data.data);
           this.data = this.data.concat(response.data.data.data);
           this.loading = false;
           this.busy = false;

@@ -14,19 +14,14 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Makassar"
-            placeholder="Pilih"
-            optionFilterProp="children"
+            :defaultValue="1"
+            placeholder="Pilih Kota"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="Makassar">Makassar</a-select-option>
-            <a-select-option value="Jakarta">Jakarta</a-select-option>
+            <a-select-option :value="1">Makassar</a-select-option>
+            <a-select-option :value="2">Jakarta</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -38,20 +33,15 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Standar"
+            :defaultValue="1"
             placeholder="Pilih Jenis Layanan"
-            optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Standar">Standar</a-select-option>
-            <a-select-option value="Premium">Premium</a-select-option>
+            <a-select-option :value="1">Tampilkan Semua</a-select-option>
+            <a-select-option :value="2">Standar</a-select-option>
+            <a-select-option :value="3">Premium</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -82,9 +72,9 @@
               <a-date-picker
                 size="large"
                 style="width: 100%"
-                v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
                 :disabledDate="disabledDate"
                 placeholder="Pilih Tanggal Keberangkatan"
+                v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
               >
                 <a-icon class="d-none" slot="suffixIcon" type="calendar" />
               </a-date-picker>
@@ -99,9 +89,9 @@
               <a-date-picker
                 size="large"
                 style="width: 100%"
-                v-decorator="['enddate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
                 :disabledDate="disabledDate"
                 placeholder="Pilih Tanggal Kedatangan"
+                v-decorator="['enddate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
               >
                 <a-icon class="d-none" slot="suffixIcon" type="calendar" />
               </a-date-picker>
@@ -138,22 +128,6 @@ export default {
   },
   methods: {
     moment,
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
-    filterOption(input, option) {
-      return (
-        option.componentOptions.children[0].text
-          .toLowerCase()
-          .indexOf(input.toLowerCase()) >= 0
-      );
-    },
     disabledDate(current) {
       return current && current < moment().endOf("day");
     },
@@ -161,7 +135,6 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
           return this.$router.push("/catalog/handling/result");
         }
       });

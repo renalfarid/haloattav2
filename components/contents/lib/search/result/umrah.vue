@@ -11,11 +11,12 @@
           <div>
             <div class="ant-card--results-info-title">Umrah September 2019</div>
             <div class="ant-card--results-info-subtitle">
-              <span>Keberangkatan Makassar</span>
+              <span>Keberangkatan {{ this.$route.query.kota_asal }}</span>
               <a-divider type="vertical" />
-              <span>September 2019</span>
+              <span>{{ this.$route.query.bulan_keberangkatan }}</span>
+
               <a-divider type="vertical" />
-              <span>Program 9 Hari</span>
+              <span>Program {{ this.$route.query.program }} Hari</span>
             </div>
           </div>
         </div>
@@ -42,12 +43,18 @@
                   :showArrow="false"
                   style="width: 100%"
                   size="large"
-                  v-decorator="['cityStart',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                  v-decorator="[
+                    'kota_asal',
+                    { rules: [{ required: true, message: 'Harus di isi!' }] }
+                  ]"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Makassar">Makassar</a-select-option>
-                  <a-select-option value="Jakarta">Jakarta</a-select-option>
-                  <a-select-option value="Bandung">Bandung</a-select-option>
+                  <a-select-option value="all">Tampilkan Semua</a-select-option>
+                  <a-select-option
+                    v-for="(item, key) in this.$store.state.itemOption.umroh
+                      .kota"
+                    :key="key"
+                    :value="item.nama_kota"
+                  >{{ item.nama_kota }}</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
@@ -59,21 +66,22 @@
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="Program 9 Hari"
                   placeholder="Pilih Program Hari"
-                  optionFilterProp="children"
                   style="width: 100%"
                   :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
                   size="large"
+                  v-decorator="[
+                    'program',
+                    { rules: [{ required: true, message: 'Harus di isi!' }] }
+                  ]"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-                  <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-                  <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
+                  <a-select-option value="all">Semua Program Hari</a-select-option>
+                  <a-select-option
+                    v-for="(item, key) in this.$store.state.itemOption.umroh
+                      .hari"
+                    :key="key"
+                    :value="item.jumlah_hari"
+                  >Program {{ item.jumlah_hari }} Hari</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
@@ -85,50 +93,46 @@
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="September 2019"
                   placeholder="Pilih Bulan Keberangkatan"
-                  optionFilterProp="children"
                   style="width: 100%"
                   :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
                   size="large"
+                  v-decorator="[
+                    'bulan_keberangkatan',
+                    { rules: [{ required: true, message: 'Harus di isi!' }] }
+                  ]"
                 >
-                  <a-select-option value="All">Tampilkan Semua</a-select-option>
-                  <a-select-option value="September 2019">September 2019</a-select-option>
-                  <a-select-option value="November 2019">November 2019</a-select-option>
-                  <a-select-option value="Desember 2019">Desember 2019</a-select-option>
+                  <a-select-option value="all">Semua Bulan</a-select-option>
+                  <a-select-option
+                    v-for="(item, key) in this.$store.state.itemOption.umroh
+                      .bulan_keberangkatan"
+                    :key="key"
+                    :value="item.bulan_tahun"
+                  >{{ moment(item.bulan_tahun).format('MMMM YYYY') }}</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>
 
-            <a-col :span="6">
+            <!-- <a-col :span="6">
               <a-form-item label="Tanggal Keberangkatan" hasFeedback>
                 <div class="icon-search">
                   <a-icon type="calendar" />
                 </div>
                 <a-select
                   showSearch
-                  defaultValue="all"
+                  :defaultValue="1"
                   placeholder="Pilih Tanggal"
-                  optionFilterProp="children"
                   style="width: 100%"
                   :showArrow="false"
-                  @focus="handleFocus"
-                  @blur="handleBlur"
-                  @change="handleChange"
-                  :filterOption="filterOption"
                   size="large"
                 >
-                  <a-select-option value="all">Tampilkan Semua</a-select-option>
-                  <a-select-option value="1">1</a-select-option>
-                  <a-select-option value="2">2</a-select-option>
-                  <a-select-option value="3">3</a-select-option>
+                  <a-select-option :value="1">Semua Tanggal</a-select-option>
+                  <a-select-option :value="2">1</a-select-option>
+                  <a-select-option :value="3">2</a-select-option>
+                  <a-select-option :value="4">3</a-select-option>
                 </a-select>
               </a-form-item>
-            </a-col>
+            </a-col>-->
           </a-row>
 
           <a-row :gutter="16" type="flex" justify="end">
@@ -147,6 +151,8 @@
   </div>
 </template>
 <script>
+import moment from "moment";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -156,32 +162,46 @@ export default {
   },
 
   methods: {
-    callback(val) {
-      console.log(val);
-    },
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
-    filterOption(input, option) {
-      return (
-        option.componentOptions.children[0].text
-          .toLowerCase()
-          .indexOf(input.toLowerCase()) >= 0
-      );
-    },
+    moment,
     showSearch() {
       this.visibleSearch = !this.visibleSearch;
     },
     searchUmrah() {
-      this.form.validateFields(err => {
+      this.form.validateFields((err, values) => {
         if (!err) {
-          return this.$router.push({ path: "/catalog/umrah/result" });
+          this.$emit("loadingEvent", false);
+          let data = [];
+          let query = this.$route.query;
+
+          data["kota_asal"] = query.kota_asal == "all" ? "" : query.kota_asal;
+          data["bulan_keberangkatan"] =
+            query.bulan_keberangkatan == "all" ? "" : query.bulan_keberangkatan;
+          data["program"] = query.program == "all" ? "" : query.program;
+          data["hotel_bintang"] =
+            query.hotel_bintang == "all" ? "" : query.hotel_bintang;
+
+          axios
+            .get(process.env.baseUrl + "paket/umroh/all", {
+              params: {
+                kota_asal: data["kota_asal"],
+                bulan_keberangkatan: data["bulan_keberangkatan"],
+                program_hari: data["program"],
+                hotel_bintang: data["hotel_bintang"]
+              }
+            })
+            .then(respone => {
+              this.$store.commit("catalog/setUmroh", respone.data.data.data);
+              this.$emit("loadingEvent", false);
+            });
+
+          return this.$router.push({
+            path: "/catalog/umrah/result",
+            query: {
+              kota_asal: values.kota_asal,
+              bulan_keberangkatan: values.bulan_keberangkatan,
+              program: values.program
+            }
+          });
         }
       });
     }

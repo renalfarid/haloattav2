@@ -14,19 +14,14 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Makassar"
+            :defaultValue="1"
             placeholder="Pilih Kota"
-            optionFilterProp="children"
             :showArrow="false"
             style="width: 100%"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="Makassar">Makassar</a-select-option>
-            <a-select-option value="Jakarta">Jakarta</a-select-option>
+            <a-select-option :value="1">Makassar</a-select-option>
+            <a-select-option :value="2">Jakarta</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -38,18 +33,13 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Saudi Arabia"
+            :defaultValue="1"
             placeholder="Pilih Tujuan"
-            optionFilterProp="children"
             :showArrow="false"
             style="width: 100%"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="Saudi Arabia">Saudi Arabia</a-select-option>
+            <a-select-option :value="1">Saudi Arabia</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -63,25 +53,20 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Program 9 Hari"
+            :defaultValue="1"
             placeholder="Pilih Program"
-            optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-            <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-            <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
-            <a-select-option value="Program 12 Hari">Program 12 Hari</a-select-option>
-            <a-select-option value="Program 13 Hari">Program 13 Hari</a-select-option>
-            <a-select-option value="Program 14 Hari">Program 14 Hari</a-select-option>
-            <a-select-option value="Program 15 Hari">Program 15 Hari</a-select-option>
+            <a-select-option :value="1">Tampilkan Semua</a-select-option>
+            <a-select-option :value="2">Program 9 Hari</a-select-option>
+            <a-select-option :value="3">Program 10 Hari</a-select-option>
+            <a-select-option :value="4">Program 11 Hari</a-select-option>
+            <a-select-option :value="5">Program 12 Hari</a-select-option>
+            <a-select-option :value="6">Program 13 Hari</a-select-option>
+            <a-select-option :value="7">Program 14 Hari</a-select-option>
+            <a-select-option :value="8">Program 15 Hari</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -94,9 +79,16 @@
           <a-date-picker
             size="large"
             style="width: 100%"
-            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
             :disabledDate="disabledDate"
             placeholder="Pilih Tanggal"
+            v-decorator="[
+              'startdate',
+              {
+                rules: [
+                  { type: 'object', required: true, message: 'Harus di isi!' }
+                ]
+              }
+            ]"
           >
             <a-icon class="d-none" slot="suffixIcon" type="calendar" />
           </a-date-picker>
@@ -112,31 +104,26 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Umrah"
+            :defaultValue="1"
             placeholder="Pilih Kegiatan"
-            optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="Umrah">Umrah</a-select-option>
+            <a-select-option :value="1">Umrah</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
 
       <a-col :span="12">
-        <a-form-item :style="{ bottom: '-25px' }">
-          <a-button
-            html-type="submit"
-            class="btn-search b-shadow b-radius"
-            size="large"
-            block
-          >Cari Tour Leader</a-button>
-        </a-form-item>
+        <a-button
+          html-type="submit"
+          class="btn-search b-shadow b-radius"
+          size="large"
+          :style="{ bottom: '-25px' }"
+          block
+          >Cari Tour Leader</a-button
+        >
       </a-col>
     </a-row>
   </a-form>
@@ -154,22 +141,6 @@ export default {
   },
   methods: {
     moment,
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
-    filterOption(input, option) {
-      return (
-        option.componentOptions.children[0].text
-          .toLowerCase()
-          .indexOf(input.toLowerCase()) >= 0
-      );
-    },
     disabledDate(current) {
       return current && current < moment().endOf("day");
     },
@@ -177,7 +148,6 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
           return this.$router.push("/catalog/tourleader/result");
         }
       });

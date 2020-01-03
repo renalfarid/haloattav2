@@ -7,7 +7,7 @@
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
                 <div class="fs-28 fw-600 f-default cr-black">
-                  <span>Ustd. Awaluddin Muhammad Arifatullah Tour Leader Professional</span>
+                  <span>{{data.nama_lengkap}}</span>
                 </div>
               </a-col>
 
@@ -26,7 +26,7 @@
                   </div>
                   <a-avatar
                     size="large"
-                    :style="{ marginRight: '0', backgroundImage: 'url(https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png)' }"
+                    :style="{ marginRight: '0', backgroundImage: `url(${data.foto != '' ? data.foto :'https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png'})` }"
                     class="brand-vendor ml-16"
                   />
                 </div>
@@ -37,7 +37,8 @@
 
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
-            <a-row>
+            {{data.informasi_singkat ? data.informasi_singkat : '-'}}
+            <!-- <a-row>
               <a-col :span="24" class="mb-16">
                 <div class="d-flex align-items-start">
                   <a-avatar
@@ -79,7 +80,7 @@
                   </div>
                 </div>
               </a-col>
-            </a-row>
+            </a-row>-->
           </div>
         </a-list-item>
       </a-list>
@@ -113,6 +114,7 @@ import policy from "~/components/contents/details/tourleader/policy.vue";
 import faq from "~/components/contents/details/tourleader/faq.vue";
 import moment from "moment";
 export default {
+  props: ["data"],
   components: {
     commentsTourleader,
     vendorTourleader,

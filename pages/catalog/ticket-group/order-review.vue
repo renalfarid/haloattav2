@@ -8,7 +8,7 @@
             <informationOrder :data="item" />
           </a-col>
           <a-col :span="7">
-            <informationSideRight :data="item" />
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -20,6 +20,7 @@ import informationOrder from "~/components/contents/review/ticket/information-ti
 import informationSideRight from "~/components/contents/review/ticket/information-sideright.vue";
 import axios from "axios";
 export default {
+  middleware: "authenticated",
   name: "orderReview",
   head() {
     return {
@@ -28,26 +29,25 @@ export default {
   },
   data() {
     return {
-      item: ""
+      item: "",
+      sidebar: {}
     };
   },
-  created: function() {
-    this.getdata();
-  },
-  methods: {
-    async getdata() {
-      let params = this.$route.query;
-      axios
-        .post(process.env.baseUrl + "tiket/detail", {
-          kode_produk: params.kode
-        })
-        .then(response => {
-          this.item = response.data.data;
+  async asyncData({ query }) {
+    const myRespone = await axios.post(process.env.baseUrl + "tiket/detail", {
+      kode_produk: query.kode
+    });
 
-          this.loading = false;
-        });
-    }
+    return {
+      item: myRespone.data.data,
+      sidebar: {
+        berangkat: myRespone.data.data.tanggal_keberangkatan,
+        harga: myRespone.data.data.harga_jual,
+        program_hari: myRespone.data.data.program_hari
+      }
+    };
   },
+
   components: {
     informationOrder,
     informationSideRight

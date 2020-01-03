@@ -18,7 +18,7 @@ module.exports = {
         token: "https://api.haloatta.com/oauth/token"
     },
 
-    loading: false,
+    loading: { color: "#F84ECA" },
 
     css: [
         { src: "ant-design-vue/dist/antd.css" },
@@ -34,11 +34,9 @@ module.exports = {
         { src: "@/plugins/vCharts", mode: "client" },
         { src: "@/plugins/vInfinite-scroll", mode: "client" },
         { src: "@/plugins/vClipboard", mode: "client" },
-        { src: "@/plugins/vSticky", mode: "client" },
         { src: "@/plugins/vLazytube", mode: "client" },
         { src: "@/plugins/vMyphotos", mode: "client" },
         { src: "@/plugins/vLazyimg", mode: "client" },
-        { src: "@/plugins/vPimg", mode: "client" },
         { src: "@/plugins/vAos", mode: "client" }
     ],
 

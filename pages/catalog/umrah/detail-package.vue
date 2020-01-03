@@ -1,7 +1,7 @@
 <template>
   <div class="ant-layout--package-details">
     <div class="ant-layout--results-space-small"></div>
-    <a-affix :offsetTop="60" @change="change">
+    <a-affix :offsetTop="0" @change="change">
       <div class="ant-layout--package-tabs">
         <div class="container">
           <div class="ant-tabs--item">
@@ -78,17 +78,17 @@
               <informationAccommodation :data="dataLA" />
             </div>
             <div v-if="activetab === 3" class="ant-tabs--content-body">
-              <informationEquipment />
+              <informationEquipment :data="kelengkapan" />
             </div>
             <div v-if="activetab === 4" class="ant-tabs--content-body">
-              <informationItinerary />
+              <informationItinerary :data="itinerary" />
             </div>
           </div>
         </a-col>
         <a-col :span="7" :style="{margin : '16px 0'}">
           <div class="ant-layout--right">
             <div class="ant-affix--container">
-              <informationSideRight />
+              <informationSideRight :harga="harga" :umroh="umroh" />
             </div>
           </div>
         </a-col>
@@ -120,22 +120,57 @@ export default {
       bintang: 1,
       foto_vendor: "",
       datatiket: "default",
-      dataLA: "default"
+      dataLA: "default",
+      harga: "",
+      umroh: {},
+      kelengkapan: [],
+      itinerary: []
     };
   },
-  created() {
-    this.getdetail();
+  async asyncData({ query, store }) {
+    let data = [];
+
+    const myRespone = await axios.post(
+      process.env.baseUrl + "paket/umroh/detail",
+      {
+        kode_produk: query.kode_produk
+      }
+    );
+
+    return {
+      loading: false,
+      busy: false,
+      datatiket: myRespone.data.data.tiket,
+      dataLA: {
+        fasilitas: myRespone.data.data.la.fasilitas_termasuk,
+        hotel_mekkah: myRespone.data.data.hotel_mekkah,
+        hotel_madinah: myRespone.data.data.hotel_madinah
+      },
+      nama: myRespone.data.data.umroh.nama,
+      bintang: myRespone.data.data.umroh.kelas_bintang,
+      foto_vendor: myRespone.data.data.umroh.foto,
+
+      //props right side
+      harga: myRespone.data.data.harga,
+      umroh: {
+        berangkat: myRespone.data.data.umroh.tgl_berangkat,
+        program_hari: myRespone.data.data.umroh.jumlah_hari
+      },
+      kelengkapan: myRespone.data.data.kelengkapan,
+      itinerary: myRespone.data.data.itenary
+    };
   },
+
   methods: {
     change(affixed) {
-      console.log(affixed);
+      // console.log(affixed);
     },
     toggleWishlist() {
       this.wishlist = !this.wishlist;
     },
     async getdetail() {
       let params = this.$route.query;
-      console.log(params);
+
       axios
         .post(process.env.baseUrl + "paket/umroh/detail", {
           kode_produk: params.kode_produk
@@ -147,6 +182,14 @@ export default {
           this.nama = response.data.data.umroh.nama;
           this.bintang = response.data.data.umroh.kelas_bintang;
           this.foto_vendor = response.data.data.umroh.foto_vendor;
+
+          //props right side
+          this.harga = response.data.data.harga;
+          this.umroh = {
+            berangkat: response.data.data.umroh.tgl_berangkat,
+            program_hari: response.data.data.umroh.jumlah_hari
+          };
+
           this.$store.commit("umroh/setUmroh", response.data.data); // mutating to store for client rendering
           Cookie.set("umroh", response.data.data); // saving token in cookie for server rendering
         })

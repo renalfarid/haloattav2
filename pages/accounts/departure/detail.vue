@@ -72,7 +72,7 @@
               >{{item.status}}</div>
             </a-col>
             <a-col :span="4" class="text-right">
-              <nuxt-link to="/accounts/jamaah/formulir-tiket">
+              <nuxt-link to="/accounts/jamaah/berkas">
                 <span class="fs-14 fw-500 cr-green">
                   Lihat Formulir
                   <a-icon type="right" class="ml-8"/>

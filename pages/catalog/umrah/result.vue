@@ -3,7 +3,7 @@
     <div class="ant-layout--results-space"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{marginBottom: '20px'}">
+        <div class="ant-layout--results-top" :style="{ marginBottom: '20px' }">
           <search-result-umrah />
 
           <filter-result-umrah />
@@ -11,12 +11,13 @@
 
         <div class="ant-layout--results-list pb-16">
           <div class="ant-layout--results-list-label fw-400">Hasil Pencarian Paket Umrah</div>
-          <div
-            v-infinite-scroll="loadMore"
-            :infinite-scroll-disabled="busy"
-            :infinite-scroll-distance="limit"
-          >
-            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data" :loading="loading">
+          <div>
+            <a-list
+              :grid="{ gutter: 16, column: 3 }"
+              :dataSource="this.$store.state.catalog.umroh"
+              :loading="loading"
+              v-on:loadingEvent="loadingEvent($event)"
+            >
               <a-list-item
                 slot="renderItem"
                 slot-scope="item, index"
@@ -25,7 +26,13 @@
                 data-aos-duration="1200"
               >
                 <a-card class="ant-card-package">
-                  <nuxt-link to="/catalog/umrah/detail-package" class="ant-list-item--link"></nuxt-link>
+                  <nuxt-link
+                    :to="
+                      '/catalog/umrah/detail-package?kode_produk=' +
+                        item.kode_produk
+                    "
+                    class="ant-list-item--link"
+                  ></nuxt-link>
                   <div slot="cover">
                     <div class="ant-card-cover--images" v-lazy:background-image="item.gambar">
                       <div class="ant-card-cover--overlay">
@@ -33,7 +40,7 @@
                         <div class="ant-card-cover--overlay-text">
                           <div
                             class="ant-card-cover--overlay-text-title fs-15 fw-500"
-                          >{{item.sisa_seat}}</div>
+                          >{{ item.sisa_seat }}</div>
                           <div
                             class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
                           >pax</div>
@@ -58,12 +65,36 @@
                       </div>
 
                       <div class="ant-card--overlay-block">
-                        <div class="d-flex align-items-center h-100">
-                          <a-button>
-                            <nuxt-link
-                              :to="'/catalog/umrah/detail-package?kode_produk='+item.kode_produk"
-                            >Lihat detail</nuxt-link>
-                          </a-button>
+                        <div class="ant-card--overlay-block-body">
+                          <div
+                            class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-4"
+                          >
+                            <i class="icon-accommodation-xs mr-4"></i>
+                            <span>Hotel {{ item.hotel_mekkah }} - Makkah</span>
+                          </div>
+                          <div
+                            class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-4"
+                          >
+                            <i class="icon-accommodation-xs mr-4"></i>
+                            <span>Hotel {{ item.hotel_madinah }} - Madinah</span>
+                          </div>
+                          <div
+                            class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis"
+                          >
+                            <a-icon type="calendar" class="mr-4" />
+                            Berangkat
+                            {{
+                            moment(item.tgl_berangkat, 'YYYY-MM-DD').format(
+                            'll'
+                            )
+                            }}
+                            -
+                            {{
+                            moment(item.tgl_berangkat, 'YYYY-MM-DD').format(
+                            'll'
+                            )
+                            }}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -76,7 +107,7 @@
                         >
                           <a-popover trigger="hover">
                             <template slot="content">
-                              <div class="fs-15 fw-500 cr-black">{{item.name_umaroh}}</div>
+                              <div class="fs-15 fw-500 cr-black">{{ item.name_umaroh }}</div>
                               <div class="fs-14 fw-400 cr-gray f-default">
                                 <a-icon
                                   type="safety-certificate"
@@ -93,71 +124,34 @@
 
                           <a-popover trigger="hover">
                             <template slot="content">
-                              <div class="fs-13 fw-400 cr-black f-default">{{item.nama_maskapai}}</div>
+                              <div class="fs-13 fw-400 cr-black f-default">{{ item.nama_maskapai }}</div>
                             </template>
-                            <a-avatar class="zIndex mr-8" v-lazy:background-image="item.image" />
+                            <a-avatar class="zIndex mr-8" :src="item.image" />
                           </a-popover>
                         </div>
                         <div class="ant-card-meta-title--top-right ml-auto">
                           <a-rate class="fs-14 mb-4" :defaultValue="item.kelas_bintang" disabled />
                         </div>
                       </div>
-                      <div class="ant-card-meta-title--package fw-500">{{item.nama}}</div>
+                      <div class="ant-card-meta-title--package fw-500">{{ item.nama }}</div>
                     </div>
 
                     <div slot="description">
+                      <div class="fs-14 fw-400 cr-gray f-default text-ellipsis mt-8">
+                        <a-icon type="environment" class="mr-4" />
+                        <span>Kota {{ item.nama_kota }}</span>
+                      </div>
+
                       <div class="ant-card-meta-description--bottom d-flex align-items-center">
                         <div class="ant-card-meta-description--bottom-right d-flex">
-                          <div class="fs-14 fw-400 cr-black">Program {{item.jumlah_hari}} Hari</div>
+                          <div class="fs-14 fw-400 cr-black">Program {{ item.jumlah_hari }} Hari</div>
                         </div>
                         <div
                           class="ant-card-meta-description--bottom-left cr-primary ml-auto"
-                        >{{item.harga_jual | currency}}</div>
+                        >{{ item.harga_jual | currency }}</div>
                       </div>
                     </div>
                   </a-card-meta>
-                  <div class="package-description--more p-24">
-                    <div class="mb-8">
-                      <div>
-                        <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
-                          <span>Informasi Hotel</span>
-                        </div>
-                        <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
-                          <span>Mekkah :{{item.hotel_mekah}}</span>
-                        </div>
-                        <div class="fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis">
-                          <span>Madinah : {{item.hotel_madinah}}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="mb-8">
-                      <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
-                        <span>Kota Keberangkatan</span>
-                      </div>
-                      <div class="fs-15 fw-400 cr-gray f-default text-ellipsis">
-                        <span>{{item.nama_kota}}</span>
-                      </div>
-                    </div>
-
-                    <div class="fs-14 fw-500 cr-black f-default text-ellipsis">
-                      <span>Tanggal Keberangkatan</span>
-                    </div>
-                    <div class="d-flex align-items-center">
-                      <div class="fs-14 fw-400 text-ellipsis">
-                        <div class="cr-gray">Keberangkatan</div>
-                        <div
-                          class="cr-gray"
-                        >{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('LL')}}</div>
-                      </div>
-                      <div class="fs-14 fw-400 text-ellipsis text-right ml-auto">
-                        <div class="cr-gray">Kedatangan</div>
-                        <div
-                          class="cr-gray"
-                        >{{moment(item.tgl_berangkat, "YYYY-MM-DD").format('LL')}}</div>
-                      </div>
-                    </div>
-                  </div>
                 </a-card>
               </a-list-item>
             </a-list>
@@ -189,35 +183,44 @@ export default {
       data: []
     };
   },
-  created() {
-    this.loadMore();
+  async asyncData({ query, store }) {
+    let data = [];
+    data["kota_asal"] = query.kota_asal == "all" ? "" : query.kota_asal;
+    data["bulan_keberangkatan"] =
+      query.bulan_keberangkatan == "all" ? "" : query.bulan_keberangkatan;
+    data["program"] = query.program == "all" ? "" : query.program;
+    data["hotel_bintang"] =
+      query.hotel_bintang == "all" ? "" : query.hotel_bintang;
+
+    const myRespone = await axios.get(process.env.baseUrl + "paket/umroh/all", {
+      params: {
+        kota_asal: data["kota_asal"],
+        bulan_keberangkatan: data["bulan_keberangkatan"],
+        program_hari: data["program"],
+        hotel_bintang: data["hotel_bintang"]
+      }
+    });
+
+    store.commit("catalog/setUmroh", myRespone.data.data.data);
+    // console.log(myRespone.data.data.data, 'test anu');
+
+    return {
+      loading: false,
+      busy: false
+    };
   },
+
   methods: {
     moment,
     toggleWishlist() {
       this.wishlist = !this.wishlist;
     },
-    loadMore() {
-      this.busy = true;
-      let params = this.$route.query;
+    loadingEvent(event) {
+      console.log(event, "summa");
 
-      axios
-        .get(process.env.baseUrl + "paket/umroh/all", {
-          params: {
-            kota_asal: params.kota_asal,
-            bulan_keberangkatan: params.bulan_keberangkatan
-          }
-        })
-        .then(response => {
-          const append = response.data.data.data.slice(
-            this.data.length,
-            this.data.length + this.limit
-          );
-
-          this.data = this.data.concat(append);
-          this.loading = false;
-          this.busy = false;
-        });
+      if (event) {
+        this.loading = event;
+      }
     }
   },
   components: {

@@ -8,9 +8,15 @@
   >
     <a-row :gutter="16">
       <a-col :span="12">
-        <a-form-item class="ant-form-item-type" label="Tipe Perjalanan" hasFeedback>
+        <a-form-item
+          class="ant-form-item-type"
+          label="Tipe Perjalanan"
+          hasFeedback
+        >
           <a-radio-group name="radioGroup" :defaultValue="1">
-            <a-radio :value="1" class="fs-16 cr-black mr-16">Pulang Pergi</a-radio>
+            <a-radio :value="1" class="fs-16 cr-black mr-16"
+              >Pulang Pergi</a-radio
+            >
             <a-radio :value="2" class="fs-16 cr-black">Sekali Jalan</a-radio>
           </a-radio-group>
         </a-form-item>
@@ -23,21 +29,15 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Program 9 Hari"
             placeholder="Pilih Program Hari"
-            optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Program 9 Hari">Program 9 Hari</a-select-option>
-            <a-select-option value="Program 10 Hari">Program 10 Hari</a-select-option>
-            <a-select-option value="Program 11 Hari">Program 11 Hari</a-select-option>
+            <a-select-option :value="1">Semua Program Hari</a-select-option>
+            <a-select-option :value="2">Program 9 Hari</a-select-option>
+            <a-select-option :value="3">Program 10 Hari</a-select-option>
+            <a-select-option :value="4">Program 11 Hari</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -51,20 +51,14 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Makassar"
             placeholder="Pilih Kota Asal"
-            optionFilterProp="children"
             :showArrow="false"
             style="width: 100%"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Makassar">Makassar (UPG)</a-select-option>
-            <a-select-option value="Jakarta">Jakarta (CGK)</a-select-option>
+            <a-select-option :value="1">Semua Kota</a-select-option>
+            <a-select-option :value="2">Makassar (UPG)</a-select-option>
+            <a-select-option :value="3">Jakarta (CGK)</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -76,20 +70,14 @@
           </div>
           <a-select
             showSearch
-            defaultValue="Jeddah"
             placeholder="Pilih Kota Tujuan"
-            optionFilterProp="children"
             style="width: 100%"
             :showArrow="false"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
             size="large"
           >
-            <a-select-option value="All">Tampilkan Semua</a-select-option>
-            <a-select-option value="Jeddah">Jeddah (JED)</a-select-option>
-            <a-select-option value="Medinah">Medinah (MED)</a-select-option>
+            <a-select-option :value="1">Semua Kota</a-select-option>
+            <a-select-option :value="2">Jeddah (JED)</a-select-option>
+            <a-select-option :value="3">Medinah (MED)</a-select-option>
           </a-select>
         </a-form-item>
       </a-col>
@@ -104,9 +92,16 @@
           <a-date-picker
             size="large"
             style="width: 100%"
-            v-decorator="['startdate',{rules: [{ type: 'object', required: true, message: 'Harus di isi!' }]}]"
             :disabledDate="disabledDate"
             placeholder="Pilih Tanggal Keberangkatan"
+            v-decorator="[
+              'startdate',
+              {
+                rules: [
+                  { type: 'object', required: true, message: 'Harus di isi!' }
+                ]
+              }
+            ]"
           >
             <a-icon class="d-none" slot="suffixIcon" type="calendar" />
           </a-date-picker>
@@ -114,14 +109,14 @@
       </a-col>
 
       <a-col :span="12">
-        <a-form-item :style="{ bottom: '-25px' }">
-          <a-button
+        <a-button
           html-type="submit"
           class="btn-search b-shadow b-radius"
           size="large"
           block
-        >Cari Tiket Group</a-button>
-        </a-form-item>
+          :style="{ bottom: '-25px' }"
+          >Cari Tiket Group</a-button
+        >
       </a-col>
     </a-row>
   </a-form>
@@ -140,22 +135,6 @@ export default {
   },
   methods: {
     moment,
-    handleChange(value) {
-      console.log(`selected ${value}`);
-    },
-    handleBlur() {
-      console.log("blur");
-    },
-    handleFocus() {
-      console.log("focus");
-    },
-    filterOption(input, option) {
-      return (
-        option.componentOptions.children[0].text
-          .toLowerCase()
-          .indexOf(input.toLowerCase()) >= 0
-      );
-    },
     disabledDate(current) {
       return current && current < moment().endOf("day");
     },
@@ -163,7 +142,6 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
           return this.$router.push("/catalog/ticket-group/result");
         }
       });
