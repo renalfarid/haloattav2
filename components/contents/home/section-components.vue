@@ -1,13 +1,18 @@
 <template>
   <div class="container">
     <div class="header-title">
-      <a-divider orientation="left" class="ant-divider-title-left">Komponen Pilihan Haloatta</a-divider>
+      <a-divider orientation="left" class="ant-divider-title-left">Haloatta Pilihan Tepat Ibadah Umroh Tanpa Repot</a-divider>
       <a-row :gutter="16">
         <a-col :span="16">
           <h6 class="subtitle">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Distinctio hic in sint reiciendis libero necessitatibus
-            quos cumque ipsum ratione
+            <p>Beragam pilihan produk komponen perjalanan wisata halal, memudahkan anda untuk membeli dan membuat Paket perjalanan wisata halal.
+            Ibadah umroh pastinya menjadi impian semua umat muslim di seluruh dunia. Bagi Kamu yang masih kesulitan mencari
+            travel umroh aman dan terpercaya.</p> 
+            <p>Sekarang tidak perlu pusing lagi, di haloatta ibadah umroh kamu akan menjadi
+            lebih mudah dan yaman. Semua yang kamu butuhkan untuk ibadah umroh sudah tersedia di haloatta. Mulai dari hotel,
+            pesawat, destinasi, paspor online, paket umroh dengan promo terbaik, bahkan tabungan umroh kamu bisa dapatkan
+            dengan mudah di haloatta.com. </p>
+            <p>Nikmati perjalanan ibadah umroh kamu tanpa repot bersama haloatta.</p>
           </h6>
         </a-col>
       </a-row>

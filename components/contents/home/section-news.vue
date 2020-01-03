@@ -5,8 +5,7 @@
       <a-row :gutter="16">
         <a-col :span="16">
           <h6 class="subtitle">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Distinctio hic in sint reiciendis libero necessitatibus quos cumque ipsum ratione
+            Adalah agregator berita islami pertama yang memberikan informasi seputar ibadah Umroh Haji dan kajian Islam lainnya
           </h6>
         </a-col>
       </a-row>
