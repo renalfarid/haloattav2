@@ -206,17 +206,7 @@
       <sectionComponentsUmrah />
     </div>
 
-    <!-- if there is data then display it video -->
-    <div class="content-video-full">
-      <client-only>
-        <a-card class="ant-card-video">
-          <LazyYoutubeVideo
-            url="https://www.youtube.com/watch?v=Mw004-RePqs"
-            previewImageSize="maxresdefault"
-          />
-        </a-card>
-      </client-only>
-    </div>
+    
 
     <div class="content-news">
       <sectionNews />
