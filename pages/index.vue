@@ -147,9 +147,7 @@
           <a-row :gutter="16">
             <a-col :span="16">
               <h6 class="fs-16 fw-400 cr-gray">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Distinctio hic in sint reiciendis libero necessitatibus quos
-                cumque ipsum ratione
+                Haloatta merekomendasikan paket umrah terbaik untuk anda.
               </h6>
             </a-col>
           </a-row>
@@ -184,7 +182,9 @@
               >
                 <a-col :span="12">
                   <a-card-meta
-                    title="Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
+                    title="Mau ibadah sekaligus jadi pengusaha ? 
+                    Umaroh jawabannya. 
+                    Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
                   >
                     <template slot="description">
                       <a-button size="large" class="b-shadow b-radius">

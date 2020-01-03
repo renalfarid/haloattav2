@@ -7,9 +7,7 @@
       <a-row :gutter="16">
         <a-col :span="16">
           <h6 class="subtitle">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-            hic in sint reiciendis libero necessitatibus quos cumque ipsum
-            ratione
+            Pilihan Paket Umroh favorit yang dipilih oleh customer haloatta
           </h6>
         </a-col>
       </a-row>
@@ -24,11 +22,8 @@
                 Bisa Share Profit Loh!
               </div>
               <div class="txt fs-16 fw-400 f-default">
-                <span
-                  >Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Ullam amet pariatur asperiores necessitatibus error architecto
-                  et</span
-                >
+                <span><p>Mau kembangkan bisnis Travel ? Umaroh jawabannya</p></span>
+                <span><p>Mau Jualan Komponen Umroh ? Umaroh jawabannya</p></span>
               </div>
               <a-button size="large">
                 <nuxt-link to="/catalog/umrah/all">Explore Paket</nuxt-link>
