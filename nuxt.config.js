@@ -56,7 +56,14 @@ module.exports = {
                 symbolPosition: "front",
                 symbolSpacing: true
             }
-        ]
+        ],
+        [
+            "nuxt-imagemin",
+            {
+              optipng: { optimizationLevel: 5 },
+              gifsicle: { optimizationLevel: 2 }
+            }
+          ]
     ],
 
     axios: {
@@ -97,6 +104,10 @@ module.exports = {
     build: {
         // extractCSS: true,
         extend(config, ctx) {
+            
+            if (ctx && ctx.isClient) {
+                  config.optimization.splitChunks.maxSize = 51200
+                }
             config.resolve.alias["vue"] = "vue/dist/vue.common";
         }
     }
