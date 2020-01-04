@@ -26,6 +26,8 @@
         "jquery": "^3.4.1",
         "js-cookie": "^2.2.0",
         "nuxt": "^2.9.2",
+        "nuxt-imagemin": "^1.0.0",
+        "nuxt-vuex-localstorage": "^1.2.6",
         "v-charts": "^1.19.0",
         "vue-clipboard2": "^0.3.0",
         "vue-currency-filter": "^3.4.2",
