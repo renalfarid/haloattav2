@@ -144,7 +144,7 @@
                                       </div>
 
                                       <a-row type="flex" justify="space-around" align="bottom">
-                                        <a-col :span="22">
+                                        <a-col :span="20">
                                           <dl class="ant-deflist ant-deflist--small">
                                             <dt
                                               class="ant-deflist__label cr-black fw-400"
@@ -164,7 +164,7 @@
                                             </dd>
                                           </dl>
                                         </a-col>
-                                        <a-col :span="2" class="text-right">
+                                        <a-col :span="4" class="text-right">
                                           <a-button
                                             v-clipboard:copy="item.norekening"
                                             v-clipboard:success="onCopy"
