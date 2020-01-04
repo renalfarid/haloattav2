@@ -14,11 +14,11 @@
           </div>
 
           <a-form-item label="No. Transaksi">
-            <a-input v-decorator="['nomor_transaksi', { initialValue: item.notrans }]" disabled />
+            <a-input size="large" v-decorator="['nomor_transaksi', { initialValue: item.notrans }]" disabled />
           </a-form-item>
 
           <a-form-item label="Jumlah Tagihan">
-            <a-input v-decorator="['bayar', { initialValue: total }]" disabled />
+            <a-input size="large" :value="total | currency" disabled />
           </a-form-item>
 
           <a-form-item label="Rekening Tujuan" class="mb-0">
@@ -98,7 +98,7 @@
             </a-form-item>
           </div>
           <div class="mb-16">
-            <a-button html-type="submit" class="ant-btn--action mb-16">Kirim Bukti Pembayaran</a-button>
+            <a-button html-type="submit" class="ant-btn--action fs-14 mb-16" size="large">Kirim Bukti Pembayaran</a-button>
             <div class="fs-14 fw-400 f-default cr-gray">
               Customer service kami akan menanyakan nomer pesanan
               <br />saat menghubungi anda.

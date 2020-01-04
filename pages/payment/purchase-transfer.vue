@@ -209,9 +209,8 @@
                                   <a-col :span="14">
                                     <a-form-item label="Total Pesanan">
                                       <a-input
-                                        addonBefore="Rp."
                                         size="large"
-                                        :value="item.total_tagihan - item.kode_unik"
+                                        :value="item.total_tagihan - item.kode_unik | currency"
                                         disabled
                                       ></a-input>
                                     </a-form-item>
@@ -222,9 +221,8 @@
 
                                     <a-form-item label="Total Bayar">
                                       <a-input
-                                        addonBefore="Rp."
                                         size="large"
-                                        :value="price"
+                                        :value="price | currency"
                                         disabled
                                       >
                                         <a-button
@@ -274,15 +272,16 @@
                                       <a-input-number
                                         size="large"
                                         :defaultValue="item.total_tagihan - item.kode_unik"
-                                        :formatter="value => `Rp. ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
                                         :parser="value => value.replace(/\Rp\s?|(.*)/g, '')"
                                         disabled
+                                        class="w-100"
                                       />
                                     </a-form-item>
 
                                     <a-form-item
                                       label="Masukkan DP anda (min 30% dari total tagihan)"
-                                      :help="`Minimal Dp Anda Adalah ${((item.total_tagihan - item.kode_unik) * 0.3)}`"
+                                      :help="`Minimal Dp Anda Adalah ${((item.total_tagihan - item.kode_unik ) * 0.3)}`"
                                     >
                                       <a-input-number
                                         :min="(item.total_tagihan - item.kode_unik) * 0.3"
@@ -290,7 +289,8 @@
                                         :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
                                         :parser="value => value.replace(/\Rp\s?|(\.*)/g, '')"
                                         @change="onChangePriceDp"
-                                        class="w100"
+                                        size="large"
+                                        class="w-100"
                                       ></a-input-number>
                                     </a-form-item>
 
@@ -299,18 +299,13 @@
                                     </a-form-item>
 
                                     <a-form-item label="Total Bayar">
-                                      <!-- <a-input
-                                        addonBefore="Rp."
-                                        size="large"
-                                        :value="priceDp"
-                                        disabled
-                                      >-->
                                       <a-input-number
                                         size="large"
                                         :value="priceDp"
-                                        :formatter="value => `Rp. ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
                                         :parser="value => value.replace(/\Rp\s?|(.*)/g, '')"
                                         disabled
+                                        class="w-100"
                                       >
                                         <a-button
                                           slot="addonAfter"

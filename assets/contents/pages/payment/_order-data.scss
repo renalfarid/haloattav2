@@ -17,19 +17,25 @@
     }
     & .ant-btn--action {
         background-color: $color-main;
-        min-width: 260px;
+        border-color: $color-main;
+        word-spacing: 0 !important;
+        box-shadow: none;
+        color: #ffffff;
+        min-width: 220px;
         font-weight: 500;
         font-size: 15px;
-        color: #ffffff;
         border: none;
     }
     & .ant-btn--action-overlay {
         background-color: $color-main;
+        border-color: $color-main;
+        word-spacing: 0 !important;
+        box-shadow: none;
+        color: #ffffff;
+        min-width: 220px;
         position: absolute;
-        min-width: 260px;
         font-weight: 500;
         font-size: 15px;
-        color: #ffffff;
         border: none;
         right: 0;
         bottom: -60px;

@@ -20,7 +20,8 @@
                 border-bottom: 1px solid $color-border;
             }
             & .ant-form-item-control {
-                & .ant-input {
+                & .ant-input,
+                & .ant-input-number {
                     @include border-radius(0);
                     border: none;
                     color: $color-font;
@@ -28,7 +29,8 @@
                     font-size: 18px;
                     padding: 0;
                     border-bottom: 1px solid $color-border;
-                    &.ant-input-disabled {
+                    &.ant-input-disabled,
+                    &.ant-input-number-disabled {
                         background: transparent;
                     }
                     &:focus,
