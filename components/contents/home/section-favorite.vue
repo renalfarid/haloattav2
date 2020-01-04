@@ -4,7 +4,7 @@
       <a-divider orientation="left" class="ant-divider-title-left"
         >Umrah Favorit</a-divider
       >
-      <a-row :gutter="16">
+      <a-row :gutter="16" class="d-none">
         <a-col :span="16">
           <h6 class="subtitle">
             Pilihan Paket Umroh favorit yang dipilih oleh customer haloatta
@@ -16,14 +16,13 @@
     <a-row :gutter="16">
       <a-col :span="16">
         <a-card class="card-product-overlay">
-          <div class="box-content" v-lazy:background-image="imgCover">
+          <div class="box-content" v-lazy:background-image="'/umrah/cover/cu40.jpg'">
             <div class="box-content--overlay text-center">
               <div class="txt-title fs-40 fw-500 f-default mb-8">
                 Bisa Share Profit Loh!
               </div>
               <div class="txt fs-16 fw-400 f-default">
-                <span><p>Mau kembangkan bisnis Travel ? Umaroh jawabannya</p></span>
-                <span><p>Mau Jualan Komponen Umroh ? Umaroh jawabannya</p></span>
+                Mau kembangkan bisnis Travel dan Jualan Komponen Umroh ? Umaroh jawabannya
               </div>
               <a-button size="large">
                 <nuxt-link to="/catalog/umrah/all">Explore Paket</nuxt-link>
@@ -184,7 +183,6 @@ import moment from "moment";
 export default {
   data() {
     return {
-      imgCover: "/umrah/cover/cu40.jpg",
       wishlist: false,
       lisData: []
     };

@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="content-head">
-      <div class="content-head--cover" v-lazy:background-image="imgCover">
+      <div
+        class="content-head--cover"
+        v-lazy:background-image="'/umrah/cover/cu47.png'"
+      >
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row
@@ -144,10 +147,10 @@
           <a-divider orientation="left" class="ant-divider-title-left"
             >Rekomendasi Haloatta</a-divider
           >
-          <a-row :gutter="16">
+          <a-row :gutter="16" class="d-none">
             <a-col :span="16">
               <h6 class="fs-16 fw-400 cr-gray">
-                Haloatta merekomendasikan paket umrah terbaik untuk anda.
+                Haloatta merekomendasikan paket umroh terbaik untuk anda.
               </h6>
             </a-col>
           </a-row>
@@ -171,7 +174,10 @@
     <div class="content-banner-full">
       <a-card class="cover-banner">
         <div slot="cover">
-          <div class="cover-images" v-lazy:background-image="imgBanner">
+          <div
+            class="cover-images"
+            v-lazy:background-image="'/umrah/cover/cu17.png'"
+          >
             <div class="container">
               <a-row
                 :gutter="16"
@@ -181,12 +187,12 @@
                 class="h-100"
               >
                 <a-col :span="12">
-                  <a-card-meta
-                    title="Mau ibadah sekaligus jadi pengusaha ? 
-                    Umaroh jawabannya. 
-                    Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda"
-                  >
+                  <a-card-meta>
+                  <template slot="title">
+                    <span class="fs-40 f-default cr-white">Mau ibadah sekaligus jadi pengusaha ? Umaroh jawabannya.</span>
+                  </template>
                     <template slot="description">
+                      <p class="mb-24 fs-24 f-default cr-white">Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda</p>
                       <a-button size="large" class="b-shadow b-radius">
                         <nuxt-link to="/umaroh">Lihat Selengkapnya</nuxt-link>
                       </a-button>
@@ -206,8 +212,6 @@
       <sectionComponentsUmrah />
     </div>
 
-    
-
     <div class="content-news">
       <sectionNews />
     </div>
@@ -215,46 +219,40 @@
 </template>
 
 <script>
-import searchUmrah from '~/components/contents/lib/search/umrah.vue';
-import searchTicket from '~/components/contents/lib/search/ticket.vue';
-import searchAccommodation from '~/components/contents/lib/search/accommodation.vue';
-import searchVisa from '~/components/contents/lib/search/visa.vue';
-import searchInsurance from '~/components/contents/lib/search/insurance.vue';
-import searchHandling from '~/components/contents/lib/search/handling.vue';
-import searchManasik from '~/components/contents/lib/search/manasik.vue';
-import searchEquipment from '~/components/contents/lib/search/equipment.vue';
-import searchTourleader from '~/components/contents/lib/search/tourleader.vue';
+import searchUmrah from "~/components/contents/lib/search/umrah.vue";
+import searchTicket from "~/components/contents/lib/search/ticket.vue";
+import searchAccommodation from "~/components/contents/lib/search/accommodation.vue";
+import searchVisa from "~/components/contents/lib/search/visa.vue";
+import searchInsurance from "~/components/contents/lib/search/insurance.vue";
+import searchHandling from "~/components/contents/lib/search/handling.vue";
+import searchManasik from "~/components/contents/lib/search/manasik.vue";
+import searchEquipment from "~/components/contents/lib/search/equipment.vue";
+import searchTourleader from "~/components/contents/lib/search/tourleader.vue";
 
 // if before login
-import sectionFavorite from '~/components/contents/home/section-favorite.vue';
+import sectionFavorite from "~/components/contents/home/section-favorite.vue";
 // if after login
 // import sectionMyumrah from "~/components/contents/home/section-myumrah.vue";
-import sectionComponentsUmrah from '~/components/contents/home/section-components.vue';
+import sectionComponentsUmrah from "~/components/contents/home/section-components.vue";
 
-import umrahRecommended from '~/components/contents/catalog/umrah/recommended.vue';
+import umrahRecommended from "~/components/contents/catalog/umrah/recommended.vue";
 
-import sectionNews from '~/components/contents/home/section-news.vue';
-import axios from 'axios';
+import sectionNews from "~/components/contents/home/section-news.vue";
+import axios from "axios";
 
 export default {
-  name: 'homePage',
+  name: "homePage",
   head() {
     return {
-      title: 'Haloatta - Booking Paket Umrah, Tiket, LA dan Visa'
-    };
-  },
-  data() {
-    return {
-      imgCover: '/umrah/cover/cu47.png',
-      imgBanner: '/umrah/cover/cu17.png'
+      title: "Haloatta - Booking Paket Umrah, Tiket, LA dan Visa"
     };
   },
   async asyncData({ store }) {
     try {
-      const myRespone = await axios.get(process.env.baseUrl + 'option/umrah');
-      store.dispatch('itemOption/setUmroh', myRespone.data.data);
+      const myRespone = await axios.get(process.env.baseUrl + "option/umrah");
+      store.dispatch("itemOption/setUmroh", myRespone.data.data);
     } catch (error) {
-      store.dispatch('itemOption/setUmroh', []);
+      store.dispatch("itemOption/setUmroh", []);
       // message.error("Ada kesalahan");
       // console.log("error" + error);
     }
