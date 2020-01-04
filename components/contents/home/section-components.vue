@@ -82,7 +82,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Asuransi Perjalanan</h3>
               <p class="fs-16 fw-400 mb-0">
-                Beragam pilihan asuransi untuk keamanan dan kenyamanan penyelengaraan ibadah umroh dan haji
+                Beragam pilihan asuransi untuk keamanan dan kenyamanan ibadah umroh dan haji
               </p>
             </div>
           </a-card>
@@ -95,7 +95,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Handling Domestik</h3>
               <p class="fs-16 fw-400 mb-0">
-                Beragam pilihan layanan handling untuk memberikan kemudahan bagi pengguna aplikasi khususnya travel atau umaroh fitur ini merupakan keunggulan dari aplikasi haloatta
+                Beragam pilihan layanan handling untuk memberikan kemudahan bagi pengguna aplikasi khususnya travel atau umaroh
               </p>
             </div>
           </a-card>
@@ -123,8 +123,7 @@
             <div class="ant-card-cover--overlay">
               <h3 class="fs-26 fw-600 mb-0">Perlengkapan</h3>
               <p class="fs-16 fw-400 mb-0">
-                Beragam pilihan perlengkapan umrah yang memberikan kemudahan seluruh Travel, Umaroh, Vendor, dan Jamaah 
-                untuk mendapatkan informasi harga, merk, ukuran, suplier, serta dapat bertransaksi langsung
+                Beragam pilihan perlengkapan umrah yang memberikan kemudahan ibadah umroh
               </p>
             </div>
           </a-card>
