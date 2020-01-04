@@ -176,7 +176,7 @@
         <div slot="cover">
           <div
             class="cover-images"
-            v-lazy:background-image="'/umrah/cover/cu17.png'"
+            v-lazy:background-image="'/umrah/cover/cu28.png'"
           >
             <div class="container">
               <a-row
