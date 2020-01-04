@@ -60,7 +60,8 @@ module.exports = {
     ],
 
     axios: {
-        proxy: false
+        proxy: false,
+        crossDomain: true
     },
 
     moment: {
