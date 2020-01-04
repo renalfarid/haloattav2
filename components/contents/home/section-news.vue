@@ -16,20 +16,20 @@
         <client-only>
           <a-carousel>
             <div>
-              <nuxt-link to="/blog/detail">
+              <a :href="`https://www.haloummi.com/headlines/${mainhead.slug}`" target="_blank">
                 <a-card class="card-news--large-overlay">
                   <div slot="cover">
                     <div class="haloummi">
                       <img src="/haloummi.png" />
                     </div>
-                    <div class="box-content" v-lazy:background-image="blog1">
+                    <div class="box-content" v-lazy:background-image="imgUrl">
                       <div :style="{ width: '100%', zIndex: '2' }">
                         <div class="box-overlay">
-                          <div class="txt">Haram Hukumnya merubah aturan yang disepakati</div>
+                          <div class="txt">{{ mainhead.title }}</div>
                           <div class="item">
-                            <a-tag color="#f50" class="ant-tag--kajian ant-tag--large">Kajian</a-tag>
+                            <a-tag color="#f50" class="ant-tag--kajian ant-tag--large">{{ mainhead.kategori }}</a-tag>
                             <span class="time">
-                              <a-icon type="clock-circle" />5 jam lalu
+                              <a-icon type="clock-circle" />{{ mainhead.date | moment }}
                             </span>
                           </div>
                         </div>
@@ -38,79 +38,31 @@
                     </div>
                   </div>
                 </a-card>
-              </nuxt-link>
+              </a>
+              
             </div>
 
-            <div>
-              <nuxt-link to="/blog/detail">
-                <a-card class="card-news--large-overlay">
-                  <div slot="cover">
-                    <div class="haloummi">
-                      <img src="/haloummi.png" />
-                    </div>
-                    <div class="box-content" v-lazy:background-image="blog4">
-                      <div :style="{ width: '100%', zIndex: '2' }">
-                        <div class="box-overlay">
-                          <div class="txt">Agar tidak over bagasi saat traveling</div>
-                          <div class="item">
-                            <a-tag color="#f50" class="ant-tag--travel ant-tag--large">travel</a-tag>
-                            <span class="time">
-                              <a-icon type="clock-circle" />5 jam lalu
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="gradient-bottom"></div>
-                    </div>
-                  </div>
-                </a-card>
-              </nuxt-link>
-            </div>
-
-            <div>
-              <nuxt-link to="/blog/detail">
-                <a-card class="card-news--large-overlay">
-                  <div slot="cover">
-                    <div class="haloummi">
-                      <img src="/haloummi.png" />
-                    </div>
-                    <div class="box-content" v-lazy:background-image="blog3">
-                      <div :style="{ width: '100%', zIndex: '2' }">
-                        <div class="box-overlay">
-                          <div class="txt">Agar tidak over bagasi saat traveling</div>
-                          <div class="item">
-                            <a-tag color="#f50" class="ant-tag--travel ant-tag--large">travel</a-tag>
-                            <span class="time">
-                              <a-icon type="clock-circle" />5 jam lalu
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="gradient-bottom"></div>
-                    </div>
-                  </div>
-                </a-card>
-              </nuxt-link>
-            </div>
+            
           </a-carousel>
         </client-only>
       </a-col>
-
+      <div v-for="sub in this.subHeadlines" :key="sub.id">
       <a-col :span="6">
-        <nuxt-link to="/blog/detail">
-          <a-card class="card-news--small-overlay">
+        <a :href="`https://www.haloummi.com/headlines/${sub.slug}`" target="_blank">
+       
+            <a-card class="card-news--small-overlay">
             <div slot="cover">
               <div class="haloummi">
                 <img src="/haloummi.png" />
               </div>
-              <div class="box-content" v-lazy:background-image="blog2">
+              <div class="box-content" v-lazy:background-image="'https://api.haloummi.com/uploads/'+sub.image_url">
                 <div :style="{ width: '100%', zIndex: '2' }">
                   <div class="box-overlay">
-                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
+                    <div class="txt">{{ sub.title }}</div>
                     <div class="item">
-                      <a-tag color="#f50" class="ant-tag--umrah ant-tag--small">Umrah</a-tag>
+                      <a-tag color="#f50" class="ant-tag--umrah ant-tag--small">{{ sub.kategori }}</a-tag>
                       <span class="time">
-                        <a-icon type="clock-circle" />5 jam lalu
+                        <a-icon type="clock-circle" />{{ sub.date | moment }}
                       </span>
                     </div>
                   </div>
@@ -119,111 +71,67 @@
               </div>
             </div>
           </a-card>
-        </nuxt-link>
+        </a>
+       
       </a-col>
+       </div>
 
-      <a-col :span="6">
-        <nuxt-link to="/blog/detail">
-          <a-card class="card-news--small-overlay">
-            <div slot="cover">
-              <div class="haloummi">
-                <img src="/haloummi.png" />
-              </div>
-              <div class="box-content" v-lazy:background-image="blog3">
-                <div :style="{ width: '100%', zIndex: '2' }">
-                  <div class="box-overlay">
-                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
-                    <div class="item">
-                      <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
-                      <span class="time">
-                        <a-icon type="clock-circle" />5 jam lalu
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="gradient-bottom"></div>
-              </div>
-            </div>
-          </a-card>
-        </nuxt-link>
-      </a-col>
-
-      <a-col :span="6">
-        <nuxt-link to="/blog/detail">
-          <a-card class="card-news--small-overlay">
-            <div slot="cover">
-              <div class="haloummi">
-                <img src="/haloummi.png" />
-              </div>
-              <div class="box-content" v-lazy:background-image="blog4">
-                <div :style="{ width: '100%', zIndex: '2' }">
-                  <div class="box-overlay">
-                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
-                    <div class="item">
-                      <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
-                      <span class="time">
-                        <a-icon type="clock-circle" />5 jam lalu
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="gradient-bottom"></div>
-              </div>
-            </div>
-          </a-card>
-        </nuxt-link>
-      </a-col>
-
-      <a-col :span="6">
-        <nuxt-link to="/blog/detail">
-          <a-card class="card-news--small-overlay">
-            <div slot="cover">
-              <div class="haloummi">
-                <img src="/haloummi.png" />
-              </div>
-              <div class="box-content" v-lazy:background-image="blog5">
-                <div :style="{ width: '100%', zIndex: '2' }">
-                  <div class="box-overlay">
-                    <div class="txt">Sunnah hukumnya mencium Hajar Aswad</div>
-                    <div class="item">
-                      <a-tag color="#f50" class="ant-tag--travel ant-tag--small">Travel</a-tag>
-                      <span class="time">
-                        <a-icon type="clock-circle" />5 jam lalu
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="gradient-bottom"></div>
-              </div>
-            </div>
-          </a-card>
-        </nuxt-link>
-      </a-col>
+      
     </a-row>
 
     <div class="all-package mt-24 mb-16">
-      <nuxt-link to="/blog" class="fs-18 cr-green d-flex align-items-center">
+      
+      <a href="https://www.haloummi.com" target="_blank">
         Tampilkan semua
         <a-icon class="fs-16 ml-8" type="right" />
-      </nuxt-link>
+      </a>
+     
     </div>
   </div>
 </template>
 <script>
-import blog1 from "~/static/blog/B1.png";
-import blog2 from "~/static/blog/B2.png";
-import blog3 from "~/static/blog/B3.png";
-import blog4 from "~/static/blog/B4.png";
-import blog5 from "~/static/blog/B5.png";
+import axios from "axios";
+import moment from "moment";
+moment.locale('id');
+
 export default {
   data() {
     return {
-      blog1,
-      blog2,
-      blog3,
-      blog4,
-      blog5
+      headlines: [],
+      mainhead: [],
+      imgUrl: '',
+      subHeadlines: [],
+      moment,
     };
+  },
+  mounted(){
+    this.loadHeadlines();
+  },
+  methods: {
+       loadHeadlines(){
+
+
+
+      axios.get('https://api.haloummi.com/berita/haloatta/headlines').then(result => {
+         this.headlines = result.data.values
+         this.mainhead = result.data.values[0]
+         this.imgUrl = "https://api.haloummi.com/uploads/"+this.mainhead['image_url']
+
+         this.subHeadlines = this.headlines.filter(function(headline, index){
+          return index > 0;
+        })
+        //console.log(this.subHeadlines)
+        console.log(this.subHeadlines)
+
+
+      });
+
+    },
+  },
+  filters: {
+    moment(val) {
+      return moment(val, "YYYY-MM-DD").fromNow();
+    }
   }
 };
 </script>
