@@ -188,8 +188,6 @@ export default {
 
           const new_value = this.formValues;
 
-          console.log(new_value, "data");
-
           axios
             .post(
               process.env.baseUrl + "transaksi/pembayaran",
@@ -206,7 +204,6 @@ export default {
                 });
               } else {
                 this.$message.error(response.data.msg);
-                console.log(response.data);
               }
             })
             .catch(() => {
