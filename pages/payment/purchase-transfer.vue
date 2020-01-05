@@ -59,7 +59,7 @@
                       </a-card>
 
                       <!-- Add code voucher -->
-                      <a-card :style="{margin: '16px 0 24px 0'}">
+                      <!-- <a-card :style="{margin: '16px 0 24px 0'}">
                         <div class="ant-package--information-bill mt-16 mb-16">
                           <a-row :gutter="16">
                             <a-col :span="16">
@@ -78,7 +78,7 @@
                             </a-col>
                           </a-row>
                         </div>
-                      </a-card>
+                      </a-card>-->
 
                       <!-- Payment choose Transfer -->
                       <div class="ant-list-item--package-invoice">
@@ -144,7 +144,7 @@
                                       </div>
 
                                       <a-row type="flex" justify="space-around" align="bottom">
-                                        <a-col :span="22">
+                                        <a-col :span="20">
                                           <dl class="ant-deflist ant-deflist--small">
                                             <dt
                                               class="ant-deflist__label cr-black fw-400"
@@ -164,7 +164,7 @@
                                             </dd>
                                           </dl>
                                         </a-col>
-                                        <a-col :span="2" class="text-right">
+                                        <a-col :span="4" class="text-right">
                                           <a-button
                                             v-clipboard:copy="item.norekening"
                                             v-clipboard:success="onCopy"
@@ -209,9 +209,8 @@
                                   <a-col :span="14">
                                     <a-form-item label="Total Pesanan">
                                       <a-input
-                                        addonBefore="Rp."
                                         size="large"
-                                        :value="item.total_tagihan - item.kode_unik"
+                                        :value="item.total_tagihan - item.kode_unik | currency"
                                         disabled
                                       ></a-input>
                                     </a-form-item>
@@ -222,9 +221,8 @@
 
                                     <a-form-item label="Total Bayar">
                                       <a-input
-                                        addonBefore="Rp."
                                         size="large"
-                                        :value="price"
+                                        :value="price | currency"
                                         disabled
                                       >
                                         <a-button
@@ -271,36 +269,43 @@
                                 <a-row type="flex" justify="space-around" align="middle">
                                   <a-col :span="14">
                                     <a-form-item label="Total Pesanan">
-                                      <a-input
-                                        addonBefore="Rp. "
+                                      <a-input-number
                                         size="large"
-                                        value="930.000.000"
+                                        :defaultValue="item.total_tagihan - item.kode_unik"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :parser="value => value.replace(/\Rp\s?|(.*)/g, '')"
                                         disabled
-                                      ></a-input>
+                                        class="w-100"
+                                      />
                                     </a-form-item>
 
                                     <a-form-item
                                       label="Masukkan DP anda (min 30% dari total tagihan)"
-                                      help="Minimal DP anda Rp. 500.000.000"
+                                      :help="`Minimal Dp Anda Adalah ${((item.total_tagihan - item.kode_unik ) * 0.3)}`"
                                     >
-                                      <a-input
-                                        addonBefore="Rp. "
+                                      <a-input-number
+                                        :min="(item.total_tagihan - item.kode_unik) * 0.3"
+                                        :defaultValue="(item.total_tagihan - item.kode_unik)"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :parser="value => value.replace(/\Rp\s?|(\.*)/g, '')"
+                                        @change="onChangePriceDp"
                                         size="large"
-                                        v-model="priceDp"
-                                        :value="priceDp"
-                                      />
+                                        class="w-100"
+                                      ></a-input-number>
                                     </a-form-item>
 
                                     <a-form-item label="Kode Unik">
-                                      <a-input size="large" value="731" disabled></a-input>
+                                      <a-input size="large" :value="item.kode_unik" disabled></a-input>
                                     </a-form-item>
 
                                     <a-form-item label="Total Bayar">
-                                      <a-input
-                                        addonBefore="Rp."
+                                      <a-input-number
                                         size="large"
-                                        value="500.000.731"
+                                        :value="priceDp"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :parser="value => value.replace(/\Rp\s?|(.*)/g, '')"
                                         disabled
+                                        class="w-100"
                                       >
                                         <a-button
                                           slot="addonAfter"
@@ -311,7 +316,8 @@
                                           size="small"
                                           block
                                         >Salin</a-button>
-                                      </a-input>
+                                      </a-input-number>
+                                      <!-- </a-input> -->
                                     </a-form-item>
 
                                     <div class="ant-price--info fw-400 fs-12">
@@ -385,12 +391,9 @@ export default {
       choosePaymentMethod: "transfer",
       chosePayment: "PELUNASAN",
       price: 0,
-      priceDp: "500.000.000",
-      BCA: "111345777888999",
-      MANDIRI: "152444567890",
-      BNI: "155455678922",
-      BRI: "17244456789",
-      item: ""
+      priceDp: 0,
+      item: "",
+      minDp: 0
     };
   },
   created: function() {
@@ -399,6 +402,10 @@ export default {
   methods: {
     onChange(e) {
       console.log(`checked = ${e.target.value}`);
+    },
+    onChangePriceDp(value) {
+      console.log(`${value + this.item.kode_unik}`);
+      this.priceDp = value + this.item.kode_unik;
     },
     nextPurchaseSaldo() {
       let params = this.$route.query;
@@ -420,13 +427,14 @@ export default {
     },
     nextPaymentConfirmation() {
       let params = this.$route.query;
+
       this.$router.push({
         path: "/payment/payment-confirmation",
         query: {
           notrans: params.notrans,
           metode: "TRANSFER",
           jenis: this.chosePayment,
-          total: this.price
+          total: this.chosePayment == "PELUNASAN" ? this.price : this.priceDp
         }
       });
     },
@@ -459,7 +467,10 @@ export default {
         .then(response => {
           this.item = response.data.data;
           this.price = this.item.total_tagihan;
+          this.priceDp = this.item.total_tagihan;
+          this.minDP = (this.item.total_tagihan - this.item.kode_unik) * 0.3;
           console.log(this.item, "ini item");
+          console.log(this.minDP);
         });
     }
   },

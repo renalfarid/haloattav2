@@ -13,7 +13,6 @@
           <a-select
             showSearch
             defaultValue="Semua Produk"
-            size="large"
             style="width: 100%"
           >
             <a-select-option value="Semua Produk">Semua Produk</a-select-option>

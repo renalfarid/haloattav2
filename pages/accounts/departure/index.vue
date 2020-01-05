@@ -14,7 +14,6 @@
             showSearch
             placeholder="Pilih Produk"
             defaultValue="Tampilkan Semua"
-            size="large"
             style="width: 100%"
           >
             <a-select-option value="Tampilkan Semua">Tampilkan Semua</a-select-option>
@@ -30,7 +29,6 @@
             showSearch
             placeholder="Pilih Status Pemberangkatan"
             defaultValue="Semua Status Pemberangkatan"
-            size="large"
             style="width: 100%"
           >
             <a-select-option value="Semua Status Pemberangkatan">Semua Status Pemberangkatan</a-select-option>

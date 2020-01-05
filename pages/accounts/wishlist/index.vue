@@ -9,7 +9,7 @@
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-uppercase cr-gray fs-14">Filter Produk</a-col>
         <a-col :span="7">
-          <a-select showSearch defaultValue="Semua Produk" size="large" style="width: 100%">
+          <a-select showSearch defaultValue="Semua Produk" style="width: 100%">
             <a-select-option value="Semua Produk">Semua Produk</a-select-option>
             <a-select-option value="Umrah">Umrah</a-select-option>
             <a-select-option value="Tiket Group">Tiket Group</a-select-option>

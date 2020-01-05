@@ -4,8 +4,8 @@
     <a-card :bordered="false" class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16">
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-uppercase cr-gray fs-14">Filter Pembelian</a-col>
-        <a-col :span="7">
-          <a-select showSearch defaultValue="Semua Produk" size="large" style="width: 100%">
+        <a-col :span="10">
+          <a-select showSearch defaultValue="Semua Produk" style="width: 100%">
             <a-select-option value="Semua Produk">Semua Produk</a-select-option>
             <a-select-option value="Umrah">Umrah</a-select-option>
             <a-select-option value="Tiket Group">Tiket Group</a-select-option>
@@ -18,22 +18,14 @@
             <a-select-option value="Tour Leader">Tour Leader</a-select-option>
           </a-select>
         </a-col>
-        <a-col :span="6">
-          <a-select defaultValue="Semua Status" size="large" style="width: 100%">
+        <a-col :span="10">
+          <a-select defaultValue="Semua Status" style="width: 100%">
             <a-select-option value="Semua Status">Semua Status</a-select-option>
             <a-select-option value="Belum Dibayar">Belum Dibayar</a-select-option>
             <a-select-option value="Dibayar">Dibayar</a-select-option>
             <a-select-option value="Verifikasi">Menunggu Verifikasi</a-select-option>
             <a-select-option value="Kedaluwarsa">Kedaluwarsa</a-select-option>
           </a-select>
-        </a-col>
-        <a-col :span="7">
-          <a-range-picker
-            :ranges="{ Today: [moment(), moment()], 'This Month': [moment(), moment().endOf('month')] }"
-            :placeholder="['Dari Tanggal', 'Hingga Tanggal']"
-            @change="onChange"
-            size="large"
-          />
         </a-col>
       </a-row>
     </a-card>
