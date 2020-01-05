@@ -14,7 +14,11 @@
           </div>
 
           <a-form-item label="No. Transaksi">
-            <a-input size="large" v-decorator="['nomor_transaksi', { initialValue: item.notrans }]" disabled />
+            <a-input
+              size="large"
+              v-decorator="['nomor_transaksi', { initialValue: item.notrans }]"
+              disabled
+            />
           </a-form-item>
 
           <a-form-item label="Jumlah Tagihan">
@@ -49,7 +53,10 @@
                     <div class="d-flex align-items-center mb-8">
                       <div class="fs-15 fw-500">{{ item2.namabank }} ({{ item2.aliasbank }})</div>
                       <div class="ml-auto">
-                        <img :style="{ maxWidth: '100%', height: '18px' }" :src="item2.images" />
+                        <img
+                          :style="{ maxWidth: '100%', height: '18px' }"
+                          :src="item2.images || 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                        />
                       </div>
                     </div>
 
@@ -98,7 +105,11 @@
             </a-form-item>
           </div>
           <div class="mb-16">
-            <a-button html-type="submit" class="ant-btn--action fs-14 mb-16" size="large">Kirim Bukti Pembayaran</a-button>
+            <a-button
+              html-type="submit"
+              class="ant-btn--action fs-14 mb-16"
+              size="large"
+            >Kirim Bukti Pembayaran</a-button>
             <div class="fs-14 fw-400 f-default cr-gray">
               Customer service kami akan menanyakan nomer pesanan
               <br />saat menghubungi anda.
@@ -143,6 +154,7 @@ export default {
   },
   methods: {
     onChange(kode_bank) {
+      this.kode_bank = kode_bank;
       console.log("changed", kode_bank);
     },
     handleSubmit(e) {
