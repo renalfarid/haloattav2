@@ -22,7 +22,14 @@
           </a-form-item>
 
           <a-form-item label="Jumlah Tagihan">
-            <a-input size="large" :value="total | currency" disabled />
+            <a-input-number
+              size="large"
+              v-decorator="['bayar', {initialValue: total}]"
+              :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+              :parser="value => value.replace(/\Rp\s?|(.*)/g, '')"
+              disabled
+              class="w-100"
+            />
           </a-form-item>
 
           <a-form-item label="Rekening Tujuan" class="mb-0">
@@ -168,7 +175,8 @@ export default {
             jenis_pembayaran: params.jenis,
             bayar: values.bayar,
             kode_bank: values.kode_bank,
-            file: this.imageUrl
+            file: this.imageUrl,
+            otp_code: ""
           };
 
           const token = Cookie.get("auth");
@@ -179,6 +187,8 @@ export default {
           };
 
           const new_value = this.formValues;
+
+          console.log(new_value, "data");
 
           axios
             .post(
@@ -196,6 +206,7 @@ export default {
                 });
               } else {
                 this.$message.error(response.data.msg);
+                console.log(response.data);
               }
             })
             .catch(() => {
