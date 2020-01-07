@@ -1,7 +1,7 @@
 .content-head {
     height: 100vh;
     & .content-head--cover {
-        background-position: center center;
+        background-position: center right;
         background-size: cover;
         background-repeat: no-repeat;
         height: 100%;
@@ -117,7 +117,7 @@
     & .card-product--components {
         @include border-radius(0);
         overflow: hidden;
-        height: 320px;
+        height: 220px;
         border: none;
         & .ant-card-cover-images {
             -webkit-transform: translate3d(0, 10%, 0) scale3d(1.2, 1.2, 1);
@@ -140,14 +140,19 @@
                 background-image: -webkit-linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
                 background-image: -moz-linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
                 background-image: linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
+                @include align-items(center);
+                @include flexbox();
                 position: absolute;
-                padding: 24px;
+                padding: 16px;
                 width: 100%;
                 bottom: 0;
                 left: 0;
+                top: 0;
                 & h3,
-                p {
+                & p {
+                    text-align: center;
                     color: #ffffff;
+                    margin: 0 auto;
                 }
             }
         }
@@ -168,7 +173,7 @@
         border: none;
         & .ant-card-cover {
             & .cover-images {
-                background-position: center center;
+                background-position: center bottom;
                 background-repeat: no-repeat;
                 background-size: cover;
                 padding: 100px 0;

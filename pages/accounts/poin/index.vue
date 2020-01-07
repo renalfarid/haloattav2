@@ -8,12 +8,11 @@
         <a-col :span="8">
           <a-select
             showSearch
-            defaultValue="Jumlah HALO Point Terendah"
-            size="large"
+            :defaultValue="1"
             style="width: 100%"
           >
-            <a-select-option value="Jumlah HALO Point Terendah">Jumlah HALO Point Terendah</a-select-option>
-            <a-select-option value="Jumlah HALO Point Tertinggi">Jumlah HALO Point Tertinggi</a-select-option>
+            <a-select-option :value="1">Terendah</a-select-option>
+            <a-select-option :value="2">Tertinggi</a-select-option>
           </a-select>
         </a-col>
         <a-col :span="10"></a-col>

@@ -1,83 +1,80 @@
 <template>
   <div class="ant-layout--authentication">
-    <a-row>
-      <a-col
-        :span="7"
-        :style="{ backgroundColor: '#0FACF3' }"
-        class="d-flex align-items-center p-16 vh-100"
-      >
-        <a-card class="m-auto">
-          <div class="fs-30 fw-500 cr-white f-default mb-24">Selamat datang di Haloatta</div>
+    <div class="m-auto" style="max-width: 380px">
+      <img class="md-logo" v-lazy="'/haloatta.png'" />
+      <a-card>
+        <div class="fs-22 fw-500 cr-black f-default mb-24">
+          Selamat datang di Haloatta
+        </div>
 
-          <a-button class="ant-btn--facebook" size="large" block>
-            <img src="/icons/facebook.png" /> Masuk dengan Facebook
-          </a-button>
-
-          <a-button class="ant-btn--google" size="large" block>
-            <img src="/icons/google.png" /> Masuk dengan Google
-          </a-button>
-
-          <a-divider></a-divider>
-
-          <a-form :form="form" @submit="handleSubmit">
-            <a-form-item>
-              <a-input
-                v-model="username"
-                v-decorator="['username',{ rules: [{ required: true, message: 'Harus di isi!' }] }]"
-                placeholder="Email atau No. Telp"
-                size="large"
-              />
-            </a-form-item>
-            <a-form-item>
-              <a-input
-                v-model="password"
-                v-decorator="['password',{ valuePropName: 'password', initialValue: true, rules: [{ required: true, message: 'Harus di isi' }] }]"
-                placeholder="Kata Sandi"
-                size="large"
-              >
-                <a slot="suffix" class="cr-gray" @click="showPassword">
-                  <a-icon v-if="passwordFieldType === 'password'" type="eye" />
-                  <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible" />
-                </a>
-              </a-input>
-            </a-form-item>
-            <a-form-item>
-              <a-button
-                class="ant-btn--authentication mb-8"
-                html-type="submit"
-                size="large"
-                block
-              >Masuk</a-button>
-              <div class="d-flex align-items-center">
-                <div>
-                  <nuxt-link class="fs-14 cr-white fw-500" to="/register">atau Daftar disini</nuxt-link>
-                </div>
-                <div class="ml-auto">
-                  <a class="fs-14 cr-white fw-500" href>Lupa password</a>
-                </div>
-              </div>
-            </a-form-item>
-          </a-form>
-        </a-card>
-      </a-col>
-      <a-col :span="17" class="d-flex align-items-center p-16 vh-100">
-        <a-card class="m-auto">
-          <img class="logo mb-32" src="/haloatta.png" />
-          <div class="fs-30 fw-500 cr-black f-default mb-8">
-            Bergabunglah untuk menjadi
-            <br />Mitra kami
-          </div>
-          <div class="fs-18 fw-400 cr-black mb-24">Tingkatkan penjualan produk anda bersama kami</div>
-          <div>
-            <a-button
+        <a-form
+          layout="vertical"
+          :form="form"
+          @submit="handleSubmit"
+          hideRequiredMark
+          class="mb-0"
+        >
+          <a-form-item label="Nomor Telepon atau Email">
+            <a-input
+              v-decorator="[
+                'username',
+                {
+                  initialValue: username,
+                  valuePropName: 'username',
+                  rules: [{ required: true, message: 'Harus di isi!' }]
+                }
+              ]"
               size="large"
-              class="ant-btn--register b-radius b-shadow b-solid cr-primary fw-500"
-            >Daftar Mitra</a-button>
+            />
+          </a-form-item>
+
+          <a-form-item label="Kata Sandi">
+            <a-input-password
+              v-decorator="[
+                'password',
+                {
+                  initialValue: password,
+                  valuePropName: 'password',
+                  rules: [{ required: true, message: 'Harus di isi' }]
+                }
+              ]"
+              size="large"
+            />
+          </a-form-item>
+
+          <a-form-item class="mb-0">
+            <a-button
+              class="ant-btn--authentication mb-8"
+              html-type="submit"
+              size="large"
+              block
+              >Masuk</a-button
+            >
+          </a-form-item>
+        </a-form>
+
+        <a-divider> atau masuk dengan </a-divider>
+
+        <a-button class="ant-btn--facebook" size="large" block>
+          <img src="/icons/facebook.png" /> Facebook
+        </a-button>
+
+        <a-button class="ant-btn--google" size="large" block>
+          <img src="/icons/google.png" /> Google
+        </a-button>
+
+        <div class="d-flex align-items-center">
+          <div class="m-auto">
+            <nuxt-link class="fs-14 cr-black fw-400" to="/register"
+              >Belum punya akun Haloatta?
+              <span class="cr-primary">Daftar</span></nuxt-link
+            >
           </div>
-        </a-card>
-        <img class="img-cover--bottom" src="/icons/authentication.png" />
-      </a-col>
-    </a-row>
+        </div>
+      </a-card>
+    </div>
+
+    <img class="img-cover--bottom" src="/icons/authentication.png" />
   </div>
 </template>
 <script>
@@ -97,18 +94,13 @@ export default {
   data() {
     return {
       username: "",
-      password: "",
-      passwordFieldType: "password"
+      password: ""
     };
   },
   beforeCreate() {
     this.form = this.$form.createForm(this);
   },
   methods: {
-    showPassword() {
-      this.passwordFieldType =
-        this.passwordFieldType === "password" ? "text" : "password";
-    },
     handleSubmit(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
