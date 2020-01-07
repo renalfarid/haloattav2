@@ -3,7 +3,7 @@
     <div class="content-head">
       <div
         class="content-head--cover"
-        v-lazy:background-image="'/umrah/cover/cu52.jpg'"
+        v-lazy:background-image="'/umrah/cover/cu62.jpg'"
       >
         <div class="content-head--body">
           <div class="gradient-top"></div>
