@@ -220,11 +220,7 @@
                                     </a-form-item>
 
                                     <a-form-item label="Total Bayar">
-                                      <a-input
-                                        size="large"
-                                        :value="price | currency"
-                                        disabled
-                                      >
+                                      <a-input size="large" :value="price | currency" disabled>
                                         <a-button
                                           slot="addonAfter"
                                           v-clipboard:copy="price"
@@ -401,10 +397,9 @@ export default {
   },
   methods: {
     onChange(e) {
-      console.log(`checked = ${e.target.value}`);
+      // console.log(`checked = ${e.target.value}`);
     },
     onChangePriceDp(value) {
-      console.log(`${value + this.item.kode_unik}`);
       this.priceDp = value + this.item.kode_unik;
     },
     nextPurchaseSaldo() {
@@ -469,8 +464,7 @@ export default {
           this.price = this.item.total_tagihan;
           this.priceDp = this.item.total_tagihan;
           this.minDP = (this.item.total_tagihan - this.item.kode_unik) * 0.3;
-          console.log(this.item, "ini item");
-          console.log(this.minDP);
+          // console.log(this.item, "ini item");
         });
     }
   },

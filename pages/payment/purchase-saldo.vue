@@ -63,9 +63,8 @@
                               <a-col :span="16">
                                 <a-form-item label="Jumlah Saldo Anda">
                                   <a-input
-                                    addonBefore="Rp."
                                     size="large"
-                                    value="590.000.000"
+                                    :value="this.$store.state.auth.saldo | currency"
                                     disabled
                                   ></a-input>
                                 </a-form-item>
@@ -95,7 +94,7 @@
                       </a-card>
 
                       <!-- Add code voucher -->
-                      <a-card :style="{margin: '16px 0 24px 0'}">
+                      <!-- <a-card :style="{margin: '16px 0 24px 0'}">
                         <div class="ant-package--information-bill mt-16 mb-16">
                           <a-row :gutter="16">
                             <a-col :span="16">
@@ -114,7 +113,7 @@
                             </a-col>
                           </a-row>
                         </div>
-                      </a-card>
+                      </a-card>-->
 
                       <!-- Payment choose Deposit -->
                       <div class="ant-list-item--package-invoice">
@@ -149,10 +148,10 @@
                             <div class="ant-package--information-title fs-14 cr-gray fw-400">
                               Batas waktu pembayaran anda sebelum tanggal
                               <span class="cr-primary">
-                                <span>30-12-2019</span>
+                                <span>{{moment(item.limit_pembayaran).format("dddd, DD MMMM YYYY, h:mm:ss")}}</span>
                               </span>
-                              <a-divider type="vertical" />
-                              <span class="cr-primary">13:00</span>
+                              <!-- <a-divider type="vertical" /> -->
+                              <!-- <span class="cr-primary">13:00</span> -->
                             </div>
 
                             <a-divider :style="{margin: '40px 0'}"></a-divider>
@@ -161,45 +160,51 @@
                               <span>Bagaimana Anda Membayar Pesanan Anda</span>
                             </div>
                             <a-radio-group
-                              defaultValue="lunas"
+                              defaultValue="PELUNASAN"
                               v-model="chosePayment"
                               @change="onChange"
                               name="radioGroup"
                               :style="{ margin: '16px 0 0 0'}"
                             >
-                              <a-radio value="lunas" class="fs-15 f-default cr-black fw-500">
+                              <a-radio value="PELUNASAN" class="fs-15 f-default cr-black fw-500">
                                 <span>Pembayaran Lunas</span>
                               </a-radio>
-                              <a-radio value="dp" class="fs-15 f-default cr-black fw-500">
+                              <a-radio value="DP" class="fs-15 f-default cr-black fw-500">
                                 <span>Pembayaran Down Payment (DP)</span>
                               </a-radio>
                             </a-radio-group>
 
                             <a-divider :style="{margin: '40px 0'}"></a-divider>
 
-                            <div class="text-left" v-if="chosePayment === 'lunas'">
-                              <a-form layout="vertical" hideRequiredMark>
+                            <div class="text-left" v-if="chosePayment === 'PELUNASAN'">
+                              <a-form
+                                layout="vertical"
+                                :form="form"
+                                @submit="handleSubmit"
+                                hideRequiredMark
+                              >
                                 <a-row type="flex" justify="space-around" align="middle">
                                   <a-col :span="14">
                                     <a-form-item label="Total Pesanan">
                                       <a-input
-                                        addonBefore="Rp."
                                         size="large"
-                                        value="930.000.000"
+                                        :value="item.total_tagihan - item.kode_unik | currency"
                                         disabled
                                       ></a-input>
                                     </a-form-item>
 
                                     <a-form-item label="Kode Unik">
-                                      <a-input size="large" value="731" disabled></a-input>
+                                      <a-input size="large" :value="item.kode_unik" disabled></a-input>
                                     </a-form-item>
 
                                     <a-form-item label="Total Bayar">
-                                      <a-input
-                                        addonBefore="Rp."
+                                      <a-input-number
                                         size="large"
-                                        :value="price"
+                                        v-decorator="['bayar', {initialValue: priceDp}]"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :parser="value => value.replace(/\Rp\s?|(.*)/g, '')"
                                         disabled
+                                        class="w-100"
                                       >
                                         <a-button
                                           slot="addonAfter"
@@ -210,13 +215,12 @@
                                           size="small"
                                           block
                                         >Salin</a-button>
-                                      </a-input>
+                                      </a-input-number>
                                     </a-form-item>
                                     <div class="ant-price--info fw-400 fs-12">
-                                      <span
-                                        class="p-relative"
-                                        style="z-index: 2"
-                                      >PENTING! Mohon bayar sampai 3 digit terakhir</span>
+                                      <span class="p-relative" style="z-index: 2">
+                                        <span>PENTING! Mohon bayar sampai 3 digit terakhir</span>
+                                      </span>
                                       <div class="ant-price--info-overlay"></div>
                                     </div>
                                     <a-form-item>
@@ -228,10 +232,15 @@
                                       </div>
                                     </a-form-item>
                                     <a-form-item>
-                                      <a-button
+                                      <!-- <a-button
                                         size="large"
                                         class="ant-btn--action"
                                         @click="nextEpackageFailed"
+                                      >Bayar Dengan Saldo</a-button>-->
+                                      <a-button
+                                        html-type="submit"
+                                        size="large"
+                                        class="ant-btn--action"
                                       >Bayar Dengan Saldo</a-button>
                                     </a-form-item>
                                   </a-col>
@@ -239,36 +248,53 @@
                               </a-form>
                             </div>
 
-                            <div class="text-left" v-if="chosePayment === 'dp'">
-                              <a-form layout="vertical" hideRequiredMark>
+                            <div class="text-left" v-if="chosePayment === 'DP'">
+                              <a-form
+                                layout="vertical"
+                                :form="form"
+                                @submit="handleSubmit"
+                                hideRequiredMark
+                              >
                                 <a-row type="flex" justify="space-around" align="middle">
                                   <a-col :span="14">
                                     <a-form-item label="Total Pesanan">
-                                      <a-input
-                                        addonBefore="Rp. "
+                                      <a-input-number
                                         size="large"
-                                        value="930.000.000"
+                                        :defaultValue="item.total_tagihan - item.kode_unik"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :parser="value => value.replace(/\Rp\s?|(.*)/g, '')"
                                         disabled
-                                      ></a-input>
+                                        class="w-100"
+                                      />
                                     </a-form-item>
 
                                     <a-form-item
                                       label="Masukkan DP anda (min 30% dari total tagihan)"
-                                      help="Minimal DP anda Rp. 500.000.000"
+                                      :help="`Minimal Dp Anda Adalah ${((item.total_tagihan - item.kode_unik ) * 0.3)}`"
                                     >
-                                      <a-input addonBefore="Rp. " size="large" value="500.000.000" />
+                                      <a-input-number
+                                        :min="(item.total_tagihan - item.kode_unik) * 0.3"
+                                        :defaultValue="(item.total_tagihan - item.kode_unik)"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :parser="value => value.replace(/\Rp\s?|(\.*)/g, '')"
+                                        @change="onChangePriceDp"
+                                        size="large"
+                                        class="w-100"
+                                      ></a-input-number>
                                     </a-form-item>
 
                                     <a-form-item label="Kode Unik">
-                                      <a-input size="large" value="731" disabled></a-input>
+                                      <a-input size="large" :value="item.kode_unik" disabled></a-input>
                                     </a-form-item>
 
                                     <a-form-item label="Total Bayar">
-                                      <a-input
-                                        addonBefore="Rp."
+                                      <a-input-number
                                         size="large"
-                                        :value="priceDp"
+                                        v-decorator="['bayar', {initialValue: priceDp}]"
+                                        :formatter="value => `Rp ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, '.')"
+                                        :parser="value => value.replace(/\Rp\s?|(.*)/g, '')"
                                         disabled
+                                        class="w-100"
                                       >
                                         <a-button
                                           slot="addonAfter"
@@ -279,7 +305,8 @@
                                           size="small"
                                           block
                                         >Salin</a-button>
-                                      </a-input>
+                                      </a-input-number>
+                                      <!-- </a-input> -->
                                     </a-form-item>
 
                                     <div class="ant-price--info fw-400 fs-12">
@@ -299,19 +326,17 @@
                                     </a-form-item>
                                     <a-form-item>
                                       <!-- <a-button
-                                    size="large"
-                                    class="ant-btn--action"
-                                    @click="nextEpackagePaidOff"
-                                  >
-                                    <span>Bayar Dengan Saldo</span>
-                                      </a-button>-->
-                                      <a-button
                                         size="large"
                                         class="ant-btn--action"
                                         @click="nextEpackagePaidOff"
                                       >
                                         <span>Bayar Dengan Saldo</span>
-                                      </a-button>
+                                      </a-button>-->
+                                      <a-button
+                                        html-type="submit"
+                                        size="large"
+                                        class="ant-btn--action"
+                                      >Bayar Dengan Saldo</a-button>
                                     </a-form-item>
                                   </a-col>
                                 </a-row>
@@ -327,7 +352,7 @@
               </a-col>
               <!-- card sider -->
               <a-col :span="8">
-                <siderPayment />
+                <siderPayment :total="price" />
               </a-col>
             </a-row>
           </a-col>
@@ -344,7 +369,10 @@
   </a-layout>
 </template>
 <script>
+import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
 import siderPayment from "@/pages/payment/sider.vue";
+import moment from "moment";
 export default {
   layout: "application",
   name: "purchase",
@@ -353,21 +381,29 @@ export default {
       title: "Haloatta - Booking Paket Umrah & Komponen Umrah Terlengkap"
     };
   },
+  beforeCreate() {
+    this.form = this.$form.createForm(this);
+  },
   data() {
     return {
       choosePaymentMethod: "saldo",
-      chosePayment: "lunas",
-      priceDp: "500.000.731",
-      price: "930.000.731",
-      item: ""
+      chosePayment: "PELUNASAN",
+      price: 0,
+      priceDp: 0,
+      item: "",
+      minDp: 0
     };
   },
   created: function() {
     this.getdata();
   },
   methods: {
+    moment,
     onChange(e) {
       console.log(`checked = ${e.target.value}`);
+    },
+    onChangePriceDp(value) {
+      this.priceDp = value + this.item.kode_unik;
     },
     nextPurchaseSaldo() {
       let params = this.$route.query;
@@ -401,14 +437,77 @@ export default {
     },
     async getdata() {
       let params = this.$route.query;
+      const token = Cookie.get("auth");
+
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
       axios
-        .post(process.env.baseUrl + "transaksi/paymentdetail", {
-          notrans: params.notrans
-        })
+        .post(
+          process.env.baseUrl + "transaksi/paymentdetail",
+          {
+            notrans: params.notrans
+          },
+          config
+        )
         .then(response => {
           this.item = response.data.data;
-          console.log(this.item, "ini item");
+          this.price = this.item.total_tagihan;
+          this.priceDp = this.item.total_tagihan;
+          this.minDP = (this.item.total_tagihan - this.item.kode_unik) * 0.3;
         });
+    },
+    handleSubmit(e) {
+      console.log("click");
+
+      e.preventDefault();
+      let params = this.$route.query;
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          this.formValues = {
+            nomor_transaksi: params.notrans,
+            metode_pembayaran: "SALDO",
+            jenis_pembayaran: this.chosePayment,
+            bayar: values.bayar,
+            otp_code: ""
+          };
+
+          const token = Cookie.get("auth");
+          const config = {
+            headers: {
+              Authorization: "Bearer " + token
+            }
+          };
+
+          const new_value = this.formValues;
+          console.log(new_value);
+
+          axios
+            .post(
+              process.env.baseUrl + "transaksi/pembayaran",
+              new_value,
+              config
+            )
+            .then(response => {
+              if (response.data.status == 200) {
+                this.form.resetFields();
+                this.$message.success(response.data.msg);
+                this.$emit("saved", true);
+                this.$router.push({
+                  path: "/accounts/billing"
+                });
+              } else {
+                this.$message.error(response.data.msg);
+              }
+            })
+            .catch(() => {
+              this.$message.error("Ada kesalahan");
+              console.log(this.formValues, "salah");
+            });
+        }
+      });
     }
   },
   components: {
