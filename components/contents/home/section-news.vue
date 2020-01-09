@@ -28,18 +28,22 @@
                     <div class="box-content" v-lazy:background-image="imgUrl">
                       <div :style="{ width: '100%', zIndex: '2' }">
                         <div class="box-overlay">
-                          <div class="txt fs-40">{{ mainhead.title }}</div>
+                          <div
+                            class="txt fs-16 text-uppercase cr-white-overlay mb-0"
+                          >
+                            {{ mainhead.kategori }}
+                          </div>
+                          <div class="txt fs-30 f-default">
+                            {{ mainhead.title }}
+                          </div>
                           <div class="item">
-                            <a-tag
-                              color="#f50"
-                              class="ant-tag--kajian ant-tag--large"
-                              >{{ mainhead.kategori }}</a-tag
+                            <span
+                              class="time cr-white-overlay text-capitalize mr-16"
+                              >{{ mainhead.sumber }}</span
                             >
-                            <span class="time">
-                              <a-icon type="clock-circle" />{{
-                                mainhead.date | moment
-                              }}
-                            </span>
+                            <span class="time cr-white-overlay">{{
+                              mainhead.date | moment
+                            }}</span>
                           </div>
                         </div>
                       </div>
@@ -68,16 +72,18 @@
                 >
                   <div :style="{ width: '100%', zIndex: '2' }">
                     <div class="box-overlay">
-                      <div class="txt fs-18">{{ sub.title }}</div>
+                      <div class="txt fs-13 text-uppercase cr-white-overlay">
+                        {{ sub.kategori }}
+                      </div>
+                      <div class="txt txt-ellipsis fs-18">{{ sub.title }}</div>
                       <div class="item">
-                        <a-tag
-                          color="#f50"
-                          class="ant-tag--umrah ant-tag--small"
-                          >{{ sub.kategori }}</a-tag
+                        <span
+                          class="time cr-white-overlay text-capitalize mr-16"
+                          >{{ sub.sumber }}</span
                         >
-                        <span class="time">
-                          <a-icon type="clock-circle" />{{ sub.date | moment }}
-                        </span>
+                        <span class="time cr-white-overlay">{{
+                          sub.date | moment
+                        }}</span>
                       </div>
                     </div>
                   </div>
