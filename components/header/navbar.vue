@@ -362,7 +362,9 @@ export default {
             email: response.data.data.email,
             alamat: response.data.data.alamat,
             status: response.data.data.role_nama,
-            telepon: response.data.data.telepon
+            telepon: response.data.data.telepon,
+            saldo: response.data.data.saldo,
+            poin: response.data.data.poin
           };
           this.$store.commit("setAuth", auth); // mutating to store for client rendering
           this.nama =

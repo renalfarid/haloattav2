@@ -37,3 +37,7 @@
 .cr-white {
     color: #ffffff !important;
 }
+
+.cr-white-overlay {
+    color: rgba($color: #fff, $alpha: .8) !important;
+}

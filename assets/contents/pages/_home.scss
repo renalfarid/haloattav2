@@ -117,7 +117,7 @@
     & .card-product--components {
         @include border-radius(0);
         overflow: hidden;
-        height: 220px;
+        height: 340px;
         border: none;
         & .ant-card-cover-images {
             -webkit-transform: translate3d(0, 10%, 0) scale3d(1.2, 1.2, 1);
@@ -140,19 +140,22 @@
                 background-image: -webkit-linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
                 background-image: -moz-linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
                 background-image: linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
-                @include align-items(center);
+                @include align-items(flex-end);
                 @include flexbox();
                 position: absolute;
-                padding: 16px;
+                padding: 24px 16px;
                 width: 100%;
                 bottom: 0;
                 left: 0;
                 top: 0;
-                & h3,
-                & p {
+                & h3 {
                     text-align: center;
                     color: #ffffff;
-                    margin: 0 auto;
+                }
+                & p {
+                    text-align: center;
+                    color: rgba($color: #fff, $alpha: .8);
+                    font-style: italic;
                 }
             }
         }
