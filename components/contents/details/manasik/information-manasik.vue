@@ -36,7 +36,7 @@
         </a-list-item>
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
-            <div class="fs-14 cr-black">{{data.deskripsi}}</div>
+            <div class="fs-14 cr-black" v-html="data.deskripsi"></div>
           </div>
         </a-list-item>
       </a-list>
