@@ -44,8 +44,8 @@
           <div class="title">Tentang Haloatta</div>
           <div class="item">
             <nuxt-link to="/about" class="item-link">Tentang Kami</nuxt-link>
-            <nuxt-link to="/blog" class="item-link">Haloummi</nuxt-link>
-            <nuxt-link to="/" class="item-link">Bermitra dengan Kami</nuxt-link>
+            <a href="https://www.haloummi.com" target="_blank">Haloummi</a>
+            <a href="https://betavendor.haloatta.com" class="item-link" target="_blank">Bermitra dengan Kami</a>
           </div>
         </a-card>
       </a-col>

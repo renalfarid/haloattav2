@@ -189,12 +189,13 @@
                 <a-col :span="12">
                   <a-card-meta>
                   <template slot="title">
-                    <span class="fs-40 f-default cr-white">Mau ibadah sekaligus jadi pengusaha ? Umaroh jawabannya.</span>
+                    <span class="fs-40 f-default cr-white">Mau ibadah sekaligus jadi pengusaha ?</span>
                   </template>
                     <template slot="description">
-                      <p class="mb-24 fs-24 f-default cr-white">Pelajari berapa yang bisa Anda hasilkan dengan menjual paket umrah Anda</p>
+                      <p class="mb-24 fs-24 f-default cr-white">Pelajari berapa yang bisa Anda hasilkan dengan menjual komponen dan paket umrah Anda</p>
                       <a-button size="large" class="b-shadow b-radius">
-                        <nuxt-link to="/umaroh">Lihat Selengkapnya</nuxt-link>
+                        <!-- <nuxt-link to="/umaroh">Lihat Selengkapnya</nuxt-link> -->
+                        <a href="https://betavendor.haloatta.com" target="_blank">Lihat Selengkapnya</a>
                       </a-button>
                     </template>
                   </a-card-meta>

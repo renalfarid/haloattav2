@@ -29,7 +29,7 @@
             <nuxt-link to="/about">Tentang</nuxt-link>
           </a-menu-item>
           <a-menu-item key="3" class="nav-link">
-            <a href="https://www.haloummi.com" target="_blank">HaloUmmi</a>
+            <a href="https://www.haloummi.com" target="_blank">Haloummi</a>
           </a-menu-item>
           <a-sub-menu>
             <span slot="title" class="submenu-title-wrapper">Informasi</span>
