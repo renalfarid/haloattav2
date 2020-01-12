@@ -24,18 +24,20 @@
                 <template slot="actions">
                   <a-tag>
                     <div class="d-flex align-items-center">
-                      <a-icon class="mr-4" type="gold" />
-                      <span>{{ this.$store.state.auth.poin }}</span> POIN
+                      <a-icon type="gold" />
+                      <span class="mr-4">{{ this.$store.state.auth.poin }}</span> POIN
                     </div>
                   </a-tag>
                   <a-tag>
                     <div class="d-flex align-items-center">
-                      <a-icon class="mr-4" type="wallet" />
-                      <span>{{ this.$store.state.auth.saldo | currency }}</span>
+                      <a-icon type="wallet" />
+                      <span class="text-uppercase mr-4">{{ this.$store.state.auth.saldo | currency }}</span>
                     </div>
                   </a-tag>
                 </template>
+                
                 <a slot="author">{{ $store.state.auth.nama }}</a>
+
                 <a-avatar
                   :src="this.$store.state.auth.foto"
                   alt="haloatta"

@@ -51,8 +51,8 @@ module.exports = {
             "vue-currency-filter/nuxt",
             {
                 symbol: "Rp",
-                thousandsSeparator: ".",
-                fractionSeparator: ".",
+                thousandsSeparator: ",",
+                fractionSeparator: ",",
                 symbolPosition: "front",
                 symbolSpacing: true
             }
@@ -60,10 +60,10 @@ module.exports = {
         [
             "nuxt-imagemin",
             {
-              optipng: { optimizationLevel: 5 },
-              gifsicle: { optimizationLevel: 2 }
+                optipng: { optimizationLevel: 5 },
+                gifsicle: { optimizationLevel: 2 }
             }
-          ]
+        ]
     ],
 
     axios: {
@@ -104,10 +104,10 @@ module.exports = {
     build: {
         // extractCSS: true,
         extend(config, ctx) {
-            
+
             if (ctx && ctx.isClient) {
-                  config.optimization.splitChunks.maxSize = 51200
-                }
+                config.optimization.splitChunks.maxSize = 51200
+            }
             config.resolve.alias["vue"] = "vue/dist/vue.common";
         }
     }

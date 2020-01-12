@@ -52,12 +52,27 @@
                 }
                 & .ant-comment-actions {
                     & .ant-tag {
-                        background: rgba(255, 255, 255, .6);
-                        line-height: 24px;
+                        background: rgba(255, 255, 255, .8);
+                        border-radius: 50px;
+                        line-height: 32px;
                         font-size: 14px;
-                        padding: 0 16px;
+                        padding: 0 16px 0 0;
+                        margin: 4px 12px 4px 0;
                         border: none;
-                        height: 26px;
+                        height: 32px;
+                        & .anticon {
+                            background-color: #ffffff;
+                            @include align-items(center);
+                            @include flexbox();
+                            color: $color-main;
+                            border-radius: 50px;
+                            margin-right: 6px;
+                            height: 32px;
+                            width: 32px;
+                            & svg {
+                                margin: 0 auto;
+                            }
+                        }
                     }
                 }
                 & .ant-avatar {
