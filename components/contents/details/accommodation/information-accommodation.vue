@@ -115,24 +115,24 @@
               <a-col :span="8">
                 <div class="ant-package--images-large">
                   <div
-                    class="ant-package--images-cover"
-                    :style="{ backgroundImage: `url(${data.hotel_mekkah.img_room_double})` }"
+                    class="ant-package--images-cover h-100"
+                    v-lazy:background-image="data.hotel_mekkah.img_room_double"
                   ></div>
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-large">
                   <div
-                    class="ant-package--images-cover"
-                    :style="{ backgroundImage: `url(${data.hotel_mekkah.img_room_triple})` }"
+                    class="ant-package--images-cover h-100"
+                    v-lazy:background-image="data.hotel_mekkah.img_room_triple"
                   ></div>
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-large">
                   <div
-                    class="ant-package--images-cover"
-                    :style="{ backgroundImage: `url(${data.hotel_mekkah.img_room_quard})` }"
+                    class="ant-package--images-cover h-100"
+                    v-lazy:background-image="data.hotel_mekkah.img_room_quard"
                   ></div>
                 </div>
               </a-col>
@@ -197,7 +197,7 @@
                     <div class="fs-15 fw-400 cr-gray f-default">Jarak Hotel</div>
                     <div
                       class="fs-15 fw-500 cr-black"
-                    >{{(data.hotel_madinah.jarak_hotel !=null)?data.hotel_madinah.jarak_hotel:'kosong'}}</div>
+                    >{{(data.hotel_madinah.jarak_hotel !=null) ? data.hotel_madinah.jarak_hotel:'kosong'}}</div>
                   </div>
                 </div>
               </a-col>
@@ -212,24 +212,24 @@
               <a-col :span="8">
                 <div class="ant-package--images-large">
                   <div
-                    class="ant-package--images-cover"
-                    :style="{ backgroundImage: `url(${data.hotel_madinah.img_room_double})` }"
+                    class="ant-package--images-cover h-100"
+                    v-lazy:background-image="data.hotel_madinah.img_room_double"
                   ></div>
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-large">
                   <div
-                    class="ant-package--images-cover"
-                    :style="{ backgroundImage: `url(${data.hotel_madinah.img_room_triple})` }"
+                    class="ant-package--images-cover h-100"
+                    v-lazy:background-image="data.hotel_madinah.img_room_triple"
                   ></div>
                 </div>
               </a-col>
               <a-col :span="8">
                 <div class="ant-package--images-large">
                   <div
-                    class="ant-package--images-cover"
-                    :style="{ backgroundImage: `url(${data.hotel_madinah.img_room_quard})` }"
+                    class="ant-package--images-cover h-100"
+                    v-lazy:background-image="data.hotel_madinah.img_room_quard"
                   ></div>
                 </div>
               </a-col>
