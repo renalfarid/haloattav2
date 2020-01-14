@@ -6,8 +6,8 @@
       >
     </div>
 
-    <a-row :gutter="16" class="mb-16">
-      <a-col :span="6">
+    <a-row :gutter="16">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/umrah">
           <a-card class="card-product--components">
             <div
@@ -23,7 +23,7 @@
           </a-card>
         </nuxt-link>
       </a-col>
-      <a-col :span="6">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/ticket-group">
           <a-card class="card-product--components">
             <div
@@ -39,7 +39,7 @@
           </a-card>
         </nuxt-link>
       </a-col>
-      <a-col :span="6">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/accommodation">
           <a-card class="card-product--components">
             <div
@@ -55,7 +55,7 @@
           </a-card>
         </nuxt-link>
       </a-col>
-      <a-col :span="6">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/visa">
           <a-card class="card-product--components">
             <div
@@ -71,10 +71,7 @@
           </a-card>
         </nuxt-link>
       </a-col>
-    </a-row>
-
-    <a-row :gutter="16" class="mb-16">
-      <a-col :span="6">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/insurance">
           <a-card class="card-product--components">
             <div
@@ -90,7 +87,7 @@
           </a-card>
         </nuxt-link>
       </a-col>
-      <a-col :span="6">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/handling">
           <a-card class="card-product--components">
             <div
@@ -106,7 +103,7 @@
           </a-card>
         </nuxt-link>
       </a-col>
-      <a-col :span="6">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/manasik">
           <a-card class="card-product--components">
             <div
@@ -122,7 +119,7 @@
           </a-card>
         </nuxt-link>
       </a-col>
-      <a-col :span="6">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/equipment">
           <a-card class="card-product--components">
             <div
@@ -138,10 +135,7 @@
           </a-card>
         </nuxt-link>
       </a-col>
-    </a-row>
-
-    <a-row :gutter="16" class="mb-16">
-      <a-col :span="6">
+      <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/tourleader">
           <a-card class="card-product--components">
             <div
