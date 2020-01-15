@@ -6,11 +6,12 @@
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100 m-auto" type="flex" justify="space-around" align="middle">
             <a-col :xs="24" :sm="24" :md="12" :lg="10">
-              <h2 class="title fs-40">What's your next destination?</h2>
+              <h2 class="title fs-40">Memudahkan perjalanan anda</h2>
               <p class="cr-white fs-16 fw-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                Halo!
+                Perjalanan anda semakin mudah bukan..
+                Beragam pilihan penerbangan memberikan pengalaman yang bisa anda ciptakan..
+                Bersama haloatta..
               </p>
             </a-col>
             <a-col :xs="24" :sm="24" :md="12" :lg="14">
@@ -29,18 +30,20 @@
         <a-row :gutter="24" type="flex" justify="space-between" align="middle">
           <a-col :span="12">
             <p class="fs-16 cr-black">
-              It’s an audacious, incredibly rewarding mission that our
-              increasingly diverse team is dedicated to achieving.
+              Halo..
+              Atta ticket adalah perusahaan aplikasi online yang menyediakan berbagai macam ticket penerbangan 
+              yang dapat disesuaikan dengan kebutuhan perjalanan serta petualangan wisata halal dalam satu platform.
+              
+              
             </p>
             <p class="fs-16 cr-black">
-              Haloatta is built around the idea that everyone should be able to take the perfect trip,
-              including where they stay, what they do, and who they meet.
-              To that end, we empower millions of people around the world to use their spaces, passions, and talents to become entrepreneurs.
+              Halo…
+              Atta memberikan kesempatan anda untuk menciptakan momen momen bersama orang-orang yang anda cintai yang tidak terlupakan.
             </p>
             <p class="fs-16 cr-black mb-0">
-              Exciting challenges lie ahead—new regions, technologies, and businesses.
-              Guided by our four core values, we’ll meet these challenges creatively
-              and with the support of our global community. Join us!
+              Halo…
+              Atta menyajikan kemudahan dalam memilih penerbangan dengan tujuan wisata halal diberbagai belahan 
+              dunia. Terkhusus tujuan wisata halal yaitu perjalanan ibadah Umroh dan Haji.
             </p>
           </a-col>
           <a-col :span="12">
@@ -71,10 +74,7 @@
                 <a-col :span="12">
                   <div class="fs-22 fw-500 cr-black">Fleksibel Waktu dan Tujuan</div>
                   <div class="fs-16 fw-400 cr-black">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolore facilis ipsum amet consequatur harum facere,
-                    quidem necessitatibus quas et impedit consequuntur dicta voluptas,
-                    repellendus perferendis, cumque assumenda animi eveniet temporibus.
+                    Dengan memilih berbagai macam pilihan tiket pesawat untuk perjalanan wisata halal anda sesuai kebutuhan anda
                   </div>
                 </a-col>
               </a-row>
@@ -113,8 +113,7 @@
         <a-row>
           <a-col :span="16">
             <p class="fs-16 cr-black">
-              It’s an audacious, incredibly rewarding mission that our
-              increasingly diverse team is dedicated to achieving.
+              Kami menjalin kerjasama dengan penyedia tiket berbagai macam maskapai untuk destinasi anda.
             </p>
           </a-col>
         </a-row>

@@ -7,8 +7,7 @@
           <a-row :gutter="16">
             <a-col :span="12">
               <h2 class="ant-layout--about-head-title fs-40 fw-500 cr-black">
-                Tentang Halo Atta
-                <br />Serasa Travel Sendiri
+                haloatta
               </h2>
             </a-col>
           </a-row>
@@ -19,23 +18,53 @@
         <div class="container">
           <a-row :gutter="16">
             <a-col :span="12">
+              <div class="ant-layout--about-description-text">
+                
+                <p class="fs-15 fw-400 cr-black">
+                    Permudah diri anda untuk menikmati beragam pilihan
+                    perjalanan wisata halal yang bernilai ibadah dan ekonmi
+                    tanpa batas ruang dan waktu, kami wujudkan semua
+                    kebutuhan wisata halal dalam satu genggaman.
+                </p>
+                
+              </div>
               <div class="ant-layout--about-description-title fs-30 fw-500 cr-black">
-                Umrah Digital Mudah
-                <br />Terpercaya
+                Tentang Kami
               </div>
               <div class="ant-layout--about-description-text">
-                <p
-                  class="fs-15 fw-400 cr-black"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Est cumque blanditiis, sapiente nesciunt possimus, sed quibusdam eum sit minima voluptate nobis iure in assumenda aliquid! Nisi veniam delectus illum officia!</p>
-                <p
-                  class="fs-15 fw-400 cr-black"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Est cumque blanditiis, sapiente nesciunt possimus, sed quibusdam eum sit minima voluptate nobis iure in assumenda aliquid! Nisi veniam delectus illum officia!</p>
-                <p
-                  class="fs-15 fw-400 cr-black"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Est cumque blanditiis, sapiente nesciunt possimus, sed quibusdam eum sit minima voluptate nobis iure in assumenda aliquid! Nisi veniam delectus illum officia!</p>
-                <p
-                  class="fs-15 fw-400 cr-black"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Est cumque blanditiis, sapiente nesciunt possimus</p>
+                
+                <p class="fs-15 fw-400 cr-black">
+                    Sudah seharusnya perjalanan wisata halal menjadi momen yang
+                    menyenangkan, berkesan dan bernilai ibadah, tanpa harus terbeban
+                    dengan banyaknya perencanaan, proses yang rumit. </p>
+                <p class="fs-15 fw-400 cr-black">
+                    Haloatta
+                    menghadirkan Beragam pilihan perjalanan wisata halal untuk anda
+                    temukan, kami ingin menjadi jembatan bagi seluruh jamaah untuk
+                    beribadah, berusaha, dan mengembangkan bisnis perjalanan wisata
+                    halal.
+                </p>
+                
+              </div>
+
+              <div class="ant-layout--about-description-title fs-30 fw-500 cr-black">
+                Janji Kami
+              </div>
+              <div class="ant-layout--about-description-text">
+                
+                <p class="fs-15 fw-400 cr-black">
+                    Tim ahli yang kami miliki akan membuka dan memberikan pengalaman yang
+                    sangat berkesan dalam setiap perjalanan wisata yang anda lakukan. Tetapi
+                    jangan hanya percaya begitu saja sebelum anda menggunakan aplikasi kami.
+                </p>
+
+                <p class="fs-15 fw-400 cr-black">
+                    Anda selalu bisa mendapatkan berbagai pilihan perjalanan wisata halal yang
+                    bernilai ibadah dan kemudahan dalam mendapatkan penghasilan yang bisa
+                    anda atur sendiri sesuai dengan keingingan anda. Saatnya anda putuskan
+                    sendiri pentualagan dan pengalaman yang anda inginkan.
+                </p>
+                
               </div>
             </a-col>
             <a-col :span="12">
