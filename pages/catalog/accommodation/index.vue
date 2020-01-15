@@ -11,9 +11,8 @@
             <a-col :xs="24" :sm="24" :md="12" :lg="10">
               <h2 class="title fs-40">Ragam Pilihan LA Akomodasi</h2>
               <p class="cr-white fs-16 fw-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                Atta Akomodasi memberikan beragam pengalaman menginap dalam perjalanan ibadah dan wisata halal dengan 
+                cara yang sangat praktis.
               </p>
             </a-col>
             <a-col :xs="24" :sm="24" :md="12" :lg="14">
@@ -32,18 +31,11 @@
         <a-row :gutter="24" type="flex" justify="space-between" align="middle">
           <a-col :span="12">
             <p class="fs-16 cr-black">
-              It’s an audacious, incredibly rewarding mission that our
-              increasingly diverse team is dedicated to achieving.
-            </p>
+              Mempermudah semua orang menjelajahi wisata  halal dunia
+              Teknologi yang  memberikan  pengalaman  yang  sangat  berkesan  dan beragam tempat  menginap  yang  luar  biasa.
+            </p>  
             <p class="fs-16 cr-black">
-              Haloatta is built around the idea that everyone should be able to take the perfect trip,
-              including where they stay, what they do, and who they meet.
-              To that end, we empower millions of people around the world to use their spaces, passions, and talents to become entrepreneurs.
-            </p>
-            <p class="fs-16 cr-black mb-0">
-              Exciting challenges lie ahead—new regions, technologies, and businesses.
-              Guided by our four core values, we’ll meet these challenges creatively
-              and with the support of our global community. Join us!
+              Membantu  jamaah  mendapatkan akomodasi diseluruh dunia dan jalan untuk mengembangkan bisnis  anda.
             </p>
           </a-col>
           <a-col :span="12">
@@ -74,10 +66,7 @@
                 <a-col :span="12">
                   <div class="fs-22 fw-500 cr-black">Pastikan Jarak Hotel Anda Dekat</div>
                   <div class="fs-16 fw-400 cr-black">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolore facilis ipsum amet consequatur harum facere,
-                    quidem necessitatibus quas et impedit consequuntur dicta voluptas,
-                    repellendus perferendis, cumque assumenda animi eveniet temporibus.
+                    Jarak hotel yang dekat dengan Madjidil Haram di kota Mekkah dan Mesjid Nabawi di kota Medinah akan memberikan kenyamanan untuk anda dalam menjalankan ibadah.
                   </div>
                 </a-col>
               </a-row>
@@ -116,8 +105,7 @@
         <a-row>
           <a-col :span="16">
             <p class="fs-16 cr-black">
-              It’s an audacious, incredibly rewarding mission that our
-              increasingly diverse team is dedicated to achieving.
+              Kami menjalin kerjasama dengan berbagai penyedia layanan akomodasi yang terpercaya dan resmi di berbagai destinasi wisata anda.
             </p>
           </a-col>
         </a-row>

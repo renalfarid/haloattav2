@@ -8,9 +8,8 @@
             <a-col :xs="24" :sm="24" :md="12" :lg="10">
               <h2 class="title fs-40">Ragam Pilihan Paket Umrah</h2>
               <p class="cr-white fs-16 fw-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                haloatta memberikan cara praktis untuk bisa menemukan beragam pilihan 
+                Paket Perjalanan Umrah yang lengkap serta perjalanan wisata halal lainnya.
               </p>
             </a-col>
             <a-col :xs="24" :sm="24" :md="12" :lg="14">
@@ -25,22 +24,18 @@
 
     <div class="content-about--umrah pt-40 pb-40">
       <div class="container">
-        <a-divider orientation="left" class="ant-divider-title-left">Tentang Umrah</a-divider>
+        <a-divider orientation="left" class="ant-divider-title-left">Tentang Kami</a-divider>
         <a-row :gutter="24" type="flex" justify="space-between" align="middle">
           <a-col :span="12">
             <p class="fs-16 cr-black">
-              It’s an audacious, incredibly rewarding mission that our
-              increasingly diverse team is dedicated to achieving.
+              Atta memberikan kesempatan semua orang mewujudkan impian beribadah umroh menjadi kenyataan. 
+               
+              
             </p>
             <p class="fs-16 cr-black">
-              Haloatta is built around the idea that everyone should be able to take the perfect trip,
-              including where they stay, what they do, and who they meet.
-              To that end, we empower millions of people around the world to use their spaces, passions, and talents to become entrepreneurs.
-            </p>
-            <p class="fs-16 cr-black mb-0">
-              Exciting challenges lie ahead—new regions, technologies, and businesses.
-              Guided by our four core values, we’ll meet these challenges creatively
-              and with the support of our global community. Join us!
+              Individu, kelompok, pengusaha kamikumpulkan dalam satu tempat untuk melakukan berbagai macam 
+              transaksi ekonomi yaitu jual beli sehingga atta mampu memberikan nilai tambah dan nilai ekonomi 
+              bagi penggunanya.
             </p>
           </a-col>
           <a-col :span="12">
@@ -57,7 +52,7 @@
     <div class="content-slide--umrah pb-40 pt-40">
       <div class="container">
         <div class="container-slick">
-          <a-divider orientation="left" class="ant-divider-title-left">Tips memilih Paket Umrah</a-divider>
+          <a-divider orientation="left" class="ant-divider-title-left">Temukan Paket Umrah</a-divider>
           <slick class="slider-nav" ref="slick" :options="slickContent">
             <a-card :bordered="false">
               <a-row :gutter="24" type="flex" justify="space-between" align="middle">
@@ -71,10 +66,7 @@
                 <a-col :span="12">
                   <div class="fs-22 fw-500 cr-black">Pastikan Jarak Hotel Anda Dekat</div>
                   <div class="fs-16 fw-400 cr-black">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Dolore facilis ipsum amet consequatur harum facere,
-                    quidem necessitatibus quas et impedit consequuntur dicta voluptas,
-                    repellendus perferendis, cumque assumenda animi eveniet temporibus.
+                    Jarak hotel yang dekat dengan Madjidil Haram di kota Mekkah dan Mesjid Nabawi di kota Medinah akan memberikan kenyamanan untuk anda dalam menjalankan ibadah.
                   </div>
                 </a-col>
               </a-row>
@@ -113,8 +105,7 @@
         <a-row>
           <a-col :span="16">
             <p class="fs-16 cr-black">
-              It’s an audacious, incredibly rewarding mission that our
-              increasingly diverse team is dedicated to achieving.
+              Kami menjalin kerjasama dengan berbagai travel umrah yang terpercaya dan berizin resmi dari Kementerian Agama RI.
             </p>
           </a-col>
         </a-row>
