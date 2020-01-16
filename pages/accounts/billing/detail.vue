@@ -41,6 +41,26 @@
       </a-row>
       <a-divider></a-divider>
       <a-row :gutter="8" type="flex" justify="end">
+        <a-col :span="4" class="text-right" v-if="detailProduk.status_bayar == 'Menunggu Approval'">
+          <div class="fs-15 fw-400 cr-orange">{{detailProduk.status_bayar}}</div>
+        </a-col>
+
+        <a-col
+          :span="4"
+          class="text-right"
+          v-if="detailProduk.status_bayar == 'Menunggu Pembayaran'"
+        >
+          <div class="fs-15 fw-400 cr-gray">{{detailProduk.status_bayar}}</div>
+        </a-col>
+
+        <a-col :span="4" class="text-right" v-if="detailProduk.status_bayar == 'Expired'">
+          <div class="fs-15 fw-400 cr-red">{{detailProduk.status_bayar}}</div>
+        </a-col>
+
+        <a-col :span="4" class="text-right" v-if="detailProduk.status_bayar == 'Lunas'">
+          <div class="fs-15 fw-400 cr-green">{{detailProduk.status_bayar}}</div>
+        </a-col>
+
         <a-col :span="4" class="text-right">
           <div class="fs-15 fw-400 cr-gray">Jumlah Pembayaran :</div>
         </a-col>
@@ -93,7 +113,7 @@
                 </div>
                 <div>
                   <div class="fs-14 fw-400 cr-gray">Keterangan</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.keterangan || '-'}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.stsbayar}}</div>
                 </div>
               </div>
             </a-col>
@@ -105,8 +125,8 @@
               <div class="fs-14 fw-400 cr-gray">Jumlah Pembayaran</div>
               <div class="fs-14 fw-500 cr-blue">{{item.bayar | currency}}</div>
             </a-col>
-            <a-col :span="4" class="text-right">
-              <nuxt-link :to="'/accounts/transaction/detail/receipt?nobukti?='+item.nobukti">
+            <a-col :span="4" class="text-right" v-if="item.stsbayar == 'Approve'">
+              <nuxt-link :to="'/accounts/transaction/detail/receipt?nobukti='+item.nobukti">
                 <span class="fs-14 fw-500 cr-blue">
                   Kwitansi
                   <a-icon type="right" class="ml-8" />
@@ -124,14 +144,6 @@ import moment from "moment";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
 
-const dataTagihan = [
-  {
-    key: 1,
-    amount: 200000000,
-    keterangan: "DP Pembayaran",
-    date: moment("2019-07-10", "YYYY-MM-DD")
-  }
-];
 export default {
   middleware: "authenticated",
   layout: "accounts",
