@@ -183,7 +183,7 @@
               icon="check"
             />
             <div>
-              <div class="fs-15 fw-500 cr-black">{{fasilitas}}</div>
+              <div class="fs-15 fw-500 cr-black" v-html="fasilitas">{{fasilitas}}</div>
             </div>
           </div>
         </a-col>
