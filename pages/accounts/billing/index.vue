@@ -43,7 +43,7 @@
               </a-col>
               <a-col :span="7" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Jumlah Pembayaran</div>
-                <div class="fs-14 fw-500 cr-black">-/tidak ada</div>
+                <div class="fs-14 fw-500 cr-black">{{ item.total_bayar | currency }}</div>
               </a-col>
             </a-row>
 
