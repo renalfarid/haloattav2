@@ -1,20 +1,11 @@
 <template>
   <div class="ant-transaction--purchase">
     <div class="fs-18 fw-500 cr-black">Tagihan Saya</div>
-    <a-card
-      :bordered="false"
-      class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16"
-    >
+    <a-card :bordered="false" class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16">
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
-        <a-col :span="4" class="text-uppercase cr-gray fs-14"
-          >Filter Tagihan</a-col
-        >
+        <a-col :span="4" class="text-uppercase cr-gray fs-14">Filter Tagihan</a-col>
         <a-col :span="8">
-          <a-select
-            showSearch
-            defaultValue="Semua Produk"
-            style="width: 100%"
-          >
+          <a-select showSearch defaultValue="Semua Produk" style="width: 100%">
             <a-select-option value="Semua Produk">Semua Produk</a-select-option>
             <a-select-option value="Umrah">Umrah</a-select-option>
             <a-select-option value="Tiket Group">Tiket Group</a-select-option>
@@ -31,11 +22,7 @@
       </a-row>
     </a-card>
 
-    <a-list
-      itemLayout="horizontal"
-      :pagination="pagination"
-      :dataSource="dataHistory"
-    >
+    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataHistory">
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -48,9 +35,7 @@
             <a-row :gutter="16" class="m-0 p-16">
               <a-col :span="10">
                 <div class="fs-14 fw-400 cr-gray">No. Pesanan</div>
-                <div class="fs-14 fw-500 cr-black">
-                  {{ item.nomor_transaksi }}
-                </div>
+                <div class="fs-14 fw-500 cr-black">{{ item.nomor_transaksi }}</div>
               </a-col>
               <a-col :span="7">
                 <div class="cr-gray fs-14 fw-400">Jumlah Pesanan</div>
@@ -99,16 +84,12 @@
                       src="/icons/search/tabs/white/insurance.svg"
                     />
                   </div>
-                  <div class="fs-14 fw-500 cr-black f-default">
-                    {{ item.nama_paket }}
-                  </div>
+                  <div class="fs-14 fw-500 cr-black f-default">{{ item.nama_paket }}</div>
                 </div>
               </a-col>
               <a-col :span="7">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Pemesanan</div>
-                <div class="fs-14 fw-500 cr-black">
-                  {{ moment(item.tanggal_pemesanan).format("LL") }}
-                </div>
+                <div class="fs-14 fw-500 cr-black">{{ moment(item.tanggal_pemesanan).format("LL") }}</div>
               </a-col>
               <a-col :span="7" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Sisa Pembayaran</div>
@@ -118,30 +99,20 @@
               </a-col>
             </a-row>
 
-            <a-row
-              :gutter="16"
-              type="flex"
-              justify="space-between"
-              align="middle"
-              class="m-0 p-16"
-            >
+            <a-row :gutter="16" type="flex" justify="space-between" align="middle" class="m-0 p-16">
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Metode Pembayaran</div>
-                <div class="fs-14 fw-500 cr-black">
-                  {{ item.metode_pembayaran || "-" }}
-                </div>
+                <div class="fs-14 fw-500 cr-black">{{ item.metode_pembayaran || "-" }}</div>
               </a-col>
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Tipe Pembayaran</div>
-                <div class="fs-14 fw-500 cr-black">
-                  {{ item.jenis_pembayaran || "-" }}
-                </div>
+                <div class="fs-14 fw-500 cr-black">{{ item.jenis_pembayaran || "-" }}</div>
               </a-col>
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                <div class="fs-14 fw-500 cr-black">
-                  {{ moment(item.limit_waktu_pembayaran).format("LL") }}
-                </div>
+                <div
+                  class="fs-14 fw-500 cr-black"
+                >{{ moment(item.limit_waktu_pembayaran).format("LL") }}</div>
               </a-col>
               <a-col :span="9">
                 <div class="d-flex align-items-center align-end">
@@ -150,21 +121,31 @@
                       '/accounts/billing/detail?notrans=' + item.nomor_transaksi
                     "
                     class="cr-primary fs-14"
-                    >Lihat Detail</nuxt-link
-                  >
+                  >Lihat Detail</nuxt-link>
                   <a-divider type="vertical" />
-                  <div>
+                  <div class="fs-14 fw-500 cr-green" v-if="item.status_bayar == 'Lunas'">
+                    <span>{{item.status_bayar}}</span>
+                  </div>
+                  <div class="fs-14 fw-500 cr-red" v-if="item.status_bayar == 'Expired'">
+                    <span>{{item.status_bayar}}</span>
+                  </div>
+                  <div
+                    class="fs-14 fw-500 cr-orange"
+                    v-if="item.status_bayar == 'Menunggu Approval'"
+                  >
+                    <span>{{item.status_bayar}}</span>
+                  </div>
+                  <div v-if="item.status_bayar == 'Menunggu Pembayaran'">
                     <!-- <a-button
                       class="b-shadow b-radius ant-btn--action"
                       @click="nextConf"
                       >Bayar Sekarang</a-button
-                    > -->
+                    >-->
                     <nuxt-link
                       :to="
                         '/accounts/e-confirm?notrans=' + item.nomor_transaksi
                       "
-                      >Bayar Sekarang</nuxt-link
-                    >
+                    >Bayar Sekarang</nuxt-link>
                   </div>
                 </div>
               </a-col>
@@ -195,9 +176,11 @@ export default {
       loading: true,
       pagination: {
         onChange: page => {
-          console.log(page);
+          this.getdata(page);
+          // console.log(page);
         },
-        pageSize: 10
+        pageSize: 10,
+        total: 0
       },
       dataHistory: ""
     };
@@ -208,7 +191,7 @@ export default {
     }, 1500);
   },
   created: function() {
-    this.getdata();
+    this.getdata(1);
   },
   methods: {
     moment,
@@ -228,7 +211,7 @@ export default {
     nextConf() {
       this.$router.push({ path: "/accounts/e-confirm" });
     },
-    async getdata() {
+    async getdata(page) {
       const token = Cookie.get("auth");
       const config = {
         headers: {
@@ -236,12 +219,20 @@ export default {
         }
       };
 
+      let data = {
+        page: page,
+        jenis_transaksi: "",
+        status_bayar: ""
+      };
+
       axios
-        .post(process.env.baseUrl + "transaksi/history", [], config)
+        .post(process.env.baseUrl + "transaksi/history", data, config)
         .then(response => {
           if (response.data.status == 200) {
             this.dataHistory = response.data.data.data;
-            console.log(this.dataHistory, "ini");
+            this.pagination.pageSize = response.data.data.per_page;
+            this.pagination.total = response.data.data.total;
+            // console.log(this.dataHistory, "ini");
           } else {
             this.$message.error(response.data.msg);
           }

@@ -7,7 +7,7 @@
     </div>
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
       <div slot="title">Detail Produk</div>
-      <div slot="extra" class="fs-16 fw-500 cr-black">No. Transaksi {{item.notrans}}</div>
+      <div slot="extra" class="fs-16 fw-500 cr-black">No. Transaksi {{detailProduk.nomor_transaksi}}</div>
       <a-row :gutter="8">
         <a-col :span="12">
           <div class="d-flex align-items-center">
@@ -18,23 +18,25 @@
               />
             </div>
             <div class="fs-14 fw-500 cr-black f-default">
-              <span>-/tidak ada</span>,
+              <span>{{detailProduk.nama_paket}}</span>,
               <br />
-              <span>-/tidak ada</span>
+              <span>{{detailProduk.tipe_produk}}</span>
             </div>
           </div>
         </a-col>
         <a-col :span="4">
           <div class="fs-14 fw-400 cr-gray">Limit Pembayaran</div>
-          <div class="fs-14 fw-500 cr-black">{{item.limit_pembayaran}}</div>
+          <div
+            class="fs-14 fw-500 cr-black"
+          >{{moment(detailProduk.limit_waktu_pembayaran, "YYYY-MM-DD").format("dddd, MMMM Do YYYY, h:mm:ss a")}}</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-14 fw-400 cr-gray">Program Hari (tidak ada)</div>
-          <div class="fs-14 fw-500 cr-black">Program 9 Hari</div>
+          <div class="fs-14 fw-400 cr-gray">Program Hari</div>
+          <div class="fs-14 fw-500 cr-black">Program {{detailProduk.program_hari}} Hari</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-14 fw-400 cr-gray">Jumlah Pax(tidak ada)</div>
-          <div class="fs-14 fw-500 cr-black">4 Pax</div>
+          <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
+          <div class="fs-14 fw-500 cr-black">{{detailProduk.pax}} Pax</div>
         </a-col>
       </a-row>
       <a-divider></a-divider>
@@ -43,29 +45,36 @@
           <div class="fs-15 fw-400 cr-gray">Jumlah Pembayaran :</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-15 fw-500 cr-black">{{ item.total_tagihan | currency}}</div>
+          <div class="fs-15 fw-500 cr-black">{{ detailProduk.total_bayar | currency}}</div>
         </a-col>
       </a-row>
       <a-divider></a-divider>
       <a-row :gutter="8" type="flex" justify="end">
         <a-col :span="4" class="text-right">
-          <div class="fs-15 fw-400 cr-gray">Sisa Pembayaran : (tidak ada)</div>
+          <div class="fs-15 fw-400 cr-gray">Sisa Pembayaran :</div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-15 fw-500 cr-red">{{ 200000000 | currency}}</div>
+          <div class="fs-15 fw-500 cr-red">{{ detailProduk.sisa_pembayaran | currency}}</div>
         </a-col>
       </a-row>
-      <a-row :gutter="8" type="flex" justify="end">
+      <a-row
+        :gutter="8"
+        type="flex"
+        justify="end"
+        v-if="detailProduk.status_bayar == 'Menunggu Pembayaran'"
+      >
         <a-col :span="4" class="text-right">
           <a-button class="b-shadow b-radius ant-btn--action">
-            <nuxt-link :to="'/accounts/e-confirm?notrans='+item.notrans">Bayar Sekarang</nuxt-link>
+            <nuxt-link
+              :to="'/accounts/e-confirm?notrans='+detailProduk.nomor_transaksi"
+            >Bayar Sekarang</nuxt-link>
           </a-button>
         </a-col>
       </a-row>
     </a-card>
 
-    <div class="fs-16 fw-500 cr-black">Informasi Pembayaran Anda (tidak ada)</div>
-    <a-list itemLayout="horizontal" :dataSource="dataTagihan">
+    <div class="fs-16 fw-500 cr-black">Informasi Pembayaran Anda</div>
+    <a-list itemLayout="horizontal" :dataSource="pembayaran">
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -80,24 +89,24 @@
                 <div class="mr-16">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3"
-                  >{{item.key}}</a-avatar>
+                  >{{index+1}}</a-avatar>
                 </div>
                 <div>
                   <div class="fs-14 fw-400 cr-gray">Keterangan</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.keterangan}}</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.keterangan || '-'}}</div>
                 </div>
               </div>
             </a-col>
             <a-col :span="6">
               <div class="fs-14 fw-400 cr-gray">Tanggal Pembayaran</div>
-              <div class="fs-14 fw-500 cr-blue">{{item.date.format('LL')}}</div>
+              <div class="fs-14 fw-500 cr-blue">{{moment(item.tglbukti).format("LL")}}</div>
             </a-col>
             <a-col :span="6">
               <div class="fs-14 fw-400 cr-gray">Jumlah Pembayaran</div>
-              <div class="fs-14 fw-500 cr-blue">{{item.amount | currency}}</div>
+              <div class="fs-14 fw-500 cr-blue">{{item.bayar | currency}}</div>
             </a-col>
             <a-col :span="4" class="text-right">
-              <nuxt-link to="/accounts/transaction/detail/receipt">
+              <nuxt-link :to="'/accounts/transaction/detail/receipt?nobukti?='+item.nobukti">
                 <span class="fs-14 fw-500 cr-blue">
                   Kwitansi
                   <a-icon type="right" class="ml-8" />
@@ -135,8 +144,8 @@ export default {
 
   data() {
     return {
-      dataTagihan,
-      item: ""
+      detailProduk: "",
+      pembayaran: ""
     };
   },
   created: function() {
@@ -154,14 +163,15 @@ export default {
       let params = this.$route.query;
       axios
         .post(
-          process.env.baseUrl + "transaksi/paymentdetail",
+          process.env.baseUrl + "transaksi/history-detail",
           {
             notrans: params.notrans
           },
           config
         )
         .then(response => {
-          this.item = response.data.data;
+          this.detailProduk = response.data.data.index;
+          this.pembayaran = response.data.data.pembayaran;
         });
     }
   }

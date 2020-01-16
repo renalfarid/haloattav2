@@ -167,6 +167,7 @@ export default {
   methods: {
     onChange(value) {
       console.log("changed", value);
+      this.value = value;
     },
     handleSubmit(e) {
       e.preventDefault();
