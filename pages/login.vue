@@ -1,19 +1,13 @@
 <template>
   <div class="ant-layout--authentication">
     <div class="m-auto" style="max-width: 380px">
-      <img class="md-logo" v-lazy="'/haloatta.png'" />
+      <nuxt-link to="/">
+        <img class="md-logo" v-lazy="'/haloatta.png'" />
+      </nuxt-link>
       <a-card>
-        <div class="fs-22 fw-500 cr-black f-default mb-24">
-          Selamat datang di Haloatta
-        </div>
+        <div class="fs-22 fw-500 cr-black f-default mb-24">Selamat datang di Haloatta</div>
 
-        <a-form
-          layout="vertical"
-          :form="form"
-          @submit="handleSubmit"
-          hideRequiredMark
-          class="mb-0"
-        >
+        <a-form layout="vertical" :form="form" @submit="handleSubmit" hideRequiredMark class="mb-0">
           <a-form-item label="Nomor Telepon atau Email">
             <a-input
               v-decorator="[
@@ -48,12 +42,11 @@
               html-type="submit"
               size="large"
               block
-              >Masuk</a-button
-            >
+            >Masuk</a-button>
           </a-form-item>
         </a-form>
 
-        <a-divider> atau masuk dengan </a-divider>
+        <a-divider>atau masuk dengan</a-divider>
 
         <a-button class="ant-btn--facebook" size="large" block>
           <img src="/icons/facebook.png" /> Facebook
@@ -65,10 +58,10 @@
 
         <div class="d-flex align-items-center">
           <div class="m-auto">
-            <nuxt-link class="fs-14 cr-black fw-400" to="/register"
-              >Belum punya akun Haloatta?
-              <span class="cr-primary">Daftar</span></nuxt-link
-            >
+            <nuxt-link class="fs-14 cr-black fw-400" to="/register">
+              Belum punya akun Haloatta?
+              <span class="cr-primary">Daftar</span>
+            </nuxt-link>
           </div>
         </div>
       </a-card>
@@ -108,8 +101,8 @@ export default {
           console.log(values);
           axios
             .post(process.env.token, {
-              username: this.username,
-              password: this.password,
+              username: values.username,
+              password: values.password,
               grant_type: "password",
               client_id: 8,
               client_secret: "Uu4QDKCnPbcwMXf5ScMrfkdIFLEewIP5Z7NQSVt2"
