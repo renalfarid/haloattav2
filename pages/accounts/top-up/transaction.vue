@@ -2,7 +2,7 @@
   <div class="ant-transaction--halopay">
     <div class="fs-18 fw-500 cr-black">Semua Transaksi TopUp Saldo</div>
 
-    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataTopup">
+    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="historyTopup">
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -15,15 +15,15 @@
             <a-row :gutter="16" class="m-0 p-16">
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">No. Transaksi</div>
-                <div class="fs-14 fw-500 cr-black">{{item.no_transaction}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.kode}}</div>
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Nominal Top Up</div>
-                <div class="fs-14 fw-500 cr-black">Rp {{item.nominal}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.nominal_transfer | currency}}</div>
               </a-col>
               <a-col :span="12" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Bank Tujuan</div>
-                <div class="fs-14 fw-500 cr-black">{{item.bank}}</div>
+                <div class="fs-14 fw-500 cr-black">{{item.bank_penerima}} No Rek : {{ item.kode_bank }}</div>
               </a-col>
             </a-row>
 
@@ -44,23 +44,14 @@
                     />
                   </div>
                   <div>
-                    <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                    <div class="fs-14 fw-500 cr-black">{{item.batas_pembayaran}}</div>
+                    <div class="fs-14 fw-400 cr-gray">Tanggal Konfirmasi</div>
+                    <div class="fs-14 fw-500 cr-black">{{ moment(item.tanggal_konfirmasi).format("L") }}</div>
                   </div>
                 </div>
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
-                <div class="fs-14 fw-500 cr-red" v-if="item.status === 'Belum Dibayar'">
-                  <span>{{item.status}}</span>
-                </div>
-                <div class="fs-14 fw-500 cr-red" v-if="item.status === 'Kedaluwarsa'">
-                  <span>{{item.status}}</span>
-                </div>
-                <div class="fs-14 fw-500 cr-orange" v-if="item.status === 'Menunggu Verifikasi'">
-                  <span>{{item.status}}</span>
-                </div>
-                <div class="fs-14 fw-500 cr-green" v-if="item.status === 'Dibayar'">
+                <div class="fs-14 fw-500 cr-red">
                   <span>{{item.status}}</span>
                 </div>
               </a-col>
@@ -87,6 +78,10 @@
 </template>
 
 <script>
+import moment from "moment";
+import axios from "axios";
+const Cookie = process.client ? require("js-cookie") : undefined;
+
 const dataTopup = [
   {
     no_transaction: "PUHA12345678",
@@ -128,11 +123,13 @@ export default {
   },
   data() {
     return {
+      dateFormat: "YYYY/MM/DD",
       loading: true,
       dataTopup,
+      historyTopup: [],
       pagination: {
         onChange: page => {
-          console.log(page);
+          this.loadHistory(page);
         },
         pageSize: 10
       }
@@ -142,8 +139,43 @@ export default {
     setTimeout(() => {
       this.loading = false;
     }, 1500);
+    this.loadHistory()
   },
   methods: {
+    moment,
+    loadHistory(page){
+
+      const token = Cookie.get("auth");
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+
+      let data = {
+        page: page,
+        jenis_transaksi: "",
+        tipe_transaksi: ""
+      };
+
+       axios
+        .post(process.env.baseUrl + "halopay/history-topup", data, config)
+        .then(response => {
+          if (response.data.status == 200) {
+            this.historyTopup = response.data.data.data;
+            this.pagination.pageSize = response.data.data.per_page;
+            this.pagination.total = response.data.data.total;
+             console.log(this.historyTopup, "ini");
+          } else {
+            this.$message.error(response.data.msg);
+          }
+        })
+        .catch(() => {
+          this.$message.success("Salah");
+        });
+
+       
+    },
     remove(index) {
       this.$delete(this.dataTopup, index);
       this.$notification.open({

@@ -60,7 +60,7 @@ export default {
   methods: {
     moment,
      loadMutasi(page){
-       const token = Cookie.get("auth");
+      const token = Cookie.get("auth");
       const config = {
         headers: {
           Authorization: "Bearer " + token
