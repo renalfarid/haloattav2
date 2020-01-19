@@ -165,6 +165,7 @@ export default {
       pagination: {
         onChange: page => {
           console.log(page);
+          this.getdata(page);
         },
         pageSize: 10
       },
@@ -177,10 +178,10 @@ export default {
     }, 1500);
   },
   created: function() {
-    this.getdata();
+    this.getdata(1);
   },
   methods: {
-    async getdata() {
+    async getdata(page) {
       const token = Cookie.get("auth");
       const config = {
         headers: {
@@ -189,6 +190,7 @@ export default {
       };
 
       let data = {
+        page: page,
         status_bayar: "Lunas"
       };
 
@@ -197,6 +199,7 @@ export default {
         .then(response => {
           if (response.data.status == 200) {
             this.dataHistory = response.data.data.data;
+            this.pagination.total = response.data.data.total;
           } else {
             this.$message.error(response.data.msg);
           }
