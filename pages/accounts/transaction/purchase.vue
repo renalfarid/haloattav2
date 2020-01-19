@@ -226,8 +226,10 @@ export default {
       pagination: {
         onChange: page => {
           console.log(page);
+          this.getdata(page);
         },
-        pageSize: 10
+        pageSize: 10,
+        total: 0
       },
       dataHistory: []
     };
@@ -238,7 +240,7 @@ export default {
     }, 1500);
   },
   created: function() {
-    this.getdata();
+    this.getdata(1);
   },
   methods: {
     moment,
@@ -258,7 +260,7 @@ export default {
     nextConf() {
       this.$router.push({ path: "/accounts/e-confirm" });
     },
-    async getdata() {
+    async getdata(page) {
       const token = Cookie.get("auth");
       const config = {
         headers: {
@@ -266,11 +268,18 @@ export default {
         }
       };
 
+      let data = {
+        page: page,
+        jenis_transaksi: "",
+        tipe_transaksi: ""
+      };
+
       axios
-        .post(process.env.baseUrl + "transaksi/history", [], config)
+        .post(process.env.baseUrl + "transaksi/history", data, config)
         .then(response => {
           if (response.data.status == 200) {
             this.dataHistory = response.data.data.data;
+            this.pagination.total = response.data.data.total;
           } else {
             this.$message.error(response.data.msg);
           }
