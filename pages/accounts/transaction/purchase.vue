@@ -169,12 +169,21 @@
                 <div class="d-flex align-items-center align-end">
                   <nuxt-link
                     v-if="item.status_bayar === 'Lunas'"
-                    to="/accounts/transaction/detail/receipt"
+                    :to="
+                      '/accounts/billing/detail?notrans=' + item.nomor_transaksi
+                    "
+                    class="cr-primary fs-14"
+                  >Lihat Detail</nuxt-link>
+                  <nuxt-link
+                    v-else-if="item.status_bayar === 'Menunggu Approval'"
+                    :to="
+                      '/accounts/billing/detail?notrans=' + item.nomor_transaksi
+                    "
                     class="cr-primary fs-14"
                   >Lihat Detail</nuxt-link>
                   <nuxt-link
                     v-else
-                    to="/accounts/transaction/detail/invoice"
+                    :to="'/accounts/transaction/detail/invoice?notrans='+ item.nomor_transaksi"
                     class="cr-primary fs-14"
                   >Lihat Detail</nuxt-link>
                   <div v-if="item.status_bayar === 'Menunggu Pembayaran'">
