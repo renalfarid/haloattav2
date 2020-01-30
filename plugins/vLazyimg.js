@@ -5,9 +5,9 @@ import VueLazyload from 'vue-lazyload'
 
 // or with options
 Vue.use(VueLazyload, {
-    preLoad: 1.2,
+    // preLoad: 1.2,
     error: '/loading.png',
-    loading: '/loading.png',
-    attempt: 1,
+    // loading: '/loading.png',
+    // attempt: 1,
     listenEvents: ['scroll']
 })

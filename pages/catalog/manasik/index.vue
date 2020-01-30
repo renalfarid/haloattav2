@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content-head content-head--manasik">
-      <div class="content-head--cover" :style="{ backgroundImage: 'url(/manasik/cover/mc1.png)' }">
+      <div class="content-head--cover" v-lazy:background-image="require('~/static/manasik/cover/mc1.png')">
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100 m-auto" type="flex" justify="space-around" align="middle">
@@ -47,7 +47,7 @@
             <img
               class="mx-width d-block m-auto"
               style="maxHeight: 320px"
-              src="/manasik/illustrasi/mi1.png"
+              v-lazy="'/manasik/illustrasi/mi1.png'"
             />
           </a-col>
         </a-row>
@@ -65,7 +65,7 @@
                   <img
                     class="mx-width d-block m-auto"
                     style="maxHeight: 320px"
-                    src="/manasik/illustrasi/mi2.png"
+                    v-lazy="'/manasik/illustrasi/mi2.png'"
                   />
                 </a-col>
                 <a-col :span="12">
@@ -101,7 +101,7 @@
     </div>
 
     <div class="content-cover--manasik">
-      <div class="content-cover--images" :style="{ backgroundImage: 'url(/manasik/cover/mc2.png)'}"></div>
+      <div class="content-cover--images" v-lazy:background-image="require('~/static/manasik/cover/mc2.png')"></div>
     </div>
 
     <div class="content-partner--manasik pb-40 pt-40">
@@ -119,7 +119,7 @@
         <div>
           <a-row :gutter="16">
             <a-col :span="4" v-for="(item, index) in partner" :key="index" class="mb-24">
-              <img class="brand-logo max-width" :src="item.logo" />
+              <img class="brand-logo max-width" v-lazy="item.logo" />
             </a-col>
           </a-row>
         </div>

@@ -2,8 +2,7 @@
   <div>
     <div class="content-head content-head--tourleader">
       <div
-        class="content-head--cover"
-        :style="{ backgroundImage: 'url(/tourleader/cover/ct1.png)' }"
+        class="content-head--cover" v-lazy:background-image="require('~/static/tourleader/cover/ct1.png')"
       >
         <div class="content-head--body">
           <div class="gradient-top"></div>
@@ -50,7 +49,7 @@
             <img
               class="mx-width d-block m-auto"
               style="maxHeight: 320px"
-              src="/tourleader/ilustrasi/ti1.png"
+              v-lazy="'/tourleader/ilustrasi/ti1.png'"
             />
           </a-col>
         </a-row>
@@ -68,7 +67,7 @@
                   <img
                     class="mx-width d-block m-auto"
                     style="maxHeight: 320px"
-                    src="/tourleader/ilustrasi/ti2.png"
+                    v-lazy="'/tourleader/ilustrasi/ti2.png'"
                   />
                 </a-col>
                 <a-col :span="12">
@@ -105,8 +104,7 @@
 
     <div class="content-cover--tourleader">
       <div
-        class="content-cover--images"
-        :style="{ backgroundImage: 'url(/tourleader/cover/ct2.png)'}"
+        class="content-cover--images" v-lazy:background-image="require('~/static/tourleader/cover/ct2.png')"
       ></div>
     </div>
 
@@ -125,7 +123,7 @@
         <div>
           <a-row :gutter="16">
             <a-col :span="4" v-for="(item, index) in partner" :key="index" class="mb-24">
-              <img class="brand-logo max-width" :src="item.logo" />
+              <img class="brand-logo max-width" v-lazy="item.logo" />
             </a-col>
           </a-row>
         </div>
