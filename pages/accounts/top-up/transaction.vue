@@ -61,14 +61,17 @@
                     <div>
                       <div class="fs-14 fw-400 cr-gray">Tanggal Konfirmasi</div>
                       <div class="fs-14 fw-500 cr-black">
-                        {{ moment(item.tanggal_konfirmasi).format("L") }}
+                        {{ moment(item.tanggal_konfirmasi).format("LL") }}
                       </div>
                     </div>
                   </div>
                 </a-col>
                 <a-col :span="6">
                   <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-red">
+                  <div class="fs-14 fw-500 cr-success" v-if="item.status === 'Telah Di Approve'">
+                    <span>{{ item.status }}</span>
+                  </div>
+                  <div class="fs-14 fw-500 cr-orange" v-else>
                     <span>{{ item.status }}</span>
                   </div>
                 </a-col>
