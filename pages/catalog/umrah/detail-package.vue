@@ -128,8 +128,6 @@ export default {
     };
   },
   async asyncData({ query, store }) {
-    let data = [];
-
     const myRespone = await axios.post(
       process.env.baseUrl + "paket/umroh/detail",
       {
@@ -137,27 +135,29 @@ export default {
       }
     );
 
+    let data = await myRespone.data.data;
+
     return {
       loading: false,
       busy: false,
-      datatiket: myRespone.data.data.tiket,
+      datatiket: data.tiket ? data.tiket : null,
       dataLA: {
-        fasilitas: myRespone.data.data.la.fasilitas_termasuk,
-        hotel_mekkah: myRespone.data.data.hotel_mekkah,
-        hotel_madinah: myRespone.data.data.hotel_madinah
+        fasilitas: data.la ? data.la.fasilitas_termasuk : null,
+        hotel_mekkah: data.hotel_mekkah,
+        hotel_madinah: data.hotel_madinah
       },
-      nama: myRespone.data.data.umroh.nama,
-      bintang: myRespone.data.data.umroh.kelas_bintang,
-      foto_vendor: myRespone.data.data.umroh.foto,
+      nama: data.umroh.nama,
+      bintang: data.umroh.kelas_bintang,
+      foto_vendor: data.umroh.foto,
 
       //props right side
-      harga: myRespone.data.data.harga,
+      harga: data.harga,
       umroh: {
-        berangkat: myRespone.data.data.umroh.tgl_berangkat,
-        program_hari: myRespone.data.data.umroh.jumlah_hari
+        berangkat: data.umroh.tgl_berangkat,
+        program_hari: data.umroh.jumlah_hari
       },
-      kelengkapan: myRespone.data.data.kelengkapan,
-      itinerary: myRespone.data.data.itenary
+      kelengkapan: data.kelengkapan,
+      itinerary: data.itenary
     };
   },
 
