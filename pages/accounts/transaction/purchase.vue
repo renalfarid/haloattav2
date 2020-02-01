@@ -5,26 +5,26 @@
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
         <a-col :span="4" class="text-uppercase cr-gray fs-14">Filter Pembelian</a-col>
         <a-col :span="10">
-          <a-select showSearch defaultValue="Semua Produk" style="width: 100%">
-            <a-select-option value="Semua Produk">Semua Produk</a-select-option>
-            <a-select-option value="Umrah">Umrah</a-select-option>
-            <a-select-option value="Tiket Group">Tiket Group</a-select-option>
-            <a-select-option value="LA Akomodasi">LA Akomodasi</a-select-option>
+          <a-select @change="onChangeProduk" showSearch defaultValue style="width: 100%">
+            <a-select-option value>Semua Produk</a-select-option>
+            <a-select-option value="UMRAH REGULER">Umrah</a-select-option>
+            <a-select-option value="Tiket Pesawat">Tiket Group</a-select-option>
+            <a-select-option value="Land Arrangement">LA Akomodasi</a-select-option>
             <a-select-option value="Visa">Visa</a-select-option>
             <a-select-option value="Asuransi">Asuransi</a-select-option>
-            <a-select-option value="Handling">Handling</a-select-option>
+            <a-select-option value="Handling Domestik">Handling</a-select-option>
             <a-select-option value="Manasik">Manasik</a-select-option>
             <a-select-option value="Perlengkapan">Perlengkapan</a-select-option>
             <a-select-option value="Tour Leader">Tour Leader</a-select-option>
           </a-select>
         </a-col>
         <a-col :span="10">
-          <a-select defaultValue="Semua Status" style="width: 100%">
-            <a-select-option value="Semua Status">Semua Status</a-select-option>
-            <a-select-option value="Belum Dibayar">Belum Dibayar</a-select-option>
-            <a-select-option value="Dibayar">Dibayar</a-select-option>
-            <a-select-option value="Verifikasi">Menunggu Verifikasi</a-select-option>
-            <a-select-option value="Kedaluwarsa">Kedaluwarsa</a-select-option>
+          <a-select @change="onChangeStatus" defaultValue style="width: 100%">
+            <a-select-option value>Semua Status</a-select-option>
+            <a-select-option value="Menunggu Approval">Menunggu Approval</a-select-option>
+            <a-select-option value="Menunggu Pembayaran">Menunggu Pembayaran</a-select-option>
+            <a-select-option value="Approve">Approve</a-select-option>
+            <a-select-option value="Lunas">Lunas</a-select-option>
           </a-select>
         </a-col>
       </a-row>
@@ -183,7 +183,7 @@
                 </div>
                 <div
                   class="fs-14 fw-500 cr-orange"
-                  v-if="item.status_bayar === 'Menunggu Approval'"
+                  v-if="item.status_bayar === 'Menunggu Approval' || item.status_bayar === 'Approve'"
                 >
                   <span>{{ item.status_bayar }}</span>
                 </div>
@@ -266,13 +266,22 @@ export default {
       loading: true,
       pagination: {
         onChange: page => {
-          console.log(page);
-          this.getdata(page);
+          // console.log(page);
+          this.getdata(
+            page,
+            this.filter.jenis_transaksi,
+            this.filter.status_bayar
+          );
         },
         pageSize: 10,
         total: 0
       },
-      dataHistory: []
+      dataHistory: [],
+      filter: {
+        jenis_transaksi: "",
+        status_bayar: "",
+        jenis_pembayaran: ""
+      }
     };
   },
   mounted() {
@@ -285,6 +294,17 @@ export default {
   },
   methods: {
     moment,
+    onChangeProduk(data) {
+      this.filter.jenis_transaksi = data;
+      this.getdata(1, data, this.filter.status_bayar);
+      // console.log("changed", data);
+    },
+
+    onChangeStatus(data) {
+      this.filter.status_bayar = data;
+      this.getdata(1, this.filter.jenis_transaksi, data);
+      // console.log("changed", data);
+    },
     onChange(dates, dateStrings) {
       console.log("From: ", dates[0], ", to: ", dates[1]);
       console.log("From: ", dateStrings[0], ", to: ", dateStrings[1]);
@@ -301,7 +321,12 @@ export default {
     nextConf() {
       this.$router.push({ path: "/accounts/e-confirm" });
     },
-    async getdata(page) {
+    async getdata(
+      page,
+      jenisTransaksi = "",
+      statusBayar = "",
+      jenisPembayaran = ""
+    ) {
       const token = Cookie.get("auth");
       const config = {
         headers: {
@@ -311,8 +336,9 @@ export default {
 
       let data = {
         page: page,
-        jenis_transaksi: "",
-        tipe_transaksi: ""
+        jenis_transaksi: jenisTransaksi,
+        status_bayar: statusBayar,
+        jenis_pembayaran: jenisPembayaran
       };
 
       axios
@@ -326,7 +352,7 @@ export default {
           }
         })
         .catch(() => {
-          this.$message.success("Salah");
+          this.$message.error("Terjadi Salah");
         });
     }
   }
