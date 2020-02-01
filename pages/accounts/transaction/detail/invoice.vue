@@ -21,7 +21,7 @@
       <a-steps :current="1">
         <a-step>
           <template slot="title">Pesanan</template>
-          <span slot="description" class="fs-13">29-08-2019 11:50 (?)</span>
+          <span slot="description" class="fs-13">{{ tagihan.tgltrans }}</span>
         </a-step>
         <a-step>
           <template slot="title">Pembayaran</template>
@@ -87,20 +87,13 @@
           <a-col :span="12">
             <div class="text-right">
               <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Nomor Invoice (?)</div>
-                <div class="fs-14 fw-400 cr-gray">ATT-UMR-54021040019072938</div>
+                <div class="fs-14 fw-500 cr-black">Nomor Invoice</div>
+                <div class="fs-14 fw-400 cr-gray">{{this.$route.query.notrans}}</div>
               </div>
+              
               <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Metode Pembayaran(?)</div>
-                <div class="fs-14 fw-400 cr-gray">ATM/Bank Transfer</div>
-              </div>
-              <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Tipe Pembayaran(?)</div>
-                <div class="fs-14 fw-400 cr-gray">Lunas</div>
-              </div>
-              <div class="mb-16">
-                <div class="fs-14 fw-500 cr-black">Tanggal Pembelian(?)</div>
-                <div class="fs-14 fw-400 cr-gray">Senin, 20 Mei 2019</div>
+                <div class="fs-14 fw-500 cr-black">Tanggal Pembelian</div>
+                <div class="fs-14 fw-400 cr-gray">{{ tagihan.tgltrans }}</div>
               </div>
             </div>
           </a-col>
@@ -216,13 +209,13 @@
             <div class="fs-14 fw-500 cr-gray text-uppercase">Detail Pembelian</div>
           </a-col>
           <a-col :span="6">
-            <div class="fs-14 fw-500 cr-gray text-uppercase">Tanggal Keberangkatan</div>
-          </a-col>
-          <a-col :span="3">
             <div class="fs-14 fw-500 cr-gray text-uppercase">Jumlah Pax</div>
           </a-col>
+          <a-col :span="3">
+            <div class="fs-14 fw-500 cr-gray text-uppercase">Harga Satuan</div>
+          </a-col>
           <a-col :span="6" class="text-right">
-            <div class="fs-14 fw-500 cr-gray text-uppercase">Jumlah Pembayaran</div>
+            <div class="fs-14 fw-500 cr-gray text-uppercase">Total Harga</div>
           </a-col>
         </a-row>
 
@@ -231,16 +224,17 @@
         <a-row :gutter="16" v-for="order in listOrder" :key="order.kdproduk">
           <a-col :span="9">
             <div class="fs-14 fw-500 cr-black f-default text-ellipsis">{{order.nama}}</div>
-            <div class="fs-14 fw-400 cr-black">Program 9 Hari</div>
+            <div class="fs-14 fw-400 cr-black">{{ tagihan.tgl_berangkat }}</div>
           </a-col>
-          <a-col :span="6">
-            <div class="fs-14 fw-500 cr-black">(???)</div>
-          </a-col>
+          
           <a-col :span="3">
             <div class="fs-14 fw-500 cr-black">{{order.jmh_satuan}}</div>
           </a-col>
           <a-col :span="6" class="text-right">
-            <div class="fs-14 fw-500 cr-black">{{order.totalbayar | currency}}</div>
+            <div class="fs-14 fw-500 cr-black">{{order.hargajual_satuan | currency}}</div>
+          </a-col>
+           <a-col :span="6" class="text-right">
+            <div class="fs-14 fw-500 cr-black">{{order.jmh_satuan * order.hargajual_satuan | currency}}</div>
           </a-col>
         </a-row>
 
@@ -253,34 +247,26 @@
                 <div class="fs-14 fw-500 cr-gray text-uppercase">Subtotal</div>
               </a-col>
               <a-col :span="12" class="text-right">
-                <div class="fs-14 fw-500 cr-black">{{tagihan.totalbayar | currency}}</div>
+                <div class="fs-14 fw-500 cr-black">{{tagihan.hargajual | currency}}</div>
               </a-col>
             </a-row>
-            <a-divider></a-divider>
-            <a-row :gutter="16">
-              <a-col :span="12">
-                <div class="fs-14 fw-500 cr-gray text-uppercase">PPN 1%</div>
-              </a-col>
-              <a-col :span="12" class="text-right">
-                <div class="fs-14 fw-500 cr-black">{{tagihan.ppn | currency}}</div>
-              </a-col>
-            </a-row>
+            
             <a-divider></a-divider>
             <a-row :gutter="16">
               <a-col :span="12">
                 <div class="fs-14 fw-500 cr-gray text-uppercase">Total</div>
               </a-col>
               <a-col :span="12" class="text-right">
-                <div class="fs-14 fw-500 cr-black">{{tagihan.totalbayar | currency}}</div>
+                <div class="fs-14 fw-500 cr-black">{{tagihan.hargajual | currency}}</div>
               </a-col>
             </a-row>
             <a-divider></a-divider>
             <a-row :gutter="16">
               <a-col :span="12">
-                <div class="fs-14 fw-500 cr-gray text-uppercase">DP (?)</div>
+                <div class="fs-14 fw-500 cr-gray text-uppercase">DP</div>
               </a-col>
               <a-col :span="12" class="text-right">
-                <div class="fs-14 fw-500 cr-black">Rp500.000.000</div>
+                <div class="fs-14 fw-500 cr-black">{{tagihan.totalbayar | currency}}</div>
               </a-col>
             </a-row>
             <a-divider></a-divider>

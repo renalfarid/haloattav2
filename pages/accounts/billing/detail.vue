@@ -112,8 +112,8 @@
                   >{{index+1}}</a-avatar>
                 </div>
                 <div>
-                  <div class="fs-14 fw-400 cr-gray">Keterangan</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.stsbayar}}</div>
+                  <div class="fs-14 fw-400 cr-gray">No Bukti</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.nobukti}}</div>
                 </div>
               </div>
             </a-col>
@@ -133,6 +133,11 @@
                 </span>
               </nuxt-link>
             </a-col>
+            <a-col :span="4" class="text-right" v-else>
+              <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
+              <div class="fs-14 fw-500 cr-orange">{{item.stsbayar}}</div>
+            </a-col>
+
           </a-row>
         </div>
       </a-list-item>
