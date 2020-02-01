@@ -10,10 +10,7 @@
       <a-col :span="8" class="mb-16">
         <nuxt-link to="/catalog/umrah">
           <a-card class="card-product--components">
-            <div
-              class="ant-card-cover-images"
-              v-lazy:background-image="'/components/umrah.png'"
-            ></div>
+            <div class="ant-card-cover-images" v-lazy:background-image="require('~/static/components/umrah.png')"></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Paket Umroh</h3>
@@ -28,7 +25,7 @@
           <a-card class="card-product--components">
             <div
               class="ant-card-cover-images"
-              v-lazy:background-image="'/components/ticket.png'"
+              v-lazy:background-image="require('~/static/components/ticket.png')"
             ></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
@@ -44,7 +41,7 @@
           <a-card class="card-product--components">
             <div
               class="ant-card-cover-images"
-              v-lazy:background-image="'/components/accommodation.png'"
+              v-lazy:background-image="require('~/static/components/accommodation.png')"
             ></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
@@ -60,7 +57,7 @@
           <a-card class="card-product--components">
             <div
               class="ant-card-cover-images"
-              v-lazy:background-image="'/components/visa.png'"
+              v-lazy:background-image="require('~/static/components/visa.png')"
             ></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
@@ -76,7 +73,7 @@
           <a-card class="card-product--components">
             <div
               class="ant-card-cover-images"
-              v-lazy:background-image="'/components/insurance.png'"
+              v-lazy:background-image="require('~/static/components/insurance.png')"
             ></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
@@ -92,7 +89,7 @@
           <a-card class="card-product--components">
             <div
               class="ant-card-cover-images"
-              v-lazy:background-image="'/components/handling.png'"
+              v-lazy:background-image="require('~/static/components/handling.png')"
             ></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
@@ -108,7 +105,7 @@
           <a-card class="card-product--components">
             <div
               class="ant-card-cover-images"
-              v-lazy:background-image="'/components/manasik.png'"
+              v-lazy:background-image="require('~/static/components/manasik.png')"
             ></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
@@ -124,7 +121,7 @@
           <a-card class="card-product--components">
             <div
               class="ant-card-cover-images"
-              v-lazy:background-image="'/components/equipment.png'"
+              v-lazy:background-image="require('~/static/components/equipment.png')"
             ></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
@@ -140,7 +137,7 @@
           <a-card class="card-product--components">
             <div
               class="ant-card-cover-images"
-              v-lazy:background-image="'/components/tourleader.png'"
+              v-lazy:background-image="require('~/static/components/tourleader.png')"
             ></div>
             <div class="ant-card-cover--overlay">
               <div class="m-auto">

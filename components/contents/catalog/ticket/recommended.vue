@@ -50,13 +50,13 @@
                     Berangkat
                     {{
                       moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format(
-                        "LL"
+                        "ll"
                       )
                     }}
                     -
                     {{
                       moment(item.tanggal_keberangkatan, "YYYY-MM-DD").format(
-                        "LL"
+                        "ll"
                       )
                     }}
                   </div>

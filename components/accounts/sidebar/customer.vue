@@ -87,9 +87,9 @@
       <a-menu-item class="ant-menu--sider-item" key="9">
         <nuxt-link to="/accounts/departure" class="nav-text">Daftar Pesanan</nuxt-link>
       </a-menu-item>
-      <a-menu-item class="ant-menu--sider-item" key="12">
+      <!-- <a-menu-item class="ant-menu--sider-item" key="12">
         <nuxt-link to="/accounts/billing" class="nav-text">Tagihan Saya</nuxt-link>
-      </a-menu-item>
+      </a-menu-item> -->
       <a-menu-item class="ant-menu--sider-item" key="10">
         <nuxt-link to="/accounts/wishlist" class="nav-text">Disimpan</nuxt-link>
       </a-menu-item>

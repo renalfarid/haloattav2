@@ -81,14 +81,14 @@
                                 moment(
                                   item.tanggal_keberangkatan,
                                   "YYYY-MM-DD"
-                                ).format("LL")
+                                ).format("ll")
                               }}
                               -
                               {{
                                 moment(
                                   item.tanggal_keberangkatan,
                                   "YYYY-MM-DD"
-                                ).format("LL")
+                                ).format("ll")
                               }}
                             </div>
                           </div>
