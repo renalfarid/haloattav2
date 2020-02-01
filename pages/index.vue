@@ -1,144 +1,156 @@
 <template>
   <div>
     <div class="content-head">
-        <div class="content-head--cover" v-lazy:background-image="require('~/static/umrah/cover/cu62.jpg')">
-          <div class="content-head--body">
-            <div class="gradient-top"></div>
-            <a-row
-              :gutter="90"
-              class="w-100 m-auto"
-              type="flex"
-              justify="space-around"
-              align="middle"
-            >
-              <a-col :xs="24" :sm="24" :md="10">
-                <h2 class="fs-40 fw-600 title">Jelajahi wisata halal dunia</h2>
-                <a-button class="btn-join--us d-none" size="large"
-                  >Jelajahi Sekarang</a-button
+      <div
+        class="content-head--cover"
+        v-lazy:background-image="require('~/static/umrah/cover/cu62.jpg')"
+      >
+        <div class="content-head--body">
+          <div class="gradient-top"></div>
+          <a-row
+            :gutter="90"
+            class="w-100 m-auto"
+            type="flex"
+            justify="space-around"
+            align="middle"
+          >
+            <a-col :xs="24" :sm="24" :md="10">
+              <h2 class="fs-40 fw-600 title">Jelajahi wisata halal dunia</h2>
+              <a-button class="btn-join--us d-none" size="large"
+                >Jelajahi Sekarang</a-button
+              >
+
+              <a-comment v-if="$store.state.auth" class="ant-comment--accounts">
+                <template slot="actions">
+                  <a-tag>
+                    <div class="d-flex align-items-center">
+                      <a-icon type="gold" />
+                      <span class="mr-4">{{
+                        this.$store.state.auth.poin
+                      }}</span>
+                      POIN
+                    </div>
+                  </a-tag>
+                  <a-tag>
+                    <div class="d-flex align-items-center">
+                      <a-icon type="wallet" />
+                      <span class="text-uppercase mr-4">{{
+                        this.$store.state.auth.saldo | currency
+                      }}</span>
+                    </div>
+                  </a-tag>
+                </template>
+
+                <a slot="author" :style="{ 'text-transform' : 'capitalize' }">{{ $store.state.auth.nama }}</a>
+
+                <a-avatar
+                  v-if="$store.state.auth && $store.state.auth.foto"
+                  :src="$store.state.auth.foto"
+                  alt="haloatta"
+                  slot="avatar"
+                />
+
+                <a-avatar
+                  v-else
+                  src="/brand.png"
+                  alt="haloatta"
+                  slot="avatar"
+                />
+
+                <p
+                  slot="content"
+                  :style="{ 'text-align': 'left', 'white-space': 'normal', 'margin-top' : '8px' }"
                 >
+                  Jl Kebahagiaan Utara - BTP Blok A, No 537
+                </p>
+              </a-comment>
+            </a-col>
 
-                <a-comment
-                  v-if="$store.state.auth"
-                  class="ant-comment--accounts"
-                >
-                  <template slot="actions">
-                    <a-tag>
-                      <div class="d-flex align-items-center">
-                        <a-icon type="gold" />
-                        <span class="mr-4">{{
-                          this.$store.state.auth.poin
-                        }}</span>
-                        POIN
-                      </div>
-                    </a-tag>
-                    <a-tag>
-                      <div class="d-flex align-items-center">
-                        <a-icon type="wallet" />
-                        <span class="text-uppercase mr-4">{{
-                          this.$store.state.auth.saldo | currency
-                        }}</span>
-                      </div>
-                    </a-tag>
-                  </template>
+            <a-col :xs="24" :sm="24" :md="14">
+              <a-tabs
+                class="search-main"
+                type="card"
+                defaultActiveKey="1"
+                tabPosition="top"
+                @prevClick="callback"
+                @nextClick="callback"
+              >
+                <a-tab-pane key="1">
+                  <span slot="tab">
+                    <div class="icon-umrah"></div>
+                    Paket Umrah
+                  </span>
+                  <search-umrah />
+                </a-tab-pane>
 
-                  <a slot="author">{{ $store.state.auth.nama }}</a>
+                <a-tab-pane key="2">
+                  <span slot="tab">
+                    <div class="icon-ticket"></div>
+                    Tiket Group
+                  </span>
+                  <search-ticket />
+                </a-tab-pane>
 
-                  <a-avatar
-                    :src="this.$store.state.auth.foto"
-                    alt="haloatta"
-                    slot="avatar"
-                  />
-                  <p slot="content">
-                    Jl Kebahagiaan Utara - BTP Blok A, No 537
-                  </p>
-                </a-comment>
-              </a-col>
+                <a-tab-pane key="3">
+                  <span slot="tab">
+                    <div class="icon-accommodation"></div>
+                    LA Akomodasi
+                  </span>
+                  <search-accommodation />
+                </a-tab-pane>
 
-              <a-col :xs="24" :sm="24" :md="14">
-                <a-tabs
-                  class="search-main"
-                  type="card"
-                  defaultActiveKey="1"
-                  tabPosition="top"
-                  @prevClick="callback"
-                  @nextClick="callback"
-                >
-                  <a-tab-pane key="1">
-                    <span slot="tab">
-                      <div class="icon-umrah"></div>
-                      Paket Umrah
-                    </span>
-                    <search-umrah />
-                  </a-tab-pane>
+                <a-tab-pane key="4">
+                  <span slot="tab">
+                    <div class="icon-visa"></div>
+                    Visa Umrah
+                  </span>
+                  <search-visa />
+                </a-tab-pane>
 
-                  <a-tab-pane key="2">
-                    <span slot="tab">
-                      <div class="icon-ticket"></div>
-                      Tiket Group
-                    </span>
-                    <search-ticket />
-                  </a-tab-pane>
+                <a-tab-pane key="5">
+                  <span slot="tab">
+                    <div class="icon-insurance"></div>
+                    Asuransi
+                  </span>
+                  <search-insurance />
+                </a-tab-pane>
 
-                  <a-tab-pane key="3">
-                    <span slot="tab">
-                      <div class="icon-accommodation"></div>
-                      LA Akomodasi
-                    </span>
-                    <search-accommodation />
-                  </a-tab-pane>
+                <a-tab-pane key="6">
+                  <span slot="tab">
+                    <div class="icon-handling"></div>
+                    Handling
+                  </span>
+                  <search-handling />
+                </a-tab-pane>
 
-                  <a-tab-pane key="4">
-                    <span slot="tab">
-                      <div class="icon-visa"></div>
-                      Visa Umrah
-                    </span>
-                    <search-visa />
-                  </a-tab-pane>
+                <a-tab-pane key="7">
+                  <span slot="tab">
+                    <div class="icon-manasik"></div>
+                    Manasik
+                  </span>
+                  <search-manasik />
+                </a-tab-pane>
 
-                  <a-tab-pane key="5">
-                    <span slot="tab">
-                      <div class="icon-insurance"></div>
-                      Asuransi
-                    </span>
-                    <search-insurance />
-                  </a-tab-pane>
+                <a-tab-pane key="8">
+                  <span slot="tab">
+                    <div class="icon-equipment"></div>
+                    Perlengkapan
+                  </span>
+                  <search-equipment />
+                </a-tab-pane>
 
-                  <a-tab-pane key="6">
-                    <span slot="tab">
-                      <div class="icon-handling"></div>
-                      Handling
-                    </span>
-                    <search-handling />
-                  </a-tab-pane>
-
-                  <a-tab-pane key="7">
-                    <span slot="tab">
-                      <div class="icon-manasik"></div>
-                      Manasik
-                    </span>
-                    <search-manasik />
-                  </a-tab-pane>
-
-                  <a-tab-pane key="8">
-                    <span slot="tab">
-                      <div class="icon-equipment"></div>
-                      Perlengkapan
-                    </span>
-                    <search-equipment />
-                  </a-tab-pane>
-
-                  <a-tab-pane key="9">
-                    <span slot="tab">
-                      <div class="icon-tourleader"></div>
-                      Tour Leader
-                    </span>
-                    <search-tourleader />
-                  </a-tab-pane>
-                </a-tabs>
-              </a-col>
-            </a-row>
-          </div>
+                <a-tab-pane key="9">
+                  <span slot="tab">
+                    <div class="icon-tourleader"></div>
+                    Tour Leader
+                  </span>
+                  <search-tourleader />
+                </a-tab-pane>
+              </a-tabs>
+            </a-col>
+          </a-row>
         </div>
+      </div>
     </div>
 
     <!-- if there is data then display it package umrah favorit -->
@@ -277,7 +289,7 @@ export default {
       // console.log("error" + error);
     }
   },
-  
+
   methods: {
     callback(val) {
       console.log(val);

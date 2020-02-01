@@ -115,7 +115,7 @@
           </a-form>
         </a-col>
         <a-col :span="12">
-          <img class="max-width" src="/icons/topUp_conf.png" />
+          <img :style="{ 'max-width' : '100%', 'max-height' : '240px' }" :src="require('~/static/illu/illu_transfer.svg')" />
         </a-col>
       </a-row>
     </a-card>
