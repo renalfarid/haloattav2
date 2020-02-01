@@ -1,9 +1,14 @@
 <template>
   <div class="ant-transaction--purchase">
     <div class="fs-18 fw-500 cr-black">Transaksi Pembelian</div>
-    <a-card :bordered="false" class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16">
+    <a-card
+      :bordered="false"
+      class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16"
+    >
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
-        <a-col :span="4" class="text-uppercase cr-gray fs-14">Filter Pembelian</a-col>
+        <a-col :span="4" class="text-uppercase cr-gray fs-14"
+          >Filter Pembelian</a-col
+        >
         <a-col :span="10">
           <a-select showSearch defaultValue="Semua Produk" style="width: 100%">
             <a-select-option value="Semua Produk">Semua Produk</a-select-option>
@@ -21,16 +26,24 @@
         <a-col :span="10">
           <a-select defaultValue="Semua Status" style="width: 100%">
             <a-select-option value="Semua Status">Semua Status</a-select-option>
-            <a-select-option value="Belum Dibayar">Belum Dibayar</a-select-option>
+            <a-select-option value="Belum Dibayar"
+              >Belum Dibayar</a-select-option
+            >
             <a-select-option value="Dibayar">Dibayar</a-select-option>
-            <a-select-option value="Verifikasi">Menunggu Verifikasi</a-select-option>
+            <a-select-option value="Verifikasi"
+              >Menunggu Verifikasi</a-select-option
+            >
             <a-select-option value="Kedaluwarsa">Kedaluwarsa</a-select-option>
           </a-select>
         </a-col>
       </a-row>
     </a-card>
 
-    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataHistory">
+    <a-list
+      itemLayout="horizontal"
+      :pagination="pagination"
+      :dataSource="dataHistory"
+    >
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -40,30 +53,42 @@
       >
         <a-skeleton :loading="loading" active avatar>
           <div class="w-100">
-            <a-row :gutter="16" class="m-0 p-16">
-              <a-col :span="10">
+            <a-row :gutter="24" class="m-0 p-16">
+              <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">No. Pesanan</div>
-                <div class="fs-14 fw-500 cr-black">{{item.nomor_transaksi}}</div>
+                <div class="fs-14 fw-500 cr-black">
+                  {{ item.nomor_transaksi }}
+                </div>
               </a-col>
-              <a-col :span="7">
-                <div class="cr-gray fs-14 fw-400">Jumlah Pesanan</div>
-                <div class="fs-14 fw-500 cr-black">{{item.pax}} pax</div>
+              <a-col :span="6">
+                <div class="fs-14 fw-400 cr-gray">Tanggal Pemesanan</div>
+                <div class="fs-14 fw-500 cr-black">
+                  {{
+                    moment(item.tanggal_pemesanan, "YYYY-MM-DD").format("ll")
+                  }}
+                </div>
               </a-col>
-              <a-col :span="7" class="text-right">
-                <div class="fs-14 fw-400 cr-gray">Jumlah Pembayaran</div>
-                <div class="fs-14 fw-500 cr-black">{{item.total_bayar | currency}}</div>
+              <a-col :span="6">
+                <div class="cr-gray fs-14 fw-400">Jumlah</div>
+                <div class="fs-14 fw-500 cr-black">{{ item.pax }} Pax</div>
+              </a-col>
+              <a-col :span="6" class="text-right">
+                <div class="fs-14 fw-400 cr-gray">Total Pembayaran</div>
+                <div class="fs-14 fw-500 cr-black">
+                  {{ item.total_bayar | currency }}
+                </div>
               </a-col>
             </a-row>
 
             <a-row
-              :gutter="16"
+              :gutter="24"
               type="flex"
               justify="space-around"
               align="middle"
               class="m-0 p-16"
               style="backgroundColor: #f5f5f5"
             >
-              <a-col :span="10">
+              <a-col :span="12">
                 <div class="d-flex align-items-center">
                   <div class="mr-8">
                     <a-avatar
@@ -97,86 +122,137 @@
                       src="/icons/search/tabs/white/insurance.svg"
                     />
                   </div>
-                  <div class="fs-14 fw-500 cr-black f-default">{{item.nama_paket}}</div>
+                  <div class="fs-14 fw-500 cr-black f-default">
+                    {{ item.nama_paket }}
+                  </div>
                 </div>
               </a-col>
-              <a-col :span="7">
-                <div class="fs-14 fw-400 cr-gray">Tanggal Pemesanan</div>
-                <div
-                  class="fs-14 fw-500 cr-black"
-                >{{moment(item.tanggal_pemesanan, "YYYY-MM-DD").format('LL')}}</div>
+              <a-col :span="6">
+                <div v-if="item.status_bayar === 'Menunggu Pembayaran'">
+                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
+                  <div class="fs-14 fw-500 cr-black">
+                    {{
+                      moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format(
+                        "LL"
+                      )
+                    }}
+                  </div>
+                </div>
+                <div v-if="item.status_bayar === 'Menunggu Approval'">
+                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
+                  <div class="fs-14 fw-500 cr-black">
+                    {{
+                      moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format(
+                        "LL"
+                      )
+                    }}
+                  </div>
+                </div>
+                <div v-if="item.status_bayar === 'Expired'">
+                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
+                  <div class="fs-14 fw-500 cr-black">
+                    {{
+                      moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format(
+                        "LL"
+                      )
+                    }}
+                  </div>
+                </div>
+                <div v-if="item.status_bayar === 'Lunas'">
+                  <div class="fs-14 fw-400 cr-gray">Tanggal Pembayaran</div>
+                  <div class="fs-14 fw-500 cr-black">
+                    {{
+                      moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format(
+                        "LL"
+                      )
+                    }}
+                  </div>
+                </div>
               </a-col>
-              <a-col :span="7" class="text-right">
+              <a-col :span="6" class="text-right">
+                <div class="fs-14 fw-400 cr-gray">Sisa Pembayaran</div>
+                <div class="fs-14 fw-500 cr-red">
+                  <span>{{ item.sisa_bayar | currency }}</span>
+                </div>
+              </a-col>
+            </a-row>
+
+            <a-row
+              :gutter="24"
+              type="flex"
+              justify="space-between"
+              align="middle"
+              class="m-0 p-16"
+            >
+              <a-col :span="6">
+                <div class="fs-14 fw-400 cr-gray">Metode Pembayaran</div>
+                <div class="fs-14 fw-500 cr-black">
+                  {{ item.metode_pembayaran ? item.metode_pembayaran : "-" }}
+                </div>
+              </a-col>
+
+              <a-col :span="6">
+                <div class="fs-14 fw-400 cr-gray">Tipe Pembayaran</div>
+                <div class="fs-14 fw-500 cr-black">
+                  {{ item.jenis_pembayaran ? item.jenis_pembayaran : "-" }}
+                </div>
+              </a-col>
+
+              <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
-                <div class="fs-14 fw-500 cr-red" v-if="item.status_bayar === 'Menunggu Pembayaran'">
-                  <span>{{item.status_bayar}}</span>
+                <div
+                  class="fs-14 fw-500 cr-red"
+                  v-if="item.status_bayar === 'Menunggu Pembayaran'"
+                >
+                  <span>{{ item.status_bayar }}</span>
                 </div>
-                <div class="fs-14 fw-500 cr-red" v-if="item.status_bayar === 'Expired'">
-                  <span>{{item.status_bayar}}</span>
+                <div
+                  class="fs-14 fw-500 cr-red"
+                  v-if="item.status_bayar === 'Expired'"
+                >
+                  <span>{{ item.status_bayar }}</span>
                 </div>
                 <div
                   class="fs-14 fw-500 cr-orange"
                   v-if="item.status_bayar === 'Menunggu Approval'"
                 >
-                  <span>{{item.status_bayar}}</span>
+                  <span>{{ item.status_bayar }}</span>
                 </div>
-                <div class="fs-14 fw-500 cr-green" v-if="item.status_bayar === 'Lunas'">
-                  <span>{{item.status_bayar}}</span>
+                <div
+                  class="fs-14 fw-500 cr-green"
+                  v-if="item.status_bayar === 'Lunas'"
+                >
+                  <span>{{ item.status_bayar }}</span>
                 </div>
               </a-col>
-            </a-row>
 
-            <a-row :gutter="16" type="flex" justify="space-between" align="middle" class="m-0 p-16">
-              <a-col :span="5">
-                <div class="fs-14 fw-400 cr-gray">Metode Pembayaran</div>
-                <div
-                  class="fs-14 fw-500 cr-black"
-                >{{item.metode_pembayaran ? item.metode_pembayaran : '-'}}</div>
-              </a-col>
-              <a-col :span="5">
-                <div class="fs-14 fw-400 cr-gray">Tipe Pembayaran</div>
-                <div
-                  class="fs-14 fw-500 cr-black"
-                >{{item.jenis_pembayaran ? item.jenis_pembayaran : '-'}}</div>
-              </a-col>
-              <a-col :span="5">
-                <div v-if="item.status_bayar === 'Menunggu Pembayaran'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div
-                    class="fs-14 fw-500 cr-black"
-                  >{{moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format('LL')}}</div>
-                </div>
-                <div v-if="item.status_bayar === 'Menunggu Approval'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div
-                    class="fs-14 fw-500 cr-black"
-                  >{{moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format('LL')}}</div>
-                </div>
-                <div v-if="item.status_bayar === 'Expired'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div
-                    class="fs-14 fw-500 cr-black"
-                  >{{moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format('LL')}}</div>
-                </div>
-                <div v-if="item.status_bayar === 'Lunas'">
-                  <div class="fs-14 fw-400 cr-gray">Tanggal Pembayaran</div>
-                  <div
-                    class="fs-14 fw-500 cr-black"
-                  >{{moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format('LL')}}</div>
-                </div>
-              </a-col>
-              <a-col :span="9">
+              <a-col :span="6">
                 <div class="d-flex align-items-center align-end">
                   <nuxt-link
                     v-if="item.status_bayar === 'Lunas'"
-                    to="/accounts/transaction/detail/receipt"
+                    :to="
+                      '/accounts/billing/detail?notrans=' + item.nomor_transaksi
+                    "
                     class="cr-primary fs-14"
-                  >Lihat Detail</nuxt-link>
+                    >Lihat Detail</nuxt-link
+                  >
+                  <nuxt-link
+                    v-else-if="item.status_bayar === 'Menunggu Approval'"
+                    :to="
+                      '/accounts/billing/detail?notrans=' + item.nomor_transaksi
+                    "
+                    class="cr-primary fs-14"
+                    >Lihat Detail</nuxt-link
+                  >
                   <nuxt-link
                     v-else
-                    to="/accounts/transaction/detail/invoice"
+                    :to="
+                      '/accounts/transaction/detail/invoice?notrans=' +
+                        item.nomor_transaksi
+                    "
                     class="cr-primary fs-14"
-                  >Lihat Detail</nuxt-link>
+                    >Lihat Detail</nuxt-link
+                  >
                   <div v-if="item.status_bayar === 'Menunggu Pembayaran'">
                     <a-divider type="vertical" />
                     <!-- <a-button
@@ -187,7 +263,8 @@
                       :to="
                         '/accounts/e-confirm?notrans=' + item.nomor_transaksi
                       "
-                    >Bayar Sekarang</nuxt-link>
+                      >Bayar Sekarang</nuxt-link
+                    >
                   </div>
 
                   <div v-if="item.status_bayar === 'Expired'">

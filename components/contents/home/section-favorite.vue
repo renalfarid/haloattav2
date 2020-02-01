@@ -16,7 +16,7 @@
     <a-row :gutter="16">
       <a-col :span="16">
         <a-card class="card-product-overlay">
-          <div class="box-content" v-lazy:background-image="'/umrah/cover/cu51.png'">
+          <div class="box-content" v-lazy:background-image="require('~/static/umrah/cover/cu51.png')">
             <div class="box-content--overlay text-center">
               <div class="txt-title fs-40 fw-500 f-default mb-8">
                 Bisa Share Profit Loh!

@@ -10,8 +10,8 @@
       <!-- <sidebar-personal /> -->
     </a-layout-sider>
 
-    <a-layout :style="{ marginLeft: '260px', padding: '24px',}">
-      <a-layout-header :style="{ background: '#fff', padding: '0', marginBottom: '32px'}">
+    <a-layout :style="{ marginLeft: '260px', padding: '24px', background: '#f6f6f6' }">
+      <a-layout-header :style="{ background: '#fff', padding: '0', marginBottom: '32px', borderRadius: '6px'}">
         <header-bar />
       </a-layout-header>
       <a-layout-content :style="{ overflow: 'initial', minHeight: '80vh' }">

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content-head content-head--insurance">
-      <div class="content-head--cover" :style="{ backgroundImage: 'url(/asuransi/cover/ac1.png)' }">
+      <div class="content-head--cover" v-lazy:background-image="require('~/static/asuransi/cover/ac1.png')">
         <div class="content-head--body">
           <div class="gradient-top"></div>
           <a-row :gutter="90" class="w-100 m-auto" type="flex" justify="space-around" align="middle">
@@ -47,7 +47,7 @@
             <img
               class="mx-width d-block m-auto"
               style="maxHeight: 320px"
-              src="/asuransi/ilustrasi/ai1.png"
+              v-lazy="'/asuransi/ilustrasi/ai1.png'"
             />
           </a-col>
         </a-row>
@@ -65,7 +65,7 @@
                   <img
                     class="mx-width d-block m-auto"
                     style="maxHeight: 320px"
-                    src="/asuransi/ilustrasi/ai2.png"
+                    v-lazy="'/asuransi/ilustrasi/ai2.png'"
                   />
                 </a-col>
                 <a-col :span="12">
@@ -102,8 +102,7 @@
 
     <div class="content-cover--insurance">
       <div
-        class="content-cover--images"
-        :style="{ backgroundImage: 'url(/asuransi/cover/ac2.png)'}"
+        class="content-cover--images" v-lazy:background-image="require('~/static/asuransi/cover/ac2.png')"
       ></div>
     </div>
 
@@ -122,7 +121,7 @@
         <div>
           <a-row :gutter="16">
             <a-col :span="4" v-for="(item, index) in partner" :key="index" class="mb-24">
-              <img class="brand-logo max-width" :src="item.logo" />
+              <img class="brand-logo max-width" v-lazy="item.logo" />
             </a-col>
           </a-row>
         </div>

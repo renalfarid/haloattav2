@@ -56,7 +56,7 @@
                           <span>085213247455</span>
                         </dd>
                         <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
-                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400" :style="{ 'white-space' : 'normal !important' }">
                           <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
                         </dd>
                       </dl>
@@ -82,7 +82,7 @@
                           <span>085213247455</span>
                         </dd>
                         <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
-                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400" :style="{ 'white-space' : 'normal !important' }">
                           <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
                         </dd>
                       </dl>
@@ -108,7 +108,7 @@
                           <span>085213247455</span>
                         </dd>
                         <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
-                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400" :style="{ 'white-space' : 'normal !important' }">
                           <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
                         </dd>
                       </dl>
@@ -134,7 +134,7 @@
                           <span>085213247455</span>
                         </dd>
                         <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
-                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                        <dd class="ant-deflist__value text-ellipsis cr-black fw-400" :style="{ 'white-space' : 'normal !important' }">
                           <span>PT. ATTAUBAH TRAVEL AMANAH, KCP Ratulangi</span>
                         </dd>
                       </dl>
@@ -161,7 +161,7 @@
           </a-form>
         </a-col>
         <a-col :span="12">
-          <img class="max-width" src="/icons/topUp.png">
+          <img :style="{ 'max-width' : '100%', 'max-height' : '240px' }" :src="require('~/static/illu/illu_wallet.svg')" />
         </a-col>
       </a-row>
     </a-card>
