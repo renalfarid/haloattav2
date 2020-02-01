@@ -61,7 +61,7 @@
                 </div>
               </a-col>
               <a-col :span="6">
-                <div class="fs-14 fw-400 cr-gray">Tanggal Pemesanan</div>
+                <div class="fs-14 fw-400 cr-gray">Tgl Transaksi</div>
                 <div class="fs-14 fw-500 cr-black">
                   {{
                     moment(item.tanggal_pemesanan, "YYYY-MM-DD").format("ll")
@@ -73,9 +73,9 @@
                 <div class="fs-14 fw-500 cr-black">{{ item.pax }} Pax</div>
               </a-col>
               <a-col :span="6" class="text-right">
-                <div class="fs-14 fw-400 cr-gray">Total Pembayaran</div>
+                <div class="fs-14 fw-400 cr-gray">Total Tagihan</div>
                 <div class="fs-14 fw-500 cr-black">
-                  {{ item.total_bayar | currency }}
+                  {{ item.total_bayar + item.sisa_pembayaran | currency }}
                 </div>
               </a-col>
             </a-row>
@@ -127,52 +127,17 @@
                   </div>
                 </div>
               </a-col>
-              <a-col :span="6">
-                <div v-if="item.status_bayar === 'Menunggu Pembayaran'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">
-                    {{
-                      moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format(
-                        "LL"
-                      )
-                    }}
-                  </div>
-                </div>
-                <div v-if="item.status_bayar === 'Menunggu Approval'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">
-                    {{
-                      moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format(
-                        "LL"
-                      )
-                    }}
-                  </div>
-                </div>
-                <div v-if="item.status_bayar === 'Expired'">
-                  <div class="fs-14 fw-400 cr-gray">Batas Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">
-                    {{
-                      moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format(
-                        "LL"
-                      )
-                    }}
-                  </div>
-                </div>
-                <div v-if="item.status_bayar === 'Lunas'">
-                  <div class="fs-14 fw-400 cr-gray">Tanggal Pembayaran</div>
-                  <div class="fs-14 fw-500 cr-black">
-                    {{
-                      moment(item.limit_waktu_pembayaran, "YYYY-MM-DD").format(
-                        "LL"
-                      )
-                    }}
-                  </div>
+             
+              <a-col :span="6" class="text-right">
+                <div class="fs-14 fw-400 cr-gray">Total Bayar</div>
+                <div class="fs-14 fw-500 cr-red">
+                  <span>{{ item.total_bayar | currency }}</span>
                 </div>
               </a-col>
               <a-col :span="6" class="text-right">
-                <div class="fs-14 fw-400 cr-gray">Sisa Pembayaran</div>
+                <div class="fs-14 fw-400 cr-gray">Sisa Bayar</div>
                 <div class="fs-14 fw-500 cr-red">
-                  <span>{{ item.sisa_bayar | currency }}</span>
+                  <span>{{ item.sisa_pembayaran | currency }}</span>
                 </div>
               </a-col>
             </a-row>
@@ -215,6 +180,12 @@
                 <div
                   class="fs-14 fw-500 cr-orange"
                   v-if="item.status_bayar === 'Menunggu Approval'"
+                >
+                  <span>{{ item.status_bayar }}</span>
+                </div>
+                <div
+                  class="fs-14 fw-500 cr-orange"
+                  v-if="item.status_bayar === 'Approve'"
                 >
                   <span>{{ item.status_bayar }}</span>
                 </div>
