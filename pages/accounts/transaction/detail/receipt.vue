@@ -104,7 +104,7 @@
               </div>
               <div class="mb-16">
                 <div class="fs-13 fw-500 cr-black text-uppercase">Tanggal Pembayaran (-)</div>
-                <div class="fs-14 fw-400 cr-gray">Senin, 22 Mei 2019</div>
+                <div class="fs-14 fw-400 cr-gray">{{ moment(kwitansi.tglbukti).format("LL") }}</div>
               </div>
             </div>
           </a-col>
@@ -198,9 +198,9 @@ export default {
   data() {
     return {
       loading: true,
-      pemesan: "",
-      detailPembelian: "",
-      kwitansi: ""
+      pemesan: [],
+      detailPembelian: [],
+      kwitansi: []
     };
   },
   mounted() {
@@ -233,6 +233,7 @@ export default {
           this.pemesan = response.data.data.pemesan;
           this.detailPembelian = response.data.data.tagihan;
           this.kwitansi = response.data.data.pembayaran;
+          console.log(this.kwitansi)
         });
     }
   }
