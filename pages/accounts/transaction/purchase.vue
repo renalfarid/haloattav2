@@ -155,12 +155,6 @@
                   <span>{{ item.status_bayar }}</span>
                 </div>
                 <div
-                  class="fs-14 fw-500 cr-orange"
-                  v-if="item.status_bayar === 'Approve'"
-                >
-                  <span>{{ item.status_bayar }}</span>
-                </div>
-                <div
                   class="fs-14 fw-500 cr-green"
                   v-if="item.status_bayar === 'Lunas'"
                 >
