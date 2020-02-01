@@ -173,7 +173,7 @@
     <!-- fasilitas -->
     <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
-      <a-row :gutter="8">
+      <a-row :gutter="8" v-if="fasilitas_termasuk != null">
         <a-col :span="6" class="mb-16" v-for="fasilitas in fasilitas_termasuk" :key="fasilitas">
           <div class="d-flex align-items-start">
             <a-avatar
@@ -299,7 +299,10 @@ export default {
   },
   methods: {
     splitFasilitas() {
-      this.fasilitas_termasuk = this.$props.data.fasilitas.split("<br>");
+      this.fasilitas_termasuk =
+        this.$props.data.fasilitas != null
+          ? this.$props.data.fasilitas.split("<br>")
+          : null;
     }
   }
 };

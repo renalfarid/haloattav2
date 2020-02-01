@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="data != null">
     <a-card class="b-shadow b-solid mb-16">
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
