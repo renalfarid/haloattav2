@@ -144,24 +144,33 @@
                 <div class="fs-14 fw-500 cr-black">
                   <a-badge
                     status="default"
-                    :text="item.status_departure"
-                    v-if="item.status_departure === 'Menunggu Pemberangkatan'"
+                    :text="item.status_pemberangkatan"
                   />
-                  <a-badge
+                  <!-- <a-badge
+                    status="default"
+                    :text="item.status_pemberangkatan"
+                    v-if="
+                      item.status_pemberangkatan === 'Menunggu Pemberangkatan'
+                    "
+                  /> -->
+                  <!-- <a-badge
                     status="processing"
-                    :text="item.status_departure"
-                    v-if="item.status_departure === 'Pemberangkatan'"
+                    :text="item.status_pemberangkatan"
+                    v-if="item.status_pemberangkatan === 'Pemberangkatan'"
                   />
                   <a-badge
                     status="success"
-                    :text="item.status_departure"
-                    v-if="item.status_departure === 'Selesai'"
+                    :text="item.status_pemberangkatan"
+                    v-if="item.status_pemberangkatan === 'Selesai'"
                   />
-                  <a-badge status="success" text="-/tidak ada" v-else />
+                  <a-badge status="success" text="-/tidak ada" v-else /> -->
                 </div>
               </a-col>
               <a-col :span="5" class="text-right">
-                <nuxt-link to="/accounts/departure/detail">
+                <nuxt-link
+                  to="/accounts/departure/detail"
+                  v-if="item.tipe_produk == 'UMRAH REGULER'"
+                >
                   <span class="fs-14 fw-500 cr-green">
                     Lihat Detail
                     <a-icon type="right" class="fs-12 ml-8" />
