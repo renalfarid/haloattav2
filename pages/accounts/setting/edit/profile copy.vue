@@ -254,8 +254,31 @@
                             tanggal_lahir : new moment(values.birthday).format("YYYY-MM-DD"),
                             jk : values.jeniskelamin,
                         };
-                         axios
-                    .post(process.env.baseUrl+'user/update-profile',this.formValues,config)
+                        axios
+                            .post(process.env.baseUrl + 'otp/createotp',{
+                                tipe : this.tipe_otp
+                            },config)
+                            .then(() => {
+                                this.$message.success('Otp Berhasil Dikirim')
+                                this.otp = true;
+                            })
+                            .catch(() => {
+                                this.$message.success('Gagal Mengirim Otp')
+                            })
+                    }
+                });
+            },
+            submitData(otp){
+                const token = Cookie.get('auth');
+                const config = {
+                    headers: {
+                        Authorization: "Bearer " + token
+                    }
+                };
+                const new_value = this.formValues;
+                new_value.otp_code = otp;
+                axios
+                    .post(process.env.baseUrl+'user/update-profile',new_value,config)
                     .then(response => {
                         if (response.data.status == 200) {
                             this.form.resetFields();
@@ -270,9 +293,7 @@
                     .catch(() => {
                         this.$message.success('Otp salah');
                     })
-                    }
-                });
-            },
+            }
         }
     };
 </script>
