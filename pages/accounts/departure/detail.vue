@@ -102,7 +102,10 @@
             <a-col :span="4" class="text-right">
               <nuxt-link
                 :to="
-                  '/accounts/jamaah/berkas?kode_booking=' + item.kode_booking
+                  '/accounts/jamaah/berkas?nomor_transaksi=' +
+                    notrans +
+                    '&kode_booking=' +
+                    item.kode_booking
                 "
               >
                 <span class="fs-14 fw-500 cr-green">
@@ -135,7 +138,8 @@ export default {
     return {
       data: {
         info: '',
-        listBooking: ''
+        listBooking: '',
+        notrans: ''
       }
     };
   },
@@ -152,19 +156,17 @@ export default {
         }
       };
 
-      let nomor_transaksi = this.$route.query.nomor_transaksi;
+      this.notrans = this.$route.query.nomor_transaksi;
 
       axios
         .get(
           process.env.baseUrl +
             'jamaah/booking?nomor_transaksi=' +
-            nomor_transaksi,
+            this.notrans,
           config
         )
         .then(response => {
           if (response.data.status == 200) {
-            console.log(response.data.data, 'data ini');
-
             this.data.info = response.data.data.index;
             this.data.listBooking = response.data.data.list_booking;
           } else {
