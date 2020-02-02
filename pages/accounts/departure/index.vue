@@ -6,7 +6,10 @@
       pemberangkatan
     </div>
 
-    <a-card :bordered="false" class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16">
+    <a-card
+      :bordered="false"
+      class="ant-card--filter b-solid b-radius b-shadow mt-16 mb-16"
+    >
       <a-row :gutter="16" type="flex" justify="space-around" align="middle">
         <a-col :span="2" class="text-uppercase cr-gray fs-14">Filter</a-col>
         <a-col :span="7">
@@ -16,7 +19,9 @@
             defaultValue="Tampilkan Semua"
             style="width: 100%"
           >
-            <a-select-option value="Tampilkan Semua">Tampilkan Semua</a-select-option>
+            <a-select-option value="Tampilkan Semua"
+              >Tampilkan Semua</a-select-option
+            >
             <a-select-option value="Umrah">Umrah</a-select-option>
             <a-select-option value="Tiket Group">Tiket Group</a-select-option>
             <a-select-option value="LA Akomodasi">LA Akomodasi</a-select-option>
@@ -31,9 +36,15 @@
             defaultValue="Semua Status Pemberangkatan"
             style="width: 100%"
           >
-            <a-select-option value="Semua Status Pemberangkatan">Semua Status Pemberangkatan</a-select-option>
-            <a-select-option value="Menunggu Pemberangkatan">Menunggu Pemberangkatan</a-select-option>
-            <a-select-option value="Pemberangkatan">Pemberangkatan</a-select-option>
+            <a-select-option value="Semua Status Pemberangkatan"
+              >Semua Status Pemberangkatan</a-select-option
+            >
+            <a-select-option value="Menunggu Pemberangkatan"
+              >Menunggu Pemberangkatan</a-select-option
+            >
+            <a-select-option value="Pemberangkatan"
+              >Pemberangkatan</a-select-option
+            >
             <a-select-option value="Selesai">Selesai</a-select-option>
           </a-select>
         </a-col>
@@ -41,7 +52,11 @@
       </a-row>
     </a-card>
 
-    <a-list itemLayout="horizontal" :pagination="pagination" :dataSource="dataHistory">
+    <a-list
+      itemLayout="horizontal"
+      :pagination="pagination"
+      :dataSource="dataHistory"
+    >
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -54,15 +69,25 @@
             <a-row :gutter="16" class="m-0 p-16">
               <a-col :span="8">
                 <div class="fs-14 fw-400 cr-gray">No. Transaksi</div>
-                <div class="fs-14 fw-500 cr-black">{{ item.nomor_transaksi }}</div>
+                <div class="fs-14 fw-500 cr-black">
+                  {{ item.nomor_transaksi }}
+                </div>
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Program Hari</div>
-                <div class="fs-14 fw-500">-/tidak ada</div>
+                <div class="fs-14 fw-500">{{ item.program_hari }}</div>
               </a-col>
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
-                <div class="fs-14 fw-500 cr-black">-/tidak ada</div>
+                <div class="fs-14 fw-500 cr-black">
+                  {{
+                    item.tanggal_keberangkatan
+                      ? moment(item.tanggal_keberangkatan, 'YYYY-MM-DD').format(
+                          'LL'
+                        )
+                      : '-'
+                  }}
+                </div>
               </a-col>
               <a-col :span="5" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
@@ -107,7 +132,9 @@
                       src="/icons/search/tabs/white/insurance.svg"
                     />
                   </div>
-                  <div class="fs-14 fw-500 cr-black f-default text-capitalize">{{ item.nama_paket }}</div>
+                  <div class="fs-14 fw-500 cr-black f-default text-capitalize">
+                    {{ item.nama_paket }}
+                  </div>
                 </div>
               </a-col>
               <a-col :span="5">
@@ -147,15 +174,16 @@
   </div>
 </template>
 <script>
-const Cookie = process.client ? require("js-cookie") : undefined;
-import axios from "axios";
+const Cookie = process.client ? require('js-cookie') : undefined;
+import axios from 'axios';
+import moment from 'moment';
 export default {
-  middleware: "authenticated",
-  layout: "accounts",
-  name: "mitraDeparture",
+  middleware: 'authenticated',
+  layout: 'accounts',
+  name: 'mitraDeparture',
   head() {
     return {
-      title: "Daftar Pemberangkatan - Kembangkan Bisnis Umrah Anda | Haloatta"
+      title: 'Daftar Pemberangkatan - Kembangkan Bisnis Umrah Anda | Haloatta'
     };
   },
 
@@ -181,21 +209,22 @@ export default {
     this.getdata(1);
   },
   methods: {
+    moment,
     async getdata(page) {
-      const token = Cookie.get("auth");
+      const token = Cookie.get('auth');
       const config = {
         headers: {
-          Authorization: "Bearer " + token
+          Authorization: 'Bearer ' + token
         }
       };
 
       let data = {
         page: page,
-        status_bayar: "Lunas"
+        status_bayar: 'Lunas'
       };
 
       axios
-        .post(process.env.baseUrl + "transaksi/history", data, config)
+        .post(process.env.baseUrl + 'transaksi/history', data, config)
         .then(response => {
           if (response.data.status == 200) {
             this.dataHistory = response.data.data.data;
@@ -205,7 +234,7 @@ export default {
           }
         })
         .catch(() => {
-          this.$message.success("Salah");
+          this.$message.error('Terjadi Salah');
         });
     }
   }
