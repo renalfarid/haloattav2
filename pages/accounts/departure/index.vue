@@ -168,7 +168,10 @@
               </a-col>
               <a-col :span="5" class="text-right">
                 <nuxt-link
-                  to="/accounts/departure/detail"
+                  :to="
+                    '/accounts/departure/detail?nomor_transaksi=' +
+                      item.nomor_transaksi
+                  "
                   v-if="item.tipe_produk == 'UMRAH REGULER'"
                 >
                   <span class="fs-14 fw-500 cr-green">
