@@ -496,7 +496,7 @@ export default {
                 this.$message.success(response.data.msg);
                 this.$emit("saved", true);
                 this.$router.push({
-                  path: "/accounts/billing"
+                  path: '/accounts/transaction/purchase'
                 });
               } else {
                 this.$message.error(response.data.msg);
