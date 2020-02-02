@@ -75,7 +75,9 @@
               </a-col>
               <a-col :span="6">
                 <div class="fs-14 fw-400 cr-gray">Program Hari</div>
-                <div class="fs-14 fw-500">{{ item.program_hari }}</div>
+                <div class="fs-14 fw-500">
+                  {{ item.program_hari ? item.program_hari : '-' }}
+                </div>
               </a-col>
               <a-col :span="5">
                 <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
