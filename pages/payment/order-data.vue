@@ -29,30 +29,11 @@
                   hideRequiredMark
                 >
                   <a-card class="b-shadow b-radius mb-16">
+                    <template slot="title">Data Pemesan</template>
                     <a-list
                       itemLayout="horizontal"
                       class="ant-list--package-information"
                     >
-                      <a-list-item
-                        class="ant-list-item--package-information pt-0"
-                      >
-                        <div class="w-100">
-                          <div
-                            class="ant-package--information-title fs-20 cr-black fw-500 mb-0"
-                          >
-                            <span>Isi Data Pemesan</span>
-                          </div>
-                          <div
-                            class="ant-package--information-text fs-15 cr-black fw-400"
-                          >
-                            <span
-                              >Isi data pesanan anda untuk melanjutkan proses
-                              berikutnya</span
-                            >
-                          </div>
-                        </div>
-                      </a-list-item>
-
                       <a-list-item class="ant-list-item--package-information">
                         <div class="w-100">
                           <div class="d-flex align-items-center w-100">
@@ -94,8 +75,8 @@
                           </a-form-item>
 
                           <a-form-item
-                            label="Nomor Handphone"
-                            help="Contoh : No. Handphone 0812345678"
+                            label="Nomor Telepon"
+                            help="Contoh : No. Telepon 0812345678"
                             class="mb-16"
                             hasFeedback
                           >
@@ -127,27 +108,106 @@
                   </a-card>
 
                   <a-card class="b-shadow b-radius mb-16">
+                    <template slot="title">Tipe Pembayaran</template>
+                    <a-radio-group
+                      name="radioGroup"
+                      v-model="paymentType"
+                      class="md-radio--group-list"
+                    >
+                      <a-row :gutter="24">
+                        <a-col :span="24">
+                          <a-radio
+                            :value="1"
+                            class="fs-16 cr-black"
+                            :style="{ 'border-bottom': '1px solid #e8e8e8' }"
+                            >Bayar Lunas</a-radio
+                          >
+                        </a-col>
+                        <a-col
+                          :span="24"
+                          v-if="paymentType === 1"
+                          :style="{ padding: '16px 24px' }"
+                        >
+                          <a-table
+                            size="middle"
+                            :dataSource="dataPembayaranLunas"
+                            :pagination="false"
+                          >
+                            <a-table-column
+                              title="Keterangan"
+                              dataIndex="steps"
+                              key="steps"
+                            />
+                            <a-table-column
+                              title="Biaya"
+                              dataIndex="biaya"
+                              key="biaya"
+                            >
+                              <template slot-scope="biaya">
+                                {{ biaya | currency }}
+                              </template>
+                            </a-table-column>
+                          </a-table>
+                        </a-col>
+                        <a-col :span="24">
+                          <a-radio :value="2" class="fs-16 cr-black"
+                            >Bayar Bertahap (DP)</a-radio
+                          >
+                        </a-col>
+                        <a-col
+                          :span="24"
+                          v-if="paymentType === 2"
+                          :style="{ padding: '16px 24px' }"
+                        >
+                          <a-table
+                            size="middle"
+                            :dataSource="dataPembayaranDP"
+                            :pagination="false"
+                          >
+                            <a-table-column
+                              title="Keterangan"
+                              dataIndex="steps"
+                              key="steps"
+                            />
+                            <a-table-column
+                              title="Biaya"
+                              dataIndex="biaya"
+                              key="biaya"
+                            >
+                              <template slot-scope="biaya">
+                                {{ biaya | currency }}
+                              </template>
+                            </a-table-column>
+                          </a-table>
+                          <a-alert
+                            :showIcon="false"
+                            message="Jatuh tempo pelunasan 30 Hari sebelum keberangkatan!"
+                            :style="{
+                              'margin-top': '16px',
+                              'border-radius': '4px'
+                            }"
+                            banner
+                          />
+                        </a-col>
+                      </a-row>
+                    </a-radio-group>
+                  </a-card>
+
+                  <a-card class="b-shadow b-radius mb-16">
+                    <template slot="title">Data Jamaah</template>
                     <a-list>
                       <a-list-item class="ant-list-item--package-information">
                         <div class="w-100">
-                          <div
-                            class="ant-package--information-title fs-16 cr-black fw-500"
-                          >
-                            <span>Data Jamaah</span>
-                          </div>
-
                           <a-radio-group
-                            class="mb-16 mt-8"
                             name="radioGroup"
-                            :defaultValue="1"
                             @change="onChange"
                             v-model="value"
                           >
-                            <a-radio :value="1" class="fs-15 cr-black"
-                              >Isi Data Jamaah Sekarang</a-radio
-                            >
                             <a-radio :value="2" class="fs-15 cr-black"
                               >Isi Data Jamaah Nanti</a-radio
+                            >
+                            <a-radio :value="1" class="fs-15 cr-black"
+                              >Isi Data Jamaah Sekarang</a-radio
                             >
                           </a-radio-group>
 
@@ -564,6 +624,7 @@
                             <a-alert
                               :showIcon="false"
                               message="Kami akan mengirimkan formulir pengisian data jamaah setelah anda menyelesaikan transkasi dengan status pembayaran telah di DP atau LUNAS"
+                              :style="{ 'border-radius': '4px' }"
                               banner
                             />
                           </div>
@@ -629,6 +690,7 @@ export default {
   },
   data() {
     return {
+      paymentType: 1,
       value: 2,
       loading: false,
       photoJamaah: "",
@@ -637,6 +699,25 @@ export default {
         nohp: "",
         email: ""
       },
+      dataPembayaranLunas: [
+        {
+          key: "1",
+          steps: "Pelunasan",
+          biaya: 100000000
+        }
+      ],
+      dataPembayaranDP: [
+        {
+          key: "1",
+          steps: "Uang Muka (30%)",
+          biaya: 30000000
+        },
+        {
+          key: "2",
+          steps: "Pelunasan",
+          biaya: 70000000
+        }
+      ],
       total: 0
     };
   },
