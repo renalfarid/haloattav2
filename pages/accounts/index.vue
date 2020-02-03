@@ -216,7 +216,7 @@
                 };
                 console.log(this.$store.state.auth.accessToken);
                 axios
-                    .get("https://api.haloatta.com/api/user/info", config)
+                    .get(process.env.baseUrl +"user/info", config)
                     .then(response => {
                         console.log(response);
                         const auth = {

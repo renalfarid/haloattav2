@@ -188,7 +188,7 @@ export default {
     getdata() {
       this.busy = true;
       axios
-        .get("https://api.haloatta.com/api/tiket/all", {
+        .get(process.env.baseUrl +"tiket/all", {
           params: {
             per_page: 8,
             page: ++this.page
