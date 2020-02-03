@@ -1,13 +1,14 @@
 <template>
   <div class="ant-layout--accounts-billing">
     <div class="mb-16">
-      <nuxt-link to="/accounts/billing" class="fs-14 fw-400 cr-gray">
+      <nuxt-link to="/accounts/transaction/purchase" class="fs-14 fw-400 cr-gray">
         <a-icon type="left" class="mr-8" />Kembali
       </nuxt-link>
     </div>
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
       <div slot="title">Detail Produk</div>
       <div slot="extra" class="fs-16 fw-500 cr-black">No. Transaksi {{detailProduk.nomor_transaksi}}</div>
+      <div slot="extra" class="fs-16 fw-500 cr-black">{{moment(detailProduk.tanggal_pemesanan, "YYYY-MM-DD").format("dddd, DD MMMM YYYY")}}</div>
       <a-row :gutter="8">
         <a-col :span="12">
           <div class="d-flex align-items-center">
@@ -37,6 +38,15 @@
         <a-col :span="4" class="text-right">
           <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
           <div class="fs-14 fw-500 cr-black">{{detailProduk.pax}} Pax</div>
+        </a-col>
+      </a-row>
+      <a-divider></a-divider>
+      <a-row :gutter="8" type="flex" justify="end">
+        <a-col :span="4" class="text-right">
+          <div class="fs-15 fw-400 cr-gray">Total Tagihan :</div>
+        </a-col>
+        <a-col :span="4" class="text-right">
+          <div class="fs-15 fw-500 cr-black">{{ detailProduk.total_bayar + detailProduk.sisa_pembayaran | currency}}</div>
         </a-col>
       </a-row>
       <a-divider></a-divider>
@@ -112,8 +122,8 @@
                   >{{index+1}}</a-avatar>
                 </div>
                 <div>
-                  <div class="fs-14 fw-400 cr-gray">Keterangan</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.stsbayar}}</div>
+                  <div class="fs-14 fw-400 cr-gray">No Bukti</div>
+                  <div class="fs-14 fw-500 cr-black">{{item.nobukti}}</div>
                 </div>
               </div>
             </a-col>
@@ -133,6 +143,11 @@
                 </span>
               </nuxt-link>
             </a-col>
+            <a-col :span="4" class="text-right" v-else>
+              <div class="fs-14 fw-400 cr-gray">Status Pembayaran</div>
+              <div class="fs-14 fw-500 cr-orange">{{item.stsbayar}}</div>
+            </a-col>
+
           </a-row>
         </div>
       </a-list-item>
@@ -150,7 +165,7 @@ export default {
   name: "billing-detail",
   head() {
     return {
-      title: "Detial Tagihan - Kembangkan Bisnis Umrah Anda | Haloatta"
+      title: "Detail Tagihan - Kembangkan Bisnis Umrah Anda | Haloatta"
     };
   },
 

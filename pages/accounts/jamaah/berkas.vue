@@ -8,7 +8,9 @@
 
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
       <div slot="title">Detail Pemesan</div>
-      <div slot="extra" class="fs-16 fw-500 cr-black">No. Transaksi PUHA12345678</div>
+      <div slot="extra" class="fs-16 fw-500 cr-black">
+        No. Transaksi {{ this.$route.query.nomor_transaksi }}
+      </div>
       <a-row :gutter="8">
         <a-col :span="12">
           <div class="d-flex align-items-center">
@@ -16,22 +18,36 @@
               <a-avatar style="backgroundColor: #0FACF3" icon="user" />
             </div>
             <div>
-              <div class="fs-12 fw-400 cr-gray text-uppercase">Nama Pemesan</div>
-              <div class="fs-15 fw-500 cr-black f-default">Jordi Alba Mustafa</div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">
+                Nama Pemesan
+              </div>
+              <div class="fs-15 fw-500 cr-black f-default">
+                {{ pemesan.nama }}
+              </div>
             </div>
           </div>
         </a-col>
         <a-col :span="4">
           <div class="fs-12 fw-400 cr-gray text-uppercase">Email Pemesan</div>
-          <div class="cr-black fs-14 fw-500 f-default">jordialba@gmail.com</div>
+          <div class="cr-black fs-14 fw-500 f-default">{{ pemesan.email }}</div>
         </a-col>
         <a-col :span="4">
           <div class="fs-12 fw-400 cr-gray text-uppercase">No. Telepon</div>
-          <div class="cr-black fs-14 fw-500 f-default">08123456789</div>
+          <div class="cr-black fs-14 fw-500 f-default">
+            {{ pemesan.telepon }}
+          </div>
         </a-col>
         <a-col :span="4" class="text-right">
-          <div class="fs-12 fw-400 cr-gray text-uppercase">Tanggal Pemesanan</div>
-          <div class="cr-black fs-14 fw-500 f-default">Senin, 11 Juli 2019</div>
+          <div class="fs-12 fw-400 cr-gray text-uppercase">
+            Tanggal Pemesanan
+          </div>
+          <div class="cr-black fs-14 fw-500 f-default">
+            {{
+              moment(tagihan, 'YYYY-MM-DD').format(
+                'dddd, MMMM Do YYYY, h:mm:ss a'
+              )
+            }}
+          </div>
         </a-col>
       </a-row>
     </a-card>
@@ -51,19 +67,23 @@
         </a-step>
         <a-step title="Manifest">
           <span slot="description">
-            <p class="fs-14 f-default">Pengaturan Room List, Tiket, Visa, Mova, Perlengkapan, dll</p>
+            <p class="fs-14 f-default">
+              Pengaturan Room List, Tiket, Visa, Mova, Perlengkapan, dll
+            </p>
           </span>
         </a-step>
         <a-step title="Pemberangkatan">
           <span slot="description">
-            <p class="fs-14 f-default">Tanggal Pemberangkatan 10 September 2019</p>
+            <p class="fs-14 f-default">
+              Tanggal Pemberangkatan 10 September 2019
+            </p>
           </span>
         </a-step>
       </a-steps>
     </a-card>
 
     <div class="fs-16 fw-500 cr-black mb-16">Ringkasan Berkas Jamaah</div>
-    
+
     <a-form layout="vertical" :form="form" hideRequiredMark>
       <a-card :bordered="false" class="b-shadow b-solid b-radius">
         <a-row :gutter="16" type="flex" justify="space-around" align="middle">
@@ -72,7 +92,13 @@
               <a-col :span="6">
                 <a-form-item label="Title" hasFeedback>
                   <a-select
-                    v-decorator="['title',{initialValue: 'Tn.', rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    v-decorator="[
+                      'title',
+                      {
+                        initialValue: 'Tn.',
+                        rules: [{ required: true, message: 'Harus di isi!' }]
+                      }
+                    ]"
                     placeholder="Pilih Title"
                     size="large"
                     style="width: 100%"
@@ -91,7 +117,10 @@
                   hasFeedback
                 >
                   <a-input
-                    v-decorator="['firstName',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    v-decorator="[
+                      'firstName',
+                      { rules: [{ required: true, message: 'Harus di isi!' }] }
+                    ]"
                     size="large"
                   />
                 </a-form-item>
@@ -106,7 +135,10 @@
                   hasFeedback
                 >
                   <a-input
-                    v-decorator="['lastName',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    v-decorator="[
+                      'lastName',
+                      { rules: [{ required: true, message: 'Harus di isi!' }] }
+                    ]"
                     size="large"
                   />
                 </a-form-item>
@@ -117,7 +149,10 @@
               <a-col :span="10">
                 <a-form-item label="Tempat Lahir" hasFeedback>
                   <a-input
-                    v-decorator="['tempatlahir',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    v-decorator="[
+                      'tempatlahir',
+                      { rules: [{ required: true, message: 'Harus di isi!' }] }
+                    ]"
                     size="large"
                   />
                 </a-form-item>
@@ -125,7 +160,10 @@
               <a-col :span="14">
                 <a-form-item label="Tanggal Lahir" hasFeedback>
                   <a-date-picker
-                    v-decorator="['date',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                    v-decorator="[
+                      'date',
+                      { rules: [{ required: true, message: 'Harus di isi!' }] }
+                    ]"
                     placeholder="Pilih Tanggal Lahir Anda"
                     size="large"
                     style="width: 100%"
@@ -139,7 +177,13 @@
             <div class="d-flex align-items-center">
               <a-form-item class="m-auto" label="Photo Jamaah">
                 <a-upload
-                  v-decorator="['photoJamaah',{initialValue: photoJamaah,rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                  v-decorator="[
+                    'photoJamaah',
+                    {
+                      initialValue: photoJamaah,
+                      rules: [{ required: true, message: 'Harus di isi!' }]
+                    }
+                  ]"
                   name="photoJamaah"
                   listType="picture-card"
                   :showUploadList="false"
@@ -147,7 +191,12 @@
                   :beforeUpload="beforeUpload"
                   @change="handleChange"
                 >
-                  <img class="max-width" v-if="photoJamaah" :src="photoJamaah" alt="avatar" />
+                  <img
+                    class="max-width"
+                    v-if="photoJamaah"
+                    :src="photoJamaah"
+                    alt="avatar"
+                  />
                   <div v-else>
                     <a-icon :type="loading ? 'loading' : 'plus'" />
                     <div class="ant-upload-text">Upload</div>
@@ -158,13 +207,20 @@
           </a-col>
         </a-row>
 
-        <a-divider class="ant-divider-title-left" orientation="left" :style="{ marginTop: '0' }" />
+        <a-divider
+          class="ant-divider-title-left"
+          orientation="left"
+          :style="{ marginTop: '0' }"
+        />
 
         <a-row :gutter="16">
           <a-col :span="8">
             <a-form-item label="Nomor Telepon" hasFeedback>
               <a-input
-                v-decorator="['telp',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                v-decorator="[
+                  'telp',
+                  { rules: [{ required: true, message: 'Harus di isi!' }] }
+                ]"
                 size="large"
               />
             </a-form-item>
@@ -173,7 +229,10 @@
           <a-col :span="8">
             <a-form-item label="Nomor Handphone" hasFeedback>
               <a-input
-                v-decorator="['hp',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                v-decorator="[
+                  'hp',
+                  { rules: [{ required: true, message: 'Harus di isi!' }] }
+                ]"
                 size="large"
               />
             </a-form-item>
@@ -182,7 +241,13 @@
           <a-col :span="8">
             <a-form-item label="Kewarganegaraan" hasFeedback>
               <a-select
-                v-decorator="['country',{initialValue: 'Indonesia', rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                v-decorator="[
+                  'country',
+                  {
+                    initialValue: 'Indonesia',
+                    rules: [{ required: true, message: 'Harus di isi!' }]
+                  }
+                ]"
                 placeholder="Pilih Kewarganegaraan"
                 size="large"
               >
@@ -196,12 +261,20 @@
           <a-col :span="8">
             <a-form-item label="Status Pernikahan" hasFeedback>
               <a-select
-                v-decorator="['status',{initialValue: 'Belum Nikah', rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                v-decorator="[
+                  'status',
+                  {
+                    initialValue: 'Belum Nikah',
+                    rules: [{ required: true, message: 'Harus di isi!' }]
+                  }
+                ]"
                 placeholder="Pilih Status"
                 size="large"
                 style="width: 100%"
               >
-                <a-select-option value="Belum Nikah">Belum Nikah</a-select-option>
+                <a-select-option value="Belum Nikah"
+                  >Belum Nikah</a-select-option
+                >
                 <a-select-option value="Nikah">Nikah</a-select-option>
               </a-select>
             </a-form-item>
@@ -209,7 +282,10 @@
           <a-col :span="8">
             <a-form-item label="Jenis Pendidikan" hasFeedback>
               <a-select
-                v-decorator="['pendidikan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                v-decorator="[
+                  'pendidikan',
+                  { rules: [{ required: true, message: 'Harus di isi!' }] }
+                ]"
                 placeholder="Pilih Pendidikan"
                 size="large"
                 style="width: 100%"
@@ -224,12 +300,17 @@
           <a-col :span="8">
             <a-form-item label="Jenis Pekerjaan" hasFeedback>
               <a-select
-                v-decorator="['pekerjaan',{rules: [{ required: true, message: 'Harus di isi!' }]}]"
+                v-decorator="[
+                  'pekerjaan',
+                  { rules: [{ required: true, message: 'Harus di isi!' }] }
+                ]"
                 placeholder="Pilih Pekerjaan"
                 size="large"
                 style="width: 100%"
               >
-                <a-select-option value="Tani/Tambak">Tani/Tambak</a-select-option>
+                <a-select-option value="Tani/Tambak"
+                  >Tani/Tambak</a-select-option
+                >
                 <a-select-option value="Wiraswasta">Wiraswasta</a-select-option>
                 <a-select-option value="Wirausaha">Wirausaha</a-select-option>
               </a-select>
@@ -237,7 +318,11 @@
           </a-col>
         </a-row>
 
-        <a-divider class="ant-divider-title-left" orientation="left" :style="{ marginTop: '0' }">
+        <a-divider
+          class="ant-divider-title-left"
+          orientation="left"
+          :style="{ marginTop: '0' }"
+        >
           <span class="fs-15 cr-gray">Informasi Paspor Jamaah</span>
         </a-divider>
 
@@ -250,7 +335,7 @@
           <a-col :span="8">
             <a-form-item label="Negara Penerbit">
               <a-select
-                v-decorator="['country_paspor', {initialValue: 'Indonesia'}]"
+                v-decorator="['country_paspor', { initialValue: 'Indonesia' }]"
                 placeholder="Pilih Negara"
                 size="large"
               >
@@ -271,7 +356,11 @@
           </a-col>
         </a-row>
 
-        <a-divider class="ant-divider-title-left" orientation="left" :style="{ marginTop: '0' }">
+        <a-divider
+          class="ant-divider-title-left"
+          orientation="left"
+          :style="{ marginTop: '0' }"
+        >
           <span class="fs-15 cr-gray">Informasi Alamat Jamaah</span>
         </a-divider>
 
@@ -280,11 +369,13 @@
             <a-form-item label="Provinsi">
               <a-select
                 showSearch
-                v-decorator="['province', {initialValue: 'Sulawesi Selatan'}]"
+                v-decorator="['province', { initialValue: 'Sulawesi Selatan' }]"
                 placeholder="Pilih Provinsi"
                 size="large"
               >
-                <a-select-option value="Sulawesi Selatan">Sulawesi Selatan</a-select-option>
+                <a-select-option value="Sulawesi Selatan"
+                  >Sulawesi Selatan</a-select-option
+                >
               </a-select>
             </a-form-item>
           </a-col>
@@ -292,7 +383,7 @@
             <a-form-item label="Kabupaten/Kota">
               <a-select
                 showSearch
-                v-decorator="['city', {initialValue: 'Makassar'}]"
+                v-decorator="['city', { initialValue: 'Makassar' }]"
                 placeholder="Pilih Kabupaten/Kota"
                 size="large"
               >
@@ -307,11 +398,13 @@
             <a-form-item label="Kecamatan">
               <a-select
                 showSearch
-                v-decorator="['district', {initialValue: 'Tamalanrea Indah'}]"
+                v-decorator="['district', { initialValue: 'Tamalanrea Indah' }]"
                 placeholder="Pilih Kecamatan"
                 size="large"
               >
-                <a-select-option value="Tamalanrea Indah">Tamalanrea Indah</a-select-option>
+                <a-select-option value="Tamalanrea Indah"
+                  >Tamalanrea Indah</a-select-option
+                >
               </a-select>
             </a-form-item>
           </a-col>
@@ -319,7 +412,7 @@
             <a-form-item label="Kelurahan">
               <a-select
                 showSearch
-                v-decorator="['subdistrict', {initialValue: 'Tamalanrea'}]"
+                v-decorator="['subdistrict', { initialValue: 'Tamalanrea' }]"
                 placeholder="Pilih Kelurahan"
                 size="large"
               >
@@ -341,51 +434,62 @@
 
         <a-form-item>
           <a-button size="large" class="b-shadow b-radius mr-8">
-            <nuxt-link to="/accounts/management/seat/pax-list">Kembali</nuxt-link>
+            <nuxt-link to="/accounts/management/seat/pax-list"
+              >Kembali</nuxt-link
+            >
           </a-button>
           <a-button
             type="primary"
             @click="handleSubmit"
             size="large"
             class="b-shadow b-radius"
-          >Simpan Perubahan</a-button>
+            >Simpan Perubahan</a-button
+          >
         </a-form-item>
       </a-card>
     </a-form>
   </div>
 </template>
 <script>
-import moment from "moment";
+const Cookie = process.client ? require('js-cookie') : undefined;
+import axios from 'axios';
+import moment from 'moment';
+
 function getBase64(img, callback) {
   const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
+  reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
 }
 export default {
-  layout: "accounts",
-  name: "mitraBerkasJamaah",
+  layout: 'accounts',
+  name: 'mitraBerkasJamaah',
   head() {
     return {
-      title: "Berkas Jamaah - Kembangkan Bisnis Umrah Anda | Haloatta"
+      title: 'Berkas Jamaah - Kembangkan Bisnis Umrah Anda | Haloatta'
     };
   },
 
   data() {
     return {
       loading: false,
-      photoJamaah: "/user/maha_user.jpg",
-      form: this.$form.createForm(this)
+      photoJamaah: '/user/maha_user.jpg',
+      form: this.$form.createForm(this),
+      pemesan: '',
+      tagihan: ''
     };
+  },
+  created: function() {
+    this.getPemesan();
   },
 
   methods: {
     moment,
     handleChange(info) {
-      if (info.file.status === "uploading") {
+      if (info.file.status === 'uploading') {
         this.loading = true;
         return;
       }
-      if (info.file.status === "done") {
+      if (info.file.status === 'done') {
         // Get this url from response in real world.
         getBase64(info.file.originFileObj, photoJamaah => {
           this.photoJamaah = photoJamaah;
@@ -396,19 +500,40 @@ export default {
     beforeUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2;
       if (!isLt2M) {
-        this.$message.error("Maaf, Ukuran gambar tidak boleh melebihi 2MB!");
+        this.$message.error('Maaf, Ukuran gambar tidak boleh melebihi 2MB!');
       }
       return isLt2M;
     },
     disabledDate(current) {
-      return current && current < moment().endOf("day");
+      return current && current < moment().endOf('day');
     },
     handleSubmit() {
       this.form.validateFields(err => {
         if (!err) {
-          console.info("success");
+          console.info('success');
         }
       });
+    },
+    async getPemesan() {
+      const token = Cookie.get('auth');
+      const config = {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      };
+      let params = this.$route.query;
+      axios
+        .post(
+          process.env.baseUrl + 'transaksi/invoice',
+          {
+            notrans: params.nomor_transaksi
+          },
+          config
+        )
+        .then(response => {
+          this.pemesan = response.data.data.pemesan;
+          this.tagihan = response.data.data.tagihan.tgltrans;
+        });
     }
   }
 };
