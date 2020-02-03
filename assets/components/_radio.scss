@@ -1,0 +1,60 @@
+.md-radio--group-list {
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+    border-radius: 6px;
+    width: 100%;
+    display: block;
+    & .ant-radio-wrapper {
+        display: inline-block;
+        margin: 0;
+        padding: 16px;
+        width: 100%;
+        &.ant-radio-wrapper-checked {
+            background-color: rgba($color: $color-main, $alpha: .02);
+            & span {
+                color: $color-main;
+            }
+        }
+        & .ant-radio {
+            position: relative;
+            margin-bottom: -4px;
+            float: right;
+        }
+    }
+}
+
+.md-card--bank {
+    & .ant-card-body {
+        padding: 0;
+        & .md-radio--group-bank {
+            overflow: hidden;
+            width: 100%;
+            display: block;
+            & .ant-radio-wrapper {
+                margin: 0;
+                padding: 16px 24px;
+                width: 100%;
+                &.ant-radio-wrapper-checked {
+                    background-color: #f4f4f4;
+                    & span {
+                        color: $color-main;
+                    }
+                }
+                & .ant-radio {
+                    position: relative;
+                    margin-right: 12px;
+                }
+                & img {
+                    max-width: 100%;
+                    max-height: 20px;
+                    margin: 0 16px;
+                    position: absolute;
+                    right: 0;
+                }
+                &:hover {
+                    background-color: #f6f6f6;
+                }
+            }
+        }
+    }
+}

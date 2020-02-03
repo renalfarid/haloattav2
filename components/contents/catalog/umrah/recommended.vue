@@ -51,20 +51,22 @@
                 <div
                   class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-4"
                 >
-                 <i class="icon-accommodation-xs mr-4"></i> <span>Hotel {{ item.hotel_mekkah }} - Makkah</span>
+                  <i class="icon-accommodation-xs mr-4"></i>
+                  <span>Hotel {{ item.hotel_mekkah }} - Makkah</span>
                 </div>
                 <div
                   class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-4"
                 >
-                <i class="icon-accommodation-xs mr-4"></i> 
+                  <i class="icon-accommodation-xs mr-4"></i>
                   <span>Hotel {{ item.hotel_madinah }} - Madinah</span>
                 </div>
                 <div
                   class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis"
                 >
-                <a-icon type="calendar" class="mr-4" />
-                Berangkat 
-                {{ moment(item.tgl_berangkat, "YYYY-MM-DD").format("ll") }} - {{ moment(item.tgl_berangkat, "YYYY-MM-DD").format("ll") }}
+                  <a-icon type="calendar" class="mr-4" />
+                  Berangkat
+                  {{ moment(item.tgl_berangkat, "YYYY-MM-DD").format("ll") }} -
+                  {{ moment(item.tgl_berangkat, "YYYY-MM-DD").format("ll") }}
                 </div>
               </div>
             </div>
