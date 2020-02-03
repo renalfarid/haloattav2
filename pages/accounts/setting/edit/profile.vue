@@ -58,8 +58,7 @@
                                     v-decorator="[
               'avatar',
               {
-                initialValue: imageUrl,
-                rules: [{ required: true, message: 'Harus di isi!' }],
+                initialValue: imageUrl
               }
             ]"
                                     action="#"
