@@ -212,7 +212,7 @@ export default {
       axios
         .get("https://api.haloatta.com/api/paket/umroh/all")
         .then(response => {
-          this.lisData = response.data.data.data.slice(0, 6);
+          this.lisData = response.data.data.data.slice(3, 6);
           this.loading = false;
         });
     }
