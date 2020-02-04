@@ -11,12 +11,18 @@ module.exports = {
                 content: process.env.npm_package_description || ""
             }
         ],
-        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }]
+        link: [
+            { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
+            {
+                rel: "stylesheet",
+                href: "https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap"
+            }
+        ]
     },
 
     env: {
         baseUrl: process.env.apiUrl,
-        token: process.env.apiToken+"/oauth/token"
+        token: process.env.apiToken + "/oauth/token"
     },
 
     loading: false,
@@ -28,6 +34,7 @@ module.exports = {
 
     plugins: [
         { src: "@/plugins/antd-ui" },
+        { src: "@/plugins/silent-box", mode: "client" },
         { src: "@/plugins/vInput-number", mode: "client" },
         { src: "@/plugins/vCurrency-filter", mode: "client" },
         { src: "@/plugins/vCountdown", mode: "client" },
@@ -65,7 +72,7 @@ module.exports = {
         responsiveImagesName: ({ isDev }) => isDev ? '[path][name]--[width][hash:optimized].[ext]' : 'img/[contenthash:7]-[width].[ext]',
         handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
         optimizeImages: true,
-        optimizeImagesInDev: true,
+        optimizeImagesInDev: false,
         defaultImageLoader: 'img-loader',
         mozjpeg: {
             quality: 80,

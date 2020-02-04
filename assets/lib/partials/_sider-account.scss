@@ -53,7 +53,6 @@
                 }
             }
             & a {
-                word-spacing: -5px !important;
                 color: rgba($color: #484848, $alpha: 1);
                 font-weight: 500;
                 &.nuxt-link-active {
@@ -67,7 +66,6 @@
         }
         & .ant-menu--sider-sub {
             & .ant-menu-submenu-title {
-                word-spacing: -5px !important;
                 color: rgba($color: #484848, $alpha: 1);
                 padding-left: 16px !important;
                 font-weight: 500;
@@ -88,7 +86,6 @@
                         }
                     }
                     & a {
-                        word-spacing: -5px !important;
                         color: rgba($color: #484848, $alpha: 1);
                         font-weight: 500;
                         &.nuxt-link-active {

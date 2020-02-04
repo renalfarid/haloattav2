@@ -1,4 +1,14 @@
 .md-flickity__images {
+    &.md-flickity__images-large {
+        & .flickity-viewport {
+            max-height: 200px !important;
+            & .flickity-slider {
+                & .item-images {
+                    height: 200px !important;
+                }
+            }
+        }
+    }
     & .flickity-viewport {
         position: relative;
         max-height: 184px;

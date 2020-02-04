@@ -12,7 +12,6 @@
     & .ant-divider-inner-text {
         padding-left: 0 !important;
         text-transform: uppercase;
-        word-spacing: -5px;
         color: $color-font;
         font-weight: 500;
         font-size: 22px;
@@ -29,7 +28,6 @@
     & .ant-divider-inner-text {
         padding-left: 0 !important;
         text-transform: uppercase;
-        word-spacing: -5px;
         color: $color-font;
         font-weight: 500;
         font-size: 18px;
@@ -40,4 +38,8 @@
     &::after {
         border-top: 3px solid $color-border !important;
     }
+}
+
+.ant-rate-star {
+    margin-right: 4px !important;
 }

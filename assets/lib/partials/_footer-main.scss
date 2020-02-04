@@ -12,7 +12,9 @@
             }
             & .title {
                 color: $color-font;
-                font-size: 16px;
+                letter-spacing: .5px;
+                font-weight: 500;
+                font-size: 18px;
             }
             & .logo-bank {
                 @include justify-content(space-between);
@@ -27,6 +29,7 @@
             & .item {
                 & .item-link {
                     color: $color-font-gray;
+                    letter-spacing: .5px;
                     font-size: 14px;
                     display: block;
                     padding: 4px 0;
