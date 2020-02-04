@@ -8,3 +8,4 @@ static/README.md
 .nuxt
 node_modules
 package-lock.json
+.env
