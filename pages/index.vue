@@ -61,7 +61,7 @@
                   slot="content"
                   :style="{ 'text-align': 'left', 'white-space': 'normal', 'margin-top' : '8px' }"
                 >
-                  Jl Kebahagiaan Utara - BTP Blok A, No 537
+                  {{ $store.state.auth.alamat }}
                 </p>
               </a-comment>
             </a-col>

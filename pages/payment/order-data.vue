@@ -699,23 +699,28 @@ export default {
         nohp: "",
         email: ""
       },
+      biayalunas :0,
+      biayaDp : 0,
+      sisaPelunasan :0,
+      dataLunas:[],
+      dataDP:[],
       dataPembayaranLunas: [
         {
           key: "1",
           steps: "Pelunasan",
-          biaya: 100000000
+          biaya: 0
         }
       ],
       dataPembayaranDP: [
         {
           key: "1",
           steps: "Uang Muka (30%)",
-          biaya: 30000000
+          biaya: 0
         },
         {
           key: "2",
           steps: "Pelunasan",
-          biaya: 70000000
+          biaya: 0
         }
       ],
       total: 0
@@ -726,10 +731,32 @@ export default {
   },
   asyncData({ query }) {
     return {
-      total: query.total
+      total: query.total,
+    
     };
   },
+  mounted(){
+      this.hitungDp()
+      this.hitungPelunasan()
+  },
   methods: {
+
+    hitungPelunasan(){
+      this.biayalunas = this.total;
+      this.$set(this.dataPembayaranLunas[0], "biaya", this.biayalunas)
+    },
+
+    hitungDp(){
+       let dpUmroh = (0.3 * this.total)
+       this.biayaDp = dpUmroh.toFixed(0)
+       let sisalunas = (this.total - (0.3 * this.total))
+       this.sisaPelunasan = sisalunas.toFixed(0)
+      
+       this.$set(this.dataPembayaranDP[0], "biaya", this.biayaDp)
+       this.$set(this.dataPembayaranDP[1], "biaya", this.sisaPelunasan)
+       
+    },
+    
     moment,
     handleChange(info) {
       if (info.file.status === "uploading") {
@@ -756,6 +783,7 @@ export default {
     },
     onChange(e) {
       console.log("radio checked", e.target.value);
+      
     },
     handleSubmitMore(e) {
       e.preventDefault();
