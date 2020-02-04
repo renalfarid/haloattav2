@@ -28,16 +28,15 @@ module.exports = {
 
     plugins: [
         { src: "@/plugins/antd-ui" },
-        { src: "@/plugins/vue-slick", mode: "client" },
         { src: "@/plugins/vInput-number", mode: "client" },
         { src: "@/plugins/vCurrency-filter", mode: "client" },
         { src: "@/plugins/vCountdown", mode: "client" },
         { src: "@/plugins/vCharts", mode: "client" },
         { src: "@/plugins/vInfinite-scroll", mode: "client" },
         { src: "@/plugins/vClipboard", mode: "client" },
-        { src: "@/plugins/vLazytube", mode: "client" },
         { src: "@/plugins/vMyphotos", mode: "client" },
         { src: "@/plugins/vLazyimg", mode: "client" },
+        { src: "@/plugins/vFlickity", mode: "client" },
         { src: "@/plugins/vAos", mode: "client" }
     ],
 

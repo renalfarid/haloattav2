@@ -10,8 +10,8 @@
         class="d-block"
       >
         <a-card class="ant-card-package">
-          <div slot="cover">
-            <div
+          <template slot="cover">
+            <!-- <div
               class="ant-card-cover--images"
               v-lazy:background-image="item.gambar"
             >
@@ -42,22 +42,14 @@
                   >
                     <a-icon type="calendar" class="mr-4" />
                     Periode
-                    {{
-                      moment(item.tanggal, "YYYY-MM-DD").format(
-                        "LL"
-                      )
-                    }}
+                    {{ moment(item.tanggal, "YYYY-MM-DD").format("LL") }}
                     -
-                    {{
-                      moment(item.tanggal, "YYYY-MM-DD").format(
-                        "LL"
-                      )
-                    }}
+                    {{ moment(item.tanggal, "YYYY-MM-DD").format("LL") }}
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> -->
+          </template>
 
           <div class="d-flex align-items-center">
             <a-avatar

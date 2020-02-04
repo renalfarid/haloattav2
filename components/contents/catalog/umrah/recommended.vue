@@ -1,17 +1,17 @@
 <template>
   <a-list
-    :loading="loading"
     :grid="{ gutter: 16, column: 4 }"
     :dataSource="lisData"
   >
     <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-      <a-card class="ant-card-package-small">
+      <a-skeleton :loading="loading" active />
+      <a-card v-if="!loading" class="ant-card-package-small">
         <nuxt-link
           :to="'/catalog/umrah/detail-package?kode_produk=' + item.kode_produk"
           class="ant-list-item--link"
         ></nuxt-link>
-        <div slot="cover">
-          <div
+        <template slot="cover">
+          <!-- <div
             class="ant-card-cover--images"
             v-lazy:background-image="item.gambar"
           >
@@ -70,8 +70,22 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </div> -->
+
+            <flickity
+              class="md-flickity__images"
+              ref="flickityImages"
+              :options="ItemSlider"
+            >
+
+            <div class="item-images" v-lazy:background-image="item.gambar"></div>
+
+            <div class="item-images" v-lazy:background-image="item.gambar"></div>
+
+            <div class="item-images" v-lazy:background-image="item.gambar"></div>
+             
+            </flickity>
+        </template>
 
         <a-card-meta>
           <div slot="title">
@@ -154,9 +168,16 @@ import moment from "moment";
 export default {
   data() {
     return {
-      wishlist: false,
+      // wishlist: false,
       loading: true,
-      lisData: []
+      lisData: [],
+
+      ItemSlider: {
+        groupCells: true,
+        prevNextButtons: true,
+        pageDots: false,
+        contain: true
+      }
     };
   },
 
@@ -166,9 +187,9 @@ export default {
 
   methods: {
     moment,
-    toggleWishlist() {
-      this.wishlist = !this.wishlist;
-    },
+    // toggleWishlist() {
+    //   this.wishlist = !this.wishlist;
+    // },
     async getdata() {
       axios
         .get("https://api.haloatta.com/api/paket/umroh/all", {
