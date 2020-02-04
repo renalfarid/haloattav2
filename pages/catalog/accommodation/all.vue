@@ -164,7 +164,7 @@ export default {
     getdata() {
       this.busy = true;
       axios
-        .get("https://api.haloatta.com/api/la/all", {
+        .get(process.env.baseUrl +"la/all", {
           params: {
             per_page: 8,
             page: ++this.page

@@ -418,7 +418,7 @@ export default {
     getdata() {
       this.busy = true;
       axios
-        .get("https://api.haloatta.com/api/paket/umroh/all", {
+        .get(process.env.baseUrl +"paket/umroh/all", {
           params: {
             per_page: 6,
             page: ++this.page

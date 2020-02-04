@@ -2,12 +2,14 @@
   <div class="ant-layout--accounts-management-seat">
     <div class="mb-16">
       <nuxt-link to="/accounts/departure" class="fs-14 fw-400 cr-gray">
-        <a-icon type="left" class="mr-8"/>Kembali
+        <a-icon type="left" class="mr-8" />Kembali
       </nuxt-link>
     </div>
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
       <div slot="title">Detail Produk</div>
-      <div slot="extra" class="fs-16 fw-500 cr-black">No. Transaksi PUHA12345678</div>
+      <div slot="extra" class="fs-16 fw-500 cr-black">
+        No. Transaksi {{ data.info.nomor_transaksi }}
+      </div>
       <a-row :gutter="8">
         <a-col :span="12">
           <div class="d-flex align-items-center">
@@ -18,29 +20,41 @@
               />
             </div>
             <div class="fs-14 fw-500 cr-black f-default">
-              <span>Paket Umrah Exclusive September 2019</span>,
-              <br>
-              <span>Keberangkatan Makassar</span>
+              <span>{{ data.info.nama_paket }}</span
+              >,
+              <br />
+              <!-- <span>Keberangkatan Makassar</span> -->
             </div>
           </div>
         </a-col>
         <a-col :span="4">
           <div class="fs-14 fw-400 cr-gray">Tanggal Keberangkatan</div>
-          <div class="fs-14 fw-500 cr-black">20 September 2019</div>
+          <div class="fs-14 fw-500 cr-black">
+            {{
+              data.info.tanggal_keberangkatan
+                ? moment(data.info.tanggal_keberangkatan, 'YYYY-MM-DD').format(
+                    'LL'
+                  )
+                : '-'
+            }}
+          </div>
         </a-col>
         <a-col :span="4" class="text-right">
           <div class="fs-14 fw-400 cr-gray">Program Hari</div>
-          <div class="fs-14 fw-500 cr-black">Program 9 Hari</div>
+          <div class="fs-14 fw-500 cr-black">
+            Program
+            {{ data.info.program_hari ? data.info.program_hari : '-' }} Hari
+          </div>
         </a-col>
         <a-col :span="4" class="text-right">
           <div class="fs-14 fw-400 cr-gray">Jumlah Pax</div>
-          <div class="fs-14 fw-500 cr-black">4 Pax</div>
+          <div class="fs-14 fw-500 cr-black">{{ data.info.pax }} Pax</div>
         </a-col>
       </a-row>
     </a-card>
 
     <div class="fs-16 fw-500 cr-black">Informasi Pax Anda</div>
-    <a-list itemLayout="horizontal" :dataSource="dataSeat">
+    <a-list itemLayout="horizontal" :dataSource="data.listBooking">
       <a-list-item
         slot="renderItem"
         slot-scope="item, index"
@@ -49,33 +63,54 @@
         style="backgroundColor: #ffffff"
       >
         <div class="w-100">
-          <a-row :gutter="16" type="flex" justify="space-around" align="middle" class="m-0 p-24">
+          <a-row
+            :gutter="16"
+            type="flex"
+            justify="space-around"
+            align="middle"
+            class="m-0 p-24"
+          >
             <a-col :span="12">
               <div class="d-flex align-items-center">
                 <div class="mr-16">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color: #0FACF3"
-                  >{{item.key}}</a-avatar>
+                    >{{ ++index }}</a-avatar
+                  >
                 </div>
                 <div>
                   <div class="fs-14 fw-400 cr-gray">Kode Booking</div>
-                  <div class="fs-14 fw-500 cr-black">{{item.code_book}}</div>
+                  <div class="fs-14 fw-500 cr-black">
+                    {{ item.kode_booking }}
+                  </div>
                 </div>
               </div>
             </a-col>
             <a-col :span="8">
               <div class="fs-14 fw-400 cr-gray">Status Berkas</div>
-              <div class="fs-14 fw-500 cr-green" v-if="item.status === 'Lengkap'">{{item.status}}</div>
               <div
                 class="fs-14 fw-500 cr-red"
-                v-if="item.status === 'Belum Lengkap'"
-              >{{item.status}}</div>
+                v-if="item.status_berkas === 'Belum Lengkap'"
+              >
+                {{ item.status_berkas }}
+              </div>
+
+              <div class="fs-14 fw-500 cr-green" v-else>
+                {{ item.status_berkas }}
+              </div>
             </a-col>
             <a-col :span="4" class="text-right">
-              <nuxt-link to="/accounts/jamaah/berkas">
+              <nuxt-link
+                :to="
+                  '/accounts/jamaah/berkas?nomor_transaksi=' +
+                    notrans +
+                    '&kode_booking=' +
+                    item.kode_booking
+                "
+              >
                 <span class="fs-14 fw-500 cr-green">
                   Lihat Formulir
-                  <a-icon type="right" class="ml-8"/>
+                  <a-icon type="right" class="ml-8" />
                 </span>
               </nuxt-link>
             </a-col>
@@ -86,42 +121,62 @@
   </div>
 </template>
 <script>
-const dataSeat = [
-  {
-    key: 1,
-    code_book: "ATT-UMR-68559347219072952",
-    status: "Lengkap"
-  },
-  {
-    key: 2,
-    code_book: "ATT-UMR-68559347219072952",
-    status: "Belum Lengkap"
-  },
-  {
-    key: 3,
-    code_book: "ATT-UMR-68559347219072952",
-    status: "Belum Lengkap"
-  },
-  {
-    key: 4,
-    code_book: "ATT-UMR-68559347219072952",
-    status: "Belum Lengkap"
-  }
-];
+const Cookie = process.client ? require('js-cookie') : undefined;
+import axios from 'axios';
+import moment from 'moment';
 export default {
-  middleware: "authenticated",
-  layout: "accounts",
-  name: "mitraDaftarSeat",
+  middleware: 'authenticated',
+  layout: 'accounts',
+  name: 'mitraDaftarSeat',
   head() {
     return {
-      title: "Daftar Pemberangkatan - Kembangkan Bisnis Umrah Anda | Haloatta"
+      title: 'Daftar Pemberangkatan - Kembangkan Bisnis Umrah Anda | Haloatta'
     };
   },
 
   data() {
     return {
-      dataSeat
+      data: {
+        info: '',
+        listBooking: '',
+        notrans: ''
+      }
     };
+  },
+  created: function() {
+    this.getdata();
+  },
+  methods: {
+    moment,
+    async getdata() {
+      const token = Cookie.get('auth');
+      const config = {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      };
+
+      this.notrans = this.$route.query.nomor_transaksi;
+
+      axios
+        .get(
+          process.env.baseUrl +
+            'jamaah/booking?nomor_transaksi=' +
+            this.notrans,
+          config
+        )
+        .then(response => {
+          if (response.data.status == 200) {
+            this.data.info = response.data.data.index;
+            this.data.listBooking = response.data.data.list_booking;
+          } else {
+            this.$message.error(response.data.msg);
+          }
+        })
+        .catch(() => {
+          this.$message.error('Terjadi Salah');
+        });
+    }
   }
 };
 </script>
