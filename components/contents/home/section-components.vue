@@ -14,7 +14,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Paket Umroh</h3>
-                <p class="fs-16 fw-400 mb-0"><span>1100</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.paketumrah }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -30,7 +30,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Tiket Group</h3>
-                <p class="fs-16 fw-400 mb-0"><span>980</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.tiketgroup }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -46,7 +46,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">LA Akomodasi</h3>
-                <p class="fs-16 fw-400 mb-0"><span>2100</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.laakomodasi }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -62,7 +62,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Visa Perjalanan</h3>
-                <p class="fs-16 fw-400 mb-0"><span>431</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.visa }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -78,7 +78,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Asuransi Perjalanan</h3>
-                <p class="fs-16 fw-400 mb-0"><span>131</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.asuransi }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -94,7 +94,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Handling Domestik</h3>
-                <p class="fs-16 fw-400 mb-0"><span>531</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.handling }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -110,7 +110,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Ruang Manasik</h3>
-                <p class="fs-16 fw-400 mb-0"><span>131</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.ruangmanasik }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -126,7 +126,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Perlengkapan Umroh</h3>
-                <p class="fs-16 fw-400 mb-0"><span>41</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.perlengkapan }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -142,7 +142,7 @@
             <div class="ant-card-cover--overlay">
               <div class="m-auto">
                 <h3 class="fs-24 fw-600 mb-0">Tour Leader</h3>
-                <p class="fs-16 fw-400 mb-0"><span>11</span> Paket</p>
+                <p class="fs-16 fw-400 mb-0"><span>{{ this.tourleader }}</span> Paket</p>
               </div>
             </div>
           </a-card>
@@ -151,3 +151,51 @@
     </a-row>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+
+  data(){
+    return {
+      paketumrah: 0,
+      tiketgroup: 0,
+      laakomodasi: 0,
+      visa: 0,
+      asuransi: 0,
+      perlengkapan: 0,
+      handling: 0,
+      ruangmanasik: 0,
+      tourleader: 0,
+    };
+  },
+
+  mounted(){
+    this.countPaket()
+  },
+
+  methods : {
+     countPaket(){
+       axios
+                    .get(process.env.baseUrl +"total-produk")
+                    .then(response => {
+
+                        this.paketumrah = response.data.data.umrah;
+                        this.tiketgroup = response.data.data.tiket;
+                        this.laakomodasi = response.data.data.la;
+                        this.visa = response.data.data.visa;
+                        this.perlengkapan = response.data.data.perlengkapan;
+                        this.ruangmanasik = response.data.data.manasik;
+                        this.asuransi = response.data.data.asuransi;
+                        this.tourleader = response.data.data.tour_leader;
+                        this.handling = response.data.data.handling;
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+     }
+  }
+  
+}
+</script>
