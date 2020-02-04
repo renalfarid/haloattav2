@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
     mode: "universal",
     head: {
@@ -14,8 +15,8 @@ module.exports = {
     },
 
     env: {
-        baseUrl: "https://api.haloatta.com/api/",
-        token: "https://api.haloatta.com/oauth/token"
+        baseUrl: process.env.apiUrl,
+        token: process.env.apiToken+"/oauth/token"
     },
 
     loading: false,
