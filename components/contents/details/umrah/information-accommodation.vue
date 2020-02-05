@@ -5,23 +5,19 @@
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="ant-package--images w-100" style="z-index: inherit">
-            <a-row :gutter="10">
-              <a-col :span="8">
-                <div class="ant-package--images-small">
-                  <expandable-image :src="data.hotel_mekkah.img_room_double" />
-                </div>
-              </a-col>
-              <a-col :span="8">
-                <div class="ant-package--images-small">
-                  <expandable-image :src="data.hotel_mekkah.img_room_triple" />
-                </div>
-              </a-col>
-              <a-col :span="8">
-                <div class="ant-package--images-small">
-                  <expandable-image :src="data.hotel_mekkah.img_room_quard" />
-                </div>
-              </a-col>
-            </a-row>
+            <silentbox-group class="md-silentbox">
+              <silentbox-item class="md-silentbox--item" :src="data.hotel_mekkah.img_room_double" :description="data.hotel_mekkah.nama_hotel + ' - Setaraf Bintang ' + data.hotel_mekkah.rating">
+                <div class="md-silentbox--item-images" v-lazy:background-image="data.hotel_mekkah.img_room_double"></div>
+              </silentbox-item>
+
+              <silentbox-item class="md-silentbox--item" :src="data.hotel_mekkah.img_room_triple" :description="data.hotel_mekkah.nama_hotel + ' - Setaraf Bintang ' + data.hotel_mekkah.rating">
+                <div class="md-silentbox--item-images" v-lazy:background-image="data.hotel_mekkah.img_room_triple"></div>
+              </silentbox-item>
+
+              <silentbox-item class="md-silentbox--item" :src="data.hotel_mekkah.img_room_quard" :description="data.hotel_mekkah.nama_hotel + ' - Setaraf Bintang ' + data.hotel_mekkah.rating">
+                <div class="md-silentbox--item-images" v-lazy:background-image="data.hotel_mekkah.img_room_quard"></div>
+              </silentbox-item>
+            </silentbox-group>
           </div>
         </a-list-item>
 
@@ -49,7 +45,7 @@
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
             <a-row :gutter="8">
-              <a-col :span="12">
+              <a-col :span="12" class="d-none">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -90,23 +86,19 @@
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="ant-package--images w-100" style="z-index: inherit">
-            <a-row :gutter="10">
-              <a-col :span="8">
-                <div class="ant-package--images-small">
-                  <expandable-image :src="data.hotel_madinah.img_room_double" />
-                </div>
-              </a-col>
-              <a-col :span="8">
-                <div class="ant-package--images-small">
-                  <expandable-image :src="data.hotel_madinah.img_room_triple" />
-                </div>
-              </a-col>
-              <a-col :span="8">
-                <div class="ant-package--images-small">
-                  <expandable-image :src="data.hotel_madinah.img_room_quard" />
-                </div>
-              </a-col>
-            </a-row>
+            <silentbox-group class="md-silentbox">
+              <silentbox-item class="md-silentbox--item" :src="data.hotel_madinah.img_room_double" :description="data.hotel_madinah.nama_hotel + ' - Setaraf Bintang ' + data.hotel_madinah.rating">
+                <div class="md-silentbox--item-images" v-lazy:background-image="data.hotel_madinah.img_room_double"></div>
+              </silentbox-item>
+
+              <silentbox-item class="md-silentbox--item" :src="data.hotel_madinah.img_room_triple" :description="data.hotel_madinah.nama_hotel + ' - Setaraf Bintang ' + data.hotel_madinah.rating">
+                <div class="md-silentbox--item-images" v-lazy:background-image="data.hotel_madinah.img_room_triple"></div>
+              </silentbox-item>
+
+              <silentbox-item class="md-silentbox--item" :src="data.hotel_madinah.img_room_quard" :description="data.hotel_madinah.nama_hotel + ' - Setaraf Bintang ' + data.hotel_madinah.rating">
+                <div class="md-silentbox--item-images" v-lazy:background-image="data.hotel_madinah.img_room_quard"></div>
+              </silentbox-item>
+            </silentbox-group>
           </div>
         </a-list-item>
 
@@ -134,7 +126,7 @@
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
             <a-row :gutter="8">
-              <a-col :span="12">
+              <a-col :span="12" class="d-none">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -171,13 +163,13 @@
     </a-card>
 
     <!-- fasilitas -->
-    <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
+    <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas" v-if="fasilitas_termasuk.length > 0">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
-      <a-row :gutter="8" v-if="fasilitas_termasuk != null">
-        <a-col :span="6" class="mb-16" v-for="fasilitas in fasilitas_termasuk" :key="fasilitas">
+      <a-row :gutter="24" class="f-wrap">
+        <a-col :span="12" class="mb-16" v-for="fasilitas in fasilitas_termasuk" :key="fasilitas">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -187,103 +179,11 @@
             </div>
           </div>
         </a-col>
-        <!-- <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">City Tour</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Mutawwif</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Makanan Indonesia</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Akses Wifi</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Elevator</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Restaurant</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6" class="mb-16">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Resepsionis 1x24 Jam</div>
-            </div>
-          </div>
-        </a-col>-->
       </a-row>
     </a-card>
   </div>
 </template>
 <script>
-// import informationSideRight from "~/components/contents/details/umrah/information-sideright.vue";
 export default {
   props: ["data"],
 
