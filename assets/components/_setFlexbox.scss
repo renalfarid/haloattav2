@@ -29,3 +29,14 @@
 .align-end {
     @include justify-content(flex-end);
 }
+
+.f-wrap {
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+}
+
+.r-wrap {
+    flex-flow: row wrap;
+}

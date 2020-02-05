@@ -1,5 +1,5 @@
 <template>
-  <div class="ant-layout--package-details">
+  <div class="ant-layout--package-details" :style="{'background-color':'#f7f7f7'}">
     <div class="ant-layout--results-space-small"></div>
     <a-affix :offsetTop="0" @change="change">
       <div class="ant-layout--package-tabs">
@@ -35,9 +35,9 @@
     </a-affix>
 
     <div class="container">
-      <a-row :gutter="32">
-        <a-col :span="17">
-          <a-card class="b-shadow b-solid bordered-left mt-16">
+      <a-row :gutter="24">
+        <a-col :span="16">
+          <a-card class="b-solid bordered-left mt-16">
             <a-list
               itemLayout="horizontal"
               class="ant-list--package-information"
@@ -103,7 +103,8 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="7" :style="{ margin: '16px 0' }">
+
+        <a-col :span="8" :style="{ margin: '16px 0' }">
           <div class="ant-layout--right">
             <div class="ant-affix--container">
               <informationSideRight :harga="harga" :umroh="umroh" />
