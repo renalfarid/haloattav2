@@ -100,6 +100,38 @@
               </a-card>
 
               <div v-if="value === 2">
+                <a-alert
+                  :showIcon="false"
+                  :style="{
+                    'border-radius': '4px',
+                    'margin-bottom': '24px',
+                    padding: '24px'
+                  }"
+                  banner
+                >
+                  <template slot="message">
+                    <h5 class="text-uppercase cr-gray">Informasi Penting :</h5>
+                    <div
+                      class="d-flex align-items-start mb-8"
+                      v-for="(item, index) in information"
+                      :key="index"
+                    >
+                      <div class="mr-8">
+                        <a-icon
+                          type="check-circle"
+                          theme="filled"
+                          :style="{ opacity: '.7' }"
+                        />
+                      </div>
+                      <div>
+                        {{ item.title }}
+                      </div>
+                    </div>
+                  </template>
+                </a-alert>
+              </div>
+
+              <div v-if="value === 2">
                 <a-card class="b-solid b-radius mb-16">
                   <template slot="title">Jamaah 1</template>
                   <a-row :gutter="16">
@@ -500,7 +532,21 @@ export default {
           biaya: 0
         }
       ],
-      total: 0
+      total: 0,
+      information: [
+        {
+          title: "Paspor dengan masa berlaku min 12 bulan dari tanggal keberangkatan, dibutuhkan untuk perjalanan tur umrah dan haji anda;"
+        },
+        {
+          title: "Jamaah wanita dibawah umur 45 tahun wajib di dampingi mahram;"
+        },
+        {
+          title: "Suami istri wajib melampirkan buku nikah pada saat pengiriman berkas fisik ke pihak travel;"
+        },
+        {
+          title: "Bagi anak-anak 10 tahun ke bawah wajib melampirkan akta lahir."
+        }
+      ]
     };
   },
 
@@ -526,7 +572,7 @@ export default {
       this.$set(this.dataPembayaranDP[0], "biaya", this.biayaDp);
       this.$set(this.dataPembayaranDP[1], "biaya", this.sisaPelunasan);
     },
-    
+
     disabledDate(current) {
       return current && current < moment().endOf("day");
     },
