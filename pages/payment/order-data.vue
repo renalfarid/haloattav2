@@ -12,7 +12,7 @@
       <a-steps :current="0" size="small">
         <a-step title="Data Pemesan" />
         <a-step title="Pembayaran" />
-        <a-step title="E-Paket Terbit" />
+        <a-step title="Konfirmasi" />
       </a-steps>
     </a-layout-header>
 
@@ -503,9 +503,10 @@
         </a-row>
       </div>
     </a-layout-content>
+
     <a-layout-footer
-      class="ant-layout-footer--payment-order"
-      :style="{ 'background-color': '#f7f7f7' }"
+      class="ant-layout-footer--payment"
+      :style="{ 'background-color': '#f7f7f7','text-align':'center' }"
     >
       <div class="container">
         2016 - {{ new Date().getFullYear() }} © PT. NUH Teknologi Solution
