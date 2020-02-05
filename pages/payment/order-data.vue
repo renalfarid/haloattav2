@@ -501,7 +501,7 @@ export default {
 
   data() {
     return {
-      value: 2,
+      value: 1,
       loading: false,
       dataPemesan: {
         nama: "",
