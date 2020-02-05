@@ -19,7 +19,18 @@
     <a-layout-content class="ant-layout-content--payment-order">
       <div class="container">
         <a-row :gutter="24">
-          <a-col :xs="24" :sm="24" :md="16" class="mb-24">
+          <a-col
+            :xs="24"
+            :sm="24"
+            :md="24"
+            :lg="8"
+            class="sticky-top mb-24"
+            :style="{ float: 'right' }"
+          >
+            <siderPayment :total="total" />
+          </a-col>
+
+          <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
             <a-card class="b-solid b-radius mb-16">
               <div class="d-flex align-items-center w-100">
                 <div>
@@ -55,7 +66,17 @@
                 <a-form-item label="Nama Lengkap">
                   <a-input
                     v-model="dataPemesan.nama"
-                    v-decorator="['nama', { rules: [{ required: true }] }]"
+                    v-decorator="[
+                      'nama',
+                      {
+                        rules: [
+                          {
+                            required: true,
+                            message: 'Nama pemesan harus di isi'
+                          }
+                        ]
+                      }
+                    ]"
                     size="large"
                   />
                 </a-form-item>
@@ -65,7 +86,17 @@
                     <a-form-item label="Nomor Telepon">
                       <a-input
                         v-model="dataPemesan.nohp"
-                        v-decorator="['telp', { rules: [{ required: true }] }]"
+                        v-decorator="[
+                          'telp',
+                          {
+                            rules: [
+                              {
+                                required: true,
+                                message: 'Nomor telp/handphone harus di isi'
+                              }
+                            ]
+                          }
+                        ]"
                         size="large"
                       />
                     </a-form-item>
@@ -75,7 +106,21 @@
                     <a-form-item label="Email">
                       <a-input
                         v-model="dataPemesan.email"
-                        v-decorator="['email', { rules: [{ required: true }] }]"
+                        v-decorator="[
+                          'email',
+                          {
+                            rules: [
+                              {
+                                type: 'email',
+                                message: 'Email anda tidak valid!'
+                              },
+                              {
+                                required: true,
+                                message: 'Email pemesan harus di isi'
+                              }
+                            ]
+                          }
+                        ]"
                         size="large"
                       />
                     </a-form-item>
@@ -455,10 +500,6 @@
               </div>
             </a-form>
           </a-col>
-
-          <a-col :xs="24" :sm="24" :md="8" class="mb-24">
-            <siderPayment :total="total" />
-          </a-col>
         </a-row>
       </div>
     </a-layout-content>
@@ -535,16 +576,19 @@ export default {
       total: 0,
       information: [
         {
-          title: "Paspor dengan masa berlaku min 12 bulan dari tanggal keberangkatan, dibutuhkan untuk perjalanan tur umrah dan haji anda;"
+          title:
+            "Paspor dengan masa berlaku min 12 bulan dari tanggal keberangkatan, dibutuhkan untuk perjalanan tur umrah dan haji anda;"
         },
         {
           title: "Jamaah wanita dibawah umur 45 tahun wajib di dampingi mahram;"
         },
         {
-          title: "Suami istri wajib melampirkan buku nikah pada saat pengiriman berkas fisik ke pihak travel;"
+          title:
+            "Suami istri wajib melampirkan buku nikah pada saat pengiriman berkas fisik ke pihak travel;"
         },
         {
-          title: "Bagi anak-anak 10 tahun ke bawah wajib melampirkan akta lahir."
+          title:
+            "Bagi anak-anak 10 tahun ke bawah wajib melampirkan akta lahir."
         }
       ]
     };
