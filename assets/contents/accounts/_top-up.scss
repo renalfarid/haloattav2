@@ -9,18 +9,28 @@
             }
             & .ant-select-lg {
                 font-weight: 400;
-                font-size: 15px;
+                font-size: 14px;
             }
             & .ant-form-explain {
                 font-size: 12px;
             }
             & .ant-btn {
-                background-color: $color-main;
-                border: 1px solid $color-main;
-                text-shadow: none !important;
-                min-width: 220px;
-                font-weight: 500;
-                font-size: 15px;
+                transition: all .2s ease-in-out;
+                background-color: $color-main !important;
+                color: #ffffff !important;
+                border: none !important;
+                text-shadow: none;
+                box-shadow: none;
+                border-radius: 0;
+                display: block;
+                width: 100%;
+                max-width: 320px;
+                margin-left: auto;
+                height: 56px;
+                &:hover,
+                &:focus {
+                    opacity: .7;
+                }
             }
         }
     }
