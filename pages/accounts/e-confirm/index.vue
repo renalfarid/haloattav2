@@ -207,7 +207,11 @@
           </a-card>
 
           <a-skeleton :loading="loading" active>
-            <div class="b-shadow b-radius b-solid p-24 w-100">
+            <div class="b-shadow b-radius b-solid p-32 w-100">
+              <div class="fs-12 fw-400 text-uppercase cr-gray mb-8">
+                Bank Tujuan
+              </div>
+
               <div class="d-flex align-items-center mb-8">
                 <div class="cr-black fs-14 fw-500">
                   BRI - BANK RAKYAT INDONESIA (BRI) 
