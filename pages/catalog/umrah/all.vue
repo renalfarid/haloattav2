@@ -32,7 +32,7 @@
                           style="width: 100%"
                           size="large"
                           v-decorator="[
-                            'cityStart',
+                            'kota_asal',
                             {
                               rules: [
                                 { required: true, message: 'Harus di isi!' }
@@ -40,17 +40,14 @@
                             }
                           ]"
                         >
-                          <a-select-option value="All"
+                          <a-select-option value="all"
                             >Tampilkan Semua</a-select-option
                           >
-                          <a-select-option value="Makassar"
-                            >Makassar</a-select-option
-                          >
-                          <a-select-option value="Jakarta"
-                            >Jakarta</a-select-option
-                          >
-                          <a-select-option value="Bandung"
-                            >Bandung</a-select-option
+                          <a-select-option
+                            v-for="(item, key) in option.kota"
+                            :key="key"
+                            :value="item.nama_kota"
+                            >{{ item.nama_kota }}</a-select-option
                           >
                         </a-select>
                       </a-form-item>
@@ -63,7 +60,6 @@
                         </div>
                         <a-select
                           showSearch
-                          defaultValue="Program 9 Hari"
                           placeholder="Pilih Program Hari"
                           optionFilterProp="children"
                           style="width: 100%"
@@ -73,18 +69,24 @@
                           @change="handleChange"
                           :filterOption="filterOption"
                           size="large"
+                          v-decorator="[
+                            'program',
+                            {
+                              rules: [
+                                { required: true, message: 'Harus di isi!' }
+                              ]
+                            }
+                          ]"
                         >
-                          <a-select-option value="All"
-                            >Tampilkan Semua</a-select-option
+                          <a-select-option value="all"
+                            >Semua Program Hari</a-select-option
                           >
-                          <a-select-option value="Program 9 Hari"
-                            >Program 9 Hari</a-select-option
-                          >
-                          <a-select-option value="Program 10 Hari"
-                            >Program 10 Hari</a-select-option
-                          >
-                          <a-select-option value="Program 11 Hari"
-                            >Program 11 Hari</a-select-option
+                          <a-select-option
+                            v-for="(item, key) in option.program"
+                            :key="key"
+                            :value="item.jumlah_hari"
+                            >Program
+                            {{ item.jumlah_hari }} Hari</a-select-option
                           >
                         </a-select>
                       </a-form-item>
@@ -99,7 +101,6 @@
                         </div>
                         <a-select
                           showSearch
-                          defaultValue="September 2019"
                           placeholder="Pilih Bulan Keberangkatan"
                           optionFilterProp="children"
                           style="width: 100%"
@@ -109,24 +110,31 @@
                           @change="handleChange"
                           :filterOption="filterOption"
                           size="large"
+                          v-decorator="[
+                            'bulan_keberangkatan',
+                            {
+                              rules: [
+                                { required: true, message: 'Harus di isi!' }
+                              ]
+                            }
+                          ]"
                         >
-                          <a-select-option value="All"
-                            >Tampilkan Semua</a-select-option
+                          <a-select-option value="all"
+                            >Semua Bulan</a-select-option
                           >
-                          <a-select-option value="September 2019"
-                            >September 2019</a-select-option
-                          >
-                          <a-select-option value="November 2019"
-                            >November 2019</a-select-option
-                          >
-                          <a-select-option value="Desember 2019"
-                            >Desember 2019</a-select-option
+                          <a-select-option
+                            v-for="(item, key) in option.bulan"
+                            :key="key"
+                            :value="item.bulan_tahun"
+                            >{{
+                              moment(item.bulan_tahun).format('MMMM YYYY')
+                            }}</a-select-option
                           >
                         </a-select>
                       </a-form-item>
                     </a-col>
 
-                    <a-col :span="12">
+                    <!-- <a-col :span="12">
                       <a-form-item label="Tanggal Keberangkatan" hasFeedback>
                         <div class="icon-search">
                           <a-icon type="calendar" />
@@ -152,7 +160,7 @@
                           <a-select-option value="3">3</a-select-option>
                         </a-select>
                       </a-form-item>
-                    </a-col>
+                    </a-col> -->
                   </a-row>
 
                   <a-row :gutter="16" type="flex" justify="end">
@@ -171,233 +179,253 @@
             </a-card>
           </div>
 
-          <filter-result-umrah />
+          <filter-result-umrah
+            :maskapai="option.maskapai"
+            :bintang="option.bintang"
+            :vendor="option.vendor"
+          />
         </div>
+        <client-only>
+          <div class="ant-layout--results-list pb-16">
+            <div
+              v-infinite-scroll="getdata"
+              :infinite-scroll-disabled="busy"
+              :infinite-scroll-distance="limit"
+            >
+              <a-row :gutter="24">
+                <a-col
+                  :xs="24"
+                  :sm="12"
+                  :md="12"
+                  :lg="8"
+                  v-for="(item, index) in data"
+                  :key="index"
+                  data-aos="fade-up"
+                  data-aos-duration="1200"
+                  :style="{ 'margin-bottom': '16px' }"
+                >
+                  <a-skeleton :loading="loading" active>
+                    <a-card class="ant-card-package" hoverable>
+                      <template slot="cover">
+                        <flickity
+                          class="md-flickity__images md-flickity__images-large"
+                          ref="flickityImages"
+                          :options="ItemSlider"
+                        >
+                          <div
+                            class="item-images"
+                            v-lazy:background-image="item.gambar"
+                          ></div>
 
-        <div class="ant-layout--results-list pb-16">
-          <div
-            v-infinite-scroll="getdata"
-            :infinite-scroll-disabled="busy"
-            :infinite-scroll-distance="limit"
-          >
-            <a-list :grid="{ gutter: 16, column: 3 }" :dataSource="data">
-              <a-list-item
-                slot="renderItem"
-                slot-scope="item, index"
-                :key="index"
-                data-aos="fade-up"
-                data-aos-duration="1200"
-              >
-                <a-skeleton :loading="loading" active>
-                  <a-card class="ant-card-package">
-                    <nuxt-link
-                      :to="
-                        '/catalog/umrah/detail-package?kode_produk=' +
-                          item.kode_produk
-                      "
-                      class="ant-list-item--link"
-                    ></nuxt-link>
-                    <div slot="cover">
-                      <div
-                        class="ant-card-cover--images"
-                        v-lazy:background-image="item.gambar"
+                          <div
+                            class="item-images"
+                            v-lazy:background-image="item.gambar"
+                          ></div>
+
+                          <div
+                            class="item-images"
+                            v-lazy:background-image="item.gambar"
+                          ></div>
+                        </flickity>
+                      </template>
+
+                      <nuxt-link
+                        :to="
+                          '/catalog/umrah/detail-package?kode_produk=' +
+                            item.kode_produk
+                        "
+                        class="ant-list-item--link"
                       >
-                        <div class="ant-card-cover--overlay">
-                          <div class="ant-card-cover--overlay-box-radius"></div>
-                          <div class="ant-card-cover--overlay-text">
+                        <a-card-meta>
+                          <template slot="title">
                             <div
-                              class="ant-card-cover--overlay-text-title fs-15 fw-500"
+                              class="ant-card-meta-title--top d-flex align-items-center"
                             >
-                              {{ item.sisa_seat }}
-                            </div>
-                            <div
-                              class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
-                            >
-                              pax
-                            </div>
-                          </div>
-
-                          <div class="ant-card-wishlist">
-                            <a
-                              @click="toggleWishlist"
-                              class="fs-24 cr-gray mb-0"
-                            >
-                              <a-icon
-                                v-if="wishlist == false"
-                                theme="twoTone"
-                                twoToneColor="#eb2f96"
-                                type="heart"
-                              />
-                              <a-icon
-                                v-else-if="wishlist == true"
-                                type="heart"
-                                theme="filled"
-                                style="color:#eb2f96"
-                              />
-                            </a>
-                          </div>
-                        </div>
-
-                        <div class="ant-card--overlay-block">
-                          <div class="ant-card--overlay-block-body">
-                            <div
-                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-4"
-                            >
-                              <i class="icon-accommodation-xs mr-4"></i>
-                              <span
-                                >Hotel {{ item.hotel_mekkah }} - Makkah</span
+                              <div
+                                class="ant-card-meta-title--top-left f-default d-flex align-items-center"
                               >
-                            </div>
-                            <div
-                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-4"
-                            >
-                              <i class="icon-accommodation-xs mr-4"></i>
-                              <span
-                                >Hotel {{ item.hotel_madinah }} - Madinah</span
-                              >
-                            </div>
-                            <div
-                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis"
-                            >
-                              <a-icon type="calendar" class="mr-4" />
-                              Berangkat
-                              {{
-                                moment(item.tgl_berangkat, "YYYY-MM-DD").format(
-                                  "ll"
-                                )
-                              }}
-                              -
-                              {{
-                                moment(item.tgl_berangkat, "YYYY-MM-DD").format(
-                                  "ll"
-                                )
-                              }}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                                <a-popover trigger="hover">
+                                  <template slot="content">
+                                    <div
+                                      class="fs-12 fw-400 cr-gray text-uppercase"
+                                    >
+                                      Penyedia
+                                    </div>
+                                    <div
+                                      class="fs-14 fw-500 cr-black text-capitalize"
+                                    >
+                                      {{ item.nama_vendor }}
+                                    </div>
+                                  </template>
+                                  <a-avatar
+                                    class="vendor-logo zIndex mr-8"
+                                    v-lazy:background-image="item.foto_vendor"
+                                  />
+                                </a-popover>
 
-                    <a-card-meta>
-                      <div slot="title">
-                        <div
-                          class="ant-card-meta-title--top d-flex align-items-center"
-                        >
-                          <div
-                            class="ant-card-meta-title--top-left f-default d-flex align-items-center"
-                          >
-                            <a-popover trigger="hover">
-                              <template slot="content">
-                                <div class="fs-15 fw-500 cr-black">
-                                  {{ item.nama }}
-                                </div>
-                                <div class="fs-14 fw-400 cr-gray f-default">
+                                <a-popover trigger="hover">
+                                  <template slot="content">
+                                    <div
+                                      class="fs-12 fw-400 cr-gray text-uppercase"
+                                    >
+                                      Maskapai
+                                    </div>
+                                    <div
+                                      class="fs-14 fw-500 cr-black text-capitalize"
+                                    >
+                                      {{ item.nama_maskapai }}
+                                    </div>
+                                  </template>
+                                  <a-avatar
+                                    class="zIndex mr-8"
+                                    :src="item.image"
+                                  />
+                                </a-popover>
+                              </div>
+                              <div
+                                class="ant-card-meta-title--top-right ml-auto"
+                              >
+                                <a-rate
+                                  class="fs-14 mb-4"
+                                  :defaultValue="3"
+                                  disabled
+                                />
+                              </div>
+                            </div>
+                            <div
+                              class="ant-card-meta-title--package text-capitalize mt-16 mb-8 fw-500 text-capitalize"
+                            >
+                              {{ item.nama }}
+                            </div>
+                          </template>
+
+                          <template slot="description">
+                            <a-row :gutter="8">
+                              <a-col :span="12">
+                                <a-popover trigger="hover">
+                                  <template slot="content">
+                                    <div
+                                      class="fs-12 fw-400 cr-gray text-uppercase"
+                                    >
+                                      Berangkat Dari Kota
+                                    </div>
+                                    <div
+                                      class="fs-14 fw-400 cr-black text-capitalize"
+                                    >
+                                      {{ item.nama_kota }}
+                                    </div>
+                                  </template>
                                   <a-icon
-                                    type="safety-certificate"
+                                    type="environment"
                                     theme="filled"
-                                    class="cr-green mr-4"
-                                  />Terverifikasi
-                                </div>
-                              </template>
-                              <a-avatar
-                                class="vendor-logo zIndex mr-8"
-                                v-lazy:background-image="item.foto_vendor"
-                              />
-                            </a-popover>
+                                    class="mr-4"
+                                    :style="{ opacity: '.5' }"
+                                  />
+                                  <span class="cr-black">{{
+                                    item.nama_kota
+                                  }}</span>
+                                </a-popover>
+                              </a-col>
 
-                            <a-popover trigger="hover">
-                              <template slot="content">
-                                <div class="fs-13 fw-400 cr-black f-default">
-                                  Maskapai {{ item.nama_maskapai }}
-                                </div>
-                              </template>
-                              <a-avatar
-                                class="zIndex mr-8"
-                                :src="item.image"
-                              />
-                            </a-popover>
-                          </div>
-                          <div class="ant-card-meta-title--top-right ml-auto">
-                            <a-rate
-                              class="fs-14 mb-4"
-                              :defaultValue="3"
-                              disabled
-                            />
-                          </div>
-                        </div>
-                        <div
-                          class="ant-card-meta-title--package text-capitalize fw-500"
-                        >
-                          {{ item.nama }}
-                        </div>
-                      </div>
+                              <a-col :span="12" class="text-right">
+                                <a-popover trigger="hover">
+                                  <template slot="content">
+                                    <div
+                                      class="fs-12 fw-400 cr-gray text-uppercase"
+                                    >
+                                      Tanggal Keberangkatan
+                                    </div>
+                                    <div
+                                      class="fs-14 fw-400 cr-black text-capitalize"
+                                    >
+                                      {{
+                                        moment(
+                                          item.tgl_berangkat,
+                                          'YYYY-MM-DD'
+                                        ).format('LL')
+                                      }}
+                                    </div>
+                                  </template>
+                                  <a-icon
+                                    type="calendar"
+                                    theme="filled"
+                                    class="mr-4"
+                                    :style="{ opacity: '.5' }"
+                                  />
+                                  <span class="cr-black">{{
+                                    moment(
+                                      item.tgl_berangkat,
+                                      'YYYY-MM-DD'
+                                    ).format('ll')
+                                  }}</span>
+                                </a-popover>
+                              </a-col>
+                            </a-row>
+                          </template>
+                        </a-card-meta>
 
-                      <div slot="description">
-                        <div
-                          class="fs-14 fw-400 cr-gray f-default text-ellipsis mt-8"
-                        >
-                          <a-icon type="environment" class="mr-4" />
-                          <span>Kota {{ item.nama_kota }}</span>
-                        </div>
-                        <div
-                          class="ant-card-meta-description--bottom d-flex align-items-center"
-                        >
-                          <div
-                            class="ant-card-meta-description--bottom-right d-flex"
-                          >
-                            <div class="fs-14 fw-400 cr-black">
-                              Program {{ item.jumlah_hari }} Hari
-                            </div>
+                        <div class="md-card--bottom">
+                          <div class="md-duration">
+                            Program {{ item.jumlah_hari }} Hari
                           </div>
-                          <div
-                            class="ant-card-meta-description--bottom-left cr-primary ml-auto"
-                          >
+                          <div class="md-price">
                             {{ item.harga_jual | currency }}
                           </div>
                         </div>
-                      </div>
-                    </a-card-meta>
-                  </a-card>
-                </a-skeleton>
-              </a-list-item>
-            </a-list>
+                      </nuxt-link>
+                    </a-card>
+                  </a-skeleton>
+                </a-col>
+              </a-row>
+            </div>
           </div>
-        </div>
+        </client-only>
       </div>
     </div>
   </div>
 </template>
 <script>
-import searchResultUmrah from "~/components/contents/lib/search/result/umrah.vue";
-import filterResultUmrah from "~/components/contents/lib/filter/result/umrah.vue";
-import moment from "moment";
-import axios from "axios";
+import searchResultUmrah from '~/components/contents/lib/search/result/umrah.vue';
+import filterResultUmrah from '~/components/contents/lib/filter/result/umrah.vue';
+import moment from 'moment';
+import axios from 'axios';
 export default {
-  name: "umrahAll",
+  name: 'umrahAll',
   head() {
     return {
-      title: "Semua Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
+      title: 'Semua Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya'
     };
   },
   data() {
     return {
       form: this.$form.createForm(this),
-      wishlist: false,
       loading: true,
       busy: false,
       limit: 8,
       page: 0,
-      data: []
+      data: [],
+      ItemSlider: {
+        groupCells: true,
+        prevNextButtons: true,
+        pageDots: false,
+        contain: true
+      },
+      option: {
+        kota: '',
+        program: '',
+        bulan: '',
+        maskapai: '',
+        bintang: '',
+        vendor: ''
+      }
     };
   },
   created() {
+    this.getOption();
     this.getdata();
   },
   methods: {
     moment,
-    toggleWishlist() {
-      this.wishlist = !this.wishlist;
-    },
     handleChange(value) {},
     handleBlur() {},
     handleFocus() {},
@@ -409,16 +437,23 @@ export default {
       );
     },
     searchUmrah() {
-      this.form.validateFields(err => {
+      this.form.validateFields((err, values) => {
         if (!err) {
-          return this.$router.push({ path: "/catalog/umrah/result" });
+          return this.$router.push({
+            path: '/catalog/umrah/result',
+            query: {
+              kota_asal: values.kota_asal,
+              bulan_keberangkatan: values.bulan_keberangkatan,
+              program: values.program
+            }
+          });
         }
       });
     },
     getdata() {
       this.busy = true;
       axios
-        .get(process.env.baseUrl +"paket/umroh/all", {
+        .get(process.env.baseUrl + 'paket/umroh/all', {
           params: {
             per_page: 6,
             page: ++this.page
@@ -430,6 +465,19 @@ export default {
           this.loading = false;
           this.busy = false;
         });
+    },
+    getOption() {
+      // this.busy = true;
+      axios.get(process.env.baseUrl + 'option/umrah', []).then(response => {
+        let getOption = response.data.data;
+
+        this.option.kota = getOption.kota;
+        this.option.program = getOption.hari;
+        this.option.bulan = getOption.bulan_keberangkatan;
+        this.option.maskapai = getOption.maskapai;
+        this.option.bintang = getOption.bintang;
+        this.option.vendor = getOption.vendor;
+      });
     }
   },
   components: {

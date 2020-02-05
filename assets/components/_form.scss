@@ -10,7 +10,6 @@
         & .ant-form-item-label {
             padding-bottom: 0;
             & label {
-                word-spacing: -5px;
                 color: $color-font;
                 font-weight: 500;
                 font-size: 14px;
@@ -72,9 +71,6 @@
                     border-color: $color-main !important;
                 }
             }
-        }
-        & .ant-form-explain {
-            word-spacing: -5px !important;
         }
     }
     & .ant-btn--add-passenger {

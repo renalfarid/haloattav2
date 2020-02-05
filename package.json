@@ -47,6 +47,7 @@
         "vue-infinite-scroll": "^2.0.2",
         "vue-lazyload": "^1.3.2",
         "vue-otp-field": "^0.1.5",
+        "vue-silentbox": "^0.1.9",
         "webp-loader": "^0.6.0"
     },
     "devDependencies": {

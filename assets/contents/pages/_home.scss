@@ -8,7 +8,7 @@
         height: 100%;
         width: 100%;
         & .gradient-top {
-            background: linear-gradient(90deg, rgba(15, 172, 243, 0.4) 0%, rgba(15, 172, 243, 0.6) 25%, rgba(15, 172, 243, 0) 76%, rgba(15, 172, 243, 0) 100%), linear-gradient(180deg, $color-main 0%, rgba(15, 172, 243, 0.6) 25%, rgba(15, 172, 243, 0) 76%, rgba(15, 172, 243, 0) 100%), linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.42) 5%, rgba(255, 255, 255, 0.42) 9%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%), linear-gradient(135deg, $color-main 0%, rgba(15, 172, 243, 0.9) 44%, rgba(15, 172, 243, 0) 76%, rgba(15, 172, 243, 0) 100%);
+            background: linear-gradient(90deg, rgba(5, 95, 186, 0.4) 0%, rgba(5, 95, 186, 0.6) 25%, rgba(5, 95, 186, 0) 76%, rgba(5, 95, 186, 0) 100%), linear-gradient(180deg, #055fba 0%, rgba(5, 95, 186, 0.6) 25%, rgba(5, 95, 186, 0) 76%, rgba(5, 95, 186, 0) 100%), linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.42) 5%, rgba(255, 255, 255, 0.42) 9%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%), linear-gradient(135deg, #055fba 0%, rgba(5, 95, 186, 0.9) 44%, rgba(5, 95, 186, 0) 76%, rgba(5, 95, 186, 0) 100%);
             position: absolute !important;
             top: 0 !important;
             height: 100% !important;
@@ -206,7 +206,6 @@
                     white-space: normal;
                     line-height: normal;
                     margin-bottom: 20px;
-                    word-spacing: -10px !important;
                 }
                 & .ant-card-meta-description {
                     & .ant-btn {

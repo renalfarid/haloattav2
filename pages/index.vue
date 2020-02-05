@@ -154,7 +154,7 @@
     </div>
 
     <!-- if there is data then display it package umrah favorit -->
-    <div class="content-favorites">
+    <div class="content-favorites" :style="{'padding-bottom':'0'}">
       <!-- if before login -->
       <sectionFavorite />
       <!-- if after login -->
@@ -162,34 +162,7 @@
     </div>
 
     <!-- if there is data then display it package umrah -->
-    <div class="content-recomended">
-      <div class="container">
-        <div class="header-title">
-          <a-divider orientation="left" class="ant-divider-title-left"
-            >Rekomendasi Haloatta</a-divider
-          >
-          <a-row :gutter="16" class="d-none">
-            <a-col :span="16">
-              <h6 class="fs-16 fw-400 cr-gray">
-                Haloatta merekomendasikan paket umroh terbaik untuk anda.
-              </h6>
-            </a-col>
-          </a-row>
-        </div>
-
-        <umrah-recommended />
-
-        <div class="all-package">
-          <nuxt-link
-            to="/catalog/umrah/all"
-            class="fs-18 cr-green d-flex align-items-center"
-          >
-            Tampilkan semua
-            <a-icon class="fs-16 ml-8" type="right" />
-          </nuxt-link>
-        </div>
-      </div>
-    </div>
+    <umrah-recommended />
 
     <!-- if there is data then display it create package umrah -->
     <div class="content-banner-full">
