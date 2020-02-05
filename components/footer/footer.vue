@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="containerBottom">
-    <a-row :gutter="30">
-      <a-col :span="9">
+    <a-row :gutter="24">
+      <a-col :xs="24" :sm="12" :md="12" :lg="9">
         <a-card>
           <a-button size="large" class="btn-ask b-radius b-shadow b-solid">
             <a-icon type="customer-service" />Tanya Atta
@@ -23,7 +23,7 @@
           </div>
         </a-card>
       </a-col>
-      <a-col :span="5">
+      <a-col :xs="24" :sm="12" :md="12" :lg="5">
         <a-card>
           <div class="title">Layanan Pelanggan</div>
           <div class="item">
@@ -39,7 +39,7 @@
           </div>
         </a-card>
       </a-col>
-      <a-col :span="5">
+      <a-col :xs="24" :sm="12" :md="12" :lg="5">
         <a-card>
           <div class="title">Tentang Haloatta</div>
           <div class="item">
@@ -49,7 +49,7 @@
           </div>
         </a-card>
       </a-col>
-      <a-col :span="5">
+      <a-col :xs="24" :sm="12" :md="12" :lg="5">
         <a-card>
           <div class="title">Ketentuan Penggunaan</div>
           <div class="item">

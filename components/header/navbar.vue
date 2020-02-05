@@ -8,13 +8,17 @@
       background: 'transparent'
     }"
   >
-    <div class="navbar-nav">
+    <div class="navbar-nav container">
       <div class="d-flex align-items-center">
-        <!-- <a class="drawer-menu"><a-icon type="menu-fold" /></a> -->
         <nuxt-link to="/" class="navbar-brand">
           <div class="logo"></div>
         </nuxt-link>
       </div>
+
+      <a-button class="md-drawer--icons" @click="showDrawer">
+        <div class="md-burger--icons"></div>
+      </a-button>
+
       <div class="navbar-right">
         <a-menu
           class="nav-item"
@@ -37,10 +41,13 @@
               <a
                 href="https://eservices.haj.gov.sa/eservices3/pages/VisaPaymentInquiry/VisaInquiry.xhtml?dswid=-7084"
                 target="_blank"
-              >Visa Progresif</a>
+                >Visa Progresif</a
+              >
             </a-menu-item>
             <a-menu-item key="information:2">
-              <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank">Status Keberangkatan</a>
+              <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"
+                >Status Keberangkatan</a
+              >
             </a-menu-item>
           </a-sub-menu>
         </a-menu>
@@ -51,7 +58,8 @@
             <a-button
               class="btn-authentication b-shadow b-radius fw-500"
               @click="showAuthentication"
-            >Login/Daftar</a-button>
+              >Login/Daftar</a-button
+            >
           </div>
         </div>
 
@@ -84,7 +92,11 @@
           </a-button>
         </div>
         <a-divider />
-        <a-form class="ant-form-modal--login" :form="form" @submit="handleSubmitRegister">
+        <a-form
+          class="ant-form-modal--login"
+          :form="form"
+          @submit="handleSubmitRegister"
+        >
           <a-form-item>
             <a-input
               v-decorator="[
@@ -158,10 +170,14 @@
             </a-input>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" size="large" html-type="submit" block>Daftar</a-button>
+            <a-button type="primary" size="large" html-type="submit" block
+              >Daftar</a-button
+            >
             <div class="d-flex align-items-center mt-8">
               <div>
-                <a class="fs-14 cr-primary fw-400" @click="changeForm">atau Masuk disini</a>
+                <a class="fs-14 cr-primary fw-400" @click="changeForm"
+                  >atau Masuk disini</a
+                >
               </div>
               <div class="ml-auto">
                 <a class="fs-14 cr-gray fw-400" href>Lupa password?</a>
@@ -218,15 +234,22 @@
             >
               <a slot="suffix" class="cr-gray" @click="showPassword">
                 <a-icon v-if="passwordFieldType === 'password'" type="eye" />
-                <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible" />
+                <a-icon
+                  v-if="passwordFieldType === 'text'"
+                  type="eye-invisible"
+                />
               </a>
             </a-input>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" size="large" @click="loginpost" block>Masuk</a-button>
+            <a-button type="primary" size="large" @click="loginpost" block
+              >Masuk</a-button
+            >
             <div class="d-flex align-items-center mt-8">
               <div>
-                <a class="fs-14 cr-primary fw-400" @click="changeForm">atau Daftar disini</a>
+                <a class="fs-14 cr-primary fw-400" @click="changeForm"
+                  >atau Daftar disini</a
+                >
               </div>
               <div class="ml-auto">
                 <a class="fs-14 cr-gray fw-400" href>Lupa password?</a>
@@ -236,6 +259,42 @@
         </a-form>
       </div>
     </a-modal>
+
+    <!-- menu mobile -->
+    <a-drawer
+      placement="right"
+      :closable="false"
+      @close="onClose"
+      :visible="visible"
+      wrapClassName="md-drawer--menu"
+    >
+      <template slot="title">
+        <div class="d-flex a-i-center r-wrap j-c-s-between">
+          <div class="md-brand--drawer">
+            <img :src="require('~/static/haloatta.png')" />
+          </div>
+          <div class="md-close" @click="onClose"><a-icon type="close" /></div>
+        </div>
+      </template>
+
+      <a-menu mode="inline" @click="handleClickMenu">
+        <a-menu-item key="1">
+          <nuxt-link to="/"><span>Beranda</span></nuxt-link>
+        </a-menu-item>
+        <a-menu-item key="2">
+          <nuxt-link to="/about"><span>Tentang</span></nuxt-link>
+        </a-menu-item>
+        <a-menu-item key="3">
+          <a href="https://www.haloummi.com" target="_blank"><span>Haloummi</span></a>
+        </a-menu-item>
+        <a-menu-item key="4">
+          <a href="https://eservices.haj.gov.sa/eservices3/pages/VisaPaymentInquiry/VisaInquiry.xhtml?dswid=-7084" target="_blank"><span>Visa Progresif</span></a>
+        </a-menu-item>
+        <a-menu-item key="5">
+          <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"><span>Status Keberangkatan</span></a>
+        </a-menu-item>
+      </a-menu>
+    </a-drawer>
   </a-layout-header>
 </template>
 <script>
@@ -250,7 +309,8 @@ export default {
       password: "",
       passwordFieldType: "password",
       form: this.$form.createForm(this),
-      formValues: {}
+      formValues: {},
+      visible: false
     };
   },
   methods: {
@@ -263,6 +323,15 @@ export default {
     },
     changeForm() {
       this.isShowing = !this.isShowing;
+    },
+    showDrawer() {
+      this.visible = true;
+    },
+    onClose() {
+      this.visible = false;
+    },
+    handleClickMenu() {
+      this.visible = false;
     },
 
     // handleSubmitLogin(e) {
