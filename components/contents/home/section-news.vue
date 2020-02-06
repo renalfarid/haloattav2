@@ -14,7 +14,7 @@
       </a-row>
     </div>
 
-    <a-row :gutter="16">
+    <a-row>
       <a-col :span="24">
         <client-only>
           <a-carousel>
@@ -56,8 +56,7 @@
           </a-carousel>
         </client-only>
       </a-col>
-      <div v-for="sub in this.subHeadlines" :key="sub.id">
-        <a-col :span="6">
+        <a-col :xs="24" :sm="12" :md="12" :lg="6" class="mb-16" v-for="sub in this.subHeadlines" :key="sub.id">
           <a
             :href="`https://www.haloummi.com/headlines/${sub.slug}`"
             target="_blank"
@@ -93,7 +92,6 @@
             </a-card>
           </a>
         </a-col>
-      </div>
     </a-row>
 
     <div class="all-package mt-24 mb-16">

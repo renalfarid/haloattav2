@@ -1,6 +1,17 @@
 .ant-card--payment-sider {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .06);
     & .ant-card-body {
         padding: 0;
+    }
+}
+
+.sticky-top {
+    position: sticky;
+    top: 24px;
+}
+
+@media (max-width: 992px) {
+    .sticky-top {
+        position: relative !important;
+        top: 0 !important;
     }
 }

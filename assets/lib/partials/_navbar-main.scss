@@ -1,13 +1,14 @@
 .navbar {
     background-color: transparent;
     position: absolute;
-    padding: 0 32px;
+    padding: 0 24px;
     z-index: 10;
     width: 100%;
     left: 0;
     & .navbar-nav {
         @include align-items(center);
         @include flexbox();
+        min-height: 64px;
         & .drawer-menu {
             margin-right: 16px;
             color: #ffffff;
@@ -71,77 +72,6 @@
     }
 }
 
-.vue-fixed-header--isFixed {
-    position: fixed;
-    z-index: 9999;
-    width: 100%;
-    left: 0;
-    top: 0;
-    & .navbar {
-        // box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
-        // -webkit-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
-        // -moz-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
-        border-bottom: 1px solid #f5f5f5;
-        background: #ffffff !important;
-        & .navbar-nav {
-            & .drawer-menu {
-                margin-right: 16px;
-                color: $color-font;
-                font-size: 22px;
-            }
-            & .navbar-brand {
-                display: block;
-                width: 126px;
-                & .logo {
-                    background: url('/haloatta.png');
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                    width: 100%;
-                }
-            }
-            & .navbar-right {
-                & .nav-item,
-                & .ant-menu-submenu {
-                    background: transparent;
-                    border: none;
-                    float: right;
-                    & .nav-link {
-                        border: none;
-                        & a {
-                            color: rgba($color: #000, $alpha: .6);
-                        }
-                        &.ant-menu-item-selected {
-                            & a {
-                                color: rgba($color: #000, $alpha: 1);
-                            }
-                        }
-                    }
-                    & .ant-menu-submenu-title {
-                        color: rgba($color: #000, $alpha: .6);
-                        padding: 0 14px;
-                        font-size: 15px;
-                    }
-                }
-                & .navbar-button {
-                    & .btn-authentication {
-                        text-shadow: none !important;
-                        border: 1px solid $color-main !important;
-                        color: $color-main;
-                    }
-                }
-                & .navbar-accounts {
-                    margin-left: 20px;
-                    & .btn-accounts {
-                        border-color: #ffffff;
-                        background: #ffffff;
-                        color: $color-main;
-                    }
-                }
-            }
-        }
-    }
-}
-
 .ant-modal-authentication {
     & .ant-modal {
         width: 380px !important;
@@ -182,6 +112,136 @@
                 }
             }
             & .ant-modal-footer {
+                display: none;
+            }
+        }
+    }
+}
+
+.md-drawer--icons {
+    line-height: normal;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    top: -6px;
+    padding: 0;
+    & .md-burger--icons {
+        position: relative;
+        width: 32px;
+        height: 2px;
+        margin-left: auto;
+        background-color: #fff;
+        transition: all 0.2s;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            display: block;
+            height: 2px;
+            background-color: #fff;
+        }
+        &::before {
+            top: -8px;
+            width: 40px;
+            transition: all 0.2s;
+        }
+        &::after {
+            bottom: -8px;
+            width: 16px;
+            transition: all 0.2s;
+            -webkit-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            -ms-transition: all 0.2s;
+        }
+    }
+    &:hover {
+        background: transparent;
+        border: none;
+        & .md-burger--icons {
+            width: 40px;
+            &::after {
+                width: 40px;
+            }
+        }
+    }
+    &:focus {
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+}
+
+.md-drawer--menu {
+    z-index: 999999 !important;
+    & .ant-drawer-mask {
+        opacity: 0.85 !important;
+    }
+    & .ant-drawer-content-wrapper {
+        width: 100% !important;
+        & .ant-drawer-header {
+            border-bottom: 1px solid #f7f7f7;
+            background: #ffffff;
+            border-radius: 0;
+            position: fixed;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            width: 100%;
+            & .md-brand--drawer {
+                & img {
+                    max-width: 100%;
+                    max-height: 40px;
+                }
+            }
+            & .md-close {
+                color: #000000;
+                font-size: 24px;
+            }
+        }
+        & .ant-drawer-content {
+            background-color: #ffffff;
+            & .ant-drawer-body {
+                margin-top: 72px;
+                & .ant-menu {
+                    background-color: transparent;
+                    border: none;
+                    & .ant-menu-item {
+                        font-size: 16px;
+                        font-weight: 400;
+                        color: #000000;
+                        padding: 0 !important;
+                        &.ant-menu-item-selected {
+                            background-color: transparent;
+                            &::after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ant-drawer-mask {
+    background-color: rgba($color: #062136, $alpha: 0.65) !important;
+}
+
+@media (min-width: 992px) {
+    .md-drawer--icons {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .md-drawer--icons {
+        display: inline-block;
+        margin-left: auto;
+    }
+    .navbar {
+        & .navbar-nav {
+            & .navbar-right {
                 display: none;
             }
         }

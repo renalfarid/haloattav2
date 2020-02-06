@@ -120,10 +120,7 @@
     </div>
 
     <div class="content-recommended--umrah pt-40 pb-40">
-      <div class="container">
-        <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi untuk kamu</a-divider>
-        <Recommended />
-      </div>
+      <Recommended />
     </div>
   </div>
 </template>

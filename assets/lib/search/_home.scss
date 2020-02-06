@@ -1,12 +1,12 @@
 .search-main {
-    background-color: rgba($color: #fff, $alpha: .8);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .03);
+    background-color: rgba($color: #fff, $alpha: .9);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .04);
     border-top-right-radius: 6px;
     border-top-left-radius: 6px;
     overflow: inherit;
     & .ant-tabs-bar {
-        box-shadow: 0 3px 6px rgba(0, 0, 0, .03);
-        background-color: rgba($color: #fff, $alpha: .9);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .04);
+        background-color: rgba($color: #fff, $alpha: 1);
         border-top-right-radius: 6px;
         border-top-left-radius: 6px;
         position: relative;
@@ -86,5 +86,13 @@
     }
     & .ant-tabs-content {
         padding: 22px;
+    }
+}
+
+@media (max-width: 767px) {
+    .search-main {
+        & .label-tabs {
+            display: none !important;
+        }
     }
 }

@@ -2,21 +2,28 @@ require('dotenv').config();
 module.exports = {
     mode: "universal",
     head: {
-        title: "Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta",
+        title: "Haloatta - Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya",
         meta: [
             { charset: "utf-8" },
+            { name: "viewport", content: "width=device-width, initial-scale=1" },
             {
                 hid: "description",
                 name: "description",
                 content: process.env.npm_package_description || ""
             }
         ],
-        link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }]
+        link: [
+            { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
+            {
+                rel: "stylesheet",
+                href: "https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap"
+            }
+        ]
     },
 
     env: {
         baseUrl: process.env.apiUrl,
-        token: process.env.apiToken+"/oauth/token"
+        token: process.env.apiToken + "/oauth/token"
     },
 
     loading: false,
@@ -28,16 +35,16 @@ module.exports = {
 
     plugins: [
         { src: "@/plugins/antd-ui" },
-        { src: "@/plugins/vue-slick", mode: "client" },
+        { src: "@/plugins/silent-box", mode: "client" },
         { src: "@/plugins/vInput-number", mode: "client" },
         { src: "@/plugins/vCurrency-filter", mode: "client" },
         { src: "@/plugins/vCountdown", mode: "client" },
         { src: "@/plugins/vCharts", mode: "client" },
         { src: "@/plugins/vInfinite-scroll", mode: "client" },
         { src: "@/plugins/vClipboard", mode: "client" },
-        { src: "@/plugins/vLazytube", mode: "client" },
         { src: "@/plugins/vMyphotos", mode: "client" },
         { src: "@/plugins/vLazyimg", mode: "client" },
+        { src: "@/plugins/vFlickity", mode: "client" },
         { src: "@/plugins/vAos", mode: "client" }
     ],
 
@@ -66,7 +73,7 @@ module.exports = {
         responsiveImagesName: ({ isDev }) => isDev ? '[path][name]--[width][hash:optimized].[ext]' : 'img/[contenthash:7]-[width].[ext]',
         handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
         optimizeImages: true,
-        optimizeImagesInDev: true,
+        optimizeImagesInDev: false,
         defaultImageLoader: 'img-loader',
         mozjpeg: {
             quality: 80,

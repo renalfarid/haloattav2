@@ -7,31 +7,61 @@
         }
     }
     & .ant-btn--action {
-        background-color: $color-main;
-        border-color: $color-main;
-        word-spacing: 0 !important;
+        transition: all .2s ease-in-out;
+        background-color: $color-main !important;
+        color: #ffffff !important;
+        border: none !important;
+        text-shadow: none;
         box-shadow: none;
-        color: #ffffff;
-        min-width: 220px;
+        border-radius: 0;
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        height: 56px;
+        &:hover,
+        &:focus {
+            opacity: .7;
+        }
     }
     &.ant-layout-content--payment-ePackage-Dp {
         & .ant-btn--action {
+            transition: all .2s ease-in-out;
             background-color: $color-yellow;
-            border-color: $color-yellow;
-            word-spacing: 0 !important;
+            color: #ffffff !important;
+            border: none !important;
+            text-shadow: none;
             box-shadow: none;
-            color: #ffffff;
-            min-width: 220px;
+            border-radius: 0;
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin-left: auto;
+            height: 56px;
+            &:hover,
+            &:focus {
+                opacity: .7;
+            }
         }
     }
     &.ant-layout-content--payment-ePackage-failed {
         & .ant-btn--action {
+            transition: all .2s ease-in-out;
             background-color: $color-red;
-            border-color: $color-red;
-            word-spacing: 0 !important;
+            color: #ffffff !important;
+            border: none !important;
+            text-shadow: none;
             box-shadow: none;
-            color: #ffffff;
-            min-width: 220px;
+            border-radius: 0;
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin-left: auto;
+            height: 56px;
+            &:hover,
+            &:focus {
+                opacity: .7;
+            }
         }
     }
 }

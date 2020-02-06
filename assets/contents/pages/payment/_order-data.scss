@@ -4,21 +4,27 @@
             padding: 24px 0;
         }
     }
-    & .ant-form {
-        & .ant-form-item {
-            & .ant-form-item-control {
-                & .ant-select-selection {
-                    & .ant-select-selection__rendered {
-                        margin-left: 0 !important;
-                    }
-                }
-            }
+    & .md-btn--action {
+        transition: all .2s ease-in-out;
+        background-color: $color-main !important;
+        color: #ffffff !important;
+        border: none !important;
+        text-shadow: none;
+        box-shadow: none;
+        border-radius: 0;
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        height: 56px;
+        &:hover,
+        &:focus {
+            opacity: .7;
         }
     }
     & .ant-btn--action {
         background-color: $color-main;
         border-color: $color-main;
-        word-spacing: 0 !important;
         box-shadow: none;
         color: #ffffff;
         min-width: 220px;
@@ -29,7 +35,6 @@
     & .ant-btn--action-overlay {
         background-color: $color-main;
         border-color: $color-main;
-        word-spacing: 0 !important;
         box-shadow: none;
         color: #ffffff;
         min-width: 220px;
