@@ -108,9 +108,8 @@ export default {
       loading: true,
       lisData: [],
       ItemSlider: {
-        groupCells: true,
-        prevNextButtons: true,
-        pageDots: false,
+        prevNextButtons: false,
+        pageDots: true,
         contain: true
       }
     };
