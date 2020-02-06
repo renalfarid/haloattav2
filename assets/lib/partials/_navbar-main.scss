@@ -1,8 +1,8 @@
 .navbar {
     background-color: transparent;
     position: absolute;
-    padding: 0 24px;
-    z-index: 10;
+    padding: 0;
+    z-index: 999;
     width: 100%;
     left: 0;
     & .navbar-nav {
