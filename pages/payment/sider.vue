@@ -7,15 +7,28 @@
     <a-divider :style="{ margin: '0' }" />
 
     <div class="p-24">
-      <h2 class="fw-500 cr-black mb-8">Umrah Maret Alilah</h2>
-      <div class="fs-14 fw-400 cr-black">Program 9 Hari</div>
+      <h2 class="fw-500 cr-black mb-8">{{ productUmroh }}</h2>
+      <div class="fs-14 fw-400 cr-black">Program {{ program }} Hari</div>
+      <div class="fs-14 fw-400 cr-black">Tgl Berangkat : {{ moment(berangkat, 'YYYY-MM-DD').format('LL') }}</div>
 
       <a-divider :style="{ margin: '16px 0' }" />
 
       <div class="d-flex align-items-center">
-        <div class="fs-14 fw-400 cr-black">Jumlah</div>
+        <div class="fs-14 fw-400 cr-black">Quad</div>
         <div class="fs-14 fw-400 cr-black ml-auto">
-          1 Pax
+          {{ quad }} Pax
+        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="fs-14 fw-400 cr-black">Triple</div>
+        <div class="fs-14 fw-400 cr-black ml-auto">
+          {{ triple }} Pax
+        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="fs-14 fw-400 cr-black">Double</div>
+        <div class="fs-14 fw-400 cr-black ml-auto">
+          {{ double }} Pax
         </div>
       </div>
 
@@ -220,7 +233,32 @@
 </template>
 
 <script>
+import moment from "moment";
+import axios from "axios";
+moment.locale('id');
+
 export default {
-  props: ["total"]
+  props: ["total", "productUmroh", "program", "berangkat"],
+
+  data(){
+     return {
+       quad: 0,
+       triple: 0,
+       double: 0
+     }
+  },
+  created: function() {
+    this.siderinfo();
+  },
+  methods: {
+    moment,
+    siderinfo() {
+       let params = this.$route.query;
+       this.quad = params.quad;
+      this.triple = params.triple;
+      this.double = params.double;
+    }
+  }
+
 };
 </script>

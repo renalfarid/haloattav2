@@ -27,7 +27,7 @@
             class="sticky-top mb-24"
             :style="{ float: 'right' }"
           >
-            <siderPayment :total="total" />
+            <siderPayment :total="total" :productUmroh="productUmroh" :program="program" :berangkat="berangkat" />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
@@ -177,14 +177,16 @@
               </div>
 
               <div v-if="value === 2">
+
+              <div v-for="n in pax" :key="n+2">
                 <a-card class="b-solid b-radius mb-16">
-                  <template slot="title">Jamaah 1</template>
+                  <template slot="title">Jamaah {{ n }}</template>
                   <a-row :gutter="16">
                     <a-col :span="8">
                       <a-form-item label="Title">
                         <a-select
                           v-decorator="[
-                            'title',
+                            'title'+n,
                             {
                               initialValue: 'Tn.',
                               rules: [
@@ -212,7 +214,7 @@
                       >
                         <a-input
                           v-decorator="[
-                            'firstName',
+                            'firstName'+n,
                             {
                               rules: [
                                 {
@@ -236,7 +238,7 @@
                       >
                         <a-input
                           v-decorator="[
-                            'lastName',
+                            'lastName'+n,
                             {
                               rules: [
                                 {
@@ -257,7 +259,7 @@
                       <a-form-item label="Tempat Lahir">
                         <a-input
                           v-decorator="[
-                            'tempatlahir',
+                            'tempatlahir'+n,
                             {
                               rules: [
                                 {
@@ -275,7 +277,7 @@
                       <a-form-item label="Tanggal Lahir">
                         <a-date-picker
                           v-decorator="[
-                            'date',
+                            'date'+n,
                             {
                               rules: [
                                 {
@@ -298,7 +300,7 @@
                       <a-form-item label="No. Telepon/Handphone">
                         <a-input
                           v-decorator="[
-                            'telp',
+                            'telp'+n,
                             {
                               rules: [
                                 {
@@ -317,7 +319,7 @@
                       <a-form-item label="Jenis Pendidikan">
                         <a-select
                           v-decorator="[
-                            'pendidikan',
+                            'pendidikan'+n,
                             {
                               rules: [
                                 {
@@ -349,7 +351,7 @@
                       <a-form-item label="Status Pernikahan">
                         <a-select
                           v-decorator="[
-                            'status',
+                            'status'+n,
                             {
                               initialValue: 'Belum Nikah',
                               rules: [
@@ -375,7 +377,7 @@
                       <a-form-item label="Jenis Pekerjaan">
                         <a-select
                           v-decorator="[
-                            'pekerjaan',
+                            'pekerjaan'+n,
                             {
                               rules: [
                                 {
@@ -416,7 +418,7 @@
                       <a-form-item label="Kewarganegaraan">
                         <a-select
                           v-decorator="[
-                            'country',
+                            'country'+n,
                             {
                               initialValue: 'Indonesia',
                               rules: [
@@ -439,7 +441,7 @@
 
                     <a-col :span="12">
                       <a-form-item label="Nomor Paspor">
-                        <a-input v-decorator="['nomor_paspor']" size="large" />
+                        <a-input v-decorator="['nomor_paspor'+n]" size="large" />
                       </a-form-item>
                     </a-col>
 
@@ -447,7 +449,7 @@
                       <a-form-item label="Negara Penerbit">
                         <a-select
                           v-decorator="[
-                            'country_paspor',
+                            'country_paspor'+n,
                             { initialValue: 'Indonesia' }
                           ]"
                           placeholder="Pilih Negara"
@@ -463,6 +465,10 @@
                     <a-col :span="12">
                       <a-form-item label="Tanggal Habis Berlaku">
                         <a-date-picker
+                          v-decorator="[
+                            'tglexpire'+n
+                            
+                          ]"
                           format="YYYY-MM-DD"
                           :disabledDate="disabledDate"
                           placeholder="Pilih Tanggal"
@@ -472,7 +478,9 @@
                       </a-form-item>
                     </a-col>
                   </a-row>
-                </a-card>
+                  </a-card>
+              </div>
+                
               </div>
 
               <div v-if="value === 1">
@@ -535,21 +543,42 @@ export default {
     };
   },
 
-  asyncData({ query }) {
+  async asyncData({ query }) {
+    const myProduct = await axios.post(
+      process.env.baseUrl + "paket/umroh/detail",
+      { kode_produk: query.kode }
+    );
+    let getProduk = myProduct.data.data;
     return {
-      total: query.total
+      productUmroh: getProduk.umroh.nama,
+      program: getProduk.umroh.jumlah_hari,
+      berangkat: getProduk.umroh.tgl_berangkat,
+      total: query.total,
+      kodeproduk: query.kode,
+      paxquad: query.quad,
+      paxtriple: query.triple,
+      paxdouble: query.double,
+      
     };
   },
 
   data() {
     return {
       value: 1,
+      n: 1,
+      paxquad: 0,
+      paxtriple: 0,
+      paxdouble: 0,
+      pax: 0,
       loading: false,
       dataPemesan: {
         nama: "",
         nohp: "",
         email: ""
       },
+      productUmroh: "",
+      program: "",
+      berangkat: "",
       biayalunas: 0,
       biayaDp: 0,
       sisaPelunasan: 0,
@@ -575,6 +604,7 @@ export default {
         }
       ],
       total: 0,
+      kodeproduk: "",
       information: [
         {
           title:
@@ -596,13 +626,16 @@ export default {
   },
 
   mounted() {
+    this.hitungPax();
     this.hitungDp();
     this.hitungPelunasan();
   },
 
   methods: {
     moment,
-
+    hitungPax(){
+      this.pax = +this.paxquad + +this.paxtriple + +this.paxdouble
+    },
     hitungPelunasan() {
       this.biayalunas = this.total;
       this.$set(this.dataPembayaranLunas[0], "biaya", this.biayalunas);
@@ -629,7 +662,10 @@ export default {
     handleSubmitMore(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
+        console.log('Received values of form: ', values);
+
         if (!err) {
+
           let params = this.$route.query;
           let data = {
             jenis_transaksi: params.type,
