@@ -27,7 +27,7 @@
             class="sticky-top mb-24"
             :style="{ float: 'right' }"
           >
-            <siderPayment :total="total" />
+            <siderPayment :total="total" :productUmroh="productUmroh" :program="program" :berangkat="berangkat" />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
@@ -535,9 +535,18 @@ export default {
     };
   },
 
-  asyncData({ query }) {
+  async asyncData({ query }) {
+    const myProduct = await axios.post(
+      process.env.baseUrl + "paket/umroh/detail",
+      { kode_produk: query.kode }
+    );
+    let getProduk = myProduct.data.data;
     return {
-      total: query.total
+      productUmroh: getProduk.umroh.nama,
+      program: getProduk.umroh.jumlah_hari,
+      berangkat: getProduk.umroh.tgl_berangkat,
+      total: query.total,
+      kodeproduk: query.kode
     };
   },
 
@@ -550,6 +559,9 @@ export default {
         nohp: "",
         email: ""
       },
+      productUmroh: "",
+      program: "",
+      berangkat: "",
       biayalunas: 0,
       biayaDp: 0,
       sisaPelunasan: 0,
@@ -575,6 +587,7 @@ export default {
         }
       ],
       total: 0,
+      kodeproduk: "",
       information: [
         {
           title:
