@@ -88,3 +88,11 @@
         padding: 22px;
     }
 }
+
+@media (max-width: 767px) {
+    .search-main {
+        & .label-tabs {
+            display: none !important;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 .content-head {
     height: 100vh;
+    min-height: 100vh;
     & .content-head--cover {
         background-position: center right;
         background-size: cover;
@@ -16,12 +17,8 @@
             left: 0;
         }
         & .content-head--body {
-            @include flexbox();
-            @include align-items(center);
-            padding: 60px 30px;
-            max-width: 1280px;
+            padding: 88px 16px;
             height: 100%;
-            margin: 0 auto;
             & .title {
                 line-height: normal;
                 color: #ffffff;
@@ -399,6 +396,14 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .content-head {
+        & .ant-comment--accounts {
+            display: none !important;
         }
     }
 }
