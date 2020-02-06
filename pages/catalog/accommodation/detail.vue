@@ -1,5 +1,5 @@
 <template>
-  <div class="ant-layout--package-details">
+  <div class="ant-layout--package-details" :style="{'background-color':'#f7f7f7'}">
     <div class="ant-layout--results-space-small"></div>
     <div class="info-affix">
       <a-affix :offsetTop="0">
@@ -12,8 +12,8 @@
                 <a-anchor-link href="#fasilitas" title="Fasilitas" />
                 <a-anchor-link href="#ulasan" title="Ulasan" />
                 <a-anchor-link href="#vendor" title="Vendor" />
-                <a-anchor-link href="#policy" title="Kebijakan" />
-                <a-anchor-link href="#faq" title="FAQ" />
+                <!-- <a-anchor-link href="#policy" title="Kebijakan" /> -->
+                <!-- <a-anchor-link href="#faq" title="FAQ" /> -->
               </a-anchor>
             </a-col>
           </a-row>
@@ -51,18 +51,18 @@
     </div>
 
     <div class="container">
-      <a-row :gutter="32">
-        <a-col :span="17">
-          <div class="ant-layout--package-details-body">
-            <information-accommodation :data="dataLA" />
-          </div>
-        </a-col>
-
-        <a-col :span="7">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="24" :md="8" :lg="8" :style="{'float':'right'}">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
               <information-sideright :data="sidebar" />
             </div>
+          </div>
+        </a-col>
+
+        <a-col :xs="24" :sm="24" :md="16" :lg="16">
+          <div class="ant-layout--package-details-body">
+            <information-accommodation :data="dataLA" />
           </div>
         </a-col>
       </a-row>

@@ -47,7 +47,7 @@
       </div>
     </a-card>-->
 
-    <a-card class="ant-card--package-information">
+    <a-card class="b-solid b-radius ant-card--package-information">
       <div class="p-16">
         <div class="fs-15 fw-500 cr-black f-default">Informasi Pesanan</div>
       </div>

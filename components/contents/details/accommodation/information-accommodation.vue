@@ -1,7 +1,7 @@
 <template>
   <section>
     <!-- information hotel makkah -->
-    <a-card class="b-shadow b-solid bordered-left mt-32 mb-16" id="hotelmakkah">
+    <a-card class="b-solid b-radius bordered-left mt-32 mb-16" id="hotelmakkah">
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="w-100">
@@ -143,7 +143,7 @@
     </a-card>
 
     <!-- information hotel madinah -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="hotelmadinah">
+    <a-card class="b-solid b-radius bordered-left mb-16" id="hotelmadinah">
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="d-flex align-items-start w-100">
@@ -240,7 +240,7 @@
     </a-card>
 
     <!-- fasilitas -->
-    <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas">
+    <a-card class="b-radius bordered-left b-solid mb-16" id="fasilitas">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
       <p>{{data.informasi.fasilitas_termasuk}}</p>
       <a-row :gutter="8">
@@ -352,7 +352,7 @@
     </a-card>
 
     <!-- itinerary -->
-    <a-card class="b-shadow bordered-left b-solid mb-16" id="itinerary">
+    <a-card class="bordered-left b-radius b-solid mb-16" id="itinerary">
       <div class="fs-16 fw-500 cr-black mb-24">Itinerary LA Akomodasi</div>
       <a-row>
         <a-col :span="24" class="mb-16">
@@ -446,22 +446,22 @@
     </a-card>
 
     <!-- comments -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="ulasan">
+    <a-card class="b-solid b-radius bordered-left mb-16" id="ulasan">
       <comments-accommodation :review="data.ulasan" />
     </a-card>
 
     <!-- vendor -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="vendor">
+    <a-card class="b-solid b-radius bordered-left mb-16" id="vendor">
       <vendor-accommodation :vendor="data.vendor" />
     </a-card>
 
     <!-- policy -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="policy">
+    <a-card class="b-solid b-radius bordered-left mb-16 d-none" id="policy">
       <policy />
     </a-card>
 
     <!-- faq -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="faq">
+    <a-card class="b-solid b-radius bordered-left d-none mb-16" id="faq">
       <faq />
     </a-card>
   </section>
