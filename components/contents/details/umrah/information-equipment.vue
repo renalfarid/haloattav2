@@ -6,9 +6,9 @@
         <a-list-item class="ant-list-item--package-information pb-0">
           <div class="w-100">
             <div class="fs-14 fw-400 cr-gray text-uppercase mb-16">Harga Termasuk</div>
-            <a-row :gutter="8">
-              <a-col :span="8" v-for="fasilitas in data" :key="fasilitas">
-                <div class="d-flex align-items-center mb-16">
+            <a-row :gutter="16">
+              <a-col :xs="24" :sm="12" :md="12" :lg="8" class="mb-16" v-for="fasilitas in data" :key="fasilitas">
+                <div class="d-flex align-items-center">
                   <div>
                     <a-avatar
                       style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;padding: 4px"

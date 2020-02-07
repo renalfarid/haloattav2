@@ -27,11 +27,15 @@
             class="sticky-top mb-24"
             :style="{ float: 'right' }"
           >
-            <siderPayment :total="price" />
+            <sider-detail-transaction />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
-            <h3 class="fw-600 cr-black mt-8">Metode Pembayaran</h3>
+            <h3 class="fw-600 cr-black mt-8 mb-0">Metode Pembayaran</h3>
+            <p class="fs-14 fw-400 cr-black-opacity mb-16">
+              Pilih Metode pembayaran ATM/Bank Transfer atau Saldo
+            </p>
+
             <a-card class="b-radius b-solid mb-24">
               <div class="ant-package--information-bill mt-16 mb-16">
                 <a-radio-group
@@ -181,21 +185,25 @@
   </a-layout>
 </template>
 <script>
+import SiderDetailTransaction from "@/components/Payment/Sider/DetailTransaction";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
-import siderPayment from "@/pages/payment/sider.vue";
 import moment from "moment";
 export default {
   layout: "application",
   name: "purchase",
+  components: { SiderDetailTransaction },
+
   head() {
     return {
       title: "Haloatta - Booking Paket Umrah & Komponen Umrah Terlengkap"
     };
   },
+
   beforeCreate() {
     this.form = this.$form.createForm(this);
   },
+
   data() {
     return {
       choosePaymentMethod: "saldo",
@@ -206,9 +214,11 @@ export default {
       minDp: 0
     };
   },
+
   created: function() {
     this.getdata();
   },
+  
   methods: {
     moment,
     onChange(e) {
@@ -321,9 +331,6 @@ export default {
         }
       });
     }
-  },
-  components: {
-    siderPayment
   }
 };
 </script>

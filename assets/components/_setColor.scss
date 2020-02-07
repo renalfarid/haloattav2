@@ -2,6 +2,10 @@
     color: $color-font !important;
 }
 
+.cr-black-opacity {
+    color: rgba($color: $color-font, $alpha: .7) !important;
+}
+
 .cr-gray {
     color: $color-font-gray !important;
 }

@@ -30,8 +30,8 @@
         </a-list-item>
 
         <a-list-item class="ant-list-item--package-information">
-          <a-row :gutter="8" class="w-100">
-            <a-col :span="8">
+          <a-row :gutter="16" class="w-100">
+            <a-col :xs="24" :sm="12" :md="12" class="mb-16">
               <div class="d-flex align-items-start">
                 <a-avatar
                   style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -47,7 +47,7 @@
                 </div>
               </div>
             </a-col>
-            <a-col :span="8">
+            <a-col :xs="24" :sm="12" :md="12" class="mb-16">
               <div class="d-flex align-items-start">
                 <a-avatar
                   style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -63,7 +63,7 @@
                 </div>
               </div>
             </a-col>
-            <a-col :span="8">
+            <a-col :xs="24" :sm="12" :md="12" class="mb-16">
               <div class="d-flex align-items-start">
                 <a-avatar
                   style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -96,7 +96,7 @@
                 Jadwal Keberangkatan dan Kepulangan
               </div>
               <a-row :gutter="16">
-                <a-col :span="12">
+                <a-col :xs="24" :sm="12" :md="12" class="mb-16">
                   <div class="fs-14 fw-500 cr-black mb-16">Keberangkatan</div>
                   <a-timeline>
                     <a-timeline-item color="green">
@@ -161,7 +161,7 @@
                   </a-timeline>
                 </a-col>
 
-                <a-col :span="12">
+                <a-col :xs="24" :sm="12" :md="12" class="mb-16">
                   <div class="fs-14 fw-500 cr-black mb-16">Kepulangan</div>
                   <a-timeline>
                     <a-timeline-item color="green">
@@ -237,7 +237,7 @@
         Informasi fasilitas penerbangan anda
       </div>
       <a-row :gutter="24">
-        <a-col :span="12" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
@@ -250,7 +250,7 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="12" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
@@ -263,7 +263,7 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="12" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
@@ -276,7 +276,7 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="12" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"

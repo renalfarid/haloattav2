@@ -4,10 +4,10 @@
     <div class="ant-layout--order-review-package-body" :style="{'background-color':'#f7f7f7'}">
       <div class="container">
         <a-row :gutter="24">
-          <a-col :span="16">
+          <a-col :xs="24" :sm="24" :md="16">
             <informationOrder :la="la" :kelengkapan="kelengkapan" :umroh="umroh" :tiket="tiket" />
           </a-col>
-          <a-col :span="8">
+          <a-col :xs="24" :sm="24" :md="8">
             <informationSideRight :harga="harga" :umroh="umrohsidebar" />
           </a-col>
         </a-row>

@@ -11,8 +11,17 @@
     }
     & .ant-layout--package-tabs {
         background: #ffffff;
+        overflow: hidden;
+        max-width: 100%;
+        height: 55px;
         & .ant-tabs--item {
             @include flexbox();
+            overflow-x: auto;
+            width: 100%;
+            white-space: nowrap;
+            -ms-flex-direction: row !important;
+            flex-direction: row !important;
+            padding-bottom: 24px;
             & .ant-tabs--item-link {
                 color: $color-font-gray;
                 position: relative;

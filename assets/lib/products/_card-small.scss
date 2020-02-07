@@ -127,7 +127,7 @@
                         color: $color-font;
                         line-height: 20px;
                         font-size: 16px;
-                        height: 40px;
+                        max-height: 40px;
                     }
                     & .ant-avatar {
                         & img {
@@ -155,20 +155,13 @@
             }
         }
         & .md-card--bottom {
-            background-color: #f7f7f7;
             @include align-items(center);
             @include justify-content(space-between);
             @include flexbox();
-            padding: 12px 16px;
-            & .md-duration {
-                font-size: 14px;
-                font-weight: 400;
-                color: $color-font;
-            }
+            padding: 0 16px 16px 16px;
             & .md-price {
                 font-size: 16px;
-                color: $color-main;
-                font-weight: 500;
+                color: $color-font;
             }
         }
     }

@@ -44,8 +44,8 @@
 
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
-            <a-row :gutter="8">
-              <a-col :span="12" class="d-none">
+            <a-row :gutter="16">
+              <a-col :xs="24" :sm="12" :md="12" class="d-none mb-16">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -59,7 +59,7 @@
                   </div>
                 </div>
               </a-col>
-              <a-col :span="12">
+              <a-col :xs="24" :sm="12" :md="12" class="mb-16">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -125,8 +125,8 @@
 
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
-            <a-row :gutter="8">
-              <a-col :span="12" class="d-none">
+            <a-row :gutter="16">
+              <a-col :xs="24" :sm="12" :md="12" class="d-none mb-16">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -140,7 +140,7 @@
                   </div>
                 </div>
               </a-col>
-              <a-col :span="12">
+              <a-col :xs="24" :sm="12" :md="12" class="mb-16">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -165,8 +165,8 @@
     <!-- fasilitas -->
     <a-card class="b-shadow bordered-left b-solid mb-16" id="fasilitas" v-if="fasilitas_termasuk.length > 0">
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Termasuk</div>
-      <a-row :gutter="24" class="f-wrap">
-        <a-col :span="12" class="mb-16" v-for="fasilitas in fasilitas_termasuk" :key="fasilitas">
+      <a-row :gutter="16" class="f-wrap">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16" v-for="fasilitas in fasilitas_termasuk" :key="fasilitas">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"

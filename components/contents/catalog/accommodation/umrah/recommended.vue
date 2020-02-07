@@ -40,58 +40,62 @@
             "
             class="d-block"
           >
-            <div :style="{ padding: '12px 24px' }">
+            <div :style="{ padding: '24px 24px 12px 24px' }">
               <div class="d-flex align-items-center">
-                <a-avatar
-                  class="vendor-logo zIndex mr-8"
-                  v-lazy:background-image="item.foto"
-                />
-                <div class="fs-14 fw-400 f-default text-ellipsis cr-gray">
-                  {{ item.nama_vendor }}
-                </div>
-                <div class="ml-auto">
-                  <a-rate
-                    :style="{ top: '-2px' }"
-                    class="fs-14 f-default"
-                    :defaultValue="4"
-                    disabled
+                <a-popover trigger="hover">
+                  <template slot="content">
+                    <div class="fs-12 fw-400 cr-gray text-uppercase">
+                      Penyedia
+                    </div>
+                    <div class="fs-14 fw-500 cr-black text-capitalize">
+                      {{ item.nama_vendor }}
+                    </div>
+                  </template>
+                  <a-avatar
+                    v-if="item && item.foto"
+                    class="vendor-logo zIndex mr-8"
+                    v-lazy:background-image="item.foto"
                   />
+                  <a-avatar
+                    v-else
+                    class="vendor-logo zIndex mr-8"
+                    v-lazy:background-image="
+                      'https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png'
+                    "
+                  />
+                </a-popover>
+
+                <div class="ml-auto">
+                  <a-popover trigger="hover">
+                    <template slot="content">
+                      <div class="fs-14 fw-400 cr-black text-capitalize">
+                        Hotel setaraf bintang {{ item.kelas_bintang }}
+                      </div>
+                    </template>
+                    <a-icon
+                      type="star"
+                      theme="filled"
+                      v-for="item in item.kelas_bintang"
+                      :key="item"
+                      class="fs-14"
+                      :style="{ color: '#FFD500', 'margin-left': '4px' }"
+                    />
+                  </a-popover>
                 </div>
               </div>
 
-              <a-row
-                :gutter="8"
-                type="flex"
-                justify="space-between"
-                align="middle"
-                class="mt-16 mb-8"
-              >
-                <a-col :span="12" class="text-left">
-                  <div
-                    class="fs-15 fw-500 cr-black text-capitalize text-ellipsis f-default"
-                  >
-                    {{ item.nama_hotel_mekkah }}
-                  </div>
-                  <div class="fs-13 fw-400 cr-black text-capitalize d-none">
-                    3 Hari Mekkah
-                  </div>
-                </a-col>
-                <a-col :span="12" class="text-right">
-                  <div
-                    class="fs-15 fw-500 cr-black text-capitalize text-ellipsis f-default"
-                  >
-                    {{ item.nama_hotel_madinah }}
-                  </div>
-                  <div class="fs-13 fw-400 cr-black text-capitalize d-none">
-                    4 Hari Madinah
-                  </div>
-                </a-col>
-              </a-row>
+              <div class="fs-16 cr-black text-capitalize fw-500 mt-16">
+                {{ item.nama }}
+              </div>
             </div>
 
             <div class="md-card--bottom">
-              <div class="md-duration">Program {{ item.days }} Hari</div>
-              <div class="md-price">{{ item.harga_quad | currency }}</div>
+              <div class="md-price">
+                {{ item.harga_quad | currency }}
+                <span class="fs-14 fw-400 cr-black-opacity">
+                  / {{ item.days }} Hari
+                </span>
+              </div>
             </div>
           </nuxt-link>
         </a-card>
@@ -108,9 +112,8 @@ export default {
       loading: true,
       lisData: [],
       ItemSlider: {
-        groupCells: true,
-        prevNextButtons: true,
-        pageDots: false,
+        prevNextButtons: false,
+        pageDots: true,
         contain: true
       }
     };
@@ -121,12 +124,10 @@ export default {
   methods: {
     moment,
     async getdata() {
-      axios
-        .get(process.env.baseUrl + "la/all")
-        .then(response => {
-          this.lisData = response.data.data.data.slice(0, 3);
-          this.loading = false;
-        });
+      axios.get(process.env.baseUrl + "la/all").then(response => {
+        this.lisData = response.data.data.data.slice(0, 3);
+        this.loading = false;
+      });
     }
   }
 };
