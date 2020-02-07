@@ -183,7 +183,7 @@ export default {
           this.alamat = response.data.data.alamat;
           this.status = response.data.data.role_nama;
           this.telepon = response.data.data.telepon;
-          this.$router.push("/");
+          this.$router.back();
         })
         .catch(err => {
           console.log(err);
