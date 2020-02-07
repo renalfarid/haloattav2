@@ -35,21 +35,11 @@
           <a-menu-item key="3" class="nav-link">
             <a href="https://www.haloummi.com" target="_blank">Haloummi</a>
           </a-menu-item>
-          <a-sub-menu>
-            <span slot="title" class="submenu-title-wrapper">Informasi</span>
-            <a-menu-item key="information:1">
-              <a
-                href="https://eservices.haj.gov.sa/eservices3/pages/VisaPaymentInquiry/VisaInquiry.xhtml?dswid=-7084"
-                target="_blank"
-                >Visa Progresif</a
-              >
-            </a-menu-item>
-            <a-menu-item key="information:2">
-              <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"
-                >Status Keberangkatan</a
-              >
-            </a-menu-item>
-          </a-sub-menu>
+          <a-menu-item key="information" class="nav-link">
+            <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"
+              >Status Keberangkatan</a
+            >
+          </a-menu-item>
         </a-menu>
 
         <!-- before login -->
@@ -285,13 +275,14 @@
           <nuxt-link to="/about"><span>Tentang</span></nuxt-link>
         </a-menu-item>
         <a-menu-item key="3">
-          <a href="https://www.haloummi.com" target="_blank"><span>Haloummi</span></a>
+          <a href="https://www.haloummi.com" target="_blank"
+            ><span>Haloummi</span></a
+          >
         </a-menu-item>
         <a-menu-item key="4">
-          <a href="https://eservices.haj.gov.sa/eservices3/pages/VisaPaymentInquiry/VisaInquiry.xhtml?dswid=-7084" target="_blank"><span>Visa Progresif</span></a>
-        </a-menu-item>
-        <a-menu-item key="5">
-          <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"><span>Status Keberangkatan</span></a>
+          <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"
+            ><span>Status Keberangkatan</span></a
+          >
         </a-menu-item>
       </a-menu>
     </a-drawer>
