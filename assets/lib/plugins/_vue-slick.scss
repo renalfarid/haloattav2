@@ -1,10 +1,10 @@
 .md-flickity__images {
     &.md-flickity__images-large {
         & .flickity-viewport {
-            max-height: 200px !important;
+            max-height: 240px !important;
             & .flickity-slider {
                 & .item-images {
-                    height: 200px !important;
+                    height: 240px !important;
                 }
             }
         }
@@ -21,6 +21,17 @@
                 height: 184px;
                 width: 100%;
             }
+        }
+    }
+    & .flickity-page-dots {
+        bottom: 16px !important;
+        & .dot {
+            background: #ffffff !important;
+            transition: all .2s ease-in-out;
+            margin: 0 4px;
+            opacity: .6;
+            width: 8px;
+            height: 8px;
         }
     }
     // button next prev

@@ -68,9 +68,18 @@
                             </div>
                           </template>
                           <a-avatar
+                            v-if="item && item.foto_vendor"
                             size="small"
                             class="vendor-logo zIndex mr-8"
                             v-lazy:background-image="item.foto_vendor"
+                          />
+                          <a-avatar
+                            v-else
+                            size="small"
+                            class="vendor-logo zIndex mr-8"
+                            v-lazy:background-image="
+                              'https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png'
+                            "
                           />
                         </a-popover>
 
@@ -92,11 +101,9 @@
                       </div>
 
                       <div class="ant-card-meta-title--top-right ml-auto">
-                        <a-rate
-                          class="fs-14 mb-4"
-                          :defaultValue="item.kelas_bintang"
-                          disabled
-                        />
+                        <div class="fs-12 fw-400 cr-black-opacity">
+                          Program {{ item.jumlah_hari }} Hari
+                        </div>
                       </div>
                     </div>
 
@@ -108,63 +115,26 @@
                   </div>
 
                   <div slot="description">
-                    <a-row :gutter="8">
-                      <a-col :span="12">
-                        <a-popover trigger="hover">
-                          <template slot="content">
-                            <div class="fs-12 fw-400 cr-gray text-uppercase">
-                              Berangkat Dari Kota
-                            </div>
-                            <div class="fs-14 fw-400 cr-black text-capitalize">
-                              {{ item.nama_kota }}
-                            </div>
-                          </template>
-                          <a-icon
-                            type="environment"
-                            theme="filled"
-                            class="mr-4"
-                            :style="{ opacity: '.5' }"
-                          />
-                          <span class="cr-black">{{ item.nama_kota }}</span>
-                        </a-popover>
-                      </a-col>
-
-                      <a-col :span="12" class="text-right">
-                        <a-popover trigger="hover">
-                          <template slot="content">
-                            <div class="fs-12 fw-400 cr-gray text-uppercase">
-                              Tanggal Keberangkatan
-                            </div>
-                            <div class="fs-14 fw-400 cr-black text-capitalize">
-                              {{
-                                moment(item.tgl_berangkat, "YYYY-MM-DD").format(
-                                  "ll"
-                                )
-                              }}
-                            </div>
-                          </template>
-                          <a-icon
-                            type="calendar"
-                            theme="filled"
-                            class="mr-4"
-                            :style="{ opacity: '.5' }"
-                          />
-                          <span class="cr-black">{{
-                            moment(item.tgl_berangkat, "YYYY-MM-DD").format(
-                              "ll"
-                            )
-                          }}</span>
-                        </a-popover>
-                      </a-col>
-                    </a-row>
+                    <span class="fs-12 fw-400 cr-black-opacity">Kota {{ item.nama_kota }}</span>
+                    <span class="dots"></span>
+                    <span class="fs-12 fw-400 cr-black-opacity">{{
+                      item.tgl_berangkat | formatDate
+                    }}</span>
                   </div>
                 </a-card-meta>
 
                 <div class="md-card--bottom">
-                  <div class="md-duration">
-                    Program {{ item.jumlah_hari }} Hari
+                  <div class="fw-600 md-price">{{ item.harga_jual | currency }}</div>
+                  <div>
+                    <a-icon
+                      type="star"
+                      theme="filled"
+                      v-for="item in item.kelas_bintang"
+                      :key="item"
+                      class="fs-12"
+                      :style="{ color: '#FFD500', 'margin-left': '4px' }"
+                    />
                   </div>
-                  <div class="md-price">{{ item.harga_jual | currency }}</div>
                 </div>
               </nuxt-link>
             </a-card>
@@ -186,7 +156,6 @@
 </template>
 <script>
 import axios from "axios";
-import moment from "moment";
 export default {
   data() {
     return {
@@ -195,8 +164,8 @@ export default {
 
       ItemSlider: {
         groupCells: true,
-        prevNextButtons: true,
-        pageDots: false,
+        prevNextButtons: false,
+        pageDots: true,
         contain: true
       }
     };
@@ -207,14 +176,42 @@ export default {
   },
 
   methods: {
-    moment,
     async getdata() {
       axios
         .get("https://api.haloatta.com/api/paket/umroh/all")
         .then(response => {
-          this.lisData = response.data.data.data.slice(3, 6);
+          this.lisData = response.data.data.data.slice(3, 8);
           this.loading = false;
         });
+    }
+  },
+
+  filters: {
+    formatDate: function(value) {
+      const date = new Date(value);
+
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Agu",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des"
+      ];
+      const days = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
+
+      const dayName = days[date.getDay()];
+      const dayOfMonth = date.getDate();
+      const month = months[date.getMonth()];
+      const year = date.getFullYear();
+
+      return `${dayName}, ${dayOfMonth} ${month} ${year}`;
     }
   }
 };

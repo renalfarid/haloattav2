@@ -36,7 +36,7 @@
 
     <div class="container">
       <a-row :gutter="24">
-        <a-col :span="16">
+        <a-col :xs="24" :sm="24" :md="16" :lg="16">
           <a-card class="b-solid bordered-left mt-16">
             <a-list
               itemLayout="horizontal"
@@ -104,7 +104,7 @@
           </div>
         </a-col>
 
-        <a-col :span="8" :style="{ margin: '16px 0' }">
+        <a-col :xs="24" :sm="24" :md="8" :lg="8" :style="{ margin: '16px 0' }">
           <div class="ant-layout--right">
             <div class="ant-affix--container">
               <informationSideRight :harga="harga" :umroh="umroh" />

@@ -89,8 +89,19 @@
                                     </div>
                                   </template>
                                   <a-avatar
+                                    v-if="item && item.foto_vendor"
                                     class="vendor-logo zIndex mr-8"
+                                    size="small"
                                     v-lazy:background-image="item.foto_vendor"
+                                  />
+
+                                  <a-avatar
+                                    v-else
+                                    class="vendor-logo zIndex mr-8"
+                                    size="small"
+                                    v-lazy:background-image="
+                                      'https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png'
+                                    "
                                   />
                                 </a-popover>
 
@@ -109,6 +120,7 @@
                                   </template>
                                   <a-avatar
                                     class="zIndex mr-8"
+                                    size="small"
                                     :src="item.image"
                                   />
                                 </a-popover>
@@ -116,11 +128,9 @@
                               <div
                                 class="ant-card-meta-title--top-right ml-auto"
                               >
-                                <a-rate
-                                  class="fs-14 mb-4"
-                                  :defaultValue="3"
-                                  disabled
-                                />
+                                <div class="fs-14 fw-400 cr-black-opacity">
+                                  Program {{ item.jumlah_hari }} Hari
+                                </div>
                               </div>
                             </div>
                             <div
@@ -131,76 +141,31 @@
                           </template>
 
                           <template slot="description">
-                            <a-row :gutter="8">
-                              <a-col :span="12">
-                                <a-popover trigger="hover">
-                                  <template slot="content">
-                                    <div
-                                      class="fs-12 fw-400 cr-gray text-uppercase"
-                                    >
-                                      Berangkat Dari Kota
-                                    </div>
-                                    <div
-                                      class="fs-14 fw-400 cr-black text-capitalize"
-                                    >
-                                      {{ item.nama_kota }}
-                                    </div>
-                                  </template>
-                                  <a-icon
-                                    type="environment"
-                                    theme="filled"
-                                    class="mr-4"
-                                    :style="{ opacity: '.5' }"
-                                  />
-                                  <span class="cr-black">{{
-                                    item.nama_kota
-                                  }}</span>
-                                </a-popover>
-                              </a-col>
-
-                              <a-col :span="12" class="text-right">
-                                <a-popover trigger="hover">
-                                  <template slot="content">
-                                    <div
-                                      class="fs-12 fw-400 cr-gray text-uppercase"
-                                    >
-                                      Tanggal Keberangkatan
-                                    </div>
-                                    <div
-                                      class="fs-14 fw-400 cr-black text-capitalize"
-                                    >
-                                      {{
-                                        moment(
-                                          item.tgl_berangkat,
-                                          "YYYY-MM-DD"
-                                        ).format("LL")
-                                      }}
-                                    </div>
-                                  </template>
-                                  <a-icon
-                                    type="calendar"
-                                    theme="filled"
-                                    class="mr-4"
-                                    :style="{ opacity: '.5' }"
-                                  />
-                                  <span class="cr-black">{{
-                                    moment(
-                                      item.tgl_berangkat,
-                                      "YYYY-MM-DD"
-                                    ).format("ll")
-                                  }}</span>
-                                </a-popover>
-                              </a-col>
-                            </a-row>
+                            <span class="fs-14 fw-400 cr-black-opacity"
+                              >Kota {{ item.nama_kota }}</span
+                            >
+                            <span class="dots"></span>
+                            <span class="fs-14 fw-400 cr-black-opacity">{{
+                              item.tgl_berangkat | formatDate
+                            }}</span>
                           </template>
                         </a-card-meta>
 
                         <div class="md-card--bottom">
-                          <div class="md-duration">
-                            Program {{ item.jumlah_hari }} Hari
-                          </div>
                           <div class="md-price">
                             {{ item.harga_jual | currency }}
+                          </div>
+                          <div>
+                            <a-icon
+                              type="star"
+                              theme="filled"
+                              v-for="item in item.kelas_bintang"
+                              :key="item"
+                              :style="{
+                                color: '#FFD500',
+                                'margin-left': '4px'
+                              }"
+                            />
                           </div>
                         </div>
                       </nuxt-link>
@@ -218,16 +183,22 @@
 <script>
 import searchResultUmrah from "~/components/contents/lib/search/result/umrah.vue";
 import filterResultUmrah from "~/components/contents/lib/filter/result/umrah.vue";
-import moment from "moment";
 import axios from "axios";
 export default {
   name: "umrahResults",
+
+  components: {
+    searchResultUmrah,
+    filterResultUmrah
+  },
+
   head() {
     return {
       title:
         "Hasil Pencarian Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
     };
   },
+
   data() {
     return {
       loading: true,
@@ -236,13 +207,12 @@ export default {
       data: [],
       results: "",
       ItemSlider: {
-        groupCells: true,
-        prevNextButtons: true,
-        pageDots: false,
-        contain: true
+        prevNextButtons: false,
+        pageDots: true
       }
     };
   },
+
   async asyncData({ query, store }) {
     let data = [];
     data["kota_asal"] = query.kota_asal == "all" ? "" : query.kota_asal;
@@ -273,7 +243,6 @@ export default {
   },
 
   methods: {
-    moment,
     loadingEvent(event) {
       console.log(event, "summa");
 
@@ -282,9 +251,61 @@ export default {
       }
     }
   },
-  components: {
-    searchResultUmrah,
-    filterResultUmrah
+
+  filters: {
+    formatDate: function(value) {
+      const date = new Date(value);
+
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Agu",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des"
+      ];
+      const days = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
+
+      const dayName = days[date.getDay()];
+      const dayOfMonth = date.getDate();
+      const month = months[date.getMonth()];
+      const year = date.getFullYear();
+
+      return `${dayName}, ${dayOfMonth} ${month} ${year}`;
+    },
+
+    formatMonth: function(value) {
+      const date = new Date(value);
+
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Agu",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des"
+      ];
+      const days = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
+
+      const dayName = days[date.getDay()];
+      const dayOfMonth = date.getDate();
+      const month = months[date.getMonth()];
+      const year = date.getFullYear();
+
+      return `${month} ${year}`;
+    }
   }
 };
 </script>

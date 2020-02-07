@@ -26,220 +26,83 @@
             </div>
 
             <div class="item mb-16">
-            <div class="fs-12 fw-400 text-uppercase cr-gray">
-              Total Harga
-            </div>
-            <div class="fs-16 fw-600 cr-black">{{ item.total_tagihan | currency }}</div>
-          </div>
-
-          <a-card class="b-shadow b-solid b-radius mb-16">
-            <div>
-              <div class="fs-12 fw-400 text-uppercase cr-gray mb-8">
+              <div class="fs-12 fw-400 text-uppercase cr-gray">
                 Tipe Pembayaran
               </div>
+              <div class="fs-16 fw-600 cr-black">Lunas</div>
+            </div>
 
-              <a-select
-                v-model="tipe_pembayaran"
-                placeholder="Pilih tipe pembayaran"
-                size="large"
+            <div class="item mb-16">
+              <div class="fs-12 fw-400 text-uppercase cr-gray">
+                Total Pembayaran
+              </div>
+              <div class="fs-16 fw-600 cr-black">
+                {{ item.total_tagihan | currency }}
+              </div>
+            </div>
+
+            <div v-if="tipe_pembayaran === 'DP'">
+              <a-alert
+                :showIcon="false"
+                :style="{
+                  'border-radius': '4px',
+                  'margin-bottom': '24px',
+                  padding: '24px'
+                }"
+                banner
               >
-                <a-select-option :value="1">Pelunasan</a-select-option>
-                <a-select-option :value="2">Uang Muka (DP 30%)</a-select-option>
-              </a-select>
-
-              <div class="mt-8" v-if="tipe_pembayaran === 1">
-                <a-skeleton :loading="loading" active>
-                  <div class="pt-16">
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Subtotal</div>
-                      <div class="fs-14 cr-black fw-500">
-                        {{ item.total_tagihan | currency }}
-                      </div>
+                <template slot="message">
+                  <div class="item mb-16">
+                    <div class="fs-12 fw-400 text-uppercase cr-gray">
+                      Sisa Pembayaran Anda :
                     </div>
-
-                    <div
-                      :style="{
-                        height: '1px',
-                        'border-top': '1px dashed #e7e7e7',
-                        margin: '8px 0'
-                      }"
-                    ></div>
-
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Diskon</div>
-                      <div class="fs-14 cr-black fw-500">
-                        - {{ 0 | currency }}
-                      </div>
-                    </div>
-
-                    <div
-                      :style="{
-                        height: '1px',
-                        'border-top': '1px dashed #e7e7e7',
-                        margin: '8px 0'
-                      }"
-                    ></div>
-
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Kode Unik</div>
-                      <div class="fs-14 cr-black fw-500">
-                        - {{ 333 | currency }}
-                      </div>
-                    </div>
-
-                    <div
-                      :style="{
-                        height: '1px',
-                        'border-top': '1px dashed #e7e7e7',
-                        margin: '8px 0'
-                      }"
-                    ></div>
-
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Total Bayar</div>
-                      <div class="fs-14 cr-primary fw-500">
-                        {{ (item.total_tagihan - 333) | currency }}
-                      </div>
+                    <div class="fs-16 fw-600 cr-black">
+                      {{ item.total_tagihan | currency }}
                     </div>
                   </div>
-                </a-skeleton>
-              </div>
+                  Penting! Jatuh tempo pelunasan 30 hari sebelum tanggal
+                  keberangkatan.
+                </template>
+              </a-alert>
+            </div>
 
-              <div class="mt-8" v-if="tipe_pembayaran === 2">
-                <a-skeleton :loading="loading" active>
-                  <div class="pt-16">
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Subtotal</div>
-                      <div class="fs-14 cr-black fw-500">
-                        {{ item.total_tagihan | currency }}
-                      </div>
-                    </div>
+            <a-skeleton :loading="loading" active>
+              <a-card
+                class="b-radius mb-16"
+                :style="{ 'border-style': 'dashed' }"
+              >
+                <div class="fs-12 fw-400 text-uppercase cr-gray mb-8">
+                  Bank Tujuan transfer
+                </div>
 
-                    <div
-                      :style="{
-                        height: '1px',
-                        'border-top': '1px dashed #e7e7e7',
-                        margin: '8px 0'
-                      }"
-                    ></div>
-
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Uang Muka (30%)</div>
-                      <div class="fs-14 cr-black fw-500">
-                        {{ ((item.total_tagihan * 30) / 100) | currency }}
-                      </div>
-                    </div>
-
-                    <div
-                      :style="{
-                        height: '1px',
-                        'border-top': '1px dashed #e7e7e7',
-                        margin: '8px 0'
-                      }"
-                    ></div>
-
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Diskon</div>
-                      <div class="fs-14 cr-black fw-500">
-                        - {{ 0 | currency }}
-                      </div>
-                    </div>
-
-                    <div
-                      :style="{
-                        height: '1px',
-                        'border-top': '1px dashed #e7e7e7',
-                        margin: '8px 0'
-                      }"
-                    ></div>
-
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Kode Unik</div>
-                      <div class="fs-14 cr-black fw-500">
-                        - {{ 333 | currency }}
-                      </div>
-                    </div>
-
-                    <div
-                      :style="{
-                        height: '1px',
-                        'border-top': '1px dashed #e7e7e7',
-                        margin: '8px 0'
-                      }"
-                    ></div>
-
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Total Bayar</div>
-                      <div class="fs-14 cr-primary fw-500">
-                        {{ ((item.total_tagihan * 30) / 100 - 333) | currency }}
-                      </div>
-                    </div>
-
-                    <div
-                      :style="{
-                        height: '1px',
-                        'border-top': '1px dashed #e7e7e7',
-                        margin: '8px 0'
-                      }"
-                    ></div>
-
-                    <div class="d-flex align-items-center align-space-between">
-                      <div class="fs-14 cr-black fw-500">Sisa Bayar</div>
-                      <div class="fs-14 cr-red fw-500">
-                        {{ ((item.total_tagihan * 30) / 100 - item.total_tagihan) | currency }}
-                      </div>
-                    </div>
-
-                    <a-alert
-                      :showIcon="false"
-                      message="Jatuh tempo pelunasan 30 hari sebelum tanggal keberangkatan."
-                      :style="{
-                        'border-radius': '4px',
-                        padding: '8px 16px',
-                        'margin-top': '16px'
-                      }"
-                      banner
+                <div class="d-flex align-items-center mb-8">
+                  <div class="cr-black fs-14 fw-500">
+                    BRI - BANK RAKYAT INDONESIA (BRI)
+                  </div>
+                  <div class="ml-auto">
+                    <img
+                      :style="{ maxWidth: '100%', height: '18px' }"
+                      :src="require('~/static/icons/bank/bri.png')"
                     />
                   </div>
-                </a-skeleton>
-              </div>
-            </div>
-          </a-card>
-
-          <a-skeleton :loading="loading" active>
-            <div class="b-shadow b-radius b-solid p-32 w-100">
-              <div class="fs-12 fw-400 text-uppercase cr-gray mb-8">
-                Bank Tujuan
-              </div>
-
-              <div class="d-flex align-items-center mb-8">
-                <div class="cr-black fs-14 fw-500">
-                  BRI - BANK RAKYAT INDONESIA (BRI) 
                 </div>
-                <div class="ml-auto">
-                  <img
-                    :style="{ maxWidth: '100%', height: '18px' }"
-                    :src="require('~/static/icons/bank/bri.png')"
-                  />
-                </div>
-              </div>
 
-              <dl class="ant-deflist ant-deflist--small">
-                <dt class="ant-deflist__label cr-black fw-400">
-                  Nomor Rekening
-                </dt>
-                <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
-                  <span>064201001011561</span>
-                </dd>
-                <dt class="ant-deflist__label cr-black fw-400">
-                  Nama Penerima
-                </dt>
-                <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
-                  <span>PT Haloatta</span>
-                </dd>
-              </dl>
-            </div>
-          </a-skeleton>
+                <dl class="ant-deflist ant-deflist--small">
+                  <dt class="ant-deflist__label cr-black fw-400">
+                    Nomor Rekening
+                  </dt>
+                  <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
+                    <span>064201001011561</span>
+                  </dd>
+                  <dt class="ant-deflist__label cr-black fw-400">
+                    Nama Penerima
+                  </dt>
+                  <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
+                    <span>PT Haloatta</span>
+                  </dd>
+                </dl>
+              </a-card>
+            </a-skeleton>
 
             <a-form-item class="mt-24">
               <a-upload-dragger
@@ -262,8 +125,8 @@
                     <a-avatar size="large" icon="upload" />
                   </div>
                   <div>
-                    <p class="ant-upload-text fs-15 cr-gray f-default">
-                      Klik atau drag didalam area ini untuk mengupload foto
+                    <p class="ant-upload-text fs-14 cr-gray">
+                      Klik atau drag ke dalam area ini untuk mengupload foto
                       bukti transfer anda
                     </p>
                   </div>
@@ -277,7 +140,7 @@
                 size="large"
                 html-type="submit"
                 class="b-shadow b-radius"
-                >Kirim Bukti Pembayaran</a-button
+                >Kirim Bukti Transfer</a-button
               >
             </a-form-item>
           </a-form>
@@ -307,7 +170,7 @@ export default {
 
   data() {
     return {
-      tipe_pembayaran: 1,
+      tipe_pembayaran: "DP",
       loading: true,
       value: "BRI-ATTA",
       item: "",

@@ -65,7 +65,7 @@
             background-size: cover;
             position: relative;
             overflow: hidden;
-            height: 200px;
+            height: 240px;
             width: 100%;
             & .ant-card-cover--overlay {
                 position: relative;
@@ -178,9 +178,9 @@
                         overflow: hidden !important;
                         word-wrap: break-word;
                         color: $color-font;
-                        line-height: 20px;
+                        line-height: 22px;
                         font-size: 18px;
-                        height: 40px;
+                        max-height: 44px;
                     }
                 }
                 & .ant-card-meta-description {
@@ -209,20 +209,14 @@
             }
         }
         & .md-card--bottom {
-            background-color: #f7f7f7;
             @include align-items(center);
             @include justify-content(space-between);
             @include flexbox();
-            padding: 12px 24px;
-            & .md-duration {
-                font-size: 14px;
-                font-weight: 400;
-                color: $color-font;
-            }
+            padding: 0 24px 20px 24px;
             & .md-price {
                 font-size: 18px;
-                color: $color-main;
-                font-weight: 500;
+                color: $color-font;
+                font-weight: 600;
             }
         }
     }
