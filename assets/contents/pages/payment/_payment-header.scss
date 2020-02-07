@@ -1,7 +1,9 @@
 .ant-layout--payment {
+    overflow: inherit !important;
     & .ant-layout-header--payment {
         background-color: $color-main;
         @include align-items(center);
+        overflow: hidden;
         @include flexbox();
         padding: 0 16px;
         & .ant-logo {
