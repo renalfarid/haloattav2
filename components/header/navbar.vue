@@ -251,47 +251,23 @@
     </a-modal>
 
     <!-- menu mobile -->
-    <a-drawer
-      placement="right"
-      :closable="false"
-      @close="onClose"
-      :visible="visible"
-      wrapClassName="md-drawer--menu"
-    >
-      <template slot="title">
-        <div class="d-flex a-i-center r-wrap j-c-s-between">
-          <div class="md-brand--drawer">
-            <img :src="require('~/static/haloatta.png')" />
-          </div>
-          <div class="md-close" @click="onClose"><a-icon type="close" /></div>
-        </div>
-      </template>
-
-      <a-menu mode="inline" @click="handleClickMenu">
-        <a-menu-item key="1">
-          <nuxt-link to="/"><span>Beranda</span></nuxt-link>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <nuxt-link to="/about"><span>Tentang</span></nuxt-link>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <a href="https://www.haloummi.com" target="_blank"
-            ><span>Haloummi</span></a
-          >
-        </a-menu-item>
-        <a-menu-item key="4">
-          <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"
-            ><span>Status Keberangkatan</span></a
-          >
-        </a-menu-item>
-      </a-menu>
-    </a-drawer>
+    <menu-mobile
+      :visible="visibleMenu"
+      :onClose="onClose"
+      :closable="closable"
+      :handleClickMenu="handleClickMenu"
+    />
   </a-layout-header>
 </template>
 <script>
+import MenuMobile from "./MenuMobile";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
 export default {
+  components: {
+    MenuMobile
+  },
+
   data() {
     return {
       authentication: false,
@@ -301,9 +277,11 @@ export default {
       passwordFieldType: "password",
       form: this.$form.createForm(this),
       formValues: {},
-      visible: false
+      visibleMenu: false,
+      closable: false
     };
   },
+
   methods: {
     showAuthentication() {
       this.authentication = true;
@@ -316,13 +294,13 @@ export default {
       this.isShowing = !this.isShowing;
     },
     showDrawer() {
-      this.visible = true;
+      this.visibleMenu = true;
     },
     onClose() {
-      this.visible = false;
+      this.visibleMenu = false;
     },
     handleClickMenu() {
-      this.visible = false;
+      this.visibleMenu = false;
     },
 
     // handleSubmitLogin(e) {
