@@ -27,7 +27,7 @@
             class="sticky-top mb-24"
             :style="{ float: 'right' }"
           >
-            <sider-detail-transaction />
+            <sider-detail-transaction :noTrans="noTrans" :tglTrans="tglTrans" :namaPaket="namaPaket" :berangkat="berangkat" :program="program" :total="price" :pax="pax" />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
@@ -305,6 +305,14 @@ export default {
 
   data() {
     return {
+      namaPaket: "",
+      noTrans: "",
+      tglTrans: "",
+      program: "",
+      berangkat: "",
+      itemTransaksi: "",
+      pax: "",
+
       choosePaymentMethod: "transfer",
       chosePayment: "PELUNASAN",
       paymentTypeBank: 1,
@@ -317,6 +325,7 @@ export default {
 
   created: function() {
     this.getdata();
+    this.getdataTransaksi();
   },
 
   methods: {
@@ -390,7 +399,40 @@ export default {
           this.minDP = (this.item.total_tagihan - this.item.kode_unik) * 0.3;
           // console.log(this.item, "ini item");
         });
+    },
+
+    async getdataTransaksi() {
+      let params = this.$route.query;
+
+      const token = Cookie.get("auth");
+
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+
+      axios
+        .post(
+          process.env.baseUrl + "transaksi/history-detail",
+          {
+            notrans: params.notrans
+          },
+          config
+        )
+        .then(response => {
+          this.itemTransaksi = response.data.data.index;
+          this.namaPaket = this.itemTransaksi.nama_paket;
+          this.noTrans = this.itemTransaksi.nomor_transaksi;
+          this.tglTrans = this.itemTransaksi.tanggal_pemesanan;
+          this.pax = this.itemTransaksi.pax;
+          this.program = this.itemTransaksi.program_hari;
+          this.berangkat = this.itemTransaksi.tanggal_keberangkatan;
+
+        });
     }
+
+
   }
 };
 </script>
