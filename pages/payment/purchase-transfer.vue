@@ -27,7 +27,7 @@
             class="sticky-top mb-24"
             :style="{ float: 'right' }"
           >
-            <sider-detail-transaction :noTrans="noTrans" :tglTrans="tglTrans" :namaPaket="namaPaket" :berangkat="berangkat" :program="program" :total="price" :pax="pax" />
+            <sider-detail-transaction :noTrans="noTrans" :tglTrans="tglTrans" :namaPaket="namaPaket" :berangkat="berangkat" :program="program" :total="totalTagihan" :pax="pax" />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
@@ -154,49 +154,98 @@
               </a-card>
 
               <!-- <h3 class="fw-600 cr-black mt-8">Total Pembayaran</h3> -->
-              <a-card class="b-solid b-radius mb-24">
-                <a-form-item label="Subtotal">
-                  <a-input
-                    size="large"
-                    :value="item.total_tagihan | currency"
-                    disabled
-                  ></a-input>
-                </a-form-item>
+              <div v-if="chosePayment === 'PELUNASAN'">
+                  <a-card class="b-solid b-radius mb-24">
+                    <a-form-item label="Subtotal">
+                      <a-input
+                        size="large"
+                        :value="item.total_tagihan | currency"
+                        disabled
+                      ></a-input>
+                    </a-form-item>
 
-                <a-form-item label="Kode Unik">
-                  <a-input
-                    size="large"
-                    :value="item.kode_unik"
-                    disabled
-                  ></a-input>
-                </a-form-item>
+                    <a-form-item label="Kode Unik">
+                      <a-input
+                        size="large"
+                        :value="item.kode_unik"
+                        disabled
+                      ></a-input>
+                    </a-form-item>
 
-                <a-form-item label="Total Bayar">
-                  <a-input
-                    size="large"
-                    :value="(price - item.kode_unik) | currency"
-                    :style="{ 'text-align': 'left' }"
-                    disabled
-                  >
-                    <a-button
-                      slot="addonAfter"
-                      v-clipboard:copy="price"
-                      v-clipboard:success="onCopy"
-                      v-clipboard:error="onError"
-                      class="ant-btn--action-outline"
-                      size="small"
-                      block
-                      >Salin</a-button
-                    >
-                  </a-input>
-                </a-form-item>
-                <div class="ant-price--info fw-400 fs-12">
-                  <span class="p-relative" style="z-index: 2">
-                    <span>PENTING! Mohon bayar sampai 3 digit terakhir</span>
-                  </span>
-                  <div class="ant-price--info-overlay"></div>
-                </div>
-              </a-card>
+                    <a-form-item label="Total Bayar">
+                      <a-input
+                        size="large"
+                        :value="(price + item.kode_unik) | currency"
+                        :style="{ 'text-align': 'left' }"
+                        disabled
+                      >
+                        <a-button
+                          slot="addonAfter"
+                          v-clipboard:copy="price"
+                          v-clipboard:success="onCopy"
+                          v-clipboard:error="onError"
+                          class="ant-btn--action-outline"
+                          size="small"
+                          block
+                          >Salin</a-button
+                        >
+                      </a-input>
+                    </a-form-item>
+                    <div class="ant-price--info fw-400 fs-12">
+                      <span class="p-relative" style="z-index: 2">
+                        <span>PENTING! Mohon bayar sampai 3 digit terakhir</span>
+                      </span>
+                      <div class="ant-price--info-overlay"></div>
+                    </div>
+                  </a-card>
+              </div>
+
+              <div v-if="chosePayment === 'DP' ">
+                  <a-card class="b-solid b-radius mb-24">
+                    <a-form-item label="Subtotal">
+                      <a-input
+                        size="large"
+                        :value="priceDp | currency"
+                        disabled
+                      ></a-input>
+                    </a-form-item>
+
+                    <a-form-item label="Kode Unik">
+                      <a-input
+                        size="large"
+                        :value="item.kode_unik"
+                        disabled
+                      ></a-input>
+                    </a-form-item>
+
+                    <a-form-item label="Total Bayar">
+                      <a-input
+                        size="large"
+                        :value="(priceDp + item.kode_unik) | currency"
+                        :style="{ 'text-align': 'left' }"
+                        disabled
+                      >
+                        <a-button
+                          slot="addonAfter"
+                          v-clipboard:copy="priceDp+item.kode_unik"
+                          v-clipboard:success="onCopy"
+                          v-clipboard:error="onError"
+                          class="ant-btn--action-outline"
+                          size="small"
+                          block
+                          >Salin</a-button
+                        >
+                      </a-input>
+                    </a-form-item>
+                    <div class="ant-price--info fw-400 fs-12">
+                      <span class="p-relative" style="z-index: 2">
+                        <span>PENTING! Mohon bayar sampai 3 digit terakhir</span>
+                      </span>
+                      <div class="ant-price--info-overlay"></div>
+                    </div>
+                  </a-card>
+              </div>
+              
 
               <h3 class="fw-600 cr-black mt-8 mb-0">ATM/Bank Pembayaran</h3>
               <p class="fs-14 fw-400 cr-black-opacity mb-16">
@@ -312,6 +361,7 @@ export default {
       berangkat: "",
       itemTransaksi: "",
       pax: "",
+      totalTagihan: 0,
 
       choosePaymentMethod: "transfer",
       chosePayment: "PELUNASAN",
@@ -326,15 +376,31 @@ export default {
   created: function() {
     this.getdata();
     this.getdataTransaksi();
+    
   },
 
   methods: {
+
     onChange(e) {
-      // console.log(`checked = ${e.target.value}`);
+      this.chosePayment = e.target.value;
+      
     },
+
     onChangePriceDp(value) {
       this.priceDp = value + this.item.kode_unik;
     },
+    
+    changePrice(){
+      if(this.chosePayment === 'PELUNASAN'){
+        this.price = this.item.total_tagihan
+        this.priceDp = this.item.total_tagihan * 0.3;
+      }
+      else {
+        this.price = this.item.total_tagihan
+        this.priceDp = this.item.total_tagihan * 0.3;
+      }
+    },
+
     nextPurchaseSaldo() {
       let params = this.$route.query;
       this.$router.push({
@@ -395,8 +461,9 @@ export default {
         .then(response => {
           this.item = response.data.data;
           this.price = this.item.total_tagihan;
-          this.priceDp = this.item.total_tagihan;
+          this.priceDp = this.item.total_tagihan * 0.3;
           this.minDP = (this.item.total_tagihan - this.item.kode_unik) * 0.3;
+          this.totalTagihan = this.item.total_tagihan;
           // console.log(this.item, "ini item");
         });
     },
