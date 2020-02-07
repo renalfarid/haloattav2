@@ -2,12 +2,14 @@
   <a-card class="b-solid b-radius ant-card--payment-sider">
     <div :style="{ padding: '16px 24px' }">
       <h3 class="fw-600 cr-black m-0">Detail Transaksi</h3>
+      <div class="fs-14 fw-400 cr-black-opacity">{{ noTrans }} </div>
+      <div class="fs-14 fw-400 cr-black-opacity">Tgl Transaksi : {{ tglTrans | formatDate }} </div>
     </div>
 
     <a-divider :style="{ margin: '0' }" />
 
     <div class="p-24">
-      <h2 class="fw-500 cr-black mb-16">{{ title_package }}</h2>
+      <h2 class="fw-500 cr-black mb-16">{{ namaPaket }}</h2>
       <div class="fs-14 fw-400 cr-black-opacity">Program {{ program }} Hari</div>
       <div class="fs-14 fw-400 cr-black-opacity">
         Tgl Berangkat : {{ berangkat | formatDate }}
@@ -17,7 +19,7 @@
 
       <div class="d-flex align-items-center">
         <div class="fs-14 fw-400 cr-black-opacity">Jumlah Pax</div>
-        <div class="fs-14 fw-400 cr-black ml-auto">{{ qty }} Pax</div>
+        <div class="fs-14 fw-400 cr-black ml-auto">{{ pax }} Pax</div>
       </div>
 
       <a-divider :style="{ margin: '16px 0' }" />
@@ -66,14 +68,14 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
+
 export default {
+  props: ["noTrans", "tglTrans", "program", "berangkat", "total", "namaPaket", "pax"],
   data() {
     return {
-        title_package: "Umrah Alila Desember 2020",
-        berangkat: "2020-12-20",
-        program: 9,
-        total: 25000000,
-        qty: 1,
+        
+        
     };
   },
 
