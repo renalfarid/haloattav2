@@ -3,7 +3,7 @@
     <div class="ant-layout--results-space"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{ 'margin-bottom': '20px' }">
+        <div class="ant-layout--results-top mb-24">
           <div class="ant-layout--results-search">
             <a-card
               class="ant-card--results-info b-shadow b-solid b-radius"
