@@ -366,7 +366,6 @@ export default {
           this.priceDp = this.item.pembayaran_dp.total_harga_uniq;
           this.minDP = this.item.pembayaran_lunas.total_harga;
           this.totalTagihan = this.item.pembayaran_lunas.total_harga;
-          console.log(this.minDP, "ini item");
         });
     },
 
