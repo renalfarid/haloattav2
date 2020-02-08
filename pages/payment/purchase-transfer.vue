@@ -220,7 +220,7 @@
                         :value="bank.kdbank"
                         class="fs-16 cr-black d-flex align-items-center"
                       >
-                        <img :src="bank.images" :alt="bank.namabank" />
+                        <img :src="bank.images" :alt="bank.alias" />
                         {{bank.namabank}}
                       </a-radio>
                     </a-col>
@@ -278,6 +278,8 @@ export default {
       pax: "",
       totalTagihan: 0,
       kdBank: "",
+
+      listBank: [],
 
       choosePaymentMethod: "transfer",
       chosePayment: "PELUNASAN",
@@ -341,6 +343,15 @@ export default {
     onError: function(e) {
       this.$message.success("Gagal menyalin");
     },
+
+    async getBank() {
+      axios.get(
+           process.env.baseUrl + "api/option/getbank"
+      ).then(response => {
+        
+      })
+    },
+
     async getdata() {
       let params = this.$route.query;
 
