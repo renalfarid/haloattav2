@@ -49,28 +49,28 @@
                       slot-scope="props"
                     >
                       <span
-                        class="ant-countdown--item-time fs-40 cr-black fw-400 f-default"
+                        class="ant-countdown--item-time fs-24 cr-black fw-400"
                         >{{ props.days }}</span
                       >
-                      Hari
+                      h
                       <a-divider type="vertical" />
                       <span
-                        class="ant-countdown--item-time fs-40 cr-black fw-400 f-default"
+                        class="ant-countdown--item-time fs-24 cr-black fw-400"
                         >{{ props.hours }}</span
                       >
-                      Jam
+                      j
                       <a-divider type="vertical" />
                       <span
-                        class="ant-countdown--item-time fs-40 cr-black fw-400 f-default"
+                        class="ant-countdown--item-time fs-24 cr-black fw-400"
                         >{{ props.minutes }}</span
                       >
-                      Menit
+                      m
                       <a-divider type="vertical" />
                       <span
-                        class="ant-countdown--item-time fs-40 cr-red fw-400 f-default"
+                        class="ant-countdown--item-time fs-24 cr-red fw-400"
                         >{{ props.seconds }}</span
                       >
-                      Detik
+                      d
                     </div>
                   </countdown>
                 </client-only>

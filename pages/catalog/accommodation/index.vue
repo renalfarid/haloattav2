@@ -7,17 +7,11 @@
       >
         <div class="content-head--body container">
           <div class="gradient-top"></div>
-          <a-row
-            :gutter="24"
-            type="flex"
-            justify="space-between"
-            align="middle"
-            class="h-100"
-          >
+          <a-row :gutter="24" type="flex" justify="space-between" align="middle" class="h-100">
             <a-col :xs="24" :sm="24" :md="24" :lg="24">
               <h1 class="fs-40 cr-white" :style="{ 'line-height': 'normal' }">
-                Beragam pilihan <br />
-                LA Akomodasi untuk anda
+                Beragam pilihan
+                <br />LA Akomodasi untuk anda
               </h1>
               <a-card :bordered="false" class="b-shadow b-radius b-opacity">
                 <search-accommodation />
@@ -56,9 +50,7 @@
 
     <div class="content-recommended--accommodation pb-40">
       <div class="container">
-        <a-divider orientation="left" class="ant-divider-title-left"
-          >Rekomendasi untuk kamu</a-divider
-        >
+        <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi untuk kamu</a-divider>
         <Recommended />
       </div>
     </div>

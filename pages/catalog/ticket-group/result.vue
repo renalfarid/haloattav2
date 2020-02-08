@@ -3,7 +3,7 @@
     <div class="ant-layout--results-space"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{ marginBottom: '20px' }">
+        <div class="ant-layout--results-top mb-24">
           <search-result-ticket />
 
           <filter-result-ticket />
@@ -18,177 +18,36 @@
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-list
-              :grid="{ gutter: 16, column: 3 }"
-              :dataSource="data"
-              :loading="loading"
-            >
-              <a-list-item
-                slot="renderItem"
-                slot-scope="item, index"
+            <a-row :gutter="24" class="r-wrap">
+              <a-col
+                :xs="24"
+                :sm="12"
+                :md="12"
+                :lg="8"
+                class="mb-16"
+                v-for="(item, index) in data"
                 :key="index"
-                data-aos="fade-up"
-                data-aos-duration="1200"
               >
-                <nuxt-link
-                  :to="
-                    '/catalog/ticket-group/detail-ticket?kode_produk=' +
-                      item.kode_produk
-                  "
-                  class="d-block"
-                >
-                  <a-card class="ant-card--package-ticket">
-                    <div slot="cover">
-                      <div
-                        class="ant-card-cover--images"
-                        v-lazy:background-image="item.gambar"
-                      >
-                        <div class="ant-card-cover--overlay">
-                          <div class="ant-card-cover--overlay-box-radius"></div>
-                          <div class="ant-card-cover--overlay-text">
-                            <div
-                              class="ant-card-cover--overlay-text-title fs-15 fw-500"
-                            >
-                              {{ item.qty }}
-                            </div>
-                            <div
-                              class="ant-card-cover--overlay-text-subtitle fs-12 text-uppercase"
-                            >
-                              pax
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="ant-card--overlay-block">
-                          <div
-                            class="fs-14 item-float--right fw-400 cr-black f-default text-ellipsis"
-                          >
-                            Round Trip
-                          </div>
-                          <div class="ant-card--overlay-block-body">
-                            <div
-                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis mb-8"
-                            >
-                              <a-icon type="environment" class="mr-4" />
-                              <span>Kota {{ item.nama_kota }}</span>
-                            </div>
-                            <div
-                              class="fs-13 fw-400 cr-black f-default text-capitalize text-ellipsis"
-                            >
-                              <a-icon type="calendar" class="mr-4" />
-                              Berangkat
-                              {{
-                                moment(
-                                  item.tanggal_keberangkatan,
-                                  "YYYY-MM-DD"
-                                ).format("ll")
-                              }}
-                              -
-                              {{
-                                moment(
-                                  item.tanggal_keberangkatan,
-                                  "YYYY-MM-DD"
-                                ).format("ll")
-                              }}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="d-flex align-items-center">
-                      <a-popover trigger="hover">
-                        <template slot="content">
-                          <div class="fs-15 fw-500 cr-black">
-                            {{ item.nama_vendor }}
-                          </div>
-                          <div class="fs-14 fw-400 cr-gray f-default">
-                            <a-icon
-                              type="safety-certificate"
-                              theme="filled"
-                              class="cr-green mr-4"
-                            />Terverifikasi
-                          </div>
-                        </template>
-                        <a-avatar
-                          class="vendor-logo zIndex mr-8"
-                          v-lazy:background-image="item.foto"
-                        />
-                      </a-popover>
-                      <a-popover trigger="hover">
-                        <template slot="content">
-                          <div class="fs-14 fw-400 cr-gray f-default">
-                            Maskapai {{ item.nama_maskapai }}
-                          </div>
-                        </template>
-                        <a-avatar class="zIndex mr-8" :src="item.image" />
-                      </a-popover>
-                      <div
-                        class="ml-auto fs-14 fw-400 cr-gray f-default text-capitalize text-ellipsis"
-                      >
-                        {{ item.class_flight }}
-                      </div>
-                    </div>
-
-                    <a-row
-                      :gutter="8"
-                      type="flex"
-                      justify="space-between"
-                      align="middle"
-                      class="mt-8 mb-8"
-                    >
-                      <a-col :span="8" class="text-left">
-                        <div
-                          class="fs-30 fw-500 cr-black text-uppercase f-default"
-                        >
-                          {{ item.kode_bandara_asal }}
-                        </div>
-                        <div
-                          class="fs-14 fw-400 cr-black text-uppercase f-default"
-                        >
-                          {{ item.jam_keberangkatan }}
-                        </div>
-                      </a-col>
-                      <a-col :span="8" class="text-center">
-                        <div
-                          class="fs-14 fw-400 cr-gray text-capitalize f-default mb-8"
-                        >
-                          {{ item.jenis_flight }}
-                        </div>
-                        <div
-                          class="fs-14 fw-400 cr-gray text-capitalize f-default"
-                        >
-                          {{ item.durasi_keberangkatan }}
-                        </div>
-                      </a-col>
-                      <a-col :span="8" class="text-right">
-                        <div
-                          class="fs-30 fw-500 cr-black text-uppercase f-default"
-                        >
-                          {{ item.kode_bandara_tujuan }}
-                        </div>
-                        <div
-                          class="fs-14 fw-400 cr-black text-uppercase f-default"
-                        >
-                          {{ item.tiba_keberangkatan }}
-                        </div>
-                      </a-col>
-                    </a-row>
-
-                    <div class="d-flex align-items-end align-items-center">
-                      <div class="fs-14 fw-400 cr-gray f-default text-ellipsis">
-                        Program {{ item.program_hari }} Hari
-                      </div>
-                      <div
-                        class="ml-auto fs-18 fw-500 cr-primary f-default text-ellipsis"
-                      >
-                        {{ item.harga_jual | currency }}
-                      </div>
-                    </div>
-                  </a-card>
-                </nuxt-link>
-              </a-list-item>
-            </a-list>
+                <package-ticket
+                  :loading="loading"
+                  :images="item.gambar"
+                  :city="item.nama_kota"
+                  :departure="item.tanggal_keberangkatan"
+                  :vendor_name="item.nama_vendor"
+                  :vendor_logo="item.foto"
+                  :maskapai_name="item.nama_maskapai"
+                  :maskapai_logo="item.image"
+                  :maskapai_class="item.class_flight"
+                  :from_flight="item.kode_bandara_asal"
+                  :from_flight_time="item.tiba_keberangkatan"
+                  :to_flight="item.kode_bandara_tujuan"
+                  :to_flight_time="item.tiba_kepulangan"
+                  :program="item.program_hari"
+                  :pricing="item.harga_jual"
+                  :url="item.kode_produk"
+                />
+              </a-col>
+            </a-row>
           </div>
         </div>
       </div>
@@ -196,18 +55,26 @@
   </div>
 </template>
 <script>
-import searchResultTicket from "~/components/contents/lib/search/result/ticket.vue";
-import filterResultTicket from "~/components/contents/lib/filter/result/ticket.vue";
+import searchResultTicket from "@/components/contents/lib/search/result/ticket.vue";
+import filterResultTicket from "@/components/contents/lib/filter/result/ticket.vue";
+import PackageTicket from "@/components/template/Ticket";
 import axios from "axios";
-import moment from "moment";
 export default {
   name: "ticketResult",
+  
+  components: {
+    searchResultTicket,
+    filterResultTicket,
+    PackageTicket
+  },
+
   head() {
     return {
       title:
         "Hasil Pencarian Tiket Group - Pesan Paket Umrah & Komponen Umrah Lainnya"
     };
   },
+
   data() {
     return {
       loading: true,
@@ -216,16 +83,14 @@ export default {
       data: []
     };
   },
+
   created() {
     this.loadMore();
   },
+
   methods: {
-    moment,
     loadMore() {
       this.busy = true;
-
-      // let params = this.$route.query;
-
       axios
         .get(process.env.baseUrl + "tiket/all", {
           params: {
@@ -243,11 +108,6 @@ export default {
           this.busy = false;
         });
     }
-  },
-  components: {
-    searchResultTicket,
-    filterResultTicket
   }
 };
-// AOS.init();
 </script>
