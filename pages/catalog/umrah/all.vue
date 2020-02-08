@@ -3,7 +3,7 @@
     <div class="ant-layout--results-space"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{ 'margin-bottom': '20px' }">
+        <div class="ant-layout--results-top mb-24">
           <div class="ant-layout--results-search">
             <a-card
               class="ant-card--results-info b-shadow b-solid b-radius"
@@ -173,7 +173,7 @@
                   :departure="item.tgl_berangkat"
                   :city="item.nama_kota"
                   :vendor_name="item.nama_vendor"
-                  :vendor_logo="item.foto_vendor"
+                  :vendor_logo="item.foto"
                   :maskapai_name="item.nama_maskapai"
                   :maskapai_logo="item.image"
                   :rate_hotel="item.kelas_bintang"

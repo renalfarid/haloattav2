@@ -26,7 +26,7 @@
               :departure="item.tgl_berangkat"
               :city="item.nama_kota"
               :vendor_name="item.nama_vendor"
-              :vendor_logo="item.foto_vendor"
+              :vendor_logo="item.foto"
               :maskapai_name="item.nama_maskapai"
               :maskapai_logo="item.image"
               :rate_hotel="item.kelas_bintang"
