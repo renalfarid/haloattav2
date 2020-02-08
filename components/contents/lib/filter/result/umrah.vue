@@ -48,6 +48,7 @@ export default {
   data() {
     return {
       maskapaiLabel: 'Semua Maskapai',
+      maskapaiValue: '',
       hotelLabel: 'Fasilitas Bintang',
       hargaLabel: 'Harga',
       umarohLabel: 'Semua Umaroh',
@@ -119,6 +120,8 @@ export default {
   methods: {
     onChangeMaskapai(value, selectedOptions) {
       this.maskapaiLabel = selectedOptions.map(o => o.label).join(', ');
+      this.maskapaiValue = value;
+      console.log(this.maskapaiValue[0]);
     },
     onChangeHotel(value, selectedOptions) {
       this.hotelLabel = selectedOptions.map(o => o.label).join(', ');

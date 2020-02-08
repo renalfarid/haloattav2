@@ -6,7 +6,11 @@
         <div class="ant-layout--results-top" :style="{ marginBottom: '20px' }">
           <search-result-umrah />
 
-          <filter-result-umrah />
+          <filter-result-umrah
+            :maskapai="option.maskapai"
+            :bintang="option.bintang"
+            :vendor="option.vendor"
+          />
         </div>
 
         <client-only>
@@ -172,8 +176,8 @@
                                       {{
                                         moment(
                                           item.tgl_berangkat,
-                                          "YYYY-MM-DD"
-                                        ).format("LL")
+                                          'YYYY-MM-DD'
+                                        ).format('LL')
                                       }}
                                     </div>
                                   </template>
@@ -186,8 +190,8 @@
                                   <span class="cr-black">{{
                                     moment(
                                       item.tgl_berangkat,
-                                      "YYYY-MM-DD"
-                                    ).format("ll")
+                                      'YYYY-MM-DD'
+                                    ).format('ll')
                                   }}</span>
                                 </a-popover>
                               </a-col>
@@ -216,16 +220,16 @@
   </div>
 </template>
 <script>
-import searchResultUmrah from "~/components/contents/lib/search/result/umrah.vue";
-import filterResultUmrah from "~/components/contents/lib/filter/result/umrah.vue";
-import moment from "moment";
-import axios from "axios";
+import searchResultUmrah from '~/components/contents/lib/search/result/umrah.vue';
+import filterResultUmrah from '~/components/contents/lib/filter/result/umrah.vue';
+import moment from 'moment';
+import axios from 'axios';
 export default {
-  name: "umrahResults",
+  name: 'umrahResults',
   head() {
     return {
       title:
-        "Hasil Pencarian Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
+        'Hasil Pencarian Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya'
     };
   },
   data() {
@@ -234,36 +238,44 @@ export default {
       busy: false,
       limit: 6,
       data: [],
-      results: "",
+      results: '',
       ItemSlider: {
         groupCells: true,
         prevNextButtons: true,
         pageDots: false,
         contain: true
+      },
+      option: {
+        kota: '',
+        program: '',
+        bulan: '',
+        maskapai: '',
+        bintang: '',
+        vendor: ''
       }
     };
   },
   async asyncData({ query, store }) {
     let data = [];
-    data["kota_asal"] = query.kota_asal == "all" ? "" : query.kota_asal;
-    data["bulan_keberangkatan"] =
-      query.bulan_keberangkatan == "all" ? "" : query.bulan_keberangkatan;
-    data["program"] = query.program == "all" ? "" : query.program;
-    data["hotel_bintang"] =
-      query.hotel_bintang == "all" ? "" : query.hotel_bintang;
+    data['kota_asal'] = query.kota_asal == 'all' ? '' : query.kota_asal;
+    data['bulan_keberangkatan'] =
+      query.bulan_keberangkatan == 'all' ? '' : query.bulan_keberangkatan;
+    data['program'] = query.program == 'all' ? '' : query.program;
+    data['hotel_bintang'] =
+      query.hotel_bintang == 'all' ? '' : query.hotel_bintang;
 
-    const myRespone = await axios.get(process.env.baseUrl + "paket/umroh/all", {
+    const myRespone = await axios.get(process.env.baseUrl + 'paket/umroh/all', {
       params: {
-        kota_asal: data["kota_asal"],
-        bulan_keberangkatan: data["bulan_keberangkatan"],
-        program_hari: data["program"],
-        hotel_bintang: data["hotel_bintang"]
+        kota_asal: data['kota_asal'],
+        bulan_keberangkatan: data['bulan_keberangkatan'],
+        program_hari: data['program'],
+        hotel_bintang: data['hotel_bintang']
       }
     });
 
     // store.commit("catalog/setUmroh", myRespone.data.data.data);
     // console.log(myRespone.data.data.data, 'test anu');
-    data["result"] = myRespone.data.data.data;
+    data['result'] = myRespone.data.data.data;
 
     return {
       loading: false,
@@ -271,15 +283,31 @@ export default {
       results: myRespone.data.data.data
     };
   },
+  created() {
+    this.getOption();
+  },
 
   methods: {
     moment,
     loadingEvent(event) {
-      console.log(event, "summa");
+      console.log(event, 'summa');
 
       if (event) {
         this.loading = event;
       }
+    },
+    getOption() {
+      // this.busy = true;
+      axios.get(process.env.baseUrl + 'option/umrah', []).then(response => {
+        let getOption = response.data.data;
+
+        this.option.kota = getOption.kota;
+        this.option.program = getOption.hari;
+        this.option.bulan = getOption.bulan_keberangkatan;
+        this.option.maskapai = getOption.maskapai;
+        this.option.bintang = getOption.bintang;
+        this.option.vendor = getOption.vendor;
+      });
     }
   },
   components: {
