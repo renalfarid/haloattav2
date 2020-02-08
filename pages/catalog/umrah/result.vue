@@ -117,25 +117,6 @@ export default {
       option: myResponeOption.data.data
     };
   },
-  // created() {
-  //   this.getOption();
-  // },
-
-  // methods: {
-  //   getOption() {
-  //     // this.busy = true;
-  //     axios.get(process.env.baseUrl + "option/umrah", []).then(response => {
-  //       let getOption = response.data.data;
-
-  //       this.option.kota = getOption.kota;
-  //       this.option.program = getOption.hari;
-  //       this.option.bulan = getOption.bulan_keberangkatan;
-  //       this.option.maskapai = getOption.maskapai;
-  //       this.option.bintang = getOption.bintang;
-  //       this.option.vendor = getOption.vendor;
-  //     });
-  //   }
-  // },
 
   filters: {
     formatDate: function(value) {
