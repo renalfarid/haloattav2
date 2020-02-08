@@ -45,7 +45,7 @@
             <img
               class="mx-width d-block m-auto"
               style="maxHeight: 320px"
-              v-lazy="require('~/static/illu/about.svg')"
+              v-lazy="require('~/static/illu/connected_world.svg')"
             />
           </a-col>
         </a-row>

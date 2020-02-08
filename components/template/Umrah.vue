@@ -32,7 +32,7 @@
                   </template>
 
                   <a-avatar
-                    v-if="vendor_logo"
+                    v-if="vendor_logo != null"
                     class="vendor-logo zIndex mr-8"
                     size="small"
                     v-lazy:background-image="vendor_logo"
@@ -42,9 +42,7 @@
                     v-else
                     class="vendor-logo zIndex mr-8"
                     size="small"
-                    v-lazy:background-image="
-                      'https://cdn4.iconfinder.com/data/icons/avatar-vol-1-3/512/4-512.png'
-                    "
+                    v-lazy:background-image="require('~/static/brand.png')"
                   />
                 </a-popover>
 

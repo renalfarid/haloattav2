@@ -1,6 +1,17 @@
 .ant-layout--results-space {
     background: $color-main;
+    position: relative;
     height: 180px;
+    &::before {
+        background-color: $color-main;
+        border-radius: 100%;
+        position: absolute;
+        content: '';
+        height: 180px;
+        top: 64px;
+        left: -32px;
+        right: -32px;
+    }
 }
 
 .ant-layout--results-space-small {

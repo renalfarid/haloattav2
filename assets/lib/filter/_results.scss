@@ -15,9 +15,12 @@
             padding: 14px 0;
             width: 100%;
             & .ant-tag {
+                background-color: #ffffff;
+                border-radius: 2px;
                 line-height: 28px;
                 padding: 0 10px;
                 height: 30px;
+                margin: 6px 4px;
             }
             & .ant-dropdown-link {
                 text-transform: capitalize;

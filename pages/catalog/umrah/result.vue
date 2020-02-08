@@ -6,13 +6,15 @@
         <div class="ant-layout--results-top" :style="{ marginBottom: '20px' }">
           <search-result-umrah />
 
-          <filter-result-umrah />
+          <filter-result-umrah
+            :maskapai="option.maskapai"
+            :bintang="option.bintang"
+            :vendor="option.vendor"
+          />
         </div>
 
         <div class="ant-layout--results-list pb-16">
-          <div class="ant-layout--results-list-label fw-400">
-            Hasil Pencarian Paket Umrah
-          </div>
+          <div class="ant-layout--results-list-label fw-400">Hasil Pencarian Paket Umrah</div>
           <div
             v-infinite-scroll="results"
             :infinite-scroll-disabled="busy"
@@ -38,7 +40,7 @@
                   :departure="item.tgl_berangkat"
                   :city="item.nama_kota"
                   :vendor_name="item.nama_vendor"
-                  :vendor_logo="item.foto_vendor"
+                  :vendor_logo="item.foto"
                   :maskapai_name="item.nama_maskapai"
                   :maskapai_logo="item.image"
                   :rate_hotel="item.kelas_bintang"
@@ -80,7 +82,8 @@ export default {
       busy: false,
       limit: 6,
       data: [],
-      results: ""
+      results: "",
+      option: ""
     };
   },
 
@@ -102,11 +105,16 @@ export default {
       }
     });
 
+    const myResponeOption = await axios.get(
+      process.env.baseUrl + "option/umrah"
+    );
+
     data["result"] = myRespone.data.data.data;
     return {
       loading: false,
       busy: false,
-      results: myRespone.data.data.data
+      results: myRespone.data.data.data,
+      option: myResponeOption.data.data
     };
   },
 
