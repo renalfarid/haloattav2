@@ -10,10 +10,8 @@
         </div>
 
         <div class="ant-layout--results-list pb-16">
-          <div class="ant-layout--results-list-label fw-400">
-            Hasil Pencarian LA Akomodasi
-          </div>
-          
+          <div class="ant-layout--results-list-label fw-400">Hasil Pencarian LA Akomodasi</div>
+
           <div
             v-infinite-scroll="loadMore"
             :infinite-scroll-disabled="busy"
@@ -51,7 +49,7 @@
 <script>
 import searchResultAccommodation from "@/components/contents/lib/search/result/accommodation.vue";
 import filterResultAccommodation from "@/components/contents/lib/filter/result/accommodation.vue";
-import PackageAccommodation from "@/components/Template/Accommodation";
+import PackageAccommodation from "@/components/template/Accommodation";
 import axios from "axios";
 import moment from "moment";
 export default {

@@ -24,7 +24,7 @@
   </a-row>
 </template>
 <script>
-import PackageAccommodation from "@/components/Template/Accommodation";
+import PackageAccommodation from "@/components/template/Accommodation";
 import axios from "axios";
 export default {
   components: { PackageAccommodation },
