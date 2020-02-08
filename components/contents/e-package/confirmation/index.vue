@@ -1,17 +1,10 @@
 <template>
-  <a-form
-    layout="vertical"
-    :form="form"
-    @submit="handleSubmit"
-    hideRequiredMark
-  >
+  <a-form layout="vertical" :form="form" @submit="handleSubmit" hideRequiredMark>
     <a-row type="flex" justify="space-around" align="middle">
       <a-col :xs="24" :sm="24" :md="20">
         <a-card :bordered="false">
           <div class="mb-16">
-            <div class="fs-24 fw-500 cr-black mb-8">
-              Upload Bukti Transfer Anda
-            </div>
+            <div class="fs-24 fw-500 cr-black mb-8">Upload Bukti Transfer Anda</div>
             <div class="fs-14 fw-400 cr-gray">
               <span>
                 Upload bukti pembayaran bank transfer anda untuk mempercepat
@@ -26,20 +19,16 @@
           </div>
 
           <div class="item mb-16">
-            <div class="fs-12 fw-400 text-uppercase cr-gray">
-              Tipe Pembayaran
-            </div>
+            <div class="fs-12 fw-400 text-uppercase cr-gray">Tipe Pembayaran</div>
             <div class="fs-16 fw-600 cr-black">Lunas</div>
           </div>
 
           <div class="item mb-24">
-            <div class="fs-12 fw-400 text-uppercase cr-gray">
-              Total Pembayaran
-            </div>
+            <div class="fs-12 fw-400 text-uppercase cr-gray">Total Pembayaran</div>
             <div class="fs-16 fw-600 cr-black">{{ total | currency }}</div>
           </div>
 
-          <div v-if="tipe_pembayaran === 'DP'">
+          <div v-if="this.$route.query.jenis === 'DP'">
             <a-alert
               :showIcon="false"
               :style="{
@@ -51,50 +40,33 @@
             >
               <template slot="message">
                 <div class="item mb-16">
-                  <div class="fs-12 fw-400 text-uppercase cr-gray">
-                    Sisa Pembayaran Anda :
-                  </div>
-                  <div class="fs-16 fw-600 cr-black">
-                    {{ total | currency }}
-                  </div>
-                </div>
-                Penting! Jatuh tempo pelunasan 30 hari sebelum tanggal keberangkatan.
+                  <div class="fs-12 fw-400 text-uppercase cr-gray">Sisa Pembayaran Anda :</div>
+                  <div class="fs-16 fw-600 cr-black">{{ sisa_bayar | currency }}</div>
+                </div>Penting! Jatuh tempo pelunasan 30 hari sebelum tanggal keberangkatan.
               </template>
             </a-alert>
           </div>
 
           <a-skeleton :loading="loading" active>
-            <a-card
-              class="b-radius mb-16"
-              :style="{ padding: '0 24px', 'border-style': 'dashed' }"
-            >
-              <div class="fs-12 fw-400 text-uppercase cr-gray mb-16">
-                Bank Tujuan transfer
-              </div>
+            <a-card class="b-radius mb-16" :style="{ padding: '0 24px', 'border-style': 'dashed' }">
+              <div class="fs-12 fw-400 text-uppercase cr-gray mb-16">Bank Tujuan transfer</div>
               <div class="d-flex align-items-center mb-8">
-                <div class="cr-black fs-14 fw-500">
-                  BRI - BANK RAKYAT INDONESIA (BRI)
-                </div>
+                <div
+                  class="cr-black fs-14 fw-500"
+                >{{detailBank.namabank}} ({{detailBank.aliasbank}})</div>
                 <div class="ml-auto">
-                  <img
-                    :style="{ maxWidth: '100%', height: '18px' }"
-                    :src="require('~/static/icons/bank/bri.png')"
-                  />
+                  <img :style="{ maxWidth: '100%', height: '18px' }" :src="detailBank.images" />
                 </div>
               </div>
 
               <dl class="ant-deflist ant-deflist--small">
-                <dt class="ant-deflist__label cr-black fw-400">
-                  Nomor Rekening
-                </dt>
+                <dt class="ant-deflist__label cr-black fw-400">Nomor Rekening</dt>
                 <dd class="ant-deflist__value text-ellipsis fw-400 cr-black">
-                  <span>064201001011561</span>
+                  <span>{{detailBank.norekening}}</span>
                 </dd>
-                <dt class="ant-deflist__label cr-black fw-400">
-                  Nama Penerima
-                </dt>
+                <dt class="ant-deflist__label cr-black fw-400">Nama Penerima</dt>
                 <dd class="ant-deflist__value text-ellipsis cr-black fw-400">
-                  <span>PT Haloatta</span>
+                  <span>{{detailBank.atas_nama}}</span>
                 </dd>
               </dl>
             </a-card>
@@ -114,10 +86,7 @@
                 action="/"
                 @change="handleChange"
               >
-                <div
-                  class="d-flex align-items-center text-left"
-                  :style="{ padding: '16px 24px' }"
-                >
+                <div class="d-flex align-items-center text-left" :style="{ padding: '16px 24px' }">
                   <div class="ant-upload-drag-icon mr-16">
                     <a-avatar size="large" icon="upload" />
                   </div>
@@ -137,8 +106,7 @@
               html-type="submit"
               class="ant-btn--action fs-14 mb-16"
               size="large"
-              >Kirim Bukti Transfer</a-button
-            >
+            >Kirim Bukti Transfer</a-button>
           </div>
         </a-card>
       </a-col>
@@ -167,7 +135,9 @@ export default {
       item: "",
       imageUrl: "",
       formValues: {},
-      total: 0
+      total: 0,
+      sisa_bayar: 0,
+      detailBank: ""
     };
   },
   mounted() {
@@ -177,6 +147,7 @@ export default {
   },
   created: function() {
     this.getdata();
+    this.getDetailBank();
   },
   methods: {
     onChange(kode_bank) {
@@ -189,11 +160,11 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           this.formValues = {
-            nomor_transaksi: values.nomor_transaksi,
+            nomor_transaksi: params.notrans,
             metode_pembayaran: "TRANSFER",
             jenis_pembayaran: params.jenis,
-            bayar: values.bayar,
-            kode_bank: values.kode_bank,
+            bayar: params.total,
+            kode_bank: params.kdbank,
             file: this.imageUrl,
             otp_code: ""
           };
@@ -282,6 +253,15 @@ export default {
         .then(response => {
           this.item = response.data.data;
           this.total = params.total;
+          this.sisa_bayar = this.item.total_tagihan - this.total;
+        });
+    },
+    getDetailBank() {
+      let params = this.$route.query;
+      axios
+        .get(process.env.baseUrl + "option/bank-detail?kdbank=" + params.kdbank)
+        .then(response => {
+          this.detailBank = response.data.data;
         });
     }
   }
