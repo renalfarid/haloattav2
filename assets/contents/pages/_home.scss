@@ -1,5 +1,6 @@
 .content-head {
     height: 100vh;
+    min-height: 100vh;
     & .content-head--cover {
         background-position: center right;
         background-size: cover;
@@ -8,7 +9,7 @@
         height: 100%;
         width: 100%;
         & .gradient-top {
-            background: linear-gradient(90deg, rgba(5, 95, 186, 0.4) 0%, rgba(5, 95, 186, 0.6) 25%, rgba(5, 95, 186, 0) 76%, rgba(5, 95, 186, 0) 100%), linear-gradient(180deg, #055fba 0%, rgba(5, 95, 186, 0.6) 25%, rgba(5, 95, 186, 0) 76%, rgba(5, 95, 186, 0) 100%), linear-gradient(45deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.42) 5%, rgba(255, 255, 255, 0.42) 9%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%), linear-gradient(135deg, #055fba 0%, rgba(5, 95, 186, 0.9) 44%, rgba(5, 95, 186, 0) 76%, rgba(5, 95, 186, 0) 100%);
+            background-color: rgba(6, 33, 54, 0.54);
             position: absolute !important;
             top: 0 !important;
             height: 100% !important;
@@ -16,12 +17,8 @@
             left: 0;
         }
         & .content-head--body {
-            @include flexbox();
-            @include align-items(center);
-            padding: 60px 30px;
-            max-width: 1280px;
+            padding: 88px 16px;
             height: 100%;
-            margin: 0 auto;
             & .title {
                 line-height: normal;
                 color: #ffffff;
@@ -399,6 +396,14 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .content-head {
+        & .ant-comment--accounts {
+            display: none !important;
         }
     }
 }

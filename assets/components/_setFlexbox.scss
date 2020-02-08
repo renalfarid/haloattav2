@@ -29,3 +29,39 @@
 .align-end {
     @include justify-content(flex-end);
 }
+
+.f-wrap {
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+}
+
+.r-wrap {
+    flex-flow: row wrap;
+}
+
+.a-i-center {
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+.a-i-start {
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    -ms-align-items: flex-start;
+    align-items: flex-start;
+}
+
+.a-i-end {
+    -webkit-align-items: flex-end;
+    -moz-align-items: flex-end;
+    -ms-align-items: flex-end;
+    align-items: flex-end;
+}
+
+.j-c-s-between {
+    justify-content: space-between;
+}

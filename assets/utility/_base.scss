@@ -2,10 +2,12 @@ html,
 body,
 * {
     font-family: 'Archivo', sans-serif !important;
+    letter-spacing: .5px;
 }
 
 .ant-layout {
     background: transparent;
+    overflow: hidden;
     & .container {
         max-width: 1080px;
         padding: 0 16px;

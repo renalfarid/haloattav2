@@ -6,7 +6,7 @@
       </nuxt-link>
     </div>
     <a-card :bordered="false" class="b-shadow b-solid b-radius mb-16">
-      <div slot="title">Detail Produk</div>
+      <div slot="title">Data Transaksi</div>
       <div slot="extra" class="fs-16 fw-500 cr-black">No. Transaksi {{detailProduk.nomor_transaksi}}</div>
       <div slot="extra" class="fs-16 fw-500 cr-black">{{moment(detailProduk.tanggal_pemesanan, "YYYY-MM-DD").format("dddd, DD MMMM YYYY")}}</div>
       <a-row :gutter="8">

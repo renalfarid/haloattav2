@@ -8,13 +8,17 @@
       background: 'transparent'
     }"
   >
-    <div class="navbar-nav">
+    <div class="navbar-nav container">
       <div class="d-flex align-items-center">
-        <!-- <a class="drawer-menu"><a-icon type="menu-fold" /></a> -->
         <nuxt-link to="/" class="navbar-brand">
           <div class="logo"></div>
         </nuxt-link>
       </div>
+
+      <a-button class="md-drawer--icons" @click="showDrawer">
+        <div class="md-burger--icons"></div>
+      </a-button>
+
       <div class="navbar-right">
         <a-menu
           class="nav-item"
@@ -31,18 +35,11 @@
           <a-menu-item key="3" class="nav-link">
             <a href="https://www.haloummi.com" target="_blank">Haloummi</a>
           </a-menu-item>
-          <a-sub-menu>
-            <span slot="title" class="submenu-title-wrapper">Informasi</span>
-            <a-menu-item key="information:1">
-              <a
-                href="https://eservices.haj.gov.sa/eservices3/pages/VisaPaymentInquiry/VisaInquiry.xhtml?dswid=-7084"
-                target="_blank"
-              >Visa Progresif</a>
-            </a-menu-item>
-            <a-menu-item key="information:2">
-              <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank">Status Keberangkatan</a>
-            </a-menu-item>
-          </a-sub-menu>
+          <a-menu-item key="information" class="nav-link">
+            <a href="https://sipatuh.kemenag.go.id/umroh" target="_blank"
+              >Status Keberangkatan</a
+            >
+          </a-menu-item>
         </a-menu>
 
         <!-- before login -->
@@ -51,7 +48,8 @@
             <a-button
               class="btn-authentication b-shadow b-radius fw-500"
               @click="showAuthentication"
-            >Login/Daftar</a-button>
+              >Login/Daftar</a-button
+            >
           </div>
         </div>
 
@@ -84,7 +82,11 @@
           </a-button>
         </div>
         <a-divider />
-        <a-form class="ant-form-modal--login" :form="form" @submit="handleSubmitRegister">
+        <a-form
+          class="ant-form-modal--login"
+          :form="form"
+          @submit="handleSubmitRegister"
+        >
           <a-form-item>
             <a-input
               v-decorator="[
@@ -158,10 +160,14 @@
             </a-input>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" size="large" html-type="submit" block>Daftar</a-button>
+            <a-button type="primary" size="large" html-type="submit" block
+              >Daftar</a-button
+            >
             <div class="d-flex align-items-center mt-8">
               <div>
-                <a class="fs-14 cr-primary fw-400" @click="changeForm">atau Masuk disini</a>
+                <a class="fs-14 cr-primary fw-400" @click="changeForm"
+                  >atau Masuk disini</a
+                >
               </div>
               <div class="ml-auto">
                 <a class="fs-14 cr-gray fw-400" href>Lupa password?</a>
@@ -218,15 +224,22 @@
             >
               <a slot="suffix" class="cr-gray" @click="showPassword">
                 <a-icon v-if="passwordFieldType === 'password'" type="eye" />
-                <a-icon v-if="passwordFieldType === 'text'" type="eye-invisible" />
+                <a-icon
+                  v-if="passwordFieldType === 'text'"
+                  type="eye-invisible"
+                />
               </a>
             </a-input>
           </a-form-item>
           <a-form-item>
-            <a-button type="primary" size="large" @click="loginpost" block>Masuk</a-button>
+            <a-button type="primary" size="large" @click="loginpost" block
+              >Masuk</a-button
+            >
             <div class="d-flex align-items-center mt-8">
               <div>
-                <a class="fs-14 cr-primary fw-400" @click="changeForm">atau Daftar disini</a>
+                <a class="fs-14 cr-primary fw-400" @click="changeForm"
+                  >atau Daftar disini</a
+                >
               </div>
               <div class="ml-auto">
                 <a class="fs-14 cr-gray fw-400" href>Lupa password?</a>
@@ -236,12 +249,25 @@
         </a-form>
       </div>
     </a-modal>
+
+    <!-- menu mobile -->
+    <menu-mobile
+      :visible="visibleMenu"
+      :onClose="onClose"
+      :closable="closable"
+      :handleClickMenu="handleClickMenu"
+    />
   </a-layout-header>
 </template>
 <script>
+import MenuMobile from "./MenuMobile";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
 export default {
+  components: {
+    MenuMobile
+  },
+
   data() {
     return {
       authentication: false,
@@ -250,9 +276,12 @@ export default {
       password: "",
       passwordFieldType: "password",
       form: this.$form.createForm(this),
-      formValues: {}
+      formValues: {},
+      visibleMenu: false,
+      closable: false
     };
   },
+
   methods: {
     showAuthentication() {
       this.authentication = true;
@@ -263,6 +292,15 @@ export default {
     },
     changeForm() {
       this.isShowing = !this.isShowing;
+    },
+    showDrawer() {
+      this.visibleMenu = true;
+    },
+    onClose() {
+      this.visibleMenu = false;
+    },
+    handleClickMenu() {
+      this.visibleMenu = false;
     },
 
     // handleSubmitLogin(e) {

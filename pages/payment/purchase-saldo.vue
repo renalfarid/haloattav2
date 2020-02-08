@@ -1,5 +1,8 @@
 <template>
-  <a-layout class="ant-layout--payment">
+  <a-layout
+    class="ant-layout--payment"
+    :style="{ 'background-color': '#f7f7f7' }"
+  >
     <a-layout-header class="ant-layout-header--payment">
       <div class="ant-logo">
         <nuxt-link to="/">
@@ -12,130 +15,100 @@
         <a-step title="E-Paket Terbit" />
       </a-steps>
     </a-layout-header>
-    <a-layout-content
-      class="ant-layout-content--payment-purchase"
-      :style="{ minHeight: '90vh' }"
-    >
+
+    <a-layout-content class="ant-layout-content--payment-purchase">
       <div class="container">
-        <a-row type="flex" justify="center">
-          <a-col :span="20">
-            <a-row :gutter="32">
-              <a-col :span="16">
-                <a-list
-                  itemLayout="horizontal"
-                  class="ant-list--package-information"
+        <a-row :gutter="24">
+          <a-col
+            :xs="24"
+            :sm="24"
+            :md="24"
+            :lg="8"
+            class="sticky-top mb-24"
+            :style="{ float: 'right' }"
+          >
+            <sider-detail-transaction />
+          </a-col>
+
+          <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
+            <h3 class="fw-600 cr-black mt-8 mb-0">Metode Pembayaran</h3>
+            <p class="fs-14 fw-400 cr-black-opacity mb-16">
+              Pilih Metode pembayaran ATM/Bank Transfer atau Saldo
+            </p>
+
+            <a-card class="b-radius b-solid mb-24">
+              <div class="ant-package--information-bill mt-16 mb-16">
+                <a-radio-group
+                  defaultValue="saldo"
+                  v-model="choosePaymentMethod"
+                  size="large"
                 >
-                  <a-list-item class="ant-list-item--package-information">
-                    <div class="w-100">
-                      <div
-                        class="ant-package--information-title fs-20 cr-black fw-500 mb-0"
-                      >
-                        <span>Pembayaran</span>
-                      </div>
-                      <div
-                        class="ant-package--information-text fs-16 cr-gray fw-400"
-                      >
-                        <span
-                          >Pilih metode pembayaran dan petunjuk untuk melakukan
-                          proses pembayaran pesanan anda</span
-                        >
-                      </div>
+                  <a-radio-button value="saldo" @click="nextPurchaseSaldo">
+                    <a-icon class="fs-40 mb-8" type="wallet" />
+                    <div class="fs-14 text-uppercase">
+                      Saldo Halo Pay
                     </div>
-                  </a-list-item>
+                  </a-radio-button>
+                  <a-radio-button
+                    value="transfer"
+                    @click="nextPurchaseTransfer"
+                  >
+                    <a-icon class="fs-40 mb-8" type="credit-card" />
+                    <div class="fs-14 text-uppercase">
+                      ATM/Bank Transfer
+                    </div>
+                  </a-radio-button>
+                </a-radio-group>
+              </div>
 
-                  <a-list-item class="ant-list-item--package-information">
-                    <div class="w-100">
-                      <div
-                        class="ant-package--information-title fs-16 cr-black fw-500 mb-0"
-                      >
-                        <span>Bayar Menggunakan</span>
-                      </div>
-                      <div
-                        class="ant-package--information-text fs-14 cr-gray fw-400"
-                      >
-                        <span
-                          >Anda dapat melakukan pembayaran menggunakan Saldo
-                          Halo Pay atau ATM/Bank Transfer</span
+              <div class="ant-list-item--package-invoice">
+                <a-divider :style="{ margin: '40px 0' }"></a-divider>
+                <a-form layout="vertical" hideRequiredMark>
+                  <a-row
+                    :gutter="16"
+                    type="flex"
+                    justify="space-around"
+                    align="bottom"
+                  >
+                    <a-col :span="16">
+                      <a-form-item label="Jumlah Saldo Anda">
+                        <a-input
+                          size="large"
+                          :value="this.$store.state.auth.saldo | currency"
+                          disabled
+                        ></a-input>
+                      </a-form-item>
+                    </a-col>
+                    <a-col :span="8">
+                      <a-form-item>
+                        <a-button
+                          class="ant-btn--action-outline b-shadow b-radius"
+                          size="large"
+                          block
                         >
-                      </div>
-
-                      <a-card :style="{ margin: '16px 0 24px 0' }">
-                        <div class="ant-package--information-bill mt-16 mb-16">
-                          <a-radio-group
-                            defaultValue="saldo"
-                            v-model="choosePaymentMethod"
-                            size="large"
+                          <nuxt-link to="/accounts/top-up"
+                            >Top Up Saldo</nuxt-link
                           >
-                            <a-radio-button
-                              value="saldo"
-                              @click="nextPurchaseSaldo"
-                            >
-                              <a-icon class="fs-40 mb-8" type="wallet" />
-                              <div class="fs-14 text-uppercase">
-                                Saldo Halo Pay
-                              </div>
-                            </a-radio-button>
-                            <a-radio-button
-                              value="transfer"
-                              @click="nextPurchaseTransfer"
-                            >
-                              <a-icon class="fs-40 mb-8" type="credit-card" />
-                              <div class="fs-14 text-uppercase">
-                                ATM/Bank Transfer
-                              </div>
-                            </a-radio-button>
-                          </a-radio-group>
-                        </div>
-                        <div class="ant-list-item--package-invoice">
-                          <a-divider :style="{ margin: '40px 0' }"></a-divider>
-                          <a-form layout="vertical" hideRequiredMark>
-                            <a-row
-                              :gutter="16"
-                              type="flex"
-                              justify="space-around"
-                              align="bottom"
-                            >
-                              <a-col :span="16">
-                                <a-form-item label="Jumlah Saldo Anda">
-                                  <a-input
-                                    size="large"
-                                    :value="
-                                      this.$store.state.auth.saldo | currency
-                                    "
-                                    disabled
-                                  ></a-input>
-                                </a-form-item>
-                              </a-col>
-                              <a-col :span="8">
-                                <a-form-item>
-                                  <a-button
-                                    class="ant-btn--action-outline b-shadow b-radius"
-                                    size="large"
-                                    block
-                                  >
-                                    <nuxt-link to="/accounts/top-up"
-                                      >Top Up Saldo</nuxt-link
-                                    >
-                                  </a-button>
-                                </a-form-item>
-                              </a-col>
-                            </a-row>
-                          </a-form>
-                          <ul class="m-0 pl-16">
-                            <li class="fs-13 cr-gray">
-                              Pastikan saldo anda mencukupi untuk melakukan
-                              transaksi pesanan anda
-                            </li>
-                            <li class="fs-13 cr-gray">
-                              Tambah saldo jika tidak mencukupi untuk melakukan
-                              transaksi pesanan anda
-                            </li>
-                          </ul>
-                        </div>
-                      </a-card>
+                        </a-button>
+                      </a-form-item>
+                    </a-col>
+                  </a-row>
+                </a-form>
+                <ul class="m-0 pl-16">
+                  <li class="fs-13 cr-gray">
+                    Pastikan saldo anda mencukupi untuk melakukan transaksi
+                    pesanan anda
+                  </li>
+                  <li class="fs-13 cr-gray">
+                    Tambah saldo jika tidak mencukupi untuk melakukan transaksi
+                    pesanan anda
+                  </li>
+                </ul>
+              </div>
+            </a-card>
 
-                      <!-- Add code voucher -->
-                      <!-- <a-card :style="{margin: '16px 0 24px 0'}">
+            <!-- Add code voucher -->
+            <!-- <a-card :style="{margin: '16px 0 24px 0'}">
                         <div class="ant-package--information-bill mt-16 mb-16">
                           <a-row :gutter="16">
                             <a-col :span="16">
@@ -156,94 +129,81 @@
                         </div>
                       </a-card>-->
 
-                      <!-- Payment choose Deposit -->
-                      <div class="ant-list-item--package-invoice">
-                        <div class="w-100">
-                          <a-form layout="vertical" hideRequiredMark>
-                            <a-card class="mb-24">
-                              <template slot="title"
-                                ><span>Total Pembayaran</span></template
-                              >
+            <!-- Payment choose Deposit -->
 
-                              <a-form-item label="Subtotal">
-                                <a-input
-                                  size="large"
-                                  :value="
-                                    (item.total_tagihan - item.kode_unik)
-                                      | currency
-                                  "
-                                  disabled
-                                ></a-input>
-                              </a-form-item>
+            <a-form layout="vertical" hideRequiredMark>
+              <h3 class="fw-600 cr-black mt-8">Total Pembayaran</h3>
+              <a-card class="b-radius b-solid mb-24">
+                <a-form-item label="Subtotal">
+                  <a-input
+                    size="large"
+                    :value="(item.total_tagihan - item.kode_unik) | currency"
+                    disabled
+                  ></a-input>
+                </a-form-item>
 
-                              <a-form-item label="Kode Unik">
-                                <a-input
-                                  size="large"
-                                  :value="item.kode_unik"
-                                  disabled
-                                ></a-input>
-                              </a-form-item>
+                <a-form-item label="Kode Unik">
+                  <a-input
+                    size="large"
+                    :value="item.kode_unik"
+                    disabled
+                  ></a-input>
+                </a-form-item>
 
-                              <a-form-item label="Total Bayar">
-                                <a-input
-                                  size="large"
-                                  :value="price | currency"
-                                  :style="{ 'text-align': 'left' }"
-                                  disabled
-                                />
-                              </a-form-item>
-                            </a-card>
+                <a-form-item label="Total Bayar">
+                  <a-input
+                    size="large"
+                    :value="price | currency"
+                    :style="{ 'text-align': 'left' }"
+                    disabled
+                  />
+                </a-form-item>
+              </a-card>
 
-                            <div class="text-right">
-                              <a-button
-                                size="large"
-                                class="ant-btn--action"
-                                @click="nextPaymentConfirmation"
-                                >Bayar Sekarang</a-button
-                              >
-                            </div>
-                          </a-form>
-                        </div>
-                      </div>
-                      <!-- End payment choose Deposit -->
-                    </div>
-                  </a-list-item>
-                </a-list>
-              </a-col>
-              <!-- card sider -->
-              <a-col :span="8">
-                <siderPayment :total="price" />
-              </a-col>
-            </a-row>
+              <div class="text-right">
+                <a-button
+                  size="large"
+                  class="ant-btn--action"
+                  @click="nextPaymentConfirmation"
+                  >Bayar Sekarang</a-button
+                >
+              </div>
+            </a-form>
           </a-col>
         </a-row>
       </div>
     </a-layout-content>
-    <a-layout-footer class="ant-layout-footer--payment-order">
+
+    <a-layout-footer
+      class="ant-layout-footer--payment"
+      :style="{ 'background-color': '#f7f7f7','text-align':'center' }"
+    >
       <div class="container">
-        <a-row type="flex" justify="center">
-          <a-col :span="20">© 2016 - 2019 Haloatta Travel Technology</a-col>
-        </a-row>
+        2016 - {{ new Date().getFullYear() }} © PT. NUH Teknologi Solution
       </div>
     </a-layout-footer>
   </a-layout>
 </template>
 <script>
+import SiderDetailTransaction from "@/components/Payment/Sider/DetailTransaction";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
-import siderPayment from "@/pages/payment/sider.vue";
 import moment from "moment";
 export default {
   layout: "application",
   name: "purchase",
+  components: { SiderDetailTransaction },
+
   head() {
     return {
       title: "Haloatta - Booking Paket Umrah & Komponen Umrah Terlengkap"
     };
   },
+
   beforeCreate() {
     this.form = this.$form.createForm(this);
   },
+
   data() {
     return {
       choosePaymentMethod: "saldo",
@@ -254,9 +214,11 @@ export default {
       minDp: 0
     };
   },
+
   created: function() {
     this.getdata();
   },
+  
   methods: {
     moment,
     onChange(e) {
@@ -369,9 +331,6 @@ export default {
         }
       });
     }
-  },
-  components: {
-    siderPayment
   }
 };
 </script>

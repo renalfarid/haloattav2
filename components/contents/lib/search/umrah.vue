@@ -55,7 +55,7 @@
     </a-row>
 
     <a-row :gutter="16">
-      <a-col :span="12">
+      <a-col :span="24">
         <a-form-item label="Bulan Keberangkatan" hasFeedback>
           <div class="icon-search">
             <a-icon type="calendar" />

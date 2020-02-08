@@ -138,3 +138,15 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@media (max-width: 992px) {
+  .ant-layout--results-filter {
+    & .ant-card--results-filter {
+      & .ant-card-body {
+        display: inline-block !important;
+      }
+    }
+  }
+}
+</style>

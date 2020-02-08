@@ -1,5 +1,8 @@
 <template>
-  <a-layout class="ant-layout--payment">
+  <a-layout
+    class="ant-layout--payment"
+    :style="{ 'background-color': '#f7f7f7' }"
+  >
     <a-layout-header class="ant-layout-header--payment">
       <div class="ant-logo">
         <nuxt-link to="/">
@@ -9,88 +12,111 @@
       <a-steps :current="1" size="small">
         <a-step title="Data Pemesan" />
         <a-step title="Pembayaran" />
-        <a-step title="E-Paket Terbit" />
+        <a-step title="Konfirmasi" />
       </a-steps>
     </a-layout-header>
-    <a-layout-content
-      class="ant-layout-content--payment-purchase"
-      :style="{ minHeight: '90vh' }"
-    >
+
+    <a-layout-content class="ant-layout-content--payment-purchase">
       <div class="container">
-        <a-row type="flex" justify="center">
-          <a-col :span="20">
-            <a-row :gutter="32">
-              <a-col :span="16">
-                <a-list
-                  itemLayout="horizontal"
-                  class="ant-list--package-information"
+        <a-row :gutter="24">
+          <a-col
+            :xs="24"
+            :sm="24"
+            :md="24"
+            :lg="8"
+            class="sticky-top mb-24"
+            :style="{ float: 'right' }"
+          >
+            <sider-detail-transaction :noTrans="noTrans" :tglTrans="tglTrans" :namaPaket="namaPaket" :berangkat="berangkat" :program="program" :total="totalTagihan" :pax="pax" />
+          </a-col>
+
+          <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
+
+              <a-card class="b-solid b-radius text-center mb-24">
+                <div
+                  class="ant-package--information-title fs-15 cr-black fw-500"
                 >
-                  <a-list-item class="ant-list-item--package-information">
-                    <div class="w-100">
-                      <div
-                        class="ant-package--information-title fs-20 cr-black fw-500 mb-0"
+                  <span>Selesaikan Pembayaran Anda Sebelum</span>
+                </div>
+
+                <client-only>
+                  <countdown
+                    class="ant-countdown"
+                    :time="2 * 24 * 60 * 60 * 1000"
+                  >
+                    <div
+                      class="ant-countdown--item mt-16 mb-16"
+                      slot-scope="props"
+                    >
+                      <span
+                        class="ant-countdown--item-time fs-24 cr-black fw-400"
+                        >{{ props.days }}</span
                       >
-                        <span>Pembayaran</span>
-                      </div>
-                      <div
-                        class="ant-package--information-text fs-16 cr-gray fw-400"
+                      h
+                      <a-divider type="vertical" />
+                      <span
+                        class="ant-countdown--item-time fs-24 cr-black fw-400"
+                        >{{ props.hours }}</span
                       >
-                        <span
-                          >Pilih metode pembayaran dan petunjuk untuk melakukan
-                          proses pembayaran pesanan anda
-                          {{ $store.state.auth.nama }}</span
-                        >
-                      </div>
+                      j
+                      <a-divider type="vertical" />
+                      <span
+                        class="ant-countdown--item-time fs-24 cr-black fw-400"
+                        >{{ props.minutes }}</span
+                      >
+                      m
+                      <a-divider type="vertical" />
+                      <span
+                        class="ant-countdown--item-time fs-24 cr-red fw-400"
+                        >{{ props.seconds }}</span
+                      >
+                      d
                     </div>
-                  </a-list-item>
+                  </countdown>
+                </client-only>
 
-                  <a-list-item class="ant-list-item--package-information">
-                    <div class="w-100">
-                      <div
-                        class="ant-package--information-title fs-16 cr-black fw-500 mb-0"
-                      >
-                        <span>Bayar Menggunakan</span>
-                      </div>
-                      <div
-                        class="ant-package--information-text fs-14 cr-gray fw-400"
-                      >
-                        <span
-                          >Anda dapat melakukan pembayaran menggunakan Saldo
-                          Halo Pay atau ATM/Bank Transfer</span
-                        >
-                      </div>
+                <div
+                  class="ant-package--information-title fs-14 cr-gray fw-400"
+                >
+                  Batas waktu pembayaran anda sebelum tanggal
+                  <span class="cr-primary ml-8">
+                    <span>{{ item.limit_pembayaran }}</span>
+                  </span>
+                </div>
+              </a-card>
 
-                      <a-card :style="{ margin: '16px 0 24px 0' }">
-                        <div class="ant-package--information-bill mt-16 mb-16">
-                          <a-radio-group
-                            defaultValue="saldo"
-                            v-model="choosePaymentMethod"
-                            size="large"
-                          >
-                            <a-radio-button
-                              value="saldo"
-                              @click="nextPurchaseSaldo"
-                            >
-                              <a-icon class="fs-40 mb-8" type="wallet" />
-                              <div class="fs-14 text-uppercase">
-                                Saldo Halo Pay
-                              </div>
-                            </a-radio-button>
-                            <a-radio-button
-                              value="transfer"
-                              @click="nextPurchaseTransfer"
-                            >
-                              <a-icon class="fs-40 mb-8" type="credit-card" />
-                              <div class="fs-14 text-uppercase">
-                                ATM/Bank Transfer
-                              </div>
-                            </a-radio-button>
-                          </a-radio-group>
-                        </div>
-                      </a-card>
+            <h3 class="fw-600 cr-black mt-8 mb-0">Metode Pembayaran</h3>
+            <p class="fs-14 fw-400 cr-black-opacity mb-16">
+              Pilih Metode pembayaran ATM/Bank Transfer atau Saldo
+            </p>
+            <a-card class="b-solid b-radius mb-24">
+              <div class="ant-package--information-bill mt-16 mb-16">
+                <a-radio-group
+                  defaultValue="saldo"
+                  v-model="choosePaymentMethod"
+                  size="large"
+                >
+                  <a-radio-button value="saldo" @click="nextPurchaseSaldo">
+                    <a-icon class="fs-40 mb-8" type="wallet" />
+                    <div class="fs-14 text-uppercase">
+                      Saldo Halo Pay
+                    </div>
+                  </a-radio-button>
+                  <a-radio-button
+                    value="transfer"
+                    @click="nextPurchaseTransfer"
+                  >
+                    <a-icon class="fs-40 mb-8" type="credit-card" />
+                    <div class="fs-14 text-uppercase">
+                      ATM/Bank Transfer
+                    </div>
+                  </a-radio-button>
+                </a-radio-group>
+              </div>
+            </a-card>
 
-                      <!-- Add code voucher -->
-                      <!-- <a-card :style="{margin: '16px 0 24px 0'}">
+            <!-- Add code voucher -->
+            <!-- <a-card :style="{margin: '16px 0 24px 0'}">
                         <div class="ant-package--information-bill mt-16 mb-16">
                           <a-row :gutter="16">
                             <a-col :span="16">
@@ -111,264 +137,232 @@
                         </div>
                       </a-card>-->
 
-                      <!-- Payment choose Transfer -->
-                      <a-form layout="vertical" hideRequiredMark>
-                        <div class="ant-list-item--package-invoice">
-                          <div class="w-100">
-                            <a-card class="text-center mb-24">
-                              <div
-                                class="ant-package--information-title fs-15 cr-black fw-500"
-                              >
-                                <span>Selesaikan Pembayaran Anda Sebelum</span>
-                              </div>
+            <!-- Payment choose Transfer -->
 
-                              <client-only>
-                                <countdown
-                                  class="ant-countdown"
-                                  :time="2 * 24 * 60 * 60 * 1000"
-                                >
-                                  <div
-                                    class="ant-countdown--item mt-16 mb-16"
-                                    slot-scope="props"
-                                  >
-                                    <span
-                                      class="ant-countdown--item-time fs-40 cr-black fw-400 f-default"
-                                      >{{ props.days }}</span
-                                    >
-                                    Hari
-                                    <a-divider type="vertical" />
-                                    <span
-                                      class="ant-countdown--item-time fs-40 cr-black fw-400 f-default"
-                                      >{{ props.hours }}</span
-                                    >
-                                    Jam
-                                    <a-divider type="vertical" />
-                                    <span
-                                      class="ant-countdown--item-time fs-40 cr-black fw-400 f-default"
-                                      >{{ props.minutes }}</span
-                                    >
-                                    Menit
-                                    <a-divider type="vertical" />
-                                    <span
-                                      class="ant-countdown--item-time fs-40 cr-red fw-400 f-default"
-                                      >{{ props.seconds }}</span
-                                    >
-                                    Detik
-                                  </div>
-                                </countdown>
-                              </client-only>
+            <a-form layout="vertical" hideRequiredMark>
+              <h3 class="fw-600 cr-black mt-8 mb-0">Tipe Pembayaran</h3>
+              <p class="fs-14 fw-400 cr-black-opacity mb-16">
+                Pilih tipe pembayaran Lunas atau Uang Muka (DP)
+              </p>
+              <a-card class="b-solid b-radius mb-16">
+                <a-radio-group @change="onChange" v-model="chosePayment">
+                  <a-radio value="PELUNASAN">
+                    <span class="fs-16 cr-black">Lunas</span>
+                  </a-radio>
+                  <a-radio value="DP"><span class="fs-16 cr-black">Uang Muka (DP 30%)</span></a-radio>
+                </a-radio-group>
+              </a-card>
 
-                              <div
-                                class="ant-package--information-title fs-14 cr-gray fw-400"
-                              >
-                                Batas waktu pembayaran anda sebelum tanggal
-                                <span class="cr-primary ml-8">
-                                  <span>{{ item.limit_pembayaran }}</span>
-                                </span>
-                              </div>
-                            </a-card>
+              <!-- <h3 class="fw-600 cr-black mt-8">Total Pembayaran</h3> -->
+              <div v-if="chosePayment === 'PELUNASAN'">
+                  <a-card class="b-solid b-radius mb-24">
+                    <a-form-item label="Subtotal">
+                      <a-input
+                        size="large"
+                        :value="item.total_tagihan | currency"
+                        disabled
+                      ></a-input>
+                    </a-form-item>
 
-                            <a-card class="mb-24">
-                              <template slot="title"
-                                ><span>Total Pembayaran</span></template
-                              >
+                    <a-form-item label="Kode Unik">
+                      <a-input
+                        size="large"
+                        :value="item.kode_unik"
+                        disabled
+                      ></a-input>
+                    </a-form-item>
 
-                              <a-form-item label="Subtotal">
-                                <a-input
-                                  size="large"
-                                  :value="
-                                    (item.total_tagihan - item.kode_unik)
-                                      | currency
-                                  "
-                                  disabled
-                                ></a-input>
-                              </a-form-item>
-
-                              <a-form-item label="Kode Unik">
-                                <a-input
-                                  size="large"
-                                  :value="item.kode_unik"
-                                  disabled
-                                ></a-input>
-                              </a-form-item>
-
-                              <a-form-item label="Total Bayar">
-                                <a-input
-                                  size="large"
-                                  :value="price | currency"
-                                  :style="{ 'text-align': 'left' }"
-                                  disabled
-                                >
-                                  <a-button
-                                    slot="addonAfter"
-                                    v-clipboard:copy="price"
-                                    v-clipboard:success="onCopy"
-                                    v-clipboard:error="onError"
-                                    class="ant-btn--action-outline"
-                                    size="small"
-                                    block
-                                    >Salin</a-button
-                                  >
-                                </a-input>
-                              </a-form-item>
-                              <div class="ant-price--info fw-400 fs-12">
-                                <span class="p-relative" style="z-index: 2">
-                                  <span
-                                    >PENTING! Mohon bayar sampai 3 digit
-                                    terakhir</span
-                                  >
-                                </span>
-                                <div class="ant-price--info-overlay"></div>
-                              </div>
-                            </a-card>
-
-                            <a-card class="mb-24">
-                              <template slot="title"
-                                ><span>Sisa Pembayaran</span></template
-                              >
-                              <a-form-item label="Sisa Bayar">
-                                <a-input
-                                  size="large"
-                                  :value="price | currency"
-                                  :style="{ 'text-align': 'left' }"
-                                  disabled
-                                />
-                              </a-form-item>
-                              <a-alert
-                                :showIcon="false"
-                                message="Jatuh tempo pelunasan atau sisa pembayaran 30 Hari sebelum keberangkatan!"
-                                :style="{
-                                  'margin-top': '16px',
-                                  'border-radius': '4px'
-                                }"
-                                banner
-                              />
-                            </a-card>
-
-                            <a-card class="md-card--bank mb-24">
-                              <template slot="title"
-                                >
-                                <span>Metode Pembayaran</span>
-                                <p :style="{ 'margin': '0', 'color': '#676767', 'font-size': '14px'}">
-                                  Bank Transfer (Verifikasi Manual)
-                                </p>
-                                </template
-                              >
-
-                              <a-radio-group
-                                name="radioGroup"
-                                v-model="paymentTypeBank"
-                                class="md-radio--group-bank"
-                              >
-                                <a-row>
-                                  <a-col :span="24">
-                                    <a-radio
-                                      :value="1"
-                                      class="fs-16 cr-black d-flex align-items-center"
-                                    >
-                                      <img
-                                        :src="
-                                          require('~/static/icons/bank/mandiri.png')
-                                        "
-                                        alt="MANDIRI"
-                                      />
-                                      MANDIRI
-                                    </a-radio>
-                                  </a-col>
-
-                                  <a-col :span="24">
-                                    <a-radio
-                                      :value="2"
-                                      class="fs-16 cr-black  d-flex align-items-center"
-                                      >
-                                      <img
-                                        :src="
-                                          require('~/static/icons/bank/bri.png')
-                                        "
-                                        alt="BRI"
-                                      />BRI</a-radio
-                                    >
-                                  </a-col>
-
-                                  <a-col :span="24">
-                                    <a-radio
-                                      :value="3"
-                                      class="fs-16 cr-black  d-flex align-items-center"
-                                      >
-                                      <img
-                                        :src="
-                                          require('~/static/icons/bank/bca.png')
-                                        "
-                                        alt="BCA"
-                                      />BCA</a-radio
-                                    >
-                                  </a-col>
-
-                                  <a-col :span="24">
-                                    <a-radio
-                                      :value="4"
-                                      class="fs-16 cr-black  d-flex align-items-center"
-                                      >
-                                      <img
-                                        :src="
-                                          require('~/static/icons/bank/bni.png')
-                                        "
-                                        alt="BNI"
-                                      />BNI</a-radio
-                                    >
-                                  </a-col>
-                                </a-row>
-                              </a-radio-group>
-                            </a-card>
-
-                            <div class="text-right">
-                              <a-button
-                                size="large"
-                                class="ant-btn--action"
-                                @click="nextPaymentConfirmation"
-                                >Bayar Sekarang</a-button
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </a-form>
-                      <!-- End payment choose Transfer -->
+                    <a-form-item label="Total Bayar">
+                      <a-input
+                        size="large"
+                        :value="(price + item.kode_unik) | currency"
+                        :style="{ 'text-align': 'left' }"
+                        disabled
+                      >
+                        <a-button
+                          slot="addonAfter"
+                          v-clipboard:copy="price"
+                          v-clipboard:success="onCopy"
+                          v-clipboard:error="onError"
+                          class="ant-btn--action-outline"
+                          size="small"
+                          block
+                          >Salin</a-button
+                        >
+                      </a-input>
+                    </a-form-item>
+                    <div class="ant-price--info fw-400 fs-12">
+                      <span class="p-relative" style="z-index: 2">
+                        <span>PENTING! Mohon bayar sampai 3 digit terakhir</span>
+                      </span>
+                      <div class="ant-price--info-overlay"></div>
                     </div>
-                  </a-list-item>
-                </a-list>
-              </a-col>
-              <!-- card sider -->
-              <a-col :span="8">
-                <siderPayment :total="price" />
-              </a-col>
-            </a-row>
+                  </a-card>
+              </div>
+
+              <div v-if="chosePayment === 'DP' ">
+                  <a-card class="b-solid b-radius mb-24">
+                    <a-form-item label="Subtotal">
+                      <a-input
+                        size="large"
+                        :value="priceDp | currency"
+                        disabled
+                      ></a-input>
+                    </a-form-item>
+
+                    <a-form-item label="Kode Unik">
+                      <a-input
+                        size="large"
+                        :value="item.kode_unik"
+                        disabled
+                      ></a-input>
+                    </a-form-item>
+
+                    <a-form-item label="Total Bayar">
+                      <a-input
+                        size="large"
+                        :value="(priceDp + item.kode_unik) | currency"
+                        :style="{ 'text-align': 'left' }"
+                        disabled
+                      >
+                        <a-button
+                          slot="addonAfter"
+                          v-clipboard:copy="priceDp+item.kode_unik"
+                          v-clipboard:success="onCopy"
+                          v-clipboard:error="onError"
+                          class="ant-btn--action-outline"
+                          size="small"
+                          block
+                          >Salin</a-button
+                        >
+                      </a-input>
+                    </a-form-item>
+                    <div class="ant-price--info fw-400 fs-12">
+                      <span class="p-relative" style="z-index: 2">
+                        <span>PENTING! Mohon bayar sampai 3 digit terakhir</span>
+                      </span>
+                      <div class="ant-price--info-overlay"></div>
+                    </div>
+                  </a-card>
+              </div>
+              
+
+              <h3 class="fw-600 cr-black mt-8 mb-0">ATM/Bank Pembayaran</h3>
+              <p class="fs-14 fw-400 cr-black-opacity mb-16">
+                Bank Transfer (Verifikasi Manual)
+              </p>
+              <a-card class="b-solid b-radius md-card--bank mb-24">
+                <a-radio-group
+                  name="radioGroup"
+                  v-model="paymentTypeBank"
+                  class="md-radio--group-bank"
+                >
+                  <a-row>
+                    <a-col :span="24">
+                      <a-radio
+                        :value="1"
+                        class="fs-16 cr-black d-flex align-items-center"
+                      >
+                        <img
+                          :src="require('~/static/icons/bank/mandiri.png')"
+                          alt="MANDIRI"
+                        />
+                        MANDIRI
+                      </a-radio>
+                    </a-col>
+
+                    <a-col :span="24">
+                      <a-radio
+                        :value="2"
+                        class="fs-16 cr-black  d-flex align-items-center"
+                      >
+                        <img
+                          :src="require('~/static/icons/bank/bri.png')"
+                          alt="BRI"
+                        />BRI</a-radio
+                      >
+                    </a-col>
+
+                    <a-col :span="24">
+                      <a-radio
+                        :value="3"
+                        class="fs-16 cr-black  d-flex align-items-center"
+                      >
+                        <img
+                          :src="require('~/static/icons/bank/bca.png')"
+                          alt="BCA"
+                        />BCA</a-radio
+                      >
+                    </a-col>
+
+                    <a-col :span="24">
+                      <a-radio
+                        :value="4"
+                        class="fs-16 cr-black  d-flex align-items-center"
+                      >
+                        <img
+                          :src="require('~/static/icons/bank/bni.png')"
+                          alt="BNI"
+                        />BNI</a-radio
+                      >
+                    </a-col>
+                  </a-row>
+                </a-radio-group>
+              </a-card>
+
+              <div class="text-right">
+                <a-button
+                  size="large"
+                  class="ant-btn--action"
+                  @click="nextPaymentConfirmation"
+                  >Bayar Sekarang</a-button
+                >
+              </div>
+            </a-form>
           </a-col>
         </a-row>
       </div>
     </a-layout-content>
-    <a-layout-footer class="ant-layout-footer--payment-order">
+
+    <a-layout-footer
+      class="ant-layout-footer--payment"
+      :style="{ 'background-color': '#f7f7f7', 'text-align': 'center' }"
+    >
       <div class="container">
-        <a-row type="flex" justify="center">
-          <a-col :span="20">© 2016 - 2019 Haloatta Travel Technology</a-col>
-        </a-row>
+        2016 - {{ new Date().getFullYear() }} © PT. NUH Teknologi Solution
       </div>
     </a-layout-footer>
   </a-layout>
 </template>
 <script>
-import siderPayment from "@/pages/payment/sider.vue";
+import SiderDetailTransaction from "@/components/Payment/Sider/DetailTransaction";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
 export default {
   layout: "application",
   name: "purchase",
+
+  components: {
+    SiderDetailTransaction
+  },
+
   head() {
     return {
       title: "Haloatta - Booking Paket Umrah & Komponen Umrah Terlengkap"
     };
   },
+
   data() {
     return {
+      namaPaket: "",
+      noTrans: "",
+      tglTrans: "",
+      program: "",
+      berangkat: "",
+      itemTransaksi: "",
+      pax: "",
+      totalTagihan: 0,
+
       choosePaymentMethod: "transfer",
       chosePayment: "PELUNASAN",
       paymentTypeBank: 1,
@@ -378,16 +372,35 @@ export default {
       minDp: 0
     };
   },
+
   created: function() {
     this.getdata();
+    this.getdataTransaksi();
+    
   },
+
   methods: {
+
     onChange(e) {
-      // console.log(`checked = ${e.target.value}`);
+      this.chosePayment = e.target.value;
+      
     },
+
     onChangePriceDp(value) {
       this.priceDp = value + this.item.kode_unik;
     },
+    
+    changePrice(){
+      if(this.chosePayment === 'PELUNASAN'){
+        this.price = this.item.total_tagihan
+        this.priceDp = this.item.total_tagihan * 0.3;
+      }
+      else {
+        this.price = this.item.total_tagihan
+        this.priceDp = this.item.total_tagihan * 0.3;
+      }
+    },
+
     nextPurchaseSaldo() {
       let params = this.$route.query;
       this.$router.push({
@@ -448,14 +461,45 @@ export default {
         .then(response => {
           this.item = response.data.data;
           this.price = this.item.total_tagihan;
-          this.priceDp = this.item.total_tagihan;
+          this.priceDp = this.item.total_tagihan * 0.3;
           this.minDP = (this.item.total_tagihan - this.item.kode_unik) * 0.3;
+          this.totalTagihan = this.item.total_tagihan;
           // console.log(this.item, "ini item");
         });
+    },
+
+    async getdataTransaksi() {
+      let params = this.$route.query;
+
+      const token = Cookie.get("auth");
+
+      const config = {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      };
+
+      axios
+        .post(
+          process.env.baseUrl + "transaksi/history-detail",
+          {
+            notrans: params.notrans
+          },
+          config
+        )
+        .then(response => {
+          this.itemTransaksi = response.data.data.index;
+          this.namaPaket = this.itemTransaksi.nama_paket;
+          this.noTrans = this.itemTransaksi.nomor_transaksi;
+          this.tglTrans = this.itemTransaksi.tanggal_pemesanan;
+          this.pax = this.itemTransaksi.pax;
+          this.program = this.itemTransaksi.program_hari;
+          this.berangkat = this.itemTransaksi.tanggal_keberangkatan;
+
+        });
     }
-  },
-  components: {
-    siderPayment
+
+
   }
 };
 </script>

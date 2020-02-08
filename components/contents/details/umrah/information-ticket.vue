@@ -1,29 +1,20 @@
 <template>
   <div v-if="data != null">
-    <a-card class="b-shadow b-solid mb-16">
+    <a-card class="b-solid mb-16">
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="ant-package--images w-100" style="z-index: inherit">
-            <a-row :gutter="10">
-              <a-col :span="8" v-for="getFoto in foto" :key="getFoto.id">
-                <div
-                  class="ant-package--images-small"
-                  v-if="getFoto.is_active == 'Y'"
-                >
-                  <expandable-image :src="getFoto.gambar" />
-                </div>
-              </a-col>
-              <!-- <a-col :span="8">
-                <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t7.jpg" />
-                </div>
-              </a-col>
-              <a-col :span="8">
-                <div class="ant-package--images-small">
-                  <expandable-image src="/maskapai/garuda/t8.jpg" />
-                </div>
-              </a-col>-->
-            </a-row>
+            <silentbox-group class="md-silentbox">
+              <silentbox-item
+              class="md-silentbox--item"
+                v-for="item in foto"
+                :key="item.id"
+                :src="item.gambar"
+                description=""
+              >
+              <div v-if="item.is_active == 'Y'" class="md-silentbox--item-images" v-lazy:background-image="item.gambar"></div>
+              </silentbox-item>
+            </silentbox-group>
           </div>
         </a-list-item>
 
@@ -39,8 +30,8 @@
         </a-list-item>
 
         <a-list-item class="ant-list-item--package-information">
-          <a-row :gutter="8" class="w-100">
-            <a-col :span="8">
+          <a-row :gutter="16" class="w-100">
+            <a-col :xs="24" :sm="12" :md="12" class="mb-16">
               <div class="d-flex align-items-start">
                 <a-avatar
                   style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -56,7 +47,7 @@
                 </div>
               </div>
             </a-col>
-            <a-col :span="8">
+            <a-col :xs="24" :sm="12" :md="12" class="mb-16">
               <div class="d-flex align-items-start">
                 <a-avatar
                   style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -72,7 +63,7 @@
                 </div>
               </div>
             </a-col>
-            <a-col :span="8">
+            <a-col :xs="24" :sm="12" :md="12" class="mb-16">
               <div class="d-flex align-items-start">
                 <a-avatar
                   style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -105,7 +96,7 @@
                 Jadwal Keberangkatan dan Kepulangan
               </div>
               <a-row :gutter="16">
-                <a-col :span="12">
+                <a-col :xs="24" :sm="12" :md="12" class="mb-16">
                   <div class="fs-14 fw-500 cr-black mb-16">Keberangkatan</div>
                   <a-timeline>
                     <a-timeline-item color="green">
@@ -126,8 +117,8 @@
                         <span>{{
                           moment(
                             data.tanggal_keberangkatan,
-                            'YYYY-MM-DD'
-                          ).format('LL')
+                            "YYYY-MM-DD"
+                          ).format("LL")
                         }}</span>
                       </div>
                     </a-timeline-item>
@@ -162,15 +153,15 @@
                         <span>{{
                           moment(
                             data.tanggal_keberangkatan,
-                            'YYYY-MM-DD'
-                          ).format('LL')
+                            "YYYY-MM-DD"
+                          ).format("LL")
                         }}</span>
                       </div>
                     </a-timeline-item>
                   </a-timeline>
                 </a-col>
 
-                <a-col :span="12">
+                <a-col :xs="24" :sm="12" :md="12" class="mb-16">
                   <div class="fs-14 fw-500 cr-black mb-16">Kepulangan</div>
                   <a-timeline>
                     <a-timeline-item color="green">
@@ -189,8 +180,8 @@
                       </div>
                       <div class="fs-15 fw-400 cr-gray">
                         <span>{{
-                          moment(data.tanggal_kepulangan, 'YYYY-MM-DD').format(
-                            'LL'
+                          moment(data.tanggal_kepulangan, "YYYY-MM-DD").format(
+                            "LL"
                           )
                         }}</span>
                       </div>
@@ -222,8 +213,8 @@
                       </div>
                       <div class="fs-15 fw-400 cr-gray">
                         <span>{{
-                          moment(data.tanggal_kepulangan, 'YYYY-MM-DD').format(
-                            'LL'
+                          moment(data.tanggal_kepulangan, "YYYY-MM-DD").format(
+                            "LL"
                           )
                         }}</span>
                       </div>
@@ -239,17 +230,17 @@
 
     <!-- Fasilitas -->
     <a-card
-      class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16"
+      class="bordered-left b-solid ant-list-item--package-information mb-16"
     >
-      <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk (api blm ada)</div>
+      <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk</div>
       <div class="fs-15 fw-400 cr-gray mb-24">
         Informasi fasilitas penerbangan anda
       </div>
-      <a-row :gutter="8">
-        <a-col :span="6">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -259,10 +250,10 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="6">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -272,10 +263,10 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="6">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -285,10 +276,10 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="6">
+        <a-col :xs="24" :sm="12" :md="12" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -303,9 +294,9 @@
   </div>
 </template>
 <script>
-import moment from 'moment';
+import moment from "moment";
 export default {
-  props: ['data', 'foto'],
+  props: ["data", "foto"],
   created() {
     this.getdetail();
   },

@@ -3,7 +3,7 @@
     <div class="ant-layout--results-space"></div>
     <div class="container">
       <div class="ant-layout--results-body">
-        <div class="ant-layout--results-top" :style="{ marginBottom: '20px' }">
+        <div class="ant-layout--results-top mb-24">
           <search-result-accommodation />
 
           <filter-result-accommodation />
@@ -13,12 +13,13 @@
           <div class="ant-layout--results-list-label fw-400">
             Hasil Pencarian LA Akomodasi
           </div>
+          
           <div
             v-infinite-scroll="loadMore"
             :infinite-scroll-disabled="busy"
             :infinite-scroll-distance="limit"
           >
-            <a-row :gutter="24">
+            <a-row :gutter="24" class="f-wrap">
               <a-col
                 :xs="24"
                 :sm="12"
@@ -26,106 +27,19 @@
                 :lg="8"
                 v-for="(item, index) in data"
                 :key="index"
-                :style="{ 'margin-bottom': '16px' }"
+                class="mb-16"
               >
-                <a-skeleton :loading="loading" active>
-                  <a-card class="ant-card-package" hoverable>
-                    <template slot="cover">
-                      <flickity
-                        class="md-flickity__images md-flickity__images-large"
-                        ref="flickityImages"
-                        :options="ItemSlider"
-                      >
-                        <div
-                          class="item-images"
-                          v-lazy:background-image="item.images_hotel"
-                        ></div>
-
-                        <div
-                          class="item-images"
-                          v-lazy:background-image="item.images_hotel"
-                        ></div>
-
-                        <div
-                          class="item-images"
-                          v-lazy:background-image="item.images_hotel"
-                        ></div>
-                      </flickity>
-                    </template>
-
-                    <nuxt-link
-                      :to="
-                        '/catalog/accommodation/detail?kode_produk=' +
-                          item.kode_produk
-                      "
-                      class="d-block"
-                    >
-                      <div :style="{ padding: '12px 24px' }">
-                        <div class="d-flex align-items-center">
-                          <a-avatar
-                            class="vendor-logo zIndex mr-8"
-                            v-lazy:background-image="item.foto"
-                          />
-                          <div
-                            class="fs-14 fw-400 f-default text-ellipsis cr-gray"
-                          >
-                            {{ item.nama_vendor }}
-                          </div>
-                          <div class="ml-auto">
-                            <a-rate
-                              :style="{ top: '-2px' }"
-                              class="fs-14 f-default"
-                              :defaultValue="4"
-                              disabled
-                            />
-                          </div>
-                        </div>
-
-                        <a-row
-                          :gutter="8"
-                          type="flex"
-                          justify="space-between"
-                          align="middle"
-                          class="mt-16 mb-8"
-                        >
-                          <a-col :span="12" class="text-left">
-                            <div
-                              class="fs-15 fw-500 cr-black text-capitalize text-ellipsis f-default"
-                            >
-                              {{ item.nama_hotel_mekkah }}
-                            </div>
-                            <div
-                              class="fs-13 fw-400 cr-black text-capitalize  d-none"
-                            >
-                              3 Hari Mekkah
-                            </div>
-                          </a-col>
-                          <a-col :span="12" class="text-right">
-                            <div
-                              class="fs-15 fw-500 cr-black text-capitalize text-ellipsis f-default"
-                            >
-                              {{ item.nama_hotel_madinah }}
-                            </div>
-                            <div
-                              class="fs-13 fw-400 cr-black text-capitalize d-none"
-                            >
-                              4 Hari Madinah
-                            </div>
-                          </a-col>
-                        </a-row>
-                      </div>
-
-                      <div class="md-card--bottom">
-                        <div class="md-duration">
-                          Program {{ item.days }} Hari
-                        </div>
-                        <div class="md-price">
-                          {{ item.harga_quad | currency }}
-                        </div>
-                      </div>
-                    </nuxt-link>
-                  </a-card>
-                </a-skeleton>
+                <package-accommodation
+                  :loading="loading"
+                  :package_name="item.nama"
+                  :images_hotel="item.images_hotel"
+                  :url="item.kode_produk"
+                  :vendor_name="item.nama_vendor"
+                  :vendor_logo="item.foto"
+                  :rate_hotel="item.kelas_bintang"
+                  :program="item.days"
+                  :pricing="item.harga_quad"
+                />
               </a-col>
             </a-row>
           </div>
@@ -135,30 +49,33 @@
   </div>
 </template>
 <script>
-import searchResultAccommodation from "~/components/contents/lib/search/result/accommodation.vue";
-import filterResultAccommodation from "~/components/contents/lib/filter/result/accommodation.vue";
+import searchResultAccommodation from "@/components/contents/lib/search/result/accommodation.vue";
+import filterResultAccommodation from "@/components/contents/lib/filter/result/accommodation.vue";
+import PackageAccommodation from "@/components/Template/Accommodation";
 import axios from "axios";
 import moment from "moment";
 export default {
   name: "accommodationResult",
+
+  components: {
+    searchResultAccommodation,
+    filterResultAccommodation,
+    PackageAccommodation
+  },
+
   head() {
     return {
       title:
         "Hasil Pencarian LA Akomodasi - Pesan Paket Umrah & Komponen Umrah Lainnya"
     };
   },
+
   data() {
     return {
       loading: true,
       busy: false,
       limit: 8,
-      data: [],
-      ItemSlider: {
-        groupCells: true,
-        prevNextButtons: true,
-        pageDots: false,
-        contain: true
-      }
+      data: []
     };
   },
 
@@ -190,10 +107,6 @@ export default {
           this.busy = false;
         });
     }
-  },
-  components: {
-    searchResultAccommodation,
-    filterResultAccommodation
   }
 };
 </script>
