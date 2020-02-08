@@ -363,6 +363,8 @@ export default {
       pax: "",
       totalTagihan: 0,
 
+      listBank: [],
+
       choosePaymentMethod: "transfer",
       chosePayment: "PELUNASAN",
       paymentTypeBank: 1,
@@ -383,6 +385,8 @@ export default {
 
     onChange(e) {
       this.chosePayment = e.target.value;
+      this.paymentTypeBank = e.target.value;
+      console.log(this.paymentTypeBank);
       
     },
 
@@ -439,6 +443,15 @@ export default {
     onError: function(e) {
       this.$message.success("Gagal menyalin");
     },
+
+    async getBank() {
+      axios.get(
+           process.env.baseUrl + "api/option/getbank"
+      ).then(response => {
+        
+      })
+    },
+
     async getdata() {
       let params = this.$route.query;
 
