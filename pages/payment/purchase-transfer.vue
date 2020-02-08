@@ -175,7 +175,7 @@
                     <a-form-item label="Total Bayar">
                       <a-input
                         size="large"
-                        :value="(price + item.kode_unik) | currency"
+                        :value="price | currency"
                         :style="{ 'text-align': 'left' }"
                         disabled
                       >
@@ -221,13 +221,13 @@
                     <a-form-item label="Total Bayar">
                       <a-input
                         size="large"
-                        :value="(priceDp + item.kode_unik) | currency"
+                        :value="(priceDp) | currency"
                         :style="{ 'text-align': 'left' }"
                         disabled
                       >
                         <a-button
                           slot="addonAfter"
-                          v-clipboard:copy="priceDp+item.kode_unik"
+                          v-clipboard:copy="priceDp"
                           v-clipboard:success="onCopy"
                           v-clipboard:error="onError"
                           class="ant-btn--action-outline"
