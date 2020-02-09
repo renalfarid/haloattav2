@@ -113,26 +113,26 @@ export default {
       this.sortLabel = selectedOptions.map(o => o.label).join(", ");
     },
     optionMaskapai() {
-      this.$props.maskapai.forEach((val, key) => {
-        this.maskapaiData[key] = {
-          value: val.nama_maskapai,
-          label: val.nama_maskapai.toUpperCase()
-        };
-      });
+      // this.$props.maskapai.forEach((val, key) => {
+      //   this.maskapaiData[key] = {
+      //     value: val.nama_maskapai,
+      //     label: val.nama_maskapai.toUpperCase()
+      //   };
+      // });
 
-      this.$props.bintang.forEach((val, key) => {
-        this.hotelData[key] = {
-          value: val.kelas_bintang,
-          label: "Bintang " + val.kelas_bintang
-        };
-      });
+      // this.$props.bintang.forEach((val, key) => {
+      //   this.hotelData[key] = {
+      //     value: val.kelas_bintang,
+      //     label: "Bintang " + val.kelas_bintang
+      //   };
+      // });
 
-      this.$props.vendor.forEach((val, key) => {
-        this.umarohData[key] = {
-          value: val.nama_vendor,
-          label: val.nama_vendor.toUpperCase()
-        };
-      });
+      // this.$props.vendor.forEach((val, key) => {
+      //   this.umarohData[key] = {
+      //     value: val.nama_vendor,
+      //     label: val.nama_vendor.toUpperCase()
+      //   };
+      // });
     }
   }
 };
