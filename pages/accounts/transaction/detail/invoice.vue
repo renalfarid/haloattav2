@@ -90,7 +90,7 @@
                 <div class="fs-14 fw-500 cr-black">Nomor Invoice</div>
                 <div class="fs-14 fw-400 cr-gray">{{this.$route.query.notrans}}</div>
               </div>
-              
+
               <div class="mb-16">
                 <div class="fs-14 fw-500 cr-black">Tanggal Pembelian</div>
                 <div class="fs-14 fw-400 cr-gray">{{ tagihan.tgltrans }}</div>
@@ -226,15 +226,17 @@
             <div class="fs-14 fw-500 cr-black f-default text-ellipsis">{{order.nama}}</div>
             <div class="fs-14 fw-400 cr-black">{{ tagihan.tgl_berangkat }}</div>
           </a-col>
-          
+
           <a-col :span="3">
             <div class="fs-14 fw-500 cr-black">{{order.jmh_satuan}}</div>
           </a-col>
           <a-col :span="6" class="text-right">
             <div class="fs-14 fw-500 cr-black">{{order.hargajual_satuan | currency}}</div>
           </a-col>
-           <a-col :span="6" class="text-right">
-            <div class="fs-14 fw-500 cr-black">{{order.jmh_satuan * order.hargajual_satuan | currency}}</div>
+          <a-col :span="6" class="text-right">
+            <div
+              class="fs-14 fw-500 cr-black"
+            >{{order.jmh_satuan * order.hargajual_satuan | currency}}</div>
           </a-col>
         </a-row>
 
@@ -250,7 +252,7 @@
                 <div class="fs-14 fw-500 cr-black">{{tagihan.hargajual | currency}}</div>
               </a-col>
             </a-row>
-            
+
             <a-divider></a-divider>
             <a-row :gutter="16">
               <a-col :span="12">
@@ -295,7 +297,7 @@
           <a-button type="primary" size="large" class="fs-15 fw-500 b-shadow b-radius f-default">
             <nuxt-link
               :to="
-                        '/accounts/e-confirm?notrans=' + this.$route.query.notrans
+                        '/payment/purchase-transfer?notrans=' + this.$route.query.notrans
                       "
               class="f-default"
             >Ya, Saya Sudah Bayar</nuxt-link>
