@@ -59,9 +59,9 @@
               </a-col>
               <a-col :span="6" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Total Tagihan</div>
-                <div class="fs-14 fw-500 cr-black">
-                  {{ item.total_bayar + item.sisa_pembayaran | currency }}
-                </div>
+                <div
+                  class="fs-14 fw-500 cr-black"
+                >{{ item.total_bayar + item.sisa_pembayaran | currency }}</div>
               </a-col>
             </a-row>
 
@@ -110,7 +110,7 @@
                   <div class="fs-14 fw-500 cr-black f-default">{{ item.nama_paket }}</div>
                 </div>
               </a-col>
-             
+
               <a-col :span="6" class="text-right">
                 <div class="fs-14 fw-400 cr-gray">Total Bayar</div>
                 <div class="fs-14 fw-500 cr-red">
@@ -154,10 +154,7 @@
                 >
                   <span>{{ item.status_bayar }}</span>
                 </div>
-                <div
-                  class="fs-14 fw-500 cr-green"
-                  v-if="item.status_bayar === 'Lunas'"
-                >
+                <div class="fs-14 fw-500 cr-green" v-if="item.status_bayar === 'Lunas'">
                   <span>{{ item.status_bayar }}</span>
                 </div>
               </a-col>
@@ -196,7 +193,7 @@
                     >Bayar Sekarang</a-button>-->
                     <nuxt-link
                       :to="
-                        '/accounts/e-confirm?notrans=' + item.nomor_transaksi
+                        '/payment/purchase-transfer?notrans=' + item.nomor_transaksi
                       "
                     >Bayar Sekarang</nuxt-link>
                   </div>
