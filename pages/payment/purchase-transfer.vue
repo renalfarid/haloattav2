@@ -277,7 +277,7 @@ export default {
       itemTransaksi: "",
       pax: "",
       totalTagihan: 0,
-      kdBank: "",
+      kdBank: "MANDIRI-ATTA",
 
       listBank: [],
 
