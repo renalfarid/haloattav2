@@ -6,6 +6,10 @@
       </a-col>
 
       <a-col :span="24">
+        <Cities />
+      </a-col>
+
+      <a-col :span="24">
         <UmrahRecommended />
       </a-col>
 
@@ -30,6 +34,7 @@
 
 <script>
 import HeroSearch from "./HeroSearch";
+import Cities from "./Cities";
 import UmrahRecommended from "@/components/contents/catalog/umrah/recommended";
 import UmrahLatest from "@/components/contents/catalog/umrah/latest";
 import Banner from "./Banner";
@@ -38,6 +43,7 @@ import Haloummi from "./Haloummi";
 export default {
   components: {
     HeroSearch,
+    Cities,
     UmrahLatest,
     UmrahRecommended,
     Banner,
