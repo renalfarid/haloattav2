@@ -54,7 +54,7 @@
 
     <div class="content-recommended--ticket-group pb-40">
       <div class="container">
-        <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi untuk kamu</a-divider>
+        <h2 class="md-title">Rekomendasi Haloatta</h2>
         <Recommended />
       </div>
     </div>

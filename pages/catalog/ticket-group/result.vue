@@ -44,6 +44,7 @@
                   :to_flight_time="item.tiba_kepulangan"
                   :program="item.program_hari"
                   :pricing="item.harga_jual"
+                  :qty="item.qty"
                   :url="item.kode_produk"
                 />
               </a-col>

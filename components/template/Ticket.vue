@@ -33,6 +33,11 @@
           </div>
           <div class="label-trip cr-black-opacity">Pulang Pergi</div>
         </div>
+
+        <div class="md-pax--ticket">
+          <div class="md-pax--number">{{ qty }}</div>
+          <div class="md-pax--label">Pax</div>
+        </div>
       </template>
 
       <nuxt-link
@@ -122,7 +127,7 @@
             class="fs-20 fw-600 cr-black"
             :style="{ 'line-height': 'normal' }"
           >
-            {{ pricing | currency }}
+            {{ pricing | currency }} <span class="fs-14 fw-400 cr-black-opacity">/pax</span>
           </div>
 
           <div class="ml-auto fs-14 fw-400 cr-black-opacity text-capitalize">
@@ -154,6 +159,7 @@ export default {
 
     program: Number,
     pricing: Number,
+    qty: Number,
 
     url: String,
 
@@ -202,16 +208,16 @@ export default {
 
 <style lang="scss">
 .md-tag--round-trip {
-  background-color: #ffffff;
+  background-color: rgba($color: #fff, $alpha: .85);
   height: 28px;
   position: absolute;
   border-radius: 50px;
   width: auto;
-  left: 16px;
+  right: 16px;
   top: 16px;
   & .icons-trip {
-    background-color: rgb(82, 196, 26);
-    border: 1px solid #ffffff;
+    background-color: #6c63ff;
+    border: 1px solid rgba($color: #fff, $alpha: .85);
     border-radius: 50px;
     width: 28px;
     height: 28px;
@@ -223,6 +229,31 @@ export default {
   }
   & .label-trip {
     padding: 0 14px 0 6px;
+  }
+}
+
+.md-pax--ticket {
+  background-color: #6c63ff;
+  position: absolute;
+  border-radius: 50px;
+  text-align: center;
+  line-height: normal;
+  padding: 12px 0;
+  height: 56px;
+  width: 56px;
+  left: 16px;
+  top: 16px;
+  & .md-pax--number {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  & .md-pax--label {
+    color: rgba($color: #ffffff, $alpha: .85);
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
   }
 }
 
