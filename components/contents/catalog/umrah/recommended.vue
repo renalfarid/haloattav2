@@ -1,5 +1,5 @@
 <template>
-  <div class="content-recomended" v-if="latests.length > 0">
+  <div class="content-recomended mt-32" v-if="latests.length > 0">
     <div class="container">
       <h2 class="md-title">
         Rekomendasi Haloatta
@@ -24,7 +24,7 @@
                   :options="ItemSlider"
                 >
                   <div
-                    v-for="(hotel, index) in latest.gambar_hotel"
+                    v-for="(hotel, index) in latest.gambar_hotel.slice(1, 4)"
                     :key="index"
                     class="item-images"
                     v-lazy:background-image="hotel.gambar"
@@ -158,6 +158,7 @@ export default {
       latests: [],
       ItemSlider: {
         prevNextButtons: false,
+        wrapAround: true,
         pageDots: true
       }
     };
@@ -169,8 +170,8 @@ export default {
 
   methods: {
     async getLatests() {
-      axios.get(process.env.baseUrl + "paket/umroh/all").then(response => {
-        this.latests = response.data.data.data.slice(3, 6);
+      axios.get(process.env.baseUrl + "paket/umroh/recomended").then(response => {
+        this.latests = response.data.data.data.slice(0, 3);
         this.loading = false;
       });
     }

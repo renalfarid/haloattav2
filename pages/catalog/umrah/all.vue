@@ -175,7 +175,7 @@
                         >
                           <div
                             v-for="(hotel,
-                            index) in recommendation.gambar_hotel"
+                            index) in recommendation.gambar_hotel.slice(1, 4)"
                             :key="index"
                             class="item-images"
                             v-lazy:background-image="hotel.gambar"
@@ -336,6 +336,7 @@ export default {
       allRecommendations: [],
       ItemSlider: {
         prevNextButtons: false,
+        wrapAround: true,
         pageDots: true
       },
       option: {

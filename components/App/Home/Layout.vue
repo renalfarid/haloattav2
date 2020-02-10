@@ -6,11 +6,11 @@
       </a-col>
 
       <a-col :span="24">
-        <UmrahFavorite />
+        <UmrahRecommended />
       </a-col>
 
       <a-col :span="24">
-        <UmrahRecommended />
+        <UmrahFavorite />
       </a-col>
 
       <a-col :span="24">

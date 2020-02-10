@@ -43,7 +43,7 @@
                         :options="ItemSlider"
                       >
                         <div
-                          v-for="(hotel, index) in item.gambar_hotel"
+                          v-for="(hotel, index) in item.gambar_hotel.slice(1, 4)"
                           :key="index"
                           class="item-images"
                           v-lazy:background-image="hotel.gambar"
@@ -201,6 +201,7 @@ export default {
 
       ItemSlider: {
         prevNextButtons: false,
+        wrapAround: true,
         pageDots: true
       }
     };

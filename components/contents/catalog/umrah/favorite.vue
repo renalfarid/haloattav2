@@ -1,5 +1,5 @@
 <template>
-  <div class="content-favorites mt-24">
+  <div class="content-favorites mt-24" v-if="recommendations.length > 0">
     <div class="container">
       <h2 class="md-title">Paket Umrah Terbaru</h2>
 
@@ -22,7 +22,7 @@
                   :options="imagesHotel"
                 >
                   <div
-                    v-for="(hotel, index) in recommendation.gambar_hotel"
+                    v-for="(hotel, index) in recommendation.gambar_hotel.slice(1, 4)"
                     :key="index"
                     class="item-images"
                     v-lazy:background-image="hotel.gambar"
@@ -156,6 +156,7 @@ export default {
       recommendations: [],
       imagesHotel: {
         prevNextButtons: false,
+        wrapAround: true,
         pageDots: true
       }
     };
