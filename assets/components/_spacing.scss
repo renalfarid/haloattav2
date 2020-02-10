@@ -22,7 +22,7 @@
 .ant-divider-title-left {
     & .ant-divider-inner-text {
         padding-left: 0 !important;
-        text-transform: uppercase;
+        text-transform: capitalize;
         color: $color-font;
         font-weight: 500;
         font-size: 22px;
@@ -31,7 +31,7 @@
         width: 0 !important;
     }
     &::after {
-        border-top: 3px solid $color-border !important;
+        border: none;
     }
 }
 

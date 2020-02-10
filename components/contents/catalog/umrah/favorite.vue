@@ -1,11 +1,7 @@
 <template>
-  <div class="content-favorites">
+  <div class="content-favorites mt-24">
     <div class="container">
-      <div class="header-title">
-        <a-divider orientation="left" class="ant-divider-title-left"
-          >Paket Umrah Terbaru</a-divider
-        >
-      </div>
+      <h2 class="md-title">Paket Umrah Terbaru</h2>
 
       <a-row :gutter="24" class="r-wrap">
         <a-col

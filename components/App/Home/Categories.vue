@@ -1,11 +1,7 @@
 <template>
   <div class="content-components-umrah">
     <div class="container">
-      <div class="header-title">
-        <a-divider orientation="left" class="ant-divider-title-left"
-          >Pilihan Ibadah Umroh</a-divider
-        >
-      </div>
+      <h2 class="md-title">Komponen Umrah dan Wisata</h2>
 
       <a-row :gutter="16">
         <a-col :xs="24" :sm="12" :md="8" :lg="8" class="mb-16">

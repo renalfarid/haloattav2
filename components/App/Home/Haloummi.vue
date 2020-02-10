@@ -1,62 +1,47 @@
 <template>
   <div class="content-news">
     <div class="container">
-      <div class="header-title">
-        <a-divider orientation="left" class="ant-divider-title-left"
-          >Halo Ummi</a-divider
-        >
-        <a-row :gutter="16" class="d-none">
-          <a-col :span="16">
-            <h6 class="subtitle">
-              Adalah agregator berita islami pertama yang memberikan informasi
-              seputar ibadah Umroh Haji dan kajian Islam lainnya
-            </h6>
-          </a-col>
-        </a-row>
-      </div>
+      <h2 class="md-title">Halo Ummi</h2>
 
-      <a-row>
-        <a-col :span="24">
-          <client-only>
-            <a-carousel>
-              <div>
-                <a
-                  :href="`https://www.haloummi.com/headlines/${mainhead.slug}`"
-                  target="_blank"
-                >
-                  <a-card class="card-news--large-overlay">
-                    <div slot="cover">
-                      <div class="box-content" v-lazy:background-image="imgUrl">
-                        <div :style="{ width: '100%', zIndex: '2' }">
-                          <div class="box-overlay">
-                            <div
-                              class="txt fs-16 text-uppercase cr-white-overlay mb-0"
-                            >
-                              {{ mainhead.kategori }}
-                            </div>
-                            <div class="txt fs-30 f-default">
-                              {{ mainhead.title }}
-                            </div>
-                            <div class="item">
-                              <span
-                                class="time cr-white-overlay text-capitalize mr-16"
-                                >{{ mainhead.sumber }}</span
-                              >
-                              <span class="time cr-white-overlay">{{
-                                mainhead.date | moment
-                              }}</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="gradient-bottom"></div>
+      <a-carousel>
+        <div>
+          <a
+            :href="`https://www.haloummi.com/headlines/${mainhead.slug}`"
+            target="_blank"
+          >
+            <a-card class="card-news--large-overlay">
+              <div slot="cover">
+                <div class="box-content" v-lazy:background-image="imgUrl">
+                  <div :style="{ width: '100%', zIndex: '2' }">
+                    <div class="box-overlay">
+                      <div
+                        class="txt fs-16 text-uppercase cr-white-overlay mb-0"
+                      >
+                        {{ mainhead.kategori }}
+                      </div>
+                      <div class="txt fs-30 f-default">
+                        {{ mainhead.title }}
+                      </div>
+                      <div class="item">
+                        <span
+                          class="time cr-white-overlay text-capitalize mr-16"
+                          >{{ mainhead.sumber }}</span
+                        >
+                        <span class="time cr-white-overlay">{{
+                          mainhead.date | moment
+                        }}</span>
                       </div>
                     </div>
-                  </a-card>
-                </a>
+                  </div>
+                  <div class="gradient-bottom"></div>
+                </div>
               </div>
-            </a-carousel>
-          </client-only>
-        </a-col>
+            </a-card>
+          </a>
+        </div>
+      </a-carousel>
+
+      <a-row :gutter="16">
         <a-col
           :xs="24"
           :sm="12"
@@ -144,8 +129,6 @@ export default {
           this.subHeadlines = this.headlines.filter(function(headline, index) {
             return index > 0;
           });
-          //console.log(this.subHeadlines)
-          console.log(this.subHeadlines);
         });
     }
   },
