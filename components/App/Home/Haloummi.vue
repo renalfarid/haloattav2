@@ -89,7 +89,7 @@
       </a-row>
 
       <div class="all-package mt-24 mb-16">
-        <a href="https://www.haloummi.com" target="_blank">
+        <a href="https://www.haloummi.com" target="_blank" class="fs-18 cr-green d-flex align-items-center">
           Tampilkan semua
           <a-icon class="fs-16 ml-8" type="right" />
         </a>
