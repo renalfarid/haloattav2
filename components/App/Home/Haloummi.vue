@@ -1,62 +1,71 @@
 <template>
-  <div class="container">
-    <div class="header-title">
-      <a-divider orientation="left" class="ant-divider-title-left"
-        >Halo Ummi</a-divider
-      >
-      <a-row :gutter="16" class="d-none">
-        <a-col :span="16">
-          <h6 class="subtitle">
-            Adalah agregator berita islami pertama yang memberikan informasi
-            seputar ibadah Umroh Haji dan kajian Islam lainnya
-          </h6>
-        </a-col>
-      </a-row>
-    </div>
+  <div class="content-news">
+    <div class="container">
+      <div class="header-title">
+        <a-divider orientation="left" class="ant-divider-title-left"
+          >Halo Ummi</a-divider
+        >
+        <a-row :gutter="16" class="d-none">
+          <a-col :span="16">
+            <h6 class="subtitle">
+              Adalah agregator berita islami pertama yang memberikan informasi
+              seputar ibadah Umroh Haji dan kajian Islam lainnya
+            </h6>
+          </a-col>
+        </a-row>
+      </div>
 
-    <a-row>
-      <a-col :span="24">
-        <client-only>
-          <a-carousel>
-            <div>
-              <a
-                :href="`https://www.haloummi.com/headlines/${mainhead.slug}`"
-                target="_blank"
-              >
-                <a-card class="card-news--large-overlay">
-                  <div slot="cover">
-                    <div class="box-content" v-lazy:background-image="imgUrl">
-                      <div :style="{ width: '100%', zIndex: '2' }">
-                        <div class="box-overlay">
-                          <div
-                            class="txt fs-16 text-uppercase cr-white-overlay mb-0"
-                          >
-                            {{ mainhead.kategori }}
-                          </div>
-                          <div class="txt fs-30 f-default">
-                            {{ mainhead.title }}
-                          </div>
-                          <div class="item">
-                            <span
-                              class="time cr-white-overlay text-capitalize mr-16"
-                              >{{ mainhead.sumber }}</span
+      <a-row>
+        <a-col :span="24">
+          <client-only>
+            <a-carousel>
+              <div>
+                <a
+                  :href="`https://www.haloummi.com/headlines/${mainhead.slug}`"
+                  target="_blank"
+                >
+                  <a-card class="card-news--large-overlay">
+                    <div slot="cover">
+                      <div class="box-content" v-lazy:background-image="imgUrl">
+                        <div :style="{ width: '100%', zIndex: '2' }">
+                          <div class="box-overlay">
+                            <div
+                              class="txt fs-16 text-uppercase cr-white-overlay mb-0"
                             >
-                            <span class="time cr-white-overlay">{{
-                              mainhead.date | moment
-                            }}</span>
+                              {{ mainhead.kategori }}
+                            </div>
+                            <div class="txt fs-30 f-default">
+                              {{ mainhead.title }}
+                            </div>
+                            <div class="item">
+                              <span
+                                class="time cr-white-overlay text-capitalize mr-16"
+                                >{{ mainhead.sumber }}</span
+                              >
+                              <span class="time cr-white-overlay">{{
+                                mainhead.date | moment
+                              }}</span>
+                            </div>
                           </div>
                         </div>
+                        <div class="gradient-bottom"></div>
                       </div>
-                      <div class="gradient-bottom"></div>
                     </div>
-                  </div>
-                </a-card>
-              </a>
-            </div>
-          </a-carousel>
-        </client-only>
-      </a-col>
-        <a-col :xs="24" :sm="12" :md="12" :lg="6" class="mb-16" v-for="sub in this.subHeadlines" :key="sub.id">
+                  </a-card>
+                </a>
+              </div>
+            </a-carousel>
+          </client-only>
+        </a-col>
+        <a-col
+          :xs="24"
+          :sm="12"
+          :md="12"
+          :lg="6"
+          class="mb-16"
+          v-for="sub in this.subHeadlines"
+          :key="sub.id"
+        >
           <a
             :href="`https://www.haloummi.com/headlines/${sub.slug}`"
             target="_blank"
@@ -92,16 +101,18 @@
             </a-card>
           </a>
         </a-col>
-    </a-row>
+      </a-row>
 
-    <div class="all-package mt-24 mb-16">
-      <a href="https://www.haloummi.com" target="_blank">
-        Tampilkan semua
-        <a-icon class="fs-16 ml-8" type="right" />
-      </a>
+      <div class="all-package mt-24 mb-16">
+        <a href="https://www.haloummi.com" target="_blank">
+          Tampilkan semua
+          <a-icon class="fs-16 ml-8" type="right" />
+        </a>
+      </div>
     </div>
   </div>
 </template>
+
 <script>
 import axios from "axios";
 import moment from "moment";
