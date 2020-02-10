@@ -10,7 +10,7 @@
       </a-col>
 
       <a-col :span="24">
-        <UmrahFavorite />
+        <UmrahLatest />
       </a-col>
 
       <a-col :span="24">
@@ -30,15 +30,15 @@
 
 <script>
 import HeroSearch from "./HeroSearch";
-import UmrahFavorite from "@/components/contents/catalog/umrah/favorite";
 import UmrahRecommended from "@/components/contents/catalog/umrah/recommended";
+import UmrahLatest from "@/components/contents/catalog/umrah/latest";
 import Banner from "./Banner";
 import Categories from "./Categories";
 import Haloummi from "./Haloummi";
 export default {
   components: {
     HeroSearch,
-    UmrahFavorite,
+    UmrahLatest,
     UmrahRecommended,
     Banner,
     Categories,

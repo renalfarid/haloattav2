@@ -1,17 +1,17 @@
 <template>
-  <div class="content-favorites mt-24" v-if="recommendations.length > 0">
+  <div class="content-favorites mt-24" v-if="latests.length > 0">
     <div class="container">
       <h2 class="md-title">Paket Umrah Terbaru</h2>
 
       <a-row :gutter="24" class="r-wrap">
         <a-col
           :xs="24"
-          :sm="12"
-          :md="12"
+          :sm="24"
+          :md="8"
           :lg="8"
           class="mb-16"
-          v-for="recommendation in recommendations"
-          :key="recommendation.kode_produk"
+          v-for="latest in latests"
+          :key="latest.kode_produk"
         >
           <a-skeleton :loading="loading" active>
             <a-card class="ant-card-package" hoverable>
@@ -22,7 +22,7 @@
                   :options="imagesHotel"
                 >
                   <div
-                    v-for="(hotel, index) in recommendation.gambar_hotel.slice(1, 4)"
+                    v-for="(hotel, index) in latest.gambar_hotel.slice(1, 4)"
                     :key="index"
                     class="item-images"
                     v-lazy:background-image="hotel.gambar"
@@ -33,7 +33,7 @@
               <nuxt-link
                 :to="
                   '/catalog/umrah/detail-package?kode_produk=' +
-                    recommendation.kode_produk
+                    latest.kode_produk
                 "
                 class="ant-list-item--link"
               >
@@ -51,15 +51,15 @@
                               Penyedia
                             </div>
                             <div class="fs-14 fw-500 cr-black text-capitalize">
-                              {{ recommendation.nama_vendor }}
+                              {{ latest.nama_vendor }}
                             </div>
                           </template>
 
                           <a-avatar
-                            v-if="recommendation.foto != null"
+                            v-if="latest.foto != null"
                             class="vendor-logo zIndex mr-8"
                             size="small"
-                            v-lazy:background-image="recommendation.foto"
+                            v-lazy:background-image="latest.foto"
                           />
 
                           <a-avatar
@@ -78,20 +78,20 @@
                               Maskapai
                             </div>
                             <div class="fs-14 fw-500 cr-black text-capitalize">
-                              {{ recommendation.nama_maskapai }}
+                              {{ latest.nama_maskapai }}
                             </div>
                           </template>
                           <a-avatar
                             size="small"
                             class="zIndex mr-8"
-                            :src="recommendation.image"
+                            :src="latest.image"
                           />
                         </a-popover>
                       </div>
 
                       <div class="ant-card-meta-title--top-right ml-auto">
                         <div class="fs-14 fw-400 cr-black-opacity">
-                          Program {{ recommendation.jumlah_hari }} Hari
+                          Program {{ latest.jumlah_hari }} Hari
                         </div>
                       </div>
                     </div>
@@ -99,30 +99,30 @@
                     <div
                       class="ant-card-meta-title--package text-capitalize fw-500 mt-16 mb-8"
                     >
-                      {{ recommendation.nama }}
+                      {{ latest.nama }}
                     </div>
                   </div>
 
                   <div slot="description">
                     <span class="cr-black-opacity"
-                      >Kota {{ recommendation.nama_kota }}</span
+                      >Kota {{ latest.nama_kota }}</span
                     >
                     <span class="dots"></span>
                     <span class="cr-black-opacity">{{
-                      recommendation.tgl_berangkat | formatDate
+                      latest.tgl_berangkat | formatDate
                     }}</span>
                   </div>
                 </a-card-meta>
 
                 <div class="md-card--bottom">
                   <div class="md-price">
-                    {{ recommendation.harga_jual | currency }}
+                    {{ latest.harga_jual | currency }}
                   </div>
                   <div>
                     <a-icon
                       type="star"
                       theme="filled"
-                      v-for="item in recommendation.kelas_bintang"
+                      v-for="item in latest.kelas_bintang"
                       :key="item"
                       :style="{ color: '#FFD500', 'margin-left': '4px' }"
                     />
@@ -153,7 +153,7 @@ export default {
   data() {
     return {
       loading: true,
-      recommendations: [],
+      latests: [],
       imagesHotel: {
         prevNextButtons: false,
         wrapAround: true,
@@ -163,13 +163,13 @@ export default {
   },
 
   created: function() {
-    this.getRecommendations();
+    this.getLatests();
   },
 
   methods: {
-    async getRecommendations() {
+    async getLatests() {
       axios.get(process.env.baseUrl + "paket/umroh/all").then(response => {
-        this.recommendations = response.data.data.data.slice(0, 3);
+        this.latests = response.data.data.data.slice(0, 3);
         this.loading = false;
       });
     }
