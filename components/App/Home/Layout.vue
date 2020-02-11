@@ -10,15 +10,15 @@
       </a-col>
 
       <a-col :span="24">
+        <BannerStar />
+      </a-col>
+
+      <a-col :span="24">
         <UmrahRecommended />
       </a-col>
 
       <a-col :span="24">
         <UmrahLatest />
-      </a-col>
-
-      <a-col :span="24">
-        <Banner />
       </a-col>
 
       <a-col :span="24">
@@ -37,7 +37,7 @@ import HeroSearch from "./HeroSearch";
 import Cities from "./Cities";
 import UmrahRecommended from "@/components/contents/catalog/umrah/recommended";
 import UmrahLatest from "@/components/contents/catalog/umrah/latest";
-import Banner from "./Banner";
+import BannerStar from "./BannerStar";
 import Categories from "./Categories";
 import Haloummi from "./Haloummi";
 export default {
@@ -46,7 +46,7 @@ export default {
     Cities,
     UmrahLatest,
     UmrahRecommended,
-    Banner,
+    BannerStar,
     Categories,
     Haloummi
   }
