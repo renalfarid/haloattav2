@@ -16,6 +16,7 @@
           :key="recommendation.kode_produk"
         >
           <UmrahRecommendation
+            :packagelarge="packagelarge"
             :loading="loading"
             :package_name="recommendation.nama"
             :images="recommendation.gambar_hotel"
@@ -46,6 +47,7 @@ export default {
 
   data() {
     return {
+      packagelarge: true,
       loading: true,
       recommendations: []
     };

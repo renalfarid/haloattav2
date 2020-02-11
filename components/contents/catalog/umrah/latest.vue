@@ -14,6 +14,7 @@
           :key="latest.kode_produk"
         >
           <UmrahLatest
+            :packagelarge="packagelarge"
             :loading="loading"
             :package_name="latest.nama"
             :images="latest.gambar_hotel"
@@ -54,6 +55,7 @@ export default {
 
   data() {
     return {
+      packagelarge: true,
       loading: true,
       latests: []
     };

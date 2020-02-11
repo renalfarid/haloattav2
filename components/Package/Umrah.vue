@@ -4,7 +4,7 @@
       <template slot="cover">
         <client-only>
           <flickity
-            class="md-flickity__images md-flickity__images-large"
+            :class="packagelarge == false ? 'md-flickity__images' : 'md-flickity__images md-flickity__images-large'"
             ref="flickityImages"
             :options="imagesHotel"
           >
@@ -111,6 +111,7 @@
 <script>
 export default {
   props: {
+    packagelarge: Boolean,
     package_name: String,
     images: Array,
     url: String,

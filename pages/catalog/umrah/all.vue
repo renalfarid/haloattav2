@@ -168,6 +168,7 @@
                 :lg="8"
               >
                 <UmrahAll
+                :packagelarge="packagelarge"
                   :loading="loading"
                   :package_name="result.nama"
                   :images="result.gambar_hotel"
@@ -213,6 +214,7 @@ export default {
   data() {
     return {
       form: this.$form.createForm(this),
+      packagelarge: true,
       loading: true,
       busy: true,
       limit: 3,

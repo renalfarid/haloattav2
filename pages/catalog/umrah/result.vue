@@ -35,6 +35,7 @@
                 class="mb-16"
               >
                 <UmrahResult
+                  :packagelarge="packagelarge"
                   :loading="loading"
                   :package_name="result.nama"
                   :images="result.gambar_hotel"
@@ -80,6 +81,7 @@ export default {
 
   data() {
     return {
+      packagelarge: true,
       loading: true,
       busy: true,
       limit: 3,
