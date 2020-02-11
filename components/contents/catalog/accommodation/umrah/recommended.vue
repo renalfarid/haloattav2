@@ -12,7 +12,7 @@
       <package-accommodation
         :loading="loading"
         :package_name="item.nama"
-        :images_hotel="item.images_hotel"
+        :images_hotel="item.gambar_hotel"
         :url="item.kode_produk"
         :vendor_name="item.nama_vendor"
         :vendor_logo="item.foto"

@@ -7,24 +7,22 @@
           ref="flickityImages"
           :options="itemSlider"
         >
-          <div class="item-images" v-lazy:background-image="images_hotel"></div>
+          <div
+            v-for="(foto, index) in images_hotel.slice(1, 4)"
+            :key="index"
+            class="item-images"
+            v-lazy:background-image="foto.gambar"
+          ></div>
         </flickity>
       </template>
 
-      <nuxt-link
-        :to="'/catalog/accommodation/detail?kode_produk=' + url"
-        class="d-block"
-      >
+      <nuxt-link :to="'/catalog/accommodation/detail?kode_produk=' + url" class="d-block">
         <div :style="{ padding: '24px 24px 12px 24px' }">
           <div class="d-flex align-items-center">
             <a-popover trigger="hover">
               <template slot="content">
-                <div class="fs-12 fw-400 cr-gray text-uppercase">
-                  Penyedia
-                </div>
-                <div class="fs-14 fw-500 cr-black text-capitalize">
-                  {{ vendor_name }}
-                </div>
+                <div class="fs-12 fw-400 cr-gray text-uppercase">Penyedia</div>
+                <div class="fs-14 fw-500 cr-black text-capitalize">{{ vendor_name }}</div>
               </template>
               <a-avatar
                 v-if="vendor_logo != null"
@@ -41,9 +39,9 @@
             <div class="ml-auto">
               <a-popover trigger="hover">
                 <template slot="content">
-                  <div class="fs-14 fw-400 cr-black text-capitalize">
-                    Hotel setaraf bintang {{ rate_hotel }}
-                  </div>
+                  <div
+                    class="fs-14 fw-400 cr-black text-capitalize"
+                  >Hotel setaraf bintang {{ rate_hotel }}</div>
                 </template>
                 <a-icon
                   type="star"
@@ -57,17 +55,13 @@
             </div>
           </div>
 
-          <div class="fs-16 cr-black text-capitalize fw-500 mt-16">
-            {{ package_name }}
-          </div>
+          <div class="fs-16 cr-black text-capitalize fw-500 mt-16">{{ package_name }}</div>
         </div>
 
         <div class="md-card--bottom">
           <div class="md-price">
             {{ pricing | currency }}
-            <span class="fs-14 fw-400 cr-black-opacity">
-              / {{ program }} Hari
-            </span>
+            <span class="fs-14 fw-400 cr-black-opacity">/ {{ program }} Hari</span>
           </div>
         </div>
       </nuxt-link>
