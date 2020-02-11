@@ -159,27 +159,146 @@
                   :sm="12"
                   :md="12"
                   :lg="8"
-                  v-for="(item, index) in data"
-                  :key="index"
+                  v-for="recommendation in allRecommendations"
+                  :key="recommendation.kode_produk"
                   data-aos="fade-up"
                   data-aos-duration="1200"
                   class="mb-16"
                 >
-                  <package-umrah
-                  :loading="loading"
-                  :package_name="item.nama"
-                  :images="item.gambar"
-                  :url="item.kode_produk"
-                  :departure="item.tgl_berangkat"
-                  :city="item.nama_kota"
-                  :vendor_name="item.nama_vendor"
-                  :vendor_logo="item.foto"
-                  :maskapai_name="item.nama_maskapai"
-                  :maskapai_logo="item.image"
-                  :rate_hotel="item.kelas_bintang"
-                  :program="item.jumlah_hari"
-                  :pricing="item.harga_jual"
-                />
+                  <a-skeleton :loading="loading" active>
+                    <a-card class="ant-card-package" hoverable>
+                      <template slot="cover">
+                        <flickity
+                          class="md-flickity__images md-flickity__images-large"
+                          ref="flickityImages"
+                          :options="ItemSlider"
+                        >
+                          <div
+                            v-for="(hotel,
+                            index) in recommendation.gambar_hotel.slice(1, 4)"
+                            :key="index"
+                            class="item-images"
+                            v-lazy:background-image="hotel.gambar"
+                          ></div>
+                        </flickity>
+                      </template>
+
+                      <nuxt-link
+                        :to="
+                          '/catalog/umrah/detail-package?kode_produk=' +
+                            recommendation.kode_produk
+                        "
+                        class="ant-list-item--link"
+                      >
+                        <a-card-meta>
+                          <div slot="title">
+                            <div
+                              class="ant-card-meta-title--top d-flex align-items-center"
+                            >
+                              <div
+                                class="ant-card-meta-title--top-left f-default d-flex align-items-center"
+                              >
+                                <a-popover trigger="hover">
+                                  <template slot="content">
+                                    <div
+                                      class="fs-12 fw-400 cr-gray text-uppercase"
+                                    >
+                                      Penyedia
+                                    </div>
+                                    <div
+                                      class="fs-14 fw-500 cr-black text-capitalize"
+                                    >
+                                      {{ recommendation.nama_vendor }}
+                                    </div>
+                                  </template>
+
+                                  <a-avatar
+                                    v-if="recommendation.foto != null"
+                                    class="vendor-logo zIndex mr-8"
+                                    size="small"
+                                    v-lazy:background-image="
+                                      recommendation.foto
+                                    "
+                                  />
+
+                                  <a-avatar
+                                    v-else
+                                    class="vendor-logo zIndex mr-8"
+                                    size="small"
+                                    v-lazy:background-image="
+                                      require('~/static/brand.png')
+                                    "
+                                  />
+                                </a-popover>
+
+                                <a-popover trigger="hover">
+                                  <template slot="content">
+                                    <div
+                                      class="fs-12 fw-400 cr-gray text-uppercase"
+                                    >
+                                      Maskapai
+                                    </div>
+                                    <div
+                                      class="fs-14 fw-500 cr-black text-capitalize"
+                                    >
+                                      {{ recommendation.nama_maskapai }}
+                                    </div>
+                                  </template>
+                                  <a-avatar
+                                    size="small"
+                                    class="zIndex mr-8"
+                                    :src="recommendation.image"
+                                  />
+                                </a-popover>
+                              </div>
+
+                              <div
+                                class="ant-card-meta-title--top-right ml-auto"
+                              >
+                                <div class="fs-14 fw-400 cr-black-opacity">
+                                  Program {{ recommendation.jumlah_hari }} Hari
+                                </div>
+                              </div>
+                            </div>
+
+                            <div
+                              class="ant-card-meta-title--package text-capitalize fw-500 mt-16 mb-8"
+                            >
+                              {{ recommendation.nama }}
+                            </div>
+                          </div>
+
+                          <div slot="description">
+                            <span class="cr-black-opacity"
+                              >Kota {{ recommendation.nama_kota }}</span
+                            >
+                            <span class="dots"></span>
+                            <span class="cr-black-opacity">{{
+                              recommendation.tgl_berangkat | formatDate
+                            }}</span>
+                          </div>
+                        </a-card-meta>
+
+                        <div class="md-card--bottom">
+                          <div class="md-price">
+                            {{ recommendation.harga_jual | currency }}
+                          </div>
+                          <div>
+                            <a-icon
+                              type="star"
+                              theme="filled"
+                              v-for="item in recommendation.kelas_bintang"
+                              :key="item"
+                              :style="{
+                                color: '#FFD500',
+                                'margin-left': '4px'
+                              }"
+                            />
+                          </div>
+                        </div>
+                      </nuxt-link>
+                    </a-card>
+                  </a-skeleton>
                 </a-col>
               </a-row>
             </div>
@@ -192,15 +311,13 @@
 <script>
 import searchResultUmrah from "@/components/contents/lib/search/result/umrah.vue";
 import filterResultUmrah from "@/components/contents/lib/filter/result/umrah.vue";
-import PackageUmrah from "@/components/template/Umrah";
 import axios from "axios";
 export default {
-  name: "umrahAll",
+  name: "all-recommendation",
 
   components: {
     searchResultUmrah,
-    filterResultUmrah,
-    PackageUmrah
+    filterResultUmrah
   },
 
   head() {
@@ -216,7 +333,12 @@ export default {
       busy: false,
       limit: 8,
       page: 0,
-      data: [],
+      allRecommendations: [],
+      ItemSlider: {
+        prevNextButtons: false,
+        wrapAround: true,
+        pageDots: true
+      },
       option: {
         kota: "",
         program: "",
@@ -259,7 +381,7 @@ export default {
           }
         })
         .then(response => {
-          this.data = this.data.concat(response.data.data.data);
+          this.allRecommendations = this.allRecommendations.concat(response.data.data.data);
           this.loading = false;
           this.busy = false;
         });
@@ -305,6 +427,33 @@ export default {
       const year = date.getFullYear();
 
       return `${month} ${year}`;
+    },
+
+    formatDate: function(value) {
+      const date = new Date(value);
+
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Agu",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des"
+      ];
+      const days = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
+
+      const dayName = days[date.getDay()];
+      const dayOfMonth = date.getDate();
+      const month = months[date.getMonth()];
+      const year = date.getFullYear();
+
+      return `${dayName}, ${dayOfMonth} ${month} ${year}`;
     }
   }
 };

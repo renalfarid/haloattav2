@@ -14,7 +14,9 @@
         </div>
 
         <div class="ant-layout--results-list pb-16">
-          <div class="ant-layout--results-list-label fw-400">Hasil Pencarian Paket Umrah</div>
+          <div class="ant-layout--results-list-label fw-400">
+            Hasil Pencarian Paket Umrah
+          </div>
           <div
             v-infinite-scroll="results"
             :infinite-scroll-disabled="busy"
@@ -26,27 +28,141 @@
                 :sm="12"
                 :md="12"
                 :lg="8"
-                v-for="(item, index) in results"
-                :key="index"
+                v-for="item in results"
+                :key="item.kode_produk"
                 data-aos="fade-up"
                 data-aos-duration="1200"
                 class="mb-16"
               >
-                <package-umrah
-                  :loading="loading"
-                  :package_name="item.nama"
-                  :images="item.gambar"
-                  :url="item.kode_produk"
-                  :departure="item.tgl_berangkat"
-                  :city="item.nama_kota"
-                  :vendor_name="item.nama_vendor"
-                  :vendor_logo="item.foto"
-                  :maskapai_name="item.nama_maskapai"
-                  :maskapai_logo="item.image"
-                  :rate_hotel="item.kelas_bintang"
-                  :program="item.jumlah_hari"
-                  :pricing="item.harga_jual"
-                />
+                <a-skeleton :loading="loading" active>
+                  <a-card class="ant-card-package" hoverable>
+                    <template slot="cover">
+                      <flickity
+                        class="md-flickity__images md-flickity__images-large"
+                        ref="flickityImages"
+                        :options="ItemSlider"
+                      >
+                        <div
+                          v-for="(hotel, index) in item.gambar_hotel.slice(1, 4)"
+                          :key="index"
+                          class="item-images"
+                          v-lazy:background-image="hotel.gambar"
+                        ></div>
+                      </flickity>
+                    </template>
+
+                    <nuxt-link
+                      :to="
+                        '/catalog/umrah/detail-package?kode_produk=' +
+                          item.kode_produk
+                      "
+                      class="ant-list-item--link"
+                    >
+                      <a-card-meta>
+                        <div slot="title">
+                          <div
+                            class="ant-card-meta-title--top d-flex align-items-center"
+                          >
+                            <div
+                              class="ant-card-meta-title--top-left f-default d-flex align-items-center"
+                            >
+                              <a-popover trigger="hover">
+                                <template slot="content">
+                                  <div
+                                    class="fs-12 fw-400 cr-gray text-uppercase"
+                                  >
+                                    Penyedia
+                                  </div>
+                                  <div
+                                    class="fs-14 fw-500 cr-black text-capitalize"
+                                  >
+                                    {{ item.nama_vendor }}
+                                  </div>
+                                </template>
+
+                                <a-avatar
+                                  v-if="item.foto != null"
+                                  class="vendor-logo zIndex mr-8"
+                                  size="small"
+                                  v-lazy:background-image="item.foto"
+                                />
+
+                                <a-avatar
+                                  v-else
+                                  class="vendor-logo zIndex mr-8"
+                                  size="small"
+                                  v-lazy:background-image="
+                                    require('~/static/brand.png')
+                                  "
+                                />
+                              </a-popover>
+
+                              <a-popover trigger="hover">
+                                <template slot="content">
+                                  <div
+                                    class="fs-12 fw-400 cr-gray text-uppercase"
+                                  >
+                                    Maskapai
+                                  </div>
+                                  <div
+                                    class="fs-14 fw-500 cr-black text-capitalize"
+                                  >
+                                    {{ item.nama_maskapai }}
+                                  </div>
+                                </template>
+                                <a-avatar
+                                  size="small"
+                                  class="zIndex mr-8"
+                                  :src="item.image"
+                                />
+                              </a-popover>
+                            </div>
+
+                            <div class="ant-card-meta-title--top-right ml-auto">
+                              <div class="fs-14 fw-400 cr-black-opacity">
+                                Program {{ item.jumlah_hari }} Hari
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            class="ant-card-meta-title--package text-capitalize fw-500 mt-16 mb-8"
+                          >
+                            {{ item.nama }}
+                          </div>
+                        </div>
+
+                        <div slot="description">
+                          <span class="cr-black-opacity"
+                            >Kota {{ item.nama_kota }}</span
+                          >
+                          <span class="dots"></span>
+                          <span class="cr-black-opacity">{{
+                            item.tgl_berangkat | formatDate
+                          }}</span>
+                        </div>
+                      </a-card-meta>
+
+                      <div class="md-card--bottom">
+                        <div class="md-price">
+                          {{ item.harga_jual | currency }}
+                        </div>
+                        <div>
+                          <a-icon
+                            type="star"
+                            theme="filled"
+                            v-for="item in item.kelas_bintang"
+                            :key="item"
+                            :style="{
+                              color: '#FFD500',
+                              'margin-left': '4px'
+                            }"
+                          />
+                        </div>
+                      </div>
+                    </nuxt-link>
+                  </a-card>
+                </a-skeleton>
               </a-col>
             </a-row>
           </div>
@@ -58,15 +174,13 @@
 <script>
 import searchResultUmrah from "@/components/contents/lib/search/result/umrah.vue";
 import filterResultUmrah from "@/components/contents/lib/filter/result/umrah.vue";
-import PackageUmrah from "@/components/template/Umrah";
 import axios from "axios";
 export default {
-  name: "umrahResults",
+  name: "all_umrah_results",
 
   components: {
     searchResultUmrah,
-    filterResultUmrah,
-    PackageUmrah
+    filterResultUmrah
   },
 
   head() {
@@ -83,7 +197,13 @@ export default {
       limit: 6,
       data: [],
       results: "",
-      option: ""
+      option: "",
+
+      ItemSlider: {
+        prevNextButtons: false,
+        wrapAround: true,
+        pageDots: true
+      }
     };
   },
 
