@@ -2,13 +2,20 @@
   <a-skeleton :loading="loading" active>
     <a-card class="ant-card-package" hoverable>
       <template slot="cover">
-        <flickity
-          class="md-flickity__images md-flickity__images-large"
-          ref="flickityImages"
-          :options="ItemSlider"
-        >
-          <div class="item-images" v-lazy:background-image="images"></div>
-        </flickity>
+        <client-only>
+          <flickity
+            class="md-flickity__images md-flickity__images-large"
+            ref="flickityImages"
+            :options="imagesHotel"
+          >
+            <div
+              v-for="(item, index) in images.slice(1, 4)"
+              :key="index"
+              class="item-images"
+              v-lazy:background-image="item.gambar"
+            ></div>
+          </flickity>
+        </client-only>
       </template>
 
       <nuxt-link
@@ -105,7 +112,7 @@
 export default {
   props: {
     package_name: String,
-    images: String,
+    images: Array,
     url: String,
 
     departure: String,
@@ -126,8 +133,9 @@ export default {
 
   data() {
     return {
-      ItemSlider: {
+      imagesHotel: {
         prevNextButtons: false,
+        wrapAround: true,
         pageDots: true
       }
     };

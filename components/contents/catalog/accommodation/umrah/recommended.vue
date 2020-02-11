@@ -5,26 +5,26 @@
       :sm="12"
       :md="12"
       :lg="8"
-      v-for="(item, index) in lisData"
-      :key="index"
+      v-for="recommendation in recommendations"
+      :key="recommendation.kode_produk"
       class="mb-16"
     >
-      <package-accommodation
+      <PackageAccommodation
         :loading="loading"
-        :package_name="item.nama"
-        :images_hotel="item.gambar_hotel"
-        :url="item.kode_produk"
-        :vendor_name="item.nama_vendor"
-        :vendor_logo="item.foto"
-        :rate_hotel="item.kelas_bintang"
-        :program="item.days"
-        :pricing="item.harga_quad"
+        :package_name="recommendation.nama"
+        :images="recommendation.gambar_hotel"
+        :url="recommendation.kode_produk"
+        :vendor_name="recommendation.nama_vendor"
+        :vendor_logo="recommendation.foto"
+        :rate_hotel="recommendation.kelas_bintang"
+        :program="recommendation.days"
+        :pricing="recommendation.harga_quad"
       />
     </a-col>
   </a-row>
 </template>
 <script>
-import PackageAccommodation from "@/components/template/Accommodation";
+import PackageAccommodation from "@/components/Package/Accommodation";
 import axios from "axios";
 export default {
   components: { PackageAccommodation },
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       loading: true,
-      lisData: []
+      recommendations: []
     };
   },
 
@@ -43,7 +43,7 @@ export default {
   methods: {
     async getdata() {
       axios.get(process.env.baseUrl + "la/all").then(response => {
-        this.lisData = response.data.data.data.slice(0, 3);
+        this.recommendations = response.data.data.data.slice(0, 3);
         this.loading = false;
       });
     }

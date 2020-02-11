@@ -20,15 +20,15 @@
           >
             <a-row :gutter="24" class="r-wrap">
               <a-col
+                class="mb-16"
+                v-for="item in data"
+                :key="item.kode_produk"
                 :xs="24"
                 :sm="12"
                 :md="12"
                 :lg="8"
-                class="mb-16"
-                v-for="(item, index) in data"
-                :key="index"
               >
-                <package-ticket
+                <PackageTicket
                   :loading="loading"
                   :images="item.foto_maskapai"
                   :city="item.nama_kota"
@@ -58,11 +58,11 @@
 <script>
 import searchResultTicket from "@/components/contents/lib/search/result/ticket.vue";
 import filterResultTicket from "@/components/contents/lib/filter/result/ticket.vue";
-import PackageTicket from "@/components/template/Ticket";
+import PackageTicket from "@/components/Package/Ticket";
 import axios from "axios";
 export default {
   name: "ticketResult",
-  
+
   components: {
     searchResultTicket,
     filterResultTicket,

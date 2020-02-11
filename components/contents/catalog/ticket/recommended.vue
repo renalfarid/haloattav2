@@ -1,15 +1,15 @@
 <template>
   <a-row :gutter="24" class="r-wrap">
     <a-col
+      class="mb-16"
+      v-for="item in lisData"
+      :key="item.kode_produk"
       :xs="24"
       :sm="12"
       :md="12"
       :lg="8"
-      class="mb-16"
-      v-for="(item, index) in lisData"
-      :key="index"
     >
-      <package-ticket
+      <PackageTicket
         :loading="loading"
         :images="item.foto_maskapai"
         :city="item.nama_kota"
@@ -32,7 +32,7 @@
   </a-row>
 </template>
 <script>
-import PackageTicket from "@/components/template/Ticket";
+import PackageTicket from "@/components/Package/Ticket";
 import axios from "axios";
 export default {
   components: { PackageTicket },
