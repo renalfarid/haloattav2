@@ -7,7 +7,12 @@
           ref="flickityImages"
           :options="ItemSlider"
         >
-          <div class="item-images" v-lazy:background-image="images"></div>
+          <div
+            v-for="(foto, index) in images.slice(1, 4)"
+            :key="index"
+            class="item-images"
+            v-lazy:background-image="foto.gambar"
+          ></div>
         </flickity>
 
         <div class="md-tag--round-trip d-flex align-items-center">
@@ -40,19 +45,12 @@
         </div>
       </template>
 
-      <nuxt-link
-        :to="'/catalog/ticket-group/detail-ticket?kode_produk=' + url"
-        class="d-block"
-      >
+      <nuxt-link :to="'/catalog/ticket-group/detail-ticket?kode_produk=' + url" class="d-block">
         <div class="d-flex align-items-center">
           <a-popover trigger="hover">
             <template slot="content">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">
-                Penyedia
-              </div>
-              <div class="fs-14 fw-500 cr-black text-capitalize">
-                {{ vendor_name }}
-              </div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">Penyedia</div>
+              <div class="fs-14 fw-500 cr-black text-capitalize">{{ vendor_name }}</div>
             </template>
             <a-avatar
               class="vendor-logo zIndex mr-8"
@@ -63,20 +61,14 @@
 
           <a-popover trigger="hover">
             <template slot="content">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">
-                Maskapai
-              </div>
-              <div class="fs-14 fw-500 cr-black text-capitalize">
-                {{ maskapai_name }}
-              </div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">Maskapai</div>
+              <div class="fs-14 fw-500 cr-black text-capitalize">{{ maskapai_name }}</div>
             </template>
             <a-avatar class="zIndex mr-8" :src="maskapai_logo" size="small" />
           </a-popover>
 
           <div class="ml-auto">
-            <span class="fs-14 fw-400 cr-black-opacity">
-              Program {{ program }} Hari
-            </span>
+            <span class="fs-14 fw-400 cr-black-opacity">Program {{ program }} Hari</span>
           </div>
         </div>
 
@@ -85,15 +77,11 @@
             <div
               class="fs-30 fw-500 cr-black text-uppercase"
               :style="{ 'line-height': 'normal' }"
-            >
-              {{ from_flight }}
-            </div>
+            >{{ from_flight }}</div>
             <div
               class="fs-16 fw-400 cr-black-opacity text-uppercase"
               :style="{ 'line-height': 'normal' }"
-            >
-              {{ from_flight_time }}
-            </div>
+            >{{ from_flight_time }}</div>
           </div>
 
           <div class="text-center icons-airplane">
@@ -104,15 +92,11 @@
             <div
               class="fs-30 fw-500 cr-black text-uppercase"
               :style="{ 'line-height': 'normal' }"
-            >
-              {{ to_flight }}
-            </div>
+            >{{ to_flight }}</div>
             <div
               class="fs-16 fw-400 cr-black-opacity text-uppercase"
               :style="{ 'line-height': 'normal' }"
-            >
-              {{ to_flight_time }}
-            </div>
+            >{{ to_flight_time }}</div>
           </div>
         </div>
 
@@ -123,16 +107,12 @@
         </div>
 
         <div class="d-flex align-items-end align-items-center">
-          <div
-            class="fs-20 fw-600 cr-black"
-            :style="{ 'line-height': 'normal' }"
-          >
-            {{ pricing | currency }} <span class="fs-14 fw-400 cr-black-opacity">/pax</span>
+          <div class="fs-20 fw-600 cr-black" :style="{ 'line-height': 'normal' }">
+            {{ pricing | currency }}
+            <span class="fs-14 fw-400 cr-black-opacity">/pax</span>
           </div>
 
-          <div class="ml-auto fs-14 fw-400 cr-black-opacity text-capitalize">
-            {{ maskapai_class }}
-          </div>
+          <div class="ml-auto fs-14 fw-400 cr-black-opacity text-capitalize">{{ maskapai_class }}</div>
         </div>
       </nuxt-link>
     </a-card>
@@ -208,7 +188,7 @@ export default {
 
 <style lang="scss">
 .md-tag--round-trip {
-  background-color: rgba($color: #fff, $alpha: .85);
+  background-color: rgba($color: #fff, $alpha: 0.85);
   height: 28px;
   position: absolute;
   border-radius: 50px;
@@ -217,7 +197,7 @@ export default {
   top: 16px;
   & .icons-trip {
     background-color: #6c63ff;
-    border: 1px solid rgba($color: #fff, $alpha: .85);
+    border: 1px solid rgba($color: #fff, $alpha: 0.85);
     border-radius: 50px;
     width: 28px;
     height: 28px;
@@ -250,7 +230,7 @@ export default {
   }
 
   & .md-pax--label {
-    color: rgba($color: #ffffff, $alpha: .85);
+    color: rgba($color: #ffffff, $alpha: 0.85);
     text-transform: uppercase;
     font-weight: 400;
     font-size: 12px;

@@ -30,7 +30,7 @@
               >
                 <package-ticket
                   :loading="loading"
-                  :images="item.gambar"
+                  :images="item.foto_maskapai"
                   :city="item.nama_kota"
                   :departure="item.tanggal_keberangkatan"
                   :vendor_name="item.nama_vendor"
