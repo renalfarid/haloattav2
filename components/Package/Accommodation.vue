@@ -2,13 +2,20 @@
   <a-skeleton :loading="loading" active>
     <a-card class="ant-card-package" hoverable>
       <template slot="cover">
-        <flickity
-          class="md-flickity__images md-flickity__images-large"
-          ref="flickityImages"
-          :options="itemSlider"
-        >
-          <div class="item-images" v-lazy:background-image="images_hotel"></div>
-        </flickity>
+        <client-only>
+          <flickity
+            class="md-flickity__images md-flickity__images-large"
+            ref="flickityImages"
+            :options="imagesHotel"
+          >
+            <div
+              v-for="(foto, index) in images"
+              :key="index"
+              class="item-images"
+              v-lazy:background-image="foto.gambar"
+            ></div>
+          </flickity>
+        </client-only>
       </template>
 
       <nuxt-link
@@ -19,9 +26,7 @@
           <div class="d-flex align-items-center">
             <a-popover trigger="hover">
               <template slot="content">
-                <div class="fs-12 fw-400 cr-gray text-uppercase">
-                  Penyedia
-                </div>
+                <div class="fs-12 fw-400 cr-gray text-uppercase">Penyedia</div>
                 <div class="fs-14 fw-500 cr-black text-capitalize">
                   {{ vendor_name }}
                 </div>
@@ -65,9 +70,9 @@
         <div class="md-card--bottom">
           <div class="md-price">
             {{ pricing | currency }}
-            <span class="fs-14 fw-400 cr-black-opacity">
-              / {{ program }} Hari
-            </span>
+            <span class="fs-14 fw-400 cr-black-opacity"
+              >/ {{ program }} Hari</span
+            >
           </div>
         </div>
       </nuxt-link>
@@ -79,7 +84,7 @@
 export default {
   props: {
     package_name: String,
-    images_hotel: String,
+    images: Array,
     url: String,
 
     vendor_name: String,
@@ -87,15 +92,16 @@ export default {
 
     rate_hotel: Number,
 
-    program: Number,
+    program: String,
     pricing: Number,
     loading: Boolean
   },
 
   data() {
     return {
-      itemSlider: {
+      imagesHotel: {
         prevNextButtons: false,
+        wrapAround: true,
         pageDots: true
       }
     };

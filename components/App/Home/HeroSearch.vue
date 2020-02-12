@@ -8,22 +8,12 @@
         <div class="content-head--body container">
           <div class="gradient-top"></div>
 
-          <a-row
-            :gutter="24"
-            type="flex"
-            justify="space-between"
-            align="middle"
-            class="h-100"
-          >
+          <a-row :gutter="24" type="flex" justify="space-between" align="middle" class="h-100">
             <a-col :xs="24" :sm="24" :md="24" :lg="11">
-              <h2 class="fs-40 fw-600 title text-capitalize">
-                Jelajahi wisata halal dunia
-              </h2>
-              <a-button class="btn-join--us d-none" size="large"
-                >Jelajahi Sekarang</a-button
-              >
+              <h2 class="fs-40 fw-600 title text-capitalize">Jelajahi wisata halal dunia</h2>
+              <a-button class="btn-join--us d-none" size="large">Jelajahi Sekarang</a-button>
 
-              <UserLogin />
+              <user-login />
             </a-col>
 
             <a-col :xs="24" :sm="24" :md="24" :lg="13">
@@ -126,7 +116,7 @@ import searchManasik from "@/components/contents/lib/search/manasik";
 import searchEquipment from "@/components/contents/lib/search/equipment";
 import searchTourleader from "@/components/contents/lib/search/tourleader";
 
-import userLogin from "./UserLogin";
+import userLogin from "@/components/App/Home/UserLogin";
 export default {
   components: {
     searchUmrah,
@@ -140,7 +130,7 @@ export default {
     searchTourleader,
     userLogin
   },
-  
+
   methods: {
     callback(val) {}
   }

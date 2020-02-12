@@ -2,13 +2,20 @@
   <a-skeleton :loading="loading" active>
     <a-card class="ant-card--package-ticket" hoverable>
       <template slot="cover">
-        <flickity
-          class="md-flickity__images md-flickity__images-large"
-          ref="flickityImages"
-          :options="ItemSlider"
-        >
-          <div class="item-images" v-lazy:background-image="images"></div>
-        </flickity>
+        <client-only>
+          <flickity
+            class="md-flickity__images md-flickity__images-large"
+            ref="flickityImages"
+            :options="itemSlider"
+          >
+            <div
+              v-for="(foto, index) in images"
+              :key="index"
+              class="item-images"
+              v-lazy:background-image="foto.gambar"
+            ></div>
+          </flickity>
+        </client-only>
 
         <div class="md-tag--round-trip d-flex align-items-center">
           <div class="icons-trip d-flex align-items-center">
@@ -47,9 +54,7 @@
         <div class="d-flex align-items-center">
           <a-popover trigger="hover">
             <template slot="content">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">
-                Penyedia
-              </div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">Penyedia</div>
               <div class="fs-14 fw-500 cr-black text-capitalize">
                 {{ vendor_name }}
               </div>
@@ -63,9 +68,7 @@
 
           <a-popover trigger="hover">
             <template slot="content">
-              <div class="fs-12 fw-400 cr-gray text-uppercase">
-                Maskapai
-              </div>
+              <div class="fs-12 fw-400 cr-gray text-uppercase">Maskapai</div>
               <div class="fs-14 fw-500 cr-black text-capitalize">
                 {{ maskapai_name }}
               </div>
@@ -74,9 +77,9 @@
           </a-popover>
 
           <div class="ml-auto">
-            <span class="fs-14 fw-400 cr-black-opacity">
-              Program {{ program }} Hari
-            </span>
+            <span class="fs-14 fw-400 cr-black-opacity"
+              >Program {{ program }} Hari</span
+            >
           </div>
         </div>
 
@@ -127,7 +130,8 @@
             class="fs-20 fw-600 cr-black"
             :style="{ 'line-height': 'normal' }"
           >
-            {{ pricing | currency }} <span class="fs-14 fw-400 cr-black-opacity">/pax</span>
+            {{ pricing | currency }}
+            <span class="fs-14 fw-400 cr-black-opacity">/pax</span>
           </div>
 
           <div class="ml-auto fs-14 fw-400 cr-black-opacity text-capitalize">
@@ -142,7 +146,7 @@
 <script>
 export default {
   props: {
-    images: String,
+    images: Array,
     city: String,
     departure: String,
 
@@ -168,8 +172,9 @@ export default {
 
   data() {
     return {
-      ItemSlider: {
+      itemSlider: {
         prevNextButtons: false,
+        wrapAround: true,
         pageDots: true
       }
     };
@@ -208,7 +213,7 @@ export default {
 
 <style lang="scss">
 .md-tag--round-trip {
-  background-color: rgba($color: #fff, $alpha: .85);
+  background-color: rgba($color: #fff, $alpha: 0.85);
   height: 28px;
   position: absolute;
   border-radius: 50px;
@@ -217,7 +222,7 @@ export default {
   top: 16px;
   & .icons-trip {
     background-color: #6c63ff;
-    border: 1px solid rgba($color: #fff, $alpha: .85);
+    border: 1px solid rgba($color: #fff, $alpha: 0.85);
     border-radius: 50px;
     width: 28px;
     height: 28px;
@@ -250,7 +255,7 @@ export default {
   }
 
   & .md-pax--label {
-    color: rgba($color: #ffffff, $alpha: .85);
+    color: rgba($color: #ffffff, $alpha: 0.85);
     text-transform: uppercase;
     font-weight: 400;
     font-size: 12px;

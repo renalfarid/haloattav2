@@ -10,7 +10,9 @@
         </div>
 
         <div class="ant-layout--results-list pb-16">
-          <div class="ant-layout--results-list-label fw-400">Hasil Pencarian LA Akomodasi</div>
+          <div class="ant-layout--results-list-label fw-400">
+            Hasil Pencarian LA Akomodasi
+          </div>
 
           <div
             v-infinite-scroll="loadMore"
@@ -19,18 +21,20 @@
           >
             <a-row :gutter="24" class="f-wrap">
               <a-col
+                class="mb-16"
+                data-aos="fade-up"
+                data-aos-duration="1200"
+                v-for="(item, index) in data"
+                :key="index"
                 :xs="24"
                 :sm="12"
                 :md="12"
                 :lg="8"
-                v-for="(item, index) in data"
-                :key="index"
-                class="mb-16"
               >
-                <package-accommodation
+                <PackageAccommodation
                   :loading="loading"
                   :package_name="item.nama"
-                  :images_hotel="item.images_hotel"
+                  :images="item.gambar_hotel"
                   :url="item.kode_produk"
                   :vendor_name="item.nama_vendor"
                   :vendor_logo="item.foto"
@@ -49,7 +53,7 @@
 <script>
 import searchResultAccommodation from "@/components/contents/lib/search/result/accommodation.vue";
 import filterResultAccommodation from "@/components/contents/lib/filter/result/accommodation.vue";
-import PackageAccommodation from "@/components/template/Accommodation";
+import PackageAccommodation from "@/components/Package/Accommodation";
 import axios from "axios";
 import moment from "moment";
 export default {

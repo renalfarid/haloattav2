@@ -6,7 +6,7 @@
         <a-col
           class="mb-24"
           v-for="city in cities"
-          :key="city.id"
+          :key="city.nama_kota"
           :xs="24"
           :sm="12"
           :md="12"
@@ -15,13 +15,8 @@
           <a-badge dot :style="{'width':'100%'}">
             <a-card :bordered="false">
               <div class="d-flex align-items-center">
-                <div
-                  class="md-cities--cover"
-                  v-lazy:background-image="city.cover"
-                ></div>
-                <div class="md-cities--name">
-                  {{ city.name }}
-                </div>
+                <div class="md-cities--cover" v-lazy:background-image="city.images"></div>
+                <div class="md-cities--name">{{ city.nama_kota }}</div>
               </div>
             </a-card>
           </a-badge>
@@ -32,32 +27,23 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      cities: [
-        {
-          id: 1,
-          name: "Makassar",
-          cover: require("~/static/cities/makassar.png")
-        },
-        {
-          id: 2,
-          name: "Jakarta",
-          cover: require("~/static/cities/jakarta.png")
-        },
-        {
-          id: 3,
-          name: "Surabaya",
-          cover: require("~/static/cities/surabaya.png")
-        },
-        {
-          id: 4,
-          name: "Gowa",
-          cover: require("~/static/cities/gowa.png")
-        }
-      ]
+      cities: []
     };
+  },
+  created() {
+    this.getCity();
+  },
+
+  methods: {
+    getCity() {
+      axios.get(process.env.baseUrl + "option/kota").then(response => {
+        this.cities = response.data.data;
+      });
+    }
   }
 };
 </script>
