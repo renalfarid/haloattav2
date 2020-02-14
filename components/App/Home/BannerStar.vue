@@ -2,7 +2,7 @@
   <div class="container" :style="{ 'padding-top': '40px' }">
     <h3 class="md-title">Sekumpulan Paket Umrah</h3>
     <h4 class="md-subtitle">Pilihan paket umrah yang telah terverifikasi</h4>
-    <a-card class="md-banner--star">
+    <a-card class="md-banner--star" :bordered="false">
       <template slot="cover">
         <div
           class="md-cover--images d-flex align-items-center"
@@ -12,8 +12,7 @@
             <h1>HaloStar</h1>
             <nuxt-link to="/catalog/umrah/all">
               <a-button size="large"
-                >Telusuri Paket Umrah <a-icon type="right"
-              /></a-button>
+                >Telusuri Paket Umrah</a-button>
             </nuxt-link>
           </div>
         </div>
