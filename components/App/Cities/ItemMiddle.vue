@@ -2,27 +2,6 @@
   <div class="container" :style="{ 'padding-top': '80px' }">
     <div class="md-cities--package">
       <a-row :gutter="24" class="f-wrap">
-        <a-col :xs="24" :sm="24" :md="24" :lg="10" class="pb-24">
-          <a-card class="md-cities--banner-top" :bordered="false">
-            <div class="md-cities--body">
-              <h2>Makassar</h2>
-              <p>
-                Mesjid 99 Kubah Makassar, Icon Baru Sulawesi Selatan yang Tampil
-                Cantik dan Menawan
-              </p>
-
-              <nuxt-link to="/">
-                <a-button size="large">Jelajahi Paket Umrah</a-button>
-              </nuxt-link>
-            </div>
-
-            <div
-              class="md-cities--cover"
-              v-lazy:background-image="coverCities"
-            ></div>
-          </a-card>
-        </a-col>
-
         <a-col :xs="24" :sm="24" :md="24" :lg="14">
           <a-row :gutter="24" class="r-wrap">
             <a-col
@@ -53,6 +32,27 @@
             </a-col>
           </a-row>
         </a-col>
+
+        <a-col :xs="24" :sm="24" :md="24" :lg="10" class="pb-24">
+          <a-card class="md-cities--banner-middle" :bordered="false">
+            <div class="md-cities--body">
+              <h2>Jakarta</h2>
+              <p>
+                Mesjid Ramlie Musofa sekitar satu tahun terakhir, ada destinasi
+                wisata baru di daerah danau sunter
+              </p>
+
+              <nuxt-link to="/">
+                <a-button size="large">Jelajahi Paket Umrah</a-button>
+              </nuxt-link>
+            </div>
+
+            <div
+              class="md-cities--cover"
+              v-lazy:background-image="coverCities"
+            ></div>
+          </a-card>
+        </a-col>
       </a-row>
     </div>
   </div>
@@ -60,7 +60,7 @@
 
 <script>
 import CitiesUmrah from "@/components/Package/Umrah";
-const coverCities = require("~/static/umrah/cover/cu3.jpg");
+const coverCities = require("~/static/umrah/cover/cu4.jpg");
 import axios from "axios";
 export default {
   components: {
@@ -123,7 +123,7 @@ export default {
 </script>
 
 <style lang="scss">
-.md-cities--banner-top {
+.md-cities--banner-middle {
   overflow: hidden;
   border-radius: 0;
   height: 100%;
@@ -133,7 +133,7 @@ export default {
     padding: 0;
 
     & .md-cities--cover {
-      background-position: center center;
+      background-position: top center;
       background-repeat: no-repeat;
       background-size: cover;
       min-height: 224px;
@@ -142,7 +142,7 @@ export default {
       width: 100%;
 
       &::before {
-        background-color: rgba($color: #ffea87, $alpha: 0.25);
+        background-color: rgba($color: #6ed6ce, $alpha: 0.25);
         position: absolute;
         content: "";
         bottom: 0;
@@ -153,7 +153,7 @@ export default {
     }
 
     & .md-cities--body {
-      background-color: #ffea87;
+      background-color: #6ed6ce;
       position: relative;
       padding: 40px;
       z-index: 2;

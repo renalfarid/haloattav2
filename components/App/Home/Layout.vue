@@ -18,11 +18,15 @@
       </a-col>
 
       <a-col :span="24">
-        <UmrahRecommended />
+        <UmrahCitiesItemMiddle />
       </a-col>
 
       <a-col :span="24">
-        <UmrahLatest />
+        <UmrahCitiesItemBottom />
+      </a-col>
+
+      <a-col :span="24">
+        <BannerUmaroh />
       </a-col>
 
       <a-col :span="24">
@@ -40,9 +44,10 @@
 import HeroSearch from "./HeroSearch";
 import Cities from "./Cities";
 import BannerStar from "./BannerStar";
+import BannerUmaroh from "./BannerUmaroh";
 import UmrahCitiesItemTop from "@/components/App/Cities/ItemTop";
-import UmrahRecommended from "@/components/contents/catalog/umrah/recommended";
-import UmrahLatest from "@/components/contents/catalog/umrah/latest";
+import UmrahCitiesItemMiddle from "@/components/App/Cities/ItemMiddle";
+import UmrahCitiesItemBottom from "@/components/App/Cities/ItemBottom";
 import Categories from "./Categories";
 import Haloummi from "./Haloummi";
 export default {
@@ -50,9 +55,10 @@ export default {
     HeroSearch,
     Cities,
     BannerStar,
+    BannerUmaroh,
     UmrahCitiesItemTop,
-    UmrahLatest,
-    UmrahRecommended,
+    UmrahCitiesItemMiddle,
+    UmrahCitiesItemBottom,
     Categories,
     Haloummi
   }

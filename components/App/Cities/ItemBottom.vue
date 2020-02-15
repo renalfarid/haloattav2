@@ -3,12 +3,11 @@
     <div class="md-cities--package">
       <a-row :gutter="24" class="f-wrap">
         <a-col :xs="24" :sm="24" :md="24" :lg="10" class="pb-24">
-          <a-card class="md-cities--banner-top" :bordered="false">
+          <a-card class="md-cities--banner-bottom" :bordered="false">
             <div class="md-cities--body">
-              <h2>Makassar</h2>
+              <h2>Surabaya</h2>
               <p>
-                Mesjid 99 Kubah Makassar, Icon Baru Sulawesi Selatan yang Tampil
-                Cantik dan Menawan
+                Mesjidyang juga dikenal dengan mesjid agung adalah salah satu mesjid termegah di Jawa Timur
               </p>
 
               <nuxt-link to="/">
@@ -123,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss">
-.md-cities--banner-top {
+.md-cities--banner-bottom {
   overflow: hidden;
   border-radius: 0;
   height: 100%;
@@ -142,7 +141,7 @@ export default {
       width: 100%;
 
       &::before {
-        background-color: rgba($color: #ffea87, $alpha: 0.25);
+        background-color: rgba($color: #ff8585, $alpha: 0.25);
         position: absolute;
         content: "";
         bottom: 0;
@@ -153,7 +152,7 @@ export default {
     }
 
     & .md-cities--body {
-      background-color: #ffea87;
+      background-color: #ff8585;
       position: relative;
       padding: 40px;
       z-index: 2;

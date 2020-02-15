@@ -152,19 +152,28 @@
                 @include align-items(flex-end);
                 @include flexbox();
                 position: absolute;
-                padding: 24px 16px;
+                padding: 24px 8px;
                 width: 100%;
                 bottom: 0;
                 left: 0;
                 top: 0;
                 & h3 {
+                    font-size: 20px !important;
                     text-align: center;
                     color: #ffffff;
+                    letter-spacing: .5px;
+                    font-weight: 500 !important;
+                    line-height: normal;
+                    margin-bottom: 8px !important;
                 }
                 & p {
                     text-align: center;
                     color: rgba($color: #fff, $alpha: .8);
+                    letter-spacing: .5px;
                     font-style: italic;
+                    font-weight: 400;
+                    font-size: 14px !important;
+                    margin-bottom: 0;
                 }
             }
         }
