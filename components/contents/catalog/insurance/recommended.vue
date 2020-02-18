@@ -100,21 +100,19 @@ import axios from "axios";
 export default {
   data() {
     return {
-      loading: true,
       lisData: []
     };
   },
+
   created: function() {
     this.getdata();
   },
+
   methods: {
     async getdata() {
-      axios
-        .get(process.env.baseUrl + "asuransi/all")
-        .then(response => {
-          this.lisData = response.data.data.data.slice(0, 3);
-          this.loading = false;
-        });
+      axios.get(process.env.baseUrl + "asuransi/all").then(response => {
+        this.lisData = response.data.data.data.slice(0, 3);
+      });
     }
   }
 };
