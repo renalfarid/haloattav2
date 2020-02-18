@@ -29,7 +29,7 @@ module.exports = {
     loading: false,
 
     css: [
-        { src: "ant-design-vue/dist/antd.css" },
+        { src: 'ant-design-vue/dist/antd.less', lang: 'less' },
         { src: "@/assets/haloatta.scss", lang: "scss" }
     ],
 
@@ -131,13 +131,30 @@ module.exports = {
     },
 
     build: {
-        // extractCSS: true,
         extend(config, ctx) {
-
             if (ctx && ctx.isClient) {
                 config.optimization.splitChunks.maxSize = 51200
             }
             config.resolve.alias["vue"] = "vue/dist/vue.common";
+        },
+
+        babel: {
+            plugins: [
+                [
+                    'import', { libraryName: 'ant-design-vue' }, 'ant-design-vue'
+                ]
+            ]
+        },
+
+        loaders: {
+            less: {
+                modifyVars: {
+                    'primary-color': '#0FACF3',
+                    'link-color': '#0FACF3',
+                    'border-radius-base': '4px',
+                },
+                javascriptEnabled: true
+            }
         }
     }
 };
