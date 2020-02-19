@@ -101,6 +101,27 @@
     }
 }
 
+.md-upload__large {
+    & .ant-upload.ant-upload-select-picture-card {
+        background-color: rgba($color: $color-main, $alpha: .08);
+        border-color: $color-main;
+        width: 100% !important;
+        & .ant-upload {
+            overflow: hidden;
+            height: 116px;
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            & i {
+                color: rgba($color: #000000, $alpha: .35);
+                font-size: 30px;
+            }
+        }
+    }
+}
+
 .ant-btn.disabled,
 .ant-btn[disabled],
 .ant-btn.disabled:hover,
@@ -120,4 +141,10 @@
 .ant-select-selection:focus,
 .ant-select-selection:active {
     box-shadow: none !important;
+}
+
+.ant-input-lg,
+.ant-select-lg,
+.ant-time-picker-input {
+    font-size: 14px !important;
 }
