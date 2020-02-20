@@ -3,7 +3,7 @@
     <div class="ant-layout--results-space-small"></div>
     <div class="ant-layout--order-review-package-body">
       <div class="container">
-        <h2 class="mt-16 mb-24 cr-gray">Review Pesanan</h2>
+        <h2 class="mt-16 mb-0 cr-gray">Review Pesanan</h2>
 
         <a-row :gutter="24">
           <a-col :xs="24" :sm="24" :md="16">
