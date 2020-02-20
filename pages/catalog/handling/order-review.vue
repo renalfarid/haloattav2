@@ -3,12 +3,13 @@
     <div class="ant-layout--results-space-small"></div>
     <div class="ant-layout--order-review-package-body">
       <div class="container">
-        <a-row :gutter="32">
-          <a-col :span="17">
-            <informationHandling :data="item" />
-          </a-col>
-          <a-col :span="7">
+        <h2 class="mt-16 mb-24 cr-gray">Review Pesanan</h2>
+        <a-row :gutter="24">
+          <a-col :xs="24" :sm="24" :md="8" :style="{'float':'right'}">
             <informationSideRight :data="sidebar" />
+          </a-col>
+          <a-col :xs="24" :sm="24" :md="16">
+            <informationHandling :data="item" />
           </a-col>
         </a-row>
       </div>

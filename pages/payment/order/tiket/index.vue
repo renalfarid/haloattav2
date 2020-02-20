@@ -119,6 +119,19 @@
                 </a-radio-group>
               </a-card>
 
+              <div v-if="passenger === 1">
+                <a-alert
+                  :showIcon="false"
+                  message="Kami akan mengirimkan formulir pengisian data setelah anda melakukan pembayaran."
+                  :style="{
+                    'border-radius': '4px',
+                    'margin-bottom': '24px',
+                    padding: '24px'
+                  }"
+                  banner
+                />
+              </div>
+
               <div v-if="passenger === 2">
                 <a-alert
                   :showIcon="false"
@@ -584,19 +597,6 @@
                     </a-row>
                   </a-collapse-panel>
                 </a-collapse>
-              </div>
-
-              <div v-if="passenger === 1">
-                <a-alert
-                  :showIcon="false"
-                  message="Kami akan mengirimkan formulir pengisian data setelah anda melakukan pembayaran."
-                  :style="{
-                    'border-radius': '4px',
-                    'margin-bottom': '24px',
-                    padding: '24px'
-                  }"
-                  banner
-                />
               </div>
 
               <div :style="{ display: 'block', 'text-align': 'right' }">

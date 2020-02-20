@@ -188,7 +188,7 @@
                 <a-radio-group
                   name="radioGroup"
                   @change="onChange"
-                  v-model="room"
+                  v-model="member"
                 >
                   <a-radio :value="1" class="fs-15 fw-500 cr-black"
                     >Isi Data Nanti</a-radio
@@ -199,7 +199,7 @@
                 </a-radio-group>
               </a-card>
 
-              <div v-if="room === 1">
+              <div v-if="member === 1">
                 <a-alert
                   :showIcon="false"
                   message="Kami akan mengirimkan formulir pengisian data setelah anda melakukan pembayaran."
@@ -212,7 +212,7 @@
                 />
               </div>
 
-              <div v-if="room === 2">
+              <div v-if="member === 2">
                 <a-alert
                   :showIcon="false"
                   :style="{
@@ -1147,10 +1147,9 @@
                     </a-row>
                   </a-collapse-panel>
                 </a-collapse>
-              </div>
 
-              <div v-if="room === 2">
                 <a-divider></a-divider>
+
                 <a-collapse :bordered="false" class="mb-24">
                   <template v-slot:expandIcon="props">
                     <a-icon
@@ -1595,7 +1594,7 @@ export default {
 
   data() {
     return {
-      room: 1,
+      member: 1,
       typeOrder: 1,
       checkedFlight: false,
       timeFlightDeparture: false,
