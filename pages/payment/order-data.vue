@@ -31,29 +31,7 @@
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
-            <a-card class="b-solid b-radius mb-16">
-              <div class="d-flex align-items-center w-100">
-                <div>
-                  <a-avatar
-                    class="mr-16"
-                    size="large"
-                    :style="{
-                      'background-color': '#87d068',
-                      'min-width': '40px'
-                    }"
-                    icon="user"
-                  />
-                </div>
-                <div>
-                  <div class="fs-14 fw-400 cr-gray text-capitalize">
-                    Anda Login sebagai
-                  </div>
-                  <div class="fs-16 fw-500 cr-black text-capitalize">
-                    {{ $store.state.auth.nama }}
-                  </div>
-                </div>
-              </div>
-            </a-card>
+            <UserLogin />
 
             <a-form
               layout="vertical"
@@ -523,6 +501,7 @@
   </a-layout>
 </template>
 <script>
+import UserLogin from "@/components/Payment/UserLogin";
 import siderPayment from "@/pages/payment/sider.vue";
 import moment from "moment";
 import axios from "axios";
@@ -532,6 +511,8 @@ export default {
   middleware: "authenticated",
   layout: "application",
   name: "orderData",
+
+  components: { UserLogin, siderPayment },
 
   beforeCreate() {
     this.form = this.$form.createForm(this);
@@ -737,9 +718,6 @@ export default {
         }
       });
     }
-  },
-  components: {
-    siderPayment
   }
 };
 </script>
