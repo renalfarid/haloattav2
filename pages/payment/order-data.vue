@@ -27,7 +27,12 @@
             class="sticky-top mb-24"
             :style="{ float: 'right' }"
           >
-            <siderPayment :total="total" :productUmroh="productUmroh" :program="program" :berangkat="berangkat" />
+            <siderPayment
+              :total="total"
+              :productUmroh="productUmroh"
+              :program="program"
+              :berangkat="berangkat"
+            />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
@@ -155,310 +160,310 @@
               </div>
 
               <div v-if="value === 2">
+                <div v-for="n in pax" :key="n + 2">
+                  <a-card class="b-solid b-radius mb-16">
+                    <template slot="title">Jamaah {{ n }}</template>
+                    <a-row :gutter="16">
+                      <a-col :span="8">
+                        <a-form-item label="Title">
+                          <a-select
+                            v-decorator="[
+                              'title' + n,
+                              {
+                                initialValue: 'Tn.',
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            size="large"
+                            style="width: 100%"
+                          >
+                            <a-select-option value="Tn.">Tn.</a-select-option>
+                            <a-select-option value="Ny.">Ny.</a-select-option>
+                            <a-select-option value="Nn.">nn.</a-select-option>
+                          </a-select>
+                        </a-form-item>
+                      </a-col>
 
-              <div v-for="n in pax" :key="n+2">
-                <a-card class="b-solid b-radius mb-16">
-                  <template slot="title">Jamaah {{ n }}</template>
-                  <a-row :gutter="16">
-                    <a-col :span="8">
-                      <a-form-item label="Title">
-                        <a-select
-                          v-decorator="[
-                            'title'+n,
-                            {
-                              initialValue: 'Tn.',
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          size="large"
-                          style="width: 100%"
+                      <a-col :span="24">
+                        <a-form-item
+                          label="Nama Depan & Tengah (jika ada)"
+                          help="(tanpa gelar dan tanda baca)"
                         >
-                          <a-select-option value="Tn.">Tn.</a-select-option>
-                          <a-select-option value="Ny.">Ny.</a-select-option>
-                          <a-select-option value="Nn.">nn.</a-select-option>
-                        </a-select>
-                      </a-form-item>
-                    </a-col>
+                          <a-input
+                            v-decorator="[
+                              'firstName' + n,
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            size="large"
+                          />
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
 
-                    <a-col :span="24">
-                      <a-form-item
-                        label="Nama Depan & Tengah (jika ada)"
-                        help="(tanpa gelar dan tanda baca)"
-                      >
-                        <a-input
-                          v-decorator="[
-                            'firstName'+n,
-                            {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          size="large"
-                        />
-                      </a-form-item>
-                    </a-col>
-                  </a-row>
-
-                  <a-row :gutter="16">
-                    <a-col :span="24">
-                      <a-form-item
-                        label="Nama Belakang / Nama Keluarga"
-                        help="(tanpa gelar dan tanda baca)"
-                      >
-                        <a-input
-                          v-decorator="[
-                            'lastName'+n,
-                            {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          size="large"
-                        />
-                      </a-form-item>
-                    </a-col>
-                  </a-row>
-
-                  <a-row :gutter="16">
-                    <a-col :span="12">
-                      <a-form-item label="Tempat Lahir">
-                        <a-input
-                          v-decorator="[
-                            'tempatlahir'+n,
-                            {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          size="large"
-                        />
-                      </a-form-item>
-                    </a-col>
-                    <a-col :span="12">
-                      <a-form-item label="Tanggal Lahir">
-                        <a-date-picker
-                          v-decorator="[
-                            'date'+n,
-                            {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          placeholder="Pilih Tanggal Lahir Anda"
-                          size="large"
-                          style="width: 100%"
-                        />
-                      </a-form-item>
-                    </a-col>
-                  </a-row>
-
-                  <a-row :gutter="16">
-                    <a-col :span="12">
-                      <a-form-item label="No. Telepon/Handphone">
-                        <a-input
-                          v-decorator="[
-                            'telp'+n,
-                            {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          size="large"
-                        />
-                      </a-form-item>
-                    </a-col>
-
-                    <a-col :span="12">
-                      <a-form-item label="Jenis Pendidikan">
-                        <a-select
-                          v-decorator="[
-                            'pendidikan'+n,
-                            {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          placeholder="Pilih Pendidikan"
-                          size="large"
-                          style="width: 100%"
+                    <a-row :gutter="16">
+                      <a-col :span="24">
+                        <a-form-item
+                          label="Nama Belakang / Nama Keluarga"
+                          help="(tanpa gelar dan tanda baca)"
                         >
-                          <a-select-option value="SD">SD</a-select-option>
-                          <a-select-option value="SMP/MTS"
-                            >SMP/MTS</a-select-option
-                          >
-                          <a-select-option value="SMA/SMK"
-                            >SMA/SMK</a-select-option
-                          >
-                          <a-select-option value="S1">S1</a-select-option>
-                        </a-select>
-                      </a-form-item>
-                    </a-col>
-                  </a-row>
+                          <a-input
+                            v-decorator="[
+                              'lastName' + n,
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            size="large"
+                          />
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
 
-                  <a-row :gutter="16">
-                    <a-col :span="12">
-                      <a-form-item label="Status Pernikahan">
-                        <a-select
-                          v-decorator="[
-                            'status'+n,
-                            {
-                              initialValue: 'Belum Nikah',
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          placeholder="Pilih Status"
-                          size="large"
-                          style="width: 100%"
-                        >
-                          <a-select-option value="Belum Nikah"
-                            >Belum Nikah</a-select-option
-                          >
-                          <a-select-option value="Nikah">Nikah</a-select-option>
-                        </a-select>
-                      </a-form-item>
-                    </a-col>
-                    <a-col :span="12">
-                      <a-form-item label="Jenis Pekerjaan">
-                        <a-select
-                          v-decorator="[
-                            'pekerjaan'+n,
-                            {
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          placeholder="Pilih Pekerjaan"
-                          size="large"
-                          style="width: 100%"
-                        >
-                          <a-select-option value="Tani/Tambak"
-                            >Tani/Tambak</a-select-option
-                          >
-                          <a-select-option value="Wiraswasta"
-                            >Wiraswasta</a-select-option
-                          >
-                          <a-select-option value="Wirausaha"
-                            >Wirausaha</a-select-option
-                          >
-                        </a-select>
-                      </a-form-item>
-                    </a-col>
-                  </a-row>
+                    <a-row :gutter="16">
+                      <a-col :span="12">
+                        <a-form-item label="Tempat Lahir">
+                          <a-input
+                            v-decorator="[
+                              'tempatlahir' + n,
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            size="large"
+                          />
+                        </a-form-item>
+                      </a-col>
+                      <a-col :span="12">
+                        <a-form-item label="Tanggal Lahir">
+                          <a-date-picker
+                            v-decorator="[
+                              'date' + n,
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            placeholder="Pilih Tanggal Lahir Anda"
+                            size="large"
+                            style="width: 100%"
+                          />
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
 
-                  <a-divider
-                    class="ant-divider-title-left"
-                    orientation="left"
-                    :style="{ marginTop: '0' }"
-                  >
-                    <span class="fs-15 cr-gray">Informasi Paspor</span>
-                  </a-divider>
+                    <a-row :gutter="16">
+                      <a-col :span="12">
+                        <a-form-item label="No. Telepon/Handphone">
+                          <a-input
+                            v-decorator="[
+                              'telp' + n,
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            size="large"
+                          />
+                        </a-form-item>
+                      </a-col>
 
-                  <a-row :gutter="16">
-                    <a-col :span="12">
-                      <a-form-item label="Kewarganegaraan">
-                        <a-select
-                          v-decorator="[
-                            'country'+n,
-                            {
-                              initialValue: 'Indonesia',
-                              rules: [
-                                {
-                                  required: true,
-                                  message: 'Harus di isi!'
-                                }
-                              ]
-                            }
-                          ]"
-                          placeholder="Pilih Kewarganegaraan"
-                          size="large"
-                        >
-                          <a-select-option value="Indonesia"
-                            >Indonesia</a-select-option
+                      <a-col :span="12">
+                        <a-form-item label="Jenis Pendidikan">
+                          <a-select
+                            v-decorator="[
+                              'pendidikan' + n,
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            placeholder="Pilih Pendidikan"
+                            size="large"
+                            style="width: 100%"
                           >
-                        </a-select>
-                      </a-form-item>
-                    </a-col>
+                            <a-select-option value="SD">SD</a-select-option>
+                            <a-select-option value="SMP/MTS"
+                              >SMP/MTS</a-select-option
+                            >
+                            <a-select-option value="SMA/SMK"
+                              >SMA/SMK</a-select-option
+                            >
+                            <a-select-option value="S1">S1</a-select-option>
+                          </a-select>
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
 
-                    <a-col :span="12">
-                      <a-form-item label="Nomor Paspor">
-                        <a-input v-decorator="['nomor_paspor'+n]" size="large" />
-                      </a-form-item>
-                    </a-col>
-
-                    <a-col :span="12">
-                      <a-form-item label="Negara Penerbit">
-                        <a-select
-                          v-decorator="[
-                            'country_paspor'+n,
-                            { initialValue: 'Indonesia' }
-                          ]"
-                          placeholder="Pilih Negara"
-                          size="large"
-                        >
-                          <a-select-option value="Indonesia"
-                            >Indonesia</a-select-option
+                    <a-row :gutter="16">
+                      <a-col :span="12">
+                        <a-form-item label="Status Pernikahan">
+                          <a-select
+                            v-decorator="[
+                              'status' + n,
+                              {
+                                initialValue: 'Belum Nikah',
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            placeholder="Pilih Status"
+                            size="large"
+                            style="width: 100%"
                           >
-                        </a-select>
-                      </a-form-item>
-                    </a-col>
+                            <a-select-option value="Belum Nikah"
+                              >Belum Nikah</a-select-option
+                            >
+                            <a-select-option value="Nikah"
+                              >Nikah</a-select-option
+                            >
+                          </a-select>
+                        </a-form-item>
+                      </a-col>
+                      <a-col :span="12">
+                        <a-form-item label="Jenis Pekerjaan">
+                          <a-select
+                            v-decorator="[
+                              'pekerjaan' + n,
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            placeholder="Pilih Pekerjaan"
+                            size="large"
+                            style="width: 100%"
+                          >
+                            <a-select-option value="Tani/Tambak"
+                              >Tani/Tambak</a-select-option
+                            >
+                            <a-select-option value="Wiraswasta"
+                              >Wiraswasta</a-select-option
+                            >
+                            <a-select-option value="Wirausaha"
+                              >Wirausaha</a-select-option
+                            >
+                          </a-select>
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
 
-                    <a-col :span="12">
-                      <a-form-item label="Tanggal Habis Berlaku">
-                        <a-date-picker
-                          v-decorator="[
-                            'tglexpire'+n
-                            
-                          ]"
-                          format="YYYY-MM-DD"
-                          :disabledDate="disabledDate"
-                          placeholder="Pilih Tanggal"
-                          size="large"
-                          style="width: 100%"
-                        />
-                      </a-form-item>
-                    </a-col>
-                  </a-row>
+                    <a-divider
+                      class="ant-divider-title-left"
+                      orientation="left"
+                      :style="{ marginTop: '0' }"
+                    >
+                      <span class="fs-15 cr-gray">Informasi Paspor</span>
+                    </a-divider>
+
+                    <a-row :gutter="16">
+                      <a-col :span="12">
+                        <a-form-item label="Kewarganegaraan">
+                          <a-select
+                            v-decorator="[
+                              'country' + n,
+                              {
+                                initialValue: 'Indonesia',
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            placeholder="Pilih Kewarganegaraan"
+                            size="large"
+                          >
+                            <a-select-option value="Indonesia"
+                              >Indonesia</a-select-option
+                            >
+                          </a-select>
+                        </a-form-item>
+                      </a-col>
+
+                      <a-col :span="12">
+                        <a-form-item label="Nomor Paspor">
+                          <a-input
+                            v-decorator="['nomor_paspor' + n]"
+                            size="large"
+                          />
+                        </a-form-item>
+                      </a-col>
+
+                      <a-col :span="12">
+                        <a-form-item label="Negara Penerbit">
+                          <a-select
+                            v-decorator="[
+                              'country_paspor' + n,
+                              { initialValue: 'Indonesia' }
+                            ]"
+                            placeholder="Pilih Negara"
+                            size="large"
+                          >
+                            <a-select-option value="Indonesia"
+                              >Indonesia</a-select-option
+                            >
+                          </a-select>
+                        </a-form-item>
+                      </a-col>
+
+                      <a-col :span="12">
+                        <a-form-item label="Tanggal Habis Berlaku">
+                          <a-date-picker
+                            v-decorator="['tglexpire' + n]"
+                            format="YYYY-MM-DD"
+                            :disabledDate="disabledDate"
+                            placeholder="Pilih Tanggal"
+                            size="large"
+                            style="width: 100%"
+                          />
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
                   </a-card>
-              </div>
-                
+                </div>
               </div>
 
               <div v-if="value === 1">
@@ -492,7 +497,7 @@
 
     <a-layout-footer
       class="ant-layout-footer--payment"
-      :style="{ 'background-color': '#f7f7f7','text-align':'center' }"
+      :style="{ 'background-color': '#f7f7f7', 'text-align': 'center' }"
     >
       <div class="container">
         2016 - {{ new Date().getFullYear() }} © PT. NUH Teknologi Solution
@@ -538,8 +543,7 @@ export default {
       kodeproduk: query.kode,
       paxquad: query.quad,
       paxtriple: query.triple,
-      paxdouble: query.double,
-      
+      paxdouble: query.double
     };
   },
 
@@ -614,8 +618,8 @@ export default {
 
   methods: {
     moment,
-    hitungPax(){
-      this.pax = +this.paxquad + +this.paxtriple + +this.paxdouble
+    hitungPax() {
+      this.pax = +this.paxquad + +this.paxtriple + +this.paxdouble;
     },
     hitungPelunasan() {
       this.biayalunas = this.total;
@@ -643,10 +647,9 @@ export default {
     handleSubmitMore(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
-        console.log('Received values of form: ', values);
+        console.log("Received values of form: ", values);
 
         if (!err) {
-
           let params = this.$route.query;
           let data = {
             jenis_transaksi: params.type,
