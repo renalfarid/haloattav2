@@ -5,7 +5,7 @@
       <a-affix :offsetTop="0">
         <div class="container">
           <a-row :gutter="24">
-            <a-col :span="16">
+            <a-col :xs="24" :sm="24" :md="16">
               <a-anchor>
                 <a-anchor-link href="#informasi" title="Informasi" />
                 <a-anchor-link href="#ulasan" title="Ulasan" />
@@ -50,13 +50,13 @@
 
     <div class="container">
       <a-row :gutter="24">
-        <a-col :span="16">
+        <a-col :xs="24" :sm="24" :md="16">
           <div class="ant-layout--package-details-body">
             <information-handling :data="item" />
           </div>
         </a-col>
 
-        <a-col :span="8">
+        <a-col :xs="24" :sm="24" :md="8">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
               <information-sideright :data="sidebar" />
@@ -68,12 +68,12 @@
   </div>
 </template>
 <script>
-import informationHandling from "~/components/contents/details/handling/information-handling.vue";
-import informationSideright from "~/components/contents/details/handling/information-sideright.vue";
+import informationHandling from "@/components/contents/details/handling/information-handling.vue";
+import informationSideright from "@/components/contents/details/handling/information-sideright.vue";
 import moment from "moment";
 import axios from "axios";
 export default {
-  name: "detailHandling",
+  name: "detail-handling",
   head() {
     return {
       title:

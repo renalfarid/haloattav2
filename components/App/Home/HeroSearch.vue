@@ -11,7 +11,6 @@
           <a-row :gutter="24" type="flex" justify="space-between" align="middle" class="h-100">
             <a-col :xs="24" :sm="24" :md="24" :lg="11">
               <h2 class="fs-40 fw-600 title text-capitalize">Jelajahi wisata halal dunia</h2>
-              <a-button class="btn-join--us d-none" size="large">Jelajahi Sekarang</a-button>
 
               <user-login />
             </a-col>
@@ -83,14 +82,6 @@
 
                 <a-tab-pane key="8">
                   <span slot="tab">
-                    <div class="icon-equipment"></div>
-                    <span class="label-tabs">Perlengkapan</span>
-                  </span>
-                  <search-equipment />
-                </a-tab-pane>
-
-                <a-tab-pane key="9">
-                  <span slot="tab">
                     <div class="icon-tourleader"></div>
                     <span class="label-tabs">Tour Leader</span>
                   </span>
@@ -113,7 +104,6 @@ import searchVisa from "@/components/contents/lib/search/visa";
 import searchInsurance from "@/components/contents/lib/search/insurance";
 import searchHandling from "@/components/contents/lib/search/handling";
 import searchManasik from "@/components/contents/lib/search/manasik";
-import searchEquipment from "@/components/contents/lib/search/equipment";
 import searchTourleader from "@/components/contents/lib/search/tourleader";
 
 import userLogin from "@/components/App/Home/UserLogin";
@@ -126,7 +116,6 @@ export default {
     searchInsurance,
     searchHandling,
     searchManasik,
-    searchEquipment,
     searchTourleader,
     userLogin
   },

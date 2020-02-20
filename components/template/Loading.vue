@@ -40,9 +40,7 @@ export default {
     margin: 0 auto;
     & .ant-spin-text {
       margin-top: 16px;
-
       color: rgba(0, 0, 0, 0.8);
-
       font-size: 16px;
     }
   }

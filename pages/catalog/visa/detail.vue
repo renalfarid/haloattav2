@@ -4,8 +4,8 @@
     <div class="info-affix">
       <a-affix :offsetTop="0">
         <div class="container">
-          <a-row :gutter="32">
-            <a-col :span="17">
+          <a-row :gutter="24">
+            <a-col :xs="24" :sm="24" :md="16">
               <a-anchor>
                 <a-anchor-link href="#informasi" title="Informasi" />
                 <a-anchor-link href="#ulasan" title="Ulasan" />
@@ -49,14 +49,14 @@
     </div>
 
     <div class="container">
-      <a-row :gutter="32">
-        <a-col :span="17">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="24" :md="16">
           <div class="ant-layout--package-details-body">
             <information-visa :data="item" />
           </div>
         </a-col>
 
-        <a-col :span="7">
+        <a-col :xs="24" :sm="24" :md="8">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
               <information-sideright :data="sidebar" />
@@ -68,12 +68,12 @@
   </div>
 </template>
 <script>
-import informationVisa from "~/components/contents/details/visa/information-visa.vue";
-import informationSideright from "~/components/contents/details/visa/information-sideright.vue";
+import informationVisa from "@/components/contents/details/visa/information-visa.vue";
+import informationSideright from "@/components/contents/details/visa/information-sideright.vue";
 import moment from "moment";
 import axios from "axios";
 export default {
-  name: "detailVisa",
+  name: "detail-visa",
   head() {
     return {
       title:

@@ -116,15 +116,15 @@
   </div>
 </template>
 <script>
-import informationTicket from '~/components/contents/details/umrah/information-ticket.vue';
-import informationAccommodation from '~/components/contents/details/umrah/information-accommodation.vue';
-import informationEquipment from '~/components/contents/details/umrah/information-equipment.vue';
-import informationItinerary from '~/components/contents/details/umrah/information-itinerary.vue';
-import informationSideRight from '~/components/contents/details/umrah/information-sideright.vue';
+import informationTicket from '@/components/contents/details/umrah/information-ticket.vue';
+import informationAccommodation from '@/components/contents/details/umrah/information-accommodation.vue';
+import informationEquipment from '@/components/contents/details/umrah/information-equipment.vue';
+import informationItinerary from '@/components/contents/details/umrah/information-itinerary.vue';
+import informationSideRight from '@/components/contents/details/umrah/information-sideright.vue';
 import axios from 'axios';
 const Cookie = process.client ? require('js-cookie') : undefined;
 export default {
-  name: 'detailPackage',
+  name: 'detail-umrah',
   head() {
     return {
       title:

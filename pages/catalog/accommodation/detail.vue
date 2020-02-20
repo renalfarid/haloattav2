@@ -4,8 +4,8 @@
     <div class="info-affix">
       <a-affix :offsetTop="0">
         <div class="container">
-          <a-row :gutter="32">
-            <a-col :span="17">
+          <a-row :gutter="24">
+            <a-col :xs="24" :sm="24" :md="16">
               <a-anchor class="offsetTop-item">
                 <a-anchor-link href="#hotelmakkah" title="Hotel Makkah" />
                 <a-anchor-link href="#hotelmadinah" title="Hotel Madinah" />
@@ -52,17 +52,16 @@
 
     <div class="container">
       <a-row :gutter="24">
-        <a-col :xs="24" :sm="24" :md="8" :lg="8" :style="{'float':'right'}">
+        <a-col :xs="24" :sm="24" :md="16" :lg="16">
+          <div class="ant-layout--package-details-body">
+            <information-accommodation :data="dataLA" />
+          </div>
+        </a-col>
+        <a-col :xs="24" :sm="24" :md="8" :lg="8">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
               <information-sideright :data="sidebar" />
             </div>
-          </div>
-        </a-col>
-
-        <a-col :xs="24" :sm="24" :md="16" :lg="16">
-          <div class="ant-layout--package-details-body">
-            <information-accommodation :data="dataLA" />
           </div>
         </a-col>
       </a-row>
@@ -70,11 +69,11 @@
   </div>
 </template>
 <script>
-import informationAccommodation from "~/components/contents/details/accommodation/information-accommodation.vue";
-import informationSideright from "~/components/contents/details/accommodation/information-sideright.vue";
+import informationAccommodation from "@/components/contents/details/accommodation/information-accommodation.vue";
+import informationSideright from "@/components/contents/details/accommodation/information-sideright.vue";
 import axios from "axios";
 export default {
-  name: "detailAccommodation",
+  name: "detail-accommodation",
   head() {
     return {
       title:

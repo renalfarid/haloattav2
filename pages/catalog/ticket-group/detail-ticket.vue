@@ -4,8 +4,8 @@
     <div class="info-affix">
       <a-affix :offsetTop="0">
         <div class="container">
-          <a-row :gutter="32">
-            <a-col :span="17">
+          <a-row :gutter="24">
+            <a-col :xs="24" :sm="24" :md="16">
               <a-anchor>
                 <a-anchor-link href="#informasi" title="Informasi" />
                 <a-anchor-link href="#fasilitas" title="Fasilitas" />
@@ -25,7 +25,11 @@
         <a-col :span="10">
           <div class="ant-package--images-large">
             <expandable-image
-              :src="gambar_maskapai[0].gambar != '' ? gambar_maskapai[0].gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+              :src="
+                gambar_maskapai[0].gambar != ''
+                  ? gambar_maskapai[0].gambar
+                  : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'
+              "
             />
           </div>
         </a-col>
@@ -34,14 +38,22 @@
             <a-col :span="24">
               <div class="ant-package--images-small">
                 <expandable-image
-                  :src="gambar_maskapai[1].gambar != '' ? gambar_maskapai[1].gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                  :src="
+                    gambar_maskapai[1].gambar != ''
+                      ? gambar_maskapai[1].gambar
+                      : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'
+                  "
                 />
               </div>
             </a-col>
             <a-col :span="24">
               <div class="ant-package--images-small">
                 <expandable-image
-                  :src="gambar_maskapai[2].gambar != '' ? gambar_maskapai[2].gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+                  :src="
+                    gambar_maskapai[2].gambar != ''
+                      ? gambar_maskapai[2].gambar
+                      : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'
+                  "
                 />
               </div>
             </a-col>
@@ -50,60 +62,64 @@
         <a-col :span="8">
           <div class="ant-package--images-large">
             <expandable-image
-              :src="gambar_maskapai[3].gambar != '' ? gambar_maskapai[3].gambar : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'"
+              :src="
+                gambar_maskapai[3].gambar != ''
+                  ? gambar_maskapai[3].gambar
+                  : 'https://theme.hstatic.net/1000253446/1000470009/14/no-image.jpg?v=843'
+              "
             />
           </div>
         </a-col>
       </a-row>
     </div>
 
-    <div data-v-sticky-container>
-      <div class="container">
-        <a-row :gutter="32" v-sticky="stickyOptions">
-          <a-col :span="17">
-            <div class="ant-layout--package-details-body">
-              <information-ticket :data="item" :vendor="vendor" :review="review" />
-            </div>
-          </a-col>
+    <div class="container">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="24" :md="16">
+          <div class="ant-layout--package-details-body">
+            <information-ticket
+              :data="item"
+              :vendor="vendor"
+              :review="review"
+            />
+          </div>
+        </a-col>
 
-          <a-col :span="7">
-            <div class="ant-layout--right" :style="{ margin: '32px 0'}">
-              <div class="ant-affix--container">
-                <information-sideright :data="sidebar" />
-              </div>
+        <a-col :xs="24" :sm="24" :md="8">
+          <div class="ant-layout--right" :style="{ margin: '32px 0' }">
+            <div class="ant-affix--container">
+              <information-sideright :data="sidebar" />
             </div>
-          </a-col>
-        </a-row>
-      </div>
+          </div>
+        </a-col>
+      </a-row>
     </div>
   </div>
 </template>
 <script>
-import informationTicket from "~/components/contents/details/ticket/information-ticket.vue";
-import informationSideright from "~/components/contents/details/ticket/information-sideright.vue";
+import informationTicket from "@/components/contents/details/ticket/information-ticket.vue";
+import informationSideright from "@/components/contents/details/ticket/information-sideright.vue";
 import moment from "moment";
 import axios from "axios";
 export default {
-  name: "detailTicket",
+  name: "detail-ticket",
   head() {
     return {
       title:
         "Tiket Makassar ke Jeddah - Booking Paket Umrah & Komponen Umrah Lainnya"
     };
   },
+
   data() {
     return {
       item: "",
-      stickyOptions: {
-        topSpacing: 140,
-        bottomSpacing: 0
-      },
       sidebar: {},
       gambar_maskapai: [],
       vendor: "",
       review: ""
     };
   },
+
   async asyncData({ query, store }) {
     let data = [];
 
@@ -129,6 +145,7 @@ export default {
   methods: {
     moment
   },
+
   components: {
     informationTicket,
     informationSideright

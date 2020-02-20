@@ -1,15 +1,16 @@
 <template>
   <div class="ant-affix--card mt-24">
-    <a-card class="ant-card--package-review mb-16">
+    <a-card class="b-shadow b-radius b-solid ant-card--package-review mb-16">
       <div class="p-16">
         <div class="d-flex align-items-center">
-          <div class="fs-15 fw-500 cr-black f-default">
-            Informasi Penting -/tidak ada
+          <div class="fs-16 fw-500 cr-black">
+            Informasi Penting
           </div>
-          <a href class="fs-14 cr-primary ml-auto">Details</a>
         </div>
       </div>
+
       <a-divider :style="{ margin: '0' }" />
+
       <div class="p-16">
         <div class="d-flex align-items-start mb-8">
           <a-avatar
@@ -53,14 +54,14 @@
       </div>
     </a-card>
 
-    <a-card class="ant-card--package-review">
+    <a-card class="b-shadow b-radius b-solid ant-card--package-review">
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
           <div class="ant-package--info fs-14 fw-400 cr-black">
             Rencana Manasik
           </div>
           <div class="ant-package--info fs-14 fw-500 cr-black ml-auto">
-            -/tidak ada
+            -
           </div>
         </div>
       </div>
@@ -69,20 +70,20 @@
 
       <div class="p-16">
         <div class="d-flex align-items-center mb-8">
-          <div class="fs-14 fw-400 cr-black f-default w-35">
-            Jumlah ({{ qty }})
+          <div class="fs-14 fw-400 cr-black">
+            Subtotal
           </div>
-          <span class="cr-gray mr-8">x</span>
-          <div class="fs-14 fw-400 cr-black f-default text-right w-65">
-            {{ data.harga | currency }}
+          
+          <div class="fs-14 fw-400 cr-black ml-auto">
+            <span class="cr-gray mr-8">{{ qty }}x</span> {{ data.harga | currency }}
           </div>
         </div>
 
         <a-divider :style="{ margin: '12px 0' }" />
 
         <div class="d-flex align-items-center mb-24">
-          <div class="fs-15 fw-500 cr-black f-default w-35">Total</div>
-          <div class="fs-15 fw-500 cr-black f-default text-right w-65">
+          <div class="fs-14 fw-500 cr-black">Total Bayar</div>
+          <div class="fs-14 fw-500 cr-black ml-auto">
             {{ total | currency }}
           </div>
         </div>
@@ -96,7 +97,7 @@
             >Lanjutkan</a-button
           >
         </div>
-        <div class="ant-package--subtitle fs-13 fw-400 cr-gray f-default pb-8">
+        <div class="ant-package--subtitle fs-13 fw-400 cr-gray pb-8">
           Dapatkan point langsung ketika anda menyelesaikan aktivitas
         </div>
       </div>

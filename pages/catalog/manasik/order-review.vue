@@ -3,11 +3,13 @@
     <div class="ant-layout--results-space-small"></div>
     <div class="ant-layout--order-review-package-body">
       <div class="container">
-        <a-row :gutter="32">
-          <a-col :span="17">
+        <h2 class="mt-16 mb-24 cr-gray">Review Pesanan</h2>
+        <a-row :gutter="24">
+          <a-col :xs="24" :sm="24" :md="16">
             <informationManasik :data="item" />
           </a-col>
-          <a-col :span="7">
+
+          <a-col :xs="24" :sm="24" :md="8">
             <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
@@ -16,12 +18,12 @@
   </div>
 </template>
 <script>
-import informationManasik from "~/components/contents/review/manasik/information-manasik.vue";
-import informationSideRight from "~/components/contents/review/manasik/information-sideright.vue";
+import informationManasik from "@/components/contents/review/manasik/information-manasik.vue";
+import informationSideRight from "@/components/contents/review/manasik/information-sideright.vue";
 import axios from "axios";
 export default {
   middleware: "authenticated",
-  name: "orderReview",
+  name: "order-review-manasik",
   head() {
     return {
       title: "Ulasan Pesanan - Booking Manasik Pemantapan Umrah Lebih Mudah"

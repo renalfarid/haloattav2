@@ -4,12 +4,14 @@
     <div class="ant-layout--order-review-package-body">
       <div class="container">
         <h2 class="mt-16 mb-24 cr-gray">Review Pesanan</h2>
+        
         <a-row :gutter="24">
-          <a-col :xs="24" :sm="24" :md="8" :style="{'float':'right'}">
-            <informationSideRight :data="sidebar" />
-          </a-col>
           <a-col :xs="24" :sm="24" :md="16">
             <informationHandling :data="item" />
+          </a-col>
+
+          <a-col :xs="24" :sm="24" :md="8">
+            <informationSideRight :data="sidebar" />
           </a-col>
         </a-row>
       </div>
@@ -22,7 +24,7 @@ import informationSideRight from "~/components/contents/review/handling/informat
 import axios from "axios";
 export default {
   middleware: "authenticated",
-  name: "orderReview",
+  name: "order-review-handling",
   head() {
     return {
       title: "Ulasan Pesanan - Booking Handling Umrah Lebih Mudah"
