@@ -1,65 +1,50 @@
 <template>
   <a-card class="b-solid b-radius ant-card--payment-sider">
     <div class="p-24">
-      <div class="fs-12 fw-400 text-uppercase cr-gray mb-8">
+      <div class="fs-16 fw-400 text-capitalize cr-gray mb-16">
         <span>Informasi Pesanan</span>
       </div>
-      <div class="d-flex align-items-center">
-        <div class="mr-8">
-          <a-avatar
-            src="https://communicateonline.me/lvt/wp-content/uploads/2016/10/Logo-Mo%CC%88venpick.png"
-          />
+
+      <div class="d-flex align-items-center mb-16">
+        <div class="mr-16">
+          <a-avatar :src="require('~/static/illu/no_images.svg')" />
         </div>
         <div>
           <div class="fs-14 fw-500 cr-black">
-            <span>Movenpick Hotels & Resorts</span>
+            <span>TRAVELLIN SYARIAH GOLD ADIRA</span>
           </div>
         </div>
       </div>
-      <a-timeline :style="{ margin: '24px 0 0 0' }">
-        <a-timeline-item>
-          <div class="fs-14 fw-400 cr-black">
-            Check In
-          </div>
-          <div class="fs-14 fw-400 cr-gray">
-            <span>Rabu, 10 September 2019</span>
-          </div>
-        </a-timeline-item>
-        <a-timeline-item>
-          <a-icon slot="dot" type="schedule" style="fontSize: '14px'" />
-          <div class="fs-14 fw-400 cr-gray">
-            <span>3 Hari Mekkah Rayyana Ajyad</span>
-          </div>
-          <div class="fs-14 fw-400 cr-gray">
-            <span>4 Hari Madinah Pinewood Hotel</span>
-          </div>
-        </a-timeline-item>
-        <a-timeline-item :style="{ paddingBottom: '0' }">
-          <div class="fs-14 fw-400 cr-black">
-            Check Out
-          </div>
-          <div class="fs-14 fw-400 cr-gray">
-            <span>Kamis, 19 September 2019</span>
-          </div>
-        </a-timeline-item>
-      </a-timeline>
+
+      <div class="d-flex align-items-center">
+        <div class="fs-14 fw-400 cr-black">Durasi Perjalanan</div>
+        <div class="fs-14 fw-400 cr-black ml-auto">
+          14 Hari
+        </div>
+      </div>
 
       <a-divider :style="{ margin: '16px 0' }" />
 
-      <div class="fs-12 fw-400 text-uppercase cr-gray mb-8">
-        <span>Informasi Room</span>
-      </div>
       <div class="d-flex align-items-center mb-8">
-        <div class="fs-14 fw-400 cr-black">Quad Room</div>
+        <div class="fs-14 fw-400 cr-black">Subtotal</div>
         <div class="fs-14 fw-400 cr-black ml-auto">
-          30 pax
+          <span class="cr-gray mr-8">2x</span> {{ 250000 | currency }}
         </div>
       </div>
 
       <div class="d-flex align-items-center mb-8">
-        <div class="fs-14 fw-400 cr-black">Triple Room</div>
+        <div class="fs-14 fw-400 cr-black">Administrasi</div>
         <div class="fs-14 fw-400 cr-black ml-auto">
-          10 pax
+          {{ 0 | currency }}
+        </div>
+      </div>
+
+      <a-divider :style="{ margin: '16px 0' }" />
+
+      <div class="d-flex align-items-center mb-8">
+        <div class="fs-14 fw-500 cr-black">Total Bayar</div>
+        <div class="fs-14 fw-500 cr-black ml-auto">
+          {{ 2 * 250000 | currency }}
         </div>
       </div>
     </div>
