@@ -37,11 +37,7 @@
 }
 
 .ant-spin-placeholder {
-    @include align-items(center);
-    @include flexbox();
-    text-align: center;
-    height: 100vh;
-    overflow: hidden;
+    margin: 0 auto;
     & .ant-spin {
         margin: 0 auto;
         & .ant-spin-text {

@@ -26,7 +26,7 @@ module.exports = {
         token: process.env.apiToken + "/oauth/token"
     },
 
-    loading: false,
+    loading: '@/components/template/Loading',
 
     css: [
         { src: 'ant-design-vue/dist/antd.less', lang: 'less' },

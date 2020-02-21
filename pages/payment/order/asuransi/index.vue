@@ -27,12 +27,7 @@
             class="sticky-top mb-24"
             :style="{ float: 'right' }"
           >
-            <siderPayment
-              :total="total"
-              :productUmroh="productUmroh"
-              :program="program"
-              :berangkat="berangkat"
-            />
+            <SideTicket />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
@@ -46,129 +41,193 @@
             >
               <h3 class="fw-600 cr-black mt-8">Data Pemesan</h3>
               <a-card class="b-solid b-radius mb-16">
-                <a-form-item label="Nama Lengkap">
-                  <a-input
-                    v-model="dataPemesan.nama"
-                    v-decorator="[
-                      'nama',
-                      {
-                        rules: [
-                          {
-                            required: true,
-                            message: 'Nama pemesan harus di isi'
-                          }
-                        ]
-                      }
-                    ]"
-                    size="large"
-                  />
-                </a-form-item>
+                <template slot="title">
+                  <a-radio-group
+                    name="radioGroup"
+                    @change="onChange"
+                    v-model="typeOrder"
+                  >
+                    <a-radio :value="1" class="fs-15 fw-500 cr-black"
+                      >Perjalanan Pribadi</a-radio
+                    >
+                    <a-radio :value="2" class="fs-15 fw-500 cr-black"
+                      >Travel Group</a-radio
+                    >
+                  </a-radio-group>
+                </template>
 
-                <a-row :gutter="16">
-                  <a-col :xs="24" :sm="24" :md="12">
-                    <a-form-item label="Nomor Telepon">
-                      <a-input
-                        v-model="dataPemesan.nohp"
-                        v-decorator="[
-                          'telp',
-                          {
-                            rules: [
-                              {
-                                required: true,
-                                message: 'Nomor telp/handphone harus di isi'
-                              }
-                            ]
-                          }
-                        ]"
-                        size="large"
-                      />
-                    </a-form-item>
-                  </a-col>
+                <div v-if="typeOrder === 1">
+                  <a-form-item label="Nama Lengkap">
+                    <a-input
+                      v-decorator="[
+                        'nama',
+                        {
+                          rules: [
+                            {
+                              required: true,
+                              message: 'Nama pemesan harus di isi'
+                            }
+                          ]
+                        }
+                      ]"
+                      size="large"
+                    />
+                  </a-form-item>
 
-                  <a-col :xs="24" :sm="24" :md="12">
-                    <a-form-item label="Email">
-                      <a-input
-                        v-model="dataPemesan.email"
-                        v-decorator="[
-                          'email',
-                          {
-                            rules: [
-                              {
-                                type: 'email',
-                                message: 'Email anda tidak valid!'
-                              },
-                              {
-                                required: true,
-                                message: 'Email pemesan harus di isi'
-                              }
-                            ]
-                          }
-                        ]"
-                        size="large"
-                      />
-                    </a-form-item>
-                  </a-col>
-                </a-row>
+                  <a-row :gutter="16">
+                    <a-col :xs="24" :sm="24" :md="12">
+                      <a-form-item label="Nomor Telepon">
+                        <a-input
+                          v-decorator="[
+                            'telp',
+                            {
+                              rules: [
+                                {
+                                  required: true,
+                                  message: 'Nomor telp/handphone harus di isi'
+                                }
+                              ]
+                            }
+                          ]"
+                          size="large"
+                        />
+                      </a-form-item>
+                    </a-col>
+
+                    <a-col :xs="24" :sm="24" :md="12">
+                      <a-form-item label="Email">
+                        <a-input
+                          v-decorator="[
+                            'email',
+                            {
+                              rules: [
+                                {
+                                  type: 'email',
+                                  message: 'Email anda tidak valid!'
+                                },
+                                {
+                                  required: true,
+                                  message: 'Email pemesan harus di isi'
+                                }
+                              ]
+                            }
+                          ]"
+                          size="large"
+                        />
+                      </a-form-item>
+                    </a-col>
+                  </a-row>
+                </div>
+
+                <div v-if="typeOrder === 2">
+                  <a-form-item label="Nama Travel Anda">
+                    <a-input
+                      v-decorator="[
+                        'travel',
+                        {
+                          rules: [
+                            {
+                              required: true,
+                              message: 'Harus di isi'
+                            }
+                          ]
+                        }
+                      ]"
+                      size="large"
+                    />
+                  </a-form-item>
+
+                  <a-row :gutter="16">
+                    <a-col :xs="24" :sm="24" :md="12">
+                      <a-form-item label="Nomor Telepon">
+                        <a-input
+                          v-decorator="[
+                            'telp',
+                            {
+                              rules: [
+                                {
+                                  required: true,
+                                  message: 'Nomor telp/handphone harus di isi'
+                                }
+                              ]
+                            }
+                          ]"
+                          size="large"
+                        />
+                      </a-form-item>
+                    </a-col>
+
+                    <a-col :xs="24" :sm="24" :md="12">
+                      <a-form-item label="Email">
+                        <a-input
+                          v-decorator="[
+                            'email',
+                            {
+                              rules: [
+                                {
+                                  type: 'email',
+                                  message: 'Email anda tidak valid!'
+                                },
+                                {
+                                  required: true,
+                                  message: 'Email pemesan harus di isi'
+                                }
+                              ]
+                            }
+                          ]"
+                          size="large"
+                        />
+                      </a-form-item>
+                    </a-col>
+                  </a-row>
+                </div>
               </a-card>
 
-              <h3 class="fw-600 cr-black mt-8">Data Jamaah</h3>
+              <h3 class="fw-600 cr-black mt-8">Data Peserta/Jamaah</h3>
               <a-card class="b-solid b-radius mb-16">
                 <a-radio-group
                   name="radioGroup"
                   @change="onChange"
-                  v-model="value"
+                  v-model="room"
                 >
-                  <a-radio :value="1" class="fs-16 cr-black"
-                    >Isi Data Jamaah Nanti</a-radio
+                  <a-radio :value="1" class="fs-15 fw-500 cr-black"
+                    >Isi Data Nanti</a-radio
                   >
-                  <a-radio :value="2" class="fs-16 cr-black"
-                    >Isi Data Jamaah Sekarang</a-radio
+                  <a-radio :value="2" class="fs-15 fw-500 cr-black"
+                    >Isi Data Sekarang</a-radio
                   >
                 </a-radio-group>
               </a-card>
 
-              <div v-if="value === 2">
+              <div v-if="room === 1">
                 <a-alert
                   :showIcon="false"
+                  message="Kami akan mengirimkan formulir pengisian data setelah anda melakukan pembayaran."
                   :style="{
                     'border-radius': '4px',
                     'margin-bottom': '24px',
                     padding: '24px'
                   }"
                   banner
-                >
-                  <template slot="message">
-                    <h5 class="text-uppercase cr-gray">Informasi Penting :</h5>
-                    <div
-                      class="d-flex align-items-start mb-8"
-                      v-for="(item, index) in information"
-                      :key="index"
-                    >
-                      <div class="mr-8">
-                        <a-icon
-                          type="check-circle"
-                          theme="filled"
-                          :style="{ opacity: '.7' }"
-                        />
-                      </div>
-                      <div>
-                        {{ item.title }}
-                      </div>
-                    </div>
-                  </template>
-                </a-alert>
+                />
               </div>
 
-              <div v-if="value === 2">
-                <div v-for="n in pax" :key="n + 2">
-                  <a-card class="b-solid b-radius mb-16">
-                    <template slot="title">Jamaah {{ n }}</template>
+              <div v-if="room === 2">
+                <a-collapse :bordered="false" class="mb-24">
+                  <template v-slot:expandIcon="props">
+                    <a-icon
+                      type="caret-right"
+                      :rotate="props.isActive ? 90 : 0"
+                    />
+                  </template>
+
+                  <a-collapse-panel header="Peserta/Jamaah 1" key="1">
                     <a-row :gutter="16">
-                      <a-col :span="8">
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Title">
                           <a-select
                             v-decorator="[
-                              'title' + n,
+                              'title',
                               {
                                 initialValue: 'Tn.',
                                 rules: [
@@ -189,14 +248,14 @@
                         </a-form-item>
                       </a-col>
 
-                      <a-col :span="24">
+                      <a-col :xs="24" :sm="24" :md="24">
                         <a-form-item
                           label="Nama Depan & Tengah (jika ada)"
                           help="(tanpa gelar dan tanda baca)"
                         >
                           <a-input
                             v-decorator="[
-                              'firstName' + n,
+                              'firstName',
                               {
                                 rules: [
                                   {
@@ -213,14 +272,14 @@
                     </a-row>
 
                     <a-row :gutter="16">
-                      <a-col :span="24">
+                      <a-col :xs="24" :sm="24" :md="24">
                         <a-form-item
                           label="Nama Belakang / Nama Keluarga"
                           help="(tanpa gelar dan tanda baca)"
                         >
                           <a-input
                             v-decorator="[
-                              'lastName' + n,
+                              'lastName',
                               {
                                 rules: [
                                   {
@@ -237,11 +296,11 @@
                     </a-row>
 
                     <a-row :gutter="16">
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Tempat Lahir">
                           <a-input
                             v-decorator="[
-                              'tempatlahir' + n,
+                              'tempatlahir',
                               {
                                 rules: [
                                   {
@@ -255,11 +314,12 @@
                           />
                         </a-form-item>
                       </a-col>
-                      <a-col :span="12">
+
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Tanggal Lahir">
                           <a-date-picker
                             v-decorator="[
-                              'date' + n,
+                              'date',
                               {
                                 rules: [
                                   {
@@ -269,7 +329,7 @@
                                 ]
                               }
                             ]"
-                            placeholder="Pilih Tanggal Lahir Anda"
+                            placeholder="Pilih Tanggal"
                             size="large"
                             style="width: 100%"
                           />
@@ -278,11 +338,11 @@
                     </a-row>
 
                     <a-row :gutter="16">
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="No. Telepon/Handphone">
                           <a-input
                             v-decorator="[
-                              'telp' + n,
+                              'telp',
                               {
                                 rules: [
                                   {
@@ -297,11 +357,11 @@
                         </a-form-item>
                       </a-col>
 
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Jenis Pendidikan">
                           <a-select
                             v-decorator="[
-                              'pendidikan' + n,
+                              'pendidikan',
                               {
                                 rules: [
                                   {
@@ -329,11 +389,11 @@
                     </a-row>
 
                     <a-row :gutter="16">
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Status Pernikahan">
                           <a-select
                             v-decorator="[
-                              'status' + n,
+                              'status',
                               {
                                 initialValue: 'Belum Nikah',
                                 rules: [
@@ -357,11 +417,11 @@
                           </a-select>
                         </a-form-item>
                       </a-col>
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Jenis Pekerjaan">
                           <a-select
                             v-decorator="[
-                              'pekerjaan' + n,
+                              'pekerjaan',
                               {
                                 rules: [
                                   {
@@ -375,34 +435,23 @@
                             size="large"
                             style="width: 100%"
                           >
-                            <a-select-option value="Tani/Tambak"
-                              >Tani/Tambak</a-select-option
+                            <a-select-option value="Swasta"
+                              >Swasta</a-select-option
                             >
                             <a-select-option value="Wiraswasta"
                               >Wiraswasta</a-select-option
-                            >
-                            <a-select-option value="Wirausaha"
-                              >Wirausaha</a-select-option
                             >
                           </a-select>
                         </a-form-item>
                       </a-col>
                     </a-row>
 
-                    <a-divider
-                      class="ant-divider-title-left"
-                      orientation="left"
-                      :style="{ marginTop: '0' }"
-                    >
-                      <span class="fs-15 cr-gray">Informasi Paspor</span>
-                    </a-divider>
-
                     <a-row :gutter="16">
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="16">
                         <a-form-item label="Kewarganegaraan">
                           <a-select
                             v-decorator="[
-                              'country' + n,
+                              'country',
                               {
                                 initialValue: 'Indonesia',
                                 rules: [
@@ -423,20 +472,20 @@
                         </a-form-item>
                       </a-col>
 
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Nomor Paspor">
                           <a-input
-                            v-decorator="['nomor_paspor' + n]"
+                            v-decorator="['nomor_paspor']"
                             size="large"
                           />
                         </a-form-item>
                       </a-col>
 
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Negara Penerbit">
                           <a-select
                             v-decorator="[
-                              'country_paspor' + n,
+                              'country_paspor',
                               { initialValue: 'Indonesia' }
                             ]"
                             placeholder="Pilih Negara"
@@ -449,11 +498,21 @@
                         </a-form-item>
                       </a-col>
 
-                      <a-col :span="12">
+                      <a-col :xs="24" :sm="24" :md="12">
+                        <a-form-item label="Tanggal Berlaku">
+                          <a-date-picker
+                            v-decorator="['tglmaking']"
+                            placeholder="Pilih Tanggal"
+                            size="large"
+                            style="width: 100%"
+                          />
+                        </a-form-item>
+                      </a-col>
+
+                      <a-col :xs="24" :sm="24" :md="12">
                         <a-form-item label="Tanggal Habis Berlaku">
                           <a-date-picker
-                            v-decorator="['tglexpire' + n]"
-                            format="YYYY-MM-DD"
+                            v-decorator="['tglexpired']"
                             :disabledDate="disabledDate"
                             placeholder="Pilih Tanggal"
                             size="large"
@@ -462,21 +521,121 @@
                         </a-form-item>
                       </a-col>
                     </a-row>
-                  </a-card>
-                </div>
-              </div>
 
-              <div v-if="value === 1">
-                <a-alert
-                  :showIcon="false"
-                  message="Kami akan mengirimkan formulir pengisian data setelah anda melakukan pembayaran."
-                  :style="{
-                    'border-radius': '4px',
-                    'margin-bottom': '24px',
-                    padding: '24px'
-                  }"
-                  banner
-                />
+                    <a-divider></a-divider>
+
+                    <a-row :gutter="16">
+                      <a-col :xs="24" :sm="24" :md="24">
+                        <a-form-item label="Nama Ahli Waris">
+                          <a-input
+                            v-decorator="[
+                              'ahliWaris',
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            size="large"
+                          />
+                        </a-form-item>
+                      </a-col>
+
+                      <a-col :xs="24" :sm="24" :md="12">
+                        <a-form-item label="Hubungan">
+                          <a-input
+                            v-decorator="[
+                              'relation',
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            size="large"
+                          />
+                        </a-form-item>
+                      </a-col>
+
+                      <a-col :xs="24" :sm="24" :md="12">
+                        <a-form-item label="No. Telepon">
+                          <a-input
+                            v-decorator="[
+                              'noTelp',
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                            size="large"
+                          />
+                        </a-form-item>
+                      </a-col>
+
+                      <a-col :xs="24" :sm="24" :md="24">
+                        <a-form-item label="Alamat">
+                          <a-textarea
+                            :rows="4"
+                            v-decorator="[
+                              'address',
+                              {
+                                rules: [
+                                  {
+                                    required: true,
+                                    message: 'Harus di isi!'
+                                  }
+                                ]
+                              }
+                            ]"
+                          />
+                        </a-form-item>
+                      </a-col>
+
+                      <a-col :xs="24" :sm="12" :md="12">
+                        <a-form-item label="Photo Paspor">
+                          <a-upload
+                            class="md-upload__large"
+                            name="foto"
+                            listType="picture-card"
+                            :showUploadList="false"
+                            action="#"
+                            :beforeUpload="beforeUpload"
+                            @change="handleChangePhotoPaspor"
+                            v-decorator="[
+                              'photoPaspor',
+                              {
+                                initialValue: '',
+                                validateTrigger: ['change', 'blur'],
+                                rules: [
+                                  { required: true, message: 'Harus di isi!' }
+                                ]
+                              }
+                            ]"
+                          >
+                            <img
+                              v-if="photoPaspor"
+                              :src="photoPaspor"
+                              alt="Paspor"
+                            />
+                            <div v-else>
+                              <a-icon type="plus" />
+                            </div>
+                          </a-upload>
+                        </a-form-item>
+                      </a-col>
+                    </a-row>
+                  </a-collapse-panel>
+                </a-collapse>
               </div>
 
               <div :style="{ display: 'block', 'text-align': 'right' }">
@@ -507,17 +666,23 @@
 </template>
 <script>
 import UserLogin from "@/components/Payment/UserLogin";
-import siderPayment from "@/pages/payment/sider.vue";
+import SideTicket from "./side";
 import moment from "moment";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
 
+function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+
 export default {
   middleware: "authenticated",
   layout: "application",
-  name: "orderData",
+  name: "oder-data-insurance",
 
-  components: { UserLogin, siderPayment },
+  components: { UserLogin, SideTicket },
 
   beforeCreate() {
     this.form = this.$form.createForm(this);
@@ -529,195 +694,44 @@ export default {
     };
   },
 
-  async asyncData({ query }) {
-    const myProduct = await axios.post(
-      process.env.baseUrl + "paket/umroh/detail",
-      { kode_produk: query.kode }
-    );
-    let getProduk = myProduct.data.data;
-    return {
-      productUmroh: getProduk.umroh.nama,
-      program: getProduk.umroh.jumlah_hari,
-      berangkat: getProduk.umroh.tgl_berangkat,
-      total: query.total,
-      kodeproduk: query.kode,
-      paxquad: query.quad,
-      paxtriple: query.triple,
-      paxdouble: query.double
-    };
-  },
-
   data() {
     return {
-      value: 1,
-      n: 1,
-      paxquad: 0,
-      paxtriple: 0,
-      paxdouble: 0,
-      pax: 0,
-      loading: false,
-      dataPemesan: {
-        nama: "",
-        nohp: "",
-        email: ""
-      },
-      productUmroh: "",
-      program: "",
-      berangkat: "",
-      biayalunas: 0,
-      biayaDp: 0,
-      sisaPelunasan: 0,
-      dataLunas: [],
-      dataDP: [],
-      dataPembayaranLunas: [
-        {
-          key: "1",
-          steps: "Pelunasan",
-          biaya: 0
-        }
-      ],
-      dataPembayaranDP: [
-        {
-          key: "1",
-          steps: "Uang Muka (30%)",
-          biaya: 0
-        },
-        {
-          key: "2",
-          steps: "Pelunasan",
-          biaya: 0
-        }
-      ],
-      total: 0,
-      kodeproduk: "",
-      information: [
-        {
-          title:
-            "Paspor dengan masa berlaku min 12 bulan dari tanggal keberangkatan, dibutuhkan untuk perjalanan tur umrah dan haji anda;"
-        },
-        {
-          title: "Jamaah wanita dibawah umur 45 tahun wajib di dampingi mahram;"
-        },
-        {
-          title:
-            "Suami istri wajib melampirkan buku nikah pada saat pengiriman berkas fisik ke pihak travel;"
-        },
-        {
-          title:
-            "Bagi anak-anak 10 tahun ke bawah wajib melampirkan akta lahir."
-        }
-      ]
-    };
-  },
+      room: 1,
+      typeOrder: 1,
 
-  mounted() {
-    this.hitungPax();
-    this.hitungDp();
-    this.hitungPelunasan();
+      photoPaspor: ""
+    };
   },
 
   methods: {
     moment,
-    hitungPax() {
-      this.pax = +this.paxquad + +this.paxtriple + +this.paxdouble;
-    },
-    hitungPelunasan() {
-      this.biayalunas = this.total;
-      this.$set(this.dataPembayaranLunas[0], "biaya", this.biayalunas);
-    },
-
-    hitungDp() {
-      let dpUmroh = 0.3 * this.total;
-      this.biayaDp = dpUmroh.toFixed(0);
-      let sisalunas = this.total - 0.3 * this.total;
-      this.sisaPelunasan = sisalunas.toFixed(0);
-
-      this.$set(this.dataPembayaranDP[0], "biaya", this.biayaDp);
-      this.$set(this.dataPembayaranDP[1], "biaya", this.sisaPelunasan);
-    },
 
     disabledDate(current) {
       return current && current < moment().endOf("day");
     },
 
-    onChange(e) {
-      console.log("radio checked", e.target.value);
+    onChange(e) {},
+
+    // config images
+    handleChangePhotoPaspor(info) {
+      getBase64(info.file.originFileObj, photoPaspor => {
+        this.photoPaspor = photoPaspor;
+      });
+    },
+
+    beforeUpload(file) {
+      const isLt2M = file.size / 1024 / 1024 < 2;
+      if (!isLt2M) {
+        this.$message.error("Image must smaller than 2MB!");
+      }
+      return isLt2M;
     },
 
     handleSubmitMore(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
-        console.log("Received values of form: ", values);
-
         if (!err) {
-          let params = this.$route.query;
-          let data = {
-            jenis_transaksi: params.type,
-            kode_produk: params.kode,
-            nama_pemesan: this.dataPemesan.nama,
-            nomor_handphone: this.dataPemesan.nohp
-          };
-
-          if (
-            params.type == "VISA" ||
-            params.type == "ASURANSI" ||
-            params.type == "HANDLING" ||
-            params.type == "TOURLEADER" ||
-            params.type == "PERLENGKAPAN" ||
-            params.type == "MANASIK"
-          ) {
-            data["pax"] = params.qty;
-          } else if (params.type == "LA") {
-            data["quad"] = params.quad;
-            data["triple"] = params.triple;
-            data["double"] = params.double;
-          } else if (params.type == "TIKET") {
-            data["dewasa"] = params.dewasa;
-            data["anak"] = params.anak;
-            data["bayi"] = params.bayi;
-          } else if (params.type == "UMROH") {
-            data["quad"] = params.quad;
-            data["triple"] = params.triple;
-            data["double"] = params.double;
-            data["nomor_voucher"] = [];
-          }
-
-          const token = Cookie.get("auth");
-
-          const config = {
-            headers: {
-              Authorization: "Bearer " + token
-            }
-          };
-
-          let url = "";
-
-          if (params.type == "UMROH") {
-            url = process.env.baseUrl + "transaksi/umroh";
-          } else {
-            url = process.env.baseUrl + "transaksi";
-          }
-
-          axios
-            .post(url, data, config)
-            .then(response => {
-              console.log(response);
-              // this.$router.push({
-              //   path: "/accounts/billing/detail",
-              //   query: {
-              //     notrans: response.data.data.notrans
-              //   }
-              // });
-              this.$router.push({
-                path: "/payment/purchase-transfer",
-                query: {
-                  notrans: response.data.data.notrans
-                }
-              });
-            })
-            .catch(err => {
-              console.log("error", err);
-            });
+          return;
         }
       });
     }

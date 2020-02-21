@@ -31,29 +31,7 @@
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
-            <a-card class="b-solid b-radius mb-16">
-              <div class="d-flex align-items-center w-100">
-                <div>
-                  <a-avatar
-                    class="mr-16"
-                    size="large"
-                    :style="{
-                      'background-color': '#87d068',
-                      'min-width': '40px'
-                    }"
-                    icon="user"
-                  />
-                </div>
-                <div>
-                  <div class="fs-14 fw-400 cr-gray text-capitalize">
-                    Anda Login sebagai
-                  </div>
-                  <div class="fs-16 fw-500 cr-black text-capitalize">
-                    MAHADESIGN
-                  </div>
-                </div>
-              </div>
-            </a-card>
+            <UserLogin />
 
             <a-form
               layout="vertical"
@@ -210,7 +188,7 @@
                 <a-radio-group
                   name="radioGroup"
                   @change="onChange"
-                  v-model="room"
+                  v-model="member"
                 >
                   <a-radio :value="1" class="fs-15 fw-500 cr-black"
                     >Isi Data Nanti</a-radio
@@ -221,7 +199,7 @@
                 </a-radio-group>
               </a-card>
 
-              <div v-if="room === 1">
+              <div v-if="member === 1">
                 <a-alert
                   :showIcon="false"
                   message="Kami akan mengirimkan formulir pengisian data setelah anda melakukan pembayaran."
@@ -234,7 +212,7 @@
                 />
               </div>
 
-              <div v-if="room === 2">
+              <div v-if="member === 2">
                 <a-alert
                   :showIcon="false"
                   :style="{
@@ -1169,10 +1147,9 @@
                     </a-row>
                   </a-collapse-panel>
                 </a-collapse>
-              </div>
 
-              <div v-if="room === 2">
                 <a-divider></a-divider>
+
                 <a-collapse :bordered="false" class="mb-24">
                   <template v-slot:expandIcon="props">
                     <a-icon
@@ -1586,6 +1563,7 @@
   </a-layout>
 </template>
 <script>
+import UserLogin from "@/components/Payment/UserLogin";
 import SideTicket from "./side";
 import moment from "moment";
 import axios from "axios";
@@ -1602,7 +1580,7 @@ export default {
   layout: "application",
   name: "orderData",
 
-  components: { SideTicket },
+  components: { UserLogin, SideTicket },
 
   beforeCreate() {
     this.form = this.$form.createForm(this);
@@ -1616,7 +1594,7 @@ export default {
 
   data() {
     return {
-      room: 1,
+      member: 1,
       typeOrder: 1,
       checkedFlight: false,
       timeFlightDeparture: false,

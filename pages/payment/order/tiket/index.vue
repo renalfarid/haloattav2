@@ -31,29 +31,7 @@
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
-            <a-card class="b-solid b-radius mb-16">
-              <div class="d-flex align-items-center w-100">
-                <div>
-                  <a-avatar
-                    class="mr-16"
-                    size="large"
-                    :style="{
-                      'background-color': '#87d068',
-                      'min-width': '40px'
-                    }"
-                    icon="user"
-                  />
-                </div>
-                <div>
-                  <div class="fs-14 fw-400 cr-gray text-capitalize">
-                    Anda Login sebagai
-                  </div>
-                  <div class="fs-16 fw-500 cr-black text-capitalize">
-                    MAHADESIGN
-                  </div>
-                </div>
-              </div>
-            </a-card>
+            <UserLogin />
 
             <a-form
               layout="vertical"
@@ -140,6 +118,19 @@
                   >
                 </a-radio-group>
               </a-card>
+
+              <div v-if="passenger === 1">
+                <a-alert
+                  :showIcon="false"
+                  message="Kami akan mengirimkan formulir pengisian data setelah anda melakukan pembayaran."
+                  :style="{
+                    'border-radius': '4px',
+                    'margin-bottom': '24px',
+                    padding: '24px'
+                  }"
+                  banner
+                />
+              </div>
 
               <div v-if="passenger === 2">
                 <a-alert
@@ -608,19 +599,6 @@
                 </a-collapse>
               </div>
 
-              <div v-if="passenger === 1">
-                <a-alert
-                  :showIcon="false"
-                  message="Kami akan mengirimkan formulir pengisian data setelah anda melakukan pembayaran."
-                  :style="{
-                    'border-radius': '4px',
-                    'margin-bottom': '24px',
-                    padding: '24px'
-                  }"
-                  banner
-                />
-              </div>
-
               <div :style="{ display: 'block', 'text-align': 'right' }">
                 <a-button
                   class="md-btn--action"
@@ -648,6 +626,7 @@
   </a-layout>
 </template>
 <script>
+import UserLogin from "@/components/Payment/UserLogin";
 import SideTicket from "./side";
 import moment from "moment";
 import axios from "axios";
@@ -658,7 +637,7 @@ export default {
   layout: "application",
   name: "orderData",
 
-  components: { SideTicket },
+  components: { UserLogin, SideTicket },
 
   beforeCreate() {
     this.form = this.$form.createForm(this);

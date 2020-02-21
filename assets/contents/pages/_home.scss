@@ -81,6 +81,16 @@
             }
         }
     }
+    &.content-head--app {
+        min-height: 333px !important;
+        height: 333px !important;
+    }
+}
+
+.md-fitur--search {
+    position: relative;
+    margin-top: -164px;
+    padding: 40px 0;
 }
 
 .content-favorites {
