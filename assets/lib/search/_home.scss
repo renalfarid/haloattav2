@@ -12,6 +12,9 @@
         position: relative;
         border: none;
         margin: 0;
+        & .ant-tabs-nav-container {
+            height: auto !important;
+        }
         & .ant-tabs-nav-container-scrolling {
             @include align-items(center);
             @include flexbox();
