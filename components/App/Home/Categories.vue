@@ -1,110 +1,112 @@
 <template>
-  <div class="content-components-umrah" :style="{'padding-top':'80px'}">
+  <div class="content-components-umrah" :style="{ 'padding-top': '80px' }">
     <div class="container">
       <h2 class="md-title">Komponen Umrah dan Wisata</h2>
 
+      <flickity
+        class="md-flickity--categories"
+        ref="cities"
+        :options="optionCategories"
+      >
+        <nuxt-link to="/catalog/umrah">
+          <a-card class="card-product--components">
+            <div
+              class="ant-card-cover-images"
+              v-lazy:background-image="require('~/static/components/umrah.png')"
+            ></div>
+            <div class="ant-card-cover--overlay">
+              <div class="m-auto">
+                <h3>Paket Umroh</h3>
+                <p>
+                  <span>{{ this.paketumrah }}</span> Paket
+                </p>
+              </div>
+            </div>
+          </a-card>
+        </nuxt-link>
+
+        <nuxt-link to="/catalog/ticket-group">
+          <a-card class="card-product--components">
+            <div
+              class="ant-card-cover-images"
+              v-lazy:background-image="
+                require('~/static/components/ticket.png')
+              "
+            ></div>
+            <div class="ant-card-cover--overlay">
+              <div class="m-auto">
+                <h3>Tiket Group</h3>
+                <p>
+                  <span>{{ this.tiketgroup }}</span> Paket
+                </p>
+              </div>
+            </div>
+          </a-card>
+        </nuxt-link>
+
+        <nuxt-link to="/catalog/accommodation">
+          <a-card class="card-product--components">
+            <div
+              class="ant-card-cover-images"
+              v-lazy:background-image="
+                require('~/static/components/accommodation.png')
+              "
+            ></div>
+            <div class="ant-card-cover--overlay">
+              <div class="m-auto">
+                <h3>LA Akomodasi</h3>
+                <p>
+                  <span>{{ this.laakomodasi }}</span> Paket
+                </p>
+              </div>
+            </div>
+          </a-card>
+        </nuxt-link>
+
+        <nuxt-link to="/catalog/visa">
+          <a-card class="card-product--components">
+            <div
+              class="ant-card-cover-images"
+              v-lazy:background-image="require('~/static/components/visa.png')"
+            ></div>
+            <div class="ant-card-cover--overlay">
+              <div class="m-auto">
+                <h3>Visa Perjalanan</h3>
+                <p>
+                  <span>{{ this.visa }}</span> Paket
+                </p>
+              </div>
+            </div>
+          </a-card>
+        </nuxt-link>
+
+        <nuxt-link to="/catalog/insurance">
+          <a-card class="card-product--components">
+            <div
+              class="ant-card-cover-images"
+              v-lazy:background-image="
+                require('~/static/components/insurance.png')
+              "
+            ></div>
+            <div class="ant-card-cover--overlay">
+              <div class="m-auto">
+                <h3>Asuransi Perjalanan</h3>
+                <p>
+                  <span>{{ this.asuransi }}</span> Paket
+                </p>
+              </div>
+            </div>
+          </a-card>
+        </nuxt-link>
+      </flickity>
+
       <a-row :gutter="16">
-        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16">
-          <nuxt-link to="/catalog/umrah">
-            <a-card class="card-product--components">
-              <div
-                class="ant-card-cover-images"
-                v-lazy:background-image="
-                  require('~/static/components/umrah.png')
-                "
-              ></div>
-              <div class="ant-card-cover--overlay">
-                <div class="m-auto">
-                  <h3>Paket Umroh</h3>
-                  <p>
-                    <span>{{ this.paketumrah }}</span> Paket
-                  </p>
-                </div>
-              </div>
-            </a-card>
-          </nuxt-link>
-        </a-col>
-        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16">
-          <nuxt-link to="/catalog/ticket-group">
-            <a-card class="card-product--components">
-              <div
-                class="ant-card-cover-images"
-                v-lazy:background-image="
-                  require('~/static/components/ticket.png')
-                "
-              ></div>
-              <div class="ant-card-cover--overlay">
-                <div class="m-auto">
-                  <h3>Tiket Group</h3>
-                  <p>
-                    <span>{{ this.tiketgroup }}</span> Paket
-                  </p>
-                </div>
-              </div>
-            </a-card>
-          </nuxt-link>
-        </a-col>
-        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16">
-          <nuxt-link to="/catalog/accommodation">
-            <a-card class="card-product--components">
-              <div
-                class="ant-card-cover-images"
-                v-lazy:background-image="
-                  require('~/static/components/accommodation.png')
-                "
-              ></div>
-              <div class="ant-card-cover--overlay">
-                <div class="m-auto">
-                  <h3>LA Akomodasi</h3>
-                  <p>
-                    <span>{{ this.laakomodasi }}</span> Paket
-                  </p>
-                </div>
-              </div>
-            </a-card>
-          </nuxt-link>
-        </a-col>
-        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16">
-          <nuxt-link to="/catalog/visa">
-            <a-card class="card-product--components">
-              <div
-                class="ant-card-cover-images"
-                v-lazy:background-image="
-                  require('~/static/components/visa.png')
-                "
-              ></div>
-              <div class="ant-card-cover--overlay">
-                <div class="m-auto">
-                  <h3>Visa Perjalanan</h3>
-                  <p>
-                    <span>{{ this.visa }}</span> Paket
-                  </p>
-                </div>
-              </div>
-            </a-card>
-          </nuxt-link>
-        </a-col>
-        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16">
-          <nuxt-link to="/catalog/insurance">
-            <a-card class="card-product--components">
-              <div
-                class="ant-card-cover-images"
-                v-lazy:background-image="
-                  require('~/static/components/insurance.png')
-                "
-              ></div>
-              <div class="ant-card-cover--overlay">
-                <div class="m-auto">
-                  <h3>Asuransi Perjalanan</h3>
-                  <p>
-                    <span>{{ this.asuransi }}</span> Paket
-                  </p>
-                </div>
-              </div>
-            </a-card>
-          </nuxt-link>
-        </a-col>
-        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16"> </a-col>
+        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16"> </a-col>
+        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16"> </a-col>
+        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16"> </a-col>
+        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16"> </a-col>
+        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="d-none mb-16">
           <nuxt-link to="/catalog/handling">
             <a-card class="card-product--components">
               <div
@@ -124,7 +126,7 @@
             </a-card>
           </nuxt-link>
         </a-col>
-        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="d-none mb-16">
           <nuxt-link to="/catalog/manasik">
             <a-card class="card-product--components">
               <div
@@ -144,7 +146,7 @@
             </a-card>
           </nuxt-link>
         </a-col>
-        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="6" :lg="6" class="d-none mb-16">
           <nuxt-link to="/catalog/tourleader">
             <a-card class="card-product--components">
               <div
@@ -181,7 +183,13 @@ export default {
       asuransi: 0,
       handling: 0,
       ruangmanasik: 0,
-      tourleader: 0
+      tourleader: 0,
+      optionCategories: {
+        freeScroll: true,
+        contain: true,
+        prevNextButtons: false,
+        pageDots: false
+      }
     };
   },
 
@@ -210,3 +218,45 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.md-flickity--categories {
+  position: relative;
+  top: -16px;
+  & .flickity-viewport {
+    min-height: 340px;
+    & .flickity-slider {
+      width: auto !important;
+      left: -6px !important;
+      right: -6px !important;
+      & a {
+        width: 24% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .md-flickity--categories {
+    & .flickity-viewport {
+      & .flickity-slider {
+        & a {
+          width: 42% !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .md-flickity--categories {
+    & .flickity-viewport {
+      & .flickity-slider {
+        & a {
+          width: 80% !important;
+        }
+      }
+    }
+  }
+}
+</style>
