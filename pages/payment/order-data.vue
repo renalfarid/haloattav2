@@ -649,7 +649,7 @@ export default {
     handleSubmitMore(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
 
         if (!err) {
           let params = this.$route.query;

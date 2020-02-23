@@ -27,7 +27,7 @@
             class="sticky-top mb-24"
             :style="{ float: 'right' }"
           >
-            <SideTicket />
+            <SideTicket :data="data" />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="24" :lg="16" class="mb-24">
@@ -163,7 +163,11 @@
                   </template>
                 </a-alert>
 
-                <a-collapse defaultActiveKey="1" :bordered="false" class="mb-24">
+                <a-collapse
+                  defaultActiveKey="1"
+                  :bordered="false"
+                  class="mb-24"
+                >
                   <template v-slot:expandIcon="props">
                     <a-icon
                       type="caret-right"
@@ -171,15 +175,19 @@
                     />
                   </template>
 
-                  <a-collapse-panel header="Penumpang 1" key="1">
+                  <a-collapse-panel
+                    v-for="(n, i) in pax"
+                    :header="'Penumpang ' + n"
+                    :key="n + 2"
+                  >
                     <a-row :gutter="16">
                       <a-col :span="8">
                         <a-form-item label="Title">
                           <a-select
                             v-decorator="[
-                              'title',
+                              'titel[' + i + ']',
                               {
-                                initialValue: 'Tn.',
+                                initialValue: 'Tuan',
                                 rules: [
                                   {
                                     required: true,
@@ -191,9 +199,11 @@
                             size="large"
                             style="width: 100%"
                           >
-                            <a-select-option value="Tn.">Tn.</a-select-option>
-                            <a-select-option value="Ny.">Ny.</a-select-option>
-                            <a-select-option value="Nn.">nn.</a-select-option>
+                            <a-select-option value="Tuan">Tuan</a-select-option>
+                            <a-select-option value="Nyonya"
+                              >Nyonya</a-select-option
+                            >
+                            <a-select-option value="Nona">Nona</a-select-option>
                           </a-select>
                         </a-form-item>
                       </a-col>
@@ -205,7 +215,7 @@
                         >
                           <a-input
                             v-decorator="[
-                              'firstName',
+                              'full_name[' + i + ']',
                               {
                                 rules: [
                                   {
@@ -222,11 +232,11 @@
                     </a-row>
 
                     <a-row :gutter="16">
-                      <a-col :xs="24" :sm="12" :md="12">
+                      <a-col :xs="24" :sm="24" :md="24">
                         <a-form-item label="Tanggal Lahir">
                           <a-date-picker
                             v-decorator="[
-                              'date',
+                              'tanggal_lahir[' + i + ']',
                               {
                                 rules: [
                                   {
@@ -242,66 +252,22 @@
                           />
                         </a-form-item>
                       </a-col>
-
-                      <a-col :xs="24" :sm="12" :md="12">
-                        <a-form-item label="Kewarganegaraan">
-                          <a-select
-                            v-decorator="[
-                              'country',
-                              {
-                                initialValue: 'Indonesia',
-                                rules: [
-                                  {
-                                    required: true,
-                                    message: 'Harus di isi!'
-                                  }
-                                ]
-                              }
-                            ]"
-                            placeholder="Pilih Kewarganegaraan"
-                            size="large"
-                          >
-                            <a-select-option value="Indonesia"
-                              >Indonesia</a-select-option
-                            >
-                          </a-select>
-                        </a-form-item>
-                      </a-col>
-                    </a-row>
-
-                    <a-row>
-                      <a-col :span="14">
-                        <a-form-item label="Nomor Paspor">
-                          <a-input
-                            v-decorator="['nomor_paspor']"
-                            size="large"
-                          />
-                        </a-form-item>
-                      </a-col>
                     </a-row>
 
                     <a-row :gutter="16">
                       <a-col :xs="24" :sm="12" :md="12">
-                        <a-form-item label="Negara Penerbit">
-                          <a-select
-                            v-decorator="[
-                              'country_paspor',
-                              { initialValue: 'Indonesia' }
-                            ]"
-                            placeholder="Pilih Negara"
+                        <a-form-item label="Nomor Paspor">
+                          <a-input
+                            v-decorator="['nomor_passport[' + i + ']']"
                             size="large"
-                          >
-                            <a-select-option value="Indonesia"
-                              >Indonesia</a-select-option
-                            >
-                          </a-select>
+                          />
                         </a-form-item>
                       </a-col>
 
                       <a-col :xs="24" :sm="12" :md="12">
                         <a-form-item label="Tanggal Habis Berlaku">
                           <a-date-picker
-                            v-decorator="['tglexpire']"
+                            v-decorator="['expired_passport[' + i + ']']"
                             format="YYYY-MM-DD"
                             :disabledDate="disabledDate"
                             placeholder="Pilih Tanggal"
@@ -313,7 +279,7 @@
                     </a-row>
                   </a-collapse-panel>
 
-                  <a-collapse-panel header="Penumpang 2" key="2">
+                  <!-- <a-collapse-panel header="Penumpang 2" key="2">
                     <a-row :gutter="16">
                       <a-col :span="8">
                         <a-form-item label="Title">
@@ -595,7 +561,7 @@
                         </a-form-item>
                       </a-col>
                     </a-row>
-                  </a-collapse-panel>
+                  </a-collapse-panel> -->
                 </a-collapse>
               </div>
 
@@ -626,16 +592,16 @@
   </a-layout>
 </template>
 <script>
-import UserLogin from "@/components/Payment/UserLogin";
-import SideTicket from "./side";
-import moment from "moment";
-import axios from "axios";
-const Cookie = process.client ? require("js-cookie") : undefined;
+import UserLogin from '@/components/Payment/UserLogin';
+import SideTicket from './side';
+import moment from 'moment';
+import axios from 'axios';
+const Cookie = process.client ? require('js-cookie') : undefined;
 
 export default {
-  middleware: "authenticated",
-  layout: "application",
-  name: "orderData",
+  middleware: 'authenticated',
+  layout: 'application',
+  name: 'orderData',
 
   components: { UserLogin, SideTicket },
 
@@ -645,28 +611,56 @@ export default {
 
   head() {
     return {
-      title: "Haloatta - Booking Paket Umrah & Komponen Umrah Terlengkap"
+      title: 'Haloatta - Booking Paket Umrah & Komponen Umrah Terlengkap'
+    };
+  },
+
+  async asyncData({ query }) {
+    const myProduct = await axios.post(process.env.baseUrl + 'tiket/detail', {
+      kode_produk: query.kode
+    });
+    let getProduk = myProduct.data.data;
+    return {
+      data: getProduk,
+      total: query.total,
+      kodeproduk: query.kode,
+      paxdewasa: query.dewasa,
+      paxanak: query.anak,
+      paxbayi: query.bayi
     };
   },
 
   data() {
     return {
+      data: '',
+      total: 0,
+      kodeproduk: '',
+      paxdewasa: 0,
+      paxanak: 0,
+      paxbayi: 0,
       passenger: 1,
+      pax: 0,
 
       information: [
         {
           title:
-            "Diperlukan paspor minimal 6 bulan dari tanggal keberangkatan untuk perjalanan international atau transit ke luar negeri."
+            'Diperlukan paspor minimal 6 bulan dari tanggal keberangkatan untuk perjalanan international atau transit ke luar negeri.'
         }
       ]
     };
   },
+  mounted() {
+    this.hitungPax();
+  },
 
   methods: {
     moment,
+    hitungPax() {
+      this.pax = +this.paxdewasa + +this.paxanak + +this.paxbayi;
+    },
 
     disabledDate(current) {
-      return current && current < moment().endOf("day");
+      return current && current < moment().endOf('day');
     },
 
     onChange(e) {},
@@ -674,8 +668,56 @@ export default {
     handleSubmitMore(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
+        console.log('Received values of form: ', values);
+
         if (!err) {
-          return;
+          let params = this.$route.query;
+          let data = {
+            jenis_transaksi: params.type,
+            kode_produk: params.kode,
+            nama_pemesan: values.nama,
+            nomor_handphone: values.telp
+          };
+
+          data['dewasa'] = params.dewasa;
+          data['anak'] = params.anak;
+          data['bayi'] = params.bayi;
+
+          data['titel'] = values.titel;
+          data['full_name'] = values.full_name;
+          data['tanggal_lahir'] = values.tanggal_lahir;
+          data['expired_passport'] = values.expired_passport;
+          data['nomor_passport'] = values.nomor_passport;
+
+          const token = Cookie.get('auth');
+
+          const config = {
+            headers: {
+              Authorization: 'Bearer ' + token
+            }
+          };
+
+          let url = process.env.baseUrl + 'transaksi';
+
+          axios
+            .post(url, data, config)
+            .then(response => {
+              console.log(response);
+
+              if (response.data.status == 200) {
+                this.$router.push({
+                  path: '/payment/purchase-transfer',
+                  query: {
+                    notrans: response.data.data.notrans
+                  }
+                });
+              } else {
+                this.$message.error(response.data.msg);
+              }
+            })
+            .catch(err => {
+              console.log('error', err);
+            });
         }
       });
     }
