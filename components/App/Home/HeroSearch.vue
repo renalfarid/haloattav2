@@ -64,7 +64,7 @@
                   <search-insurance />
                 </a-tab-pane>
 
-                <a-tab-pane key="6">
+                <!-- <a-tab-pane key="6">
                   <span slot="tab">
                     <div class="icon-handling"></div>
                     <span class="label-tabs">Handling</span>
@@ -86,7 +86,7 @@
                     <span class="label-tabs">Tour Leader</span>
                   </span>
                   <search-tourleader />
-                </a-tab-pane>
+                </a-tab-pane> -->
               </a-tabs>
             </a-col>
           </a-row>
@@ -102,9 +102,9 @@ import searchTicket from "@/components/contents/lib/search/ticket";
 import searchAccommodation from "@/components/contents/lib/search/accommodation";
 import searchVisa from "@/components/contents/lib/search/visa";
 import searchInsurance from "@/components/contents/lib/search/insurance";
-import searchHandling from "@/components/contents/lib/search/handling";
-import searchManasik from "@/components/contents/lib/search/manasik";
-import searchTourleader from "@/components/contents/lib/search/tourleader";
+// import searchHandling from "@/components/contents/lib/search/handling";
+// import searchManasik from "@/components/contents/lib/search/manasik";
+// import searchTourleader from "@/components/contents/lib/search/tourleader";
 
 import userLogin from "@/components/App/Home/UserLogin";
 export default {
@@ -114,9 +114,9 @@ export default {
     searchAccommodation,
     searchVisa,
     searchInsurance,
-    searchHandling,
-    searchManasik,
-    searchTourleader,
+    // searchHandling,
+    // searchManasik,
+    // searchTourleader,
     userLogin
   },
 

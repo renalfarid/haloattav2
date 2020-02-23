@@ -135,6 +135,7 @@
     }
     & .card-product--components {
         @include border-radius(0);
+        margin: 0 6px;
         overflow: hidden;
         height: 340px;
         border: none;
