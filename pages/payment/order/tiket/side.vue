@@ -7,21 +7,19 @@
 
       <div class="d-flex align-items-center">
         <div class="mr-8">
-          <a-avatar
-            src="https://www.goto-hotel.com/wp-content/uploads/lion-parcel-logo.png"
-          />
+          <a-avatar :src="data.logo_maskapai" />
         </div>
         <div>
           <div class="fs-15 fw-500 cr-black f-default">
-            Lion Air
+            {{ data.nama_maskapai }}
           </div>
           <div class="fs-14 fw-400 cr-black f-default">
-            Economy Class
+            {{ data.class_flight }} Class
           </div>
         </div>
         <div class="ml-auto">
           <div class="fs-14 fw-500 cr-black f-default">
-            JT-778
+            {{ data.kode_maskapai }}
           </div>
         </div>
       </div>
@@ -32,16 +30,18 @@
             Berangkat
           </div>
           <div class="fs-14 fw-400 f-default cr-gray">
-            <span>Rabu, 10 September 2019</span>
+            <span>{{
+              moment(data.tanggal_keberangkatan, 'YYYY-MM-DD').format(
+                'dddd, LL'
+              )
+            }}</span>
           </div>
         </a-timeline-item>
         <a-timeline-item>
           <a-icon slot="dot" type="undo" style="fontSize: '15px'" />
           <div class="d-flex align-items-center">
             <div>
-              <div
-                class="fs-14 fw-400 cr-black f-default"
-              >
+              <div class="fs-14 fw-400 cr-black f-default">
                 <span>Round Trip</span>
               </div>
               <div class="fs-14 fw-400 cr-gray f-default">
@@ -49,13 +49,11 @@
               </div>
             </div>
             <div class="ml-auto text-right">
-              <div
-                class="fs-14 fw-400 cr-black f-default"
-              >
+              <div class="fs-14 fw-400 cr-black f-default">
                 <span>Direct Flight</span>
               </div>
               <div class="fs-14 fw-400 cr-gray f-default">
-                <span>Langsung</span>
+                <span>{{ data.jenis_flight }}</span>
               </div>
             </div>
           </div>
@@ -65,7 +63,9 @@
             Pulang
           </div>
           <div class="fs-14 fw-400 f-default cr-gray">
-            <span>Kamis, 19 September 2019</span>
+            <span>{{
+              moment(data.tanggal_kepulangan, 'YYYY-MM-DD').format('dddd, LL')
+            }}</span>
           </div>
         </a-timeline-item>
       </a-timeline>
@@ -79,16 +79,35 @@
       <div class="d-flex align-items-center mb-8">
         <div class="fs-14 fw-400 cr-black">Dewasa</div>
         <div class="fs-14 fw-400 cr-black ml-auto">
-          30 pax
+          {{ this.$route.query.dewasa }} pax
         </div>
       </div>
 
       <div class="d-flex align-items-center mb-8">
         <div class="fs-14 fw-400 cr-black">Anak</div>
         <div class="fs-14 fw-400 cr-black ml-auto">
-          10 pax
+          {{ this.$route.query.anak }} pax
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center mb-8">
+        <div class="fs-14 fw-400 cr-black">Bayi</div>
+        <div class="fs-14 fw-400 cr-black ml-auto">
+          {{ this.$route.query.bayi }} pax
         </div>
       </div>
     </div>
   </a-card>
 </template>
+<script>
+import moment from 'moment';
+export default {
+  props: ['data'],
+  data() {
+    return {};
+  },
+  methods: {
+    moment
+  }
+};
+</script>
