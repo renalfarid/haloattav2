@@ -67,3 +67,26 @@
         }
     }
 }
+
+@media (max-width: 768px) {
+    .ant-layout--results-search {
+        & .ant-card--results-info {
+            & .ant-card--results-info-left {
+                & .ant-avatar {
+                    display: none;
+                }
+            }
+            & .ant-card--results-info-right {
+                & .ant-btn {
+                    display: inline-block;
+                    margin-top: 16px;
+                    height: 40px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .d-sm-block {
+        display: inline-block !important;
+    }
+}

@@ -163,7 +163,7 @@ export default {
 
     program: Number,
     pricing: Number,
-    qty: Number,
+    qty: String,
 
     url: String,
 
