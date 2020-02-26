@@ -5,37 +5,39 @@
         <HeroSearch />
       </a-col>
 
-      <a-col :span="24">
-        <Cities />
-      </a-col>
+      <client-only>
+        <a-col :span="24">
+          <Cities />
+        </a-col>
 
-      <a-col :span="24">
-        <BannerStar />
-      </a-col>
+        <a-col :span="24">
+          <BannerStar />
+        </a-col>
 
-      <a-col :span="24">
-        <UmrahCitiesItemTop />
-      </a-col>
+        <a-col :span="24">
+          <UmrahCitiesItemTop />
+        </a-col>
 
-      <a-col :span="24">
-        <UmrahCitiesItemMiddle />
-      </a-col>
+        <a-col :span="24">
+          <UmrahCitiesItemMiddle />
+        </a-col>
 
-      <a-col :span="24">
-        <UmrahCitiesItemBottom />
-      </a-col>
+        <a-col :span="24">
+          <UmrahCitiesItemBottom />
+        </a-col>
 
-      <a-col :span="24">
-        <BannerUmaroh />
-      </a-col>
+        <a-col :span="24">
+          <BannerUmaroh />
+        </a-col>
 
-      <a-col :span="24">
-        <Categories />
-      </a-col>
+        <a-col :span="24">
+          <Categories />
+        </a-col>
 
-      <a-col :span="24">
-        <Haloummi />
-      </a-col>
+        <a-col :span="24">
+          <Haloummi />
+        </a-col>
+      </client-only>
     </a-row>
   </div>
 </template>

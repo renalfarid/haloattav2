@@ -7,11 +7,10 @@
     class="form-search--costume"
   >
     <a-row :gutter="16">
-      <a-col :span="12">
+      <a-col :xs="24" :sm="24" :md="12">
         <a-form-item
           class="ant-form-item-type"
           label="Tipe Perjalanan"
-          hasFeedback
         >
           <a-radio-group name="radioGroup" :defaultValue="1">
             <a-radio :value="1" class="fs-16 cr-black mr-16"
@@ -22,8 +21,8 @@
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
-        <a-form-item label="Program Hari" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Program Hari">
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -44,8 +43,8 @@
     </a-row>
 
     <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Kota Asal" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Kota Asal">
           <div class="icon-search">
             <img class="max-width" src="/icons/search/airplane.svg" />
           </div>
@@ -63,8 +62,8 @@
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
-        <a-form-item label="Kota Tujuan" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Kota Tujuan">
           <div class="icon-search">
             <a-icon type="environment" />
           </div>
@@ -84,8 +83,8 @@
     </a-row>
 
     <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Tanggal Keberangkatan">
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -108,7 +107,7 @@
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
+      <a-col :xs="24" :sm="24" :md="12">
         <a-button
           html-type="submit"
           class="btn-search b-shadow b-radius"

@@ -7,8 +7,8 @@
     class="form-search--costume"
   >
     <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Jenis LA Akomodasi" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Jenis LA Akomodasi">
           <div class="icon-search">
             <span class="icon-accommodation-sm"></span>
           </div>
@@ -25,8 +25,8 @@
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
-        <a-form-item label="Program Hari" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Program Hari">
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -48,8 +48,8 @@
     </a-row>
 
     <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Tanggal Keberangkatan">
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -65,8 +65,8 @@
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
-        <a-form-item label="Jumlah Pax" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Jumlah Pax">
           <div class="icon-search">
             <img class="max-width" src="/icons/search/boysmiling.svg" />
           </div>
@@ -97,7 +97,7 @@
     </a-row>
 
     <a-row :gutter="16" type="flex" justify="end">
-      <a-col :span="12">
+      <a-col :xs="24" :sm="24" :md="12">
         <a-button
           html-type="submit"
           class="btn-search b-shadow b-radius"
