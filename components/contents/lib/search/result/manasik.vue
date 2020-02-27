@@ -1,7 +1,7 @@
 <template>
   <div class="ant-layout--results-search">
     <a-card class="ant-card--results-info b-shadow b-solid b-radius" :bordered="false">
-      <div class="d-flex align-items-center">
+      <div class="d-sm-block d-flex align-items-center">
         <div class="ant-card--results-info-left d-flex align-items-center">
           <div>
             <a-avatar style="backgroundColor: #006478" class="d-flex align-items-center" :size="64">

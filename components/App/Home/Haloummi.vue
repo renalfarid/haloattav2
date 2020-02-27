@@ -3,32 +3,32 @@
     <div class="container">
       <h2 class="md-title">Halo Ummi</h2>
 
-      <a-carousel>
-        <div>
+      <a-carousel autoplay>
+        <div v-for="item in mainhead" :key="item.id">
           <a
-            :href="`https://www.haloummi.com/headlines/${mainhead.slug}`"
+            :href="'https://www.haloummi.com/headlines/' + item.slug"
             target="_blank"
           >
             <a-card class="card-news--large-overlay">
               <div slot="cover">
-                <div class="box-content" v-lazy:background-image="imgUrl">
+                <div class="box-content" v-lazy:background-image="'https://api.haloummi.com/uploads/' + item.image_url">
                   <div :style="{ width: '100%', zIndex: '2' }">
                     <div class="box-overlay">
                       <div
                         class="txt fs-16 text-uppercase cr-white-overlay mb-0"
                       >
-                        {{ mainhead.kategori }}
+                        {{ item.kategori }}
                       </div>
                       <div class="txt fs-30 f-default">
-                        {{ mainhead.title }}
+                        {{ item.title }}
                       </div>
                       <div class="item">
                         <span
                           class="time cr-white-overlay text-capitalize mr-16"
-                          >{{ mainhead.sumber }}</span
+                          >{{ item.sumber }}</span
                         >
                         <span class="time cr-white-overlay">{{
-                          mainhead.date | moment
+                          item.date | moment
                         }}</span>
                       </div>
                     </div>
@@ -44,15 +44,15 @@
       <a-row :gutter="16">
         <a-col
           :xs="24"
-          :sm="12"
-          :md="12"
-          :lg="6"
+          :sm="24"
+          :md="8"
+          :lg="8"
           class="mb-16"
-          v-for="sub in this.subHeadlines"
+          v-for="sub in headlines"
           :key="sub.id"
         >
           <a
-            :href="`https://www.haloummi.com/headlines/${sub.slug}`"
+            :href="'https://www.haloummi.com/headlines/' + sub.slug"
             target="_blank"
           >
             <a-card class="card-news--small-overlay">
@@ -70,13 +70,13 @@
                       </div>
                       <div class="txt txt-ellipsis fs-18">{{ sub.title }}</div>
                       <div class="item">
-                        <span
+                        <div
                           class="time cr-white-overlay text-capitalize mr-16"
-                          >{{ sub.sumber }}</span
-                        >
-                        <span class="time cr-white-overlay">{{
+                          >{{ sub.sumber }}</div>
+
+                        <div class="time cr-white-overlay">{{
                           sub.date | moment
-                        }}</span>
+                        }}</div>
                       </div>
                     </div>
                   </div>
@@ -108,8 +108,6 @@ export default {
     return {
       headlines: [],
       mainhead: [],
-      imgUrl: "",
-      subHeadlines: [],
       moment
     };
   },
@@ -121,14 +119,8 @@ export default {
       axios
         .get("https://api.haloummi.com/berita/haloatta/headlines")
         .then(result => {
-          this.headlines = result.data.values;
-          this.mainhead = result.data.values[0];
-          this.imgUrl =
-            "https://api.haloummi.com/uploads/" + this.mainhead["image_url"];
-
-          this.subHeadlines = this.headlines.filter(function(headline, index) {
-            return index > 0;
-          });
+          this.mainhead = result.data.values.slice(0, 2);
+          this.headlines = result.data.values.slice(2, 5);
         });
     }
   },

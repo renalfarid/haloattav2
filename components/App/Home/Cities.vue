@@ -2,38 +2,30 @@
   <div class="md-cities--list">
     <div class="container">
       <h2 class="md-title">Jelajahi Haloatta di Kota Anda</h2>
-      <client-only>
-        <a-row :gutter="24">
-          <flickity
-            class="md-flickity--cities"
-            ref="cities"
-            :options="optionCities"
-            v-if="cities.length > 0"
-          >
-            <a-col
-              class="md-flickity--cities-item"
-              v-for="city in cities"
-              :key="city.nama_kota"
-              :xs="24"
-              :sm="12"
-              :md="12"
-              :lg="8"
-            >
-              <a-badge dot :style="{ width: '100%' }">
-                <a-card :bordered="false">
-                  <div class="d-flex align-items-center">
-                    <div
-                      class="md-cities--cover"
-                      v-lazy:background-image="city.images"
-                    ></div>
-                    <div class="md-cities--name">{{ city.nama_kota }}</div>
-                  </div>
-                </a-card>
-              </a-badge>
-            </a-col>
-          </flickity>
-        </a-row>
-      </client-only>
+
+      <flickity
+        class="md-flickity--cities"
+        ref="cities"
+        :options="optionCities"
+        v-if="cities.length > 0"
+      >
+        <div
+          class="md-flickity--cities-item"
+          v-for="city in cities"
+          :key="city.nama_kota"
+        >
+          <a-card :bordered="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="md-cities--cover"
+                v-lazy:background-image="city.images"
+              ></div>
+              <div class="md-cities--name">{{ city.nama_kota }}</div>
+            </div>
+            <nuxt-link to="/catalog/umrah/kota"></nuxt-link>
+          </a-card>
+        </div>
+      </flickity>
     </div>
   </div>
 </template>
@@ -45,6 +37,7 @@ export default {
     return {
       cities: [],
       optionCities: {
+        groupCells: true,
         freeScroll: true,
         contain: true,
         prevNextButtons: false,
@@ -69,20 +62,25 @@ export default {
 
 <style lang="scss">
 .md-cities--list {
-  padding: 64px 0 0 0;
+  padding: 64px 0 0;
   & .md-flickity--cities {
     position: relative;
-    top: -16px;
     & .flickity-viewport {
-      min-height: 124px;
+      overflow: inherit !important;
       & .flickity-slider {
-        padding-top: 8px;
+        width: auto !important;
+        left: -8px !important;
+        right: -8px !important;
         & .md-flickity--cities-item {
+          width: 33.33%;
           & .ant-card {
-            border-radius: 6px !important;
             box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 8px !important;
+            border-radius: 6px !important;
+            overflow: hidden;
+            margin: 0 8px;
+
             & .ant-card-body {
-              padding: 0;
+              padding: 0 !important;
               & .md-cities--cover {
                 border-top-left-radius: 6px;
                 border-bottom-left-radius: 6px;
@@ -102,6 +100,14 @@ export default {
                 font-weight: 500;
                 color: #000000;
               }
+
+              & a {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+              }
             }
           }
         }
@@ -110,13 +116,13 @@ export default {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .md-cities--list {
     & .md-flickity--cities {
       & .flickity-viewport {
         & .flickity-slider {
           & .md-flickity--cities-item {
-            max-width: 90% !important;
+            width: 90% !important;
           }
         }
       }
