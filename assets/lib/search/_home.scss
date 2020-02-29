@@ -92,8 +92,12 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .search-main {
+        background-color: rgba($color: #fff, $alpha: 1);
+        box-shadow: none;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
         & .label-tabs {
             display: none !important;
         }

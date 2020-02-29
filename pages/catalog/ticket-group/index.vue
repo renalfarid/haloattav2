@@ -12,7 +12,7 @@
       <div class="container">
         <a-card class="b-solid b-shadow b-radius">
           <h1 class="fs-30 cr-black mb-32" :style="{ 'line-height': 'normal' }">
-            Beragam pilihan tiket group <br />
+            Beragam pilihan tiket group
             untuk anda!
           </h1>
 
