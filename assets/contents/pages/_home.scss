@@ -91,6 +91,9 @@
     position: relative;
     margin-top: -164px;
     padding: 40px 0;
+    & h1 {
+        max-width: 424px;
+    }
 }
 
 .content-favorites {
@@ -337,10 +340,38 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .content-head {
+        overflow: hidden;
+        height: auto !important;
+        min-height: auto !important;
+        & .content-head--body {
+            padding: 88px 0 0 0 !important;
+            & .title {
+                font-size: 28px !important;
+                margin-bottom: 0;
+                padding: 16px 16px;
+            }
+        }
         & .ant-comment--accounts {
             display: none !important;
+        }
+    }
+    .md-fitur--search {
+        padding-bottom: 0 !important;
+        & .container {
+            padding: 0 !important;
+            & .ant-card {
+                border-radius: 0px !important;
+                box-shadow: none !important;
+                border: none !important;
+                & .ant-card-body {
+                    & h1 {
+                        font-size: 26px !important;
+                        max-width: 372px;
+                    }
+                }
+            }
         }
     }
 }

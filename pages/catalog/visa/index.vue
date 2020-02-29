@@ -15,7 +15,7 @@
       <div class="container">
         <a-card class="b-solid b-shadow b-radius">
           <h1 class="fs-30 cr-black mb-32" :style="{ 'line-height': 'normal' }">
-            Beragam pilihan visa perjalanan <br />
+            Beragam pilihan visa perjalanan
             untuk anda!
           </h1>
 
