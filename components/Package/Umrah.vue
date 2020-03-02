@@ -9,7 +9,7 @@
             :options="imagesHotel"
           >
             <div
-              v-for="(item, index) in images.slice(1, 4)"
+              v-for="(item, index) in images"
               :key="index"
               class="item-images"
               v-lazy:background-image="item.gambar"
@@ -25,17 +25,11 @@
         <a-card-meta>
           <div slot="title">
             <div class="ant-card-meta-title--top d-flex align-items-center">
-              <div
-                class="ant-card-meta-title--top-left f-default d-flex align-items-center"
-              >
+              <div class="ant-card-meta-title--top-left f-default d-flex align-items-center">
                 <a-popover trigger="hover">
                   <template slot="content">
-                    <div class="fs-12 fw-400 cr-gray text-uppercase">
-                      Penyedia
-                    </div>
-                    <div class="fs-14 fw-500 cr-black text-capitalize">
-                      {{ vendor_name }}
-                    </div>
+                    <div class="fs-12 fw-400 cr-gray text-uppercase">Penyedia</div>
+                    <div class="fs-14 fw-500 cr-black text-capitalize">{{ vendor_name }}</div>
                   </template>
 
                   <a-avatar
@@ -55,33 +49,21 @@
 
                 <a-popover trigger="hover">
                   <template slot="content">
-                    <div class="fs-12 fw-400 cr-gray text-uppercase">
-                      Maskapai
-                    </div>
-                    <div class="fs-14 fw-500 cr-black text-capitalize">
-                      {{ maskapai_name }}
-                    </div>
+                    <div class="fs-12 fw-400 cr-gray text-uppercase">Maskapai</div>
+                    <div class="fs-14 fw-500 cr-black text-capitalize">{{ maskapai_name }}</div>
                   </template>
-                  <a-avatar
-                    size="small"
-                    class="zIndex mr-8"
-                    :src="maskapai_logo"
-                  />
+                  <a-avatar size="small" class="zIndex mr-8" :src="maskapai_logo" />
                 </a-popover>
               </div>
 
               <div class="ant-card-meta-title--top-right ml-auto">
-                <div class="fs-14 fw-400 cr-black-opacity">
-                  Program {{ program }} Hari
-                </div>
+                <div class="fs-14 fw-400 cr-black-opacity">Program {{ program }} Hari</div>
               </div>
             </div>
 
             <div
               class="ant-card-meta-title--package text-capitalize fw-500 mt-16 mb-8"
-            >
-              {{ package_name }}
-            </div>
+            >{{ package_name }}</div>
           </div>
 
           <div slot="description">
