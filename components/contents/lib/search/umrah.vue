@@ -1,8 +1,8 @@
 <template>
   <a-form layout="vertical" :form="form" class="form-search--costume" hideRequiredMark>
     <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Kota Asal" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Kota Asal">
           <div class="icon-search">
             <img class="max-width" src="/icons/search/airplane.svg" />
           </div>
@@ -27,8 +27,8 @@
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
-        <a-form-item label="Program Hari" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Program Hari">
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -55,8 +55,8 @@
     </a-row>
 
     <a-row :gutter="16">
-      <a-col :span="24">
-        <a-form-item label="Bulan Keberangkatan" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="24">
+        <a-form-item label="Bulan Keberangkatan">
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -85,34 +85,10 @@
           </a-select>
         </a-form-item>
       </a-col>
-
-      <!-- <a-col :span="12">
-        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
-          <div class="icon-search">
-            <a-icon type="calendar" />
-          </div>
-          <a-select
-            showSearch
-            placeholder="Pilih Tanggal"
-            style="width: 100%"
-            :showArrow="false"
-            size="large"
-            v-decorator="[
-              'tgl_keberangkatan',
-              { rules: [{ required: true, message: 'Harus di isi!' }] }
-            ]"
-          >
-            <a-select-option :value="1">Semua Tanggal</a-select-option>
-            <a-select-option :value="2">1</a-select-option>
-            <a-select-option :value="3">2</a-select-option>
-            <a-select-option :value="4">3</a-select-option>
-          </a-select>
-        </a-form-item>
-      </a-col>-->
     </a-row>
 
     <a-row :gutter="16" type="flex" justify="end">
-      <a-col :span="12">
+      <a-col :xs="24" :sm="24" :md="12">
         <a-button
           @click="searchUmrah"
           class="btn-search b-shadow b-radius"

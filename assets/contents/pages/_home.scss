@@ -91,6 +91,9 @@
     position: relative;
     margin-top: -164px;
     padding: 40px 0;
+    & h1 {
+        max-width: 424px;
+    }
 }
 
 .content-favorites {
@@ -110,89 +113,6 @@
             font-size: 16px;
             line-height: 18px;
             margin: 0;
-        }
-    }
-}
-
-.content-components-umrah {
-    padding: 2.5rem 0;
-    & .header-title {
-        margin-bottom: 32px;
-        & .title {
-            color: $color-font;
-            font-weight: 500;
-            font-size: 24px;
-            line-height: 22px;
-            margin-bottom: 8px;
-        }
-        & .subtitle {
-            color: $color-font-gray;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 18px;
-            margin: 0;
-        }
-    }
-    & .card-product--components {
-        @include border-radius(0);
-        margin: 0 6px;
-        overflow: hidden;
-        height: 340px;
-        border: none;
-        & .ant-card-cover-images {
-            -webkit-transform: translate3d(0, 10%, 0) scale3d(1.2, 1.2, 1);
-            transform: translate3d(0, 10%, 0) scale3d(1.2, 1.2, 1);
-            -webkit-transition: -webkit-transform 0.35s, opacity 0.35s;
-            transition: transform 0.35s, opacity 0.35s;
-            @include border-radius(0);
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            overflow: hidden;
-            height: 100%;
-            width: 100%;
-        }
-        & .ant-card-body {
-            position: relative;
-            height: 100%;
-            padding: 0;
-            & .ant-card-cover--overlay {
-                background-image: -webkit-linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
-                background-image: -moz-linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
-                background-image: linear-gradient(to top, rgba(5, 13, 40, .6), rgba(0, 0, 0, 0)) !important;
-                @include align-items(flex-end);
-                @include flexbox();
-                position: absolute;
-                padding: 24px 8px;
-                width: 100%;
-                bottom: 0;
-                left: 0;
-                top: 0;
-                & h3 {
-                    font-size: 20px !important;
-                    text-align: center;
-                    color: #ffffff;
-                    letter-spacing: .5px;
-                    font-weight: 500 !important;
-                    line-height: normal;
-                    margin-bottom: 8px !important;
-                }
-                & p {
-                    text-align: center;
-                    color: rgba($color: #fff, $alpha: .8);
-                    letter-spacing: .5px;
-                    font-style: italic;
-                    font-weight: 400;
-                    font-size: 14px !important;
-                    margin-bottom: 0;
-                }
-            }
-        }
-        &:hover {
-            & .ant-card-cover-images {
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-            }
         }
     }
 }
@@ -420,10 +340,38 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .content-head {
+        overflow: hidden;
+        height: auto !important;
+        min-height: auto !important;
+        & .content-head--body {
+            padding: 88px 0 0 0 !important;
+            & .title {
+                font-size: 28px !important;
+                margin-bottom: 0;
+                padding: 16px 16px;
+            }
+        }
         & .ant-comment--accounts {
             display: none !important;
+        }
+    }
+    .md-fitur--search {
+        padding-bottom: 0 !important;
+        & .container {
+            padding: 0 !important;
+            & .ant-card {
+                border-radius: 0px !important;
+                box-shadow: none !important;
+                border: none !important;
+                & .ant-card-body {
+                    & h1 {
+                        font-size: 26px !important;
+                        max-width: 372px;
+                    }
+                }
+            }
         }
     }
 }

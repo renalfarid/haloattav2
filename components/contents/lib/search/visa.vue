@@ -7,8 +7,8 @@
     class="form-search--costume"
   >
     <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Negara Tujuan" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Negara Tujuan">
           <div class="icon-search">
             <img class="max-width" src="/icons/search/place.svg" />
           </div>
@@ -26,8 +26,8 @@
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
-        <a-form-item label="Jenis Visa" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Jenis Visa">
           <div class="icon-search">
             <span class="icon-visa-sm"></span>
           </div>
@@ -46,8 +46,8 @@
     </a-row>
 
     <a-row :gutter="16">
-      <a-col :span="12">
-        <a-form-item label="Tanggal Keberangkatan" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Tanggal Keberangkatan">
           <div class="icon-search">
             <a-icon type="calendar" />
           </div>
@@ -63,8 +63,8 @@
         </a-form-item>
       </a-col>
 
-      <a-col :span="12">
-        <a-form-item label="Tipe Visa" hasFeedback>
+      <a-col :xs="24" :sm="24" :md="12">
+        <a-form-item label="Tipe Visa">
           <div class="icon-search">
             <img class="max-width" src="/icons/search/visa.svg" />
           </div>
@@ -84,7 +84,7 @@
     </a-row>
 
     <a-row :gutter="16" type="flex" justify="end">
-      <a-col :span="12">
+      <a-col :xs="24" :sm="24" :md="12">
         <a-button
             html-type="submit"
             class="btn-search b-shadow b-radius"
