@@ -2,14 +2,38 @@ require('dotenv').config();
 module.exports = {
     mode: "universal",
     head: {
-        title: "Haloatta - Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya",
+        title: "Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta",
         meta: [
             { charset: "utf-8" },
             { name: "viewport", content: "width=device-width, initial-scale=1" },
             {
-                hid: "description",
-                name: "description",
-                content: process.env.npm_package_description || ""
+                hid: 'description',
+                name: 'description',
+                content: 'Haloatta Sistem Informasi Layanan dan Transaksi Untuk Semua Kebutuhan Perjalanan Umrah Anda'
+            },
+            {
+                hid: 'keywords',
+                name: 'keywords',
+                content: 'Haloatta, Halo, Atta, Umrah, Umroh, Wisata, Travel, Tiket, Paket Umroh, Akomodasi, LA, Visa, Asuransi, Perjalanan, Handling, Manasik, Perlengkapan, Tourleader, Ustad, Makkah, Madinah, Indonesia, Surabaya, Makassar, Jakarta'
+            },
+            { hid: 'og:type', property: 'og:type', content: 'website' },
+            { hid: 'og:title', property: 'og:title', content: 'Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya' },
+            {
+                hid: 'og:description',
+                property: 'og:description',
+                content: 'Haloatta Sistem Informasi Layanan dan Transaksi Untuk Semua Kebutuhan Perjalanan Umrah Anda'
+            },
+            { hid: 'og:url', property: 'og:url', content: 'https://www.haloatta.com/' },
+            { hid: 'og:image', property: 'og:image', content: 'https://www.haloatta.com/haloatta.png' },
+            {
+                hid: 'og:image:width',
+                property: 'og:image:width',
+                content: '180'
+            },
+            {
+                hid: 'og:image:height',
+                property: 'og:image:height',
+                content: '80'
             }
         ],
         link: [
