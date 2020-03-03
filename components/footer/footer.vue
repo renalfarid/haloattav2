@@ -9,16 +9,16 @@
           <div class="title">Bank Pembayaran</div>
           <div class="logo-bank">
             <div>
-              <img alt="bca" src="~/static/icons/bank/bca.png" />
+              <img alt="bca" v-lazy="require('~/static/icons/bank/bca.png')" />
             </div>
             <div>
-              <img alt="bni" src="~/static/icons/bank/bni.png" />
+              <img alt="bni" v-lazy="require('~/static/icons/bank/bni.png')" />
             </div>
             <div>
-              <img alt="bri" src="~/static/icons/bank/bri.png" />
+              <img alt="bri" v-lazy="require('~/static/icons/bank/bri.png')" />
             </div>
             <div>
-              <img alt="mandiri" src="~/static/icons/bank/mandiri.png" />
+              <img alt="mandiri" v-lazy="require('~/static/icons/bank/mandiri.png')" />
             </div>
           </div>
         </a-card>
@@ -32,10 +32,6 @@
             <nuxt-link to="/catalog/accommodation" class="item-link">LA Akomodasi</nuxt-link>
             <nuxt-link to="/catalog/visa" class="item-link">Provider Visa Perjalanan</nuxt-link>
             <nuxt-link to="/catalog/insurance" class="item-link">Provider Asuransi</nuxt-link>
-            <nuxt-link to="/catalog/handling" class="item-link">Provider Handling</nuxt-link>
-            <nuxt-link to="/catalog/manasik" class="item-link">Provider Manasik</nuxt-link>
-            <nuxt-link to="/catalog/equipment" class="item-link">Provider Perlengkapan</nuxt-link>
-            <nuxt-link to="/catalog/tourleader" class="item-link">Provider Tour Leader</nuxt-link>
           </div>
         </a-card>
       </a-col>
