@@ -3,41 +3,65 @@ module.exports = {
     mode: "universal",
     head: {
         title: "Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta",
-        meta: [
-            { charset: "utf-8" },
-            { name: "viewport", content: "width=device-width, initial-scale=1" },
+        meta: [{
+                charset: "utf-8"
+            },
+
+            {
+                name: "viewport",
+                content: "width=device-width, initial-scale=1"
+            },
             {
                 hid: 'description',
                 name: 'description',
-                content: 'Haloatta Sistem Informasi Layanan dan Transaksi Untuk Semua Kebutuhan Perjalanan Umrah Anda'
+                content: 'Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya'
             },
             {
                 hid: 'keywords',
                 name: 'keywords',
-                content: 'Haloatta, Halo, Atta, Umrah, Umroh, Wisata, Travel, Tiket, Paket Umroh, Akomodasi, LA, Visa, Asuransi, Perjalanan, Handling, Manasik, Perlengkapan, Tourleader, Ustad, Makkah, Madinah, Indonesia, Surabaya, Makassar, Jakarta'
+                content: 'Haloatta, Halo, Atta, Umrah, Umroh, Umaroh, Vendor, Wisata, Travel, Tiket, Paket Umroh, Akomodasi, LA, Visa, Asuransi, Perjalanan, Handling, Manasik, Perlengkapan, Tourleader, Ustad, Makkah, Madinah, Indonesia, Surabaya, Makassar, Jakarta'
             },
-            { hid: 'og:type', property: 'og:type', content: 'website' },
-            { hid: 'og:title', property: 'og:title', content: 'Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya' },
+            {
+                hid: 'og:type',
+                property: 'og:type',
+                content: 'website'
+            },
+            {
+                hid: 'og:title',
+                property: 'og:title',
+                content: 'Haloatta'
+            },
             {
                 hid: 'og:description',
                 property: 'og:description',
-                content: 'Haloatta Sistem Informasi Layanan dan Transaksi Untuk Semua Kebutuhan Perjalanan Umrah Anda'
+                content: 'Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya'
             },
-            { hid: 'og:url', property: 'og:url', content: 'https://www.haloatta.com/' },
-            { hid: 'og:image', property: 'og:image', content: 'https://www.haloatta.com/haloatta.png' },
+            {
+                hid: 'og:url',
+                property: 'og:url',
+                content: 'https://www.haloatta.com/'
+            },
+            {
+                hid: 'og:image',
+                property: 'og:image',
+                content: 'https://www.haloatta.com/makkah.jpg'
+            },
             {
                 hid: 'og:image:width',
                 property: 'og:image:width',
-                content: '180'
+                content: '1200'
             },
             {
                 hid: 'og:image:height',
                 property: 'og:image:height',
-                content: '80'
+                content: '628'
             }
         ],
-        link: [
-            { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
+        link: [{
+                rel: "icon",
+                type: "image/x-icon",
+                href: "/favicon.png"
+            },
             {
                 rel: "stylesheet",
                 href: "https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap"
