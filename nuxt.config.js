@@ -1,15 +1,15 @@
 require('dotenv').config();
 module.exports = {
-    mode: "universal",
+    mode: 'universal',
     head: {
-        title: "Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta",
+        title: 'Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta',
         meta: [{
-                charset: "utf-8"
+                charset: 'utf-8'
             },
 
             {
-                name: "viewport",
-                content: "width=device-width, initial-scale=1"
+                name: 'viewport',
+                content: 'width=device-width, initial-scale=1'
             },
             {
                 hid: 'description',
@@ -58,62 +58,70 @@ module.exports = {
             }
         ],
         link: [{
-                rel: "icon",
-                type: "image/x-icon",
-                href: "/favicon.png"
+                rel: 'icon',
+                type: 'image/x-icon',
+                href: '/favicon.png'
             },
             {
-                rel: "stylesheet",
-                href: "https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap"
+                rel: 'stylesheet',
+                href: 'https://fonts.googleapis.com/css?family=Archivo:400,400i,500,500i,600,600i,700,700i&display=swap'
             }
         ]
     },
 
     env: {
         baseUrl: process.env.apiUrl,
-        token: process.env.apiToken + "/oauth/token"
+        token: process.env.apiToken + '/oauth/token'
     },
 
     loading: '@/components/template/Loading',
 
     css: [
         { src: 'ant-design-vue/dist/antd.less', lang: 'less' },
-        { src: "@/assets/haloatta.scss", lang: "scss" }
+        { src: '@/assets/haloatta.scss', lang: 'scss' }
     ],
 
     plugins: [
-        { src: "@/plugins/antd-ui" },
-        { src: "@/plugins/silent-box", mode: "client" },
-        { src: "@/plugins/vInput-number", mode: "client" },
-        { src: "@/plugins/vCurrency-filter", mode: "client" },
-        { src: "@/plugins/vCountdown", mode: "client" },
-        { src: "@/plugins/vCharts", mode: "client" },
-        { src: "@/plugins/vInfinite-scroll", mode: "client" },
-        { src: "@/plugins/vClipboard", mode: "client" },
-        { src: "@/plugins/vMyphotos", mode: "client" },
-        { src: "@/plugins/vLazyimg", mode: "client" },
-        { src: "@/plugins/vFlickity", mode: "client" },
-        { src: "@/plugins/vAos", mode: "client" }
+        { src: '@/plugins/antd-ui' },
+        { src: '@/plugins/silent-box', mode: 'client' },
+        { src: '@/plugins/vInput-number', mode: 'client' },
+        { src: '@/plugins/vCurrency-filter', mode: 'client' },
+        { src: '@/plugins/vCountdown', mode: 'client' },
+        { src: '@/plugins/vCharts', mode: 'client' },
+        { src: '@/plugins/vInfinite-scroll', mode: 'client' },
+        { src: '@/plugins/vClipboard', mode: 'client' },
+        { src: '@/plugins/vMyphotos', mode: 'client' },
+        { src: '@/plugins/vLazyimg', mode: 'client' },
+        { src: '@/plugins/vFlickity', mode: 'client' },
+        { src: '@/plugins/vAos', mode: 'client' }
     ],
 
     modules: [
-        "@nuxtjs/moment",
-        "@nuxtjs/axios",
-        "@bazzite/nuxt-optimized-images",
-        "@nuxtjs/proxy", ["nuxt-vuex-localstorage", {
+        '@nuxtjs/moment',
+        '@nuxtjs/axios',
+        '@bazzite/nuxt-optimized-images',
+        '@nuxtjs/sitemap',
+        '@nuxtjs/proxy', ['nuxt-vuex-localstorage', {
             mode: 'debug'
         }],
         [
-            "vue-currency-filter/nuxt",
+            'vue-currency-filter/nuxt',
             {
-                symbol: "Rp",
-                thousandsSeparator: ",",
-                fractionSeparator: ",",
-                symbolPosition: "front",
+                symbol: 'Rp',
+                thousandsSeparator: ',',
+                fractionSeparator: ',',
+                symbolPosition: 'front',
                 symbolSpacing: true
             }
         ],
     ],
+
+    sitemap: {
+        path: '/sitemap.xml',
+        cacheTime: 1000 * 60 * 60 * 2,
+        trailingSlash: true,
+        gzip: true
+    },
 
     optimizedImages: {
         inlineImageLimit: 1000,
@@ -149,8 +157,8 @@ module.exports = {
     },
 
     moment: {
-        defaultLocale: "id",
-        locales: ["id"]
+        defaultLocale: 'id',
+        locales: ['id']
     },
 
     /*
@@ -161,15 +169,15 @@ module.exports = {
             local: {
                 endpoints: {
                     login: {
-                        url: process.env.BASE_URL + "oauth/token",
-                        method: "post",
-                        propertyName: "token"
+                        url: process.env.BASE_URL + 'oauth/token',
+                        method: 'post',
+                        propertyName: 'token'
                     },
-                    logout: { url: process.env.BASE_URL + "user/logout", method: "del" },
+                    logout: { url: process.env.BASE_URL + 'user/logout', method: 'del' },
                     user: {
-                        url: process.env.BASE_URL + "user/info",
-                        method: "get",
-                        propertyName: "user"
+                        url: process.env.BASE_URL + 'user/info',
+                        method: 'get',
+                        propertyName: 'user'
                     }
                 }
                 // tokenRequired: true,
@@ -183,7 +191,7 @@ module.exports = {
             if (ctx && ctx.isClient) {
                 config.optimization.splitChunks.maxSize = 51200
             }
-            config.resolve.alias["vue"] = "vue/dist/vue.common";
+            config.resolve.alias['vue'] = 'vue/dist/vue.common';
         },
 
         babel: {
