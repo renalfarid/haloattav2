@@ -790,8 +790,6 @@ export default {
             data["tanggal_kepulanggan"] = values.tanggal_kepulanggan;
           }
 
-          console.log(data, "coba");
-
           const token = Cookie.get("auth");
 
           const config = {
