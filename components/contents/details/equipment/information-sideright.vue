@@ -10,7 +10,7 @@
           <div class="ml-auto">
             <number-input
               v-model="qty"
-              :min="0"
+              :min="1"
               :inputtable="false"
               size="small"
               inline

@@ -7,18 +7,30 @@
             <a-icon type="customer-service" />Tanya Atta
           </a-button>
           <div class="title">Bank Pembayaran</div>
-          <div class="logo-bank">
+          <div class="logo-bank sm-logo--bank">
             <div>
-              <img alt="bca" src="~/static/icons/bank/bca.png" />
+              <img
+                alt="bank bca"
+                v-lazy="require('~/static/icons/bank/bca.png')"
+              />
             </div>
             <div>
-              <img alt="bni" src="~/static/icons/bank/bni.png" />
+              <img
+                alt="bank bni"
+                v-lazy="require('~/static/icons/bank/bni.png')"
+              />
             </div>
             <div>
-              <img alt="bri" src="~/static/icons/bank/bri.png" />
+              <img
+                alt="bank bri"
+                v-lazy="require('~/static/icons/bank/bri.png')"
+              />
             </div>
             <div>
-              <img alt="mandiri" src="~/static/icons/bank/mandiri.png" />
+              <img
+                alt="bank mandiri"
+                v-lazy="require('~/static/icons/bank/mandiri.png')"
+              />
             </div>
           </div>
         </a-card>
@@ -27,15 +39,21 @@
         <a-card>
           <div class="title">Layanan Pelanggan</div>
           <div class="item">
-            <nuxt-link to="/catalog/umrah" class="item-link">Paket Umrah</nuxt-link>
-            <nuxt-link to="/catalog/ticket-group" class="item-link">Tiket Group</nuxt-link>
-            <nuxt-link to="/catalog/accommodation" class="item-link">LA Akomodasi</nuxt-link>
-            <nuxt-link to="/catalog/visa" class="item-link">Provider Visa Perjalanan</nuxt-link>
-            <nuxt-link to="/catalog/insurance" class="item-link">Provider Asuransi</nuxt-link>
-            <nuxt-link to="/catalog/handling" class="item-link">Provider Handling</nuxt-link>
-            <nuxt-link to="/catalog/manasik" class="item-link">Provider Manasik</nuxt-link>
-            <nuxt-link to="/catalog/equipment" class="item-link">Provider Perlengkapan</nuxt-link>
-            <nuxt-link to="/catalog/tourleader" class="item-link">Provider Tour Leader</nuxt-link>
+            <nuxt-link to="/catalog/umrah" class="item-link"
+              >Paket Umrah</nuxt-link
+            >
+            <nuxt-link to="/catalog/ticket-group" class="item-link"
+              >Tiket Group</nuxt-link
+            >
+            <nuxt-link to="/catalog/accommodation" class="item-link"
+              >LA Akomodasi</nuxt-link
+            >
+            <nuxt-link to="/catalog/visa" class="item-link"
+              >Provider Visa Perjalanan</nuxt-link
+            >
+            <nuxt-link to="/catalog/insurance" class="item-link"
+              >Provider Asuransi</nuxt-link
+            >
           </div>
         </a-card>
       </a-col>
@@ -44,8 +62,15 @@
           <div class="title">Tentang Haloatta</div>
           <div class="item">
             <nuxt-link to="/about" class="item-link">Tentang Kami</nuxt-link>
-            <a href="https://www.haloummi.com" class="item-link" target="_blank">Haloummi</a>
-            <a href="https://betavendor.haloatta.com" class="item-link" target="_blank">Bermitra dengan Kami</a>
+            <a href="https://www.haloummi.com" class="item-link" target="_blank"
+              >Haloummi</a
+            >
+            <a
+              href="https://betavendor.haloatta.com"
+              class="item-link"
+              target="_blank"
+              >Bermitra dengan Kami</a
+            >
           </div>
         </a-card>
       </a-col>
@@ -63,8 +88,22 @@
     <a-divider />
 
     <div class="d-flex align-items-center">
-      <div class="fs-14 fw-400 cr-gray">2016 - {{ new Date().getFullYear() }} © PT. NUH Teknologi Solution</div>
+      <div class="fs-14 fw-400 cr-gray">
+        2016 - {{ new Date().getFullYear() }} © PT. NUH Teknologi Solution
+      </div>
       <div class="ml-auto"></div>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+@media (max-width: 480px) {
+  .sm-logo--bank {
+    display: inline-block !important;
+    & div {
+      display: inline-block;
+      margin-right: 16px;
+    }
+  }
+}
+</style>

@@ -20,17 +20,17 @@
           >
             <a-row :gutter="24" class="r-wrap">
               <a-col
+                class="mb-16"
+                v-for="item in data"
+                :key="item.kode_produk"
                 :xs="24"
                 :sm="12"
                 :md="12"
                 :lg="8"
-                class="mb-16"
-                v-for="(item, index) in data"
-                :key="index"
               >
-                <package-ticket
+                <PackageTicket
                   :loading="loading"
-                  :images="item.gambar"
+                  :images="item.foto_maskapai"
                   :city="item.nama_kota"
                   :departure="item.tanggal_keberangkatan"
                   :vendor_name="item.nama_vendor"
@@ -44,6 +44,7 @@
                   :to_flight_time="item.tiba_kepulangan"
                   :program="item.program_hari"
                   :pricing="item.harga_jual"
+                  :qty="item.qty"
                   :url="item.kode_produk"
                 />
               </a-col>
@@ -54,25 +55,21 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchResultTicket from "@/components/contents/lib/search/result/ticket.vue";
 import filterResultTicket from "@/components/contents/lib/filter/result/ticket.vue";
-import PackageTicket from "@/components/template/Ticket";
+import PackageTicket from "@/components/Package/Ticket";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
-  name: "ticketResult",
-  
+  mixins: [Meta],
+
   components: {
     searchResultTicket,
     filterResultTicket,
     PackageTicket
-  },
-
-  head() {
-    return {
-      title:
-        "Hasil Pencarian Tiket Group - Pesan Paket Umrah & Komponen Umrah Lainnya"
-    };
   },
 
   data() {
@@ -80,7 +77,11 @@ export default {
       loading: true,
       busy: false,
       limit: 8,
-      data: []
+      data: [],
+      meta: {
+        title: "Hasil Pencarian Tiket Group - Haloatta",
+        url: "https://www.haloatta.com/catalog/ticket-group/result"
+      }
     };
   },
 

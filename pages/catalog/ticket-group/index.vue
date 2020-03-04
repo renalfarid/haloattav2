@@ -1,21 +1,23 @@
 <template>
   <div>
-    <div class="content-head content-head--ticket-group">
+    <div class="content-head content-head--app">
       <div class="content-head--cover" v-lazy:background-image="require('~/static/maskapai/cover/tc1.png')">
         <div class="content-head--body container">
           <div class="gradient-top"></div>
-          <a-row :gutter="24" type="flex" justify="space-between" align="middle" class="h-100">
-            <a-col :xs="24" :sm="24" :md="24" :lg="24">
-              <h1 class="fs-40 cr-white" :style="{ 'line-height': 'normal' }">
-                Beragam pilihan <br />
-                Tiket group untuk anda
-              </h1>
-              <a-card :bordered="false" class="b-shadow b-radius b-opacity">
-                <searchTicket />
-              </a-card>
-            </a-col>
-          </a-row>
         </div>
+      </div>
+    </div>
+
+    <div class="md-fitur--search">
+      <div class="container">
+        <a-card class="b-solid b-shadow b-radius">
+          <h1 class="fs-30 cr-black mb-32" :style="{ 'line-height': 'normal' }">
+            Beragam pilihan tiket group
+            untuk anda!
+          </h1>
+
+          <searchTicket />
+        </a-card>
       </div>
     </div>
 
@@ -54,27 +56,32 @@
 
     <div class="content-recommended--ticket-group pb-40">
       <div class="container">
-        <a-divider orientation="left" class="ant-divider-title-left">Rekomendasi untuk kamu</a-divider>
+        <h2 class="md-title">Rekomendasi Haloatta</h2>
         <Recommended />
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import searchTicket from "@/components/contents/lib/search/ticket.vue";
 import Recommended from "@/components/contents/catalog/ticket/recommended.vue";
+import Meta from "@/assets/mixins/meta";
 export default {
-  name: "ticketGroup",
+  mixins: [Meta],
   
   components: {
     searchTicket,
     Recommended
   },
 
-  head() {
+  data() {
     return {
-      title: "Pesan Tiket Group - Best Travel Agen | Haloatta"
-    };
+      meta: {
+        title: "Tiket Group - Haloatta",
+        url: "https://www.haloatta.com/catalog/ticket-group"
+      }
+    }
   }
 };
 </script>

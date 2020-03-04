@@ -12,6 +12,9 @@
         position: relative;
         border: none;
         margin: 0;
+        & .ant-tabs-nav-container {
+            height: auto !important;
+        }
         & .ant-tabs-nav-container-scrolling {
             @include align-items(center);
             @include flexbox();
@@ -89,8 +92,12 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .search-main {
+        background-color: rgba($color: #fff, $alpha: 1);
+        box-shadow: none;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
         & .label-tabs {
             display: none !important;
         }

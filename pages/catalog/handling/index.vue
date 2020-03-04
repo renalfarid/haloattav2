@@ -1,30 +1,26 @@
 <template>
   <div>
-    <div class="content-head content-head--handling">
+    <div class="content-head content-head--app">
       <div
         class="content-head--cover"
         v-lazy:background-image="require('~/static/handling/cover/ch1.png')"
       >
         <div class="content-head--body container">
           <div class="gradient-top"></div>
-          <a-row
-            :gutter="24"
-            type="flex"
-            justify="space-between"
-            align="middle"
-            class="h-100"
-          >
-            <a-col :xs="24" :sm="24" :md="24" :lg="24">
-              <h1 class="fs-40 cr-white" :style="{ 'line-height': 'normal' }">
-                Beragam pilihan <br />
-                Handling Domestik untuk anda
-              </h1>
-              <a-card :bordered="false" class="b-shadow b-radius b-opacity">
-                <search-handling />
-              </a-card>
-            </a-col>
-          </a-row>
         </div>
+      </div>
+    </div>
+
+    <div class="md-fitur--search">
+      <div class="container">
+        <a-card class="b-solid b-shadow b-radius">
+          <h1 class="fs-30 cr-black mb-32" :style="{ 'line-height': 'normal' }">
+            Beragam pilihan handling domestik <br />
+            untuk anda!
+          </h1>
+
+          <search-handling />
+        </a-card>
       </div>
     </div>
 

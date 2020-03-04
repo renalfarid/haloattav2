@@ -1,12 +1,12 @@
 <template>
   <section>
-    <a-card class="b-shadow b-solid bordered-left mt-32 mb-16" id="informasi">
+    <a-card class="b-shadow b-solid b-radius bordered-left mb-16" id="informasi">
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="w-100">
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
-                <div class="fs-28 fw-600 f-default cr-black">
+                <div class="fs-28 fw-600 cr-black">
                   <span>{{data.nama}}</span>
                 </div>
               </a-col>
@@ -37,8 +37,8 @@
 
         <a-list-item class="ant-list-item--package-information">
           <div class="w-100">
-            <a-row :gutter="16">
-              <a-col :span="8" class="mb-16">
+            <a-row :gutter="24">
+              <a-col :xs="24" :sm="24" :md="12" :lg="8" class="mb-16">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -47,13 +47,13 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Tipe Handling</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">VVIP</div>
+                    <div class="fs-14 fw-400 cr-gray f-default">Tipe Handling</div>
+                    <div class="fs-14 fw-500 cr-black text-capitalize">VVIP</div>
                   </div>
                 </div>
               </a-col>
 
-              <a-col :span="8" class="mb-16">
+              <a-col :xs="24" :sm="24" :md="12" :lg="8" class="mb-16">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -62,13 +62,13 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Durasi</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">30 Hari</div>
+                    <div class="fs-14 fw-400 cr-gray f-default">Durasi</div>
+                    <div class="fs-14 fw-500 cr-black text-capitalize">30 Hari</div>
                   </div>
                 </div>
               </a-col>
 
-              <a-col :span="8" class="mb-16">
+              <a-col :xs="24" :sm="24" :md="12" :lg="8" class="mb-16">
                 <div class="d-flex align-items-start">
                   <a-avatar
                     style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -77,8 +77,8 @@
                     icon="check"
                   />
                   <div>
-                    <div class="fs-15 fw-400 cr-gray f-default">Layanan</div>
-                    <div class="fs-15 fw-500 cr-black text-capitalize">Pulang Pergi</div>
+                    <div class="fs-14 fw-400 cr-gray f-default">Layanan</div>
+                    <div class="fs-14 fw-500 cr-black text-capitalize">Pulang Pergi</div>
                   </div>
                 </div>
               </a-col>
@@ -90,12 +90,12 @@
 
     <!-- Fasilitas -->
     <a-card
-      class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16"
+      class="b-shadow b-radius bordered-left b-solid ant-list-item--package-information mb-16"
       id="manfaat"
     >
       <div class="fs-16 fw-500 cr-black mb-24">Manfaat Handling</div>
-      <a-row :gutter="8">
-        <a-col :span="12" class="mb-16">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="24" :md="24" :lg="24" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -104,11 +104,11 @@
               icon="check"
             />
             <div>
-              <div class="fs-15 fw-500 cr-black">Bantuan check in boarding pass bandara domestik</div>
+              <div class="fs-14 fw-500 cr-black">Bantuan check in boarding pass bandara domestik</div>
             </div>
           </div>
         </a-col>
-        <a-col :span="12" class="mb-16">
+        <a-col :xs="24" :sm="24" :md="24" :lg="24" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -117,7 +117,7 @@
               icon="check"
             />
             <div>
-              <div class="fs-15 fw-500 cr-black">Pengurusan bagasi jamaah rombongan</div>
+              <div class="fs-14 fw-500 cr-black">Pengurusan bagasi jamaah rombongan</div>
             </div>
           </div>
         </a-col>

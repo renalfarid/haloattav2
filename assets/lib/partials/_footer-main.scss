@@ -11,10 +11,13 @@
                 border: none;
             }
             & .title {
+                color: rgba($color: #000000, $alpha: 1);
+                text-transform: uppercase;
                 color: $color-font;
                 letter-spacing: .5px;
+                margin-bottom: 8px;
                 font-weight: 500;
-                font-size: 18px;
+                font-size: 14px;
             }
             & .logo-bank {
                 @include justify-content(space-between);
@@ -24,18 +27,21 @@
                 & img {
                     max-width: 100%;
                     max-height: 40px;
+                    margin: 8px 0;
                 }
             }
             & .item {
                 & .item-link {
-                    color: $color-font-gray;
+                    transition: all .2s ease-in-out;
+                    color: rgba($color: #000000, $alpha: .5);
                     letter-spacing: .5px;
+                    font-weight: 400;
                     font-size: 14px;
                     display: block;
                     padding: 4px 0;
                     &:hover {
                         text-decoration: none;
-                        color: $color-font;
+                        color: rgba($color: #000000, $alpha: 1);
                     }
                 }
             }

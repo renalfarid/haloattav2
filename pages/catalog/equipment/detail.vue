@@ -4,8 +4,8 @@
     <div class="info-affix">
       <a-affix :offsetTop="0">
         <div class="container">
-          <a-row :gutter="32">
-            <a-col :span="17">
+          <a-row :gutter="24">
+            <a-col :xs="24" :md="24" :lg="16">
               <a-anchor>
                 <a-anchor-link href="#informasi" title="Informasi" />
                 <a-anchor-link href="#ulasan" title="Ulasan" />
@@ -49,14 +49,14 @@
     </div>
 
     <div class="container">
-      <a-row :gutter="32">
-        <a-col :span="17">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="24" :md="16">
           <div class="ant-layout--package-details-body">
             <information-equipment :data="item" />
           </div>
         </a-col>
 
-        <a-col :span="7">
+        <a-col :xs="24" :sm="24" :md="8">
           <div class="ant-layout--right" :style="{ margin: '32px 0'}">
             <div class="ant-affix--container">
               <information-sideright :data="item" />
@@ -68,12 +68,12 @@
   </div>
 </template>
 <script>
-import informationEquipment from "~/components/contents/details/equipment/information-equipment.vue";
-import informationSideright from "~/components/contents/details/equipment/information-sideright.vue";
+import informationEquipment from "@/components/contents/details/equipment/information-equipment.vue";
+import informationSideright from "@/components/contents/details/equipment/information-sideright.vue";
 import moment from "moment";
 import axios from "axios";
 export default {
-  name: "detailEquipment",
+  name: "detail-handling",
   head() {
     return {
       title: "Perlengkapan Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"

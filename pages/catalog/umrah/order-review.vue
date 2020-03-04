@@ -3,10 +3,13 @@
     <div class="ant-layout--results-space-small"></div>
     <div class="ant-layout--order-review-package-body" :style="{'background-color':'#f7f7f7'}">
       <div class="container">
+        <h2 class="mt-16 mb-0 cr-gray">Review Pesanan</h2>
+
         <a-row :gutter="24">
           <a-col :xs="24" :sm="24" :md="16">
             <informationOrder :la="la" :kelengkapan="kelengkapan" :umroh="umroh" :tiket="tiket" />
           </a-col>
+
           <a-col :xs="24" :sm="24" :md="8">
             <informationSideRight :harga="harga" :umroh="umrohsidebar" />
           </a-col>
@@ -15,19 +18,18 @@
     </div>
   </div>
 </template>
+
 <script>
-import informationOrder from "~/components/contents/review/umrah/information-order.vue";
-import informationSideRight from "~/components/contents/review/umrah/information-sideright.vue";
+import informationOrder from "@/components/contents/review/umrah/information-order.vue";
+import informationSideRight from "@/components/contents/review/umrah/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import moment from "moment";
 import axios from "axios";
+
 export default {
+  mixins: [Meta],
   middleware: "authenticated",
-  name: "orderReview",
-  head() {
-    return {
-      title: "Ulasan Pesanan - Booking Paket Umrah Lebih Mudah"
-    };
-  },
+  
   data() {
     return {
       la: "",
@@ -35,9 +37,14 @@ export default {
       umroh: "",
       umrohsidebar: {},
       harga: "",
-      kelengkapan: ""
+      kelengkapan: "",
+      meta: {
+        title: "Review Pesanan Paket Umrah - Haloatta",
+        url: "https://www.haloatta.com/catalog/umrah/order-review"
+      }
     };
   },
+
   async asyncData({ query }) {
     const myRespone = await axios.post(
       process.env.baseUrl + "paket/umroh/detail",

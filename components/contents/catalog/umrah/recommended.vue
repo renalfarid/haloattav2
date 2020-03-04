@@ -1,78 +1,99 @@
 <template>
-  <div class="content-recomended" v-if="lisData.length > 0">
-    <client-only>
-      <div class="container">
-        <div class="header-title">
-          <a-divider orientation="left" class="ant-divider-title-left"
-            >Rekomendasi Haloatta</a-divider
-          >
-        </div>
+  <div class="content-recomended mt-32 pb-0" v-if="recommendations.length > 0">
+    <div class="container">
+      <h2 class="md-title">
+        Rekomendasi Haloatta
+      </h2>
 
-        <a-row :gutter="24" class="r-wrap">
-          <a-col
-            :xs="24"
-            :sm="12"
-            :md="12"
-            :lg="8"
-            class="mb-16"
-            v-for="(item, index) in lisData"
-            :key="index"
-          >
-            <package-umrah
-              :loading="loading"
-              :package_name="item.nama"
-              :images="item.gambar"
-              :url="item.kode_produk"
-              :departure="item.tgl_berangkat"
-              :city="item.nama_kota"
-              :vendor_name="item.nama_vendor"
-              :vendor_logo="item.foto"
-              :maskapai_name="item.nama_maskapai"
-              :maskapai_logo="item.image"
-              :rate_hotel="item.kelas_bintang"
-              :program="item.jumlah_hari"
-              :pricing="item.harga_jual"
-            />
-          </a-col>
-        </a-row>
-
-        <div class="all-package">
-          <nuxt-link
-            to="/catalog/umrah/all"
-            class="fs-18 cr-green d-flex align-items-center"
-          >
-            Tampilkan semua
-            <a-icon class="fs-16 ml-8" type="right" />
-          </nuxt-link>
-        </div>
-      </div>
-    </client-only>
+      <a-row :gutter="24" class="r-wrap">
+        <a-col
+          :xs="24"
+          :sm="24"
+          :md="8"
+          :lg="8"
+          class="mb-16"
+          v-for="recommendation in recommendations"
+          :key="recommendation.kode_produk"
+        >
+          <UmrahRecommendation
+            :packagelarge="packagelarge"
+            :loading="loading"
+            :package_name="recommendation.nama"
+            :images="recommendation.gambar_hotel"
+            :url="recommendation.kode_produk"
+            :departure="recommendation.tgl_berangkat"
+            :city="recommendation.nama_kota"
+            :vendor_name="recommendation.nama_vendor"
+            :vendor_logo="recommendation.foto"
+            :maskapai_name="recommendation.nama_maskapai"
+            :maskapai_logo="recommendation.image"
+            :rate_hotel="recommendation.kelas_bintang"
+            :program="recommendation.jumlah_hari"
+            :pricing="recommendation.harga_jual"
+          />
+        </a-col>
+      </a-row>
+    </div>
   </div>
 </template>
+
 <script>
-import PackageUmrah from "@/components/template/Umrah";
+import UmrahRecommendation from "@/components/Package/Umrah";
 import axios from "axios";
 export default {
-  components: { PackageUmrah },
+  components: {
+    UmrahRecommendation
+  },
+
   data() {
     return {
+      packagelarge: true,
       loading: true,
-      lisData: []
+      recommendations: []
     };
   },
 
   created: function() {
-    this.getdata();
+    this.getRecommendations();
   },
 
   methods: {
-    async getdata() {
+    async getRecommendations() {
       axios
-        .get("https://api.haloatta.com/api/paket/umroh/all")
+        .get(process.env.baseUrl + "paket/umroh/recomended")
         .then(response => {
-          this.lisData = response.data.data.data.slice(3, 8);
+          this.recommendations = response.data.data.data.slice(0, 3);
           this.loading = false;
         });
+    }
+  },
+
+  filters: {
+    formatDate: function(value) {
+      const date = new Date(value);
+
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mei",
+        "Jun",
+        "Jul",
+        "Agu",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Des"
+      ];
+      const days = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
+
+      const dayName = days[date.getDay()];
+      const dayOfMonth = date.getDate();
+      const month = months[date.getMonth()];
+      const year = date.getFullYear();
+
+      return `${dayName}, ${dayOfMonth} ${month} ${year}`;
     }
   }
 };

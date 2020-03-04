@@ -1,30 +1,26 @@
 <template>
   <div>
-    <div class="content-head content-head--insurance">
+    <div class="content-head content-head--app">
       <div
         class="content-head--cover"
         v-lazy:background-image="require('~/static/asuransi/cover/ac1.png')"
       >
         <div class="content-head--body container">
           <div class="gradient-top"></div>
-          <a-row
-            :gutter="24"
-            type="flex"
-            justify="space-between"
-            align="middle"
-            class="h-100"
-          >
-            <a-col :xs="24" :sm="24" :md="24" :lg="24">
-              <h1 class="fs-40 cr-white" :style="{ 'line-height': 'normal' }">
-                Beragam pilihan <br />
-                Asuransi Perjalanan anda
-              </h1>
-              <a-card :bordered="false" class="b-shadow b-radius b-opacity">
-                <search-insurance />
-              </a-card>
-            </a-col>
-          </a-row>
         </div>
+      </div>
+    </div>
+
+    <div class="md-fitur--search">
+      <div class="container">
+        <a-card class="b-solid b-shadow b-radius">
+          <h1 class="fs-30 cr-black mb-32" :style="{ 'line-height': 'normal' }">
+            Beragam pilihan asuransi perjalanan
+            untuk anda!
+          </h1>
+
+          <search-insurance />
+        </a-card>
       </div>
     </div>
 
@@ -72,20 +68,27 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchInsurance from "@/components/contents/lib/search/insurance.vue";
 import Recommended from "@/components/contents/catalog/insurance/recommended.vue";
+import Meta from "@/assets/mixins/meta";
+
 export default {
-  name: "insurance",
-  head() {
-    return {
-      title: "Pesan Asuransi Perjalanan - Best Travel Agen | Haloatta"
-    };
-  },
+  mixins: [Meta],
 
   components: {
     searchInsurance,
     Recommended
+  },
+
+  data() {
+    return {
+      meta: {
+        title: "Asuransi Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/insurance"
+      }
+    }
   }
 };
 </script>

@@ -104,6 +104,34 @@
         </nuxt-link>
       </a-menu-item>
 
+      <a-menu-item key="visa">
+        <nuxt-link to="/catalog/visa">
+          <span
+            ><a-badge dot
+              ><a-avatar
+                size="small"
+                :src="
+                  require('~/static/icons/search/tabs/color/visa.svg')
+                "/></a-badge
+          ></span>
+          <span class="cr-black-opacity ml-8">Visa</span>
+        </nuxt-link>
+      </a-menu-item>
+
+      <a-menu-item key="insurance">
+        <nuxt-link to="/catalog/insurance">
+          <span
+            ><a-badge dot
+              ><a-avatar
+                size="small"
+                :src="
+                  require('~/static/icons/search/tabs/color/insurance.svg')
+                "/></a-badge
+          ></span>
+          <span class="cr-black-opacity ml-8">Asuransi</span>
+        </nuxt-link>
+      </a-menu-item>
+
       <a-menu-item key="about">
         <nuxt-link to="/about">
           <span><a-avatar size="small" icon="block"/></span>
@@ -142,13 +170,12 @@ export default {
   & .md-btn {
     display: block;
     width: 100%;
-    border-radius: 0;
+    border-radius: 20px;
     height: 40px;
     box-shadow: none;
     text-shadow: none;
     font-weight: 500;
     color: rgba($color: #000000, $alpha: 0.7);
-    border-width: 2px;
     &.md-btn--login {
       background: rgb(15, 172, 243);
       border-color: rgb(15, 172, 243);

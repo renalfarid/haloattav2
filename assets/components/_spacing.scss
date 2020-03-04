@@ -22,7 +22,7 @@
 .ant-divider-title-left {
     & .ant-divider-inner-text {
         padding-left: 0 !important;
-        text-transform: uppercase;
+        text-transform: capitalize;
         color: $color-font;
         font-weight: 500;
         font-size: 22px;
@@ -31,8 +31,17 @@
         width: 0 !important;
     }
     &::after {
-        border-top: 3px solid $color-border !important;
+        border: none;
     }
+}
+
+.ant-divider-horizontal.ant-divider-with-text-left::before {
+    width: 0 !important;
+}
+
+.ant-divider-horizontal.ant-divider-with-text-left .ant-divider-inner-text,
+.ant-divider-horizontal.ant-divider-with-text-right .ant-divider-inner-text {
+    padding-left: 0 !important;
 }
 
 .ant-divider-title-left-small {

@@ -14,7 +14,9 @@
         </div>
 
         <div class="ant-layout--results-list pb-16">
-          <div class="ant-layout--results-list-label fw-400">Hasil Pencarian Paket Umrah</div>
+          <div class="ant-layout--results-list-label fw-400">
+            Hasil Pencarian Paket Umrah
+          </div>
           <div
             v-infinite-scroll="results"
             :infinite-scroll-disabled="busy"
@@ -26,26 +28,27 @@
                 :sm="12"
                 :md="12"
                 :lg="8"
-                v-for="(item, index) in results"
-                :key="index"
+                v-for="result in results"
+                :key="result.kode_produk"
                 data-aos="fade-up"
                 data-aos-duration="1200"
                 class="mb-16"
               >
-                <package-umrah
+                <UmrahResult
+                  :packagelarge="packagelarge"
                   :loading="loading"
-                  :package_name="item.nama"
-                  :images="item.gambar"
-                  :url="item.kode_produk"
-                  :departure="item.tgl_berangkat"
-                  :city="item.nama_kota"
-                  :vendor_name="item.nama_vendor"
-                  :vendor_logo="item.foto"
-                  :maskapai_name="item.nama_maskapai"
-                  :maskapai_logo="item.image"
-                  :rate_hotel="item.kelas_bintang"
-                  :program="item.jumlah_hari"
-                  :pricing="item.harga_jual"
+                  :package_name="result.nama"
+                  :images="result.gambar_hotel"
+                  :url="result.kode_produk"
+                  :departure="result.tgl_berangkat"
+                  :city="result.nama_kota"
+                  :vendor_name="result.nama_vendor"
+                  :vendor_logo="result.foto"
+                  :maskapai_name="result.nama_maskapai"
+                  :maskapai_logo="result.image"
+                  :rate_hotel="result.kelas_bintang"
+                  :program="result.jumlah_hari"
+                  :pricing="result.harga_jual"
                 />
               </a-col>
             </a-row>
@@ -55,35 +58,36 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchResultUmrah from "@/components/contents/lib/search/result/umrah.vue";
 import filterResultUmrah from "@/components/contents/lib/filter/result/umrah.vue";
-import PackageUmrah from "@/components/template/Umrah";
+import UmrahResult from "@/components/Package/Umrah";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
-  name: "umrahResults",
+  mixins: [Meta],
 
   components: {
     searchResultUmrah,
     filterResultUmrah,
-    PackageUmrah
-  },
-
-  head() {
-    return {
-      title:
-        "Hasil Pencarian Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
-    };
+    UmrahResult
   },
 
   data() {
     return {
+      packagelarge: true,
       loading: true,
-      busy: false,
-      limit: 6,
+      busy: true,
+      limit: 3,
       data: [],
       results: "",
-      option: ""
+      option: "",
+      meta: {
+        title: "Hasil Pencarian Paket Umrah - Haloatta",
+        url: "https://www.haloatta.com/catalog/umrah/result"
+      }
     };
   },
 

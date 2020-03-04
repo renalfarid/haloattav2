@@ -1,5 +1,7 @@
 <template>
-  <a-layout :style="{ background: '#fff', maxWidth: '1400px', margin: '0 auto' }">
+  <a-layout
+    :style="{ background: '#fff', maxWidth: '1400px', margin: '0 auto' }"
+  >
     <a-layout-sider
       class="ant-layout-sider--accounts"
       :style="{ overflow: 'auto', height: '100vh', position: 'fixed' }"
@@ -10,11 +12,20 @@
       <!-- <sidebar-personal /> -->
     </a-layout-sider>
 
-    <a-layout :style="{ marginLeft: '260px', padding: '24px', background: '#f6f6f6' }">
-      <a-layout-header :style="{ background: '#fff', padding: '0', marginBottom: '32px', borderRadius: '6px'}">
+    <a-layout
+      :style="{ marginLeft: '260px', padding: '24px', background: '#f6f6f6' }"
+    >
+      <a-layout-header
+        :style="{
+          background: '#fff',
+          padding: '0',
+          marginBottom: '32px',
+          borderRadius: '6px'
+        }"
+      >
         <header-bar />
       </a-layout-header>
-      <a-layout-content :style="{ overflow: 'initial', minHeight: '80vh' }">
+      <a-layout-content class="ant-layout--content-accounts" :style="{ overflow: 'initial', minHeight: '80vh' }">
         <nuxt />
       </a-layout-content>
       <a-back-top />
@@ -33,3 +44,19 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@media (max-width: 768px) {
+  .ant-layout-sider--accounts {
+    display: none;
+  }
+
+  .ant-layout {
+    margin-left: 0 !important;
+    padding: 0 !important;
+    & .ant-layout--content-accounts {
+      padding: 16px;
+    }
+  }
+}
+</style>

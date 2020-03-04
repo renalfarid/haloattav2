@@ -134,7 +134,7 @@ export default {
     nextOrderReview() {
       let params = this.$route.query;
       this.$router.push({
-        path: "/payment/order-data",
+        path: "/payment/order/la-akomodasi",
         query: {
           type: params.type,
           kode: params.kode,

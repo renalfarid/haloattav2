@@ -1,12 +1,12 @@
 <template>
   <section>
-    <a-card class="b-shadow b-solid bordered-left mt-32 mb-16" id="informasi">
+    <a-card class="b-radius b-shadow b-solid bordered-left mt-32 mb-16" id="informasi">
       <a-list itemLayout="horizontal" class="ant-list--package-information">
         <a-list-item class="ant-list-item--package-information pt-0">
           <div class="w-100">
             <a-row :gutter="16" type="flex" justify="start">
               <a-col :span="16">
-                <div class="fs-28 fw-600 f-default cr-black">
+                <div class="fs-28 fw-600 cr-black">
                   <span>{{data.nama}}</span>
                 </div>
               </a-col>
@@ -44,15 +44,15 @@
 
     <!-- Fasilitas -->
     <a-card
-      class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16"
+      class="b-radius b-solid b-shadow bordered-left b-solid ant-list-item--package-information mb-16"
       id="fasilitas"
     >
       <div class="fs-16 fw-500 cr-black mb-24">Fasilitas Room</div>
-      <a-row :gutter="8">
-        <a-col :span="8" class="mb-16">
+      <a-row :gutter="16">
+        <a-col :xs="24" :sm="12" :md="8" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -62,10 +62,10 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="8" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="8" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -75,10 +75,10 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="8" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="8" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -88,10 +88,10 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="8" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="8" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -101,10 +101,10 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="8" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="8" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -114,10 +114,10 @@
             </div>
           </div>
         </a-col>
-        <a-col :span="8" class="mb-16">
+        <a-col :xs="24" :sm="12" :md="8" class="mb-16">
           <div class="d-flex align-items-start">
             <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
+              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3;min-width:24px"
               class="mr-8"
               size="small"
               icon="check"
@@ -131,22 +131,22 @@
     </a-card>
 
     <!-- comments -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="ulasan">
+    <a-card class="b-radius b-shadow b-solid bordered-left mb-16" id="ulasan">
       <comments-manasik />
     </a-card>
 
     <!-- vendor -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="vendor">
+    <a-card class="b-radius b-shadow b-solid bordered-left mb-16" id="vendor">
       <vendor-manasik />
     </a-card>
 
     <!-- policy -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="policy">
+    <a-card class="b-radius b-shadow b-solid bordered-left mb-16" id="policy">
       <policy />
     </a-card>
 
     <!-- faq -->
-    <a-card class="b-shadow b-solid bordered-left mb-16" id="faq">
+    <a-card class="b-radius b-shadow b-solid bordered-left mb-16" id="faq">
       <faq />
     </a-card>
   </section>

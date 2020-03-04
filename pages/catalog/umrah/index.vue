@@ -1,34 +1,30 @@
 <template>
   <div>
-    <div class="content-head content-head--umrah">
+    <div class="content-head content-head--app">
       <div
         class="content-head--cover"
         v-lazy:background-image="require('~/static/umrah/cover/cu22.png')"
       >
         <div class="content-head--body container">
           <div class="gradient-top"></div>
-          <a-row
-            :gutter="24"
-            type="flex"
-            justify="space-between"
-            align="middle"
-            class="h-100"
-          >
-            <a-col :xs="24" :sm="24" :md="24" :lg="24">
-              <h1 class="fs-40 cr-white" :style="{ 'line-height': 'normal' }">
-                Beragam pilihan <br />
-                paket umrah untuk anda
-              </h1>
-              <a-card :bordered="false" class="b-shadow b-radius b-opacity">
-                <search-umrah />
-              </a-card>
-            </a-col>
-          </a-row>
         </div>
       </div>
     </div>
 
-    <div class="content-about--umrah pt-40 pb-40">
+    <div class="md-fitur--search">
+      <div class="container">
+        <a-card class="b-solid b-shadow b-radius">
+          <h1 class="fs-30 cr-black mb-32" :style="{ 'line-height': 'normal' }">
+            Beragam pilihan paket umrah
+            untuk anda!
+          </h1>
+
+          <search-umrah />
+        </a-card>
+      </div>
+    </div>
+
+    <div class="content-about--umrah" :style="{'padding':'124px 0'}">
       <div class="container">
         <a-row :gutter="24" type="flex" justify="space-between" align="middle">
           <a-col :xs="24" :sm="24" :md="12" class="mb-24">
@@ -64,18 +60,23 @@
 <script>
 import searchUmrah from "@/components/contents/lib/search/umrah.vue";
 import Recommended from "@/components/contents/catalog/umrah/recommended.vue";
+import Meta from "@/assets/mixins/meta";
+
 export default {
-  name: "umrah",
+  mixins: [Meta],
 
   components: {
     searchUmrah,
     Recommended
   },
 
-  head() {
+  data() {
     return {
-      title: "Pesan Paket Umrah - Best Travel Agen | Haloatta"
-    };
+      meta: {
+        title: "Paket Umrah - Haloatta",
+        url: "https://www.haloatta.com/catalog/umrah"
+      }
+    }
   }
 };
 </script>

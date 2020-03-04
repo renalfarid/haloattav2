@@ -4,8 +4,8 @@
     <div class="info-affix">
       <a-affix :offsetTop="0">
         <div class="container">
-          <a-row :gutter="32">
-            <a-col :span="17">
+          <a-row :gutter="24">
+            <a-col :xs="24" :sm="24" :md="16">
               <a-anchor>
                 <a-anchor-link href="#informasi" title="Informasi" />
                 <a-anchor-link href="#ulasan" title="Ulasan" />
@@ -49,15 +49,15 @@
     </div>
 
     <div class="container">
-      <a-row :gutter="32">
-        <a-col :span="17">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="24" :md="16">
           <div class="ant-layout--package-details-body">
             <information-tourleader :data="item" />
           </div>
         </a-col>
 
-        <a-col :span="7">
-          <div class="ant-layout--right" :style="{ margin: '32px 0'}">
+        <a-col :xs="24" :sm="24" :md="8">
+          <div class="ant-layout--right" :style="{ margin: '32px 0' }">
             <div class="ant-affix--container">
               <information-sideright :data="sidebar" />
             </div>
@@ -68,12 +68,12 @@
   </div>
 </template>
 <script>
-import informationTourleader from "~/components/contents/details/tourleader/information-tourleader.vue";
-import informationSideright from "~/components/contents/details/tourleader/information-sideright.vue";
+import informationTourleader from "@/components/contents/details/tourleader/information-tourleader.vue";
+import informationSideright from "@/components/contents/details/tourleader/information-sideright.vue";
 import moment from "moment";
 import axios from "axios";
 export default {
-  name: "detailTourleader",
+  name: "detail-tourleader",
   head() {
     return {
       title: "Tour Leader Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
