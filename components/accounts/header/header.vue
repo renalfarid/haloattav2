@@ -15,7 +15,7 @@
         </a-badge>
       </nuxt-link>
 
-      <img class="brand" src="/haloatta.png" alt="haloatta" />
+      <!-- <img class="brand" src="/haloatta.png" alt="haloatta" /> -->
     </div>
 
     <div class="header-right ml-auto">
