@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :style="{ 'padding-top': '80px' }">
+  <div class="container" :style="{ 'padding-top': '80px' }" v-if="cities.length > 0">
     <div class="md-cities--package">
       <a-row :gutter="24" class="f-wrap">
         <a-col :xs="24" :sm="24" :md="24" :lg="10" class="p-sm-none pb-24">
