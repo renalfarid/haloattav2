@@ -680,9 +680,9 @@ export default {
     let getProduk = myProduct.data.data;
     return {
       data: getProduk,
-      quad: query.quad,
-      triple: query.triple,
-      double: query.double
+      quad: query.quad * 4,
+      triple: query.triple * 3,
+      double: query.double * 2
     };
   },
 
