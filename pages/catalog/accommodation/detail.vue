@@ -68,25 +68,28 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationAccommodation from "@/components/contents/details/accommodation/information-accommodation.vue";
 import informationSideright from "@/components/contents/details/accommodation/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
-  name: "detail-accommodation",
-  head() {
-    return {
-      title:
-        "LA Akomodasi untuk 3 Hari Mekkah dan 4 Hari Madinah - Booking Paket Umrah & Komponen Umrah Lainnya"
-    };
-  },
+  mixins: [Meta],
+  
   data() {
     return {
       wishlist: false,
       dataLA: {},
-      sidebar: {}
+      sidebar: {},
+      meta: {
+        title: "Informasi Paket Akomodasi - Haloatta",
+        url: "https://www.haloatta.com/catalog/accommodation/detail"
+      }
     };
   },
+
   async asyncData({ query, store }) {
     let data = [];
 

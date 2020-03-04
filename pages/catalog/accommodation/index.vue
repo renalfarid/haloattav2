@@ -62,18 +62,23 @@
 <script>
 import searchAccommodation from "@/components/contents/lib/search/accommodation.vue";
 import Recommended from "@/components/contents/catalog/accommodation/umrah/recommended.vue";
+import Meta from "@/assets/mixins/meta";
+
 export default {
-  name: "accommodation",
+  mixins: [Meta],
 
   components: {
     searchAccommodation,
     Recommended
   },
 
-  head() {
+  data() {
     return {
-      title: "Pesan LA Akomodasi - Best Travel Agen | Haloatta"
-    };
+      meta: {
+        title: "Paket Akomodasi - Haloatta",
+        url: "https://www.haloatta.com/catalog/accommodation"
+      }
+    }
   }
 };
 </script>

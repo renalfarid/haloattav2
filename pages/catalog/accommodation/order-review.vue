@@ -18,24 +18,28 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationAccommodation from "@/components/contents/review/accommodation/information-accommodation.vue";
 import informationSideRight from "@/components/contents/review/accommodation/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import moment from "moment";
 import axios from "axios";
+
 export default {
-  name: "order-review-accommodation",
-  head() {
-    return {
-      title: "Ulasan Pesanan - Booking LA Akomodasi Lebih Mudah"
-    };
-  },
+  mixins: [Meta],
+  
   data() {
     return {
       item: "",
-      sidebar: {}
+      sidebar: {},
+      meta: {
+        title: "Review Pesanan Paket Akomodasi - Haloatta",
+        url: "https://www.haloatta.com/catalog/accommodation/order-review"
+      }
     };
   },
+
   async asyncData({ query }) {
     const myRespone = await axios.post(process.env.baseUrl + "la/detail", {
       kode_produk: query.kode
