@@ -195,20 +195,16 @@
 import searchResultUmrah from "@/components/contents/lib/search/result/umrah";
 import filterResultUmrah from "@/components/contents/lib/filter/result/umrah";
 import UmrahAll from "@/components/Package/Umrah";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
-  name: "all-recommendation",
+  mixins: [Meta],
 
   components: {
     searchResultUmrah,
     filterResultUmrah,
     UmrahAll
-  },
-
-  head() {
-    return {
-      title: "Semua Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
-    };
   },
 
   data() {
@@ -221,7 +217,11 @@ export default {
       page: 0,
       allRecommendations: [],
       results: "",
-      option: ""
+      option: "",
+      meta: {
+        title: "Semua Paket Umrah - Haloatta",
+        url: "https://www.haloatta.com/catalog/umrah/all"
+      }
     };
   },
 

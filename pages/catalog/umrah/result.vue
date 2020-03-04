@@ -58,25 +58,21 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchResultUmrah from "@/components/contents/lib/search/result/umrah.vue";
 import filterResultUmrah from "@/components/contents/lib/filter/result/umrah.vue";
 import UmrahResult from "@/components/Package/Umrah";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
-  name: "all_umrah_results",
+  mixins: [Meta],
 
   components: {
     searchResultUmrah,
     filterResultUmrah,
     UmrahResult
-  },
-
-  head() {
-    return {
-      title:
-        "Hasil Pencarian Paket Umrah - Booking Paket Umrah & Komponen Umrah Lainnya"
-    };
   },
 
   data() {
@@ -87,7 +83,11 @@ export default {
       limit: 3,
       data: [],
       results: "",
-      option: ""
+      option: "",
+      meta: {
+        title: "Hasil Pencarian Paket Umrah - Haloatta",
+        url: "https://www.haloatta.com/catalog/umrah/result"
+      }
     };
   },
 

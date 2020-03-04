@@ -4,17 +4,22 @@
 
 <script>
 import LayoutHome from "@/components/App/Home/Layout";
+import Meta from "@/assets/mixins/meta";
+
 export default {
-  name: "home-pages",
+  mixins: [Meta],
 
   components: {
     LayoutHome
   },
 
-  head() {
+  data() {
     return {
-      title: "Haloatta - Booking Paket Umrah, Tiket, LA dan Visa"
-    };
+      meta: {
+        title: "Tempat Pesan Paket Umrah dan Komponen Umrah Lainnya - Haloatta",
+        url: "https://www.haloatta.com/"
+      }
+    }
   }
 };
 </script>

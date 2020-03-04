@@ -2,7 +2,7 @@ require('dotenv').config();
 module.exports = {
     mode: 'universal',
     head: {
-        title: 'Tempat Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya - Haloatta',
+        title: 'Tempat Pesan Paket Umrah dan Komponen Umrah Lainnya - Haloatta',
         meta: [{
                 charset: 'utf-8'
             },
@@ -19,7 +19,7 @@ module.exports = {
             {
                 hid: 'keywords',
                 name: 'keywords',
-                content: 'Haloatta, Halo, Atta, Umrah, Umroh, Umaroh, Vendor, Wisata, Travel, Tiket, Paket Umroh, Akomodasi, LA, Visa, Asuransi, Perjalanan, Handling, Manasik, Perlengkapan, Tourleader, Ustad, Makkah, Madinah, Indonesia, Surabaya, Makassar, Jakarta'
+                content: 'Haloatta, Halo, Atta, Umrah, Umroh, Umaroh, Vendor, Wisata, Travel, Tiket, Paket Umroh, LA Akomodasi, Akomodasi, LA, Hotel, Visa, Asuransi, Perjalanan, Handling, Manasik, Perlengkapan, Tourleader, Ustad, Makkah, Madinah, Indonesia, Surabaya, Makassar, Jakarta'
             },
             {
                 hid: 'og:type',

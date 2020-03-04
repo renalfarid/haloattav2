@@ -287,3 +287,20 @@
     </div>
   </div>
 </template>
+
+<script>
+import Meta from "@/assets/mixins/meta";
+
+export default {
+  mixins: [Meta],
+
+  data() {
+    return {
+      meta: {
+        title: "Tentang Kami - Haloatta",
+        url: "https://www.haloatta.com/about"
+      }
+    }
+  }
+};
+</script>

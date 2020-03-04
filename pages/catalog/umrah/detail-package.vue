@@ -115,22 +115,20 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationTicket from '@/components/contents/details/umrah/information-ticket.vue';
 import informationAccommodation from '@/components/contents/details/umrah/information-accommodation.vue';
 import informationEquipment from '@/components/contents/details/umrah/information-equipment.vue';
 import informationItinerary from '@/components/contents/details/umrah/information-itinerary.vue';
 import informationSideRight from '@/components/contents/details/umrah/information-sideright.vue';
+import Meta from "@/assets/mixins/meta";
 import axios from 'axios';
 const Cookie = process.client ? require('js-cookie') : undefined;
+
 export default {
-  name: 'detail-umrah',
-  head() {
-    return {
-      title:
-        'Umrah Exclusive 2019 - Booking Paket Umrah & Komponen Umrah Lainnya'
-    };
-  },
+  mixins: [Meta],
+
   data() {
     return {
       activetab: 1,
@@ -144,9 +142,14 @@ export default {
       umroh: {},
       kelengkapan: [],
       itinerary: [],
-      foto_maskapai: ''
+      foto_maskapai: '',
+      meta: {
+        title: "Informasi Paket Umrah - Haloatta",
+        url: "https://www.haloatta.com/catalog/umrah/detail-package"
+      }
     };
   },
+
   async asyncData({ query, store }) {
     const myRespone = await axios.post(
       process.env.baseUrl + 'paket/umroh/detail',
