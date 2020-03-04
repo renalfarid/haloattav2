@@ -2,6 +2,9 @@
   <div class="content-components-umrah" :style="{ 'padding-top': '80px' }">
     <div class="container">
       <h2 class="md-title">Komponen Umrah dan Wisata</h2>
+      <h4 class="md-subtitle" :style="{'margin-bottom':'32px'}">
+        Mulai lah mencari ide untuk paket wisata dan perjalanan umroh anda
+      </h4>
 
       <flickity
         class="md-flickity--categories"

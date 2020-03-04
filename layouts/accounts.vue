@@ -25,7 +25,7 @@
       >
         <header-bar />
       </a-layout-header>
-      <a-layout-content :style="{ overflow: 'initial', minHeight: '80vh' }">
+      <a-layout-content class="ant-layout--content-accounts" :style="{ overflow: 'initial', minHeight: '80vh' }">
         <nuxt />
       </a-layout-content>
       <a-back-top />
@@ -54,7 +54,7 @@ export default {
   .ant-layout {
     margin-left: 0 !important;
     padding: 0 !important;
-    & .ant-layout-content {
+    & .ant-layout--content-accounts {
       padding: 16px;
     }
   }

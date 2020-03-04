@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="p-24" :style="{ 'background-color': '#000' }">
+    <div class="p-24" :style="{ 'background-color': 'rgb(135, 208, 104)' }">
       <div class="fs-14 fw-400 text-uppercase cr-white mb-8">
         Bayar Bertahap
       </div>
