@@ -18,19 +18,18 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationOrder from "@/components/contents/review/umrah/information-order.vue";
 import informationSideRight from "@/components/contents/review/umrah/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import moment from "moment";
 import axios from "axios";
+
 export default {
+  mixins: [Meta],
   middleware: "authenticated",
-  name: "order-review-umrah",
-  head() {
-    return {
-      title: "Ulasan Pesanan - Booking Paket Umrah Lebih Mudah"
-    };
-  },
+  
   data() {
     return {
       la: "",
@@ -38,9 +37,14 @@ export default {
       umroh: "",
       umrohsidebar: {},
       harga: "",
-      kelengkapan: ""
+      kelengkapan: "",
+      meta: {
+        title: "Review Pesanan Paket Umrah - Haloatta",
+        url: "https://www.haloatta.com/catalog/umrah/order-review"
+      }
     };
   },
+
   async asyncData({ query }) {
     const myRespone = await axios.post(
       process.env.baseUrl + "paket/umroh/detail",

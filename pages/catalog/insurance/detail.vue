@@ -76,24 +76,27 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationInsurance from "@/components/contents/details/insurance/information-insurance.vue";
 import informationSideright from "@/components/contents/details/insurance/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
-  name: "detail-insurance",
-  head() {
-    return {
-      title:
-        "Asuransi Perjalanan Umrah September 2019 - Booking Paket Umrah & Komponen Umrah Lainnya"
-    };
-  },
+  mixins: [Meta],
+  
   data() {
     return {
       item: "",
-      sidebar: {}
+      sidebar: {},
+      meta: {
+        title: "Informasi Asuransi Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/insurance/detail"
+      }
     };
   },
+
   async asyncData({ query, store }) {
     let data = [];
 

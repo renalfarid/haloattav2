@@ -100,29 +100,32 @@
     </a-row>
   </div>
 </template>
+
 <script>
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
 
 export default {
   middleware: "notAuthenticated",
   layout: "application",
-  name: "login",
-  head() {
-    return {
-      title:
-        "Login Akun Haloatta - Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya"
-    };
-  },
+  mixins: [Meta],
+
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      meta: {
+        title: "Masuk Akun - Haloatta",
+        url: "https://www.haloatta.com/login"
+      }
     };
   },
+
   beforeCreate() {
     this.form = this.$form.createForm(this);
   },
+
   methods: {
     handleSubmit(e) {
       e.preventDefault();

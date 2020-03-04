@@ -18,25 +18,29 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationVisa from "@/components/contents/review/visa/information-visa.vue";
 import informationSideRight from "@/components/contents/review/visa/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import moment from "moment";
 import axios from "axios";
+
 export default {
+  mixins: [Meta],
   middleware: "authenticated",
-  name: "order-review-visa",
-  head() {
-    return {
-      title: "Ulasan Pesanan - Booking Visa Umrah Lebih Mudah"
-    };
-  },
+  
   data() {
     return {
       item: "",
-      sidebar: {}
+      sidebar: {},
+      meta: {
+        title: "Review Pesanan Visa Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/visa/order-review"
+      }
     };
   },
+
   async asyncData({ query }) {
 
     const myRespone = await axios.post(

@@ -67,25 +67,28 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationVisa from "@/components/contents/details/visa/information-visa.vue";
 import informationSideright from "@/components/contents/details/visa/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import moment from "moment";
 import axios from "axios";
+
 export default {
-  name: "detail-visa",
-  head() {
-    return {
-      title:
-        "Visa Umrah September 2019 - Booking Paket Umrah & Komponen Umrah Lainnya"
-    };
-  },
+  mixins: [Meta],
+  
   data() {
     return {
       item: "",
-      sidebar: {}
+      sidebar: {},
+      meta: {
+        title: "Informasi Visa Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/visa/detail"
+      }
     };
   },
+
   async asyncData({ query, store }) {
     let data = [];
 

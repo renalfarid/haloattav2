@@ -68,21 +68,27 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchVisa from "@/components/contents/lib/search/visa.vue";
 import Recommended from "@/components/contents/catalog/visa/recommended.vue";
+import Meta from "@/assets/mixins/meta";
+
 export default {
-  name: "visa",
+  mixins: [Meta],
 
   components: {
     searchVisa,
     Recommended
   },
 
-  head() {
+  data() {
     return {
-      title: "Pesan Visa - Best Travel Agen | Haloatta"
-    };
+      meta: {
+        title: "Visa Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/visa"
+      }
+    }
   }
 };
 </script>

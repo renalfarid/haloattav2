@@ -50,14 +50,17 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchResultAccommodation from "@/components/contents/lib/search/result/accommodation.vue";
 import filterResultAccommodation from "@/components/contents/lib/filter/result/accommodation.vue";
 import PackageAccommodation from "@/components/Package/Accommodation";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
 import moment from "moment";
+
 export default {
-  name: "accommodationResult",
+  mixins: [Meta],
 
   components: {
     searchResultAccommodation,
@@ -65,19 +68,16 @@ export default {
     PackageAccommodation
   },
 
-  head() {
-    return {
-      title:
-        "Hasil Pencarian LA Akomodasi - Pesan Paket Umrah & Komponen Umrah Lainnya"
-    };
-  },
-
   data() {
     return {
       loading: true,
       busy: false,
       limit: 8,
-      data: []
+      data: [],
+      meta: {
+        title: "Hasil Pencarian Paket Akomodasi - Haloatta",
+        url: "https://www.haloatta.com/catalog/accommodation/result"
+      }
     };
   },
 

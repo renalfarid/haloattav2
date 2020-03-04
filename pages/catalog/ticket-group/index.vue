@@ -62,21 +62,26 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchTicket from "@/components/contents/lib/search/ticket.vue";
 import Recommended from "@/components/contents/catalog/ticket/recommended.vue";
+import Meta from "@/assets/mixins/meta";
 export default {
-  name: "ticketGroup",
+  mixins: [Meta],
   
   components: {
     searchTicket,
     Recommended
   },
 
-  head() {
+  data() {
     return {
-      title: "Pesan Tiket Group - Best Travel Agen | Haloatta"
-    };
+      meta: {
+        title: "Tiket Group - Haloatta",
+        url: "https://www.haloatta.com/catalog/ticket-group"
+      }
+    }
   }
 };
 </script>

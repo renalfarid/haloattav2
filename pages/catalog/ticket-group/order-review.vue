@@ -18,24 +18,28 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationOrder from "@/components/contents/review/ticket/information-ticket.vue";
 import informationSideRight from "@/components/contents/review/ticket/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
+  mixins: [Meta],
   middleware: "authenticated",
-  name: "order-review-ticket",
-  head() {
-    return {
-      title: "Ulasan Pesanan - Booking Tiket Group Lebih Mudah"
-    };
-  },
+  
   data() {
     return {
       item: "",
-      sidebar: {}
+      sidebar: {},
+      meta: {
+        title: "Review Pesanan Tiket Group - Haloatta",
+        url: "https://www.haloatta.com/catalog/ticket-group/order-review"
+      }
     };
   },
+
   async asyncData({ query }) {
     const myRespone = await axios.post(process.env.baseUrl + "tiket/detail", {
       kode_produk: query.kode

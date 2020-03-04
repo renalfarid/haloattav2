@@ -18,24 +18,28 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationInsurance from "@/components/contents/review/insurance/information-insurance.vue";
 import informationSideRight from "@/components/contents/review/insurance/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
+  mixins: [Meta],
   middleware: "authenticated",
-  name: "order-review-insurance",
-  head() {
-    return {
-      title: "Ulasan Pesanan - Booking Asuransi Umrah Lebih Mudah"
-    };
-  },
+  
   data() {
     return {
       item: "",
-      sidebar: {}
+      sidebar: {},
+      meta: {
+        title: "Review Pesanan Asuransi Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/insurance/order-review"
+      }
     };
   },
+
   async asyncData({ query }) {
     const myRespone = await axios.post(
       process.env.baseUrl + "asuransi/detail",

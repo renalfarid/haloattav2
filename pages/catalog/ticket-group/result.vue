@@ -55,13 +55,16 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchResultTicket from "@/components/contents/lib/search/result/ticket.vue";
 import filterResultTicket from "@/components/contents/lib/filter/result/ticket.vue";
 import PackageTicket from "@/components/Package/Ticket";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
+
 export default {
-  name: "ticketResult",
+  mixins: [Meta],
 
   components: {
     searchResultTicket,
@@ -69,19 +72,16 @@ export default {
     PackageTicket
   },
 
-  head() {
-    return {
-      title:
-        "Hasil Pencarian Tiket Group - Pesan Paket Umrah & Komponen Umrah Lainnya"
-    };
-  },
-
   data() {
     return {
       loading: true,
       busy: false,
       limit: 8,
-      data: []
+      data: [],
+      meta: {
+        title: "Hasil Pencarian Tiket Group - Haloatta",
+        url: "https://www.haloatta.com/catalog/ticket-group/result"
+      }
     };
   },
 

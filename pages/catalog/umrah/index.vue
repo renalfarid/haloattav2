@@ -60,18 +60,23 @@
 <script>
 import searchUmrah from "@/components/contents/lib/search/umrah.vue";
 import Recommended from "@/components/contents/catalog/umrah/recommended.vue";
+import Meta from "@/assets/mixins/meta";
+
 export default {
-  name: "umrah",
+  mixins: [Meta],
 
   components: {
     searchUmrah,
     Recommended
   },
 
-  head() {
+  data() {
     return {
-      title: "Pesan Paket Umrah - Best Travel Agen | Haloatta"
-    };
+      meta: {
+        title: "Paket Umrah - Haloatta",
+        url: "https://www.haloatta.com/catalog/umrah"
+      }
+    }
   }
 };
 </script>

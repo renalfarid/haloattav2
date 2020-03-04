@@ -157,27 +157,31 @@
     </a-row>
   </div>
 </template>
+
 <script>
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
 const Cookie = process.client ? require("js-cookie") : undefined;
+
 export default {
+  mixins: [Meta],
   layout: "application",
-  name: "register",
-  head() {
-    return {
-      title:
-        "Daftar Akun Haloatta - Pesan Paket Umrah, Tiket, LA Akomodasi, Visa dan Komponen Umrah Lainnya"
-    };
-  },
+  
   data() {
     return {
       visibleForm: true,
-      formValues: {}
+      formValues: {},
+      meta: {
+        title: "Daftar Akun - Haloatta",
+        url: "https://www.haloatta.com/register"
+      }
     };
   },
+
   beforeCreate() {
     this.form = this.$form.createForm(this);
   },
+
   methods: {
     showForm() {
       this.visibleForm = !this.visibleForm;

@@ -68,20 +68,27 @@
     </div>
   </div>
 </template>
+
 <script>
 import searchInsurance from "@/components/contents/lib/search/insurance.vue";
 import Recommended from "@/components/contents/catalog/insurance/recommended.vue";
+import Meta from "@/assets/mixins/meta";
+
 export default {
-  name: "insurance",
-  head() {
-    return {
-      title: "Pesan Asuransi Perjalanan - Best Travel Agen | Haloatta"
-    };
-  },
+  mixins: [Meta],
 
   components: {
     searchInsurance,
     Recommended
+  },
+
+  data() {
+    return {
+      meta: {
+        title: "Asuransi Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/insurance"
+      }
+    }
   }
 };
 </script>
