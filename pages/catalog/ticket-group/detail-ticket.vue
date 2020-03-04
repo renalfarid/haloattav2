@@ -96,19 +96,16 @@
     </div>
   </div>
 </template>
+
 <script>
 import informationTicket from "@/components/contents/details/ticket/information-ticket.vue";
 import informationSideright from "@/components/contents/details/ticket/information-sideright.vue";
+import Meta from "@/assets/mixins/meta";
 import moment from "moment";
 import axios from "axios";
+
 export default {
-  name: "detail-ticket",
-  head() {
-    return {
-      title:
-        "Tiket Makassar ke Jeddah - Booking Paket Umrah & Komponen Umrah Lainnya"
-    };
-  },
+  mixins: [Meta],
 
   data() {
     return {
@@ -116,7 +113,11 @@ export default {
       sidebar: {},
       gambar_maskapai: [],
       vendor: "",
-      review: ""
+      review: "",
+      meta: {
+        title: "Informasi Tiket Group - Haloatta",
+        url: "https://www.haloatta.com/catalog/ticket-group/detail-ticket"
+      }
     };
   },
 
