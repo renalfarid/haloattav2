@@ -132,29 +132,34 @@
     </div>
   </div>
 </template>
+
 <script>
-import searchResultVisa from "~/components/contents/lib/search/result/visa.vue";
-import filterResultVisa from "~/components/contents/lib/filter/result/visa.vue";
+import searchResultVisa from "@/components/contents/lib/search/result/visa.vue";
+import filterResultVisa from "@/components/contents/lib/filter/result/visa.vue";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
 import moment from "moment";
+
 export default {
-  name: "visaResult",
-  head() {
-    return {
-      title: "Hasil Pencarian Visa - Pesan Paket Umrah & Komponen Umrah Lainnya"
-    };
-  },
+  mixins: [Meta],
+  
   data() {
     return {
       loading: true,
       busy: false,
       limit: 8,
-      data: []
+      data: [],
+      meta: {
+        title: "Hasil Pencarian Visa Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/visa/result"
+      }
     };
   },
+
   created() {
     this.loadMore();
   },
+
   methods: {
     moment,
     loadMore() {
