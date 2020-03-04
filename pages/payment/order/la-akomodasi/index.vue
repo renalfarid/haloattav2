@@ -376,7 +376,7 @@
                               v-decorator="[
                                 'tipe['+d.double+']',
                                 {
-                                  initialValue: 'doble',
+                                  initialValue: 'double',
                                   rules: [
                                     {
                                       required: true,
@@ -789,6 +789,8 @@ export default {
             data["pesan"] = values.pesan;
             data["tanggal_kepulanggan"] = values.tanggal_kepulanggan;
           }
+
+          console.log(data, "coba");
 
           const token = Cookie.get("auth");
 
