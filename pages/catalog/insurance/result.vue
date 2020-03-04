@@ -134,30 +134,34 @@
     </div>
   </div>
 </template>
+
 <script>
-import searchResultInsurance from "~/components/contents/lib/search/result/insurance.vue";
-import filterResultInsurance from "~/components/contents/lib/filter/result/insurance.vue";
+import searchResultInsurance from "@/components/contents/lib/search/result/insurance.vue";
+import filterResultInsurance from "@/components/contents/lib/filter/result/insurance.vue";
+import Meta from "@/assets/mixins/meta";
 import axios from "axios";
 import moment from "moment";
+
 export default {
-  name: "insuranceResult",
-  head() {
-    return {
-      title:
-        "Hasil Pencarian Asuransi - Pesan Paket Umrah & Komponen Umrah Lainnya"
-    };
-  },
+  mixins: [Meta],
+  
   data() {
     return {
       loading: true,
       busy: false,
       limit: 8,
-      data: []
+      data: [],
+      meta: {
+        title: "Hasil Pencarian Asuransi Perjalanan - Haloatta",
+        url: "https://www.haloatta.com/catalog/insurance/result"
+      }
     };
   },
+
   created() {
     this.loadMore();
   },
+
   methods: {
     moment,
     loadMore() {
