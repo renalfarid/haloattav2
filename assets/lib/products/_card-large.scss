@@ -184,6 +184,8 @@
                     }
                 }
                 & .ant-card-meta-description {
+                    white-space: nowrap;
+                    overflow: hidden;
                     & .ant-card-meta-description--bottom {
                         white-space: nowrap;
                         & .ant-card-meta-description--bottom-left {
