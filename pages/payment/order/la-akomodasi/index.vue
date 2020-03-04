@@ -218,7 +218,7 @@
                     <a-icon type="caret-right" :rotate="props.isActive ? 90 : 0" />
                   </template>
 
-                  <a-collapse-panel :header="'Quad '+ quad" key="1" v-if="quad != 0">
+                  <a-collapse-panel :header="'Quad '+ count.quad" key="1" v-if="quad != 0">
                     <div v-for="(q,key,index) in quadLoop" :key="index">
                       <a-row :gutter="16">
                         <a-col :span="8">
@@ -293,7 +293,7 @@
                     </div>
                   </a-collapse-panel>
 
-                  <a-collapse-panel :header="'Triple '+ triple" key="2" v-if="triple != 0">
+                  <a-collapse-panel :header="'Triple '+ count.triple" key="2" v-if="triple != 0">
                     <div v-for="(t,key,index) in tripleLoop" :key="index">
                       <a-row :gutter="16">
                         <a-col :span="8">
@@ -367,7 +367,7 @@
                     </div>
                   </a-collapse-panel>
 
-                  <a-collapse-panel :header="'Double '+ double" key="3" v-if="double != 0">
+                  <a-collapse-panel :header="'Double '+ count.double" key="3" v-if="double != 0">
                     <div v-for="(d,key,index) in doubleLoop" :key="index">
                       <a-row :gutter="16">
                         <a-col :span="8">
@@ -682,7 +682,12 @@ export default {
       data: getProduk,
       quad: query.quad * 4,
       triple: query.triple * 3,
-      double: query.double * 2
+      double: query.double * 2,
+      count: {
+        quad: query.quad,
+        triple: query.triple,
+        double: query.double
+      }
     };
   },
 
@@ -698,6 +703,11 @@ export default {
       triple: 0,
       double: 0,
       pax: 0,
+      count: {
+        quad: 0,
+        triple: 0,
+        double: 0
+      },
       coba: [],
       quadLoop: [],
       tripleLoop: [],
