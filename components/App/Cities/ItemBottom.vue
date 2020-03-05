@@ -1,8 +1,8 @@
 <template>
-  <div class="container" :style="{ 'padding-top': '80px' }">
+  <div class="container" :style="{ 'padding-top': '80px' }" v-if="cities.length > 0">
     <div class="md-cities--package">
-      <a-row :gutter="24" class="f-wrap">
-        <a-col :xs="24" :sm="24" :md="24" :lg="10" class="pb-24">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="24" :md="24" :lg="10" class="p-sm-none pb-24">
           <a-card class="md-cities--banner-bottom" :bordered="false">
             <div class="md-cities--body">
               <h2>Surabaya</h2>
@@ -61,6 +61,7 @@
 import CitiesUmrah from "@/components/Package/Umrah";
 const coverCities = require("~/static/umrah/cover/cu3.jpg");
 import axios from "axios";
+
 export default {
   components: {
     CitiesUmrah
@@ -135,7 +136,7 @@ export default {
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      min-height: 224px;
+      min-height: 472px;
       position: relative;
       height: 100%;
       width: 100%;
@@ -188,6 +189,16 @@ export default {
           border: 1px solid rgba($color: #000000, $alpha: 1);
           color: rgba($color: #000000, $alpha: 1);
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .md-cities--banner-bottom {
+    & .ant-card-body {
+      & .md-cities--cover {
+        display: none;
       }
     }
   }

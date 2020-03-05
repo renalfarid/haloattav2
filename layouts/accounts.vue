@@ -6,10 +6,7 @@
       class="ant-layout-sider--accounts"
       :style="{ overflow: 'auto', height: '100vh', position: 'fixed' }"
     >
-      <!-- if group customer -->
       <sidebar-customer />
-      <!-- if group umaroh personal -->
-      <!-- <sidebar-personal /> -->
     </a-layout-sider>
 
     <a-layout
@@ -28,25 +25,26 @@
       <a-layout-content class="ant-layout--content-accounts" :style="{ overflow: 'initial', minHeight: '80vh' }">
         <nuxt />
       </a-layout-content>
+      <a-layout-footer :style="{'padding':'24px 0',background:'transparent','margin-top':'24px',border:'none','text-align':'center'}">
+        2016 - {{ new Date().getFullYear() }} © PT. NUH Teknologi Solution
+      </a-layout-footer>
       <a-back-top />
     </a-layout>
   </a-layout>
 </template>
 <script>
-import sidebarCustomer from "~/components/accounts/sidebar/customer.vue";
-// import sidebarPersonal from "~/components/accounts/sidebar/personal.vue";
-import headerBar from "~/components/accounts/header/header.vue";
+import sidebarCustomer from "@/components/accounts/sidebar/customer.vue";
+import headerBar from "@/components/accounts/header/header.vue";
 export default {
   components: {
     sidebarCustomer,
-    // sidebarPersonal,
     headerBar
   }
 };
 </script>
 
 <style lang="scss">
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .ant-layout-sider--accounts {
     display: none;
   }

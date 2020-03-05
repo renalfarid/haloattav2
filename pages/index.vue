@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       meta: {
-        title: "Tempat Pesan Paket Umrah dan Komponen Umrah Lainnya - Haloatta",
+        title: "Pesan Paket Umrah dan Komponen Umrah Lainnya - Haloatta",
         url: "https://www.haloatta.com/"
       }
     }

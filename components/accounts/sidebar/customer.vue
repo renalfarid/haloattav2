@@ -18,12 +18,6 @@
       </div>
     </div>
 
-    <div class="d-none pl-16 pr-16 mb-16">
-      <a-button type="primary" class="b-shadow b-radius" block>
-        <nuxt-link to="/upgrade">Upgrade Akun</nuxt-link>
-      </a-button>
-    </div>
-
     <a-divider :style="{margin: '14px 0'}" />
 
     <nuxt-link to="/accounts/top-up" class="ant-avatar--user d-flex align-items-center">

@@ -1,7 +1,28 @@
 <template>
-  <div class="container" :style="{ 'padding-top': '80px' }">
+  <div class="container" :style="{ 'padding-top': '80px' }" v-if="cities.length > 0">
     <div class="md-cities--package">
-      <a-row :gutter="24" class="f-wrap">
+      <a-row :gutter="24">
+        <a-col :xs="24" :sm="24" :md="24" :lg="10" class="p-sm-none pb-24" :style="{ 'float':'right' }">
+          <a-card class="md-cities--banner-middle" :bordered="false">
+            <div class="md-cities--body">
+              <h2>Jakarta</h2>
+              <p>
+                Mesjid Ramlie Musofa sekitar satu tahun terakhir, ada destinasi
+                wisata baru di daerah danau sunter
+              </p>
+
+              <nuxt-link to="/">
+                <a-button size="large">Jelajahi Paket Umrah</a-button>
+              </nuxt-link>
+            </div>
+
+            <div
+              class="md-cities--cover"
+              v-lazy:background-image="coverCities"
+            ></div>
+          </a-card>
+        </a-col>
+
         <a-col :xs="24" :sm="24" :md="24" :lg="14">
           <a-row :gutter="24" class="r-wrap">
             <a-col
@@ -31,27 +52,6 @@
               />
             </a-col>
           </a-row>
-        </a-col>
-
-        <a-col :xs="24" :sm="24" :md="24" :lg="10" class="pb-24">
-          <a-card class="md-cities--banner-middle" :bordered="false">
-            <div class="md-cities--body">
-              <h2>Jakarta</h2>
-              <p>
-                Mesjid Ramlie Musofa sekitar satu tahun terakhir, ada destinasi
-                wisata baru di daerah danau sunter
-              </p>
-
-              <nuxt-link to="/">
-                <a-button size="large">Jelajahi Paket Umrah</a-button>
-              </nuxt-link>
-            </div>
-
-            <div
-              class="md-cities--cover"
-              v-lazy:background-image="coverCities"
-            ></div>
-          </a-card>
         </a-col>
       </a-row>
     </div>
@@ -136,7 +136,7 @@ export default {
       background-position: top center;
       background-repeat: no-repeat;
       background-size: cover;
-      min-height: 224px;
+      min-height: 472px;
       position: relative;
       height: 100%;
       width: 100%;
@@ -189,6 +189,16 @@ export default {
           border: 1px solid rgba($color: #000000, $alpha: 1);
           color: rgba($color: #000000, $alpha: 1);
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .md-cities--banner-middle {
+    & .ant-card-body {
+      & .md-cities--cover {
+        display: none;
       }
     }
   }
