@@ -4,10 +4,10 @@
     <div class="ant-layout--order-review-package-body">
       <div class="container">
         <h2 class="mt-16 mb-0 cr-gray">Review Pesanan</h2>
-        
+
         <a-row :gutter="24">
           <a-col :xs="24" :sm="24" :md="16">
-            <informationOrder :data="item" />
+            <informationOrder :data="item" :fasilitas="fasilitas" />
           </a-col>
 
           <a-col :xs="24" :sm="24" :md="8">
@@ -28,10 +28,11 @@ import axios from "axios";
 export default {
   mixins: [Meta],
   middleware: "authenticated",
-  
+
   data() {
     return {
       item: "",
+      fasilitas: "",
       sidebar: {},
       meta: {
         title: "Review Pesanan Tiket Group - Haloatta",
@@ -47,6 +48,7 @@ export default {
 
     return {
       item: myRespone.data.data,
+      fasilitas: myRespone.data.data2.fasilitas,
       sidebar: {
         berangkat: myRespone.data.data.tanggal_keberangkatan,
         harga: myRespone.data.data.harga_jual,
