@@ -81,6 +81,7 @@
               :data="item"
               :vendor="vendor"
               :review="review"
+              :fasilitas="fasilitas"
             />
           </div>
         </a-col>
@@ -114,6 +115,7 @@ export default {
       gambar_maskapai: [],
       vendor: "",
       review: "",
+      fasilitas: "",
       meta: {
         title: "Informasi Tiket Group - Haloatta",
         url: "https://www.haloatta.com/catalog/ticket-group/detail-ticket"
@@ -134,6 +136,7 @@ export default {
       gambar_maskapai: myRespone.data.data2.foto_maskapai,
       vendor: myRespone.data.data2.vendor,
       review: myRespone.data.data2.ulasan,
+      fasilitas: myRespone.data.data2.fasilitas,
 
       sidebar: {
         berangkat: myRespone.data.data.tanggal_keberangkatan,

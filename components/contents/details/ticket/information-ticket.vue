@@ -173,10 +173,10 @@
       class="b-shadow bordered-left b-solid ant-list-item--package-information mb-16"
       id="fasilitas"
     >
-      <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk (belum ada)</div>
+      <div class="fs-16 fw-500 cr-black">Fasilitas Termasuk</div>
       <div class="fs-15 fw-400 cr-gray mb-24">Informasi fasilitas penerbangan anda</div>
       <a-row :gutter="8">
-        <a-col :span="6">
+        <a-col :span="6" v-for="(getFasilitas,i) in fasilitas" :key="i">
           <div class="d-flex align-items-start">
             <a-avatar
               style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
@@ -185,46 +185,7 @@
               icon="check"
             />
             <div>
-              <div class="fs-15 fw-500 cr-black">Bagasi 25 Kg</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Makan & Coffe Break</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Entertaiment</div>
-            </div>
-          </div>
-        </a-col>
-        <a-col :span="6">
-          <div class="d-flex align-items-start">
-            <a-avatar
-              style="backgroundColor: rgba(15, 172, 243, .1);color:#0FACF3"
-              class="mr-8"
-              size="small"
-              icon="check"
-            />
-            <div>
-              <div class="fs-15 fw-500 cr-black">Akses Disabilitas</div>
+              <div class="fs-15 fw-500 cr-black">{{getFasilitas}}</div>
             </div>
           </div>
         </a-col>
@@ -260,7 +221,7 @@ import faq from "~/components/contents/details/ticket/faq.vue";
 import moment from "moment";
 import axios from "axios";
 export default {
-  props: ["data", "vendor", "review"],
+  props: ["data", "vendor", "review", "fasilitas"],
   data() {
     return {
       wishlist: false,
