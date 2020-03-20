@@ -1,13 +1,9 @@
 .ant-layout-header--accounts {
-    box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
-    -webkit-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
-    -moz-box-shadow: 0 0 8px rgba($color: #000000, $alpha: .06) !important;
     background-color: #ffffff;
     @include border-radius(6px);
     line-height: 74px;
     padding: 0 16px;
     height: 74px;
-    & .header-left {}
     & .header-right {
         @include align-items(center);
         @include flexbox();
