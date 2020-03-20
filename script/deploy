@@ -1,0 +1,9 @@
+#!/bin/sh
+ssh devops@beta.haloatta.com <<EOF
+ cd ~/haloatta
+ git pull
+ npm install
+ npm run build
+ pm2 restart npm
+ exit
+EOF

@@ -2,8 +2,8 @@
   <a-list class="comment-list" itemLayout="horizontal" :dataSource="review">
     <div slot="header">
       <div class="d-flex align-items-center">
-        <div class="fs-16 fw-500 cr-black mr-16">{{review.length}} Ulasan (belum ada)</div>
-        <a-rate class="fs-16" :defaultValue="2" disabled />
+        <div class="fs-16 fw-500 cr-black mr-16">{{review.length}} Ulasan</div>
+        <!-- <a-rate class="fs-16" :defaultValue="2" disabled /> -->
       </div>
 
       <a-divider></a-divider>
@@ -49,6 +49,7 @@
           <span class="fs-12 text-right">{{item.datetime.fromNow()}}</span>
         </a-tooltip>-->
       </a-comment>
+      <a-rate class="fs-16" :defaultValue="item.rating" disabled />
     </a-list-item>
   </a-list>
 </template>
