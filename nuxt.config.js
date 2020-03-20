@@ -203,6 +203,12 @@ module.exports = {
         },
 
         loaders: {
+            cssModules: {
+                modules: {
+                    localIdentName: "_[hash:base64:7]",
+                }
+            },
+
             less: {
                 modifyVars: {
                     'primary-color': '#0FACF3',
