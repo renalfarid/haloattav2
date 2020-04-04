@@ -1,10 +1,6 @@
-// import Vue from 'vue'
-// import Antd from 'ant-design-vue/lib'
-
-// Vue.use(Antd)
-
 import Vue from 'vue';
 import {
+    Base,
     Affix,
     Anchor,
     AutoComplete,
@@ -25,6 +21,7 @@ import {
     Divider,
     Dropdown,
     Form,
+    FormModel,
     Icon,
     Input,
     InputNumber,
@@ -33,6 +30,7 @@ import {
     LocaleProvider,
     message,
     Menu,
+    Mentions,
     Modal,
     notification,
     Pagination,
@@ -65,7 +63,9 @@ import {
     Comment,
     ConfigProvider,
     Empty,
-    Base,
+    Result,
+    Descriptions,
+    PageHeader
 } from 'ant-design-vue';
 
 Vue.prototype.$message = message;
@@ -100,6 +100,7 @@ Vue.use(Divider);
 Vue.use(Drawer);
 Vue.use(Dropdown);
 Vue.use(Form);
+Vue.use(FormModel);
 Vue.use(Icon);
 Vue.use(Input);
 Vue.use(InputNumber);
@@ -107,6 +108,7 @@ Vue.use(Layout);
 Vue.use(List);
 Vue.use(LocaleProvider);
 Vue.use(Menu);
+Vue.use(Mentions);
 Vue.use(Modal);
 Vue.use(Pagination);
 Vue.use(Popconfirm);
@@ -135,3 +137,6 @@ Vue.use(Skeleton);
 Vue.use(Comment);
 Vue.use(ConfigProvider);
 Vue.use(Empty);
+Vue.use(Result);
+Vue.use(Descriptions);
+Vue.use(PageHeader);
